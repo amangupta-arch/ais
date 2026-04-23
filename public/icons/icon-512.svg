@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" rx="102" ry="102" fill="#FBF8F3"/>
+  <rect x="0" y="0" width="512" height="512" rx="102" ry="102" fill="none" stroke="#EFE7D5" stroke-width="4"/>
+  <text
+    x="256" y="332"
+    font-family="Georgia, 'Instrument Serif', serif"
+    font-size="320"
+    font-style="italic"
+    text-anchor="middle"
+    fill="#F26A17">a</text>
+</svg>
