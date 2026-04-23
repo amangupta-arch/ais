@@ -62,52 +62,5 @@ insert into courses (slug, title, subtitle, description, category, plan_tier, is
   ('resume-ai',               'Keep Your Resume Updated with AI','Always ready for the call',       'Living resume + JD-matched rewrites.',                             'real_life', 'advanced', true, '📄', 'paper', 'intermediate', 40, 36, '{career,resume}'),
   ('english-seekhna-ai-se',   'AI Se English Seekhna',         'Hindi se English tak',              'Conversation practice in Hinglish with AI.',                       'real_life', 'advanced', true, '🗣️', 'ember', 'beginner',     90, 37, '{english,india,hindi}');
 
--- DEMO LESSON — the canonical AI chat walkthrough example
-do $$
-declare v_course_id uuid;
-declare v_lesson_id uuid;
-begin
-  select id into v_course_id from courses where slug = 'chatgpt-basics';
-
-  insert into lessons (course_id, slug, title, subtitle, order_index, estimated_minutes, xp_reward)
-  values (v_course_id, 'first-real-conversation', 'Your First Real Conversation', 'Why most people use ChatGPT wrong', 1, 8, 30)
-  returning id into v_lesson_id;
-
-  insert into lesson_turns (lesson_id, order_index, turn_type, content, xp_reward) values
-    (v_lesson_id, 1, 'tutor_message',
-      jsonb_build_object('text','Hey — glad you''re here. Before we touch ChatGPT, I want to ask you something.','persona_id','nova','typing_ms',900), 0),
-    (v_lesson_id, 2, 'tutor_message',
-      jsonb_build_object('text','Most people type one-line questions and get mediocre answers. Then they blame the tool. Sound familiar?','persona_id','nova','typing_ms',1400), 0),
-    (v_lesson_id, 3, 'mcq',
-      jsonb_build_object('question','Be honest — when you''ve used ChatGPT, you mostly…',
-        'options', jsonb_build_array(
-          jsonb_build_object('id','a','text','Typed a short question','is_correct',true,'rationale','Most people start here. We''ll fix it together.'),
-          jsonb_build_object('id','b','text','Wrote a detailed prompt with context','is_correct',true,'rationale','You''re ahead of the curve. Let''s sharpen it anyway.'),
-          jsonb_build_object('id','c','text','Never really used it','is_correct',true,'rationale','Perfect — you get to skip bad habits entirely.')
-        )), 10),
-    (v_lesson_id, 4, 'tutor_message',
-      jsonb_build_object('text','Good. Here''s the one idea that changes everything: ChatGPT is not a search engine. It''s a thinking partner. And thinking partners need context.','persona_id','nova','typing_ms',1600), 0),
-    (v_lesson_id, 5, 'tutor_message',
-      jsonb_build_object('text','Watch. Same request, two versions.','persona_id','nova','typing_ms',700), 0),
-    (v_lesson_id, 6, 'mcq',
-      jsonb_build_object('question','Which prompt gets a better answer?',
-        'options', jsonb_build_array(
-          jsonb_build_object('id','a','text','"Write me an email to my boss"','is_correct',false,'rationale','Too thin. The AI has no idea what you want.'),
-          jsonb_build_object('id','b','text','"Draft a 4-line email to my boss asking for 2 days off next week. Tone: polite but confident. Mention I''ll hand over the Figma files to Priya."','is_correct',true,'rationale','Context, constraint, tone, detail. Night and day output.')
-        )), 15),
-    (v_lesson_id, 7, 'tutor_message',
-      jsonb_build_object('text','There''s your first rule: every prompt needs Role, Task, Context, and Constraints. Four words. RTCC.','persona_id','nova','typing_ms',1400), 0),
-    (v_lesson_id, 8, 'exercise',
-      jsonb_build_object('instruction','Your turn. Open ChatGPT in another tab. Using RTCC, ask it to write a LinkedIn post announcing you''re learning AI. Paste what you wrote below.','tool','chatgpt','placeholder','Paste your prompt here…'), 20),
-    (v_lesson_id, 9, 'ai_conversation',
-      jsonb_build_object(
-        'starter_text','I''m your sparring partner for one minute. Tell me why you''re learning AI, and I''ll push back once. Ready?',
-        'system_prompt','You are a warm but direct coach named Nova. The user is a beginner learner. Ask them why they are learning AI, then challenge their answer once to make it more specific. Keep replies under 40 words. After 2 exchanges, affirm them and close.',
-        'goal','Help the user articulate a specific personal reason for learning AI.',
-        'max_turns',3,
-        'success_criteria','User names a concrete outcome (e.g., a project, role, or skill).'), 10),
-    (v_lesson_id,10, 'reflection',
-      jsonb_build_object('prompt','One sentence. What will you use ChatGPT for this week?','placeholder','Write in your own words…'), 5),
-    (v_lesson_id,11, 'checkpoint',
-      jsonb_build_object('title','You just learned RTCC.','summary','Role. Task. Context. Constraints. Every future prompt gets 5× better when you use it. Tomorrow — we build your first custom GPT.','xp',10), 10);
-end $$;
+-- Lessons and turns are authored as YAML under supabase/content/ and loaded
+-- via `npm run content:load`. See supabase/content/AUTHORING.md.

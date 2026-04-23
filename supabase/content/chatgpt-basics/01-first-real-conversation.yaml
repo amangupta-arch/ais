@@ -1,0 +1,93 @@
+title: Your First Real Conversation
+subtitle: Why most people use ChatGPT wrong
+estimated_minutes: 8
+xp_reward: 30
+
+turns:
+  - type: tutor_message
+    persona: nova
+    typing_ms: 900
+    text: |
+      Hey — glad you're here. Before we touch ChatGPT, I want to ask you something.
+
+  - type: tutor_message
+    persona: nova
+    typing_ms: 1400
+    text: |
+      Most people type one-line questions and get mediocre answers. Then they blame the tool. Sound familiar?
+
+  - type: mcq
+    xp: 10
+    question: Be honest — when you've used ChatGPT, you mostly…
+    options:
+      - id: a
+        text: Typed a short question
+        is_correct: true
+        rationale: Most people start here. We'll fix it together.
+      - id: b
+        text: Wrote a detailed prompt with context
+        is_correct: true
+        rationale: You're ahead of the curve. Let's sharpen it anyway.
+      - id: c
+        text: Never really used it
+        is_correct: true
+        rationale: Perfect — you get to skip bad habits entirely.
+
+  - type: tutor_message
+    persona: nova
+    typing_ms: 1600
+    text: |
+      Good. Here's the one idea that changes everything: ChatGPT is not a search engine. It's a thinking partner. And thinking partners need context.
+
+  - type: tutor_message
+    persona: nova
+    typing_ms: 700
+    text: |
+      Watch. Same request, two versions.
+
+  - type: mcq
+    xp: 15
+    question: Which prompt gets a better answer?
+    options:
+      - id: a
+        text: '"Write me an email to my boss"'
+        is_correct: false
+        rationale: Too thin. The AI has no idea what you want.
+      - id: b
+        text: '"Draft a 4-line email to my boss asking for 2 days off next week. Tone: polite but confident. Mention I''ll hand over the Figma files to Priya."'
+        is_correct: true
+        rationale: Context, constraint, tone, detail. Night and day output.
+
+  - type: tutor_message
+    persona: nova
+    typing_ms: 1400
+    text: |
+      There's your first rule: every prompt needs Role, Task, Context, and Constraints. Four words. RTCC.
+
+  - type: exercise
+    xp: 20
+    tool: chatgpt
+    instruction: |
+      Your turn. Open ChatGPT in another tab. Using RTCC, ask it to write a LinkedIn post announcing you're learning AI. Paste what you wrote below.
+    placeholder: Paste your prompt here…
+
+  - type: ai_conversation
+    xp: 10
+    goal: Help the user articulate a specific personal reason for learning AI.
+    max_turns: 3
+    success_criteria: User names a concrete outcome (e.g., a project, role, or skill).
+    starter_text: |
+      I'm your sparring partner for one minute. Tell me why you're learning AI, and I'll push back once. Ready?
+    system_prompt: |
+      You are a warm but direct coach named Nova. The user is a beginner learner. Ask them why they are learning AI, then challenge their answer once to make it more specific. Keep replies under 40 words. After 2 exchanges, affirm them and close.
+
+  - type: reflection
+    xp: 5
+    prompt: One sentence. What will you use ChatGPT for this week?
+    placeholder: Write in your own words…
+
+  - type: checkpoint
+    xp: 10
+    title: You just learned RTCC.
+    summary: |
+      Role. Task. Context. Constraints. Every future prompt gets 5× better when you use it. Tomorrow — we build your first custom GPT.
