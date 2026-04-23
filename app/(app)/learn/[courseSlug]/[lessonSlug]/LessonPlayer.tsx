@@ -56,21 +56,32 @@ export function LessonPlayer(props: Props) {
     if (el) el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
   }, [revealedCount]);
 
-  // Kick off auto-advance for tutor_message turns as they appear.
+  // Tutor messages have no "continue" affordance — they auto-advance after the
+  // typing-indicator delay, whether the next turn is another tutor_message or
+  // an interactive one (MCQ, exercise, etc.). Without this, a lesson deadlocks
+  // on any `tutor_message → mcq` boundary.
   useEffect(() => {
     const idx = revealedCount - 1;
     if (idx < 0 || idx >= turns.length) return;
     const turn = turns[idx];
     if (!turn || turn.turn_type !== "tutor_message") return;
+    if (idx + 1 >= turns.length) return; // Final turn — let the checkpoint handle it.
 
-    // If the NEXT turn is also a tutor_message, auto-chain after a small delay.
-    const next = turns[idx + 1];
-    if (next?.turn_type === "tutor_message") {
-      const delay = Math.max(600, (turn.content.typing_ms ?? 1200) + 400);
-      const t = setTimeout(() => setRevealedCount((c) => Math.max(c, idx + 2)), delay);
-      return () => clearTimeout(t);
-    }
-  }, [revealedCount, turns]);
+    const delay = Math.max(600, (turn.content.typing_ms ?? 1200) + 400);
+    const t = setTimeout(() => {
+      setRevealedCount((c) => Math.min(turns.length, Math.max(c, idx + 2)));
+      if (!alreadyCompleted) {
+        void advanceTurn({
+          courseId,
+          lessonId,
+          turnIndex: idx,
+          xpAwarded: turn.xp_reward,
+          source: "tutor_message",
+        });
+      }
+    }, delay);
+    return () => clearTimeout(t);
+  }, [revealedCount, turns, alreadyCompleted, courseId, lessonId]);
 
   const goNext = useCallback(
     (opts?: { xp?: number; source?: string }) => {

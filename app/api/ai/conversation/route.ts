@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
 
 import { PERSONAS, type Persona } from "@/lib/types";
+import { createClient } from "@/lib/supabase/server";
 
 export const runtime = "nodejs";
 
@@ -21,6 +22,16 @@ const preamble = (persona: Persona) =>
   `When the goal is reached, include <END/> at the end of your message.`;
 
 export async function POST(request: NextRequest) {
+  // Auth gate — only signed-in users can spend model quota.
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) {
+    return NextResponse.json(
+      { message: "Sign in to chat with your tutor.", shouldEnd: true },
+      { status: 401 },
+    );
+  }
+
   let body: Body;
   try {
     body = (await request.json()) as Body;

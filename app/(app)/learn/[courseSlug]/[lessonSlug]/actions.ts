@@ -49,7 +49,9 @@ export async function advanceTurn(args: AdvanceArgs): Promise<void> {
       source: args.source ?? "lesson_turn",
       reference_id: args.lessonId,
     });
-    await bumpUserXp(user.id, xp);
+    // Atomic INSERT ... ON CONFLICT DO UPDATE in Postgres — safe under the
+    // concurrent advanceTurn calls the client fires without awaiting.
+    await supabase.rpc("add_xp", { p_user_id: user.id, p_xp: xp });
   }
 }
 
@@ -96,7 +98,7 @@ export async function completeLesson(args: {
     source: "lesson_complete",
     reference_id: args.lessonId,
   });
-  await bumpUserXp(user.id, xp);
+  await supabase.rpc("add_xp", { p_user_id: user.id, p_xp: xp });
 
   // Recompute course progress.
   const { count: doneCount } = await supabase
@@ -138,31 +140,4 @@ export async function completeLesson(args: {
   revalidatePath("/profile");
 
   return { awarded: xp, alreadyCompleted: false };
-}
-
-async function bumpUserXp(userId: string, xp: number): Promise<void> {
-  const supabase = await createClient();
-  const { data: row } = await supabase
-    .from("user_xp")
-    .select("total_xp, weekly_xp, week_started_at")
-    .eq("user_id", userId)
-    .maybeSingle();
-
-  const today = new Date();
-  const todayDate = today.toISOString().slice(0, 10);
-  const weekStartedAt = row?.week_started_at ?? todayDate;
-  const weekStart = new Date(weekStartedAt + "T00:00:00Z");
-  const sevenDaysMs = 7 * 24 * 60 * 60 * 1000;
-  const inSameWeek = today.getTime() - weekStart.getTime() < sevenDaysMs;
-
-  await supabase.from("user_xp").upsert(
-    {
-      user_id: userId,
-      total_xp: (row?.total_xp ?? 0) + xp,
-      weekly_xp: inSameWeek ? (row?.weekly_xp ?? 0) + xp : xp,
-      week_started_at: inSameWeek ? weekStartedAt : todayDate,
-      updated_at: new Date().toISOString(),
-    },
-    { onConflict: "user_id" },
-  );
 }
