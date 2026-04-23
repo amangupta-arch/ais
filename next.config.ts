@@ -12,10 +12,6 @@ const supabaseHost = (() => {
 
 const config: NextConfig = {
   reactStrictMode: true,
-  experimental: {
-    // Next 15.5: flag exists at runtime but isn't yet in the TS type surface.
-    nodeMiddleware: true,
-  } as NextConfig["experimental"],
   images: {
     remotePatterns: supabaseHost
       ? [{ protocol: "https", hostname: supabaseHost, pathname: "/storage/v1/object/public/**" }]

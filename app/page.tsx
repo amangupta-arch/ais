@@ -1,9 +1,17 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { ButtonLink } from "@/components/ui/Button";
 import { Display } from "@/components/ui/Display";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { createClient } from "@/lib/supabase/server";
 
-export default function LandingPage() {
+export const dynamic = "force-dynamic";
+
+export default async function LandingPage() {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (user) redirect("/home");
+
   return (
     <main className="mx-auto max-w-3xl px-6 pt-16 pb-24 sm:pt-24">
       <header className="flex items-center justify-between">
