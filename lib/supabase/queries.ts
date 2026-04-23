@@ -2,6 +2,7 @@ import { createClient } from "./server";
 import type {
   Course, Lesson, Plan, Profile, UserStreak, UserXp, UserCourseProgress, UserLessonProgress,
 } from "@/lib/types";
+import type { LessonTurn } from "@/lib/turns";
 
 export async function getMe(): Promise<{
   user: { id: string; email: string | null } | null;
@@ -92,4 +93,58 @@ export async function getMyLessonProgress(courseId: string): Promise<UserLessonP
     .eq("user_id", user.id)
     .eq("course_id", courseId);
   return (data ?? []) as UserLessonProgress[];
+}
+
+export async function getLessonByCourseAndSlug(
+  courseSlug: string,
+  lessonSlug: string,
+): Promise<{
+  course: Course | null;
+  lesson: Lesson | null;
+  turns: LessonTurn[];
+  progress: UserLessonProgress | null;
+}> {
+  const supabase = await createClient();
+
+  const { data: course } = await supabase
+    .from("courses")
+    .select("*")
+    .eq("slug", courseSlug)
+    .eq("is_published", true)
+    .maybeSingle();
+  if (!course) return { course: null, lesson: null, turns: [], progress: null };
+
+  const { data: lesson } = await supabase
+    .from("lessons")
+    .select("*")
+    .eq("course_id", (course as Course).id)
+    .eq("slug", lessonSlug)
+    .eq("is_published", true)
+    .maybeSingle();
+  if (!lesson) return { course: course as Course, lesson: null, turns: [], progress: null };
+
+  const { data: turnsData } = await supabase
+    .from("lesson_turns")
+    .select("*")
+    .eq("lesson_id", (lesson as Lesson).id)
+    .order("order_index", { ascending: true });
+
+  const { data: { user } } = await supabase.auth.getUser();
+  let progress: UserLessonProgress | null = null;
+  if (user) {
+    const { data: prog } = await supabase
+      .from("user_lesson_progress")
+      .select("*")
+      .eq("user_id", user.id)
+      .eq("lesson_id", (lesson as Lesson).id)
+      .maybeSingle();
+    progress = (prog ?? null) as UserLessonProgress | null;
+  }
+
+  return {
+    course: course as Course,
+    lesson: lesson as Lesson,
+    turns: (turnsData ?? []) as unknown as LessonTurn[],
+    progress,
+  };
 }

@@ -1,0 +1,109 @@
+title: Make ChatGPT Yours
+subtitle: Stop telling it who you are every single time
+estimated_minutes: 8
+xp_reward: 35
+
+turns:
+  - type: tutor_message
+    persona: nova
+    typing_ms: 900
+    text: |
+      Yesterday we cracked RTCC. Good. But there's a hidden cost — every conversation starts cold.
+
+  - type: tutor_message
+    persona: nova
+    typing_ms: 1300
+    text: |
+      You explain what you do, your tone, your audience, who Priya is. Every. Time. Today we fix that.
+
+  - type: mcq
+    xp: 10
+    question: How often do you re-explain the same context to ChatGPT in a single week?
+    options:
+      - id: a
+        text: Most chats — I retype my role and goals constantly
+        is_correct: true
+        rationale: Painful. We're about to delete that habit.
+      - id: b
+        text: A few times — I usually just dive in
+        is_correct: true
+        rationale: That works until the answers feel generic. There's a better way.
+      - id: c
+        text: Never — I haven't used it enough yet
+        is_correct: true
+        rationale: Perfect timing. You'll set it up right from day one.
+
+  - type: tutor_message
+    persona: nova
+    typing_ms: 1500
+    text: |
+      Two settings change everything: *Custom Instructions* and *Memory*. Custom instructions are what ChatGPT knows about *you*, every chat, forever.
+
+  - type: tutor_message
+    persona: nova
+    typing_ms: 1100
+    text: |
+      Memory is what it learns *during* chats — your projects, your preferences. You can tell it explicitly: "remember this".
+
+  - type: exercise
+    xp: 20
+    tool: chatgpt
+    instruction: |
+      Open ChatGPT → Settings → *Personalization* → *Custom Instructions*.
+
+      In the first box (*What should ChatGPT know about you?*), write 3 short lines:
+
+      1. Your role and what you spend most days on
+      2. Your audience or who you write for
+      3. The tone you want — direct, warm, technical, whatever fits
+
+      In the second box (*How should ChatGPT respond?*), write:
+
+      "Be concise. Skip preambles. If I ask for an email or post, give me the draft, not an explanation."
+
+      Save it. Paste your two paragraphs below.
+    placeholder: Paste both paragraphs here…
+
+  - type: mcq
+    xp: 10
+    question: Which kind of fact is worth saving to *Memory*?
+    options:
+      - id: a
+        text: A one-off question about today's weather
+        is_correct: false
+        rationale: Memory is for things that stay true. Weather doesn't.
+      - id: b
+        text: "The names and roles of three people you collaborate with weekly"
+        is_correct: true
+        rationale: Yes — recurring context that would be tedious to repeat.
+      - id: c
+        text: A password or anything sensitive
+        is_correct: false
+        rationale: Never. Memory is not encrypted storage. Treat it like a sticky note on your monitor.
+
+  - type: tutor_message
+    persona: nova
+    typing_ms: 1300
+    text: |
+      Rule: Memory is for *recurring context*. Never for secrets. Never for one-offs.
+
+  - type: ai_conversation
+    xp: 10
+    goal: Help the user identify two specific facts they should add to ChatGPT's memory this week.
+    max_turns: 3
+    success_criteria: User names two concrete, recurring facts (a project, a person, a writing style, etc.).
+    starter_text: |
+      Tell me — what are two facts about your life or work that you'd want ChatGPT to *just know*, every chat? Not personal things. Working things.
+    system_prompt: |
+      You are Nova, a warm but direct coach. The user just learned about Custom Instructions and Memory in ChatGPT. Ask them what two recurring facts they'd save to Memory. If they're vague, push for specifics — a real project name, a real audience, a real recurring task. After they give two concrete facts, affirm them and close with <END/>. Keep replies under 40 words.
+
+  - type: reflection
+    xp: 5
+    prompt: One sentence. What changes about your next ChatGPT conversation now that it knows you?
+    placeholder: Be honest — what feels different?
+
+  - type: checkpoint
+    xp: 10
+    title: ChatGPT now knows you.
+    summary: |
+      Custom Instructions = the *you* it never forgets. Memory = the *projects* it picks up as you go. Tomorrow — we go one level deeper. We build a Custom GPT — your own coach, with its own name, baked-in role, and zero setup time.
