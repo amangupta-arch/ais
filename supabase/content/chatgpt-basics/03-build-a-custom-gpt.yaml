@@ -1,0 +1,107 @@
+title: Build a Custom GPT
+subtitle: Your own coach, baked-in role, one click away
+estimated_minutes: 10
+xp_reward: 40
+
+turns:
+  - type: tutor_message
+    persona: nova
+    typing_ms: 900
+    text: |
+      Custom Instructions are good. A *Custom GPT* is better. Think of it as a version of ChatGPT that's already loaded for one job.
+
+  - type: tutor_message
+    persona: nova
+    typing_ms: 1300
+    text: |
+      No setup. No re-explaining. You open it, type your task, and the role, tone, and constraints are already there.
+
+  - type: mcq
+    xp: 10
+    question: Which of these is the *best* job for a custom GPT?
+    options:
+      - id: a
+        text: A one-off question — "what's the capital of France?"
+        is_correct: false
+        rationale: Too lightweight. Regular ChatGPT handles this in one breath.
+      - id: b
+        text: A weekly LinkedIn post in your voice, with your usual hooks and structure
+        is_correct: true
+        rationale: Exactly. Repeated task + consistent style = perfect GPT.
+      - id: c
+        text: A complex legal review
+        is_correct: false
+        rationale: Too high-stakes. Humans for this. ChatGPT can draft, never decide.
+
+  - type: tutor_message
+    persona: nova
+    typing_ms: 1500
+    text: |
+      The trick to a great GPT: be specific about *what it does* and *what it never does*. Boundaries make it sharp.
+
+  - type: tutor_message
+    persona: nova
+    typing_ms: 1100
+    text: |
+      Watch. We'll build one together — a writing coach for short LinkedIn posts.
+
+  - type: exercise
+    xp: 25
+    tool: chatgpt
+    instruction: |
+      Open ChatGPT → *Explore GPTs* → *Create*. Skip the chatty builder, click *Configure* on the right.
+
+      **Name:** "LinkedIn Post Coach" (or your own twist).
+
+      **Description:** "Drafts short, punchy LinkedIn posts in my voice."
+
+      **Instructions:** Paste this, then edit to match you:
+
+      "You write LinkedIn posts in a conversational tone. Every post has: a one-line hook, a 3–5 sentence story, a single takeaway. Never longer than 120 words. Never use the words 'leverage', 'empower', 'unlock', or 'in today's fast-paced world'. Ask one clarifying question if my prompt is too vague."
+
+      Save it. Paste the link or share-URL below.
+    placeholder: Paste your GPT's link here…
+
+  - type: mcq
+    xp: 10
+    question: After you save a Custom GPT, what should you do *first*?
+    options:
+      - id: a
+        text: Move on — it's done
+        is_correct: false
+        rationale: Don't trust it yet. Test it on a real task before you rely on it.
+      - id: b
+        text: Run a real test — feed it a normal request you'd make this week
+        is_correct: true
+        rationale: Always. The first 2-3 outputs tell you if the instructions need tightening.
+      - id: c
+        text: Share it with everyone
+        is_correct: false
+        rationale: Test first, share later. Untested = embarrassing.
+
+  - type: tutor_message
+    persona: nova
+    typing_ms: 1400
+    text: |
+      Iterate as you go. If outputs drift — add a *Never do X* line to the instructions. If they're flat — add a *Always include Y* line. Two-line edits beat starting over.
+
+  - type: ai_conversation
+    xp: 10
+    goal: Help the user name three Custom GPTs they would build to remove repetitive work from their week.
+    max_turns: 3
+    success_criteria: User names three specific, recurring tasks that would each justify their own GPT.
+    starter_text: |
+      Quick — if you could build *three* more Custom GPTs to take repetitive tasks off your plate, what would they be?
+    system_prompt: |
+      You are Nova, a warm but direct coach. The user has just built their first Custom GPT. Ask them to name three more they'd build. If they give vague answers like "writing", push for specifics — a real recurring task, a real audience, a real format. After they give three concrete GPTs, affirm them, suggest building the easiest one this week, and close with <END/>. Keep replies under 40 words.
+
+  - type: reflection
+    xp: 5
+    prompt: One sentence. Which of those three GPTs will you actually build this week?
+    placeholder: Pick the one with the lowest activation cost…
+
+  - type: checkpoint
+    xp: 10
+    title: You shipped a Custom GPT.
+    summary: |
+      You went from "type a question" to "open a tool that already knows what to do". That's the whole arc of the next 6 weeks — *less typing, more thinking*. Tomorrow, we leave ChatGPT for a moment and look at three places it falls short — and what to use instead.
