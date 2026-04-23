@@ -63,20 +63,22 @@ function loadEnv(): { url: string; serviceKey: string } {
 function collectFiles(): { lessons: ParsedLesson[]; errors: FileError[] } {
   const lessons: ParsedLesson[] = [];
   const errors: FileError[] = [];
+  const seenKeys = new Map<string, string>(); // `${course}/${slug}` → first path using it
 
   let courseDirs: string[] = [];
   try {
-    courseDirs = readdirSync(CONTENT_ROOT).filter((name) => {
-      const full = join(CONTENT_ROOT, name);
-      return statSync(full).isDirectory();
-    });
+    courseDirs = readdirSync(CONTENT_ROOT)
+      .filter((name) => statSync(join(CONTENT_ROOT, name)).isDirectory())
+      .sort();
   } catch {
     return { lessons, errors };
   }
 
   for (const courseSlug of courseDirs) {
     const dir = join(CONTENT_ROOT, courseSlug);
-    const files = readdirSync(dir).filter((f) => f.endsWith(".yaml") || f.endsWith(".yml"));
+    const files = readdirSync(dir)
+      .filter((f) => f.endsWith(".yaml") || f.endsWith(".yml"))
+      .sort();
     for (const file of files) {
       const rel = `${courseSlug}/${file}`;
       const match = file.match(FILENAME_RE);
@@ -86,6 +88,17 @@ function collectFiles(): { lessons: ParsedLesson[]; errors: FileError[] } {
       }
       const orderIndex = Number.parseInt(match[1]!, 10);
       const lessonSlug = match[2]!;
+
+      const key = `${courseSlug}/${lessonSlug}`;
+      const firstSeen = seenKeys.get(key);
+      if (firstSeen) {
+        errors.push({
+          path: rel,
+          message: `duplicate lesson slug "${lessonSlug}" — first used by ${firstSeen}`,
+        });
+        continue;
+      }
+      seenKeys.set(key, rel);
 
       let rawDoc: unknown;
       try {
@@ -141,16 +154,27 @@ async function run() {
     console.log("");
     console.log(`${lessons.length} lesson${lessons.length === 1 ? "" : "s"} · ${turns} turns · ${fileErrors.length} errors (dry run)`);
     if (fileErrors.length > 0) {
+      console.error("");
+      console.error("Errors:");
       for (const e of fileErrors) console.error(`  ${e.path}: ${e.message.split("\n")[0]}`);
       process.exit(1);
     }
     return;
   }
 
+  // Validate every file before touching the database — partial imports are worse
+  // than a hard stop, because one bad file shouldn't block a sibling lesson
+  // from keeping its (now stale) turns while the good one gets replaced.
+  if (fileErrors.length > 0) {
+    console.error(`${fileErrors.length} file${fileErrors.length === 1 ? "" : "s"} failed validation — aborting before any database writes.`);
+    for (const e of fileErrors) console.error(`  ${e.path}: ${e.message.split("\n")[0]}`);
+    process.exit(1);
+  }
+
   const { url, serviceKey } = loadEnv();
   const supabase = createClient(url, serviceKey, { auth: { persistSession: false } });
 
-  const runErrors: FileError[] = [...fileErrors];
+  const runErrors: FileError[] = [];
   let lessonsLoaded = 0;
   let turnsLoaded = 0;
 
