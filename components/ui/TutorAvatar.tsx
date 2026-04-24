@@ -12,10 +12,13 @@ const sizeClass: Record<Size, string> = {
 
 const sizePx: Record<Size, number> = { sm: 28, md: 40, lg: 56 };
 
-function avatarUrl(id: Persona["id"]): string | null {
+/** Resolution order: the persona's explicit avatar_url > public bucket
+ *  convention > null (the component falls back to an initial-letter block). */
+function resolveAvatar(persona: Persona): string | null {
+  if (persona.avatar_url) return persona.avatar_url;
   const base = process.env.NEXT_PUBLIC_SUPABASE_URL;
   if (!base) return null;
-  return `${base}/storage/v1/object/public/tutor-avatars/${id}.svg`;
+  return `${base}/storage/v1/object/public/tutor-avatars/${persona.id}.png`;
 }
 
 type Props = {
@@ -27,13 +30,13 @@ type Props = {
 
 export function TutorAvatar({ personaId = "nova", size = "md", className, glyphOnly }: Props) {
   const persona = personaById(personaId);
-  const url = avatarUrl(persona.id);
+  const url = resolveAvatar(persona);
   const px = sizePx[size];
 
   return (
     <div
       className={cn(
-        "inline-flex items-center justify-center rounded-md bg-accent-600 text-white font-mono font-bold uppercase tabular-nums overflow-hidden relative",
+        "inline-flex items-center justify-center rounded-md bg-accent-600 text-white font-mono font-bold uppercase tabular-nums overflow-hidden relative shrink-0",
         sizeClass[size],
         className,
       )}
