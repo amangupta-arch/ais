@@ -4,8 +4,6 @@
 
 @layer base {
   :root {
-    --color-paper-50: 251 248 243;
-    --color-ink-900:  22  20  15;
     color-scheme: light;
   }
 
@@ -16,8 +14,8 @@
   }
 
   html, body {
-    background-color: #FBF8F3;
-    color: #16140F;
+    background-color: #FAFAFA;
+    color: #0F172A;
   }
 
   body {
@@ -26,46 +24,30 @@
     min-height: 100dvh;
   }
 
-  /* The grain overlay — fixed, non-interactive, on every page */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0.5;
-    mix-blend-mode: multiply;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.09  0 0 0 0 0.08  0 0 0 0 0.06  0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-    background-size: 320px 320px;
-  }
-
-  main, header, footer, nav, section, article, aside, div, form {
-    position: relative;
-    z-index: 1;
-  }
-
   ::selection {
-    background-color: rgba(242, 106, 23, 0.18);
-    color: #16140F;
+    background-color: rgba(37, 99, 235, 0.16);
+    color: #0F172A;
   }
 
-  /* Numerals always tabular */
-  .tabular, [class*="tabular-nums"] {
+  /* Keyboard focus ring — geometric, high-contrast */
+  :focus-visible {
+    outline: 2px solid #2563EB;
+    outline-offset: 2px;
+  }
+
+  [class*="tabular-nums"], .tabular {
     font-variant-numeric: tabular-nums;
   }
 }
 
 @layer utilities {
-  .display-press {
-    text-shadow: 0 1px 0 rgba(255, 250, 240, 0.6);
-  }
-
   .eyebrow {
     font-family: var(--font-geist-mono), ui-monospace, monospace;
     font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: #7A7467;
+    color: #64748B;
     font-variant-numeric: tabular-nums;
   }
 
@@ -76,4 +58,9 @@
   /* Hide scrollbars on horizontal scrollers */
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { scrollbar-width: none; }
+
+  /* A thin hairline divider we use everywhere */
+  .hairline {
+    border-color: #E2E8F0;
+  }
 }

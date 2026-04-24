@@ -10,13 +10,13 @@ export function XpBadge({ xp, className }: Props) {
   return (
     <div
       className={cn(
-        "inline-flex items-center gap-2 rounded-full px-3 h-9 bg-paper-200 text-ink-800 border border-paper-300",
+        "inline-flex items-center gap-1.5 rounded-md px-2.5 h-8 bg-white text-ink-800 border border-ink-200 text-[13px]",
         className,
       )}
     >
-      <Zap className="h-4 w-4 text-ink-600" aria-hidden />
-      <span className="text-[15px] leading-none">
-        <span className="font-tabular font-medium">{xp}</span>
+      <Zap className="h-3.5 w-3.5 text-ink-500" aria-hidden />
+      <span>
+        <span className="font-tabular font-semibold">{xp}</span>
         <span className="text-ink-500 ml-1">XP</span>
       </span>
     </div>

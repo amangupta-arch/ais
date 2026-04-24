@@ -16,7 +16,7 @@ export function TabBar() {
   const path = usePathname();
   return (
     <nav
-      className="fixed bottom-0 inset-x-0 z-20 border-t border-paper-200 bg-paper-50/90 backdrop-blur pb-[max(env(safe-area-inset-bottom),0.5rem)]"
+      className="fixed bottom-0 inset-x-0 z-20 border-t border-ink-200 bg-white pb-[max(env(safe-area-inset-bottom),0.25rem)]"
       aria-label="Primary"
     >
       <ul className="mx-auto max-w-2xl grid grid-cols-4">
@@ -27,11 +27,11 @@ export function TabBar() {
               <Link
                 href={href}
                 className={cn(
-                  "flex flex-col items-center justify-center gap-1 py-2.5 text-[11px] tracking-wide transition-colors",
-                  active ? "text-ink-900" : "text-ink-500 hover:text-ink-700",
+                  "flex flex-col items-center justify-center gap-1 py-2.5 text-[11px] tracking-wide transition-colors duration-150 ease-out",
+                  active ? "text-accent-700" : "text-ink-500 hover:text-ink-800",
                 )}
               >
-                <Icon className={cn("h-5 w-5", active ? "text-ember-500" : "text-ink-500")} />
+                <Icon className={cn("h-5 w-5", active ? "text-accent-600" : "text-ink-500")} />
                 {label}
               </Link>
             </li>

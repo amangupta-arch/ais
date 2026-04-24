@@ -39,22 +39,20 @@ export default async function LearnPage() {
   });
 
   return (
-    <main className="mx-auto max-w-3xl px-5 pt-8 pb-10">
+    <main className="mx-auto max-w-3xl px-5 pt-6 pb-10">
       <header>
         <Eyebrow>explore</Eyebrow>
-        <Display as="h1" size="lg" className="mt-2">
-          A growing <em className="italic font-normal">shelf</em>.
-        </Display>
-        <p className="mt-3 text-ink-600">Short, deliberate courses. Add them one at a time.</p>
+        <Display as="h1" size="lg" className="mt-2">A growing shelf.</Display>
+        <p className="mt-3 text-ink-700">Short, deliberate courses. Add them one at a time.</p>
       </header>
 
       {CATEGORY_ORDER.map((cat) => {
         const items = grouped.get(cat.key);
         if (!items || items.length === 0) return null;
         return (
-          <section key={cat.key} className="mt-10">
+          <section key={cat.key} className="mt-8">
             <Eyebrow number={cat.number}>{cat.label}</Eyebrow>
-            <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
               {items.map((c) => (
                 <CourseCard key={c.id} course={c} locked={!tierCanAccess(tier, c.plan_tier)} />
               ))}

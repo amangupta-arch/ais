@@ -5,12 +5,12 @@ import { cn } from "@/lib/utils";
 type Size = "sm" | "md" | "lg";
 
 const sizeClass: Record<Size, string> = {
-  sm: "h-8 w-8 text-base",
-  md: "h-10 w-10 text-lg",
-  lg: "h-14 w-14 text-2xl",
+  sm: "h-7 w-7 text-xs",
+  md: "h-10 w-10 text-sm",
+  lg: "h-14 w-14 text-base",
 };
 
-const sizePx: Record<Size, number> = { sm: 32, md: 40, lg: 56 };
+const sizePx: Record<Size, number> = { sm: 28, md: 40, lg: 56 };
 
 function avatarUrl(id: Persona["id"]): string | null {
   const base = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -33,7 +33,7 @@ export function TutorAvatar({ personaId = "nova", size = "md", className, glyphO
   return (
     <div
       className={cn(
-        "inline-flex items-center justify-center rounded-full bg-paper-200 text-ink-700 font-serif overflow-hidden relative",
+        "inline-flex items-center justify-center rounded-md bg-accent-600 text-white font-mono font-bold uppercase tabular-nums overflow-hidden relative",
         sizeClass[size],
         className,
       )}
@@ -49,7 +49,7 @@ export function TutorAvatar({ personaId = "nova", size = "md", className, glyphO
           unoptimized
         />
       ) : (
-        <span aria-hidden>{persona.glyph}</span>
+        <span aria-hidden>{persona.name.charAt(0)}</span>
       )}
     </div>
   );

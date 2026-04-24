@@ -5,7 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
-import { Button, ButtonLink } from "@/components/ui/Button";
+import { Button } from "@/components/ui/Button";
 import { Display } from "@/components/ui/Display";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { OptionCard } from "@/components/ui/OptionCard";
@@ -43,9 +43,9 @@ const STEP_NUMBER: Partial<Record<StepId, string>> = {
 };
 
 const stepVariants = {
-  enter: { opacity: 0, y: 12 },
+  enter:  { opacity: 0, y: 6 },
   center: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -12 },
+  exit:   { opacity: 0, y: -6 },
 };
 
 export default function OnboardingPage() {
@@ -122,12 +122,15 @@ export default function OnboardingPage() {
   };
 
   return (
-    <main className="mx-auto max-w-2xl px-6 pt-8 pb-24 min-h-[100dvh] flex flex-col">
+    <main className="mx-auto max-w-2xl px-6 pt-6 pb-24 min-h-[100dvh] flex flex-col">
       <header className="flex items-center justify-between">
-        <Link href="/" className="font-serif text-lg text-ink-900">AIS</Link>
+        <Link href="/" className="text-base font-bold tracking-tight text-ink-900">AIS</Link>
         <div className="flex items-center gap-3">
           {canBack ? (
-            <button onClick={back} className="inline-flex items-center gap-1 text-sm text-ink-600 hover:text-ink-900">
+            <button
+              onClick={back}
+              className="inline-flex items-center gap-1 text-sm text-ink-600 hover:text-ink-900 transition-colors duration-150 ease-out"
+            >
               <ArrowLeft className="h-4 w-4" /> back
             </button>
           ) : null}
@@ -136,12 +139,12 @@ export default function OnboardingPage() {
       </header>
 
       {stepIndex >= 1 && stepIndex <= 7 ? (
-        <div className="mt-4 h-[2px] rounded-full bg-paper-200 overflow-hidden">
+        <div className="mt-4 h-[2px] rounded-sm bg-ink-100 overflow-hidden">
           <motion.div
-            className="h-full bg-ember-500"
+            className="h-full bg-accent-600"
             initial={false}
             animate={{ width: `${progressPct}%` }}
-            transition={{ duration: 0.45, ease: [0.2, 0.8, 0.2, 1] }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
           />
         </div>
       ) : null}
@@ -154,7 +157,7 @@ export default function OnboardingPage() {
             initial="enter"
             animate="center"
             exit="exit"
-            transition={{ duration: 0.45, ease: [0.2, 0.8, 0.2, 1] }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
           >
             {step === "welcome" && <StepWelcome onStart={advance} />}
 
@@ -257,14 +260,14 @@ function StepWelcome({ onStart }: { onStart: () => void }) {
   return (
     <div>
       <Eyebrow number="00">Before we begin</Eyebrow>
-      <Display as="h1" size="xl" className="mt-4">
-        A few <em className="italic font-normal">questions</em>.
-      </Display>
-      <p className="mt-5 text-ink-600 max-w-md leading-relaxed">
-        Seven of them, about 90 seconds. We'll show you a plan, and then — if it's right — you tell us where to send it.
+      <Display as="h1" size="xl" className="mt-3">A few questions.</Display>
+      <p className="mt-5 text-ink-700 max-w-md leading-relaxed">
+        Seven of them, about 90 seconds. We'll show you a plan — and then, if it's right, you tell us where to send it.
       </p>
       <div className="mt-8">
-        <Button onClick={onStart} size="lg">Start</Button>
+        <Button onClick={onStart} size="lg">
+          Start <ArrowRight className="h-4 w-4" />
+        </Button>
       </div>
     </div>
   );
@@ -277,17 +280,15 @@ function StepName({
   useEffect(() => { ref.current?.focus(); }, []);
   const canContinue = value.trim().length >= 1;
   return (
-    <form
-      onSubmit={(e) => { e.preventDefault(); if (canContinue) onContinue(); }}
-    >
+    <form onSubmit={(e) => { e.preventDefault(); if (canContinue) onContinue(); }}>
       <Eyebrow number={number}>Your name</Eyebrow>
-      <Display as="h1" size="lg" className="mt-3">What should we call you?</Display>
+      <Display as="h1" size="lg" className="mt-2">What should we call you?</Display>
       <input
         ref={ref}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder="First name is fine"
-        className="mt-8 w-full bg-transparent border-0 border-b border-ink-300 focus:border-ember-500 outline-none font-serif text-3xl pb-2 placeholder:text-ink-400 transition-colors"
+        className="mt-8 w-full bg-transparent border-0 border-b-2 border-ink-300 focus:border-accent-600 outline-none text-2xl font-semibold pb-2 placeholder:font-normal placeholder:text-ink-400 transition-colors duration-150 ease-out"
       />
       <div className="mt-10">
         <Button type="submit" size="lg" disabled={!canContinue}>
@@ -311,8 +312,8 @@ function StepSingle<T extends string>({
   return (
     <div>
       <Eyebrow number={number}>One answer</Eyebrow>
-      <Display as="h1" size="lg" className="mt-3">{title}</Display>
-      <div className="mt-8 flex flex-col gap-3">
+      <Display as="h1" size="lg" className="mt-2">{title}</Display>
+      <div className="mt-6 flex flex-col gap-2.5">
         {options.map((o) => (
           <OptionCard
             key={o.id}
@@ -343,10 +344,10 @@ function StepMulti({
   return (
     <div>
       <Eyebrow number={number}>Pick any</Eyebrow>
-      <Display as="h1" size="lg" className="mt-3">What topics pull you in?</Display>
+      <Display as="h1" size="lg" className="mt-2">What topics pull you in?</Display>
       <p className="mt-2 text-ink-500 text-sm">Choose as many as you want.</p>
 
-      <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-3">
+      <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-2.5">
         {INTEREST_OPTIONS.map((o) => (
           <OptionCard
             key={o.id}
@@ -374,8 +375,8 @@ function StepDaily({
   return (
     <div>
       <Eyebrow number={number}>Protected time</Eyebrow>
-      <Display as="h1" size="lg" className="mt-3">Time you can protect each day?</Display>
-      <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <Display as="h1" size="lg" className="mt-2">Time you can protect each day?</Display>
+      <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-2.5">
         {DAILY_GOAL_OPTIONS.map((o) => (
           <OptionCard
             key={o.id}
@@ -394,27 +395,25 @@ function StepGenerating({ onDone }: { onDone: () => void }) {
   const [count, setCount] = useState(1);
   useEffect(() => {
     if (count >= GENERATING_LINES.length) {
-      const t = setTimeout(onDone, 450);
+      const t = setTimeout(onDone, 400);
       return () => clearTimeout(t);
     }
-    const t = setTimeout(() => setCount((c) => c + 1), 900);
+    const t = setTimeout(() => setCount((c) => c + 1), 800);
     return () => clearTimeout(t);
   }, [count, onDone]);
 
   return (
     <div>
       <Eyebrow number="08">One moment</Eyebrow>
-      <Display as="h1" size="lg" className="mt-3">
-        <em className="italic font-normal">Composing</em> your plan.
-      </Display>
-      <ul className="mt-10 space-y-3 font-serif text-ink-700 text-xl leading-snug">
+      <Display as="h1" size="lg" className="mt-2">Composing your plan.</Display>
+      <ul className="mt-8 space-y-2.5 text-ink-700 text-lg leading-snug">
         {GENERATING_LINES.slice(0, count).map((line, i) => (
           <motion.li
             key={line}
-            initial={{ opacity: 0, y: 6 }}
+            initial={{ opacity: 0, y: 4 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, ease: [0.2, 0.8, 0.2, 1] }}
-            className={i === count - 1 ? "text-ink-900" : "text-ink-500"}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className={i === count - 1 ? "text-ink-900 font-medium" : "text-ink-500"}
           >
             {line}
           </motion.li>
@@ -434,8 +433,10 @@ function StepReveal({
   onEmailChange: (v: string) => void;
   onSubmit: () => void;
 }) {
-  const goalLine = answers.primaryGoal ? REVEAL_LINES_BY_GOAL[answers.primaryGoal] : REVEAL_LINES_BY_GOAL.curiosity;
-  const streakGoal = answers.dailyGoalMinutes ? 9 : 9;
+  const goalLine = answers.primaryGoal
+    ? REVEAL_LINES_BY_GOAL[answers.primaryGoal]
+    : REVEAL_LINES_BY_GOAL.curiosity;
+  const streakGoal = 9;
   const firstCourseTitle = "ChatGPT Basics";
   const firstCourseSubtitle = "Your first real conversation";
 
@@ -443,14 +444,14 @@ function StepReveal({
     return (
       <div>
         <Eyebrow number="09">Check your inbox</Eyebrow>
-        <Display as="h1" size="lg" className="mt-3">
-          Magic link sent to <em className="italic font-normal">{email}</em>.
+        <Display as="h1" size="lg" className="mt-2">
+          Magic link sent to <span className="text-accent-700 break-all">{email}</span>.
         </Display>
-        <p className="mt-5 text-ink-600 leading-relaxed">
+        <p className="mt-5 text-ink-700 leading-relaxed">
           Tap the link to finish setup. It opens this page, and we'll pick up right where we left off.
         </p>
         <p className="mt-10 text-sm text-ink-500">
-          Didn't arrive? Check spam, or <button className="underline hover:text-ink-800" onClick={onSubmit}>send again</button>.
+          Didn't arrive? Check spam, or <button className="underline hover:text-ink-800 transition-colors" onClick={onSubmit}>send again</button>.
         </p>
       </div>
     );
@@ -459,61 +460,54 @@ function StepReveal({
   return (
     <div>
       <Eyebrow number="09">Your plan</Eyebrow>
-      <Display as="h1" size="lg" className="mt-3">
-        Here's the <em className="italic font-normal">rhythm</em> we think will suit you.
-      </Display>
+      <Display as="h1" size="lg" className="mt-2">Here's the rhythm we think will suit you.</Display>
 
-      <div className="mt-8 rounded-3xl bg-paper-100 border border-paper-200 p-6 sm:p-8 shadow-paper">
+      <div className="mt-6 rounded-lg bg-white border border-ink-200 p-6">
         <div className="flex items-center gap-4">
           <TutorAvatar personaId="nova" size="lg" />
           <div>
             <p className="eyebrow">your tutor</p>
-            <p className="font-serif text-xl text-ink-900 mt-1">
-              Nova — <em className="italic font-normal">warm &amp; patient</em>
-            </p>
+            <p className="font-semibold text-lg text-ink-900 mt-1">Nova — warm &amp; patient</p>
           </div>
         </div>
 
-        <div className="mt-6 grid grid-cols-2 gap-4 text-sm">
+        <div className="mt-5 grid grid-cols-2 gap-3 text-sm">
           <StatBlock label="Daily" value={`${answers.dailyGoalMinutes ?? 10} min`} />
           <StatBlock label="Streak goal" value={`${streakGoal} days`} />
         </div>
 
-        <div className="mt-6 pt-6 border-t border-paper-200">
+        <div className="mt-5 pt-5 border-t border-ink-200">
           <p className="eyebrow">first course</p>
-          <p className="mt-2 font-serif text-xl text-ink-900">{firstCourseTitle}</p>
-          <p className="mt-1 text-ink-500 italic font-serif">{firstCourseSubtitle}</p>
+          <p className="mt-1.5 font-semibold text-lg text-ink-900">{firstCourseTitle}</p>
+          <p className="mt-0.5 text-ink-600">{firstCourseSubtitle}</p>
         </div>
 
-        <p className="mt-6 text-ink-600 leading-relaxed">{goalLine}</p>
+        <p className="mt-5 text-ink-700 leading-relaxed">{goalLine}</p>
       </div>
 
-      <form
-        className="mt-10"
-        onSubmit={(e) => { e.preventDefault(); onSubmit(); }}
-      >
+      <form className="mt-8" onSubmit={(e) => { e.preventDefault(); onSubmit(); }}>
         <label className="eyebrow">where should we send it</label>
-        <div className="mt-3 flex flex-col sm:flex-row gap-3">
+        <div className="mt-2 flex flex-col sm:flex-row gap-2.5">
           <input
             type="email"
             required
             placeholder="you@example.com"
             value={email}
             onChange={(e) => onEmailChange(e.target.value)}
-            className="flex-1 rounded-full px-5 h-12 bg-paper-100 border border-paper-200 outline-none focus:border-ember-500 transition-colors"
+            className="flex-1 rounded-md px-4 h-11 bg-white border border-ink-300 outline-none focus:border-accent-600 transition-colors duration-150 ease-out text-[15px]"
           />
           <Button type="submit" size="md" disabled={emailState === "sending" || email.trim().length < 4}>
             {emailState === "sending" ? "Sending…" : "Send magic link"}
           </Button>
         </div>
-        {emailError ? <p className="mt-3 text-sm text-ember-700">{emailError}</p> : null}
-        <p className="mt-4 text-xs text-ink-500">
+        {emailError ? <p className="mt-3 text-sm text-danger-600">{emailError}</p> : null}
+        <p className="mt-3 text-xs text-ink-500">
           We'll email you a single-use link. No password, no spam.
         </p>
       </form>
 
-      <div className="mt-8 text-xs text-ink-500">
-        Prefer Google? <ButtonLink href="/login" variant="ghost" size="sm" className="!h-auto !px-0 underline">sign in there</ButtonLink>
+      <div className="mt-6 text-xs text-ink-500">
+        Prefer Google? <Link href="/login" className="underline hover:text-ink-800 transition-colors">sign in there</Link>
       </div>
     </div>
   );
@@ -521,9 +515,9 @@ function StepReveal({
 
 function StatBlock({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl bg-paper-50 border border-paper-200 px-4 py-3">
+    <div className="rounded-md bg-ink-50 border border-ink-200 px-3 py-2.5">
       <p className="eyebrow">{label}</p>
-      <p className="mt-1 font-serif text-lg text-ink-900 font-tabular">{value}</p>
+      <p className="mt-1 font-semibold text-ink-900 font-tabular">{value}</p>
     </div>
   );
 }
