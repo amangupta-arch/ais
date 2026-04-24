@@ -14,10 +14,22 @@ export type Persona = {
   tagline: string;
   blurb: string;
   glyph: string;
+  /** Optional override for the tutor avatar image. If absent, TutorAvatar
+   *  falls back to the public bucket convention, then to the initial-letter
+   *  block. Populated as Ama uploads portraits. */
+  avatar_url?: string;
 };
 
 export const PERSONAS: Persona[] = [
-  { id: "nova",   name: "Nova",   tagline: "Warm & patient",         blurb: "Your default coach. Asks good questions, never rushes.", glyph: "✦" },
+  {
+    id: "nova",
+    name: "Nova",
+    tagline: "Warm & patient",
+    blurb: "Your default coach. Asks good questions, never rushes.",
+    glyph: "✦",
+    avatar_url:
+      "https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/sign/tutor/nova.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8yODU0NzMwOS1hOWJkLTQ5NjQtYmIwZC1mZTlkZDYwMDM5NDAiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJ0dXRvci9ub3ZhLnBuZyIsImlhdCI6MTc3NzAxMzYzOSwiZXhwIjoxODA4NTQ5NjM5fQ._MaXFgfn-P6mxL3cHzMBarEGY9x2sYpL1V4WzU3EHUU",
+  },
   { id: "arjun",  name: "Arjun",  tagline: "Direct & demanding",     blurb: "Senpai energy. Pushes you. Useful when you've been slacking.", glyph: "◆" },
   { id: "riya",   name: "Riya",   tagline: "Chill & Hinglish",       blurb: "Like a friend over chai. Casual, supportive, sometimes roasts.", glyph: "❁" },
   { id: "sensei", name: "Sensei", tagline: "Old-school discipline",  blurb: "Measured, precise. For learners who want zero fluff.", glyph: "☯" },

@@ -14,7 +14,10 @@ const config: NextConfig = {
   reactStrictMode: true,
   images: {
     remotePatterns: supabaseHost
-      ? [{ protocol: "https", hostname: supabaseHost, pathname: "/storage/v1/object/public/**" }]
+      ? [
+          { protocol: "https", hostname: supabaseHost, pathname: "/storage/v1/object/public/**" },
+          { protocol: "https", hostname: supabaseHost, pathname: "/storage/v1/object/sign/**" },
+        ]
       : [],
   },
   async headers() {
