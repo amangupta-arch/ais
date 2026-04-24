@@ -3,12 +3,6 @@ import { Lock, Clock } from "lucide-react";
 import type { Course } from "@/lib/types";
 import { cn, formatTier } from "@/lib/utils";
 
-const gradientByKey: Record<string, string> = {
-  ember: "bg-gradient-to-br from-ember-100 to-ember-50",
-  moss:  "bg-gradient-to-br from-[#E5ECD8] to-[#F3F1E0]",
-  paper: "bg-gradient-to-br from-paper-200 to-paper-100",
-};
-
 type Props = {
   course: Course;
   locked?: boolean;
@@ -17,30 +11,28 @@ type Props = {
 };
 
 export function CourseCard({ course, locked, progressPct, className }: Props) {
-  const gradient = gradientByKey[course.cover_gradient ?? "paper"] ?? gradientByKey.paper!;
-
   const body = (
     <div
       className={cn(
-        "group relative block rounded-2xl border border-paper-200 bg-paper-100 shadow-paper overflow-hidden",
-        "transition-[transform,box-shadow] duration-220 ease-warm hover:-translate-y-[2px] hover:shadow-paper-lg",
+        "group relative block rounded-lg border border-ink-200 bg-white overflow-hidden",
+        "transition-[border-color,box-shadow] duration-150 ease-out hover:border-ink-300 hover:shadow-card-hover",
         className,
       )}
     >
-      <div className={cn("h-28 flex items-center justify-center text-4xl", gradient)}>
-        <span aria-hidden>{course.emoji ?? "✺"}</span>
+      <div className="h-20 flex items-center justify-center bg-ink-50 text-3xl border-b border-ink-200">
+        <span aria-hidden>{course.emoji ?? "·"}</span>
       </div>
 
       <div className="p-4">
         <div className="flex items-center gap-2">
           <span className="eyebrow">{formatTier(course.plan_tier)}</span>
           {course.is_bonus_badge ? (
-            <span className="eyebrow text-ember-600">bonus</span>
+            <span className="eyebrow text-accent-700">bonus</span>
           ) : null}
         </div>
-        <h3 className="mt-2 font-serif text-ink-900 text-lg leading-snug">{course.title}</h3>
+        <h3 className="mt-2 font-semibold text-[16px] leading-snug text-ink-900">{course.title}</h3>
         {course.subtitle ? (
-          <p className="mt-1 text-sm text-ink-500 italic font-serif">{course.subtitle}</p>
+          <p className="mt-1 text-sm text-ink-600">{course.subtitle}</p>
         ) : null}
 
         <div className="mt-3 flex items-center gap-3 text-xs text-ink-500">
@@ -53,9 +45,9 @@ export function CourseCard({ course, locked, progressPct, className }: Props) {
         </div>
 
         {typeof progressPct === "number" && progressPct > 0 ? (
-          <div className="mt-3 h-[3px] rounded-full bg-paper-200 overflow-hidden">
+          <div className="mt-3 h-[3px] rounded-sm bg-ink-100 overflow-hidden">
             <div
-              className="h-full bg-ember-500"
+              className="h-full bg-accent-600"
               style={{ width: `${Math.min(100, Math.max(0, progressPct))}%` }}
             />
           </div>
@@ -63,8 +55,8 @@ export function CourseCard({ course, locked, progressPct, className }: Props) {
       </div>
 
       {locked ? (
-        <div className="absolute top-3 right-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-paper-50/90 backdrop-blur border border-paper-300">
-          <Lock className="h-4 w-4 text-ink-500" />
+        <div className="absolute top-3 right-3 inline-flex h-7 w-7 items-center justify-center rounded-sm bg-white/95 backdrop-blur border border-ink-200">
+          <Lock className="h-3.5 w-3.5 text-ink-500" />
         </div>
       ) : null}
     </div>

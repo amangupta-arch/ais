@@ -11,14 +11,16 @@ export function StreakBadge({ days, className }: Props) {
   return (
     <div
       className={cn(
-        "inline-flex items-center gap-2 rounded-full px-3 h-9",
-        active ? "bg-ember-50 text-ember-700 border border-ember-200" : "bg-paper-200 text-ink-500 border border-paper-300",
+        "inline-flex items-center gap-1.5 rounded-md px-2.5 h-8 border text-[13px]",
+        active
+          ? "bg-accent-50 text-accent-700 border-accent-200"
+          : "bg-white text-ink-600 border-ink-200",
         className,
       )}
     >
-      <Flame className={cn("h-4 w-4", active ? "text-ember-500" : "text-ink-400")} aria-hidden />
-      <span className="text-[15px] leading-none">
-        <span className="font-tabular font-medium">{days}</span>
+      <Flame className={cn("h-3.5 w-3.5", active ? "text-accent-600" : "text-ink-400")} aria-hidden />
+      <span>
+        <span className="font-tabular font-semibold">{days}</span>
         <span className="text-ink-500 ml-1">{days === 1 ? "day" : "days"}</span>
       </span>
     </div>

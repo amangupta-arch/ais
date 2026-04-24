@@ -1,11 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <rect width="512" height="512" rx="102" ry="102" fill="#FBF8F3"/>
-  <rect x="0" y="0" width="512" height="512" rx="102" ry="102" fill="none" stroke="#EFE7D5" stroke-width="4"/>
+  <rect width="512" height="512" rx="72" ry="72" fill="#FFFFFF"/>
+  <rect x="2" y="2" width="508" height="508" rx="70" ry="70" fill="none" stroke="#E2E8F0" stroke-width="4"/>
+  <rect x="96" y="96" width="320" height="320" rx="32" ry="32" fill="#2563EB"/>
   <text
     x="256" y="332"
-    font-family="Georgia, 'Instrument Serif', serif"
-    font-size="320"
-    font-style="italic"
+    font-family="ui-monospace, 'Geist Mono', SFMono-Regular, monospace"
+    font-size="232"
+    font-weight="700"
     text-anchor="middle"
-    fill="#F26A17">a</text>
+    fill="#FFFFFF"
+    letter-spacing="-6">A</text>
 </svg>

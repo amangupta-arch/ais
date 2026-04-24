@@ -23,43 +23,47 @@ export default async function ProfilePage() {
   const tier: PlanTier = (planId as PlanTier) ?? "free";
 
   return (
-    <main className="mx-auto max-w-2xl px-5 pt-8 pb-10">
+    <main className="mx-auto max-w-2xl px-5 pt-6 pb-10">
       <Eyebrow>you</Eyebrow>
       <Display as="h1" size="md" className="mt-2">
         {profile?.display_name ?? user.email ?? "Your profile"}
       </Display>
       {user.email ? <p className="mt-1 text-ink-500 text-sm font-tabular">{user.email}</p> : null}
 
-      <section className="mt-8 rounded-3xl bg-paper-100 border border-paper-200 p-6 shadow-paper">
+      <section className="mt-8 rounded-lg bg-white border border-ink-200 p-5">
         <div className="flex items-start justify-between gap-4">
           <div>
             <Eyebrow>plan</Eyebrow>
-            <p className="mt-2 font-serif text-2xl text-ink-900">{plan?.name ?? formatTier(tier)}</p>
-            {plan?.tagline ? (
-              <p className="mt-1 text-ink-500 italic font-serif">{plan.tagline}</p>
-            ) : null}
+            <p className="mt-1.5 font-semibold text-2xl text-ink-900">{plan?.name ?? formatTier(tier)}</p>
+            {plan?.tagline ? <p className="mt-0.5 text-ink-600">{plan.tagline}</p> : null}
           </div>
-          <Link href="/learn" className="text-sm text-ink-600 hover:text-ink-900 underline">See catalogue</Link>
+          <Link href="/learn" className="text-sm text-ink-600 hover:text-ink-900 underline transition-colors duration-150 ease-out">
+            See catalogue
+          </Link>
         </div>
       </section>
 
       <section className="mt-8">
         <Eyebrow number="01">Your tutor</Eyebrow>
-        <p className="mt-2 text-ink-500 text-sm">Pick the voice that'll push you best.</p>
-        <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <p className="mt-1.5 text-ink-500 text-sm">Pick the voice that'll push you best.</p>
+        <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
           {PERSONAS.map((p) => (
             <form key={p.id} action={updateTutorAction}>
               <input type="hidden" name="persona" value={p.id} />
               <button
                 type="submit"
-                className={`w-full text-left rounded-2xl border p-5 flex items-start gap-4 transition-[transform,border-color,background-color] duration-220 ease-warm hover:-translate-y-[2px] ${currentPersona === p.id ? "border-ember-500 bg-ember-50" : "border-paper-200 bg-paper-100 hover:border-ink-200"}`}
+                className={`w-full text-left rounded-md border p-4 flex items-start gap-3 transition-[border-color,background-color] duration-150 ease-out ${
+                  currentPersona === p.id
+                    ? "border-accent-600 bg-accent-50"
+                    : "border-ink-200 bg-white hover:border-ink-300"
+                }`}
               >
-                <TutorAvatar personaId={p.id} size="lg" />
+                <TutorAvatar personaId={p.id} size="md" />
                 <div>
-                  <p className="font-serif text-lg text-ink-900">
-                    {p.name} — <em className="italic font-normal">{p.tagline}</em>
+                  <p className="font-semibold text-[15px] text-ink-900">
+                    {p.name} — <span className="font-normal text-ink-700">{p.tagline}</span>
                   </p>
-                  <p className="mt-1 text-sm text-ink-500">{p.blurb}</p>
+                  <p className="mt-1 text-sm text-ink-600">{p.blurb}</p>
                 </div>
               </button>
             </form>
@@ -69,7 +73,7 @@ export default async function ProfilePage() {
 
       <section className="mt-8">
         <Eyebrow number="02">Daily protected time</Eyebrow>
-        <form action={updateDailyGoalAction} className="mt-3 flex gap-3 flex-wrap">
+        <form action={updateDailyGoalAction} className="mt-2 flex gap-2 flex-wrap">
           {[5, 10, 20, 30].map((m) => {
             const active = (profile?.daily_goal_minutes ?? 10) === m;
             return (
@@ -78,20 +82,24 @@ export default async function ProfilePage() {
                 type="submit"
                 name="minutes"
                 value={m}
-                className={`rounded-full px-5 h-11 border text-[15px] transition-colors ${active ? "bg-ember-500 text-paper-50 border-ember-500" : "bg-paper-100 border-paper-200 text-ink-700 hover:border-ink-300"}`}
+                className={`rounded-md px-4 h-10 border text-[14px] transition-colors duration-150 ease-out ${
+                  active
+                    ? "bg-accent-600 text-white border-accent-600"
+                    : "bg-white border-ink-300 text-ink-700 hover:border-ink-400"
+                }`}
               >
-                <span className="font-tabular">{m}</span> min
+                <span className="font-tabular font-semibold">{m}</span> min
               </button>
             );
           })}
         </form>
       </section>
 
-      <section className="mt-12 border-t border-paper-200 pt-8">
+      <section className="mt-12 border-t border-ink-200 pt-6">
         <form action={signOutAction}>
           <button
             type="submit"
-            className="text-sm text-ink-600 hover:text-ember-700 transition-colors underline"
+            className="text-sm text-ink-600 hover:text-danger-700 underline transition-colors duration-150 ease-out"
           >
             sign out
           </button>

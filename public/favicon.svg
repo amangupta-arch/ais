@@ -1,10 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="7" ry="7" fill="#FBF8F3"/>
+  <rect width="32" height="32" rx="6" ry="6" fill="#2563EB"/>
   <text
     x="16" y="23"
-    font-family="Georgia, 'Instrument Serif', serif"
-    font-size="22"
-    font-style="italic"
+    font-family="ui-monospace, SFMono-Regular, monospace"
+    font-size="20"
+    font-weight="700"
     text-anchor="middle"
-    fill="#F26A17">a</text>
+    fill="#FFFFFF"
+    letter-spacing="-0.5">A</text>
 </svg>

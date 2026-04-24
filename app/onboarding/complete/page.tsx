@@ -68,16 +68,10 @@ export default function OnboardingCompletePage() {
   return (
     <main className="mx-auto max-w-md px-6 pt-24 pb-24 min-h-[100dvh] flex flex-col justify-center">
       <Eyebrow>almost there</Eyebrow>
-      {status === "working" ? (
-        <Display as="h1" size="md" className="mt-3">
-          Setting <em className="italic font-normal">everything</em> up…
-        </Display>
-      ) : (
-        <Display as="h1" size="md" className="mt-3">
-          Something went <em className="italic font-normal">sideways</em>.
-        </Display>
-      )}
-      <p className="mt-4 text-ink-600">{message}</p>
+      <Display as="h1" size="md" className="mt-2">
+        {status === "working" ? "Setting everything up…" : "Something went sideways."}
+      </Display>
+      <p className="mt-3 text-ink-700">{message}</p>
     </main>
   );
 }

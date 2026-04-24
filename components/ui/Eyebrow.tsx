@@ -9,7 +9,7 @@ type Props = {
 export function Eyebrow({ number, children, className }: Props) {
   return (
     <p className={cn("eyebrow", className)}>
-      {number ? <><span className="font-tabular">{number}</span> · </> : null}
+      {number ? <><span className="font-tabular">{number}</span> &nbsp; </> : null}
       {children}
     </p>
   );

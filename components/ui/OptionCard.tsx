@@ -23,38 +23,37 @@ export function OptionCard({
       onClick={onClick}
       aria-pressed={selected ? true : false}
       className={cn(
-        "w-full text-left rounded-2xl border transition-[transform,border-color,background-color,opacity,box-shadow] duration-220 ease-warm",
-        "px-5 py-4 flex items-start gap-4",
-        "bg-paper-100 hover:-translate-y-[2px] hover:shadow-paper",
+        "w-full text-left rounded-md border transition-[border-color,background-color,opacity] duration-150 ease-out",
+        "px-4 py-3 flex items-start gap-3",
         selected
-          ? "border-ember-500 bg-ember-50 shadow-paper"
-          : "border-paper-200 hover:border-ink-200",
-        dimmed && "opacity-30",
+          ? "border-accent-600 bg-accent-50"
+          : "border-ink-200 bg-white hover:border-ink-300",
+        dimmed && "opacity-40",
         className,
       )}
     >
       {emoji ? (
-        <span className="text-2xl leading-none pt-[2px]" aria-hidden>{emoji}</span>
+        <span className="text-xl leading-none pt-[2px]" aria-hidden>{emoji}</span>
       ) : null}
       <span className="flex-1 min-w-0">
         <span className="flex items-center gap-2">
-          <span className="font-serif text-lg text-ink-900">{title}</span>
+          <span className="font-medium text-[15px] text-ink-900">{title}</span>
           {recommended ? (
-            <span className="eyebrow text-ember-600 border border-ember-200 rounded-full px-2 py-[2px] normal-case tracking-[0.14em]">recommended</span>
+            <span className="eyebrow text-accent-700 bg-accent-50 border border-accent-200 rounded-sm px-1.5 py-[2px]">recommended</span>
           ) : null}
         </span>
-        {blurb ? <span className="block mt-1 text-sm text-ink-500">{blurb}</span> : null}
+        {blurb ? <span className="block mt-1 text-sm text-ink-600">{blurb}</span> : null}
       </span>
       {multi ? (
         <span
           className={cn(
-            "shrink-0 mt-1 inline-flex h-5 w-5 items-center justify-center rounded-[6px] border transition-colors",
-            selected ? "bg-ember-500 border-ember-500" : "border-ink-300",
+            "shrink-0 mt-1 inline-flex h-5 w-5 items-center justify-center rounded-sm border transition-colors",
+            selected ? "bg-accent-600 border-accent-600" : "border-ink-300",
           )}
           aria-hidden
         >
           {selected ? (
-            <svg viewBox="0 0 20 20" className="h-3.5 w-3.5 text-paper-50" fill="none" stroke="currentColor" strokeWidth="3">
+            <svg viewBox="0 0 20 20" className="h-3.5 w-3.5 text-white" fill="none" stroke="currentColor" strokeWidth="3">
               <path d="M5 10l3 3 7-7" />
             </svg>
           ) : null}
