@@ -1,0 +1,141 @@
+title: "What is Natural Language Processing?"
+subtitle: "How computers learned to read your mind (almost)"
+estimated_minutes: 8
+xp_reward: 30
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      You type "I am" on WhatsApp and your phone suggests "fine, how are you?" before you finish.
+      You say "navigate home" to Google Maps and it just… knows.
+      You paste a paragraph into Translate and out comes perfect Hindi.
+
+      All of that is one quiet little field of AI doing the heavy lifting.
+      It's called **NLP — Natural Language Processing.**
+      And it's the reason ChatGPT exists.
+
+  - type: mcq
+    question: "Quick check — which of these is NOT NLP at work?"
+    options:
+      - id: a
+        text: "Gmail finishing your sentence as you type"
+        is_correct: false
+        rationale: "That's Smart Compose — pure NLP. It predicts the next words from patterns it has seen before."
+      - id: b
+        text: "Instagram tagging your friend's face in a photo"
+        is_correct: true
+        rationale: "Correct. Face recognition is computer vision, not language. NLP only deals with text and speech."
+      - id: c
+        text: "Alexa understanding 'play Arijit Singh'"
+        is_correct: false
+        rationale: "Speech-to-text plus intent recognition — classic NLP."
+      - id: d
+        text: "Google Translate converting English to Hindi"
+        is_correct: false
+        rationale: "Machine translation — one of NLP's oldest jobs."
+    xp: 10
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here's NLP in one line:
+
+      **Teaching computers to understand and generate human language.**
+
+      That's it. The whole field.
+
+      Now how does it actually pull that off? Three moves, repeated billions of times:
+
+      1. **Break it down** — Split your sentence into tiny pieces called *tokens* (roughly: words or word-parts).
+      2. **Find patterns** — Learn from massive amounts of text which tokens tend to follow which.
+      3. **Predict** — Given what's been said, guess what comes next. Or what it means. Or how to translate it.
+
+      ChatGPT is just step 3 done at terrifying scale.
+
+  - type: tap_to_match
+    prompt: "Match each everyday tool to the NLP job it does."
+    left:
+      - id: trans
+        label: "Google Translate"
+      - id: alexa
+        label: "Alexa / Siri"
+      - id: gmail
+        label: "Gmail spam filter"
+      - id: chatgpt
+        label: "ChatGPT"
+    right:
+      - id: convert
+        label: "Convert one language to another"
+      - id: speech
+        label: "Turn voice into text and intent"
+      - id: classify
+        label: "Sort text into categories"
+      - id: generate
+        label: "Generate new text from a prompt"
+    pairs:
+      - [trans, convert]
+      - [alexa, speech]
+      - [gmail, classify]
+      - [chatgpt, generate]
+    xp: 10
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here's the catch — language is *hard*.
+
+      Read this: "I saw the man with the telescope."
+
+      Did you use the telescope to see him? Or did he have one?
+
+      You and I figure it out from context. A computer has to learn that move from millions of examples.
+
+      That's why NLP took 60 years to get good.
+      And why it suddenly got *very* good around 2017 — when **transformers** (the T in GPT) cracked the context problem.
+
+  - type: mcq
+    question: "Which of these would be HARDEST for an NLP system to handle correctly?"
+    options:
+      - id: a
+        text: '"What time is it?"'
+        is_correct: false
+        rationale: "Direct question, no ambiguity. Easy."
+      - id: b
+        text: '"Translate hello to Spanish."'
+        is_correct: false
+        rationale: "Clear instruction, fixed answer. Easy."
+      - id: c
+        text: '"Oh great, another Monday. Can''t wait."'
+        is_correct: true
+        rationale: "Sarcasm. The literal words read positive, the meaning is the opposite. Even modern LLMs trip on this without strong context."
+      - id: d
+        text: '"Summarize this article in 3 lines."'
+        is_correct: false
+        rationale: "Summarization is solved well by today's LLMs."
+    xp: 10
+
+  - type: fill_in_the_blank
+    prompt: "Lock in the definition — fill the blanks."
+    template: "NLP teaches computers to {{understand}} and {{generate}} human language."
+    hint: "Two verbs. One is about input, one is about output."
+    answers:
+      - id: understand
+        accepted: [understand, comprehend, read, interpret]
+      - id: generate
+        accepted: [generate, produce, create, write]
+    xp: 10
+
+  - type: reflection
+    prompt: "In one line — where do YOU use NLP every day without thinking about it?"
+    placeholder: "WhatsApp autocomplete, voice typing, Google search…"
+    xp: 5
+
+  - type: checkpoint
+    title: "You get NLP now."
+    summary: |
+      NLP = teaching computers to understand and generate language.
+      It works by breaking text into tokens, finding patterns, and predicting what comes next.
+      It's the foundation under ChatGPT, translation, voice assistants, and spam filters.
+
+      Next up — how an LLM is just NLP turned up to eleven.
+    xp: 5
