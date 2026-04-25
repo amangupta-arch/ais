@@ -21,7 +21,6 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
-import { Button } from "@/components/ui/Button";
 import type { LessonTurn } from "@/lib/turns";
 import { cn } from "@/lib/utils";
 
@@ -102,12 +101,32 @@ export function FillInTheBlankBlock({
 
   return (
     <div>
-      <p className="text-[16px] font-semibold text-ink-900">{turn.content.prompt}</p>
-      <div className="mt-3 rounded-md border border-ink-200 bg-white p-4 text-[15px] leading-relaxed text-ink-900 flex flex-wrap items-center gap-y-2">
+      <p className="lm-eyebrow" style={{ marginBottom: 8 }}>fill in the blanks</p>
+      <h2
+        className="lm-serif"
+        style={{ fontSize: 24, lineHeight: 1.2, color: "var(--text)" }}
+      >
+        {turn.content.prompt}
+      </h2>
+
+      <div
+        className="lm-card lm-serif"
+        style={{
+          marginTop: 20,
+          padding: 20,
+          fontSize: 20,
+          lineHeight: 1.6,
+          color: "var(--text)",
+          display: "flex",
+          flexWrap: "wrap",
+          alignItems: "center",
+          rowGap: 8,
+        }}
+      >
         {segments.map((seg, i) => {
           if (seg.kind === "text") {
             return (
-              <span key={i} className="whitespace-pre-wrap">
+              <span key={i} style={{ whiteSpace: "pre-wrap" }}>
                 {seg.value}
               </span>
             );
@@ -122,12 +141,9 @@ export function FillInTheBlankBlock({
               disabled={!isActive || done}
               aria-label={`Blank ${seg.id}`}
               className={cn(
-                "mx-1 inline-block min-w-[5ch] max-w-[14ch] rounded border-b-2 bg-transparent px-1 py-0.5 outline-none text-ink-900 transition-colors duration-150 ease-out",
-                isCorrect
-                  ? "border-success-600 bg-success-50"
-                  : shakeId === seg.id
-                    ? "border-danger-500 bg-danger-50 animate-shake-x"
-                    : "border-ink-300 focus:border-accent-600",
+                "lm-blank",
+                isCorrect && "lm-blank--correct",
+                shakeId === seg.id && "lm-blank--wrong lm-shake",
               )}
               size={Math.max(6, (values[seg.id]?.length ?? 0) + 2)}
             />
@@ -142,24 +158,45 @@ export function FillInTheBlankBlock({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25, ease: EASE_OUT_EXPO }}
-            className="mt-2 text-sm text-ink-600"
+            style={{ marginTop: 12, fontSize: 13, color: "var(--text-3)" }}
           >
-            <span className="font-medium text-ink-700">hint · </span>
+            <span
+              className="lm-mono"
+              style={{
+                fontSize: 11,
+                fontWeight: 600,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                color: "var(--saffron-deep)",
+                marginRight: 8,
+              }}
+            >
+              hint
+            </span>
             {turn.content.hint}
           </motion.p>
         ) : null}
       </AnimatePresence>
 
       {isActive ? (
-        <div className="mt-4 flex justify-end gap-2">
+        <div className="flex justify-end" style={{ gap: 8, marginTop: 24 }}>
           {!done ? (
-            <Button onClick={check} disabled={!allFilled}>
+            <button
+              type="button"
+              className="lm-btn lm-btn--accent"
+              onClick={check}
+              disabled={!allFilled}
+            >
               Check <Check className="h-4 w-4" />
-            </Button>
+            </button>
           ) : (
-            <Button onClick={() => onContinue({ xp: turn.xp_reward, source: "fill_in_the_blank" })}>
+            <button
+              type="button"
+              className="lm-btn lm-btn--accent"
+              onClick={() => onContinue({ xp: turn.xp_reward, source: "fill_in_the_blank" })}
+            >
               Continue <ArrowRight className="h-4 w-4" />
-            </Button>
+            </button>
           )}
         </div>
       ) : null}
@@ -193,7 +230,6 @@ function seededShuffle<T>(arr: T[], seed: string): T[] {
     const j = Math.floor(next() * (i + 1));
     [out[i], out[j]] = [out[j]!, out[i]!];
   }
-  // If we somehow got the original order, swap two so it doesn't look static.
   if (out.every((x, i) => x === arr[i]) && out.length >= 2) {
     [out[0], out[1]] = [out[1]!, out[0]!];
   }
@@ -261,12 +297,18 @@ export function DragToReorderBlock({
 
   return (
     <div>
-      <p className="text-[16px] font-semibold text-ink-900">{turn.content.prompt}</p>
+      <p className="lm-eyebrow" style={{ marginBottom: 8 }}>put these in order</p>
+      <h2
+        className="lm-serif"
+        style={{ fontSize: 24, lineHeight: 1.2, color: "var(--text)" }}
+      >
+        {turn.content.prompt}
+      </h2>
 
-      <div className={cn("mt-3", wrongFlash && "animate-shake-x")}>
+      <div className={cn(wrongFlash && "lm-shake")} style={{ marginTop: 20 }}>
         <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={onDragEnd}>
           <SortableContext items={order} strategy={verticalListSortingStrategy}>
-            <ul className="flex flex-col gap-2">
+            <ul className="flex flex-col" style={{ gap: 8 }}>
               {order.map((id, i) => (
                 <SortableRow
                   key={id}
@@ -283,15 +325,19 @@ export function DragToReorderBlock({
       </div>
 
       {isActive ? (
-        <div className="mt-4 flex justify-end gap-2">
+        <div className="flex justify-end" style={{ gap: 8, marginTop: 24 }}>
           {!done ? (
-            <Button onClick={check}>
+            <button type="button" className="lm-btn lm-btn--accent" onClick={check}>
               Check order <Check className="h-4 w-4" />
-            </Button>
+            </button>
           ) : (
-            <Button onClick={() => onContinue({ xp: turn.xp_reward, source: "drag_to_reorder" })}>
+            <button
+              type="button"
+              className="lm-btn lm-btn--accent"
+              onClick={() => onContinue({ xp: turn.xp_reward, source: "drag_to_reorder" })}
+            >
               Continue <ArrowRight className="h-4 w-4" />
-            </Button>
+            </button>
           )}
         </div>
       ) : null}
@@ -309,30 +355,31 @@ function SortableRow({
   disabled: boolean;
 }) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id, disabled });
-  const style = {
+  const style: React.CSSProperties = {
     transform: CSS.Transform.toString(transform),
     transition,
+    boxShadow: isDragging ? "var(--shadow-2)" : undefined,
+    userSelect: "none",
   };
   return (
     <li
       ref={setNodeRef}
       style={style}
-      className={cn(
-        "flex items-center gap-3 rounded-md border bg-white px-3 py-3 select-none transition-colors duration-150 ease-out",
-        done ? "border-success-600 bg-success-50" : "border-ink-200",
-        isDragging && "shadow-md",
-      )}
+      className={cn("lm-reorder", done && "lm-reorder--correct")}
     >
-      <span className="font-mono text-xs text-ink-400 w-5 tabular-nums">{index + 1}</span>
-      <span className="flex-1 text-[15px] text-ink-900">{label}</span>
+      <span
+        className="lm-mono lm-tabular"
+        style={{ width: 20, fontSize: 12, color: "var(--text-4)" }}
+      >
+        {index + 1}
+      </span>
+      <span style={{ flex: 1, fontSize: 15, color: "var(--text)" }}>{label}</span>
       <button
         type="button"
         aria-label={`Drag ${label}`}
         disabled={disabled}
-        className={cn(
-          "inline-flex items-center justify-center h-7 w-7 rounded text-ink-400 hover:text-ink-700 hover:bg-ink-100 cursor-grab active:cursor-grabbing",
-          disabled && "opacity-40 cursor-default",
-        )}
+        className="lm-reorder__handle"
+        style={disabled ? { opacity: 0.4, cursor: "default" } : undefined}
         {...attributes}
         {...listeners}
       >
@@ -422,21 +469,28 @@ export function TapToMatchBlock({
     disabled: boolean;
   }) =>
     cn(
-      "w-full text-left rounded-md border px-3 py-2.5 text-[15px] transition-[border-color,background-color,opacity] duration-150 ease-out",
-      opts.locked
-        ? "border-success-600 bg-success-50 text-ink-700"
-        : opts.pending
-          ? "border-accent-600 bg-accent-50"
-          : "border-ink-200 bg-white hover:border-ink-300",
-      opts.wrong && "animate-shake-x border-danger-500 bg-danger-50",
-      opts.disabled && !opts.locked && "opacity-40 cursor-default",
+      "lm-option",
+      opts.locked && "lm-option--correct",
+      opts.pending && "lm-option--pending",
+      opts.wrong && "lm-option--wrong lm-shake",
+      opts.disabled && !opts.locked && "lm-option--dim",
     );
 
   return (
     <div>
-      <p className="text-[16px] font-semibold text-ink-900">{turn.content.prompt}</p>
-      <div className="mt-3 grid grid-cols-2 gap-3">
-        <ul className="flex flex-col gap-2">
+      <p className="lm-eyebrow" style={{ marginBottom: 8 }}>match the pairs</p>
+      <h2
+        className="lm-serif"
+        style={{ fontSize: 24, lineHeight: 1.2, color: "var(--text)" }}
+      >
+        {turn.content.prompt}
+      </h2>
+
+      <div
+        className="grid grid-cols-2"
+        style={{ gap: 12, marginTop: 20 }}
+      >
+        <ul className="flex flex-col" style={{ gap: 8 }}>
           {turn.content.left.map((it) => {
             const locked = lockedLeft(it.id);
             return (
@@ -452,8 +506,10 @@ export function TapToMatchBlock({
                     disabled: !isActive,
                   })}
                 >
-                  <span className="flex items-center gap-2">
-                    {locked ? <Check className="h-4 w-4 text-success-600" /> : null}
+                  <span className="flex items-center" style={{ gap: 8 }}>
+                    {locked ? (
+                      <Check className="h-4 w-4" style={{ color: "var(--moss)" }} />
+                    ) : null}
                     <span>{it.label}</span>
                   </span>
                 </button>
@@ -461,7 +517,7 @@ export function TapToMatchBlock({
             );
           })}
         </ul>
-        <ul className="flex flex-col gap-2">
+        <ul className="flex flex-col" style={{ gap: 8 }}>
           {turn.content.right.map((it) => {
             const locked = lockedRight(it.id);
             return (
@@ -477,8 +533,10 @@ export function TapToMatchBlock({
                     disabled: !isActive,
                   })}
                 >
-                  <span className="flex items-center gap-2">
-                    {locked ? <Check className="h-4 w-4 text-success-600" /> : null}
+                  <span className="flex items-center" style={{ gap: 8 }}>
+                    {locked ? (
+                      <Check className="h-4 w-4" style={{ color: "var(--moss)" }} />
+                    ) : null}
                     <span>{it.label}</span>
                   </span>
                 </button>
@@ -489,16 +547,23 @@ export function TapToMatchBlock({
       </div>
 
       {allDone ? (
-        <div className="mt-3 inline-flex items-center gap-1.5 text-sm text-success-700">
+        <div
+          className="inline-flex items-center"
+          style={{ gap: 6, marginTop: 16, color: "var(--moss-deep)", fontSize: 14 }}
+        >
           <Sparkles className="h-4 w-4" /> All pairs matched.
         </div>
       ) : null}
 
       {isActive && allDone ? (
-        <div className="mt-3 flex justify-end">
-          <Button onClick={() => onContinue({ xp: turn.xp_reward, source: "tap_to_match" })}>
+        <div className="flex justify-end" style={{ marginTop: 16 }}>
+          <button
+            type="button"
+            className="lm-btn lm-btn--accent"
+            onClick={() => onContinue({ xp: turn.xp_reward, source: "tap_to_match" })}
+          >
             Continue <ArrowRight className="h-4 w-4" />
-          </Button>
+          </button>
         </div>
       ) : null}
     </div>
