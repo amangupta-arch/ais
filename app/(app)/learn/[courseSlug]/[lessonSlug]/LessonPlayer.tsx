@@ -411,55 +411,85 @@ function TutorMessage({
     return () => clearTimeout(t);
   }, [typingMs]);
 
-  // Speak once, when the text bubble animates in (not during typing dots).
+  // Speak once, when the text appears (not during typing dots). Audio is
+  // gated by audio.enabled inside the hook.
   useEffect(() => {
     if (!showText) return;
     audio.speak(turn.content.text, { key: `tm:${turn.id}` });
   }, [showText, audio, turn.id, turn.content.text]);
 
   return (
-    <div className="flex items-start gap-3">
-      <TutorAvatar personaId={speaker.id} size="md" />
-      <div className="max-w-[85%] min-w-0">
-        <AnimatePresence mode="wait" initial={false}>
-          {!showText ? (
-            <motion.div
-              key="dots"
-              layout
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
-            >
-              <TypingDots />
-            </motion.div>
-          ) : (
-            <motion.p
-              key="text"
-              layout
-              initial={{ opacity: 0, y: 4 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, ease: EASE_OUT_EXPO }}
-              className="rounded-lg bg-white border border-ink-200 px-4 py-3 text-[15px] leading-relaxed text-ink-900 whitespace-pre-line"
+    <div style={{ paddingTop: 8 }}>
+      <AnimatePresence mode="wait" initial={false}>
+        {!showText ? (
+          <motion.div
+            key="dots"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+          >
+            <TypingDots />
+          </motion.div>
+        ) : (
+          <motion.div
+            key="text"
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: EASE_OUT_EXPO }}
+          >
+            <p
+              className="lm-serif"
+              style={{
+                fontSize: 22,
+                lineHeight: 1.35,
+                color: "var(--text)",
+                whiteSpace: "pre-line",
+              }}
             >
               {turn.content.text}
-            </motion.p>
-          )}
-        </AnimatePresence>
-      </div>
+            </p>
+            <p
+              className="lm-serif"
+              style={{
+                marginTop: 12,
+                fontSize: 13,
+                fontStyle: "italic",
+                color: "var(--text-3)",
+                letterSpacing: "0.01em",
+              }}
+            >
+              — {speaker.name}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
 
+/** Three soft pulsing dots — no card, just inline glyphs. The padding
+ *  matches a single line of body text so the height doesn't jump when
+ *  the dots dissolve into the message. */
 function TypingDots() {
   return (
-    <span className="inline-flex items-center gap-1 rounded-lg bg-white border border-ink-200 px-4 py-3">
+    <span
+      className="inline-flex items-center"
+      style={{ gap: 6, paddingTop: 6, paddingBottom: 6 }}
+      aria-label="Tutor is typing"
+    >
       {[0, 1, 2].map((i) => (
         <motion.span
           key={i}
-          className="h-1.5 w-1.5 rounded-full bg-ink-400"
+          style={{
+            display: "inline-block",
+            width: 6,
+            height: 6,
+            borderRadius: "50%",
+            background: "var(--text-4)",
+          }}
           animate={{ opacity: [0.25, 1, 0.25] }}
-          transition={{ duration: 0.7, repeat: Infinity, delay: i * 0.2 }}
+          transition={{ duration: 0.8, repeat: Infinity, delay: i * 0.2 }}
         />
       ))}
     </span>
