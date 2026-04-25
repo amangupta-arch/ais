@@ -1,19 +1,38 @@
 import Link from "next/link";
-import { Display } from "@/components/ui/Display";
-import { Eyebrow } from "@/components/ui/Eyebrow";
-import { ButtonLink } from "@/components/ui/Button";
 
 export default function NotFound() {
   return (
-    <main className="mx-auto max-w-xl px-6 pt-24 pb-24 min-h-[100dvh] flex flex-col justify-center">
-      <Eyebrow number="404">not found</Eyebrow>
-      <Display as="h1" size="lg" className="mt-2">A path that doesn't exist.</Display>
-      <p className="mt-3 text-ink-700">It happens. Let's get you back.</p>
-      <div className="mt-6 flex gap-3">
-        <ButtonLink href="/home" size="md">Home</ButtonLink>
-        <Link href="/" className="inline-flex items-center h-10 px-4 text-ink-600 hover:text-ink-900 transition-colors duration-150 ease-out">
-          Landing
-        </Link>
+    <main className="lm-page flex flex-col justify-center">
+      <div
+        className="mx-auto"
+        style={{ maxWidth: 480, padding: "96px 24px" }}
+      >
+        <p className="lm-eyebrow">
+          <span className="lm-tabular" style={{ marginRight: 8 }}>404</span>
+          not found
+        </p>
+        <h1
+          className="lm-serif"
+          style={{ marginTop: 8, fontSize: 40, lineHeight: 1.05, color: "var(--text)" }}
+        >
+          A path that <em style={{ fontStyle: "italic", color: "var(--coral-deep)" }}>doesn&apos;t exist</em>.
+        </h1>
+        <p
+          style={{ marginTop: 12, fontSize: 15, lineHeight: 1.65, color: "var(--text-2)" }}
+        >
+          It happens. Let&apos;s get you back.
+        </p>
+        <div className="flex" style={{ gap: 12, marginTop: 24 }}>
+          <Link href="/home" className="lm-btn lm-btn--accent">
+            Home
+          </Link>
+          <Link
+            href="/"
+            className="lm-btn lm-btn--ghost"
+          >
+            Landing
+          </Link>
+        </div>
       </div>
     </main>
   );

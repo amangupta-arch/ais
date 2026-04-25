@@ -1,10 +1,6 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
 
-import { Display } from "@/components/ui/Display";
-import { Eyebrow } from "@/components/ui/Eyebrow";
-import { TutorAvatar } from "@/components/ui/TutorAvatar";
-
 import { getMe, getPlans } from "@/lib/supabase/queries";
 import { PERSONAS } from "@/lib/types";
 import { signOutAction } from "./actions";
@@ -23,89 +19,170 @@ export default async function ProfilePage() {
   const tier: PlanTier = (planId as PlanTier) ?? "free";
 
   return (
-    <main className="mx-auto max-w-2xl px-5 pt-6 pb-10">
-      <Eyebrow>you</Eyebrow>
-      <Display as="h1" size="md" className="mt-2">
-        {profile?.display_name ?? user.email ?? "Your profile"}
-      </Display>
-      {user.email ? <p className="mt-1 text-ink-500 text-sm font-tabular">{user.email}</p> : null}
-
-      <section className="mt-8 rounded-lg bg-white border border-ink-200 p-5">
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <Eyebrow>plan</Eyebrow>
-            <p className="mt-1.5 font-semibold text-2xl text-ink-900">{plan?.name ?? formatTier(tier)}</p>
-            {plan?.tagline ? <p className="mt-0.5 text-ink-600">{plan.tagline}</p> : null}
-          </div>
-          <Link href="/learn" className="text-sm text-ink-600 hover:text-ink-900 underline transition-colors duration-150 ease-out">
-            See catalogue
-          </Link>
-        </div>
-      </section>
-
-      <section className="mt-8">
-        <Eyebrow number="01">Your tutor</Eyebrow>
-        <p className="mt-1.5 text-ink-500 text-sm">Pick the voice that'll push you best.</p>
-        <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-          {PERSONAS.map((p) => (
-            <form key={p.id} action={updateTutorAction}>
-              <input type="hidden" name="persona" value={p.id} />
-              <button
-                type="submit"
-                className={`w-full text-left rounded-md border p-4 flex items-start gap-3 transition-[border-color,background-color] duration-150 ease-out ${
-                  currentPersona === p.id
-                    ? "border-accent-600 bg-accent-50"
-                    : "border-ink-200 bg-white hover:border-ink-300"
-                }`}
-              >
-                <TutorAvatar personaId={p.id} size="md" />
-                <div>
-                  <p className="font-semibold text-[15px] text-ink-900">
-                    {p.name} — <span className="font-normal text-ink-700">{p.tagline}</span>
-                  </p>
-                  <p className="mt-1 text-sm text-ink-600">{p.blurb}</p>
-                </div>
-              </button>
-            </form>
-          ))}
-        </div>
-      </section>
-
-      <section className="mt-8">
-        <Eyebrow number="02">Daily protected time</Eyebrow>
-        <form action={updateDailyGoalAction} className="mt-2 flex gap-2 flex-wrap">
-          {[5, 10, 20, 30].map((m) => {
-            const active = (profile?.daily_goal_minutes ?? 10) === m;
-            return (
-              <button
-                key={m}
-                type="submit"
-                name="minutes"
-                value={m}
-                className={`rounded-md px-4 h-10 border text-[14px] transition-colors duration-150 ease-out ${
-                  active
-                    ? "bg-accent-600 text-white border-accent-600"
-                    : "bg-white border-ink-300 text-ink-700 hover:border-ink-400"
-                }`}
-              >
-                <span className="font-tabular font-semibold">{m}</span> min
-              </button>
-            );
-          })}
-        </form>
-      </section>
-
-      <section className="mt-12 border-t border-ink-200 pt-6">
-        <form action={signOutAction}>
-          <button
-            type="submit"
-            className="text-sm text-ink-600 hover:text-danger-700 underline transition-colors duration-150 ease-out"
+    <main className="lm-page">
+      <div
+        className="mx-auto"
+        style={{ maxWidth: 640, padding: "24px 20px 40px" }}
+      >
+        <p className="lm-eyebrow">you</p>
+        <h1
+          className="lm-serif"
+          style={{ marginTop: 8, fontSize: 32, lineHeight: 1.1, color: "var(--text)" }}
+        >
+          {profile?.display_name ?? user.email ?? "Your profile"}
+        </h1>
+        {user.email ? (
+          <p
+            className="lm-mono lm-tabular"
+            style={{ marginTop: 4, fontSize: 12, color: "var(--text-3)" }}
           >
-            sign out
-          </button>
-        </form>
-      </section>
+            {user.email}
+          </p>
+        ) : null}
+
+        <section className="lm-card" style={{ marginTop: 32, padding: 20 }}>
+          <div className="flex items-start justify-between" style={{ gap: 16 }}>
+            <div>
+              <p className="lm-eyebrow">plan</p>
+              <p
+                className="lm-serif"
+                style={{ marginTop: 6, fontSize: 24, lineHeight: 1.15, color: "var(--text)" }}
+              >
+                {plan?.name ?? formatTier(tier)}
+              </p>
+              {plan?.tagline ? (
+                <p style={{ marginTop: 2, fontSize: 14, color: "var(--text-3)" }}>
+                  {plan.tagline}
+                </p>
+              ) : null}
+            </div>
+            <Link
+              href="/learn"
+              style={{
+                fontSize: 13,
+                color: "var(--text-2)",
+                textDecoration: "underline",
+              }}
+            >
+              See catalogue
+            </Link>
+          </div>
+        </section>
+
+        <section style={{ marginTop: 40 }}>
+          <p className="lm-eyebrow">
+            <span className="lm-tabular" style={{ marginRight: 8 }}>01</span>
+            your tutor
+          </p>
+          <p
+            style={{ marginTop: 6, fontSize: 13, color: "var(--text-3)" }}
+          >
+            Pick the voice that&apos;ll push you best.
+          </p>
+          <div
+            className="grid grid-cols-1 sm:grid-cols-2"
+            style={{ gap: 10, marginTop: 16 }}
+          >
+            {PERSONAS.map((p) => (
+              <form key={p.id} action={updateTutorAction}>
+                <input type="hidden" name="persona" value={p.id} />
+                <button
+                  type="submit"
+                  className={`lm-option${currentPersona === p.id ? " lm-option--correct" : ""}`}
+                  style={{ padding: 16 }}
+                >
+                  <PersonaAvatar personaId={p.id} />
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <p
+                      className="lm-serif"
+                      style={{ fontSize: 16, lineHeight: 1.25, color: "inherit" }}
+                    >
+                      {p.name} —{" "}
+                      <em style={{ fontStyle: "italic", color: "var(--text-3)" }}>
+                        {p.tagline}
+                      </em>
+                    </p>
+                    <p style={{ marginTop: 4, fontSize: 13, color: "var(--text-3)" }}>
+                      {p.blurb}
+                    </p>
+                  </div>
+                </button>
+              </form>
+            ))}
+          </div>
+        </section>
+
+        <section style={{ marginTop: 40 }}>
+          <p className="lm-eyebrow">
+            <span className="lm-tabular" style={{ marginRight: 8 }}>02</span>
+            daily protected time
+          </p>
+          <form
+            action={updateDailyGoalAction}
+            className="flex flex-wrap"
+            style={{ gap: 8, marginTop: 12 }}
+          >
+            {[5, 10, 20, 30].map((m) => {
+              const active = (profile?.daily_goal_minutes ?? 10) === m;
+              return (
+                <button
+                  key={m}
+                  type="submit"
+                  name="minutes"
+                  value={m}
+                  className={`lm-btn ${active ? "lm-btn--accent" : "lm-btn--secondary"} lm-btn--sm`}
+                >
+                  <span className="lm-tabular" style={{ fontWeight: 700 }}>{m}</span> min
+                </button>
+              );
+            })}
+          </form>
+        </section>
+
+        <section
+          style={{
+            marginTop: 56,
+            paddingTop: 24,
+            borderTop: "1px solid var(--border)",
+          }}
+        >
+          <form action={signOutAction}>
+            <button
+              type="submit"
+              style={{
+                background: "transparent",
+                border: 0,
+                padding: 0,
+                fontSize: 13,
+                color: "var(--text-3)",
+                textDecoration: "underline",
+                cursor: "pointer",
+                font: "inherit",
+                transition: "color 160ms cubic-bezier(0.2,0,0,1)",
+              }}
+            >
+              sign out
+            </button>
+          </form>
+        </section>
+      </div>
     </main>
+  );
+}
+
+function PersonaAvatar({ personaId }: { personaId: Persona["id"] }) {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+    ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/tutor-avatars/${personaId}.png`
+    : null;
+  return (
+    <span className="lm-avatar lm-avatar--md" aria-label={`${personaId} avatar`}>
+      {url ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={url} alt="" />
+      ) : (
+        <span aria-hidden>{personaId.charAt(0).toUpperCase()}</span>
+      )}
+    </span>
   );
 }
 
