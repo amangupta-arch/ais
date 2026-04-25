@@ -74,9 +74,21 @@ export function LessonPlayer(props: Props) {
   }, []);
 
   const scrollerRef = useRef<HTMLDivElement>(null);
+  const activeTurnRef = useRef<HTMLDivElement | null>(null);
+
+  // After every advance, snap the new active turn to the top of the
+  // scroller (just below the sticky progress bar). `scrollIntoView` with
+  // `block: "start"` respects each turn's `scroll-margin-top`, set on the
+  // wrapper below to clear the sticky bar height. Two rAFs let Framer
+  // mount + lay out the new motion.div before we measure.
   useEffect(() => {
-    const el = scrollerRef.current;
-    if (el) el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
+    const id1 = requestAnimationFrame(() => {
+      const id2 = requestAnimationFrame(() => {
+        activeTurnRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      return () => cancelAnimationFrame(id2);
+    });
+    return () => cancelAnimationFrame(id1);
   }, [revealedCount]);
 
   const goNext = useCallback(
@@ -157,10 +169,12 @@ export function LessonPlayer(props: Props) {
                 return (
                   <motion.div
                     key={turn.id ?? i}
+                    ref={isActive ? activeTurnRef : undefined}
                     layout
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: isActive ? 1 : 0.65, y: 0 }}
                     transition={{ duration: 0.36, ease: EASE_OUT_EXPO }}
+                    style={{ scrollMarginTop: 72 }}
                   >
                     <TurnView
                       turn={turn}
