@@ -2,10 +2,6 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { ArrowRight, Clock } from "lucide-react";
 
-import { ButtonLink } from "@/components/ui/Button";
-import { Display } from "@/components/ui/Display";
-import { Eyebrow } from "@/components/ui/Eyebrow";
-
 import { getCourseBySlug, getMe, getMyLessonProgress } from "@/lib/supabase/queries";
 import type { PlanTier } from "@/lib/types";
 import { formatTier } from "@/lib/utils";
@@ -35,83 +31,193 @@ export default async function CourseDetailPage({
   const progByLesson = new Map(progress.map((p) => [p.lesson_id, p]));
 
   return (
-    <main className="mx-auto max-w-2xl px-5 pt-6 pb-10">
-      <Link href="/learn" className="text-sm text-ink-500 hover:text-ink-800 transition-colors duration-150 ease-out">← back to shelf</Link>
+    <main className="lm-page" style={{ paddingBottom: 56 }}>
+      <div className="mx-auto" style={{ maxWidth: 640, padding: "24px 20px 0" }}>
+        <Link
+          href="/learn"
+          className="lm-mono"
+          style={{ fontSize: 13, color: "var(--text-3)", textDecoration: "none" }}
+        >
+          ← back to shelf
+        </Link>
 
-      <header className="mt-6">
-        <Eyebrow>
-          {formatTier(course.plan_tier)}
-          {course.is_bonus_badge ? " · bonus" : ""}
-        </Eyebrow>
-        <Display as="h1" size="lg" className="mt-2">{course.title}</Display>
-        {course.subtitle ? (
-          <p className="mt-2 text-ink-700 text-lg">{course.subtitle}</p>
-        ) : null}
-        {course.description ? (
-          <p className="mt-4 text-ink-700 leading-relaxed">{course.description}</p>
-        ) : null}
-
-        <div className="mt-5 flex items-center gap-3 text-sm text-ink-500">
-          <span className="inline-flex items-center gap-1">
-            <Clock className="h-4 w-4" /> <span className="font-tabular">{course.estimated_minutes}</span> min
-          </span>
-          <span className="text-ink-300">·</span>
-          <span className="capitalize">{course.difficulty}</span>
-          <span className="text-ink-300">·</span>
-          <span><span className="font-tabular">{course.lesson_count}</span> lessons</span>
-        </div>
-      </header>
-
-      {locked ? (
-        <section className="mt-8 rounded-lg bg-white border border-ink-200 p-6">
-          <Eyebrow>locked</Eyebrow>
-          <p className="mt-2 font-semibold text-2xl text-ink-900">
-            This course is on the {formatTier(course.plan_tier)} plan.
+        <header style={{ marginTop: 24 }}>
+          <p className="lm-eyebrow">
+            {formatTier(course.plan_tier)}
+            {course.is_bonus_badge ? " · bonus" : ""}
           </p>
-          <p className="mt-2 text-ink-700">Plans open in Phase 2. For now, the starters are yours.</p>
-          <div className="mt-5">
-            <ButtonLink href="/learn" variant="secondary" size="md">Browse starters</ButtonLink>
-          </div>
-        </section>
-      ) : null}
+          <h1
+            className="lm-serif"
+            style={{ marginTop: 8, fontSize: 40, lineHeight: 1.05, color: "var(--text)" }}
+          >
+            {course.title}
+          </h1>
+          {course.subtitle ? (
+            <p
+              className="lm-serif"
+              style={{
+                marginTop: 8,
+                fontSize: 18,
+                fontStyle: "italic",
+                lineHeight: 1.4,
+                color: "var(--text-2)",
+              }}
+            >
+              {course.subtitle}
+            </p>
+          ) : null}
+          {course.description ? (
+            <p
+              style={{
+                marginTop: 16,
+                fontSize: 15,
+                lineHeight: 1.65,
+                color: "var(--text-2)",
+              }}
+            >
+              {course.description}
+            </p>
+          ) : null}
 
-      <section className="mt-8">
-        <Eyebrow number="lessons">In order</Eyebrow>
-        {lessons.length === 0 ? (
-          <p className="mt-3 text-ink-700">Lessons are being authored. Check back soon.</p>
-        ) : (
-          <ol className="mt-3 flex flex-col gap-2.5">
-            {lessons.map((l, i) => {
-              const p = progByLesson.get(l.id);
-              const completed = p?.status === "completed";
-              const href = `/learn/${course.slug}/${l.slug}`;
-              const content = (
-                <div className="rounded-lg border border-ink-200 bg-white p-4 flex items-center gap-4 transition-[border-color,box-shadow] duration-150 ease-out hover:border-ink-300 hover:shadow-card-hover">
-                  <span className="font-mono font-semibold text-ink-400 tabular-nums w-8 shrink-0">
-                    {(i + 1).toString().padStart(2, "0")}
-                  </span>
-                  <div className="flex-1 min-w-0">
-                    <p className="font-semibold text-[16px] text-ink-900">{l.title}</p>
-                    {l.subtitle ? <p className="text-sm text-ink-600 mt-[2px]">{l.subtitle}</p> : null}
-                    <div className="mt-2 flex items-center gap-2 text-xs text-ink-500">
-                      <span className="font-tabular">{l.estimated_minutes}</span> min
-                      <span className="text-ink-300">·</span>
-                      <span className="font-tabular">+{l.xp_reward}</span> XP
-                      {completed ? <><span className="text-ink-300">·</span><span className="text-success-700">done</span></> : null}
+          <div
+            className="flex items-center"
+            style={{ gap: 12, marginTop: 20, fontSize: 13, color: "var(--text-3)" }}
+          >
+            <span className="inline-flex items-center" style={{ gap: 4 }}>
+              <Clock className="h-4 w-4" />
+              <span className="lm-tabular">{course.estimated_minutes}</span> min
+            </span>
+            <span style={{ color: "var(--border-strong)" }}>·</span>
+            <span style={{ textTransform: "capitalize" }}>{course.difficulty}</span>
+            <span style={{ color: "var(--border-strong)" }}>·</span>
+            <span>
+              <span className="lm-tabular">{course.lesson_count}</span> lessons
+            </span>
+          </div>
+        </header>
+
+        {locked ? (
+          <section className="lm-card" style={{ marginTop: 32, padding: 24 }}>
+            <p className="lm-eyebrow">locked</p>
+            <p
+              className="lm-serif"
+              style={{ marginTop: 8, fontSize: 22, lineHeight: 1.25, color: "var(--text)" }}
+            >
+              This course is on the {formatTier(course.plan_tier)} plan.
+            </p>
+            <p
+              style={{ marginTop: 8, fontSize: 14, lineHeight: 1.55, color: "var(--text-2)" }}
+            >
+              Plans open in Phase 2. For now, the starters are yours.
+            </p>
+            <div style={{ marginTop: 20 }}>
+              <Link href="/learn" className="lm-btn lm-btn--secondary lm-btn--sm">
+                Browse starters
+              </Link>
+            </div>
+          </section>
+        ) : null}
+
+        <section style={{ marginTop: 32 }}>
+          <p className="lm-eyebrow">
+            <span className="lm-tabular" style={{ marginRight: 8 }}>lessons</span>
+            in order
+          </p>
+          {lessons.length === 0 ? (
+            <p style={{ marginTop: 12, fontSize: 14, color: "var(--text-2)" }}>
+              Lessons are being authored. Check back soon.
+            </p>
+          ) : (
+            <ol className="flex flex-col" style={{ gap: 10, marginTop: 12 }}>
+              {lessons.map((l, i) => {
+                const p = progByLesson.get(l.id);
+                const completed = p?.status === "completed";
+                const href = `/learn/${course.slug}/${l.slug}`;
+                const card = (
+                  <div
+                    className="lm-card flex items-center"
+                    style={{ gap: 16, padding: 16 }}
+                  >
+                    <span
+                      className="lm-mono lm-tabular"
+                      style={{
+                        width: 32,
+                        flexShrink: 0,
+                        fontSize: 14,
+                        fontWeight: 600,
+                        color: completed ? "var(--moss-deep)" : "var(--text-4)",
+                      }}
+                    >
+                      {(i + 1).toString().padStart(2, "0")}
+                    </span>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <p
+                        className="lm-serif"
+                        style={{ fontSize: 18, lineHeight: 1.25, color: "var(--text)" }}
+                      >
+                        {l.title}
+                      </p>
+                      {l.subtitle ? (
+                        <p
+                          style={{
+                            marginTop: 2,
+                            fontSize: 13,
+                            color: "var(--text-3)",
+                            lineHeight: 1.4,
+                          }}
+                        >
+                          {l.subtitle}
+                        </p>
+                      ) : null}
+                      <div
+                        className="flex items-center"
+                        style={{
+                          marginTop: 8,
+                          gap: 8,
+                          fontSize: 11,
+                          color: "var(--text-3)",
+                        }}
+                      >
+                        <span className="lm-tabular">{l.estimated_minutes}</span>
+                        <span>min</span>
+                        <span style={{ color: "var(--border-strong)" }}>·</span>
+                        <span className="lm-tabular">+{l.xp_reward}</span>
+                        <span>XP</span>
+                        {completed ? (
+                          <>
+                            <span style={{ color: "var(--border-strong)" }}>·</span>
+                            <span style={{ color: "var(--moss-deep)", fontWeight: 600 }}>
+                              done
+                            </span>
+                          </>
+                        ) : null}
+                      </div>
                     </div>
+                    <ArrowRight
+                      className="h-4 w-4"
+                      style={{ color: "var(--indigo)", flexShrink: 0 }}
+                    />
                   </div>
-                  <ArrowRight className="h-4 w-4 text-accent-600 shrink-0" />
-                </div>
-              );
-              return (
-                <li key={l.id}>
-                  {locked ? <div className="opacity-50">{content}</div> : <Link href={href}>{content}</Link>}
-                </li>
-              );
-            })}
-          </ol>
-        )}
-      </section>
+                );
+                return (
+                  <li key={l.id}>
+                    {locked ? (
+                      <div style={{ opacity: 0.45 }}>{card}</div>
+                    ) : (
+                      <Link
+                        href={href}
+                        style={{ display: "block", textDecoration: "none", color: "inherit" }}
+                      >
+                        {card}
+                      </Link>
+                    )}
+                  </li>
+                );
+              })}
+            </ol>
+          )}
+        </section>
+      </div>
     </main>
   );
 }
