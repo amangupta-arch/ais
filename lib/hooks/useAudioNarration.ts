@@ -25,6 +25,37 @@ function pickVoice(voices: SpeechSynthesisVoice[]): SpeechSynthesisVoice | null 
   return en ?? voices[0] ?? null;
 }
 
+/** Pronunciation overrides — TTS engines mangle initialisms ("ChatGPT" →
+ *  "chatjeept", "GPT" → "guppet"). Spell them out instead. Order matters:
+ *  longer / more specific entries first so "ChatGPT" runs before "GPT". */
+const PRONUNCIATIONS: [RegExp, string][] = [
+  [/\bChatGPT\b/gi, "Chat G P T"],
+  [/\bGPT\b/g,      "G P T"],
+  [/\bRTCC\b/g,     "R T C C"],
+  [/\bLLM\b/g,      "L L M"],
+  [/\bNLP\b/g,      "N L P"],
+  [/\bAPI\b/g,      "A P I"],
+  [/\bURL\b/g,      "U R L"],
+  [/\bAI\b/g,       "A I"],
+];
+
+/** Pre-process lesson text for SpeechSynthesis. Three jobs:
+ *  1. Strip markdown formatting characters that get read literally
+ *     ("*important*" comes out as "asterisk important asterisk").
+ *  2. Spell out initialisms via PRONUNCIATIONS so brand names sound right.
+ *  3. Replace em/en dashes with a comma so the voice produces a natural
+ *     pause instead of either ignoring them or saying "dash".
+ *  All other punctuation is left alone — TTS engines handle commas,
+ *  periods, and question marks correctly out of the box. */
+function humanizeForSpeech(text: string): string {
+  let out = text.replace(/[*_~`#]+/g, "");
+  out = out.replace(/[—–]/g, ", ");
+  for (const [re, replacement] of PRONUNCIATIONS) {
+    out = out.replace(re, replacement);
+  }
+  return out;
+}
+
 type SpeakOptions = {
   /** Dedupe key — speak(text, key) is a no-op on subsequent calls with the same key. */
   key?: string;
@@ -108,7 +139,7 @@ export function useAudioNarration(): AudioNarration {
         spokenKeysRef.current.add(opts.key);
       }
 
-      const u = new SpeechSynthesisUtterance(text);
+      const u = new SpeechSynthesisUtterance(humanizeForSpeech(text));
       if (voiceRef.current) u.voice = voiceRef.current;
       u.rate = 1.0;
       u.pitch = 1.0;
