@@ -22,6 +22,7 @@ import {
   DragToReorderBlock,
   TapToMatchBlock,
 } from "./InteractiveBlocks";
+import { continueLabel } from "./labels";
 
 type Props = {
   courseSlug: string;
@@ -503,7 +504,7 @@ function TutorMessage({
                     className="lm-btn lm-btn--accent"
                     onClick={() => onContinue({ source: "tutor_message" })}
                   >
-                    Continue <ArrowRight className="h-4 w-4" />
+                    {continueLabel("tutor_message", turn.id)} <ArrowRight className="h-4 w-4" />
                   </button>
                 </div>
               ) : null}
@@ -669,7 +670,7 @@ function McqBlock({
               className="lm-btn lm-btn--accent"
               onClick={() => onContinue({ xp: turn.xp_reward, source: "mcq" })}
             >
-              Continue <ArrowRight className="h-4 w-4" />
+              {continueLabel("mcq", turn.id)} <ArrowRight className="h-4 w-4" />
             </button>
           ) : null}
         </div>
@@ -1108,7 +1109,7 @@ function AiConversationBlock({
             className="lm-btn lm-btn--accent"
             onClick={() => onContinue({ xp: turn.xp_reward, source: "ai_conversation" })}
           >
-            Continue <ArrowRight className="h-4 w-4" />
+            {continueLabel("ai_conversation", turn.id)} <ArrowRight className="h-4 w-4" />
           </button>
         </div>
       ) : null}
@@ -1206,7 +1207,7 @@ function MediaBlock({
             className="lm-btn lm-btn--accent"
             onClick={() => onContinue({ xp: turn.xp_reward, source: "media" })}
           >
-            Continue <ArrowRight className="h-4 w-4" />
+            {continueLabel("media", turn.id)} <ArrowRight className="h-4 w-4" />
           </button>
         </div>
       ) : null}

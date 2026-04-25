@@ -25,6 +25,7 @@ import type { LessonTurn } from "@/lib/turns";
 import { cn } from "@/lib/utils";
 
 import { useLessonFx } from "./LessonFxContext";
+import { continueLabel } from "./labels";
 
 const EASE_OUT_EXPO = [0.16, 1, 0.3, 1] as const;
 
@@ -207,7 +208,7 @@ export function FillInTheBlankBlock({
               className="lm-btn lm-btn--accent"
               onClick={() => onContinue({ xp: turn.xp_reward, source: "fill_in_the_blank" })}
             >
-              Continue <ArrowRight className="h-4 w-4" />
+              {continueLabel("fill_in_the_blank", turn.id)} <ArrowRight className="h-4 w-4" />
             </button>
           )}
         </div>
@@ -360,7 +361,7 @@ export function DragToReorderBlock({
               className="lm-btn lm-btn--accent"
               onClick={() => onContinue({ xp: turn.xp_reward, source: "drag_to_reorder" })}
             >
-              Continue <ArrowRight className="h-4 w-4" />
+              {continueLabel("drag_to_reorder", turn.id)} <ArrowRight className="h-4 w-4" />
             </button>
           )}
         </div>
@@ -599,7 +600,7 @@ export function TapToMatchBlock({
               className="lm-btn lm-btn--accent"
               onClick={() => onContinue({ xp: turn.xp_reward, source: "tap_to_match" })}
             >
-              Continue <ArrowRight className="h-4 w-4" />
+              {continueLabel("tap_to_match", turn.id)} <ArrowRight className="h-4 w-4" />
             </button>
           ) : null}
         </div>
