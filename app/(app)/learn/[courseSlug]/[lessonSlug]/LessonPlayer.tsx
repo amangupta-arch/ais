@@ -532,8 +532,14 @@ function McqBlock({
 
   return (
     <div>
-      <p className="text-[16px] font-semibold text-ink-900">{turn.content.question}</p>
-      <ul className="mt-3 flex flex-col gap-2">
+      <p className="lm-eyebrow" style={{ marginBottom: 8 }}>multiple choice</p>
+      <h2
+        className="lm-serif"
+        style={{ fontSize: 24, lineHeight: 1.2, color: "var(--text)" }}
+      >
+        {turn.content.question}
+      </h2>
+      <ul className="flex flex-col" style={{ gap: 10, marginTop: 20 }}>
         {turn.content.options.map((o) => {
           const isSelected = selected?.id === o.id;
           const isWrong = wrongId === o.id;
@@ -544,25 +550,27 @@ function McqBlock({
                 disabled={done && !isSelected}
                 onClick={(ev) => pick(o.id, ev)}
                 className={cn(
-                  "w-full text-left rounded-md border px-4 py-3 flex items-start gap-3 transition-[border-color,background-color,opacity] duration-150 ease-out",
-                  isSelected
-                    ? "border-success-600 bg-success-50"
-                    : "border-ink-200 bg-white hover:border-ink-300",
-                  done && !isSelected && "opacity-40",
-                  isWrong && "animate-shake-x border-danger-500 bg-danger-50",
+                  "lm-option",
+                  isSelected && "lm-option--correct",
+                  isWrong && "lm-option--wrong lm-shake",
+                  done && !isSelected && "lm-option--dim",
                 )}
               >
-                <span className="font-mono text-xs font-semibold uppercase pt-[3px] text-ink-400 w-4 tabular-nums">
-                  {o.id}
-                </span>
-                <span className="flex-1">
-                  <span className="text-[15px] text-ink-900">{o.text}</span>
+                <span className="lm-option__index">{o.id.toUpperCase()}</span>
+                <span style={{ flex: 1 }}>
+                  <span style={{ display: "block", color: "inherit" }}>{o.text}</span>
                   {isSelected && o.rationale ? (
                     <motion.span
                       initial={{ opacity: 0, y: 3 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, ease: EASE_OUT_EXPO }}
-                      className="block mt-1.5 text-sm text-ink-700"
+                      style={{
+                        display: "block",
+                        marginTop: 6,
+                        fontSize: 13,
+                        lineHeight: 1.5,
+                        color: "var(--moss-deep)",
+                      }}
                     >
                       {o.rationale}
                     </motion.span>
@@ -570,23 +578,38 @@ function McqBlock({
                     <motion.span
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      className="block mt-1.5 text-sm text-danger-700"
+                      style={{
+                        display: "block",
+                        marginTop: 6,
+                        fontSize: 13,
+                        lineHeight: 1.5,
+                        color: "var(--coral-deep)",
+                      }}
                     >
                       {o.rationale}
                     </motion.span>
                   ) : null}
                 </span>
-                {isSelected ? <Check className="h-4 w-4 text-success-600 mt-1 shrink-0" /> : null}
+                {isSelected ? (
+                  <Check
+                    className="h-4 w-4"
+                    style={{ marginTop: 2, color: "var(--moss)", flexShrink: 0 }}
+                  />
+                ) : null}
               </button>
             </li>
           );
         })}
       </ul>
       {done && isActive ? (
-        <div className="mt-4 flex justify-end">
-          <Button onClick={() => onContinue({ xp: turn.xp_reward, source: "mcq" })}>
+        <div className="flex justify-end" style={{ marginTop: 24 }}>
+          <button
+            type="button"
+            className="lm-btn lm-btn--accent"
+            onClick={() => onContinue({ xp: turn.xp_reward, source: "mcq" })}
+          >
             Continue <ArrowRight className="h-4 w-4" />
-          </Button>
+          </button>
         </div>
       ) : null}
     </div>
