@@ -1,0 +1,116 @@
+title: Think With It, Not Just Through It
+subtitle: ChatGPT as a thinking partner, not a vending machine
+estimated_minutes: 10
+xp_reward: 40
+
+turns:
+  - type: tutor_message
+    persona: nova
+    typing_ms: 1000
+    text: |
+      Most people use ChatGPT like a vending machine. Insert prompt, get answer, move on. There's a better mode.
+
+  - type: tutor_message
+    persona: nova
+    typing_ms: 1400
+    text: |
+      Use it as a sparring partner. A second brain. Someone who will ask you the question you didn't think to ask yourself.
+
+  - type: mcq
+    xp: 10
+    question: Which of these would help you think better, not just save time?
+    options:
+      - id: a
+        text: '"Write a 2-week vacation itinerary for Goa"'
+        is_correct: false
+        rationale: Useful, but it's a do-task. Not a think-task.
+      - id: b
+        text: '"What questions should I ask before booking this flight?"'
+        is_correct: true
+        rationale: This is the move. ChatGPT helps you spot what you're missing.
+      - id: c
+        text: '"Translate this email to Spanish"'
+        is_correct: false
+        rationale: Pure execution. Fine, but not thinking.
+
+  - type: tutor_message
+    persona: nova
+    typing_ms: 1300
+    text: |
+      Three thinking moves — try each one this week. Pre-mortem. Steel-man. Devil's advocate.
+
+  - type: tap_to_match
+    xp: 15
+    prompt: Match each move to what it does.
+    left:
+      - id: pre
+        label: Pre-mortem
+      - id: steel
+        label: Steel-man
+      - id: devil
+        label: Devil's advocate
+    right:
+      - id: fail
+        label: '"Imagine this plan fails — why?"'
+      - id: best
+        label: '"Argue the other side as strongly as possible"'
+      - id: weak
+        label: '"Find the weakest part of my reasoning"'
+    pairs:
+      - [pre, fail]
+      - [steel, best]
+      - [devil, weak]
+
+  - type: tutor_message
+    persona: nova
+    typing_ms: 1300
+    text: |
+      Try this on something you're actually deciding right now. Career move. A purchase. A conversation you've been avoiding.
+
+  - type: ai_conversation
+    xp: 20
+    goal: Help the user run a pre-mortem on a real decision they're sitting with.
+    max_turns: 4
+    success_criteria: User names a specific failure mode they hadn't fully considered.
+    starter_text: |
+      Tell me about something you're deciding right now. Doesn't have to be huge — just real. I'll play pre-mortem partner. We'll find one failure mode you haven't considered yet.
+    system_prompt: |
+      You are Nova, a thinking partner. The user is going to share a decision. Your job is to ask one sharp question that surfaces a failure mode they haven't considered. Don't lecture. Ask. After they reply, name the failure mode clearly back to them. Cap at 3 user exchanges. Close with a one-line affirmation when they've spotted it.
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: The three thinking moves to remember.
+    template: "{{1}}-mortem, {{2}}-man, devil's {{3}}"
+    hint: Look at the previous turn — three short words.
+    answers:
+      - id: "1"
+        accepted: [pre]
+      - id: "2"
+        accepted: [steel]
+      - id: "3"
+        accepted: [advocate]
+
+  - type: drag_to_reorder
+    xp: 10
+    prompt: A good thinking session — drag these into a sensible order.
+    items:
+      - id: q
+        label: Bring a real question or decision
+      - id: ctx
+        label: Give ChatGPT context (RTCC)
+      - id: move
+        label: Pick a thinking move (pre-mortem, etc.)
+      - id: act
+        label: Take the insight back into your real decision
+    correct_order: [q, ctx, move, act]
+
+  - type: reflection
+    xp: 5
+    prompt: One decision you'll run a pre-mortem on this week.
+    placeholder: Be specific…
+
+  - type: checkpoint
+    xp: 10
+    title: You've crossed a line.
+    summary: |
+      Most people will use ChatGPT to do work. You'll use it to think better. That's the difference. The whole game is in those 10 minutes a day.

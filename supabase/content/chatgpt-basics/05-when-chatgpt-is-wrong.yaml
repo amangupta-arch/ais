@@ -1,0 +1,125 @@
+title: When ChatGPT Is Wrong
+subtitle: How to spot a confident lie and what to do about it
+estimated_minutes: 9
+xp_reward: 40
+
+turns:
+  - type: tutor_message
+    persona: nova
+    typing_ms: 1000
+    text: |
+      ChatGPT will sometimes tell you something with total confidence — and be completely wrong. This has a name. Hallucination.
+
+  - type: tutor_message
+    persona: nova
+    typing_ms: 1300
+    text: |
+      It's not lying. It's not buggy. It's the model doing exactly what it was trained to do — predicting plausible words. Plausible isn't the same as true.
+
+  - type: mcq
+    xp: 10
+    question: Which of these is ChatGPT most likely to hallucinate?
+    options:
+      - id: a
+        text: A general definition of "machine learning"
+        is_correct: false
+        rationale: Common, well-documented topics are usually safe. Move on.
+      - id: b
+        text: A specific quote from a 2024 news article
+        is_correct: true
+        rationale: Specific recent facts, citations, statistics — these are the danger zones.
+      - id: c
+        text: How to refactor a Python loop
+        is_correct: false
+        rationale: General code patterns are usually fine. Always run before you trust though.
+      - id: d
+        text: A book recommendation
+        is_correct: false
+        rationale: Could be wrong, but not in a confident-fact way. Different risk.
+
+  - type: tutor_message
+    persona: nova
+    typing_ms: 1300
+    text: |
+      The danger zones: dates, citations, statistics, names of less-famous people, specific quotes, recent events, anything from after the model's knowledge cutoff.
+
+  - type: tap_to_match
+    xp: 15
+    prompt: Match each prompt to its hallucination risk.
+    left:
+      - id: stats
+        label: '"Cite the latest unemployment rate"'
+      - id: explain
+        label: '"Explain photosynthesis"'
+      - id: quote
+        label: '"Quote what Marie Curie said about radium"'
+      - id: code
+        label: '"Write a function to reverse a string"'
+    right:
+      - id: high1
+        label: High risk — recent specific number
+      - id: low1
+        label: Low risk — well-documented topic
+      - id: high2
+        label: High risk — verifiable specific quote
+      - id: low2
+        label: Low risk — common code pattern
+    pairs:
+      - [stats, high1]
+      - [explain, low1]
+      - [quote, high2]
+      - [code, low2]
+
+  - type: tutor_message
+    persona: nova
+    typing_ms: 1400
+    text: |
+      Three habits that make hallucination almost a non-issue: ask for sources, verify dates yourself, and watch for "as of [date]" disclaimers.
+
+  - type: mcq
+    xp: 15
+    question: ChatGPT just gave you a beautiful quote attributed to Einstein. Best next move?
+    options:
+      - id: a
+        text: Use it. Einstein quotes are easy to find.
+        is_correct: false
+        rationale: This is exactly how fake Einstein quotes spread on the internet.
+      - id: b
+        text: Search the quote on Google to see if it appears in real sources.
+        is_correct: true
+        rationale: 30 seconds. Saves you from looking foolish later.
+      - id: c
+        text: Ask ChatGPT to confirm.
+        is_correct: false
+        rationale: It will confidently confirm itself. The model can't fact-check the model.
+
+  - type: exercise
+    xp: 20
+    tool: chatgpt
+    instruction: |
+      Open ChatGPT. Ask it for a specific recent statistic — anything specific (e.g. "what was India's GDP growth rate in Q1 2025?"). Paste the response below. Then verify the number against an official source. Note in your paste whether it matched.
+    placeholder: ChatGPT said… and the official source said…
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: The three habits — fill in the blanks.
+    template: "Ask for {{1}}, verify {{2}} yourself, watch for {{3}} disclaimers."
+    hint: Sources, dates, knowledge cutoff — three short words.
+    answers:
+      - id: "1"
+        accepted: [sources, source, citations]
+      - id: "2"
+        accepted: [dates, date, facts]
+      - id: "3"
+        accepted: [knowledge cutoff, cutoff, "as of"]
+
+  - type: reflection
+    xp: 5
+    prompt: One thing you've taken from ChatGPT recently that you didn't verify. Will you check it now?
+    placeholder: Honest answer…
+
+  - type: checkpoint
+    xp: 10
+    title: Verify. Always.
+    summary: |
+      ChatGPT is a brilliant first draft. Never the final word on facts. Tomorrow — using ChatGPT to think, not just to do.

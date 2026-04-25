@@ -1,0 +1,108 @@
+title: Iterate, Don't Expect
+subtitle: One prompt is rarely enough — the magic is in the follow-up
+estimated_minutes: 8
+xp_reward: 35
+
+turns:
+  - type: tutor_message
+    persona: nova
+    typing_ms: 900
+    text: |
+      You wrote a great RTCC prompt. ChatGPT replied. The answer is okay, not great. Now what?
+
+  - type: tutor_message
+    persona: nova
+    typing_ms: 1300
+    text: |
+      Most people stop here. They blame the tool. The pros do the opposite — they treat that first answer as a draft, not the final.
+
+  - type: mcq
+    xp: 10
+    question: When the first reply isn't quite right, what do you usually do?
+    options:
+      - id: a
+        text: Start a new chat with a different prompt
+        is_correct: true
+        rationale: Common move. We can do better — keep the conversation going.
+      - id: b
+        text: Edit my original prompt and resend
+        is_correct: true
+        rationale: A solid instinct. Today we'll add a sharper one.
+      - id: c
+        text: Accept what I got and move on
+        is_correct: true
+        rationale: That's the trap. You're a follow-up away from much better.
+
+  - type: tutor_message
+    persona: nova
+    typing_ms: 1400
+    text: |
+      Here's the move: don't restart. Refine. ChatGPT remembers everything in this chat. Use that.
+
+  - type: tutor_message
+    persona: nova
+    typing_ms: 1100
+    text: |
+      Three follow-ups that change everything: "make it shorter", "add an example", "now in the voice of [someone specific]".
+
+  - type: mcq
+    xp: 15
+    question: ChatGPT just wrote you a 6-paragraph email. You wanted 3 lines. What's the strongest follow-up?
+    options:
+      - id: a
+        text: '"Sorry, can you make it shorter?"'
+        is_correct: false
+        rationale: Vague. Shorter how — by how much? Be specific.
+      - id: b
+        text: '"Cut to 3 lines. Keep the ask, drop the pleasantries."'
+        is_correct: true
+        rationale: Length, what to keep, what to drop. ChatGPT now has a clear target.
+      - id: c
+        text: '"Try again."'
+        is_correct: false
+        rationale: ChatGPT will guess what you mean. Don't make it guess.
+
+  - type: drag_to_reorder
+    xp: 15
+    prompt: Drag these into a strong follow-up sequence (first to last).
+    items:
+      - id: review
+        label: Read the reply, decide what's missing
+      - id: ask
+        label: Ask for one specific change
+      - id: prompt
+        label: Send the original RTCC prompt
+      - id: stop
+        label: Stop when it's good enough
+    correct_order: [prompt, review, ask, stop]
+
+  - type: tutor_message
+    persona: nova
+    typing_ms: 1200
+    text: |
+      "Ask for one specific change" is the rule. Two changes at once and ChatGPT will do one and forget the other.
+
+  - type: ai_conversation
+    xp: 15
+    goal: Practice iterating with a single specific follow-up.
+    max_turns: 3
+    success_criteria: User asks one focused refinement that addresses a concrete gap.
+    starter_text: |
+      I'm going to give you a draft email I generated. Tell me what's missing or off — but only one thing — and we'll refine it. Ready?
+    system_prompt: |
+      You are Nova, a coaching tutor. Show the user this draft email first:
+
+      "Hi team, I wanted to follow up on the project status. Please share an update by EOD. Thanks."
+
+      Ask them: what's the one thing they'd refine? Push back if they list more than one (force them to pick the most important). After 2 exchanges, affirm their pick and close.
+
+  - type: reflection
+    xp: 5
+    prompt: Pick a recent ChatGPT chat where you stopped at the first answer. What's one follow-up you'd send now?
+    placeholder: Write in your own words…
+
+  - type: checkpoint
+    xp: 10
+    title: Iteration is the skill.
+    summary: |
+      The first answer is a draft. The second is yours. Tomorrow — when ChatGPT is confidently wrong, and how to spot it.
