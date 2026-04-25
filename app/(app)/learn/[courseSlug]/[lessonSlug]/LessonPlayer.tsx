@@ -125,8 +125,26 @@ export function LessonPlayer(props: Props) {
         />
 
         <div ref={scrollerRef} className="flex-1 overflow-y-auto">
-          <div className="mx-auto max-w-2xl px-5 py-6 flex flex-col gap-5">
-            <ProgressBar current={revealedCount} total={turns.length} />
+          {/* Sticky progress bar — pins below the header so the user
+              always knows where they are in the lesson, even after
+              scrolling back to re-read earlier turns. */}
+          <div
+            style={{
+              position: "sticky",
+              top: 0,
+              zIndex: 5,
+              background: "var(--bg)",
+              borderBottom: "1px solid var(--border-soft)",
+            }}
+          >
+            <div className="mx-auto max-w-2xl" style={{ padding: "12px 20px" }}>
+              <ProgressBar current={revealedCount} total={turns.length} />
+            </div>
+          </div>
+          <div
+            className="mx-auto max-w-2xl px-5 flex flex-col gap-5"
+            style={{ paddingTop: 24, paddingBottom: 24 }}
+          >
 
             {/* Scrollable transcript — every revealed turn stays mounted
                 so the user can scroll back to re-read tutor lines or
