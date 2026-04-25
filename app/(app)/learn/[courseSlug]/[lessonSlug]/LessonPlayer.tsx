@@ -79,57 +79,6 @@ export function LessonPlayer(props: Props) {
     if (el) el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
   }, [revealedCount]);
 
-  // Tutor messages auto-advance after their typing delay. When audio is on we
-  // wait until the utterance finishes before moving on, so the next turn
-  // doesn't drown out the voice. Hard-capped at 10s to prevent stuck voices
-  // from blocking the lesson.
-  useEffect(() => {
-    const idx = revealedCount - 1;
-    if (idx < 0 || idx >= turns.length) return;
-    const turn = turns[idx];
-    if (!turn || turn.turn_type !== "tutor_message") return;
-    if (idx + 1 >= turns.length) return;
-
-    const typingDelay = Math.max(500, (turn.content.typing_ms ?? 1000) + 300);
-    let advanced = false;
-    const doAdvance = () => {
-      if (advanced) return;
-      advanced = true;
-      setRevealedCount((c) => Math.min(turns.length, Math.max(c, idx + 2)));
-      if (!alreadyCompleted) {
-        void advanceTurn({
-          courseId,
-          lessonId,
-          turnIndex: idx,
-          xpAwarded: turn.xp_reward,
-          source: "tutor_message",
-        });
-      }
-    };
-
-    const typingTimer = setTimeout(() => {
-      if (audio.enabled && audio.speaking) {
-        // Wait for the utterance to finish; a 10s safety net protects against
-        // voices that never fire `onend` (some mobile browsers).
-        const safety = setTimeout(doAdvance, 10000);
-        const poll = setInterval(() => {
-          if (!audio.speaking) {
-            clearTimeout(safety);
-            clearInterval(poll);
-            doAdvance();
-          }
-        }, 120);
-        return () => {
-          clearTimeout(safety);
-          clearInterval(poll);
-        };
-      }
-      doAdvance();
-    }, typingDelay);
-
-    return () => clearTimeout(typingTimer);
-  }, [revealedCount, turns, alreadyCompleted, courseId, lessonId, audio.enabled, audio.speaking]);
-
   const goNext = useCallback(
     (opts?: { xp?: number; source?: string }) => {
       // Cut any in-flight tutor narration the moment the user advances,
@@ -372,7 +321,15 @@ function TurnView({
 }) {
   switch (turn.turn_type) {
     case "tutor_message":
-      return <TutorMessage turn={turn} persona={persona} audio={audio} />;
+      return (
+        <TutorMessage
+          turn={turn}
+          persona={persona}
+          audio={audio}
+          isActive={isActive}
+          onContinue={onContinue}
+        />
+      );
     case "mcq":
       return <McqBlock turn={turn} isActive={isActive} onContinue={onContinue} />;
     case "free_text":
@@ -396,11 +353,13 @@ function TurnView({
 }
 
 function TutorMessage({
-  turn, persona, audio,
+  turn, persona, audio, isActive, onContinue,
 }: {
   turn: Extract<LessonTurn, { turn_type: "tutor_message" }>;
   persona: Persona;
   audio: AudioNarration;
+  isActive: boolean;
+  onContinue: (opts?: { xp?: number; source?: string }) => void;
 }) {
   const speaker = personaById(turn.content.persona_id ?? persona.id);
   const typingMs = turn.content.typing_ms ?? 1000;
@@ -461,6 +420,17 @@ function TutorMessage({
             >
               — {speaker.name}
             </p>
+            {isActive ? (
+              <div className="flex justify-end" style={{ marginTop: 20 }}>
+                <button
+                  type="button"
+                  className="lm-btn lm-btn--accent"
+                  onClick={() => onContinue({ source: "tutor_message" })}
+                >
+                  Continue <ArrowRight className="h-4 w-4" />
+                </button>
+              </div>
+            ) : null}
           </motion.div>
         )}
       </AnimatePresence>
