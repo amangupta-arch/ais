@@ -128,28 +128,32 @@ export function LessonPlayer(props: Props) {
           <div className="mx-auto max-w-2xl px-5 py-6 flex flex-col gap-5">
             <ProgressBar current={revealedCount} total={turns.length} />
 
-            {/* One active turn at a time — previous turns slide off via
-                AnimatePresence so the screen never accumulates a long
-                transcript. Keyed by the active turn's id so React mounts
-                a fresh subtree per advance. */}
-            <AnimatePresence mode="wait" initial={false}>
-              {active ? (
-                <motion.div
-                  key={active.id}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.36, ease: EASE_OUT_EXPO }}
-                >
-                  <TurnView
-                    turn={active}
-                    persona={persona}
-                    audio={audio}
-                    isActive
-                    onContinue={goNext}
-                  />
-                </motion.div>
-              ) : null}
+            {/* Scrollable transcript — every revealed turn stays mounted
+                so the user can scroll back to re-read tutor lines or
+                review past answers. Past (non-active) turns render at
+                65% opacity to keep the active turn at the bottom in
+                visual focus without losing readability of history. */}
+            <AnimatePresence initial={false}>
+              {turns.slice(0, revealedCount).map((turn, i) => {
+                const isActive = i === revealedCount - 1;
+                return (
+                  <motion.div
+                    key={turn.id ?? i}
+                    layout
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: isActive ? 1 : 0.65, y: 0 }}
+                    transition={{ duration: 0.36, ease: EASE_OUT_EXPO }}
+                  >
+                    <TurnView
+                      turn={turn}
+                      persona={persona}
+                      audio={audio}
+                      isActive={isActive}
+                      onContinue={goNext}
+                    />
+                  </motion.div>
+                );
+              })}
             </AnimatePresence>
 
             {onLastTurn && active?.turn_type === "checkpoint" ? (
