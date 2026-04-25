@@ -124,7 +124,14 @@ export function LessonPlayer(props: Props) {
       onXpLanded={handleXpLanded}
       onStreakChange={handleStreakChange}
     >
-      <div className="lm-page flex flex-col">
+      {/* Bound the lesson player to viewport height so the inner scroller
+          actually scrolls — without this, page contents push the body to
+          grow and `position: sticky` on the progress bar has no effect
+          because the inner div never overflows. */}
+      <div
+        className="lm-page flex flex-col"
+        style={{ height: "100dvh", overflow: "hidden" }}
+      >
         <Header
           persona={persona}
           lessonTitle={lessonTitle}
