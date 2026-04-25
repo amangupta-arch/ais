@@ -57,7 +57,7 @@ Omit `xp` for turns that shouldn't award any (e.g. `tutor_message` usually has n
 
 ## Turn types
 
-Each turn has a `type` discriminator and shape. Eight types exist. Pick the right one — don't bend a type to fit something it isn't.
+Each turn has a `type` discriminator and shape. Eleven types exist. Pick the right one — don't bend a type to fit something it isn't.
 
 ### 1. `tutor_message` — the tutor speaks
 
@@ -167,6 +167,75 @@ Upload media to the `lesson-media` public bucket in Supabase Storage and paste t
 ```
 
 Every lesson should end with one. It's the "cliffhanger" that sets up tomorrow.
+
+### 9. `fill_in_the_blank` — typed answers inside a sentence
+
+```yaml
+- type: fill_in_the_blank
+  xp: 15
+  prompt: Fill in the four pieces of RTCC.
+  template: "{{role}}, {{task}}, {{context}}, {{constraints}}"
+  hint: All lowercase. Just the four words.
+  answers:
+    - id: role
+      accepted: [role]
+    - id: task
+      accepted: [task]
+    - id: context
+      accepted: [context]
+    - id: constraints
+      accepted: [constraints, constraint]
+```
+
+Each `{{id}}` token in `template` becomes an inline input. Accepted matches are case-insensitive and trimmed. Provide a few common typos / synonyms in `accepted` rather than a single string. The `hint` only appears after a wrong answer.
+
+### 10. `drag_to_reorder` — put steps in the right sequence
+
+```yaml
+- type: drag_to_reorder
+  xp: 15
+  prompt: Drag these into the correct RTCC order.
+  items:
+    - id: t
+      label: Task — what you want produced
+    - id: r
+      label: Role — who the AI should act as
+    - id: c
+      label: Context — background it needs
+    - id: x
+      label: Constraints — rules, length, tone
+  correct_order: [r, t, c, x]
+```
+
+`items` are presented to the user in a deterministic shuffled order (stable per-turn). `correct_order` must list every `item.id` exactly once.
+
+### 11. `tap_to_match` — tap to pair the left to the right
+
+```yaml
+- type: tap_to_match
+  xp: 15
+  prompt: Match each prompt-piece to its definition.
+  left:
+    - id: r
+      label: Role
+    - id: t
+      label: Task
+    - id: c
+      label: Context
+  right:
+    - id: who
+      label: Who the AI plays
+    - id: what
+      label: What it should produce
+    - id: bg
+      label: Background it should know
+  pairs:
+    - [r, who]
+    - [t, what]
+    - [c, bg]
+```
+
+`left.length`, `right.length`, and `pairs.length` must all be equal. Each pair is `[leftId, rightId]`. Tap a left, then a right (or vice versa) to attempt a pair — wrong pairs flash red and release; correct pairs lock green.
 
 ## Voice guide (from the PRD)
 
