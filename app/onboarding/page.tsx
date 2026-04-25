@@ -5,11 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
-import { Button } from "@/components/ui/Button";
-import { Display } from "@/components/ui/Display";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { OptionCard } from "@/components/ui/OptionCard";
-import { TutorAvatar } from "@/components/ui/TutorAvatar";
 import { createClient } from "@/lib/supabase/browser";
 import {
   CURRENT_LEVEL_OPTIONS,
@@ -122,133 +118,165 @@ export default function OnboardingPage() {
   };
 
   return (
-    <main className="mx-auto max-w-2xl px-6 pt-6 pb-24 min-h-[100dvh] flex flex-col">
-      <header className="flex items-center justify-between">
-        <Link href="/" className="text-base font-bold tracking-tight text-ink-900">AIS</Link>
-        <div className="flex items-center gap-3">
-          {canBack ? (
-            <button
-              onClick={back}
-              className="inline-flex items-center gap-1 text-sm text-ink-600 hover:text-ink-900 transition-colors duration-150 ease-out"
-            >
-              <ArrowLeft className="h-4 w-4" /> back
-            </button>
-          ) : null}
-          <div className="hidden sm:block text-xs text-ink-500 font-tabular">{progressPct}%</div>
-        </div>
-      </header>
-
-      {stepIndex >= 1 && stepIndex <= 7 ? (
-        <div className="mt-4 h-[2px] rounded-sm bg-ink-100 overflow-hidden">
-          <motion.div
-            className="h-full bg-accent-600"
-            initial={false}
-            animate={{ width: `${progressPct}%` }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-          />
-        </div>
-      ) : null}
-
-      <div className="flex-1 flex flex-col justify-center py-10">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={step}
-            variants={stepVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ duration: 0.2, ease: "easeOut" }}
+    <main className="lm-page flex flex-col">
+      <div
+        className="mx-auto flex flex-col"
+        style={{ maxWidth: 640, padding: "24px 24px 96px", flex: 1, width: "100%" }}
+      >
+        <header className="flex items-center justify-between">
+          <Link
+            href="/"
+            className="lm-serif"
+            style={{
+              fontSize: 18,
+              fontWeight: 700,
+              letterSpacing: "-0.02em",
+              color: "var(--text)",
+              textDecoration: "none",
+            }}
           >
-            {step === "welcome" && <StepWelcome onStart={advance} />}
+            AIS
+          </Link>
+          <div className="flex items-center" style={{ gap: 12 }}>
+            {canBack ? (
+              <button
+                type="button"
+                onClick={back}
+                className="inline-flex items-center"
+                style={{
+                  gap: 4,
+                  fontSize: 13,
+                  color: "var(--text-2)",
+                  background: "transparent",
+                  border: 0,
+                  cursor: "pointer",
+                  font: "inherit",
+                }}
+              >
+                <ArrowLeft className="h-4 w-4" /> back
+              </button>
+            ) : null}
+            <div
+              className="lm-mono lm-tabular hidden sm:block"
+              style={{ fontSize: 11, color: "var(--text-3)" }}
+            >
+              {progressPct}%
+            </div>
+          </div>
+        </header>
 
-            {step === "name" && (
-              <StepName
-                number={STEP_NUMBER.name!}
-                value={answers.displayName ?? ""}
-                onChange={(v) => update({ displayName: v })}
-                onContinue={advance}
-              />
-            )}
+        {stepIndex >= 1 && stepIndex <= 7 ? (
+          <div className="lm-progress" style={{ marginTop: 16, height: 4 }}>
+            <motion.div
+              className="lm-progress__fill"
+              initial={false}
+              animate={{ width: `${progressPct}%` }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+            />
+          </div>
+        ) : null}
 
-            {step === "goal" && (
-              <StepSingle<PrimaryGoal>
-                number={STEP_NUMBER.goal!}
-                title="Why are you here?"
-                options={PRIMARY_GOAL_OPTIONS.map((o) => ({
-                  id: o.id, title: o.title, blurb: o.blurb, emoji: o.emoji,
-                }))}
-                value={answers.primaryGoal}
-                onPick={(v) => { update({ primaryGoal: v }); setTimeout(advance, 220); }}
-              />
-            )}
+        <div className="flex-1 flex flex-col justify-center" style={{ padding: "40px 0" }}>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={step}
+              variants={stepVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.2, ease: "easeOut" }}
+            >
+              {step === "welcome" && <StepWelcome onStart={advance} />}
 
-            {step === "level" && (
-              <StepSingle<CurrentLevel>
-                number={STEP_NUMBER.level!}
-                title="How much AI have you actually used?"
-                options={CURRENT_LEVEL_OPTIONS.map((o) => ({
-                  id: o.id, title: o.title, blurb: o.blurb,
-                }))}
-                value={answers.currentLevel}
-                onPick={(v) => { update({ currentLevel: v }); setTimeout(advance, 220); }}
-              />
-            )}
+              {step === "name" && (
+                <StepName
+                  number={STEP_NUMBER.name!}
+                  value={answers.displayName ?? ""}
+                  onChange={(v) => update({ displayName: v })}
+                  onContinue={advance}
+                />
+              )}
 
-            {step === "role" && (
-              <StepSingle<UserRole>
-                number={STEP_NUMBER.role!}
-                title="What do you spend your days on?"
-                options={ROLE_OPTIONS.map((o) => ({
-                  id: o.id, title: o.title, emoji: o.emoji,
-                }))}
-                value={answers.role}
-                onPick={(v) => { update({ role: v }); setTimeout(advance, 220); }}
-              />
-            )}
+              {step === "goal" && (
+                <StepSingle<PrimaryGoal>
+                  number={STEP_NUMBER.goal!}
+                  title="Why are you here?"
+                  options={PRIMARY_GOAL_OPTIONS.map((o) => ({
+                    id: o.id, title: o.title, blurb: o.blurb, emoji: o.emoji,
+                  }))}
+                  value={answers.primaryGoal}
+                  onPick={(v) => { update({ primaryGoal: v }); setTimeout(advance, 220); }}
+                />
+              )}
 
-            {step === "interests" && (
-              <StepMulti
-                number={STEP_NUMBER.interests!}
-                value={answers.interests ?? []}
-                onChange={(v) => update({ interests: v })}
-                onContinue={advance}
-              />
-            )}
+              {step === "level" && (
+                <StepSingle<CurrentLevel>
+                  number={STEP_NUMBER.level!}
+                  title="How much AI have you actually used?"
+                  options={CURRENT_LEVEL_OPTIONS.map((o) => ({
+                    id: o.id, title: o.title, blurb: o.blurb,
+                  }))}
+                  value={answers.currentLevel}
+                  onPick={(v) => { update({ currentLevel: v }); setTimeout(advance, 220); }}
+                />
+              )}
 
-            {step === "language" && (
-              <StepSingle<PreferredLanguage>
-                number={STEP_NUMBER.language!}
-                title="Language you think in?"
-                options={LANGUAGE_OPTIONS.map((o) => ({
-                  id: o.id, title: o.title, blurb: o.blurb,
-                }))}
-                value={answers.preferredLanguage}
-                onPick={(v) => { update({ preferredLanguage: v }); setTimeout(advance, 220); }}
-              />
-            )}
+              {step === "role" && (
+                <StepSingle<UserRole>
+                  number={STEP_NUMBER.role!}
+                  title="What do you spend your days on?"
+                  options={ROLE_OPTIONS.map((o) => ({
+                    id: o.id, title: o.title, emoji: o.emoji,
+                  }))}
+                  value={answers.role}
+                  onPick={(v) => { update({ role: v }); setTimeout(advance, 220); }}
+                />
+              )}
 
-            {step === "daily" && (
-              <StepDaily
-                number={STEP_NUMBER.daily!}
-                value={answers.dailyGoalMinutes}
-                onPick={(v) => { update({ dailyGoalMinutes: v }); setTimeout(advance, 220); }}
-              />
-            )}
+              {step === "interests" && (
+                <StepMulti
+                  number={STEP_NUMBER.interests!}
+                  value={answers.interests ?? []}
+                  onChange={(v) => update({ interests: v })}
+                  onContinue={advance}
+                />
+              )}
 
-            {step === "generating" && <StepGenerating onDone={() => goTo("reveal")} />}
+              {step === "language" && (
+                <StepSingle<PreferredLanguage>
+                  number={STEP_NUMBER.language!}
+                  title="Language you think in?"
+                  options={LANGUAGE_OPTIONS.map((o) => ({
+                    id: o.id, title: o.title, blurb: o.blurb,
+                  }))}
+                  value={answers.preferredLanguage}
+                  onPick={(v) => { update({ preferredLanguage: v }); setTimeout(advance, 220); }}
+                />
+              )}
 
-            {step === "reveal" && (
-              <StepReveal
-                answers={answers}
-                email={email}
-                emailState={emailState}
-                emailError={emailError}
-                onEmailChange={setEmail}
-                onSubmit={handleSendMagicLink}
-              />
-            )}
-          </motion.div>
-        </AnimatePresence>
+              {step === "daily" && (
+                <StepDaily
+                  number={STEP_NUMBER.daily!}
+                  value={answers.dailyGoalMinutes}
+                  onPick={(v) => { update({ dailyGoalMinutes: v }); setTimeout(advance, 220); }}
+                />
+              )}
+
+              {step === "generating" && <StepGenerating onDone={() => goTo("reveal")} />}
+
+              {step === "reveal" && (
+                <StepReveal
+                  answers={answers}
+                  email={email}
+                  emailState={emailState}
+                  emailError={emailError}
+                  onEmailChange={setEmail}
+                  onSubmit={handleSendMagicLink}
+                />
+              )}
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
     </main>
   );
@@ -256,18 +284,57 @@ export default function OnboardingPage() {
 
 /* ------------------------------------------------------------------ Steps */
 
+function StepHeading({ number, eyebrow, children }: { number?: string; eyebrow: string; children: React.ReactNode }) {
+  return (
+    <>
+      <p className="lm-eyebrow">
+        {number ? <span className="lm-tabular" style={{ marginRight: 8 }}>{number}</span> : null}
+        {eyebrow}
+      </p>
+      <h1
+        className="lm-serif"
+        style={{
+          marginTop: 8,
+          fontSize: 36,
+          lineHeight: 1.1,
+          color: "var(--text)",
+        }}
+      >
+        {children}
+      </h1>
+    </>
+  );
+}
+
 function StepWelcome({ onStart }: { onStart: () => void }) {
   return (
     <div>
-      <Eyebrow number="00">Before we begin</Eyebrow>
-      <Display as="h1" size="xl" className="mt-3">A few questions.</Display>
-      <p className="mt-5 text-ink-700 max-w-md leading-relaxed">
-        Seven of them, about 90 seconds. We'll show you a plan — and then, if it's right, you tell us where to send it.
+      <p className="lm-eyebrow">
+        <span className="lm-tabular" style={{ marginRight: 8 }}>00</span>
+        before we begin
       </p>
-      <div className="mt-8">
-        <Button onClick={onStart} size="lg">
+      <h1
+        className="lm-serif"
+        style={{ marginTop: 12, fontSize: 48, lineHeight: 1.05, color: "var(--text)" }}
+      >
+        A few <em style={{ fontStyle: "italic", color: "var(--indigo)" }}>questions</em>.
+      </h1>
+      <p
+        style={{
+          marginTop: 20,
+          maxWidth: 480,
+          fontSize: 16,
+          lineHeight: 1.55,
+          color: "var(--text-2)",
+        }}
+      >
+        Seven of them, about 90 seconds. We&apos;ll show you a plan — and then,
+        if it&apos;s right, you tell us where to send it.
+      </p>
+      <div style={{ marginTop: 32 }}>
+        <button type="button" className="lm-btn lm-btn--accent lm-btn--lg" onClick={onStart}>
           Start <ArrowRight className="h-4 w-4" />
-        </Button>
+        </button>
       </div>
     </div>
   );
@@ -281,19 +348,33 @@ function StepName({
   const canContinue = value.trim().length >= 1;
   return (
     <form onSubmit={(e) => { e.preventDefault(); if (canContinue) onContinue(); }}>
-      <Eyebrow number={number}>Your name</Eyebrow>
-      <Display as="h1" size="lg" className="mt-2">What should we call you?</Display>
+      <StepHeading number={number} eyebrow="your name">What should we call you?</StepHeading>
       <input
         ref={ref}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder="First name is fine"
-        className="mt-8 w-full bg-transparent border-0 border-b-2 border-ink-300 focus:border-accent-600 outline-none text-2xl font-semibold pb-2 placeholder:font-normal placeholder:text-ink-400 transition-colors duration-150 ease-out"
+        style={{
+          marginTop: 32,
+          width: "100%",
+          background: "transparent",
+          border: 0,
+          borderBottom: "2px solid var(--border-strong)",
+          padding: "8px 0",
+          fontSize: 28,
+          fontWeight: 600,
+          fontFamily: "var(--font-fraunces), Georgia, serif",
+          color: "var(--text)",
+          outline: "none",
+          transition: "border-color 160ms cubic-bezier(0.2,0,0,1)",
+        }}
+        onFocus={(e) => { e.currentTarget.style.borderBottomColor = "var(--indigo)"; }}
+        onBlur={(e) => { e.currentTarget.style.borderBottomColor = "var(--border-strong)"; }}
       />
-      <div className="mt-10">
-        <Button type="submit" size="lg" disabled={!canContinue}>
+      <div style={{ marginTop: 40 }}>
+        <button type="submit" className="lm-btn lm-btn--accent lm-btn--lg" disabled={!canContinue}>
           Continue <ArrowRight className="h-4 w-4" />
-        </Button>
+        </button>
       </div>
     </form>
   );
@@ -311,9 +392,8 @@ function StepSingle<T extends string>({
 }) {
   return (
     <div>
-      <Eyebrow number={number}>One answer</Eyebrow>
-      <Display as="h1" size="lg" className="mt-2">{title}</Display>
-      <div className="mt-6 flex flex-col gap-2.5">
+      <StepHeading number={number} eyebrow="one answer">{title}</StepHeading>
+      <div className="flex flex-col" style={{ gap: 10, marginTop: 24 }}>
         {options.map((o) => (
           <OptionCard
             key={o.id}
@@ -343,11 +423,15 @@ function StepMulti({
   };
   return (
     <div>
-      <Eyebrow number={number}>Pick any</Eyebrow>
-      <Display as="h1" size="lg" className="mt-2">What topics pull you in?</Display>
-      <p className="mt-2 text-ink-500 text-sm">Choose as many as you want.</p>
+      <StepHeading number={number} eyebrow="pick any">What topics pull you in?</StepHeading>
+      <p style={{ marginTop: 8, fontSize: 13, color: "var(--text-3)" }}>
+        Choose as many as you want.
+      </p>
 
-      <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+      <div
+        className="grid grid-cols-2 sm:grid-cols-3"
+        style={{ gap: 10, marginTop: 24 }}
+      >
         {INTEREST_OPTIONS.map((o) => (
           <OptionCard
             key={o.id}
@@ -360,10 +444,15 @@ function StepMulti({
         ))}
       </div>
 
-      <div className="mt-10">
-        <Button size="lg" onClick={onContinue} disabled={value.length === 0}>
+      <div style={{ marginTop: 40 }}>
+        <button
+          type="button"
+          className="lm-btn lm-btn--accent lm-btn--lg"
+          onClick={onContinue}
+          disabled={value.length === 0}
+        >
           Continue <ArrowRight className="h-4 w-4" />
-        </Button>
+        </button>
       </div>
     </div>
   );
@@ -374,9 +463,11 @@ function StepDaily({
 }: { number: string; value?: DailyGoalMinutes; onPick: (v: DailyGoalMinutes) => void }) {
   return (
     <div>
-      <Eyebrow number={number}>Protected time</Eyebrow>
-      <Display as="h1" size="lg" className="mt-2">Time you can protect each day?</Display>
-      <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+      <StepHeading number={number} eyebrow="protected time">Time you can protect each day?</StepHeading>
+      <div
+        className="grid grid-cols-2 sm:grid-cols-4"
+        style={{ gap: 10, marginTop: 24 }}
+      >
         {DAILY_GOAL_OPTIONS.map((o) => (
           <OptionCard
             key={o.id}
@@ -404,16 +495,22 @@ function StepGenerating({ onDone }: { onDone: () => void }) {
 
   return (
     <div>
-      <Eyebrow number="08">One moment</Eyebrow>
-      <Display as="h1" size="lg" className="mt-2">Composing your plan.</Display>
-      <ul className="mt-8 space-y-2.5 text-ink-700 text-lg leading-snug">
+      <StepHeading number="08" eyebrow="one moment">Composing your plan.</StepHeading>
+      <ul
+        className="flex flex-col"
+        style={{ gap: 10, marginTop: 32, fontSize: 18, lineHeight: 1.4 }}
+      >
         {GENERATING_LINES.slice(0, count).map((line, i) => (
           <motion.li
             key={line}
             initial={{ opacity: 0, y: 4 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className={i === count - 1 ? "text-ink-900 font-medium" : "text-ink-500"}
+            style={{
+              color: i === count - 1 ? "var(--text)" : "var(--text-3)",
+              fontWeight: i === count - 1 ? 500 : 400,
+              listStyle: "none",
+            }}
           >
             {line}
           </motion.li>
@@ -443,15 +540,49 @@ function StepReveal({
   if (emailState === "sent") {
     return (
       <div>
-        <Eyebrow number="09">Check your inbox</Eyebrow>
-        <Display as="h1" size="lg" className="mt-2">
-          Magic link sent to <span className="text-accent-700 break-all">{email}</span>.
-        </Display>
-        <p className="mt-5 text-ink-700 leading-relaxed">
-          Tap the link to finish setup. It opens this page, and we'll pick up right where we left off.
+        <p className="lm-eyebrow">
+          <span className="lm-tabular" style={{ marginRight: 8 }}>09</span>
+          check your inbox
         </p>
-        <p className="mt-10 text-sm text-ink-500">
-          Didn't arrive? Check spam, or <button className="underline hover:text-ink-800 transition-colors" onClick={onSubmit}>send again</button>.
+        <h1
+          className="lm-serif"
+          style={{ marginTop: 8, fontSize: 36, lineHeight: 1.1, color: "var(--text)" }}
+        >
+          Magic link sent to{" "}
+          <em
+            style={{
+              fontStyle: "italic",
+              color: "var(--indigo)",
+              wordBreak: "break-all",
+            }}
+          >
+            {email}
+          </em>
+          .
+        </h1>
+        <p
+          style={{ marginTop: 20, fontSize: 15, lineHeight: 1.65, color: "var(--text-2)" }}
+        >
+          Tap the link to finish setup. It opens this page, and we&apos;ll pick up right where we left off.
+        </p>
+        <p style={{ marginTop: 40, fontSize: 13, color: "var(--text-3)" }}>
+          Didn&apos;t arrive? Check spam, or{" "}
+          <button
+            type="button"
+            onClick={onSubmit}
+            style={{
+              background: "transparent",
+              border: 0,
+              color: "var(--indigo)",
+              cursor: "pointer",
+              textDecoration: "underline",
+              font: "inherit",
+              padding: 0,
+            }}
+          >
+            send again
+          </button>
+          .
         </p>
       </div>
     );
@@ -459,55 +590,104 @@ function StepReveal({
 
   return (
     <div>
-      <Eyebrow number="09">Your plan</Eyebrow>
-      <Display as="h1" size="lg" className="mt-2">Here's the rhythm we think will suit you.</Display>
+      <StepHeading number="09" eyebrow="your plan">Here&apos;s the rhythm we think will suit you.</StepHeading>
 
-      <div className="mt-6 rounded-lg bg-white border border-ink-200 p-6">
-        <div className="flex items-center gap-4">
-          <TutorAvatar personaId="nova" size="lg" />
+      <div className="lm-card" style={{ marginTop: 24, padding: 24 }}>
+        <div className="flex items-center" style={{ gap: 16 }}>
+          <NovaAvatarLg />
           <div>
-            <p className="eyebrow">your tutor</p>
-            <p className="font-semibold text-lg text-ink-900 mt-1">Nova — warm &amp; patient</p>
+            <p className="lm-eyebrow">your tutor</p>
+            <p
+              className="lm-serif"
+              style={{ marginTop: 4, fontSize: 18, color: "var(--text)" }}
+            >
+              Nova — <em style={{ fontStyle: "italic", color: "var(--text-3)" }}>warm &amp; patient</em>
+            </p>
           </div>
         </div>
 
-        <div className="mt-5 grid grid-cols-2 gap-3 text-sm">
-          <StatBlock label="Daily" value={`${answers.dailyGoalMinutes ?? 10} min`} />
-          <StatBlock label="Streak goal" value={`${streakGoal} days`} />
+        <div
+          className="grid grid-cols-2"
+          style={{ gap: 12, marginTop: 20 }}
+        >
+          <StatBlock label="daily" value={`${answers.dailyGoalMinutes ?? 10} min`} />
+          <StatBlock label="streak goal" value={`${streakGoal} days`} />
         </div>
 
-        <div className="mt-5 pt-5 border-t border-ink-200">
-          <p className="eyebrow">first course</p>
-          <p className="mt-1.5 font-semibold text-lg text-ink-900">{firstCourseTitle}</p>
-          <p className="mt-0.5 text-ink-600">{firstCourseSubtitle}</p>
+        <div
+          style={{
+            marginTop: 20,
+            paddingTop: 20,
+            borderTop: "1px solid var(--border)",
+          }}
+        >
+          <p className="lm-eyebrow">first course</p>
+          <p
+            className="lm-serif"
+            style={{ marginTop: 6, fontSize: 18, color: "var(--text)" }}
+          >
+            {firstCourseTitle}
+          </p>
+          <p
+            style={{ marginTop: 2, fontSize: 14, color: "var(--text-3)" }}
+          >
+            {firstCourseSubtitle}
+          </p>
         </div>
 
-        <p className="mt-5 text-ink-700 leading-relaxed">{goalLine}</p>
+        <p
+          style={{
+            marginTop: 20,
+            fontSize: 14,
+            lineHeight: 1.6,
+            color: "var(--text-2)",
+          }}
+        >
+          {goalLine}
+        </p>
       </div>
 
-      <form className="mt-8" onSubmit={(e) => { e.preventDefault(); onSubmit(); }}>
-        <label className="eyebrow">where should we send it</label>
-        <div className="mt-2 flex flex-col sm:flex-row gap-2.5">
+      <form style={{ marginTop: 32 }} onSubmit={(e) => { e.preventDefault(); onSubmit(); }}>
+        <label className="lm-eyebrow">where should we send it</label>
+        <div
+          className="flex flex-col sm:flex-row"
+          style={{ gap: 10, marginTop: 8 }}
+        >
           <input
             type="email"
             required
             placeholder="you@example.com"
             value={email}
             onChange={(e) => onEmailChange(e.target.value)}
-            className="flex-1 rounded-md px-4 h-11 bg-white border border-ink-300 outline-none focus:border-accent-600 transition-colors duration-150 ease-out text-[15px]"
+            className="lm-input"
+            style={{ flex: 1 }}
           />
-          <Button type="submit" size="md" disabled={emailState === "sending" || email.trim().length < 4}>
+          <button
+            type="submit"
+            className="lm-btn lm-btn--accent"
+            disabled={emailState === "sending" || email.trim().length < 4}
+          >
             {emailState === "sending" ? "Sending…" : "Send magic link"}
-          </Button>
+          </button>
         </div>
-        {emailError ? <p className="mt-3 text-sm text-danger-600">{emailError}</p> : null}
-        <p className="mt-3 text-xs text-ink-500">
-          We'll email you a single-use link. No password, no spam.
+        {emailError ? (
+          <p style={{ marginTop: 12, fontSize: 13, color: "var(--coral-deep)" }}>
+            {emailError}
+          </p>
+        ) : null}
+        <p style={{ marginTop: 12, fontSize: 12, color: "var(--text-3)" }}>
+          We&apos;ll email you a single-use link. No password, no spam.
         </p>
       </form>
 
-      <div className="mt-6 text-xs text-ink-500">
-        Prefer Google? <Link href="/login" className="underline hover:text-ink-800 transition-colors">sign in there</Link>
+      <div style={{ marginTop: 24, fontSize: 12, color: "var(--text-3)" }}>
+        Prefer Google?{" "}
+        <Link
+          href="/login"
+          style={{ color: "var(--indigo)", textDecoration: "underline" }}
+        >
+          sign in there
+        </Link>
       </div>
     </div>
   );
@@ -515,9 +695,41 @@ function StepReveal({
 
 function StatBlock({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-md bg-ink-50 border border-ink-200 px-3 py-2.5">
-      <p className="eyebrow">{label}</p>
-      <p className="mt-1 font-semibold text-ink-900 font-tabular">{value}</p>
+    <div
+      style={{
+        background: "var(--bg-soft)",
+        border: "1px solid var(--border)",
+        borderRadius: "var(--r-3)",
+        padding: "12px 14px",
+      }}
+    >
+      <p className="lm-eyebrow">{label}</p>
+      <p
+        className="lm-serif lm-tabular"
+        style={{ marginTop: 4, fontSize: 18, color: "var(--text)" }}
+      >
+        {value}
+      </p>
     </div>
+  );
+}
+
+function NovaAvatarLg() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+    ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/tutor-avatars/nova.png`
+    : null;
+  return (
+    <span
+      className="lm-avatar"
+      style={{ width: 56, height: 56, fontSize: 18 }}
+      aria-label="Nova"
+    >
+      {url ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={url} alt="" />
+      ) : (
+        <span aria-hidden>N</span>
+      )}
+    </span>
   );
 }

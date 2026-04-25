@@ -3,8 +3,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-import { Display } from "@/components/ui/Display";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { createClient } from "@/lib/supabase/browser";
 import { PENDING_KEY, STORAGE_KEY, OnboardingAnswers } from "@/lib/onboarding";
 
@@ -66,12 +64,31 @@ export default function OnboardingCompletePage() {
   }, [router]);
 
   return (
-    <main className="mx-auto max-w-md px-6 pt-24 pb-24 min-h-[100dvh] flex flex-col justify-center">
-      <Eyebrow>almost there</Eyebrow>
-      <Display as="h1" size="md" className="mt-2">
-        {status === "working" ? "Setting everything up…" : "Something went sideways."}
-      </Display>
-      <p className="mt-3 text-ink-700">{message}</p>
+    <main className="lm-page flex flex-col justify-center">
+      <div
+        className="mx-auto"
+        style={{ maxWidth: 440, padding: "96px 24px" }}
+      >
+        <p className="lm-eyebrow">almost there</p>
+        <h1
+          className="lm-serif"
+          style={{ marginTop: 8, fontSize: 32, lineHeight: 1.15, color: "var(--text)" }}
+        >
+          {status === "working"
+            ? "Setting everything up…"
+            : "Something went sideways."}
+        </h1>
+        <p
+          style={{
+            marginTop: 12,
+            fontSize: 15,
+            lineHeight: 1.65,
+            color: status === "error" ? "var(--coral-deep)" : "var(--text-2)",
+          }}
+        >
+          {message}
+        </p>
+      </div>
     </main>
   );
 }

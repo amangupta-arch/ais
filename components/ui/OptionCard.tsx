@@ -23,37 +23,74 @@ export function OptionCard({
       onClick={onClick}
       aria-pressed={selected ? true : false}
       className={cn(
-        "w-full text-left rounded-md border transition-[border-color,background-color,opacity] duration-150 ease-out",
-        "px-4 py-3 flex items-start gap-3",
-        selected
-          ? "border-accent-600 bg-accent-50"
-          : "border-ink-200 bg-white hover:border-ink-300",
-        dimmed && "opacity-40",
+        "lm-option",
+        selected && "lm-option--correct",
+        dimmed && "lm-option--dim",
         className,
       )}
     >
       {emoji ? (
-        <span className="text-xl leading-none pt-[2px]" aria-hidden>{emoji}</span>
+        <span style={{ fontSize: 22, lineHeight: 1, paddingTop: 2 }} aria-hidden>{emoji}</span>
       ) : null}
-      <span className="flex-1 min-w-0">
-        <span className="flex items-center gap-2">
-          <span className="font-medium text-[15px] text-ink-900">{title}</span>
+      <span style={{ flex: 1, minWidth: 0 }}>
+        <span className="flex items-center" style={{ gap: 8 }}>
+          <span
+            className="lm-serif"
+            style={{ fontSize: 16, lineHeight: 1.3, color: "inherit" }}
+          >
+            {title}
+          </span>
           {recommended ? (
-            <span className="eyebrow text-accent-700 bg-accent-50 border border-accent-200 rounded-sm px-1.5 py-[2px]">recommended</span>
+            <span
+              className="lm-mono"
+              style={{
+                fontSize: 10,
+                fontWeight: 600,
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                color: "var(--saffron-deep)",
+                background: "var(--saffron-soft)",
+                borderRadius: 4,
+                padding: "1px 6px",
+              }}
+            >
+              recommended
+            </span>
           ) : null}
         </span>
-        {blurb ? <span className="block mt-1 text-sm text-ink-600">{blurb}</span> : null}
+        {blurb ? (
+          <span
+            style={{
+              display: "block",
+              marginTop: 4,
+              fontSize: 13,
+              lineHeight: 1.5,
+              color: "var(--text-3)",
+            }}
+          >
+            {blurb}
+          </span>
+        ) : null}
       </span>
       {multi ? (
         <span
-          className={cn(
-            "shrink-0 mt-1 inline-flex h-5 w-5 items-center justify-center rounded-sm border transition-colors",
-            selected ? "bg-accent-600 border-accent-600" : "border-ink-300",
-          )}
+          style={{
+            flexShrink: 0,
+            marginTop: 2,
+            display: "inline-flex",
+            width: 20,
+            height: 20,
+            alignItems: "center",
+            justifyContent: "center",
+            borderRadius: 4,
+            border: selected ? "0" : "1.5px solid var(--border-strong)",
+            background: selected ? "var(--moss)" : "transparent",
+            transition: "background 160ms cubic-bezier(0.2, 0, 0, 1)",
+          }}
           aria-hidden
         >
           {selected ? (
-            <svg viewBox="0 0 20 20" className="h-3.5 w-3.5 text-white" fill="none" stroke="currentColor" strokeWidth="3">
+            <svg viewBox="0 0 20 20" style={{ width: 14, height: 14, color: "#fff" }} fill="none" stroke="currentColor" strokeWidth="3">
               <path d="M5 10l3 3 7-7" />
             </svg>
           ) : null}
