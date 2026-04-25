@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Check, GripVertical, Sparkles } from "lucide-react";
 import {
@@ -22,7 +22,6 @@ import {
 import { CSS } from "@dnd-kit/utilities";
 
 import { Button } from "@/components/ui/Button";
-import type { AudioNarration } from "@/lib/hooks/useAudioNarration";
 import type { LessonTurn } from "@/lib/turns";
 import { cn } from "@/lib/utils";
 
@@ -60,10 +59,9 @@ function isAccepted(value: string, accepted: string[]) {
 }
 
 export function FillInTheBlankBlock({
-  turn, audio, isActive, onContinue,
+  turn, isActive, onContinue,
 }: {
   turn: Extract<LessonTurn, { turn_type: "fill_in_the_blank" }>;
-  audio: AudioNarration;
   isActive: boolean;
   onContinue: Continue;
 }) {
@@ -76,10 +74,6 @@ export function FillInTheBlankBlock({
   const [shakeId, setShakeId] = useState<string | null>(null);
   const [done, setDone] = useState(false);
   const xpAwardedRef = useRef(false);
-
-  useEffect(() => {
-    audio.speak(turn.content.prompt, { key: `fib:${turn.id}` });
-  }, [audio, turn.id, turn.content.prompt]);
 
   const allFilled = turn.content.answers.every((a) => values[a.id]?.trim().length);
 
@@ -207,10 +201,9 @@ function seededShuffle<T>(arr: T[], seed: string): T[] {
 }
 
 export function DragToReorderBlock({
-  turn, audio, isActive, onContinue,
+  turn, isActive, onContinue,
 }: {
   turn: Extract<LessonTurn, { turn_type: "drag_to_reorder" }>;
-  audio: AudioNarration;
   isActive: boolean;
   onContinue: Continue;
 }) {
@@ -228,10 +221,6 @@ export function DragToReorderBlock({
     useSensor(PointerSensor, { activationConstraint: { distance: 4 } }),
     useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
   );
-
-  useEffect(() => {
-    audio.speak(turn.content.prompt, { key: `dor:${turn.id}` });
-  }, [audio, turn.id, turn.content.prompt]);
 
   const labelFor = (id: string) =>
     turn.content.items.find((i) => i.id === id)?.label ?? id;
@@ -360,10 +349,9 @@ function SortableRow({
 type PairState = { leftId: string; rightId: string; status: "ok" };
 
 export function TapToMatchBlock({
-  turn, audio, isActive, onContinue,
+  turn, isActive, onContinue,
 }: {
   turn: Extract<LessonTurn, { turn_type: "tap_to_match" }>;
-  audio: AudioNarration;
   isActive: boolean;
   onContinue: Continue;
 }) {
@@ -373,10 +361,6 @@ export function TapToMatchBlock({
   const [matched, setMatched] = useState<PairState[]>([]);
   const [wrongPair, setWrongPair] = useState<{ left?: string; right?: string } | null>(null);
   const xpAwardedRef = useRef(false);
-
-  useEffect(() => {
-    audio.speak(turn.content.prompt, { key: `t2m:${turn.id}` });
-  }, [audio, turn.id, turn.content.prompt]);
 
   const isCorrectPair = (l: string, r: string) =>
     turn.content.pairs.some(([pl, pr]) => pl === l && pr === r);

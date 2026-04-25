@@ -132,6 +132,9 @@ export function LessonPlayer(props: Props) {
 
   const goNext = useCallback(
     (opts?: { xp?: number; source?: string }) => {
+      // Cut any in-flight tutor narration the moment the user advances,
+      // so audio never bleeds across the juncture into the next turn.
+      audio.cancel();
       const idx = revealedCount - 1;
       if (idx >= 0 && idx < turns.length) {
         const currentTurn = turns[idx];
@@ -147,7 +150,7 @@ export function LessonPlayer(props: Props) {
       }
       setRevealedCount((c) => Math.min(turns.length, c + 1));
     },
-    [alreadyCompleted, courseId, lessonId, revealedCount, turns],
+    [alreadyCompleted, audio, courseId, lessonId, revealedCount, turns],
   );
 
   const active = turns[revealedCount - 1];
@@ -333,24 +336,24 @@ function TurnView({
     case "tutor_message":
       return <TutorMessage turn={turn} persona={persona} audio={audio} />;
     case "mcq":
-      return <McqBlock turn={turn} audio={audio} isActive={isActive} onContinue={onContinue} />;
+      return <McqBlock turn={turn} isActive={isActive} onContinue={onContinue} />;
     case "free_text":
     case "reflection":
       return <TextInputBlock turn={turn} isActive={isActive} onContinue={onContinue} />;
     case "exercise":
-      return <ExerciseBlock turn={turn} persona={persona} audio={audio} isActive={isActive} onContinue={onContinue} />;
+      return <ExerciseBlock turn={turn} persona={persona} isActive={isActive} onContinue={onContinue} />;
     case "ai_conversation":
-      return <AiConversationBlock turn={turn} persona={persona} audio={audio} isActive={isActive} onContinue={onContinue} />;
+      return <AiConversationBlock turn={turn} persona={persona} isActive={isActive} onContinue={onContinue} />;
     case "media":
       return <MediaBlock turn={turn} isActive={isActive} onContinue={onContinue} />;
     case "checkpoint":
-      return <CheckpointBlock turn={turn} audio={audio} />;
+      return <CheckpointBlock turn={turn} />;
     case "fill_in_the_blank":
-      return <FillInTheBlankBlock turn={turn} audio={audio} isActive={isActive} onContinue={onContinue} />;
+      return <FillInTheBlankBlock turn={turn} isActive={isActive} onContinue={onContinue} />;
     case "drag_to_reorder":
-      return <DragToReorderBlock turn={turn} audio={audio} isActive={isActive} onContinue={onContinue} />;
+      return <DragToReorderBlock turn={turn} isActive={isActive} onContinue={onContinue} />;
     case "tap_to_match":
-      return <TapToMatchBlock turn={turn} audio={audio} isActive={isActive} onContinue={onContinue} />;
+      return <TapToMatchBlock turn={turn} isActive={isActive} onContinue={onContinue} />;
   }
 }
 
@@ -426,10 +429,9 @@ function TypingDots() {
 }
 
 function McqBlock({
-  turn, audio, isActive, onContinue,
+  turn, isActive, onContinue,
 }: {
   turn: Extract<LessonTurn, { turn_type: "mcq" }>;
-  audio: AudioNarration;
   isActive: boolean;
   onContinue: (opts?: { xp?: number; source?: string }) => void;
 }) {
@@ -438,10 +440,6 @@ function McqBlock({
   const [wrongId, setWrongId] = useState<string | null>(null);
   const selected = turn.content.options.find((o) => o.id === selectedId);
   const done = Boolean(selected?.is_correct);
-
-  useEffect(() => {
-    audio.speak(turn.content.question, { key: `mcq:${turn.id}` });
-  }, [audio, turn.id, turn.content.question]);
 
   const pick = (id: string, ev: ReactMouseEvent<HTMLButtonElement>) => {
     if (done) return;
@@ -568,11 +566,10 @@ function TextInputBlock({
 }
 
 function ExerciseBlock({
-  turn, persona, audio, isActive, onContinue,
+  turn, persona, isActive, onContinue,
 }: {
   turn: Extract<LessonTurn, { turn_type: "exercise" }>;
   persona: Persona;
-  audio: AudioNarration;
   isActive: boolean;
   onContinue: (opts?: { xp?: number; source?: string }) => void;
 }) {
@@ -584,31 +581,25 @@ function ExerciseBlock({
       <PracticeChat
         turn={turn}
         persona={persona}
-        audio={audio}
         isActive={isActive}
         onContinue={onContinue}
       />
     );
   }
 
-  return <ExternalExerciseBlock turn={turn} audio={audio} isActive={isActive} onContinue={onContinue} />;
+  return <ExternalExerciseBlock turn={turn} isActive={isActive} onContinue={onContinue} />;
 }
 
 function ExternalExerciseBlock({
-  turn, audio, isActive, onContinue,
+  turn, isActive, onContinue,
 }: {
   turn: Extract<LessonTurn, { turn_type: "exercise" }>;
-  audio: AudioNarration;
   isActive: boolean;
   onContinue: (opts?: { xp?: number; source?: string }) => void;
 }) {
   const [value, setValue] = useState("");
   const trimmed = value.trim();
   const canSubmit = trimmed.length >= 1;
-
-  useEffect(() => {
-    audio.speak(turn.content.instruction, { key: `ex:${turn.id}` });
-  }, [audio, turn.id, turn.content.instruction]);
 
   return (
     <div>
@@ -645,11 +636,10 @@ function ExternalExerciseBlock({
 /** In-app practice chat — replaces "open ChatGPT in another tab" when the
  *  exercise targets a chat tool we can roleplay with Claude. */
 function PracticeChat({
-  turn, persona, audio, isActive, onContinue,
+  turn, persona, isActive, onContinue,
 }: {
   turn: Extract<LessonTurn, { turn_type: "exercise" }>;
   persona: Persona;
-  audio: AudioNarration;
   isActive: boolean;
   onContinue: (opts?: { xp?: number; source?: string }) => void;
 }) {
@@ -657,10 +647,6 @@ function PracticeChat({
   const [value, setValue] = useState("");
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    audio.speak(turn.content.instruction, { key: `pex:${turn.id}` });
-  }, [audio, turn.id, turn.content.instruction]);
 
   const send = async () => {
     const content = value.trim();
@@ -682,11 +668,7 @@ function PracticeChat({
         }),
       });
       const data = (await res.json()) as { message: string; shouldEnd?: boolean };
-      setMessages((prev) => {
-        const arr = [...prev, { role: "assistant" as const, content: data.message }];
-        audio.speak(data.message, { key: `pex:${turn.id}:a:${arr.length}` });
-        return arr;
-      });
+      setMessages((prev) => [...prev, { role: "assistant" as const, content: data.message }]);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Network error.");
     } finally {
@@ -775,11 +757,10 @@ function PracticeChat({
 }
 
 function AiConversationBlock({
-  turn, persona, audio, isActive, onContinue,
+  turn, persona, isActive, onContinue,
 }: {
   turn: Extract<LessonTurn, { turn_type: "ai_conversation" }>;
   persona: Persona;
-  audio: AudioNarration;
   isActive: boolean;
   onContinue: (opts?: { xp?: number; source?: string }) => void;
 }) {
@@ -790,11 +771,6 @@ function AiConversationBlock({
   const [pending, setPending] = useState(false);
   const [ended, setEnded] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  // Starter message — speak once on mount.
-  useEffect(() => {
-    audio.speak(turn.content.starter_text, { key: `aic:${turn.id}:starter` });
-  }, [audio, turn.id, turn.content.starter_text]);
 
   const userTurns = messages.filter((m) => m.role === "user").length;
   const cap = turn.content.max_turns;
@@ -822,11 +798,7 @@ function AiConversationBlock({
         }),
       });
       const data = (await res.json()) as { message: string; shouldEnd: boolean };
-      setMessages((prev) => {
-        const arr = [...prev, { role: "assistant" as const, content: data.message }];
-        audio.speak(data.message, { key: `aic:${turn.id}:a:${arr.length}` });
-        return arr;
-      });
+      setMessages((prev) => [...prev, { role: "assistant" as const, content: data.message }]);
       if (data.shouldEnd) setEnded(true);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Network error.");
@@ -963,14 +935,12 @@ function MediaBlock({
 }
 
 function CheckpointBlock({
-  turn, audio,
+  turn,
 }: {
   turn: Extract<LessonTurn, { turn_type: "checkpoint" }>;
-  audio: AudioNarration;
 }) {
   const fx = useLessonFx();
   useEffect(() => {
-    audio.speak(`${turn.content.title}. ${turn.content.summary}`, { key: `cp:${turn.id}` });
     fx.play("celebrate");
     fx.haptic.success();
   // Fire once when the checkpoint enters the page.
