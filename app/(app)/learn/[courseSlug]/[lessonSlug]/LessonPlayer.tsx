@@ -1,10 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
+import type { MouseEvent as ReactMouseEvent, RefObject } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, Check, MessagesSquare, Send, Volume2, VolumeX } from "lucide-react";
+import { ArrowRight, Check, Flame, MessagesSquare, Send, Sparkles, Volume2, VolumeX, Zap } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
 import { TutorAvatar } from "@/components/ui/TutorAvatar";
@@ -15,6 +16,12 @@ import { personaById } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 import { advanceTurn, completeLesson } from "./actions";
+import { LessonFxProvider, useLessonFx } from "./LessonFxContext";
+import {
+  FillInTheBlankBlock,
+  DragToReorderBlock,
+  TapToMatchBlock,
+} from "./InteractiveBlocks";
 
 type Props = {
   courseSlug: string;
@@ -52,6 +59,19 @@ export function LessonPlayer(props: Props) {
 
   const safeInitial = Math.min(Math.max(0, initialTurnIndex), turns.length - 1);
   const [revealedCount, setRevealedCount] = useState(safeInitial + 1);
+
+  // Lesson-local XP ticker + correct streak — these are visual only; the
+  // server is the source of truth for persisted XP via advanceTurn/completeLesson.
+  const [xpDisplay, setXpDisplay] = useState(0);
+  const [streak, setStreak] = useState(0);
+  const xpChipRef = useRef<HTMLDivElement | null>(null);
+
+  const handleXpLanded = useCallback((amount: number) => {
+    setXpDisplay((v) => v + amount);
+  }, []);
+  const handleStreakChange = useCallback((correct: boolean) => {
+    setStreak((s) => (correct ? s + 1 : 0));
+  }, []);
 
   const scrollerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -134,61 +154,74 @@ export function LessonPlayer(props: Props) {
   const onLastTurn = revealedCount >= turns.length;
 
   return (
-    <div className="min-h-[100dvh] flex flex-col">
-      <Header
-        persona={persona}
-        lessonTitle={lessonTitle}
-        lessonSubtitle={lessonSubtitle}
-        courseSlug={courseSlug}
-        audio={audio}
-      />
+    <LessonFxProvider
+      audioEnabled={audio.enabled}
+      xpTargetRef={xpChipRef}
+      onXpLanded={handleXpLanded}
+      onStreakChange={handleStreakChange}
+    >
+      <div className="min-h-[100dvh] flex flex-col">
+        <Header
+          persona={persona}
+          lessonTitle={lessonTitle}
+          lessonSubtitle={lessonSubtitle}
+          courseSlug={courseSlug}
+          audio={audio}
+          xpDisplay={xpDisplay}
+          streak={streak}
+          xpChipRef={xpChipRef}
+        />
 
-      <div ref={scrollerRef} className="flex-1 overflow-y-auto">
-        <div className="mx-auto max-w-2xl px-5 py-5 flex flex-col gap-5">
-          <ProgressBar current={revealedCount} total={turns.length} />
+        <div ref={scrollerRef} className="flex-1 overflow-y-auto">
+          <div className="mx-auto max-w-2xl px-5 py-5 flex flex-col gap-5">
+            <ProgressBar current={revealedCount} total={turns.length} />
 
-          <AnimatePresence initial={false}>
-            {turns.slice(0, revealedCount).map((turn, i) => (
-              <motion.div
-                key={turn.id ?? i}
-                layout
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.42, ease: EASE_OUT_EXPO }}
-              >
-                <TurnView
-                  turn={turn}
-                  persona={persona}
-                  audio={audio}
-                  isActive={i === revealedCount - 1}
-                  onContinue={goNext}
-                />
-              </motion.div>
-            ))}
-          </AnimatePresence>
+            <AnimatePresence initial={false}>
+              {turns.slice(0, revealedCount).map((turn, i) => (
+                <motion.div
+                  key={turn.id ?? i}
+                  layout
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.42, ease: EASE_OUT_EXPO }}
+                >
+                  <TurnView
+                    turn={turn}
+                    persona={persona}
+                    audio={audio}
+                    isActive={i === revealedCount - 1}
+                    onContinue={goNext}
+                  />
+                </motion.div>
+              ))}
+            </AnimatePresence>
 
-          {onLastTurn && active?.turn_type === "checkpoint" ? (
-            <CompleteCta
-              courseId={courseId}
-              lessonId={lessonId}
-              lessonXpReward={lessonXpReward}
-              alreadyCompleted={alreadyCompleted}
-            />
-          ) : null}
+            {onLastTurn && active?.turn_type === "checkpoint" ? (
+              <CompleteCta
+                courseId={courseId}
+                lessonId={lessonId}
+                lessonXpReward={lessonXpReward}
+                alreadyCompleted={alreadyCompleted}
+              />
+            ) : null}
+          </div>
         </div>
       </div>
-    </div>
+    </LessonFxProvider>
   );
 }
 
 function Header({
-  persona, lessonTitle, lessonSubtitle, courseSlug, audio,
+  persona, lessonTitle, lessonSubtitle, courseSlug, audio, xpDisplay, streak, xpChipRef,
 }: {
   persona: Persona;
   lessonTitle: string;
   lessonSubtitle: string | null;
   courseSlug: string;
   audio: AudioNarration;
+  xpDisplay: number;
+  streak: number;
+  xpChipRef: RefObject<HTMLDivElement | null>;
 }) {
   const Icon = audio.enabled ? Volume2 : VolumeX;
   return (
@@ -208,6 +241,10 @@ function Header({
             <p className="text-xs text-ink-500 truncate">{lessonSubtitle}</p>
           ) : null}
         </div>
+
+        <XpChip ref={xpChipRef} value={xpDisplay} />
+        <StreakChip value={streak} />
+
         <button
           type="button"
           aria-pressed={audio.enabled}
@@ -224,6 +261,41 @@ function Header({
         </button>
       </div>
     </header>
+  );
+}
+
+const XpChip = ({ ref, value }: { ref: RefObject<HTMLDivElement | null>; value: number }) => (
+  <motion.div
+    ref={ref}
+    className="inline-flex items-center gap-1 rounded-full bg-accent-50 border border-accent-200 px-2 py-1 text-[12px] font-semibold text-accent-700"
+    animate={{ scale: value > 0 ? [1, 1.12, 1] : 1 }}
+    transition={{ duration: 0.32, ease: EASE_OUT_EXPO }}
+    key={value}
+    aria-label={`${value} XP earned this lesson`}
+  >
+    <Zap className="h-3.5 w-3.5" />
+    <span className="font-tabular tabular-nums">{value}</span>
+  </motion.div>
+);
+
+function StreakChip({ value }: { value: number }) {
+  if (value <= 0) return null;
+  const hot = value >= 3;
+  return (
+    <motion.div
+      key={value}
+      initial={{ scale: 0.8, opacity: 0 }}
+      animate={{ scale: hot ? [1, 1.18, 1] : 1, opacity: 1 }}
+      transition={{ duration: 0.36, ease: EASE_OUT_EXPO }}
+      className={cn(
+        "inline-flex items-center gap-1 rounded-full border px-2 py-1 text-[12px] font-semibold",
+        hot ? "bg-amber-50 border-amber-300 text-amber-700" : "bg-ink-50 border-ink-200 text-ink-700",
+      )}
+      aria-label={`${value} correct in a row`}
+    >
+      <Flame className="h-3.5 w-3.5" />
+      <span className="font-tabular tabular-nums">{value}</span>
+    </motion.div>
   );
 }
 
@@ -273,6 +345,12 @@ function TurnView({
       return <MediaBlock turn={turn} isActive={isActive} onContinue={onContinue} />;
     case "checkpoint":
       return <CheckpointBlock turn={turn} audio={audio} />;
+    case "fill_in_the_blank":
+      return <FillInTheBlankBlock turn={turn} audio={audio} isActive={isActive} onContinue={onContinue} />;
+    case "drag_to_reorder":
+      return <DragToReorderBlock turn={turn} audio={audio} isActive={isActive} onContinue={onContinue} />;
+    case "tap_to_match":
+      return <TapToMatchBlock turn={turn} audio={audio} isActive={isActive} onContinue={onContinue} />;
   }
 }
 
@@ -355,6 +433,7 @@ function McqBlock({
   isActive: boolean;
   onContinue: (opts?: { xp?: number; source?: string }) => void;
 }) {
+  const fx = useLessonFx();
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [wrongId, setWrongId] = useState<string | null>(null);
   const selected = turn.content.options.find((o) => o.id === selectedId);
@@ -364,16 +443,24 @@ function McqBlock({
     audio.speak(turn.content.question, { key: `mcq:${turn.id}` });
   }, [audio, turn.id, turn.content.question]);
 
-  const pick = (id: string) => {
+  const pick = (id: string, ev: ReactMouseEvent<HTMLButtonElement>) => {
     if (done) return;
     const option = turn.content.options.find((o) => o.id === id);
     if (!option) return;
     if (option.is_correct) {
       setSelectedId(id);
       setWrongId(null);
+      fx.play("correct");
+      fx.haptic.success();
+      fx.bumpStreak(true);
+      const rect = ev.currentTarget.getBoundingClientRect();
+      fx.addXp(turn.xp_reward, rect);
     } else {
       setWrongId(id);
       setTimeout(() => setWrongId(null), 280);
+      fx.play("wrong");
+      fx.haptic.error();
+      fx.bumpStreak(false);
     }
   };
 
@@ -389,7 +476,7 @@ function McqBlock({
               <button
                 type="button"
                 disabled={done && !isSelected}
-                onClick={() => pick(o.id)}
+                onClick={(ev) => pick(o.id, ev)}
                 className={cn(
                   "w-full text-left rounded-md border px-4 py-3 flex items-start gap-3 transition-[border-color,background-color,opacity] duration-150 ease-out",
                   isSelected
@@ -881,13 +968,21 @@ function CheckpointBlock({
   turn: Extract<LessonTurn, { turn_type: "checkpoint" }>;
   audio: AudioNarration;
 }) {
+  const fx = useLessonFx();
   useEffect(() => {
     audio.speak(`${turn.content.title}. ${turn.content.summary}`, { key: `cp:${turn.id}` });
-  }, [audio, turn.id, turn.content.title, turn.content.summary]);
+    fx.play("celebrate");
+    fx.haptic.success();
+  // Fire once when the checkpoint enters the page.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [turn.id]);
 
   return (
     <div className="rounded-lg border border-accent-200 bg-accent-50 p-5">
-      <p className="eyebrow text-accent-700">checkpoint</p>
+      <div className="flex items-center gap-2">
+        <Sparkles className="h-4 w-4 text-accent-700" />
+        <p className="eyebrow text-accent-700">checkpoint</p>
+      </div>
       <p className="mt-1.5 font-bold text-xl text-ink-900">{turn.content.title}</p>
       <p className="mt-2 text-ink-800 leading-relaxed whitespace-pre-line">{turn.content.summary}</p>
     </div>
@@ -903,6 +998,7 @@ function CompleteCta({
   alreadyCompleted: boolean;
 }) {
   const router = useRouter();
+  const fx = useLessonFx();
   const [pending, start] = useTransition();
   const [awarded, setAwarded] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -912,7 +1008,13 @@ function CompleteCta({
       try {
         const res = await completeLesson({ courseId, lessonId, lessonXpReward });
         setAwarded(res.awarded);
-        router.push("/home");
+        if (!res.alreadyCompleted) {
+          fx.celebrate();
+          fx.play("celebrate");
+          fx.haptic.success();
+        }
+        // Hold the celebration on screen briefly before routing away.
+        setTimeout(() => router.push("/home"), 900);
       } catch (e) {
         setError(e instanceof Error ? e.message : "Something went wrong.");
       }

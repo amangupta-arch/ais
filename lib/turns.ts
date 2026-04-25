@@ -60,16 +60,56 @@ export type MediaContent = {
   aspect_ratio?: number;
 };
 
+// ---- New game-y mechanics -----------------------------------------------
+
+/** Fill-in-the-blank: a template with `{{id}}` tokens replaced by inputs. */
+export type FillInTheBlankAnswer = {
+  id: string;
+  accepted: string[]; // case-insensitive; must match one of these (trimmed)
+};
+export type FillInTheBlankContent = {
+  prompt: string;
+  template: string; // e.g. "Role, Task, {{1}}, {{2}}"
+  answers: FillInTheBlankAnswer[];
+  hint?: string;
+  xp?: number;
+};
+
+/** Drag-to-reorder: shuffled items the user drags into the correct order. */
+export type ReorderItem = { id: string; label: string };
+export type DragToReorderContent = {
+  prompt: string;
+  items: ReorderItem[];
+  correct_order: string[]; // ids in the correct sequence
+  xp?: number;
+};
+
+/** Tap-to-match: two columns; tap a left, then a right, to build a pair. */
+export type MatchItem = { id: string; label: string };
+export type TapToMatchContent = {
+  prompt: string;
+  left: MatchItem[];
+  right: MatchItem[];
+  pairs: [string, string][]; // [leftId, rightId] correct pairings
+  xp?: number;
+};
+
+// -------------------------------------------------------------------------
+
 export type TurnType =
   | "tutor_message" | "mcq" | "free_text" | "reflection"
-  | "exercise" | "ai_conversation" | "checkpoint" | "media";
+  | "exercise" | "ai_conversation" | "checkpoint" | "media"
+  | "fill_in_the_blank" | "drag_to_reorder" | "tap_to_match";
 
 export type LessonTurn =
-  | { id: string; order_index: number; turn_type: "tutor_message";   content: TutorMessageContent;   xp_reward: number; is_required: boolean }
-  | { id: string; order_index: number; turn_type: "mcq";             content: McqContent;            xp_reward: number; is_required: boolean }
-  | { id: string; order_index: number; turn_type: "free_text";       content: FreeTextContent;       xp_reward: number; is_required: boolean }
-  | { id: string; order_index: number; turn_type: "reflection";      content: ReflectionContent;     xp_reward: number; is_required: boolean }
-  | { id: string; order_index: number; turn_type: "exercise";        content: ExerciseContent;       xp_reward: number; is_required: boolean }
-  | { id: string; order_index: number; turn_type: "ai_conversation"; content: AiConversationContent; xp_reward: number; is_required: boolean }
-  | { id: string; order_index: number; turn_type: "checkpoint";      content: CheckpointContent;     xp_reward: number; is_required: boolean }
-  | { id: string; order_index: number; turn_type: "media";           content: MediaContent;          xp_reward: number; is_required: boolean };
+  | { id: string; order_index: number; turn_type: "tutor_message";      content: TutorMessageContent;     xp_reward: number; is_required: boolean }
+  | { id: string; order_index: number; turn_type: "mcq";                content: McqContent;              xp_reward: number; is_required: boolean }
+  | { id: string; order_index: number; turn_type: "free_text";          content: FreeTextContent;         xp_reward: number; is_required: boolean }
+  | { id: string; order_index: number; turn_type: "reflection";         content: ReflectionContent;       xp_reward: number; is_required: boolean }
+  | { id: string; order_index: number; turn_type: "exercise";           content: ExerciseContent;         xp_reward: number; is_required: boolean }
+  | { id: string; order_index: number; turn_type: "ai_conversation";    content: AiConversationContent;   xp_reward: number; is_required: boolean }
+  | { id: string; order_index: number; turn_type: "checkpoint";         content: CheckpointContent;       xp_reward: number; is_required: boolean }
+  | { id: string; order_index: number; turn_type: "media";              content: MediaContent;            xp_reward: number; is_required: boolean }
+  | { id: string; order_index: number; turn_type: "fill_in_the_blank";  content: FillInTheBlankContent;   xp_reward: number; is_required: boolean }
+  | { id: string; order_index: number; turn_type: "drag_to_reorder";    content: DragToReorderContent;    xp_reward: number; is_required: boolean }
+  | { id: string; order_index: number; turn_type: "tap_to_match";       content: TapToMatchContent;       xp_reward: number; is_required: boolean };

@@ -82,6 +82,56 @@ const mediaTurn = z.object({
   ...withXp,
 });
 
+// --- Game-y mechanics -----------------------------------------------------
+
+const fillInTheBlankTurn = z.object({
+  type: z.literal("fill_in_the_blank"),
+  prompt: z.string().min(1),
+  template: z.string().min(1),
+  answers: z.array(
+    z.object({
+      id: z.string().min(1),
+      accepted: z.array(z.string().min(1)).min(1),
+    }),
+  ).min(1),
+  hint: z.string().optional(),
+  ...withXp,
+});
+
+const reorderItem = z.object({
+  id: z.string().min(1),
+  label: z.string().min(1),
+});
+const dragToReorderTurn = z.object({
+  type: z.literal("drag_to_reorder"),
+  prompt: z.string().min(1),
+  items: z.array(reorderItem).min(2),
+  correct_order: z.array(z.string().min(1)).min(2),
+  ...withXp,
+}).refine(
+  (v) => v.correct_order.length === v.items.length &&
+         v.correct_order.every((id) => v.items.some((it) => it.id === id)),
+  { message: "correct_order must list every item.id exactly once" },
+);
+
+const matchItem = z.object({
+  id: z.string().min(1),
+  label: z.string().min(1),
+});
+const tapToMatchTurn = z.object({
+  type: z.literal("tap_to_match"),
+  prompt: z.string().min(1),
+  left: z.array(matchItem).min(2),
+  right: z.array(matchItem).min(2),
+  pairs: z.array(z.tuple([z.string().min(1), z.string().min(1)])).min(2),
+  ...withXp,
+}).refine(
+  (v) => v.left.length === v.right.length &&
+         v.pairs.length === v.left.length &&
+         v.pairs.every(([l, r]) => v.left.some((x) => x.id === l) && v.right.some((x) => x.id === r)),
+  { message: "pairs must cover every left/right id exactly once" },
+);
+
 export const turnSchema = z.discriminatedUnion("type", [
   tutorMessageTurn,
   mcqTurn,
@@ -91,6 +141,9 @@ export const turnSchema = z.discriminatedUnion("type", [
   aiConversationTurn,
   checkpointTurn,
   mediaTurn,
+  fillInTheBlankTurn,
+  dragToReorderTurn,
+  tapToMatchTurn,
 ]);
 
 export const lessonSchema = z.object({

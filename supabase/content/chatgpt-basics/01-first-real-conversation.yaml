@@ -64,6 +64,62 @@ turns:
     text: |
       There's your first rule: every prompt needs Role, Task, Context, and Constraints. Four words. RTCC.
 
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: Quick recall — what does RTCC stand for?
+    template: "{{r}}, {{t}}, {{c}}, {{x}}"
+    hint: One word per blank. All lowercase is fine.
+    answers:
+      - id: r
+        accepted: [role]
+      - id: t
+        accepted: [task]
+      - id: c
+        accepted: [context]
+      - id: x
+        accepted: [constraints, constraint]
+
+  - type: drag_to_reorder
+    xp: 10
+    prompt: Drag these into RTCC order.
+    items:
+      - id: t
+        label: Task — what you want produced
+      - id: r
+        label: Role — who the AI should act as
+      - id: x
+        label: Constraints — length, tone, rules
+      - id: c
+        label: Context — background it needs
+    correct_order: [r, t, c, x]
+
+  - type: tap_to_match
+    xp: 10
+    prompt: Match each piece to what it actually does.
+    left:
+      - id: r
+        label: Role
+      - id: t
+        label: Task
+      - id: c
+        label: Context
+      - id: x
+        label: Constraints
+    right:
+      - id: who
+        label: Who the AI plays
+      - id: what
+        label: What it should produce
+      - id: bg
+        label: Background it should know
+      - id: rules
+        label: Rules, length, tone
+    pairs:
+      - [r, who]
+      - [t, what]
+      - [c, bg]
+      - [x, rules]
+
   - type: exercise
     xp: 20
     tool: chatgpt
