@@ -96,6 +96,31 @@ export function LessonPlayer(props: Props) {
     scrollActiveIntoView();
   }, [revealedCount, scrollActiveIntoView]);
 
+  // Drive narration from the parent so we can replay on activate AND on
+  // audio-toggle. The TutorMessage renderer no longer owns this; the
+  // dedupe key it used blocked re-speaks when the user toggled audio on
+  // mid-lesson. Tracks (turnId, enabled) so re-renders don't re-speak,
+  // but a real change (new turn, or audio just turned on) does.
+  const lastSpokenSigRef = useRef<string | null>(null);
+  useEffect(() => {
+    const idx = revealedCount - 1;
+    const active = turns[idx];
+    if (!active || active.turn_type !== "tutor_message") return;
+    const sig = `${active.id}::${audio.enabled ? 1 : 0}`;
+    if (lastSpokenSigRef.current === sig) return;
+    lastSpokenSigRef.current = sig;
+    if (!audio.enabled) {
+      audio.cancel();
+      return;
+    }
+    // Wait one tick for the typing-dots → text transition to settle.
+    const t = setTimeout(() => {
+      audio.cancel();
+      audio.speak(active.content.text);
+    }, (active.content.typing_ms ?? 1000) + 200);
+    return () => clearTimeout(t);
+  }, [revealedCount, turns, audio]);
+
   const goNext = useCallback(
     (opts?: { xp?: number; source?: string }) => {
       // Cut any in-flight tutor narration the moment the user advances,
@@ -139,7 +164,6 @@ export function LessonPlayer(props: Props) {
         style={{ height: "100dvh", overflow: "hidden" }}
       >
         <Header
-          persona={persona}
           lessonTitle={lessonTitle}
           lessonSubtitle={lessonSubtitle}
           courseSlug={courseSlug}
@@ -217,9 +241,8 @@ export function LessonPlayer(props: Props) {
 }
 
 function Header({
-  persona, lessonTitle, lessonSubtitle, courseSlug, audio, xpDisplay, streak, xpChipRef,
+  lessonTitle, lessonSubtitle, courseSlug, audio, xpDisplay, streak, xpChipRef,
 }: {
-  persona: Persona;
   lessonTitle: string;
   lessonSubtitle: string | null;
   courseSlug: string;
@@ -242,7 +265,6 @@ function Header({
         >
           <span aria-hidden style={{ fontSize: 18 }}>←</span>
         </Link>
-        <NovaAvatar persona={persona} />
         <div className="min-w-0 flex-1">
           <p
             className="lm-serif truncate"
@@ -374,7 +396,6 @@ function TurnView({
         <TutorMessage
           turn={turn}
           persona={persona}
-          audio={audio}
           isActive={isActive}
           onContinue={onContinue}
         />
@@ -402,11 +423,10 @@ function TurnView({
 }
 
 function TutorMessage({
-  turn, persona, audio, isActive, onContinue,
+  turn, persona, isActive, onContinue,
 }: {
   turn: Extract<LessonTurn, { turn_type: "tutor_message" }>;
   persona: Persona;
-  audio: AudioNarration;
   isActive: boolean;
   onContinue: (opts?: { xp?: number; source?: string }) => void;
 }) {
@@ -419,70 +439,78 @@ function TutorMessage({
     return () => clearTimeout(t);
   }, [typingMs]);
 
-  // Speak once, when the text appears (not during typing dots). Audio is
-  // gated by audio.enabled inside the hook.
-  useEffect(() => {
-    if (!showText) return;
-    audio.speak(turn.content.text, { key: `tm:${turn.id}` });
-  }, [showText, audio, turn.id, turn.content.text]);
+  // Speech is now driven from the LessonPlayer parent — see the
+  // useEffect that watches revealedCount + audio.enabled. Keeps replay
+  // working when the user toggles audio mid-lesson.
 
   return (
-    <div style={{ paddingTop: 8 }}>
-      <AnimatePresence mode="wait" initial={false}>
-        {!showText ? (
-          <motion.div
-            key="dots"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-          >
-            <TypingDots />
-          </motion.div>
-        ) : (
-          <motion.div
-            key="text"
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: EASE_OUT_EXPO }}
-          >
-            <p
-              className="lm-serif"
-              style={{
-                fontSize: 22,
-                lineHeight: 1.35,
-                color: "var(--text)",
-                whiteSpace: "pre-line",
-              }}
+    <div className="flex items-start" style={{ gap: 12, paddingTop: 4 }}>
+      <NovaAvatar persona={speaker} />
+      <div style={{ minWidth: 0, flex: 1 }}>
+        <AnimatePresence mode="wait" initial={false}>
+          {!showText ? (
+            <motion.div
+              key="dots"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
             >
-              {turn.content.text}
-            </p>
-            <p
-              className="lm-serif"
-              style={{
-                marginTop: 12,
-                fontSize: 13,
-                fontStyle: "italic",
-                color: "var(--text-3)",
-                letterSpacing: "0.01em",
-              }}
-            >
-              — {speaker.name}
-            </p>
-            {isActive ? (
-              <div className="flex justify-end" style={{ marginTop: 20 }}>
-                <button
-                  type="button"
-                  className="lm-btn lm-btn--accent"
-                  onClick={() => onContinue({ source: "tutor_message" })}
-                >
-                  Continue <ArrowRight className="h-4 w-4" />
-                </button>
+              <div
+                style={{
+                  background: "var(--surface)",
+                  border: "1px solid var(--border)",
+                  borderRadius: "var(--r-3)",
+                  padding: "12px 16px",
+                  display: "inline-block",
+                }}
+              >
+                <TypingDots />
               </div>
-            ) : null}
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="text"
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: EASE_OUT_EXPO }}
+            >
+              <div
+                style={{
+                  background: "var(--surface)",
+                  border: "1px solid var(--border)",
+                  borderRadius: "var(--r-3)",
+                  padding: "14px 18px",
+                  maxWidth: "92%",
+                }}
+              >
+                <p
+                  className="lm-serif"
+                  style={{
+                    fontSize: 19,
+                    lineHeight: 1.45,
+                    color: "var(--text)",
+                    whiteSpace: "pre-line",
+                  }}
+                >
+                  {turn.content.text}
+                </p>
+              </div>
+              {isActive ? (
+                <div className="flex justify-end" style={{ marginTop: 16 }}>
+                  <button
+                    type="button"
+                    className="lm-btn lm-btn--accent"
+                    onClick={() => onContinue({ source: "tutor_message" })}
+                  >
+                    Continue <ArrowRight className="h-4 w-4" />
+                  </button>
+                </div>
+              ) : null}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 }
