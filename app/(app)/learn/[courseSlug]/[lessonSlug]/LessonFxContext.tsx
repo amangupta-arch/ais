@@ -23,6 +23,10 @@ type FxValue = {
   bumpStreak: (correct: boolean) => void;
   /** Throw a celebratory confetti burst (cobalt + white). Run once at completion. */
   celebrate: () => void;
+  /** Re-scroll the active turn so its Continue button is visible. Called by
+   *  blocks after their gate clears (correct MCQ, all pairs matched, etc.)
+   *  so the new Continue button doesn't appear below the fold. */
+  scrollActiveIntoView: () => void;
 };
 
 const FxContext = createContext<FxValue | null>(null);
@@ -38,6 +42,7 @@ export function useLessonFx(): FxValue {
       addXp: noop,
       bumpStreak: noop,
       celebrate: noop,
+      scrollActiveIntoView: noop,
     };
   }
   return ctx;
@@ -54,11 +59,13 @@ type ProviderProps = {
   onXpLanded: (amount: number) => void;
   /** Called when streak should bump or reset. */
   onStreakChange: (correct: boolean) => void;
+  /** Lifted from the parent — scrolls the currently-active turn into view. */
+  scrollActiveIntoView: () => void;
   children: ReactNode;
 };
 
 export function LessonFxProvider({
-  audioEnabled, xpTargetRef, onXpLanded, onStreakChange, children,
+  audioEnabled, xpTargetRef, onXpLanded, onStreakChange, scrollActiveIntoView, children,
 }: ProviderProps) {
   const { play } = useSoundEffects(audioEnabled);
   const haptic = useHaptics();
@@ -90,8 +97,8 @@ export function LessonFxProvider({
   }, []);
 
   const value = useMemo<FxValue>(
-    () => ({ play, haptic, addXp, bumpStreak, celebrate }),
-    [play, haptic, addXp, bumpStreak, celebrate],
+    () => ({ play, haptic, addXp, bumpStreak, celebrate, scrollActiveIntoView }),
+    [play, haptic, addXp, bumpStreak, celebrate, scrollActiveIntoView],
   );
 
   return (

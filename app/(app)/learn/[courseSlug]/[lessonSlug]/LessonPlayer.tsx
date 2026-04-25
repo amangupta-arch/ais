@@ -76,20 +76,25 @@ export function LessonPlayer(props: Props) {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const activeTurnRef = useRef<HTMLDivElement | null>(null);
 
-  // After every advance, snap the new active turn to the top of the
-  // scroller (just below the sticky progress bar). `scrollIntoView` with
-  // `block: "start"` respects each turn's `scroll-margin-top`, set on the
-  // wrapper below to clear the sticky bar height. Two rAFs let Framer
-  // mount + lay out the new motion.div before we measure.
-  useEffect(() => {
-    const id1 = requestAnimationFrame(() => {
-      const id2 = requestAnimationFrame(() => {
-        activeTurnRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  // After every advance, scroll so the BOTTOM of the active turn lands
+  // just above the viewport bottom. `block: "end"` respects each turn's
+  // `scroll-margin-bottom` (set below) for breathing room. Why bottom-not-
+  // top: a tall turn (MCQ + 4 options + rationale) is taller than the
+  // viewport, so aligning the top would push the Continue button below
+  // the fold. Aligning the bottom keeps Continue visible regardless of
+  // turn height. Short turns still look natural — the previous turn
+  // remains visible above. Two rAFs let Framer mount + lay out the
+  // motion.div before scrollIntoView measures.
+  const scrollActiveIntoView = useCallback(() => {
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        activeTurnRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
       });
-      return () => cancelAnimationFrame(id2);
     });
-    return () => cancelAnimationFrame(id1);
-  }, [revealedCount]);
+  }, []);
+  useEffect(() => {
+    scrollActiveIntoView();
+  }, [revealedCount, scrollActiveIntoView]);
 
   const goNext = useCallback(
     (opts?: { xp?: number; source?: string }) => {
@@ -123,6 +128,7 @@ export function LessonPlayer(props: Props) {
       xpTargetRef={xpChipRef}
       onXpLanded={handleXpLanded}
       onStreakChange={handleStreakChange}
+      scrollActiveIntoView={scrollActiveIntoView}
     >
       {/* Bound the lesson player to viewport height so the inner scroller
           actually scrolls — without this, page contents push the body to
@@ -181,7 +187,7 @@ export function LessonPlayer(props: Props) {
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: isActive ? 1 : 0.65, y: 0 }}
                     transition={{ duration: 0.36, ease: EASE_OUT_EXPO }}
-                    style={{ scrollMarginTop: 72 }}
+                    style={{ scrollMarginTop: 72, scrollMarginBottom: 24 }}
                   >
                     <TurnView
                       turn={turn}
@@ -534,6 +540,8 @@ function McqBlock({
       fx.bumpStreak(true);
       const rect = ev.currentTarget.getBoundingClientRect();
       fx.addXp(turn.xp_reward, rect);
+      // Continue button just appeared — make sure it's in view.
+      fx.scrollActiveIntoView();
     } else {
       setWrongId(id);
       setTimeout(() => setWrongId(null), 280);
