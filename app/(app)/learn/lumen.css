@@ -1,0 +1,370 @@
+/* =============================================================
+   Lumen — calm, academic design system, scoped to /learn/*
+
+   All tokens and component classes live under `.lm`. They never
+   bleed into the rest of the app because the cascade only sees
+   the variables when an ancestor carries the .lm class (set in
+   app/(app)/learn/layout.tsx).
+   ============================================================= */
+
+.lm {
+  /* ---------- Neutrals (light) ---------- */
+  --paper:          #F7F5F0;
+  --paper-soft:     #EFEDE6;
+  --paper-pure:     #FFFFFF;
+  --ink:            #151411;
+  --ink-2:          #2B2925;
+  --ink-3:          #4A4741;
+  --ink-4:          #6E6A62;
+  --ink-5:          #9A968D;
+  --ink-6:          #C6C2B8;
+  --ink-7:          #DDD9CE;
+  --ink-8:          #EBE7DD;
+
+  /* ---------- Six-hue palette ---------- */
+  --indigo:         #4F46BA;
+  --indigo-deep:    #2E277A;
+  --indigo-soft:    #E6E4F6;
+  --indigo-glow:    #8B83F5;
+
+  --saffron:        #E8A33A;
+  --saffron-deep:   #9E6B0F;
+  --saffron-soft:   #FBEFD4;
+
+  --moss:           #4E8A5E;
+  --moss-deep:      #2B5436;
+  --moss-soft:      #DEEAD9;
+
+  --coral:          #D6573C;
+  --coral-deep:     #8A2D18;
+  --coral-soft:     #F8DDD3;
+
+  --ocean:          #2E7C94;
+  --ocean-deep:     #164956;
+  --ocean-soft:     #D5E7EC;
+
+  --plum:           #8A4A8C;
+  --plum-deep:      #4E2350;
+  --plum-soft:      #EBDAEC;
+
+  /* ---------- Semantic ---------- */
+  --bg:             var(--paper);
+  --bg-soft:        var(--paper-soft);
+  --surface:        var(--paper-pure);
+  --text:           var(--ink);
+  --text-2:         var(--ink-3);
+  --text-3:         var(--ink-4);
+  --text-4:         var(--ink-5);
+  --border:         var(--ink-7);
+  --border-soft:    var(--ink-8);
+  --border-strong:  var(--ink-6);
+  --accent:         var(--indigo);
+  --accent-deep:    var(--indigo-deep);
+  --accent-soft:    var(--indigo-soft);
+
+  /* ---------- Radii / shadows / motion ---------- */
+  --r-1: 4px;
+  --r-2: 8px;
+  --r-3: 12px;
+  --r-4: 16px;
+  --r-5: 20px;
+  --r-pill: 999px;
+
+  --shadow-1: 0 1px 2px rgba(21, 20, 17, 0.04), 0 1px 3px rgba(21, 20, 17, 0.06);
+  --shadow-2: 0 2px 4px rgba(21, 20, 17, 0.04), 0 4px 12px rgba(21, 20, 17, 0.06);
+  --shadow-key: 0 2px 0 0 rgba(21, 20, 17, 0.12);
+  --shadow-focus: 0 0 0 3px rgba(79, 70, 186, 0.25);
+
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-decel:    cubic-bezier(0, 0, 0.2, 1);
+
+  /* Token carrier only — does NOT paint by default, so dropping the
+     wrapper into existing /learn pages is a no-op until consumers opt
+     in via `lm-*` classes or `lm-page`. */
+}
+
+/** Paint helper — opts a route's outermost element into the Lumen
+ *  background, body font, and full-viewport min-height. The lesson player
+ *  + future Lumen-styled pages add this class to their root. */
+.lm-page {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100dvh;
+  font-family: var(--font-dm-sans), 'Inter', system-ui, sans-serif;
+}
+
+/* ---------- Typography helpers ---------- */
+.lm-serif   { font-family: var(--font-fraunces), Georgia, serif; font-weight: 400; letter-spacing: -0.01em; }
+.lm-mono    { font-family: var(--font-jetbrains-mono), ui-monospace, monospace; }
+.lm-eyebrow {
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.lm-tabular { font-variant-numeric: tabular-nums; }
+
+/* ---------- Buttons ---------- */
+.lm-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1;
+  padding: 14px 22px;
+  border-radius: var(--r-3);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 160ms var(--ease-standard),
+              background 160ms var(--ease-standard),
+              box-shadow 160ms var(--ease-standard),
+              opacity 160ms var(--ease-standard);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow: var(--shadow-key);
+}
+.lm-btn:active   { transform: translateY(1px); }
+.lm-btn:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: none; }
+.lm-btn:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+.lm-btn:hover:not(:disabled) { background: var(--ink-2); }
+
+.lm-btn--accent {
+  background: var(--indigo);
+  color: #fff;
+  box-shadow: 0 2px 0 0 var(--indigo-deep);
+}
+.lm-btn--accent:hover:not(:disabled) { background: var(--indigo-deep); }
+
+.lm-btn--secondary {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+  box-shadow: none;
+}
+.lm-btn--secondary:hover:not(:disabled) { background: var(--bg-soft); }
+
+.lm-btn--ghost {
+  background: transparent;
+  color: var(--text);
+  box-shadow: none;
+}
+.lm-btn--ghost:hover:not(:disabled) { background: var(--bg-soft); }
+
+.lm-btn--sm   { padding: 10px 16px; font-size: 13px; border-radius: var(--r-2); }
+.lm-btn--lg   { padding: 18px 28px; font-size: 17px; border-radius: var(--r-4); }
+.lm-btn--full { width: 100%; }
+.lm-btn--icon {
+  padding: 0;
+  width: 36px; height: 36px;
+  background: transparent;
+  color: var(--text-2);
+  box-shadow: none;
+  border-radius: var(--r-2);
+}
+.lm-btn--icon:hover:not(:disabled) { background: var(--bg-soft); color: var(--text); }
+
+/* ---------- Card ---------- */
+.lm-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-4);
+  padding: 24px;
+}
+.lm-card--flat   { box-shadow: none; }
+.lm-card--raised { box-shadow: var(--shadow-1); }
+.lm-card--pad-lg { padding: 32px; }
+
+/* ---------- Chip ---------- */
+.lm-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: var(--r-pill);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  background: var(--bg-soft);
+  color: var(--text-2);
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+.lm-chip--indigo  { background: var(--indigo-soft);  color: var(--indigo-deep);  border-color: transparent; }
+.lm-chip--moss    { background: var(--moss-soft);    color: var(--moss-deep);    border-color: transparent; }
+.lm-chip--saffron { background: var(--saffron-soft); color: var(--saffron-deep); border-color: transparent; }
+.lm-chip--coral   { background: var(--coral-soft);   color: var(--coral-deep);   border-color: transparent; }
+.lm-chip--ocean   { background: var(--ocean-soft);   color: var(--ocean-deep);   border-color: transparent; }
+.lm-chip--plum    { background: var(--plum-soft);    color: var(--plum-deep);    border-color: transparent; }
+
+/* ---------- Inputs ---------- */
+.lm-input,
+.lm-textarea {
+  width: 100%;
+  font-family: inherit;
+  font-size: 15px;
+  padding: 14px 16px;
+  border-radius: var(--r-3);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text);
+  outline: none;
+  transition: border 160ms var(--ease-standard), box-shadow 160ms var(--ease-standard);
+}
+.lm-textarea { resize: none; line-height: 1.5; }
+.lm-input:focus, .lm-textarea:focus {
+  border-color: var(--indigo);
+  box-shadow: var(--shadow-focus);
+}
+.lm-input::placeholder, .lm-textarea::placeholder { color: var(--text-4); }
+
+/* Inline blank inside fill-in-the-blank — sits in flow text. */
+.lm-blank {
+  display: inline-block;
+  min-width: 5ch;
+  max-width: 14ch;
+  padding: 2px 6px;
+  margin: 0 4px;
+  border: 0;
+  border-bottom: 2px solid var(--border-strong);
+  background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--text);
+  outline: none;
+  transition: border-color 160ms var(--ease-standard), background 160ms var(--ease-standard);
+}
+.lm-blank:focus { border-bottom-color: var(--indigo); }
+.lm-blank--correct { border-bottom-color: var(--moss); background: var(--moss-soft); }
+.lm-blank--wrong   { border-bottom-color: var(--coral); background: var(--coral-soft); }
+
+/* ---------- Progress ---------- */
+.lm-progress {
+  width: 100%;
+  height: 6px;
+  background: var(--bg-soft);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+  border: 1px solid var(--border-soft);
+}
+.lm-progress__fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--indigo), var(--indigo-glow));
+  border-radius: var(--r-pill);
+  transition: width 400ms var(--ease-decel);
+}
+
+/* ---------- Avatar ---------- */
+.lm-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--indigo-soft), var(--plum-soft));
+  color: var(--indigo-deep);
+  font-weight: 700;
+  border: 1px solid var(--border-soft);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.lm-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.lm-avatar--xs { width: 24px; height: 24px; font-size: 10px; }
+.lm-avatar--sm { width: 32px; height: 32px; font-size: 12px; }
+.lm-avatar--md { width: 40px; height: 40px; font-size: 14px; }
+
+/* ---------- Stat tile (home/learn) ---------- */
+.lm-stat {
+  flex: 1;
+  padding: 12px;
+  border-radius: var(--r-3);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+}
+.lm-stat__value {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-size: 20px;
+  line-height: 1;
+}
+.lm-stat__label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.lm-stat--saffron { background: var(--saffron-soft); color: var(--saffron-deep); }
+.lm-stat--indigo  { background: var(--indigo-soft);  color: var(--indigo-deep); }
+.lm-stat--moss    { background: var(--moss-soft);    color: var(--moss-deep); }
+
+/* ---------- Option list (MCQ / match) ---------- */
+.lm-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  padding: 14px 16px;
+  border-radius: var(--r-3);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 15px;
+  line-height: 1.45;
+  cursor: pointer;
+  transition: border-color 160ms var(--ease-standard), background 160ms var(--ease-standard), opacity 160ms;
+}
+.lm-option:hover:not(:disabled) { border-color: var(--border-strong); }
+.lm-option:disabled              { cursor: default; }
+.lm-option--correct { border: 2px solid var(--moss); background: var(--moss-soft); color: var(--moss-deep); }
+.lm-option--wrong   { border: 2px solid var(--coral); background: var(--coral-soft); color: var(--coral-deep); }
+.lm-option--pending { border: 2px solid var(--indigo); background: var(--indigo-soft); color: var(--indigo-deep); }
+.lm-option--dim     { opacity: 0.45; }
+
+.lm-option__index {
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-4);
+  min-width: 1.5ch;
+}
+
+/* ---------- Reorder row ---------- */
+.lm-reorder {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--r-3);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: border-color 160ms, background 160ms;
+}
+.lm-reorder--correct { border-color: var(--moss); background: var(--moss-soft); }
+.lm-reorder__handle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px; height: 28px;
+  border-radius: var(--r-2);
+  color: var(--text-4);
+  cursor: grab;
+  transition: background 120ms;
+}
+.lm-reorder__handle:hover    { background: var(--bg-soft); color: var(--text-2); }
+.lm-reorder__handle:active   { cursor: grabbing; }
+
+/* ---------- Shake animation (reused from existing system) ---------- */
+@keyframes lm-shake-x {
+  10%, 90% { transform: translateX(-1px); }
+  20%, 80% { transform: translateX( 2px); }
+  30%, 50%, 70% { transform: translateX(-3px); }
+  40%, 60% { transform: translateX( 3px); }
+}
+.lm-shake { animation: lm-shake-x 320ms ease-out; }
