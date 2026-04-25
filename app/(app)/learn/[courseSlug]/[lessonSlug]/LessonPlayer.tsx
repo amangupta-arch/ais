@@ -232,20 +232,33 @@ function Header({
 }) {
   const Icon = audio.enabled ? Volume2 : VolumeX;
   return (
-    <header className="sticky top-0 z-10 bg-white border-b border-ink-200">
+    <header
+      className="sticky top-0 z-10"
+      style={{ background: "var(--surface)", borderBottom: "1px solid var(--border)" }}
+    >
       <div className="mx-auto max-w-2xl px-5 py-3 flex items-center gap-3">
         <Link
           href={`/learn/${courseSlug}`}
-          className="inline-flex items-center justify-center h-8 w-8 rounded-md text-ink-600 hover:text-ink-900 hover:bg-ink-100 transition-colors duration-150 ease-out"
+          className="lm-btn lm-btn--icon"
           aria-label="Back to course"
         >
-          <span aria-hidden>←</span>
+          <span aria-hidden style={{ fontSize: 18 }}>←</span>
         </Link>
-        <TutorAvatar personaId={persona.id} size="sm" />
+        <NovaAvatar persona={persona} />
         <div className="min-w-0 flex-1">
-          <p className="text-[14px] font-semibold text-ink-900 truncate">{lessonTitle}</p>
+          <p
+            className="lm-serif truncate"
+            style={{ fontSize: 16, lineHeight: 1.2, color: "var(--text)" }}
+          >
+            {lessonTitle}
+          </p>
           {lessonSubtitle ? (
-            <p className="text-xs text-ink-500 truncate">{lessonSubtitle}</p>
+            <p
+              className="truncate"
+              style={{ fontSize: 11, color: "var(--text-3)", letterSpacing: "0.02em" }}
+            >
+              {lessonSubtitle}
+            </p>
           ) : null}
         </div>
 
@@ -257,12 +270,12 @@ function Header({
           aria-pressed={audio.enabled}
           aria-label={audio.enabled ? "Turn audio narration off" : "Turn audio narration on"}
           onClick={audio.toggle}
-          className={cn(
-            "inline-flex items-center justify-center h-8 w-8 rounded-md transition-colors duration-150 ease-out",
+          className="lm-btn lm-btn--icon"
+          style={
             audio.enabled
-              ? "bg-accent-50 text-accent-700 hover:bg-accent-100"
-              : "text-ink-600 hover:text-ink-900 hover:bg-ink-100",
-          )}
+              ? { background: "var(--indigo-soft)", color: "var(--indigo-deep)" }
+              : undefined
+          }
         >
           <Icon className="h-4 w-4" />
         </button>
@@ -271,17 +284,41 @@ function Header({
   );
 }
 
+/** Tiny 28px Nova avatar — the tutor stays present in the header but
+ *  doesn't dominate any individual turn's screen real-estate. */
+function NovaAvatar({ persona }: { persona: Persona }) {
+  const url =
+    persona.avatar_url ??
+    (process.env.NEXT_PUBLIC_SUPABASE_URL
+      ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/tutor-avatars/${persona.id}.png`
+      : null);
+  return (
+    <span
+      className="lm-avatar lm-avatar--sm"
+      aria-label={`${persona.name} avatar`}
+      title={persona.name}
+    >
+      {url ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={url} alt="" />
+      ) : (
+        <span aria-hidden>{persona.name.charAt(0)}</span>
+      )}
+    </span>
+  );
+}
+
 const XpChip = ({ ref, value }: { ref: RefObject<HTMLDivElement | null>; value: number }) => (
   <motion.div
     ref={ref}
-    className="inline-flex items-center gap-1 rounded-full bg-accent-50 border border-accent-200 px-2 py-1 text-[12px] font-semibold text-accent-700"
+    className="lm-chip lm-chip--indigo"
     animate={{ scale: value > 0 ? [1, 1.12, 1] : 1 }}
     transition={{ duration: 0.32, ease: EASE_OUT_EXPO }}
     key={value}
     aria-label={`${value} XP earned this lesson`}
   >
     <Zap className="h-3.5 w-3.5" />
-    <span className="font-tabular tabular-nums">{value}</span>
+    <span className="lm-tabular">{value}</span>
   </motion.div>
 );
 
@@ -294,14 +331,11 @@ function StreakChip({ value }: { value: number }) {
       initial={{ scale: 0.8, opacity: 0 }}
       animate={{ scale: hot ? [1, 1.18, 1] : 1, opacity: 1 }}
       transition={{ duration: 0.36, ease: EASE_OUT_EXPO }}
-      className={cn(
-        "inline-flex items-center gap-1 rounded-full border px-2 py-1 text-[12px] font-semibold",
-        hot ? "bg-amber-50 border-amber-300 text-amber-700" : "bg-ink-50 border-ink-200 text-ink-700",
-      )}
+      className={cn("lm-chip", hot ? "lm-chip--saffron" : undefined)}
       aria-label={`${value} correct in a row`}
     >
       <Flame className="h-3.5 w-3.5" />
-      <span className="font-tabular tabular-nums">{value}</span>
+      <span className="lm-tabular">{value}</span>
     </motion.div>
   );
 }
@@ -310,15 +344,15 @@ function ProgressBar({ current, total }: { current: number; total: number }) {
   const pct = total > 0 ? Math.round((current / total) * 100) : 0;
   return (
     <div className="flex items-center gap-3">
-      <div className="flex-1 h-[3px] rounded-sm bg-ink-100 overflow-hidden">
+      <div className="lm-progress flex-1">
         <motion.div
-          className="h-full bg-accent-600"
+          className="lm-progress__fill"
           initial={false}
           animate={{ width: `${pct}%` }}
           transition={{ duration: 0.25, ease: "easeOut" }}
         />
       </div>
-      <span className="text-[11px] text-ink-500 font-tabular tabular-nums">
+      <span className="lm-mono lm-tabular" style={{ fontSize: 11, color: "var(--text-3)" }}>
         {current}/{total}
       </span>
     </div>
