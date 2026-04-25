@@ -1,7 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { DM_Sans, Fraunces, JetBrains_Mono, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "./lumen.css";
 
+// Geist family stays loaded so any not-yet-migrated route keeps its
+// existing typography. New / migrated routes use the Lumen family
+// (Fraunces serif + DM Sans body + JetBrains Mono numerics).
 const geist = Geist({
   subsets: ["latin"],
   variable: "--font-geist",
@@ -11,6 +15,24 @@ const geist = Geist({
 const geistMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-geist-mono",
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
+  display: "swap",
+});
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-fraunces",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
   display: "swap",
 });
 
@@ -30,7 +52,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#FAFAFA",
+  themeColor: "#F7F5F0",
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
@@ -39,8 +61,15 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geist.variable} ${geistMono.variable}`}>
-      <body>{children}</body>
+    <html
+      lang="en"
+      className={`${geist.variable} ${geistMono.variable} ${dmSans.variable} ${fraunces.variable} ${jetbrainsMono.variable}`}
+    >
+      {/* `lm` scopes the Lumen design tokens to the entire app — any
+          page can now use lm-* classes. Pages that haven't been
+          migrated to Lumen visuals yet still keep their existing
+          Tailwind styling (which doesn't reference Lumen tokens). */}
+      <body className="lm">{children}</body>
     </html>
   );
 }
