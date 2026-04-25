@@ -630,26 +630,40 @@ function TextInputBlock({
 
   return (
     <div>
-      <p className="text-[16px] font-semibold text-ink-900">{turn.content.prompt}</p>
+      <p className="lm-eyebrow" style={{ marginBottom: 8 }}>
+        {turn.turn_type === "reflection" ? "reflection" : "your turn"}
+      </p>
+      <h2
+        className="lm-serif"
+        style={{ fontSize: 24, lineHeight: 1.2, color: "var(--text)" }}
+      >
+        {turn.content.prompt}
+      </h2>
       <textarea
+        className="lm-textarea"
         rows={3}
         value={value}
         onChange={(e) => setValue(e.target.value)}
         placeholder={turn.content.placeholder ?? "Write in your own words…"}
         disabled={!isActive}
-        className="mt-3 w-full rounded-md border border-ink-300 bg-white px-3 py-2.5 outline-none focus:border-accent-600 transition-colors duration-150 ease-out resize-none text-[15px]"
+        style={{ marginTop: 20 }}
       />
       {isActive ? (
-        <div className="mt-3 flex items-center justify-between">
-          <span className="text-xs text-ink-500 font-tabular tabular-nums">
+        <div className="flex items-center justify-between" style={{ marginTop: 16 }}>
+          <span
+            className="lm-mono lm-tabular"
+            style={{ fontSize: 12, color: "var(--text-3)" }}
+          >
             {trimmed.length}/{minChars} chars
           </span>
-          <Button
+          <button
+            type="button"
+            className="lm-btn lm-btn--accent"
             onClick={() => onContinue({ xp: turn.xp_reward, source: turn.turn_type })}
             disabled={!canSubmit}
           >
             Submit <ArrowRight className="h-4 w-4" />
-          </Button>
+          </button>
         </div>
       ) : null}
     </div>
@@ -694,30 +708,39 @@ function ExternalExerciseBlock({
 
   return (
     <div>
-      {turn.content.tool ? (
-        <div className="mb-3 inline-flex items-center gap-1.5 rounded-md bg-ink-100 border border-ink-200 px-2.5 py-1 text-xs text-ink-700">
-          opens {turn.content.tool}
-        </div>
-      ) : null}
-      <p className="text-[16px] font-semibold text-ink-900 whitespace-pre-line">
-        {turn.content.instruction}
+      <p className="lm-eyebrow" style={{ marginBottom: 8 }}>
+        {turn.content.tool ? `try in ${turn.content.tool}` : "exercise"}
       </p>
+      <h2
+        className="lm-serif"
+        style={{
+          fontSize: 24,
+          lineHeight: 1.25,
+          color: "var(--text)",
+          whiteSpace: "pre-line",
+        }}
+      >
+        {turn.content.instruction}
+      </h2>
       <textarea
+        className="lm-textarea"
         rows={5}
         value={value}
         onChange={(e) => setValue(e.target.value)}
         placeholder={turn.content.placeholder ?? "Paste here…"}
         disabled={!isActive}
-        className="mt-3 w-full rounded-md border border-ink-300 bg-white px-3 py-2.5 outline-none focus:border-accent-600 transition-colors duration-150 ease-out resize-none text-[15px]"
+        style={{ marginTop: 20 }}
       />
       {isActive ? (
-        <div className="mt-3 flex justify-end">
-          <Button
+        <div className="flex justify-end" style={{ marginTop: 16 }}>
+          <button
+            type="button"
+            className="lm-btn lm-btn--accent"
             onClick={() => onContinue({ xp: turn.xp_reward, source: "exercise" })}
             disabled={!canSubmit}
           >
             Submit <ArrowRight className="h-4 w-4" />
-          </Button>
+          </button>
         </div>
       ) : null}
     </div>
@@ -770,21 +793,49 @@ function PracticeChat({
   const canFinish = messages.some((m) => m.role === "user");
 
   return (
-    <div className="rounded-lg border border-ink-200 bg-white overflow-hidden">
-      <div className="flex items-center gap-2 px-4 py-2.5 bg-ink-50 border-b border-ink-200">
-        <MessagesSquare className="h-4 w-4 text-accent-600" />
-        <p className="text-xs font-medium text-ink-700">
+    <div
+      className="lm-card"
+      style={{ overflow: "hidden", padding: 0 }}
+    >
+      <div
+        className="flex items-center"
+        style={{
+          gap: 8,
+          padding: "10px 16px",
+          background: "var(--bg-soft)",
+          borderBottom: "1px solid var(--border)",
+        }}
+      >
+        <MessagesSquare className="h-4 w-4" style={{ color: "var(--indigo)" }} />
+        <p
+          className="lm-mono"
+          style={{
+            fontSize: 11,
+            fontWeight: 600,
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            color: "var(--text-3)",
+          }}
+        >
           practice sandbox{turn.content.tool ? ` · ${turn.content.tool}-style` : ""}
         </p>
       </div>
 
-      <div className="p-4">
-        <p className="text-[15px] leading-relaxed text-ink-900 whitespace-pre-line">
+      <div style={{ padding: 20 }}>
+        <p
+          className="lm-serif"
+          style={{
+            fontSize: 18,
+            lineHeight: 1.4,
+            color: "var(--text)",
+            whiteSpace: "pre-line",
+          }}
+        >
           {turn.content.instruction}
         </p>
 
         {messages.length > 0 || pending ? (
-          <div className="mt-4 flex flex-col gap-2">
+          <div className="flex flex-col" style={{ gap: 8, marginTop: 16 }}>
             <AnimatePresence initial={false}>
               {messages.map((m, i) => (
                 <motion.div
@@ -794,24 +845,31 @@ function PracticeChat({
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, ease: EASE_OUT_EXPO }}
                 >
-                  <Bubble role={m.role} content={m.content} personaId={persona.id} />
+                  <Bubble role={m.role} content={m.content} persona={persona} />
                 </motion.div>
               ))}
             </AnimatePresence>
             {pending ? (
-              <div className="flex items-start gap-2">
-                <TutorAvatar personaId={persona.id} size="sm" />
+              <div className="flex items-start" style={{ gap: 8 }}>
+                <NovaAvatar persona={persona} />
                 <TypingDots />
               </div>
             ) : null}
           </div>
         ) : null}
 
-        {error ? <p className="mt-2 text-xs text-danger-600">{error}</p> : null}
+        {error ? (
+          <p
+            style={{ marginTop: 8, fontSize: 12, color: "var(--coral-deep)" }}
+          >
+            {error}
+          </p>
+        ) : null}
 
         {isActive ? (
-          <div className="mt-4 flex items-end gap-2">
+          <div className="flex items-end" style={{ gap: 8, marginTop: 16 }}>
             <textarea
+              className="lm-textarea"
               rows={2}
               value={value}
               onChange={(e) => setValue(e.target.value)}
@@ -823,23 +881,29 @@ function PracticeChat({
               }}
               placeholder="Type your prompt…"
               disabled={pending}
-              className="flex-1 rounded-md border border-ink-300 bg-white px-3 py-2 outline-none focus:border-accent-600 transition-colors duration-150 ease-out resize-none text-[15px]"
+              style={{ flex: 1 }}
             />
-            <Button size="md" onClick={send} disabled={pending || value.trim().length === 0}>
+            <button
+              type="button"
+              className="lm-btn lm-btn--accent"
+              onClick={send}
+              disabled={pending || value.trim().length === 0}
+              aria-label="Send"
+            >
               <Send className="h-4 w-4" />
-            </Button>
+            </button>
           </div>
         ) : null}
 
         {isActive && canFinish ? (
-          <div className="mt-3 flex justify-end">
-            <Button
-              variant="secondary"
-              size="sm"
+          <div className="flex justify-end" style={{ marginTop: 12 }}>
+            <button
+              type="button"
+              className="lm-btn lm-btn--secondary lm-btn--sm"
               onClick={() => onContinue({ xp: turn.xp_reward, source: "exercise_practice" })}
             >
               Done — I&apos;ve had enough practice <ArrowRight className="h-4 w-4" />
-            </Button>
+            </button>
           </div>
         ) : null}
       </div>
@@ -901,15 +965,26 @@ function AiConversationBlock({
   const finished = ended || userTurns >= cap;
 
   return (
-    <div className="rounded-lg border border-ink-200 bg-white p-4">
-      <div className="flex items-center gap-2 text-xs text-ink-500">
-        <MessagesSquare className="h-3.5 w-3.5 text-accent-600" />
-        sub-chat with {persona.name} · max <span className="font-tabular tabular-nums">{cap}</span> turns
-      </div>
+    <div className="lm-card" style={{ padding: 20 }}>
+      <p
+        className="lm-mono"
+        style={{
+          fontSize: 11,
+          fontWeight: 600,
+          letterSpacing: "0.08em",
+          textTransform: "uppercase",
+          color: "var(--text-3)",
+        }}
+      >
+        <MessagesSquare className="h-3.5 w-3.5 inline" style={{ color: "var(--indigo)", marginRight: 6, verticalAlign: "-2px" }} />
+        sub-chat with {persona.name} · max <span className="lm-tabular">{cap}</span> turns
+      </p>
 
-      <p className="mt-2 text-xs text-ink-500">Goal: {turn.content.goal}</p>
+      <p style={{ marginTop: 8, fontSize: 12, color: "var(--text-3)" }}>
+        Goal: {turn.content.goal}
+      </p>
 
-      <div className="mt-3 flex flex-col gap-2">
+      <div className="flex flex-col" style={{ gap: 8, marginTop: 16 }}>
         <AnimatePresence initial={false}>
           {messages.map((m, i) => (
             <motion.div
@@ -919,23 +994,28 @@ function AiConversationBlock({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, ease: EASE_OUT_EXPO }}
             >
-              <Bubble role={m.role} content={m.content} personaId={persona.id} />
+              <Bubble role={m.role} content={m.content} persona={persona} />
             </motion.div>
           ))}
         </AnimatePresence>
         {pending ? (
-          <div className="flex items-start gap-2">
-            <TutorAvatar personaId={persona.id} size="sm" />
+          <div className="flex items-start" style={{ gap: 8 }}>
+            <NovaAvatar persona={persona} />
             <TypingDots />
           </div>
         ) : null}
       </div>
 
-      {error ? <p className="mt-2 text-xs text-danger-600">{error}</p> : null}
+      {error ? (
+        <p style={{ marginTop: 8, fontSize: 12, color: "var(--coral-deep)" }}>
+          {error}
+        </p>
+      ) : null}
 
       {!finished ? (
-        <div className="mt-3 flex items-end gap-2">
+        <div className="flex items-end" style={{ gap: 8, marginTop: 16 }}>
           <textarea
+            className="lm-textarea"
             rows={2}
             value={value}
             onChange={(e) => setValue(e.target.value)}
@@ -947,17 +1027,27 @@ function AiConversationBlock({
             }}
             placeholder="Reply…"
             disabled={!isActive || pending}
-            className="flex-1 rounded-md border border-ink-300 bg-white px-3 py-2 outline-none focus:border-accent-600 transition-colors duration-150 ease-out resize-none text-[15px]"
+            style={{ flex: 1 }}
           />
-          <Button size="md" onClick={send} disabled={!isActive || pending || value.trim().length === 0}>
+          <button
+            type="button"
+            className="lm-btn lm-btn--accent"
+            onClick={send}
+            disabled={!isActive || pending || value.trim().length === 0}
+            aria-label="Send"
+          >
             <Send className="h-4 w-4" />
-          </Button>
+          </button>
         </div>
       ) : isActive ? (
-        <div className="mt-4 flex justify-end">
-          <Button onClick={() => onContinue({ xp: turn.xp_reward, source: "ai_conversation" })}>
+        <div className="flex justify-end" style={{ marginTop: 20 }}>
+          <button
+            type="button"
+            className="lm-btn lm-btn--accent"
+            onClick={() => onContinue({ xp: turn.xp_reward, source: "ai_conversation" })}
+          >
             Continue <ArrowRight className="h-4 w-4" />
-          </Button>
+          </button>
         </div>
       ) : null}
     </div>
@@ -965,21 +1055,44 @@ function AiConversationBlock({
 }
 
 function Bubble({
-  role, content, personaId,
-}: { role: ChatMessage["role"]; content: string; personaId: Persona["id"] }) {
+  role, content, persona,
+}: { role: ChatMessage["role"]; content: string; persona: Persona }) {
   if (role === "assistant") {
     return (
-      <div className="flex items-start gap-2">
-        <TutorAvatar personaId={personaId} size="sm" />
-        <div className="max-w-[85%] rounded-md bg-ink-50 border border-ink-200 px-3 py-2 text-[15px] leading-relaxed text-ink-900 whitespace-pre-line">
+      <div className="flex items-start" style={{ gap: 8 }}>
+        <NovaAvatar persona={persona} />
+        <div
+          style={{
+            maxWidth: "85%",
+            background: "var(--bg-soft)",
+            border: "1px solid var(--border)",
+            borderRadius: "var(--r-3)",
+            padding: "10px 14px",
+            fontSize: 15,
+            lineHeight: 1.5,
+            color: "var(--text)",
+            whiteSpace: "pre-line",
+          }}
+        >
           {content}
         </div>
       </div>
     );
   }
   return (
-    <div className="flex items-start gap-2 justify-end">
-      <div className="max-w-[85%] rounded-md bg-accent-600 text-white px-3 py-2 text-[15px] leading-relaxed whitespace-pre-line">
+    <div className="flex items-start justify-end" style={{ gap: 8 }}>
+      <div
+        style={{
+          maxWidth: "85%",
+          background: "var(--indigo)",
+          color: "#fff",
+          borderRadius: "var(--r-3)",
+          padding: "10px 14px",
+          fontSize: 15,
+          lineHeight: 1.5,
+          whiteSpace: "pre-line",
+        }}
+      >
         {content}
       </div>
     </div>
@@ -993,6 +1106,12 @@ function MediaBlock({
   isActive: boolean;
   onContinue: (opts?: { xp?: number; source?: string }) => void;
 }) {
+  const mediaStyle: React.CSSProperties = {
+    width: "100%",
+    borderRadius: "var(--r-3)",
+    border: "1px solid var(--border)",
+    aspectRatio: turn.content.aspect_ratio,
+  };
   return (
     <div>
       {turn.content.kind === "image" ? (
@@ -1000,25 +1119,33 @@ function MediaBlock({
         <img
           src={turn.content.url}
           alt={turn.content.caption ?? ""}
-          className="w-full rounded-lg border border-ink-200"
-          style={{ aspectRatio: turn.content.aspect_ratio }}
+          style={mediaStyle}
         />
       ) : (
-        <video
-          src={turn.content.url}
-          controls
-          className="w-full rounded-lg border border-ink-200"
-          style={{ aspectRatio: turn.content.aspect_ratio }}
-        />
+        <video src={turn.content.url} controls style={mediaStyle} />
       )}
       {turn.content.caption ? (
-        <p className="mt-2 text-sm text-ink-600">{turn.content.caption}</p>
+        <p
+          className="lm-serif"
+          style={{
+            marginTop: 8,
+            fontSize: 14,
+            fontStyle: "italic",
+            color: "var(--text-3)",
+          }}
+        >
+          {turn.content.caption}
+        </p>
       ) : null}
       {isActive ? (
-        <div className="mt-3 flex justify-end">
-          <Button onClick={() => onContinue({ xp: turn.xp_reward, source: "media" })}>
+        <div className="flex justify-end" style={{ marginTop: 16 }}>
+          <button
+            type="button"
+            className="lm-btn lm-btn--accent"
+            onClick={() => onContinue({ xp: turn.xp_reward, source: "media" })}
+          >
             Continue <ArrowRight className="h-4 w-4" />
-          </Button>
+          </button>
         </div>
       ) : null}
     </div>
