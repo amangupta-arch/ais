@@ -179,7 +179,18 @@ export function FillInTheBlankBlock({
       </AnimatePresence>
 
       {isActive ? (
-        <div className="flex justify-end" style={{ gap: 8, marginTop: 24 }}>
+        <div className="flex items-center" style={{ gap: 8, marginTop: 24 }}>
+          {!done ? (
+            <button
+              type="button"
+              className="lm-btn lm-btn--ghost lm-btn--sm"
+              onClick={() => onContinue({ xp: 0, source: "skip:fill_in_the_blank" })}
+              style={{ color: "var(--text-3)" }}
+            >
+              Skip
+            </button>
+          ) : null}
+          <div style={{ flex: 1 }} />
           {!done ? (
             <button
               type="button"
@@ -325,7 +336,18 @@ export function DragToReorderBlock({
       </div>
 
       {isActive ? (
-        <div className="flex justify-end" style={{ gap: 8, marginTop: 24 }}>
+        <div className="flex items-center" style={{ gap: 8, marginTop: 24 }}>
+          {!done ? (
+            <button
+              type="button"
+              className="lm-btn lm-btn--ghost lm-btn--sm"
+              onClick={() => onContinue({ xp: 0, source: "skip:drag_to_reorder" })}
+              style={{ color: "var(--text-3)" }}
+            >
+              Skip
+            </button>
+          ) : null}
+          <div style={{ flex: 1 }} />
           {!done ? (
             <button type="button" className="lm-btn lm-btn--accent" onClick={check}>
               Check order <Check className="h-4 w-4" />
@@ -555,15 +577,28 @@ export function TapToMatchBlock({
         </div>
       ) : null}
 
-      {isActive && allDone ? (
-        <div className="flex justify-end" style={{ marginTop: 16 }}>
-          <button
-            type="button"
-            className="lm-btn lm-btn--accent"
-            onClick={() => onContinue({ xp: turn.xp_reward, source: "tap_to_match" })}
-          >
-            Continue <ArrowRight className="h-4 w-4" />
-          </button>
+      {isActive ? (
+        <div className="flex items-center" style={{ marginTop: 16, gap: 8 }}>
+          {!allDone ? (
+            <button
+              type="button"
+              className="lm-btn lm-btn--ghost lm-btn--sm"
+              onClick={() => onContinue({ xp: 0, source: "skip:tap_to_match" })}
+              style={{ color: "var(--text-3)" }}
+            >
+              Skip
+            </button>
+          ) : null}
+          <div style={{ flex: 1 }} />
+          {allDone ? (
+            <button
+              type="button"
+              className="lm-btn lm-btn--accent"
+              onClick={() => onContinue({ xp: turn.xp_reward, source: "tap_to_match" })}
+            >
+              Continue <ArrowRight className="h-4 w-4" />
+            </button>
+          ) : null}
         </div>
       ) : null}
     </div>

@@ -575,15 +575,28 @@ function McqBlock({
           );
         })}
       </ul>
-      {done && isActive ? (
-        <div className="flex justify-end" style={{ marginTop: 24 }}>
-          <button
-            type="button"
-            className="lm-btn lm-btn--accent"
-            onClick={() => onContinue({ xp: turn.xp_reward, source: "mcq" })}
-          >
-            Continue <ArrowRight className="h-4 w-4" />
-          </button>
+      {isActive ? (
+        <div className="flex items-center" style={{ marginTop: 24, gap: 8 }}>
+          {!done ? (
+            <button
+              type="button"
+              className="lm-btn lm-btn--ghost lm-btn--sm"
+              onClick={() => onContinue({ xp: 0, source: "skip:mcq" })}
+              style={{ color: "var(--text-3)" }}
+            >
+              Skip
+            </button>
+          ) : null}
+          <div style={{ flex: 1 }} />
+          {done ? (
+            <button
+              type="button"
+              className="lm-btn lm-btn--accent"
+              onClick={() => onContinue({ xp: turn.xp_reward, source: "mcq" })}
+            >
+              Continue <ArrowRight className="h-4 w-4" />
+            </button>
+          ) : null}
         </div>
       ) : null}
     </div>
