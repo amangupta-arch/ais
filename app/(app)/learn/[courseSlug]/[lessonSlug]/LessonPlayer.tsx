@@ -1166,13 +1166,52 @@ function CheckpointBlock({
   }, [turn.id]);
 
   return (
-    <div className="rounded-lg border border-accent-200 bg-accent-50 p-5">
-      <div className="flex items-center gap-2">
-        <Sparkles className="h-4 w-4 text-accent-700" />
-        <p className="eyebrow text-accent-700">checkpoint</p>
+    <div
+      className="lm-card"
+      style={{
+        background: "var(--indigo-soft)",
+        borderColor: "transparent",
+        padding: 28,
+      }}
+    >
+      <div
+        className="flex items-center"
+        style={{ gap: 6, color: "var(--indigo-deep)", marginBottom: 6 }}
+      >
+        <Sparkles className="h-4 w-4" />
+        <p
+          className="lm-mono"
+          style={{
+            fontSize: 11,
+            fontWeight: 600,
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+          }}
+        >
+          checkpoint
+        </p>
       </div>
-      <p className="mt-1.5 font-bold text-xl text-ink-900">{turn.content.title}</p>
-      <p className="mt-2 text-ink-800 leading-relaxed whitespace-pre-line">{turn.content.summary}</p>
+      <p
+        className="lm-serif"
+        style={{
+          fontSize: 28,
+          lineHeight: 1.2,
+          color: "var(--indigo-deep)",
+        }}
+      >
+        {turn.content.title}
+      </p>
+      <p
+        style={{
+          marginTop: 12,
+          fontSize: 15,
+          lineHeight: 1.6,
+          color: "var(--text-2)",
+          whiteSpace: "pre-line",
+        }}
+      >
+        {turn.content.summary}
+      </p>
     </div>
   );
 }
@@ -1211,23 +1250,39 @@ function CompleteCta({
 
   if (awarded !== null) {
     return (
-      <p className="text-center text-ink-600 text-sm">
-        Saved · <span className="font-tabular tabular-nums">+{awarded}</span> XP · streak bumped.
+      <p
+        className="lm-serif"
+        style={{
+          textAlign: "center",
+          fontSize: 16,
+          fontStyle: "italic",
+          color: "var(--moss-deep)",
+        }}
+      >
+        Saved · <span className="lm-tabular">+{awarded}</span> XP · streak bumped.
       </p>
     );
   }
 
   return (
-    <div className="flex flex-col items-center gap-2 pb-4">
-      <Button size="lg" onClick={onClick} disabled={pending}>
+    <div className="flex flex-col items-center" style={{ gap: 8, paddingBottom: 16 }}>
+      <button
+        type="button"
+        className="lm-btn lm-btn--accent lm-btn--lg lm-btn--full"
+        onClick={onClick}
+        disabled={pending}
+        style={{ maxWidth: 360 }}
+      >
         {pending
           ? "Saving…"
           : alreadyCompleted
             ? "Back to home"
             : `Complete lesson · +${lessonXpReward} XP`}
         <ArrowRight className="h-4 w-4" />
-      </Button>
-      {error ? <span className="text-sm text-danger-600">{error}</span> : null}
+      </button>
+      {error ? (
+        <span style={{ fontSize: 13, color: "var(--coral-deep)" }}>{error}</span>
+      ) : null}
     </div>
   );
 }
