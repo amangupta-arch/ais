@@ -163,7 +163,7 @@ export function LessonPlayer(props: Props) {
       onXpLanded={handleXpLanded}
       onStreakChange={handleStreakChange}
     >
-      <div className="min-h-[100dvh] flex flex-col">
+      <div className="lm-page flex flex-col">
         <Header
           persona={persona}
           lessonTitle={lessonTitle}
@@ -176,27 +176,31 @@ export function LessonPlayer(props: Props) {
         />
 
         <div ref={scrollerRef} className="flex-1 overflow-y-auto">
-          <div className="mx-auto max-w-2xl px-5 py-5 flex flex-col gap-5">
+          <div className="mx-auto max-w-2xl px-5 py-6 flex flex-col gap-5">
             <ProgressBar current={revealedCount} total={turns.length} />
 
-            <AnimatePresence initial={false}>
-              {turns.slice(0, revealedCount).map((turn, i) => (
+            {/* One active turn at a time — previous turns slide off via
+                AnimatePresence so the screen never accumulates a long
+                transcript. Keyed by the active turn's id so React mounts
+                a fresh subtree per advance. */}
+            <AnimatePresence mode="wait" initial={false}>
+              {active ? (
                 <motion.div
-                  key={turn.id ?? i}
-                  layout
-                  initial={{ opacity: 0, y: 8 }}
+                  key={active.id}
+                  initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.42, ease: EASE_OUT_EXPO }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.36, ease: EASE_OUT_EXPO }}
                 >
                   <TurnView
-                    turn={turn}
+                    turn={active}
                     persona={persona}
                     audio={audio}
-                    isActive={i === revealedCount - 1}
+                    isActive
                     onContinue={goNext}
                   />
                 </motion.div>
-              ))}
+              ) : null}
             </AnimatePresence>
 
             {onLastTurn && active?.turn_type === "checkpoint" ? (
