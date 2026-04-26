@@ -432,6 +432,17 @@ export function TapToMatchBlock({
   const [wrongPair, setWrongPair] = useState<{ left?: string; right?: string } | null>(null);
   const xpAwardedRef = useRef(false);
 
+  // Shuffle the right column so the puzzle isn't trivially "match top-to-
+  // top". Authors write `right` in the same order as `pairs`, which lines
+  // up with `left` 1:1 — without this, the user just clicks down both
+  // columns. Left stays in authored order (typically meaningful, e.g.
+  // RTCC). seededShuffle is keyed off turn.id so the same turn always
+  // presents the same shuffled order — no jitter on re-render or revisit.
+  const shuffledRight = useMemo(
+    () => seededShuffle(turn.content.right, turn.id),
+    [turn.content.right, turn.id],
+  );
+
   const isCorrectPair = (l: string, r: string) =>
     turn.content.pairs.some(([pl, pr]) => pl === l && pr === r);
 
@@ -541,7 +552,7 @@ export function TapToMatchBlock({
           })}
         </ul>
         <ul className="flex flex-col" style={{ gap: 8 }}>
-          {turn.content.right.map((it) => {
+          {shuffledRight.map((it) => {
             const locked = lockedRight(it.id);
             return (
               <li key={it.id}>
