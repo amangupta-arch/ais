@@ -6,121 +6,145 @@ turns:
   - type: tutor_message
     persona: nova
     text: |
-      Yesterday you learned the field — *NLP*, teaching computers to handle language.
+      Yesterday: NLP — teaching computers to handle language.
 
-      Today, the part everyone wants to know about. **LLMs.** ChatGPT. Claude. Gemini. The shiny stuff.
+      Today: the part everyone wants to know about.
 
-      Here's the secret nobody tells you, in one line:
-
-      *An LLM is just NLP done at a scale that nobody believed would work.*
-
-      Same field. Same goal. Same techniques (mostly). Just… way more of everything. By the end of this lesson, you'll know exactly which two numbers make a model "large", and why the wild capabilities of ChatGPT *emerged* from cranking those numbers up.
+      *LLMs.* ChatGPT. Claude. Gemini. The shiny stuff.
 
   - type: tutor_message
     persona: nova
     text: |
-      "Large" comes from two numbers. Both are uncomfortable to look at.
+      The secret nobody tells you, in one line:
+
+      *An LLM is just NLP done at a scale that nobody believed would work.*
+
+      Same field. Same goal. Same techniques. Just way more of everything.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      "Large" comes from two numbers. Both are uncomfortable.
 
       *Number 1 — Parameters.*
 
-      Think of parameters as the dials inside the model. Each one is a tiny knob the model adjusted during training to predict the next word better.
+      Think of parameters as dials inside the model. Each one is a tiny knob the model adjusted during training.
 
-      A small NLP model from 2015 might have had *a few million* dials.
+      A 2015 NLP model had a few million dials.
 
-      - GPT-2 (2019) — 1.5 *billion* parameters.
-      - GPT-3 (2020) — 175 *billion*.
-      - GPT-4 (2023) — estimated to be over 1 *trillion*.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Modern numbers:
 
-      Read those numbers slowly. From 1.5 billion to 1 trillion in 4 years. That's not improvement. That's a phase change.
+      - GPT-2 (2019) — 1.5 *billion* parameters
+      - GPT-3 (2020) — 175 *billion*
+      - GPT-4 (2023) — over 1 *trillion* (estimated)
+
+      From 1.5 billion to 1 trillion in 4 years. Not improvement. A phase change.
 
   - type: tutor_message
     persona: nova
     text: |
       *Number 2 — Training tokens.*
 
-      Tokens, you'll meet properly in the next lesson — the chunks the model reads. Roughly ¾ of an English word each.
+      Tokens, you'll meet next lesson — the chunks the model reads.
 
-      How many tokens does it take to train a modern LLM?
-
-      Roughly *the entire public internet*. Plus most books ever digitised. Plus every public scientific paper. Plus most of GitHub. Plus YouTube transcripts. Plus, plus, plus.
-
-      We're talking *trillions of tokens*. If you read aloud non-stop, 24/7, you'd take 30,000 years to get through what GPT-4 read.
-
-      That's the homework an LLM does *before* you ever type a single message to it.
+      How many to train a modern LLM? Roughly *the entire public internet*. Plus most books. Plus most of GitHub. Plus YouTube transcripts.
 
   - type: tutor_message
     persona: nova
     text: |
-      An analogy that helps make sense of why this works.
+      We're talking *trillions of tokens*.
 
-      Imagine a child who, from age 0, did nothing but read books, websites, papers, and conversations. Round the clock. For 30,000 years.
+      Read aloud non-stop, 24/7? You'd take 30,000 years to get through what GPT-4 read.
 
-      Would that child develop:
+      That's the homework an LLM does *before* you ever type a message.
 
-      - A perfect grasp of grammar? Probably.
-      - Enormous general knowledge? Yes.
-      - The ability to reason, joke, code, write poetry, summarise meetings? Surprisingly — *yes*. Patterns you've never been taught directly start clicking when you've seen enough of them.
+  - type: tutor_message
+    persona: nova
+    text: |
+      An analogy.
 
-      That's it. That's the entire "secret sauce" of an LLM. *Just keep reading more text and predicting what comes next.*
+      Imagine a child who, from age 0, did nothing but read books, websites, conversations. Round the clock. For 30,000 years.
 
-      No magical reasoning module. No hand-coded knowledge base. Just an obscene volume of text + a model big enough to hold the patterns it absorbs.
+      Would they develop perfect grammar, vast knowledge, the ability to reason and joke?
+
+      Surprisingly — yes.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      That's the entire "secret sauce" of an LLM.
+
+      *Just keep reading more text and predicting what comes next.*
+
+      No magical reasoning module. No hand-coded knowledge. Just an obscene volume of text + a model big enough to hold the patterns.
 
   - type: mcq
     xp: 15
-    question: "When people say a model is 'larger', what's the headline number they're talking about?"
+    question: "When people say a model is 'larger', what's the headline number?"
     options:
       - id: a
         text: "It uses more memory on your laptop"
         is_correct: false
         rationale: "Memory follows from size, but it's not the headline number people quote."
       - id: b
-        text: "It has more parameters — more internal dials it tuned during training"
+        text: "It has more parameters — internal dials it tuned during training"
         is_correct: true
-        rationale: "Right. 'Large' = parameter count. GPT-3: 175B. GPT-4: estimated 1T+. Each parameter is a knob trained to predict text."
+        rationale: "Right. 'Large' = parameter count. Each parameter is a knob trained to predict text."
       - id: c
         text: "It can answer in more languages"
         is_correct: false
-        rationale: "Bigger models DO speak more languages well, but 'large' refers specifically to parameters, not language coverage."
+        rationale: "Bigger models speak more languages well, but 'large' refers specifically to parameters."
       - id: d
         text: "It costs more per query"
         is_correct: false
-        rationale: "Cost is downstream — high because the model is large. Not the definition itself."
+        rationale: "Cost is downstream — high because the model is large. Not the definition."
 
   - type: tutor_message
     persona: nova
     text: |
-      Now the wild part nobody saw coming. The bit that separates an *NLP model* from an *LLM*.
+      Now the wild part nobody saw coming.
+
+      Around a certain size threshold, LLMs started doing things they were *never explicitly taught*.
 
       It's called *emergent ability*.
 
-      Around a certain size threshold, LLMs started doing things they were *never explicitly taught*:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Things that suddenly emerged at scale:
 
-      - Solving multi-step word problems.
-      - Writing working code in a language they'd barely seen.
-      - Explaining the punchline of a joke.
-      - Translating between two languages where neither appeared much in training.
-      - Following instructions phrased in totally novel ways.
+      - Solving multi-step word problems
+      - Writing working code
+      - Explaining a joke's punchline
+      - Translating between rare language pairs
+      - Following novel instructions
 
-      Smaller models couldn't. The same architecture, same training method, just *bigger*, could.
-
-      It was the closest thing to magic this field has ever produced. And nobody fully understands why it works at the size it does.
+      Smaller models couldn't. Same architecture, just *bigger*, could.
 
   - type: tutor_message
     persona: nova
     text: |
-      Here's the tell-tale chart of emergent ability.
+      Here's the chart.
 
-      Pick a hard task — say, three-digit multiplication. Plot model accuracy vs. model size.
+      Pick a hard task — say, three-digit multiplication. Plot accuracy vs. model size.
 
-      For tiny models: 0% accuracy. Useless.
-      For small models: still 0%. Useless.
-      For medium models: still 0%. Useless.
-      For *large* models: still 0%. Useless.
-      Then suddenly — somewhere past 60-100 billion parameters — it leaps to 70%+ accuracy.
+      Tiny models: 0%. Small models: 0%. Medium models: 0%.
 
-      Researchers call this a *phase transition*. There's no smooth ramp. The capability appears *suddenly* once the model crosses a size threshold.
+      Then suddenly past 60-100B parameters: 70%+.
 
-      This is why ChatGPT (2022) felt like such a step change from anything before it. GPT-3.5 had crossed enough of these thresholds in enough domains to feel like talking to a competent assistant. The same techniques used to be merely useful. At scale, they became something else.
+      Researchers call it a *phase transition*.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      No smooth ramp. The capability appears *suddenly* once the model crosses a size threshold.
+
+      That's why ChatGPT (2022) felt like such a step change. GPT-3.5 had crossed enough thresholds in enough domains to feel like a competent assistant.
+
+      Same techniques. Different scale.
 
   - type: tap_to_match
     xp: 15
@@ -133,16 +157,16 @@ turns:
       - id: llama8b
         label: "Llama 3 8B (2024)"
       - id: gpt4
-        label: "GPT-4 (2023, estimated)"
+        label: "GPT-4 (estimated)"
     right:
       - id: smallish
         label: "1.5 billion — phone-sized today"
       - id: small
         label: "8 billion — runs on a good laptop"
       - id: medium
-        label: "175 billion — a small cluster of GPUs"
+        label: "175 billion — small GPU cluster"
       - id: huge
-        label: "1+ trillion — only a giant datacenter"
+        label: "1+ trillion — giant datacenter"
     pairs:
       - [gpt2, smallish]
       - [llama8b, small]
@@ -154,41 +178,75 @@ turns:
     text: |
       Two myths to clear up.
 
-      *Myth: "Bigger is always better."*
+      *Myth 1 — "Bigger is always better."*
 
-      Up to a point. Past that point, you hit *diminishing returns*. Going from 1B → 100B parameters changes everything. Going from 100B → 1T parameters? Useful, but the jump is much smaller, and the cost is enormous.
+      Up to a point. Past that, *diminishing returns*.
 
-      That's why a lot of recent progress isn't just "make it bigger" — it's *better data*, *better fine-tuning*, *better prompting* (lessons 06 and 07). A 70B model with great training can outperform a 200B model with sloppy training. Size matters; it's not the only thing that does.
-
-      Also — bigger models are slower and pricier per query. There's a reason your phone doesn't ship with GPT-4 inside.
+      1B → 100B parameters changes everything. 100B → 1T? Useful, but smaller jump and enormous cost.
 
   - type: tutor_message
     persona: nova
     text: |
-      *Myth: "An LLM was programmed to chat."*
+      That's why recent progress isn't just "make it bigger."
 
-      Really, deeply, this is the misunderstanding to demolish. *No one programmed an LLM to chat.*
+      It's *better data*, *better fine-tuning*, *better prompting*. A 70B model with great training can outperform a 200B model trained sloppily.
 
-      An LLM was trained to do *one* thing, billions of times: *given the text so far, predict the next word.* That's its only goal. Predict next word. Predict next word. Predict next word.
+      Size matters. It's not the only thing.
 
-      Out of that simple game emerges grammar, knowledge, reasoning, code, jokes, translation, conversation.
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Myth 2 — "An LLM was programmed to chat."*
 
-      In lesson 06 we'll see that being chatty and helpful is a *separate* training step bolted on after the main one. The base LLM doesn't "know" it's a chatbot. It just predicts plausible next words extremely well, and "answer the user's question" is a kind of plausible next-word task.
+      No one programmed an LLM to chat.
+
+      An LLM was trained to do *one* thing, billions of times: *given the text so far, predict the next word.*
+
+      That's its only goal. Predict next word.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Out of that simple game emerges grammar, knowledge, reasoning, code, jokes, conversation.
+
+      Lesson 06: chattiness is a *separate* training step bolted on after the main one.
 
       Mind-bending, but true. Predict next word, at trillion-token scale, gives you everything else.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      One more thing about scale that's worth knowing.
+
+      *Compute scaling laws.*
+
+      Researchers found that LLM quality improves predictably as you scale 3 things together: parameters, training data, and compute (GPU-hours).
+
+      Double all three → measurably better model. Up to a point.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      That's why "next-gen models" announcements all sound similar.
+
+      *"Trained on more tokens. Bigger parameter count. Used 5× more compute."*
+
+      It's the same recipe, scaled up.
+
+      The interesting part is: when do we hit the ceiling? Nobody knows yet.
 
   - type: drag_to_reorder
     xp: 15
     prompt: "Drag these into chronological order — oldest to newest."
     items:
       - id: gpt2
-        label: "GPT-2 — 1.5B parameters, world thinks 'cute toy'"
+        label: "GPT-2 — 1.5B params, world thinks 'cute toy'"
       - id: gpt3
-        label: "GPT-3 — 175B parameters, researchers go 'wait what'"
+        label: "GPT-3 — 175B params, researchers go 'wait what'"
       - id: chatgpt
-        label: "ChatGPT launches — 100M users in 2 months"
+        label: "ChatGPT — 100M users in 2 months"
       - id: gpt4
-        label: "GPT-4 — multimodal, 1T+ parameters"
+        label: "GPT-4 — multimodal, 1T+ params"
     correct_order: [gpt2, gpt3, chatgpt, gpt4]
 
   - type: exercise
@@ -197,21 +255,19 @@ turns:
     instruction: |
       Test emergent ability with your own eyes.
 
-      Open ChatGPT (or Claude, Gemini — any modern LLM). Ask it to do *3* very different things in a single conversation:
+      Open ChatGPT. Ask 3 wildly different things in one chat:
 
-      1. *"Solve this — if a train leaves Mumbai at 2pm at 80km/h and another leaves Pune at 3pm at 100km/h, when do they meet?"*
-      2. *"Write a 5-line Python script that prints the first 10 prime numbers."*
-      3. *"Explain why the joke 'I told my dog a joke about UDP, but he didn't get it' is funny to a programmer."*
+      1. "Solve: train leaves Mumbai 2pm at 80km/h, another leaves Pune 3pm at 100km/h. When meet?"
+      2. "Write a 5-line Python script printing the first 10 primes."
+      3. "Why is 'I told my dog a UDP joke but he didn't get it' funny to a programmer?"
 
-      One model. Three completely different skills. Nobody programmed any of them in. They emerged from scale.
-
-      Paste the answer to whichever task surprised you most.
-    placeholder: "Paste the model's response here..."
+      Paste the answer that surprised you most.
+    placeholder: "Paste here..."
 
   - type: fill_in_the_blank
     xp: 15
     prompt: "Lock in the two numbers that define an LLM."
-    template: "An LLM is 'large' because of two things — billions of {{params}} and trillions of training {{tokens}}. Past a size threshold, capabilities {{emerge}} that nobody explicitly taught."
+    template: "An LLM is 'large' because of billions of {{params}} and trillions of training {{tokens}}. Past a threshold, capabilities {{emerge}} that nobody taught."
     answers:
       - id: params
         accepted: [parameters, params, parameter]
@@ -219,30 +275,30 @@ turns:
         accepted: [tokens, words, token]
       - id: emerge
         accepted: [emerge, emerged, appear, appeared]
-    hint: "First blank: the dials. Second blank: the chunks of text. Third blank: a single verb meaning 'show up unexpectedly'."
+    hint: "First: the dials. Second: the chunks of text. Third: a verb meaning 'show up unexpectedly'."
 
   - type: ai_conversation
     xp: 15
-    goal: "User explains the LLM concept back in their own words to a coach who sharpens it."
+    goal: "User explains the LLM concept back in their own words."
     max_turns: 4
     success_criteria: "User defines what makes an LLM 'large' and gives one example of an emergent ability."
     starter_text: |
-      Imagine your friend asks you over chai: *"What actually makes ChatGPT special vs older AI?"*
+      Imagine a friend asks over chai: *"What actually makes ChatGPT special vs older AI?"*
 
       Try answering in 3-4 sentences. I'll give you one tweak to make it sharper.
     system_prompt: |
-      You are Nova, a warm but direct coach. The user just learned that LLMs are NLP models scaled to billions of parameters and trillions of training tokens, and that capabilities like reasoning and code-writing *emerge* from that scale.
+      You are Nova, a warm but direct coach. The user just learned LLMs are NLP models scaled to billions of params and trillions of training tokens, with capabilities that *emerge* from that scale.
 
       Step 1: Read the user's friend-explanation.
-      Step 2: Affirm what they got right (be specific). Then sharpen ONE thing — most often, point out whether they captured the *emergence* idea or just the size.
+      Step 2: Affirm what they got right (be specific). Sharpen ONE thing — most often, point out whether they captured *emergence* or just size.
       Step 3: Affirm and close with <END/>.
 
-      Keep replies under 60 words. Speak like a coach. No bullet lists.
+      Replies under 50 words. Coach, not textbook. No bullet lists.
 
   - type: reflection
     xp: 5
-    prompt: "Has any LLM ever genuinely surprised you with something it could do? One sentence."
-    placeholder: "It debugged my Python in 2 seconds, wrote a wedding speech, explained a Hindi pun..."
+    prompt: "Has any LLM genuinely surprised you with something it could do? One sentence."
+    placeholder: "It debugged my Python in 2 seconds, wrote a wedding speech..."
 
   - type: checkpoint
     xp: 10
@@ -250,8 +306,8 @@ turns:
     summary: |
       An LLM is an NLP model scaled to billions of *parameters* trained on trillions of *tokens*.
 
-      Past a size threshold, capabilities *emerge* — math, code, reasoning, jokes — that nobody hand-coded. That's what makes ChatGPT feel almost magical, even though under the hood it's just predicting the next token, very well.
+      Past a threshold, capabilities *emerge* — math, code, reasoning, jokes — that nobody hand-coded.
 
-      Bigger isn't *always* better (diminishing returns) and an LLM wasn't "programmed to chat" (lesson 06 will show how chattiness was added later).
+      Bigger isn't always better (diminishing returns). LLMs weren't "programmed to chat" (next: lesson 06).
 
-      Next up — what's a *token*, anyway? And why does writing in Hindi cost you 5× more?
+      Next — what's a *token*?

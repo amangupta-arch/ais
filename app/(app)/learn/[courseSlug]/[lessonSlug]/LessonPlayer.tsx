@@ -233,6 +233,8 @@ export function LessonPlayer(props: Props) {
                 className="lm-btn lm-btn--icon"
                 style={{
                   flexShrink: 0,
+                  background: canGoBack ? "var(--ocean-soft)" : undefined,
+                  color: canGoBack ? "var(--ocean-deep)" : undefined,
                   opacity: canGoBack ? 1 : 0.35,
                   cursor: canGoBack ? "pointer" : "not-allowed",
                 }}

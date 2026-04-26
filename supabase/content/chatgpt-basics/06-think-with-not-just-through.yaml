@@ -10,15 +10,34 @@ turns:
 
       You've learned RTCC. Custom Instructions. Custom GPTs. Iteration. How to spot hallucinations.
 
-      That's enough to make ChatGPT *useful*. But there's one more shift that turns it from useful → *transformative* in your work and life.
+      That's enough to make ChatGPT *useful*.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      But there's one more shift that turns ChatGPT from useful → *transformative*.
 
       The shift is in how you *think about* ChatGPT.
 
-      Most people use it as an *answer machine*: send question, receive answer. Tool. Vending machine.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Most people use it as an *answer machine*.
 
-      Pros use it as a *thinking partner*: send half-formed idea, get pushed back on, sharpen, refine, sometimes change their mind entirely. Collaborator. Sparring partner.
+      Send question, receive answer. Tool. Vending machine.
 
-      Same model. Wildly different relationship. By the end of this lesson you'll have 3 patterns that move ChatGPT from "tool" to "thought-partner". Plus one practice you'll actually use this week.
+      Pros use it as a *thinking partner*.
+
+      Send half-formed idea. Get pushed back on. Sharpen. Sometimes change your mind entirely.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Same model. Wildly different relationship.
+
+      By the end of this lesson you'll have 3 patterns that move ChatGPT from "tool" to "thought-partner."
+
+      Plus one practice you'll actually use this week.
 
   - type: tutor_message
     persona: nova
@@ -26,18 +45,32 @@ turns:
       What's the difference, in practice?
 
       *Vending machine mode:*
+
       You: "Should I take this new job offer?"
-      ChatGPT: gives a balanced list of pros and cons.
+      ChatGPT: balanced list of pros and cons.
       You: read it, kind of nod, decide on your own.
 
+  - type: tutor_message
+    persona: nova
+    text: |
       *Thinking partner mode:*
+
       You: "I'm considering a job offer. 30% more money but in a city I don't love. Argue against me taking it. Be relentless."
+
       ChatGPT: pushes back hard. Names risks you hadn't considered. Asks one sharp question.
-      You: realise something you'd been avoiding. Sharpen your decision.
 
-      Same starting input. The first uses ChatGPT to *summarise the situation*. The second uses ChatGPT to *help you see what you couldn't see alone*.
+      You: realise something you'd been avoiding.
 
-      The vending-machine mode is fine for tasks. The thinking-partner mode is what makes you *better* at your work over time.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Same starting input.
+
+      The first uses ChatGPT to *summarise the situation*.
+
+      The second uses ChatGPT to *help you see what you couldn't see alone*.
+
+      Vending mode is fine for tasks. Thinking partner mode makes you *better* at your work over time.
 
   - type: tutor_message
     persona: nova
@@ -46,20 +79,30 @@ turns:
 
       The single most useful "thinking partner" prompt:
 
-      *"I'm considering [decision/idea]. Argue against it as if you're a skeptical [expert]. Find the strongest objections, not just easy ones. Don't validate me — push back."*
+      *"I'm considering [decision]. Argue against it as if you're a skeptical [expert]. Find the strongest objections. Don't validate me — push back."*
 
+  - type: tutor_message
+    persona: nova
+    text: |
       Why this works:
 
-      Default ChatGPT *agrees* with you. RLHF trained it to be agreeable, not contrarian. You have to *explicitly invite* the disagreement.
+      Default ChatGPT *agrees* with you. RLHF trained it to be agreeable.
 
-      When you do, the model becomes a useful sparring partner. It surfaces objections you've been avoiding. It puts pressure on weak parts of your idea. It's especially powerful for:
+      You have to *explicitly invite* the disagreement.
+
+      When you do, it becomes a useful sparring partner. It surfaces objections you've been avoiding.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Powerful for:
 
       - Career decisions (job offer, switching fields, going freelance)
-      - Big purchases (apartment, car, course you'd pay for)
-      - Project plans (does my startup idea actually solve a real problem?)
+      - Big purchases (apartment, car, course)
+      - Project plans (does my startup idea solve a real problem?)
       - Arguments you're about to send (am I missing how the other person sees this?)
 
-      Don't underestimate this. The "devil's advocate" prompt is the difference between thinking and *thinking better*.
+      The "devil's advocate" prompt is the difference between thinking and *thinking better*.
 
   - type: tutor_message
     persona: nova
@@ -68,88 +111,109 @@ turns:
 
       When you're considering an option but not ready to commit:
 
-      *"Walk me through what would happen if I [option]. Don't tell me whether to do it — just play it forward, week by week, month by month. What goes well, what gets hard, what surprises me?"*
+      *"Walk me through what would happen if I [option]. Don't tell me whether to do it — just play it forward, week by week. What goes well, what gets hard, what surprises me?"*
 
-      This prompt forces ChatGPT to *simulate* your decision, not just opine on it.
+  - type: tutor_message
+    persona: nova
+    text: |
+      This forces ChatGPT to *simulate* your decision, not just opine.
 
-      Real example. You're thinking of starting a substack newsletter:
+      Real example. Thinking of starting a substack:
 
-      Vending mode: *"Should I start a substack?"* → list of pros and cons. Forgettable.
+      *Vending mode:* *"Should I start a substack?"* → list of pros and cons. Forgettable.
 
-      What-if mode: *"Walk me through 6 months as a new substack writer. I post weekly. I'm a marketing professional in my 20s. Be honest about what week 1, 2, 3, 4 actually look like. When does motivation dip? What do most people quit at?"*
+  - type: tutor_message
+    persona: nova
+    text: |
+      *What-If mode:* *"Walk me through 6 months as a new substack writer. Posting weekly. I'm a marketing professional in my 20s. Be honest about week 1, 2, 3, 4. When does motivation dip? What do most people quit at?"*
 
-      The output reads like a real preview. You walk away knowing where the *traps* are. You either commit with eyes open, or decide it's not worth it. Either way — better thinking.
+      The output reads like a real preview. You see where the *traps* are.
 
       Use What-If for *anything you're considering doing for the first time*.
 
   - type: mcq
     xp: 15
-    question: "You're trying to decide whether to switch from a stable corporate job to a startup. Which prompt uses ChatGPT as a thinking partner (not just an answer machine)?"
+    question: "You're deciding whether to leave a stable job for a startup. Which prompt uses ChatGPT as a thinking partner?"
     options:
       - id: a
-        text: "\"List pros and cons of joining a startup vs staying at a stable job.\""
+        text: "\"List pros and cons of joining a startup vs staying.\""
         is_correct: false
-        rationale: "Vending machine mode. You'll get a balanced, generic list. Useful but not transformative — it doesn't push you."
+        rationale: "Vending mode. You'll get a balanced, generic list."
       - id: b
-        text: "\"Argue against me joining the startup, as if you're my parent who knows me well. Find the objections I'm avoiding. Don't validate.\""
+        text: "\"Argue against me joining the startup, as if you're my parent who knows me well. Find the objections I'm avoiding.\""
         is_correct: true
-        rationale: "Thinking partner mode. Devil's advocate prompt. Forces the model to surface what you're avoiding rather than tell you what you already know."
+        rationale: "Thinking partner mode. Devil's advocate. Forces the model to surface what you're avoiding."
       - id: c
         text: "\"What's a startup?\""
         is_correct: false
-        rationale: "Pure information question. Useful for learning, but not for thinking through *your* decision."
+        rationale: "Pure information. Useful for learning, not for *your* decision."
       - id: d
         text: "\"Tell me yes or no — should I take it?\""
         is_correct: false
-        rationale: "Asks the model to make the decision *for* you. The model has no idea about your real life. Worse than thinking it through alone."
+        rationale: "Asks the model to decide *for* you. The model has no idea about your real life."
 
   - type: tutor_message
     persona: nova
     text: |
       *Pattern 3 — Explain Back.*
 
-      When you're trying to *understand* something — or check your own understanding — this is the move.
+      When you're trying to *understand* something — or check your own understanding.
 
-      Pattern A — *checking your own thinking*:
+      *Pattern A — checking your own thinking:*
 
-      *"I'm going to explain [concept/idea] to you. After I do, identify the parts I got wrong, the parts I'm vague about, and the parts I missed entirely."*
-
-      You explain. The model reflects back. You see your gaps clearly.
-
-      Pattern B — *understanding something hard*:
-
-      *"Explain [concept] to me as if I'm 12. Then explain it again as if I'm a college student. Then explain it as if I'm someone with a PhD in a related field. Show me the same idea at three depths."*
-
-      Three explanations of the same thing, at three depths. You walk away understanding.
-
-      Pattern C — *prepping for a hard conversation*:
-
-      *"I'm going to tell my manager I want a raise. Here's my pitch: [paste]. Now play the role of my manager — a busy founder, somewhat skeptical. Push back the way they would."*
-
-      Rehearse the hard moment with the model. Walk in prepared.
-
-      Three sub-patterns. All under "Explain Back." Use them this week.
+      *"I'm going to explain [concept] to you. After I do, identify the parts I got wrong, the parts I'm vague about, the parts I missed entirely."*
 
   - type: tutor_message
     persona: nova
     text: |
-      Worked example. Watch all 3 patterns combine on one decision.
+      You explain. The model reflects back. You see your gaps clearly.
 
-      You're thinking about leaving your job to do freelance design.
+      *Pattern B — understanding something hard:*
 
-      *Step 1 (What-If):*
-      *"Walk me through 6 months as a new freelance designer. I'm in Mumbai, currently at a small agency. Be honest — what does each month actually look like, financially and emotionally?"*
-      → You read a realistic preview. You see month 4 is the cash-flow crunch.
+      *"Explain [concept] to me as if I'm 12. Then as a college student. Then as someone with a PhD in a related field. Show me the same idea at three depths."*
 
-      *Step 2 (Devil's Advocate):*
-      *"Now argue against me going freelance. Be the most skeptical version of an experienced freelancer I know. Find the objections I'm probably avoiding."*
-      → The model points out: clients ghosting on payment, the "I'll just take a contract" trap that turns into a year, the social isolation of WFH.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Three explanations of the same thing, at three depths. You walk away understanding.
 
-      *Step 3 (Explain Back):*
-      *"Given everything we just discussed, summarise back to me what I think I'm risking and what I think I'm gaining. Then ask me one question I should answer before deciding."*
-      → The model frames your situation. Asks: *"What does month 4 look like if I have less than ₹2 lakh in savings?"*
+      *Pattern C — prepping for a hard conversation:*
 
-      Three prompts. 15 minutes. You're now thinking about this decision way more clearly than 90% of people do.
+      *"I'm going to tell my manager I want a raise. Here's my pitch: [paste]. Now play the role of my manager — busy founder, somewhat skeptical. Push back the way they would."*
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Rehearse the hard moment with the model. Walk in prepared.
+
+      Three sub-patterns. All under *Explain Back*. Use them this week.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Worked example. All 3 patterns combined on one decision.
+
+      You're thinking about leaving your job for freelance design.
+
+      *Step 1 (What-If):* *"Walk me through 6 months as a new freelance designer in Mumbai. What does each month look like, financially and emotionally?"*
+
+      → You read a realistic preview. Month 4 is the cash-flow crunch.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Step 2 (Devil's Advocate):* *"Now argue against me going freelance. Be the most skeptical experienced freelancer I know."*
+
+      → Model points out: clients ghosting on payment, the "I'll just take a contract" trap, social isolation.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Step 3 (Explain Back):* *"Summarise what I'm risking, what I'm gaining, and ask me one question I should answer before deciding."*
+
+      → Model frames your situation. Asks: *"What does month 4 look like with less than ₹2 lakh in savings?"*
+
+      Three prompts. 15 minutes. You're now thinking about this way more clearly than 90% of people do.
 
   - type: tap_to_match
     xp: 15
@@ -169,7 +233,7 @@ turns:
       - id: simulate
         label: "You're considering doing something new"
       - id: gaps
-        label: "You want to find your blind spots in an idea"
+        label: "You want to find blind spots in an idea"
       - id: rehearse
         label: "You have a hard conversation coming up"
     pairs:
@@ -185,93 +249,102 @@ turns:
 
       *Myth 1 — "Asking ChatGPT to disagree with me is a waste of a turn."*
 
-      Backwards. The disagree-turn is often the *most* valuable turn. Default ChatGPT agreement is cheap. Forced disagreement makes you face what you've been avoiding. It's where the real thinking happens.
+      Backwards.
 
-      *Myth 2 — "Real thinking should be done alone — ChatGPT will just dilute my own thoughts."*
+      The disagree-turn is often the *most* valuable. Default agreement is cheap. Forced disagreement makes you face what you've been avoiding.
 
-      Disagree. Thinking *alone* is great — and limited. We've all had the experience of explaining something to a friend and *suddenly* understanding it ourselves. ChatGPT is that friend you can talk to at 2am, who has read everything and won't get bored.
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Myth 2 — "Real thinking should be done alone — ChatGPT will dilute my thoughts."*
 
-      Used in vending-machine mode, it dilutes your thinking (you outsource).
-      Used in thinking-partner mode, it sharpens your thinking (it forces you to articulate).
+      Disagree.
 
-      Same model. The difference is the *prompt*.
+      We've all explained something to a friend and *suddenly* understood it ourselves. ChatGPT is that friend you can talk to at 2am.
+
+      Vending mode dilutes your thinking. Thinking-partner mode sharpens it. Same model. The difference is the *prompt*.
 
   - type: tutor_message
     persona: nova
     text: |
       One last thing — *the daily practice that changes everything*.
 
-      Pick *one* recurring decision or thinking moment in your week. Examples:
+      Pick *one* recurring decision or thinking moment in your week.
+
+      Examples:
 
       - Sunday evening: planning the week ahead.
-      - Monday morning: deciding which task to tackle first.
+      - Monday morning: deciding which task first.
       - End of project: writing your retro.
-      - Before a hard conversation with someone.
-      - Once a month, reviewing your own progress on a goal.
+      - Before a hard conversation.
 
-      Whatever you pick — *use ChatGPT in thinking-partner mode for it*. Specifically:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Use ChatGPT in thinking-partner mode for it.
 
       1. Tell ChatGPT what you're thinking about.
-      2. Ask it to *push back* (Devil's Advocate) or *simulate forward* (What-If) or *find the gap* (Explain Back).
-      3. Have a real exchange — 4-6 messages, not just one round.
+      2. Ask it to push back, simulate forward, or find the gap.
+      3. Have a real exchange — 4-6 messages.
 
-      Do this *once a week*. Inside a month, you'll notice your thinking sharpens on the topic. Inside three months, you'll catch yourself thinking better even *without* ChatGPT — because you've internalised the questions.
+      Do this once a week.
 
-      That's the goal. Not to become dependent on ChatGPT. To use it to *make your unaided thinking better*.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Inside a month: your thinking sharpens on the topic.
+
+      Inside three months: you'll catch yourself thinking better even *without* ChatGPT — because you've internalised the questions.
+
+      That's the goal. Not to become dependent. To use it to *make your unaided thinking better*.
 
   - type: exercise
     xp: 25
     tool: chatgpt
     instruction: |
-      Pick a real decision you're sitting on right now. Real, not hypothetical. Could be:
+      Pick a real decision you're sitting on right now. Real, not hypothetical.
 
-      - A job/opportunity you're weighing
-      - A purchase you're considering
-      - A project you're thinking about starting
-      - A conversation you've been putting off
-      - A goal you're not making progress on
+      Job offer. Purchase. Project. Conversation. Goal.
 
-      Use *all 3 patterns* on it, in this order:
+      Use *all 3 patterns*, in this order:
 
       1. *Devil's Advocate* — *"Argue against my plan. Be relentless."*
       2. *What-If* — *"Walk me through what happens if I do this. Month by month."*
-      3. *Explain Back* — *"Summarise what I'm risking, what I'm gaining, and ask me one question I should answer before deciding."*
-
-      Do all three. Read all three responses.
+      3. *Explain Back* — *"Summarise what I'm risking, gaining, and ask me one question."*
 
       Paste the *one* insight that surprised you most.
     placeholder: "What surprised me: ..."
 
   - type: ai_conversation
     xp: 20
-    goal: "User commits to one specific recurring 'thinking partner' practice they'll do this week."
+    goal: "User commits to one specific recurring 'thinking partner' practice this week."
     max_turns: 4
-    success_criteria: "User picks a specific time (e.g. Sunday evening, Monday morning, every Friday) and a specific topic (week planning, project retro, weekly goal review) they'll bring to ChatGPT in thinking-partner mode."
+    success_criteria: "User picks a specific time and topic they'll bring to ChatGPT in thinking-partner mode."
     starter_text: |
       Last exercise of the course.
 
       Pick ONE recurring moment in your week where you'd benefit from a thinking partner. When is it, and what's the topic?
     system_prompt: |
-      You are Nova, a warm but direct coach. This is the LAST exchange of the entire ChatGPT Basics course. The user just learned: 3 thinking-partner patterns (Devil's Advocate, What-If, Explain Back) and the daily/weekly practice idea.
+      You are Nova, a warm but direct coach. This is the LAST exchange of the entire ChatGPT Basics course. The user learned 3 thinking-partner patterns (Devil's Advocate, What-If, Explain Back) and the weekly practice idea.
 
       Step 1: Ask user for one recurring moment + topic.
-      Step 2: Affirm it. Suggest WHICH of the 3 patterns fits that moment best, with a sample prompt they could use. e.g. "For Sunday week-planning — try Devil's Advocate on your plan: 'Argue against my plan for the week. Find what I'm being unrealistic about.' Send me back your version."
-      Step 3: Warm send-off. Affirm and close with <END/>. Make it feel like the end of the course — they've earned it.
+      Step 2: Affirm. Suggest WHICH of the 3 patterns fits best, with a sample prompt. e.g. "For Sunday week-planning — try Devil's Advocate: 'Argue against my plan for the week.'"
+      Step 3: Warm send-off. Affirm and close with <END/>. Make it land — they've earned it.
 
-      Replies under 70 words. Make this final exchange land.
+      Replies under 60 words.
 
   - type: fill_in_the_blank
     xp: 15
     prompt: "Lock in the three thinking-partner patterns."
-    template: "{{Devil}}'s Advocate (push back on my plan). {{What-if}} (simulate what would happen if). {{Explain}} Back (find my gaps, or rehearse a conversation)."
+    template: "{{Devil}}'s Advocate (push back on my plan). {{What-if}} (simulate what would happen). {{Explain}} Back (find my gaps, rehearse conversations)."
     answers:
       - id: Devil
-        accepted: ["devil", "Devil"]
+        accepted: [devil, Devil]
       - id: What-if
-        accepted: ["what-if", "what if", "whatif", "What-if", "What-If", "What if"]
+        accepted: [what-if, "what if", whatif, What-if, What-If, "What if"]
       - id: Explain
-        accepted: ["explain", "Explain"]
-    hint: "All three are the pattern names from the lesson."
+        accepted: [explain, Explain]
+    hint: "All three are pattern names from the lesson."
 
   - type: reflection
     xp: 5
@@ -284,11 +357,11 @@ turns:
     summary: |
       Vending machine vs thinking partner. *Same model. Different relationship.*
 
-      Three patterns to move from one to the other:
+      Three patterns:
       - *Devil's Advocate* — push back on my plan.
       - *What-If* — simulate what would happen.
       - *Explain Back* — find my gaps, rehearse hard conversations.
 
-      The practice: pick *one* recurring weekly moment. Bring it to ChatGPT in thinking-partner mode. Do this for a month and your thinking sharpens — even when ChatGPT isn't there.
+      The practice: pick *one* recurring weekly moment. Use ChatGPT in thinking-partner mode.
 
-      That's it. Course complete. You've gone from "ChatGPT user" to "ChatGPT operator" in 6 lessons. Take what you've learned to your real work this week. The next course on the shelf is whatever your work demands. You're ready.
+      Course complete. You've gone from "ChatGPT user" to "ChatGPT operator" in 6 lessons. You're ready.

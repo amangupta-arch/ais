@@ -9,69 +9,104 @@ turns:
       Two prompts. Same model. Same minute.
 
       *Prompt A:* *"Write a poem about Mumbai."*
-      Output: bland, generic, monsoon-and-vada-pav cliché.
+      Output: bland, monsoon-and-vada-pav cliché.
 
-      *Prompt B:* *"Write a 4-line poem about Mumbai monsoon traffic, from the POV of a wet auto driver. Hindi-English mix. Wry tone."*
+      *Prompt B:* *"Write a 4-line poem about Mumbai monsoon traffic, from a wet auto driver's POV. Hindi-English mix. Wry tone."*
       Output: specific, funny, sharp.
 
+  - type: tutor_message
+    persona: nova
+    text: |
       The model didn't get smarter between A and B. *You* gave it more to work with.
 
-      That's the whole game. Today, the moves that turn ChatGPT from "meh" into "wow."
+      That's the whole game.
 
-      *Prompting* is the single biggest skill in using AI well. It's also the most underrated — most people never deliberately learn it. By the end of this lesson, you'll have 4 named techniques and know exactly when to use each.
+      Today: the moves that turn ChatGPT from "meh" into "wow."
 
   - type: tutor_message
     persona: nova
     text: |
       Why does phrasing matter so much?
 
-      Remember from lessons 02 and 06 — the model was trained to predict the next token, then fine-tuned and RLHF'd to be helpful. It has no opinion. No goals. No memory of you.
+      The model has no opinion. No goals. No memory of you.
 
-      When you send it a prompt, it reads your text and asks: *"Of all the responses I've ever seen that follow text like this, which one is most likely?"*
-
-      So a prompt with three sparse words ("write a poem") matches a billion possible responses, most of them bland. A prompt with role + topic + style + tone matches a much smaller, much sharper set of responses.
-
-      You're not making the model smarter. You're *narrowing the funnel of possible answers* to one that includes the kind you want.
+      When you send a prompt, it asks: *"Of all the responses I've ever seen that follow text like this, which one is most likely?"*
 
   - type: tutor_message
     persona: nova
     text: |
-      There are 4 classic prompting moves. The pros use all 4 every day. You've probably been using #1 by accident.
+      A 3-word prompt ("write a poem") matches a billion possible responses, most bland.
 
-      *Move 1 — Zero-shot prompting.*
+      A prompt with role + topic + style + tone matches a much smaller, much sharper set.
+
+      You're not making the model smarter. You're *narrowing the funnel* of possible answers to one that includes what you want.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      There are 4 classic prompting moves. The pros use all 4 every day.
+
+      You've probably been using #1 by accident.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Move 1 — Zero-shot.*
+
       Just ask. No examples, no setup.
+
       *"Translate this to Hindi."*
+
       Works for easy, common tasks the model has seen many times.
 
-      *Move 2 — Few-shot prompting.*
-      Show the model 2-3 examples of the format you want, then give it a new input.
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Move 2 — Few-shot.*
+
+      Show 2-3 examples of the format you want, then give a new input.
+
       Far more accurate for unusual asks.
-
-      *Move 3 — Chain-of-thought.*
-      Add the phrase *"Think step by step"* (or *"Show your reasoning"*) at the end of your prompt.
-      For multi-step problems — math, logic, debugging — this can nearly double accuracy. The model literally thinks longer because you told it to.
-
-      *Move 4 — Persona prompting.*
-      Start with *"Act as a [role]..."* The model adopts the role's vocabulary, depth, and style.
-      *"Act as a senior editor reviewing my essay"* gets a different tone than *"give me feedback on my essay."*
-
-      Coming up — examples of each in action.
 
   - type: tutor_message
     persona: nova
     text: |
-      *Few-shot prompting in action.* Here's the move.
+      *Move 3 — Chain-of-thought.*
 
-      Suppose you want the model to convert dishes to one-line spice descriptions. A zero-shot prompt:
+      Add *"Think step by step"* at the end of your prompt.
 
-      *"Describe paneer butter masala in one line, focusing on spice level."*
+      For multi-step problems — math, logic, debugging — this can nearly double accuracy.
 
-      Output: probably a vague paragraph, not the format you want.
+      The model literally thinks longer because you told it to.
 
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Move 4 — Persona prompting.*
+
+      Start with *"Act as a [role]..."*
+
+      The model adopts the role's vocabulary, depth, style.
+
+      "Act as a senior editor" gets a different tone than "give me feedback."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Few-shot in action.*
+
+      You want one-line spice descriptions for dishes. A zero-shot prompt:
+
+      *"Describe paneer butter masala in one line, focus on spice level."*
+
+      Output: probably a vague paragraph. Not the format you want.
+
+  - type: tutor_message
+    persona: nova
+    text: |
       Few-shot version:
 
       ```
-      Convert each dish to one line:
       Aloo gobi → mild, turmeric-forward, comforting
       Vindaloo → fiery, vinegary, not for beginners
       Korma → mild, creamy, almost dessert-sweet
@@ -80,7 +115,7 @@ turns:
 
       Output: *"Mid-spice, tomato-rich, butter-finish, crowd-pleaser."*
 
-      The format is locked in by the examples. Same model. Way better behaviour. Few-shot is the secret weapon for any non-standard format.
+      Format locked in by the examples.
 
   - type: mcq
     xp: 15
@@ -89,36 +124,46 @@ turns:
       - id: a
         text: "\"Just give me the answer.\""
         is_correct: false
-        rationale: "Telling the model to skip its work makes it skip the actual reasoning. Worse accuracy on hard problems."
+        rationale: "Telling the model to skip its work makes it skip the actual reasoning."
       - id: b
         text: "\"Solve this step by step, then state the final answer.\""
         is_correct: true
-        rationale: "Classic chain-of-thought. The model writes its reasoning out, which makes the reasoning correct more often. Especially on math, logic, code."
+        rationale: "Classic chain-of-thought. Forces reasoning out, makes it correct more often."
       - id: c
         text: "\"Try harder.\""
         is_correct: false
-        rationale: "Doesn't change behaviour — the model has no concept of 'effort'. Specific instructions beat motivation."
+        rationale: "The model has no concept of 'effort'. Specific instructions beat motivation."
       - id: d
         text: "\"This is important.\""
         is_correct: false
-        rationale: "Some studies show urgency phrasing helps slightly, but step-by-step is the proven, robust move."
+        rationale: "Some studies show urgency phrasing helps slightly, but step-by-step is the proven move."
 
   - type: tutor_message
     persona: nova
     text: |
-      One more: *Persona prompting* with a worked example.
+      *Persona prompting* — worked example.
 
-      Suppose you wrote a 200-word business pitch and want feedback. Compare:
+      You want feedback on a 200-word business pitch.
 
-      *Plain ask:* *"Give me feedback on this pitch."*
-      Output: generic, polite, mentions clarity, structure, audience. Feels like a friend trying not to hurt your feelings.
+      *Plain:* *"Give me feedback on this pitch."*
 
-      *Persona version:* *"Act as a startup investor at a major Mumbai VC fund who reviews 100 pitches a week. You're skeptical. Give me your blunt 30-second reaction to this pitch — what would make you put it down vs read on."*
-      Output: short, blunt, specific. References specific lines from your pitch. Tells you what to cut.
+      Output: generic, polite. Feels like a friend trying not to hurt your feelings.
 
-      Same model. Same pitch. The persona prompt gives the model a *role* it has seen patterns for. The output narrows accordingly.
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Persona:* *"Act as a startup investor at a major Mumbai VC fund. You review 100 pitches a week. You're skeptical. Give me your blunt 30-second reaction."*
 
-      Use it for: writing critique, technical reviews, anything where a specific *expert lens* matters.
+      Output: short, blunt, specific. References lines from your pitch. Tells you what to cut.
+
+      Same pitch. Different lens.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Use persona for: writing critique, technical reviews, anything where a specific *expert lens* matters.
+
+      The role doesn't change *what the model knows*. It changes *which patterns it reaches for first*.
 
   - type: tap_to_match
     xp: 15
@@ -134,13 +179,13 @@ turns:
         label: "Persona prompting"
     right:
       - id: simple
-        label: "Simple, common task — translation, definitions, summaries"
+        label: "Simple, common task — translation, summaries"
       - id: format
-        label: "Specific format the model can't guess (your weird CSV layout)"
+        label: "Specific format the model can't guess"
       - id: math
-        label: "Multi-step reasoning, math, code debugging"
+        label: "Multi-step reasoning, math, debugging"
       - id: tone
-        label: "Want a particular tone, voice, or expertise level"
+        label: "Want a particular tone, voice, expertise"
     pairs:
       - [zero, simple]
       - [few, format]
@@ -150,7 +195,7 @@ turns:
   - type: tutor_message
     persona: nova
     text: |
-      One thing nobody warns you about — prompts are *fragile*.
+      One thing nobody warns you — prompts are *fragile*.
 
       *"Summarise in 3 bullets"* works.
       *"Summarize in 3 bullet points"* might give 5.
@@ -158,48 +203,65 @@ turns:
 
       Same intent. Different wording. Wildly different output.
 
-      Why? Because the model is a pattern-matcher, not a mind-reader. Each phrasing matches a slightly different distribution of training examples. Tiny changes in your prompt can shift you to a different "neighbourhood" of replies.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Why? The model is a pattern-matcher, not a mind-reader.
 
-      *Pro move:* when a prompt works well, save the *exact wording*. Don't paraphrase next time. Treat your good prompts like recipes — not like rough sketches.
+      Each phrasing matches a slightly different distribution of training examples.
 
-      Many serious AI users keep a "prompt library" — a notes app or doc with their best-tested prompts for recurring tasks. Worth doing the day you find your first really good one.
+      *Pro move:* when a prompt works well, save the *exact wording*. Don't paraphrase next time. Treat your good prompts like recipes.
 
   - type: tutor_message
     persona: nova
     text: |
-      Two myths to clear before we close.
+      Many serious AI users keep a "prompt library" — a notes app or doc with their best-tested prompts for recurring tasks.
 
-      *Myth: "Smart phrasing makes the model smarter."*
-
-      It doesn't. The model's underlying intelligence is fixed at training time. Phrasing just helps you *access* the parts of that intelligence that matter for your task. Think of prompting as *unlocking what's already there*, not adding capability.
-
-      *Myth: "Bigger prompts are always better."*
-
-      Past a point, no. Long, rambling prompts confuse the model — it has too many possibly-relevant signals to weigh. Crisp, specific prompts beat long rambling ones every time. Aim for *enough specificity to narrow the funnel*, not for *every possible detail*.
-
-      Quality of words, not quantity, is the lever.
+      Worth doing the day you find your first really good one.
 
   - type: tutor_message
     persona: nova
     text: |
-      One last thing — *stack the moves*. The pros don't pick one technique, they combine them.
+      Two myths to clear.
 
-      A real production prompt might look like this:
+      *Myth 1 — "Smart phrasing makes the model smarter."*
+
+      It doesn't. The model's intelligence is fixed at training time.
+
+      Phrasing helps you *access* it. Think of prompting as *unlocking what's already there*.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Myth 2 — "Bigger prompts are always better."*
+
+      Past a point, no. Long rambling prompts confuse the model.
+
+      Crisp, specific prompts beat long rambling ones every time.
+
+      Aim for *enough specificity to narrow the funnel*, not *every possible detail*.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      One last thing — *stack the moves*.
+
+      The pros don't pick one technique. They combine them.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      A real production prompt:
 
       ```
       Act as a senior copy editor with 15 years at The Hindu.
       Below are 3 examples of edits in the style I want:
-      [example 1]
-      [example 2]
-      [example 3]
-      Now edit this paragraph the same way. Think step by step before
-      making changes. If something is unclear, say so.
-      [paragraph to edit]
+      [example 1] [example 2] [example 3]
+      Now edit this paragraph the same way. Think step by step.
+      [paragraph]
       ```
 
-      Look closely. That single prompt uses *all four moves*: persona ("Act as a senior copy editor"), few-shot (3 examples), chain-of-thought ("think step by step"), and zero-shot for the final ask. Plus an "allow uncertainty" hedge.
-
-      Stacking is where prompting becomes a craft, not a trick. Every move narrows the funnel a little more, and the output gets sharper at every step.
+      Persona + few-shot + chain-of-thought + zero-shot final ask. All four moves stacked.
 
   - type: exercise
     xp: 20
@@ -209,45 +271,41 @@ turns:
 
       Task: *"Help me write a one-paragraph email asking my boss for two days off next month."*
 
-      1. *Zero-shot:* Send the task as-is.
-      2. *Persona:* Add *"Act as my professional but friendly mentor with 20 years of experience writing such emails."* before the task.
-      3. *Few-shot:* Give the model two of your own past email examples first, then the task.
+      1. *Zero-shot:* Send as-is.
+      2. *Persona:* Add *"Act as my professional but friendly mentor with 20 years experience writing such emails."*
+      3. *Few-shot:* Give 2 of your own past emails first.
 
-      Send all three, separately, in fresh chats. Then read the three outputs side-by-side.
-
-      Paste the output you found *most* useful.
-    placeholder: "Best output came from prompt #__: ..."
+      Read all three side-by-side. Paste the most useful one.
+    placeholder: "Best output from prompt #__: ..."
 
   - type: fill_in_the_blank
     xp: 15
     prompt: "Lock in the four classic prompting moves."
-    template: "{{Zero}}-shot is just asking. {{Few}}-shot shows examples. Chain-of-{{thought}} forces step-by-step reasoning. {{Persona}} prompts give the model a role to play."
+    template: "{{Zero}}-shot is just asking. {{Few}}-shot shows examples. Chain-of-{{thought}} forces step-by-step reasoning. {{Persona}} prompts give the model a role."
     answers:
       - id: Zero
-        accepted: ["zero", "Zero"]
+        accepted: [zero, Zero]
       - id: Few
-        accepted: ["few", "Few"]
+        accepted: [few, Few]
       - id: thought
-        accepted: ["thought", "thoughts"]
+        accepted: [thought, thoughts]
       - id: Persona
-        accepted: ["persona", "Persona", "role"]
-    hint: "All four blanks are words straight from the lesson section headings."
+        accepted: [persona, Persona, role]
+    hint: "All four are section headings."
 
   - type: reflection
     xp: 5
-    prompt: "Pick a recent ChatGPT/Claude prompt of yours. How could you rewrite it to be 30% more specific?"
-    placeholder: "I asked 'write me an email' — I should've added recipient, length, tone..."
+    prompt: "Pick a recent ChatGPT prompt of yours. How could you rewrite it 30% more specific?"
+    placeholder: "I asked 'write me an email' — should've added recipient, length, tone..."
 
   - type: checkpoint
     xp: 10
     title: "Phrasing is a skill. You have it now."
     summary: |
-      Same model. Wildly different output depending on how you phrase the ask.
+      Same model. Wildly different output.
 
       *Zero-shot* for easy stuff. *Few-shot* when format matters. *Chain-of-thought* for reasoning. *Persona* for tone.
 
-      Prompts are *fragile* — small wording changes shift the output a lot. Save the exact wording of prompts that work.
+      Prompts are *fragile* — small wording shifts the output a lot. Save the exact wording of prompts that work.
 
-      You're not making the model smarter. You're *narrowing the funnel* of possible answers to ones that match what you want.
-
-      Next up — sometimes models confidently make stuff up. Why, and how to spot it.
+      Next — sometimes models confidently make stuff up. *Hallucinations*.

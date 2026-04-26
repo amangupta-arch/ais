@@ -6,33 +6,52 @@ turns:
   - type: tutor_message
     persona: nova
     text: |
-      Yesterday you cracked RTCC. Good. But there's a hidden cost — *every conversation starts cold*.
+      Yesterday you cracked RTCC.
 
-      ChatGPT doesn't remember:
-      - That you're a 27-year-old marketing coordinator in Pune.
-      - That you prefer no fluff, no preamble, no "I hope this helps!"
-      - That you're learning Python on the side.
-      - That when you ask for code, you want it commented and short.
-
-      You've been retyping all of this. Every. Single. Chat.
-
-      Today: stop doing that. By the end of this lesson you'll have ChatGPT pre-loaded with everything it needs to know about *you* — without typing it again.
+      But there's a hidden cost — *every conversation starts cold*.
 
   - type: tutor_message
     persona: nova
     text: |
-      The blank-slate problem, in detail.
+      ChatGPT doesn't remember:
 
-      Each new ChatGPT conversation is like meeting a new colleague who has no memory of you. You have to introduce yourself. Tell them what you do. Explain how you like answers formatted. *Every. Time.*
+      - You're a 27-year-old marketing coordinator in Pune.
+      - You prefer no fluff, no preamble.
+      - You're learning Python on the side.
+      - When you ask for code, you want it commented and short.
 
-      For one-off prompts, fine. For the 50 conversations you'll have this month? That's hundreds of redundant tokens, hundreds of redundant minutes.
+      You've been retyping all of this. Every. Single. Chat.
 
+  - type: tutor_message
+    persona: nova
+    text: |
+      Today: stop doing that.
+
+      By the end of this lesson you'll have ChatGPT pre-loaded with everything it needs to know about *you* — without typing it again.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The blank-slate problem.
+
+      Each new ChatGPT chat is like meeting a new colleague with no memory of you.
+
+      Introduce yourself. Tell them what you do. Explain your format preferences. *Every. Time.*
+
+      For 50 conversations a month? Hundreds of redundant tokens, hundreds of redundant minutes.
+
+  - type: tutor_message
+    persona: nova
+    text: |
       OpenAI's fix is two features, designed to live next to each other but doing different jobs:
 
       *Custom Instructions* — a static "about you" you write once. Applied to every chat automatically.
 
       *Memory* — a dynamic, ongoing list of things ChatGPT learns about you across conversations.
 
+  - type: tutor_message
+    persona: nova
+    text: |
       Different tools. Both worth turning on. We'll set up both today.
 
   - type: tutor_message
@@ -40,98 +59,122 @@ turns:
     text: |
       *Custom Instructions* — what they are, exactly.
 
-      It's two text boxes ChatGPT reads at the start of every chat. You write them once. ChatGPT applies them automatically.
+      Two text boxes. ChatGPT reads them at the start of every chat.
 
       *Box 1: "What would you like ChatGPT to know about you?"*
-      → Tell it about you, your work, your life. The static stuff.
+      → About you, your work, your life. The static stuff.
 
       *Box 2: "How would you like ChatGPT to respond?"*
-      → Tone, format, style preferences. The behavioural stuff.
-
-      Both boxes have a 1500-character limit. Use them well and ChatGPT stops feeling like a stranger and starts feeling like a colleague who's actually been briefed.
-
-      Where to find it: Click your name → Settings → Personalization → Custom Instructions.
-
-      Set this up *once* and every future chat is pre-loaded. It's the single biggest "make ChatGPT actually useful for me" move you can make.
+      → Tone, format, style preferences.
 
   - type: tutor_message
     persona: nova
     text: |
-      Worked example. Here's the actual Custom Instructions I'd recommend for a marketing professional in India.
+      Both boxes have a 1500-character limit.
+
+      Where to find: Click your name → Settings → Personalization → Custom Instructions.
+
+      Set this up *once* and every future chat is pre-loaded.
+
+      The single biggest "make ChatGPT actually useful for me" move.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Worked example. Custom Instructions for a marketing professional in India.
 
       *Box 1 (about you):*
       ```
-      I'm a 27-year-old marketing coordinator at a B2B SaaS company in Pune.
-      I write LinkedIn posts, blog posts, email campaigns, and pitch decks.
-      Audience is mostly Indian SMB founders.
-      I'm learning Python on the side — bias my code examples toward beginner-friendly.
+      27-year-old marketing coordinator at a B2B SaaS in Pune.
+      I write LinkedIn posts, blog posts, email campaigns.
+      Audience: mostly Indian SMB founders.
       I value brevity and concrete examples over abstract advice.
       ```
 
+  - type: tutor_message
+    persona: nova
+    text: |
       *Box 2 (how to respond):*
       ```
-      No preamble. Skip "I hope this helps!" and "Let me know if you have questions!"
-      Use short paragraphs and bullet points where possible.
-      When I ask for marketing copy, give 3 variants, not just one.
-      For code, comment it and explain in 2 lines what it does.
+      No preamble. Skip "I hope this helps!"
+      Use short paragraphs and bullet points.
+      For marketing copy, give 3 variants, not just one.
+      For code, comment it.
       Be direct. If my idea has a problem, tell me — don't just validate.
       ```
 
-      Read those again. *Every chat now starts pre-loaded with this context*. The model already knows the persona, the audience, the format preferences. RTCC is partially baked in.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Read those again.
+
+      *Every chat now starts pre-loaded with this context.*
+
+      The model already knows the persona, the audience, the format preferences.
+
+      RTCC is partially baked in.
 
   - type: mcq
     xp: 15
-    question: "Which of these belongs in Box 1 (\"about you\") vs Box 2 (\"how to respond\")?"
+    question: "Which belongs in Box 1 (\"about you\") vs Box 2 (\"how to respond\")?"
     options:
       - id: a
         text: "Box 1: \"I work in marketing.\" Box 2: \"Use bullet points.\""
         is_correct: true
-        rationale: "Right. Box 1 is *who you are*. Box 2 is *how the model should behave*. The split keeps your custom instructions clean and predictable."
+        rationale: "Right. Box 1 = who you are. Box 2 = how the model should behave."
       - id: b
         text: "Box 1: \"Use bullet points.\" Box 2: \"I work in marketing.\""
         is_correct: false
-        rationale: "Backwards. The model would still mostly figure it out — these boxes are read together — but the split exists for a reason. Use it correctly."
+        rationale: "Backwards. The split exists for a reason."
       - id: c
         text: "Both: \"I want detailed answers.\""
         is_correct: false
-        rationale: "Repetition wastes characters (you only get 1500 each). Pick one box per instruction."
+        rationale: "Repetition wastes characters (only 1500 each)."
       - id: d
         text: "Neither — Custom Instructions don't actually do anything."
         is_correct: false
-        rationale: "They very much do. They're prepended to every chat as context. Test it: change Box 2 to 'reply only in haiku' and watch ChatGPT respond in haiku for an hour."
+        rationale: "They very much do. Test it: change Box 2 to 'reply only in haiku' and watch ChatGPT comply for an hour."
 
   - type: tutor_message
     persona: nova
     text: |
       *Memory* — the second tool. Different from Custom Instructions.
 
-      Custom Instructions are *static* — you write them once and they don't change.
+      Custom Instructions are *static* — you write them once, they don't change.
 
       Memory is *dynamic* — ChatGPT remembers facts about you over time, across conversations, automatically.
 
+  - type: tutor_message
+    persona: nova
+    text: |
       Examples of what Memory captures:
 
-      - "User has a sister named Anita who lives in Bangalore."
+      - "User has a sister named Anita in Bangalore."
       - "User is allergic to peanuts."
       - "User prefers Python over JavaScript."
-      - "User is launching a startup called Bombay Bread on March 15."
+      - "User is launching Bombay Bread on March 15."
 
-      ChatGPT decides on its own what's worth remembering. You can also explicitly tell it: *"Please remember that I'm vegetarian."* It says "Memory updated" and stores it.
+  - type: tutor_message
+    persona: nova
+    text: |
+      ChatGPT decides on its own what's worth remembering.
 
-      Where: Settings → Personalization → Memory. You can see (and delete) every memory it has on you.
+      You can also tell it explicitly: *"Please remember that I'm vegetarian."*
 
-      *Important:* Memory is per ChatGPT account. It does NOT carry over between Free, Plus, Team, etc. Set it up on the account you actually use.
+      Where: Settings → Personalization → Memory. You can see (and delete) every memory it has.
+
+      *Important:* Memory is per ChatGPT account.
 
   - type: tap_to_match
     xp: 15
-    prompt: "Match each fact about you to the right tool."
+    prompt: "Match each fact to the right tool."
     left:
       - id: job
         label: "I'm a designer at a startup in Bangalore."
       - id: tone
-        label: "I prefer no preamble, get to the point."
+        label: "I prefer no preamble."
       - id: temp
-        label: "I'm planning a trip to Goa next weekend."
+        label: "I'm planning a Goa trip next weekend."
       - id: format
         label: "When I share code, comment it for me."
     right:
@@ -156,49 +199,73 @@ turns:
 
       *Myth 1 — "ChatGPT remembers me from yesterday by default."*
 
-      Without Memory turned on, *no*. Each chat starts blank. With Memory on, *some* facts carry over (whatever it decides to save). Custom Instructions ALWAYS apply (once you set them up). Most people are confused about which is doing what.
+      Without Memory turned on, *no*. Each chat starts blank.
 
-      *Myth 2 — "Setting Custom Instructions once is forever."*
-
-      You'll iterate. Your taste sharpens — you'll notice annoying patterns and add new constraints. ("Stop saying 'Let me know if you'd like me to expand on any of these points.'") Tweak it monthly. It's a living document.
-
-      *Myth 3 — "Custom Instructions hide my prompts from the model."*
-
-      They don't replace your prompt — they add to it. Every chat, the model sees your Custom Instructions FIRST, then your message. Both matter.
+      With Memory on, *some* facts carry over. Custom Instructions ALWAYS apply (once you set them up).
 
   - type: tutor_message
     persona: nova
     text: |
-      Three concrete tone/style rules that make every future answer better — write these into Box 2 today.
+      *Myth 2 — "Setting Custom Instructions once is forever."*
+
+      You'll iterate. Your taste sharpens.
+
+      You'll add new constraints. ("Stop saying 'Let me know if you'd like me to expand on any of these points.'")
+
+      Tweak it monthly. Living document.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Myth 3 — "Custom Instructions hide my prompts from the model."*
+
+      They don't replace your prompt — they add to it.
+
+      Every chat: model sees Custom Instructions FIRST, then your message. Both matter.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Three concrete tone/style rules that make every future answer better. Write these into Box 2 today.
 
       *Rule 1 — "No preamble."*
 
-      Stops the *"Of course! Here's a thoughtful response to your question..."* opener. The model jumps straight to the answer. Saves seconds, and the answers feel less robotic.
-
-      *Rule 2 — "When you give me an option, give me 3."*
-
-      Singular answers in tone or format are usually too narrow. Asking for 3 lets you compare and pick. Use this for emails, captions, headlines, anything subjective.
-
-      *Rule 3 — "Be direct. If my idea is bad, tell me."*
-
-      Default ChatGPT is over-validating. It wants to please you. This single line gives you the *honest* feedback layer most people are missing. Worth it.
-
-      Add these three to Box 2 today. Take 5 minutes. Pay back forever.
+      Stops the *"Of course! Here's a thoughtful response..."* opener. Model jumps straight to the answer.
 
   - type: tutor_message
     persona: nova
     text: |
-      One thing nobody tells you about Custom Instructions — *what NOT to put there*.
+      *Rule 2 — "When you give me an option, give me 3."*
 
-      Custom Instructions are sent to OpenAI with every chat. They're stored on your account. They're persistent. So:
+      Singular answers in tone or format are usually too narrow.
 
-      - **Don't put in actual passwords, API keys, or banking details.** Even though they're tied to your account, treat them like text on a public-ish surface. Anything you wouldn't put in an email to yourself shouldn't go here.
-      - **Don't put in highly sensitive personal information** (health diagnoses, legal situations) unless you really want it carried into every chat. Memory is a better tool for one-off sensitive things you can later delete.
-      - **Don't put in your client/employer's confidential info.** That defeats the point of the chat being private.
+      Asking for 3 lets you compare. Use for emails, captions, headlines.
 
-      Custom Instructions = your tone, role, format preferences, and *general* about-you info. Not your secrets.
+      *Rule 3 — "Be direct. If my idea is bad, tell me."*
 
-      Also worth knowing: you can have *different Custom Instructions for different "spaces"* in newer ChatGPT versions. So your "Work" space might have one set and your "Personal" space another. Use that if your work and personal usage are quite different.
+      Default ChatGPT is over-validating. This single line gives you the *honest* feedback layer.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      One thing nobody tells you — *what NOT to put in Custom Instructions*.
+
+      They're sent to OpenAI with every chat. Persistent on your account.
+
+      So:
+
+      - Don't put passwords, API keys, or banking details.
+      - Don't put highly sensitive personal info you don't want carried into every chat.
+      - Don't put your client/employer's confidential info.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Custom Instructions = your tone, role, format preferences, *general* about-you info.
+
+      Not your secrets.
+
+      Newer ChatGPT versions support *different Custom Instructions for different "spaces"* — Work vs Personal. Use that if your usage is split.
 
   - type: exercise
     xp: 20
@@ -206,34 +273,33 @@ turns:
     instruction: |
       Set up Custom Instructions right now.
 
-      1. Open ChatGPT (chatgpt.com or app).
-      2. Click your name (bottom left) → Settings → Personalization → Custom Instructions.
-      3. Box 1: write 4-6 lines about who you are, what work you do, what you're learning.
-      4. Box 2: write 4-6 lines about how you want answers (no preamble, format preferences, give 3 variants when subjective, be direct).
-      5. Save.
+      1. Open ChatGPT. Click your name → Settings → Personalization → Custom Instructions.
+      2. Box 1: 4-6 lines about who you are, what you do.
+      3. Box 2: 4-6 lines about how you want answers (no preamble, format prefs, give 3 variants when subjective, be direct).
+      4. Save.
 
-      Now open a *new* chat and ask: *"What do you know about me?"*
+      Open a new chat. Ask: *"What do you know about me?"*
 
-      The model should reflect back your Custom Instructions. Paste its response below.
+      Paste the model's response.
     placeholder: "ChatGPT said: ..."
 
   - type: ai_conversation
     xp: 15
-    goal: "User drafts one Box-2 instruction tailored to their own work."
+    goal: "User drafts one Box-2 instruction tailored to their work."
     max_turns: 4
-    success_criteria: "User writes one specific 'how to respond' rule (style, format, or constraint) tailored to their daily work, and Nova refines it."
+    success_criteria: "User writes one specific 'how to respond' rule and Nova refines it."
     starter_text: |
-      One quick exercise.
+      Quick exercise.
 
-      What's a specific *behaviour* you'd like ChatGPT to adopt every chat? Could be a tone thing, a format thing, a "stop doing X" thing. Tell me one rule you'd write into Box 2.
+      What's a specific *behaviour* you'd like ChatGPT to adopt every chat? A tone thing, a format thing, a "stop doing X" thing. Tell me one rule you'd write into Box 2.
     system_prompt: |
-      You are Nova, a warm but direct coach. The user just learned about Custom Instructions — Box 1 (about you), Box 2 (how to respond) — and that Memory is separate (dynamic facts).
+      You are Nova, a warm but direct coach. The user just learned about Custom Instructions — Box 1 (about you), Box 2 (how to respond) — and Memory (dynamic facts).
 
       Step 1: Ask user for one Box-2 rule they'd write.
-      Step 2: Once they answer, *sharpen* it. e.g. if they say "be more concise" → suggest "no preamble, max 3 short paragraphs unless I ask for more". If they say "use Indian context" → suggest "default examples to India: ₹ for currency, Mumbai/Delhi/Pune over NYC, IST timezone".
+      Step 2: Sharpen it. e.g. "be more concise" → "no preamble, max 3 short paragraphs unless I ask for more". "Use Indian context" → "default examples to India: ₹, Mumbai/Delhi/Pune, IST".
       Step 3: Affirm and close with <END/>.
 
-      Replies under 60 words. Practical, not theoretical.
+      Replies under 50 words. Practical.
 
   - type: fill_in_the_blank
     xp: 15
@@ -241,26 +307,26 @@ turns:
     template: "{{Custom}} Instructions are static — set once, applied every chat. {{Memory}} is dynamic — facts ChatGPT learns about you across conversations. Use both for {{maximum}} effect."
     answers:
       - id: Custom
-        accepted: ["custom", "Custom"]
+        accepted: [custom, Custom]
       - id: Memory
-        accepted: ["memory", "Memory"]
+        accepted: [memory, Memory]
       - id: maximum
-        accepted: ["maximum", "max", "best", "most"]
-    hint: "First two are the names of the two features. Third is a synonym for 'best' or 'most'."
+        accepted: [maximum, max, best, most]
+    hint: "First two: feature names. Third: synonym for 'best'."
 
   - type: reflection
     xp: 5
-    prompt: "What's one thing you'll write into Box 2 today that'll change every future ChatGPT answer for the better?"
+    prompt: "What's one thing you'll write into Box 2 today that'll change every future answer?"
     placeholder: "Probably 'no preamble' — the 'Of course!' opener has been bugging me forever..."
 
   - type: checkpoint
     xp: 10
     title: "ChatGPT, briefed."
     summary: |
-      *Custom Instructions* — static, two boxes, applied to every chat. About you (Box 1) + how to respond (Box 2).
+      *Custom Instructions* — static, two boxes, applied to every chat.
 
       *Memory* — dynamic facts ChatGPT learns over time.
 
-      Set both up once. Re-tune the Custom Instructions monthly as your taste sharpens.
+      Set both up once. Re-tune Custom Instructions monthly as your taste sharpens.
 
-      Tomorrow — we go deeper. Build a *Custom GPT*: a saved persona for a specific recurring task. Your own coach, baked-in role, one click away.
+      Tomorrow — build a *Custom GPT*: a saved persona for one specific recurring task.

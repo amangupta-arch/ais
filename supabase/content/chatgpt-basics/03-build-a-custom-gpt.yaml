@@ -8,18 +8,33 @@ turns:
     text: |
       Yesterday you set up Custom Instructions — your *static* preferences applied to every chat.
 
-      Today, the next level: *Custom GPTs*.
+      Today, the next level.
 
-      A Custom GPT is a saved version of ChatGPT specialised for *one specific job*. Your dietitian. Your code reviewer. Your essay editor. Your interview prep coach. Your travel planner.
+      *Custom GPTs.*
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      A Custom GPT is a saved version of ChatGPT specialised for *one specific job*.
+
+      Your dietitian. Your code reviewer. Your essay editor. Your interview prep coach.
 
       One specific recurring task → one specific GPT → one click to use it.
 
-      The difference vs Custom Instructions:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Difference vs Custom Instructions:
 
       - Custom Instructions = your defaults for *every* chat.
-      - Custom GPTs = a *separate, dedicated* assistant for one task — with its own setup, its own files, its own behaviour.
+      - Custom GPTs = a *separate, dedicated* assistant for one task — its own setup, its own files, its own behaviour.
 
-      By the end of this lesson you'll have built one Custom GPT for a real recurring need in your life. No code. No prompt-engineering jargon. Just clear English in a setup form.
+  - type: tutor_message
+    persona: nova
+    text: |
+      By the end of this lesson, you'll have built one Custom GPT for a real recurring need.
+
+      No code. No prompt-engineering jargon. Just clear English in a setup form.
 
   - type: tutor_message
     persona: nova
@@ -28,14 +43,25 @@ turns:
 
       Real examples — these all exist as Custom GPTs people use daily:
 
-      - *"My LinkedIn writer"* — knows your tone, your industry, your audience. You paste a draft thought, it returns a polished post.
-      - *"Code reviewer"* — knows your stack, your conventions. Paste a function, get focused feedback.
-      - *"Devil's advocate"* — pushes back on every plan. Useful before big decisions.
-      - *"Essay coach for IELTS"* — knows the rubric, scores your draft and explains where you'd lose points.
-      - *"Trip planner for Goa"* — knows your travel style (beach, food, no rushing), suggests itineraries.
-      - *"My grandma's recipe interpreter"* — knows your kitchen, your skill level, converts elaborate recipes to "what I can actually cook on a Tuesday night".
+      - *"My LinkedIn writer"* — knows your tone, industry, audience.
+      - *"Code reviewer"* — knows your stack, conventions.
+      - *"Devil's advocate"* — pushes back on every plan.
 
-      Notice the pattern. Each one is *one specific recurring task with a clear shape*. You'd talk to your "trip planner" GPT 5 times a year. Each conversation is shorter and sharper than asking generic ChatGPT, because it's pre-loaded with everything it needs.
+  - type: tutor_message
+    persona: nova
+    text: |
+      - *"Essay coach for IELTS"* — knows the rubric, scores your draft.
+      - *"Trip planner for Goa"* — knows your travel style, suggests itineraries.
+      - *"Recipe interpreter"* — knows your kitchen, skill level, converts elaborate recipes to "what I can cook on a Tuesday."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Notice the pattern.
+
+      Each one is *one specific recurring task with a clear shape*.
+
+      You'd talk to your "trip planner" GPT 5 times a year. Each conversation is shorter and sharper than asking generic ChatGPT — it's pre-loaded.
 
   - type: tutor_message
     persona: nova
@@ -44,53 +70,68 @@ turns:
 
       You don't write code. You fill in a form.
 
-      *1. Name* — what your GPT is called. *"Goa Trip Planner"*, *"My Brutal Editor"*.
+      *1. Name* — *"Goa Trip Planner"*, *"My Brutal Editor"*.
 
-      *2. Description* — one line shown to anyone who clicks on it.
-
-      *3. Instructions* — the big one. This is the *system prompt*: who the GPT is, how it behaves, what it knows about, what it doesn't do. We'll spend most of today here.
-
-      *4. Conversation starters* — 4 example first messages a user might click. Helps you (and others) get going faster.
-
-      *5. Knowledge* — optional. Upload PDFs, docs, etc. that the GPT can reference. Great for your company manual, a coursepack, your old project notes.
-
-      *6. Capabilities* — checkboxes. Web browsing? Image generation? Code interpreter? Mostly leave defaults.
-
-      The whole thing takes 10-20 minutes to build the first one. By the third, you're 5 minutes.
+      *2. Description* — one line shown when someone clicks.
 
   - type: tutor_message
     persona: nova
     text: |
-      The *Instructions* field is where the magic happens. It's a system prompt — RTCC at GPT-scale.
+      *3. Instructions* — the big one.
 
-      Here's a strong template:
+      The system prompt: who the GPT is, how it behaves, what it does and doesn't do.
 
+      We'll spend most of today here.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      *4. Conversation starters* — 4 example first messages.
+
+      *5. Knowledge* — optional. Upload PDFs, docs the GPT can reference.
+
+      *6. Capabilities* — checkboxes. Web browsing? Image generation? Code interpreter? Mostly leave defaults.
+
+      Whole thing: 10-20 minutes the first time. By the third, 5 minutes.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The *Instructions* field is where the magic happens.
+
+      It's a system prompt — RTCC at GPT-scale.
+
+      A strong template:
+
+  - type: tutor_message
+    persona: nova
+    text: |
       ```
-      You are [ROLE — be specific]. You help [WHO] with [WHAT].
+      You are [ROLE]. You help [WHO] with [WHAT].
 
       How you behave:
-      - [behaviour 1, e.g. "Always ask clarifying questions before giving advice"]
-      - [behaviour 2, e.g. "Be direct, never hedge"]
-      - [behaviour 3, e.g. "Use concrete examples, not generic advice"]
+      - [behaviour 1]
+      - [behaviour 2]
 
       What you DO:
-      - [task 1]
-      - [task 2]
+      - [task 1] [task 2]
 
       What you DON'T do:
-      - [boundary 1, e.g. "Never give legal advice"]
-      - [boundary 2, e.g. "Don't validate ideas before challenging them"]
+      - [boundary 1] [boundary 2]
 
       Format:
-      - [format rule, e.g. "Always reply in 3 paragraphs maximum"]
-      - [format rule, e.g. "When suggesting code, comment every line"]
+      - [format rule]
 
       One example exchange:
-      User: [example user message]
-      You: [example response showing your style]
+      User: [example] / You: [response]
       ```
 
+  - type: tutor_message
+    persona: nova
+    text: |
       Steal this template. Fill in for your task. Done.
+
+      Specificity is the lever. Vague Instructions = vague behaviour. Sharp Instructions = sharp behaviour.
 
   - type: mcq
     xp: 15
@@ -99,7 +140,7 @@ turns:
       - id: a
         text: "When you'll do this exact task more than 3-4 times"
         is_correct: true
-        rationale: "Right. The setup cost is 10-20 minutes. Pays off when you're doing this kind of task repeatedly. For one-off tasks, just use a strong prompt with RTCC."
+        rationale: "Right. Setup is 10-20 minutes. Pays off when you're doing this kind of task repeatedly. For one-offs, just use RTCC."
       - id: b
         text: "When the task is highly creative"
         is_correct: false
@@ -107,91 +148,100 @@ turns:
       - id: c
         text: "Only when you're using the API for code"
         is_correct: false
-        rationale: "Custom GPTs are a UI feature, no code needed. The API is a different path."
+        rationale: "Custom GPTs are a UI feature, no code needed."
       - id: d
         text: "When you want a different underlying model"
         is_correct: false
-        rationale: "Custom GPTs run on the same models as regular ChatGPT — you choose which model in settings. The customisation is the *system prompt*, not the model."
+        rationale: "Custom GPTs run on the same models. Customisation is the *system prompt*."
 
   - type: tutor_message
     persona: nova
     text: |
-      Worked example. Let's actually write the Instructions for a real Custom GPT — *"My Brutal Editor"*.
+      Worked example. Real Instructions for *"My Brutal Editor"*.
 
       ```
-      You are a brutal but fair senior editor with 15 years at major Indian publications (The Hindu, Mint, Caravan). You help me improve my writing — usually 100-500 word pieces.
+      You are a brutal but fair senior editor with 15 years at major Indian publications. You help me improve writing — usually 100-500 word pieces.
+      ```
 
+  - type: tutor_message
+    persona: nova
+    text: |
+      ```
       How you behave:
-      - You read everything I send carefully and identify the SINGLE biggest weakness first.
-      - You give specific line-level edits, not vague suggestions like "make it tighter".
-      - You quote the exact phrase that's weak, then suggest a replacement.
-      - You praise sparingly and only for things that actually work.
+      - Identify the SINGLE biggest weakness first.
+      - Give specific line-level edits, not vague suggestions.
+      - Quote the exact phrase that's weak, suggest a replacement.
+      - Praise sparingly, only for what works.
+      ```
 
+  - type: tutor_message
+    persona: nova
+    text: |
+      ```
       What you DO:
       - Cut filler ruthlessly.
-      - Catch jargon, hedging language, lazy verbs.
-      - Suggest stronger headlines and openings.
-      - Tell me when a piece's premise is unclear.
+      - Catch jargon, hedging, lazy verbs.
 
-      What you DON'T do:
-      - Don't add encouragement at the end ("great work!"). Keep it crisp.
-      - Don't rewrite the whole piece — give me the diagnosis and suggested edits.
+      What you DON'T:
+      - Don't add "great work!" at the end.
+      - Don't rewrite the whole piece — diagnose and suggest.
       - Don't apologise for being direct.
+      ```
 
+  - type: tutor_message
+    persona: nova
+    text: |
+      ```
       Format:
       - Start with: "BIGGEST PROBLEM:" in 1-2 lines.
       - Then "LINE EDITS:" with at most 5 specific changes.
       - End with one suggestion for what to do next.
-
-      Example:
-      User: [pastes a 200-word piece about working from home]
-      You:
-      BIGGEST PROBLEM: Your opening tells me what you're going to talk about ("In this piece I'll discuss..."). Cut that. Start with the actual story.
-
-      LINE EDITS:
-      1. "I have been thinking about" → "I've thought about" (saves 2 words, more direct)
-      2. "in many ways" → cut entirely (filler)
-      [...]
-
-      NEXT: Rewrite the opening line. Send it to me when you have it.
       ```
 
-      That's a Custom GPT. Detailed, specific, opinionated. The model now behaves like *that editor*, every chat.
+      That's a Custom GPT. The model now behaves like *that editor*, every chat.
 
   - type: tutor_message
     persona: nova
     text: |
       The *Knowledge* feature — when to use it.
 
-      Knowledge lets you upload up to 20 files (PDFs, .txt, .docx, etc.) that your Custom GPT can reference during chats. The model reads them and pulls relevant chunks into its replies — basically RAG (you'll meet this concept in NLP basics if you haven't yet).
+      Knowledge lets you upload up to 20 files (PDFs, .txt, .docx) the Custom GPT can reference.
 
+      Basically RAG (covered in NLP basics, lesson 09).
+
+  - type: tutor_message
+    persona: nova
+    text: |
       When it shines:
 
-      - Your company's brand guide → "My Marketing Copywriter" GPT writes in your voice.
+      - Your company's brand guide → "My Marketing Copywriter" writes in your voice.
       - Your past 30 LinkedIn posts → "My LinkedIn Writer" knows your style.
-      - The IELTS scoring rubric → "My IELTS Coach" knows exactly how you'd be marked.
+      - The IELTS rubric → "My IELTS Coach" knows exactly how you'd be marked.
       - A user manual → "Customer Support Bot" answers product questions.
 
+  - type: tutor_message
+    persona: nova
+    text: |
       When it doesn't:
 
-      - Tiny info that fits in Instructions → just paste it into Instructions.
-      - Info that changes weekly → Knowledge files are static; updating them is manual.
-      - Sensitive personal info → these files are tied to your account but think before uploading anything you wouldn't email yourself.
+      - Tiny info that fits in Instructions → just paste it.
+      - Info that changes weekly → Knowledge files are static.
+      - Sensitive personal info → think before uploading.
 
-      Rule: when the same context would otherwise fit in 5+ chats' worth of pasted text, upload it as Knowledge instead.
+      Rule: when the same context would otherwise fit in 5+ chats' worth of pasting, upload it as Knowledge.
 
   - type: tap_to_match
     xp: 15
-    prompt: "Match each scenario to whether you'd use Custom Instructions, a Custom GPT, or just a one-off prompt."
+    prompt: "Match each scenario to the right tool."
     left:
       - id: every
-        label: "Setting your name and tone preferences for every future chat"
+        label: "Setting your name and tone for every future chat"
       - id: weekly
-        label: "Reviewing 5-10 LinkedIn posts a week in your specific voice"
+        label: "Reviewing 5-10 LinkedIn posts a week in your voice"
       - id: once
-        label: "Asking ChatGPT to summarise one news article today"
+        label: "Summarising one news article today"
       - id: support
-        label: "Answering customer questions over your 50-page product manual"
+        label: "Answering customer questions over your 50-page manual"
     right:
       - id: ci
         label: "Custom Instructions"
@@ -214,30 +264,40 @@ turns:
 
       *Myth 1 — "Custom GPTs need code."*
 
-      They don't. You write English in a form. The whole experience is no-code by design. The most complex thing you might do is upload a PDF.
+      They don't. You write English in a form. No-code by design.
 
       *Myth 2 — "Custom GPTs are smarter than regular ChatGPT."*
 
-      Same model. Same intelligence. The customisation is the *system prompt + knowledge files*, not the underlying brain. Think of it as the same person putting on a different *uniform and briefing* for a specific job. The skill underneath is identical; the role they play is sharper.
-
-      That's also why a great Custom GPT is mostly about a great *Instructions* field. The model's capability is fixed — your Instructions decide which slice of that capability the user gets.
+      Same model. Same intelligence.
 
   - type: tutor_message
     persona: nova
     text: |
-      One thing about Custom GPTs that's worth saying out loud — *iteration is part of the process*.
+      Customisation is the *system prompt + knowledge files*, not the underlying brain.
 
-      You won't write a perfect Custom GPT on the first try. Nobody does. Here's the loop the pros use:
+      Same person, different *uniform and briefing* for a specific job.
 
-      1. Write the first version of Instructions.
+      That's why a great Custom GPT is mostly about a great *Instructions* field.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      One thing worth saying out loud — *iteration is part of the process*.
+
+      You won't write a perfect Custom GPT on the first try. Nobody does.
+
+      The loop the pros use:
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      1. Write first version of Instructions.
       2. Use it for 3-4 real tasks.
-      3. Notice what annoys you. ("It keeps adding 'Hope this helps!' at the end." Or "It's giving me 5 options when I want 3." Or "It's too jargon-heavy.")
-      4. Edit Instructions to fix the annoyance — usually adding a "DON'T do X" line, or sharpening a "DO Y instead" line.
-      5. Use it again. Iterate.
+      3. Notice what annoys you. ("Keeps adding 'Hope this helps!' at the end.")
+      4. Edit Instructions to fix — usually a "DON'T do X" line.
+      5. Use again. Iterate.
 
-      Inside a week of using a new Custom GPT, you'll have edited the Instructions 5-10 times. That's normal. That's how it gets good.
-
-      Pro tip: keep a tiny note ("CHANGES TO MAKE NEXT TIME") with annoyances as you spot them. Edit Instructions when you've collected 3-4 changes. Avoid micro-edits every time something's slightly off — they take time and you're not sure if the fix sticks.
+      Inside a week, you'll have edited 5-10 times. That's normal.
 
   - type: exercise
     xp: 20
@@ -245,36 +305,36 @@ turns:
     instruction: |
       Build your first Custom GPT.
 
-      1. Open ChatGPT. Click "Explore GPTs" (left sidebar) → "Create".
-      2. Pick a real recurring task in your life. (Examples: brutal editor, Hindi-English email translator, recipe interpreter, interview prep coach, gym workout planner.)
-      3. Use the template from earlier:
+      1. Open ChatGPT. Click "Explore GPTs" → "Create".
+      2. Pick a real recurring task. (Editor, Hindi-English email translator, recipe interpreter, gym workout planner.)
+      3. Use the template:
          - Role + audience
          - How you behave (3-5 bullets)
-         - What you DO + DON'T
+         - DO + DON'T
          - Format
          - One example exchange
-      4. Save. Open a new chat with your GPT. Test with a real task.
+      4. Save. Test with a real task.
 
-      Paste your Custom GPT's Instructions text below.
+      Paste your Instructions text.
     placeholder: "You are a [role]. You help [who] with [what]. ..."
 
   - type: ai_conversation
     xp: 15
-    goal: "User identifies one recurring task in their life that's a good Custom GPT candidate."
+    goal: "User identifies one recurring task that's a good Custom GPT candidate."
     max_turns: 4
-    success_criteria: "User names a specific recurring task they could build a Custom GPT for, with a clear sense of what the GPT would and wouldn't do."
+    success_criteria: "User names a specific recurring task with a clear sense of what the GPT would and wouldn't do."
     starter_text: |
-      Quick scoping exercise.
+      Quick scoping.
 
-      Tell me 3 things you do *most weeks* that involve writing, thinking, or reviewing. Could be work, hobby, or life admin.
+      Tell me 3 things you do *most weeks* that involve writing, thinking, or reviewing. Work, hobby, or life admin.
     system_prompt: |
-      You are Nova, a warm but direct coach. The user just learned about Custom GPTs — saved persona + system prompt + optional knowledge files for one specific recurring task.
+      You are Nova, a warm but direct coach. The user just learned about Custom GPTs — saved persona + system prompt + optional knowledge files for one recurring task.
 
       Step 1: Ask for 3 weekly recurring tasks.
-      Step 2: Once they answer, pick the BEST candidate (the most repeatable + most-defined-shape one) and tell them why it's the right first Custom GPT to build. Briefly sketch what its Instructions would emphasise.
+      Step 2: Pick the BEST candidate (most repeatable + most-defined-shape) and tell them why it's the right first Custom GPT to build. Briefly sketch the Instructions emphasis.
       Step 3: Affirm and close with <END/>.
 
-      Replies under 70 words. Practical and decisive.
+      Replies under 60 words. Decisive.
 
   - type: fill_in_the_blank
     xp: 15
@@ -282,17 +342,17 @@ turns:
     template: "{{Custom}} Instructions for every-chat defaults. A Custom {{GPT}} for one specific recurring {{task}}. A one-off prompt with RTCC for everything else."
     answers:
       - id: Custom
-        accepted: ["custom", "Custom"]
+        accepted: [custom, Custom]
       - id: GPT
-        accepted: ["gpt", "GPT"]
+        accepted: [gpt, GPT]
       - id: task
-        accepted: ["task", "job"]
+        accepted: [task, job]
     hint: "All three are words you've seen this lesson."
 
   - type: reflection
     xp: 5
-    prompt: "What's the first Custom GPT you'd build for yourself? Describe it in one sentence."
-    placeholder: "A LinkedIn post writer that knows my voice... an editor for my Hindi-English mixed posts..."
+    prompt: "What's the first Custom GPT you'd build for yourself? One sentence."
+    placeholder: "A LinkedIn post writer that knows my voice..."
 
   - type: checkpoint
     xp: 10
@@ -302,6 +362,6 @@ turns:
 
       Use Instructions like RTCC at scale: role, behaviour rules, do/don't, format, one example.
 
-      Same model as regular ChatGPT. Different *briefing*. That's the whole game.
+      Same model. Different *briefing*.
 
-      Tomorrow — what to do when ChatGPT's first answer isn't quite right. (Hint: don't restart the chat. Iterate.)
+      Tomorrow — what to do when ChatGPT's first answer isn't quite right. (Hint: don't restart. *Iterate*.)

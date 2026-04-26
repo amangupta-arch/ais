@@ -8,68 +8,91 @@ turns:
     text: |
       You've heard "trained on the internet." That phrase covers a lot. Today we open it up.
 
-      Building an LLM is *three steps*, not one. Each does a completely different job. Skip any of them and you get a model that's either useless or terrifying.
+      Building an LLM is *three steps*, not one.
 
+      Skip any one and you get a model that's either useless or terrifying.
+
+  - type: tutor_message
+    persona: nova
+    text: |
       The three steps:
 
       1. *Pretraining* — read everything.
       2. *Fine-tuning* — show polished examples of being helpful.
       3. *RLHF* — humans rate replies; the model learns what we prefer.
 
-      Pretraining gives the model knowledge and language. Fine-tuning makes it cooperative. RLHF gives it taste.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Pretraining gives the model knowledge and language.
+      Fine-tuning makes it cooperative.
+      RLHF gives it taste.
 
       Skip pretraining → no knowledge.
       Skip fine-tuning → can't follow instructions.
-      Skip RLHF → no manners, no nuance.
-
-      All three together → ChatGPT.
+      Skip RLHF → no manners.
 
   - type: tutor_message
     persona: nova
     text: |
       *Step 1 — Pretraining.*
 
-      The model reads roughly the entire public internet. Books, papers, Wikipedia, Reddit, GitHub, cooking blogs, forums, news, transcripts.
+      The model reads roughly the entire public internet. Books, papers, Wikipedia, Reddit, GitHub, cooking blogs.
 
-      Its only task during this whole stage: *given the text so far, predict the next token.* Billions of times.
+      Its only task: *given the text so far, predict the next token.* Billions of times.
 
+  - type: tutor_message
+    persona: nova
+    text: |
       That's it. Predict. Predict. Predict.
 
-      Out of that simple game emerges grammar, factual knowledge, coding, reasoning, world knowledge, humour. No one explicitly teaches the model what a verb is. No one teaches it physics. It just figures these out from reading enough sentences where verbs appear and physical events get described.
+      Out of that simple game emerges grammar, factual knowledge, coding, reasoning, world knowledge, humour.
 
-      This is the expensive step. *Months of training. Thousands of GPUs. Tens of millions of dollars in electricity.* For GPT-4, the bill was reportedly nine figures.
+      No one explicitly teaches the model what a verb is. It figures it out from billions of sentences.
 
-      What you get at the end: a model that's *brilliant* but *feral*. Knows everything. Doesn't know how to *be helpful*.
+  - type: tutor_message
+    persona: nova
+    text: |
+      This is the expensive step.
+
+      *Months of training. Thousands of GPUs. Tens of millions in electricity.*
+
+      For GPT-4, the bill was reportedly nine figures.
+
+      What you get: a model that's *brilliant* but *feral*.
 
   - type: tutor_message
     persona: nova
     text: |
       Wait — feral? Let me show you what that means.
 
-      After pretraining alone, here's what happens when you ask the model "What's the capital of France?"
+      After pretraining alone, ask the model "What's the capital of France?"
 
       It might answer "Paris."
 
-      It might also generate three more questions about France.
+      Or generate three more questions about France.
 
-      It might paste a Wikipedia-style article on French geography.
-
-      It might continue with: *"Possible quiz answers: Paris, Lyon, Marseille. The student should select..."*
-
-      It only knows *predict next token*. It doesn't know "be helpful". It doesn't know that a question deserves an answer rather than more questions. It's read a million possible continuations, and any of them might happen.
-
-      *That's* a pretrain-only model. Wildly knowledgeable. Functionally useless as an assistant. You'd never want this thing as a chatbot.
+      Or paste a Wikipedia-style article on French geography.
 
   - type: tutor_message
     persona: nova
     text: |
-      Researchers actually have models like this — they're called *base models*. You can download them and play with one yourself if you're curious. Mistral 7B base, Llama 3 base, GPT-2 (which OpenAI never RLHF'd at scale).
+      It only knows *predict next token*.
 
-      What they all share: they don't *answer* questions. They *continue text*. Type "The best chai in Mumbai is" and they'll happily keep writing. Type a complete question with a question mark, and you'll often get *more questions* back, or a Wikipedia-style answer that drifts.
+      It doesn't know "be helpful." Doesn't know that a question deserves an answer rather than more questions.
 
-      It's a strange experience the first time. You realise just how much of "ChatGPT being helpful" is *bolted on after pretraining*, not natural to the underlying model.
+      Wildly knowledgeable. Functionally useless as an assistant.
 
-      The base model has the knowledge. It just doesn't have the *manners*. That's what fine-tuning fixes.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Researchers actually have models like this — called *base models*.
+
+      Mistral 7B base, Llama 3 base, GPT-2.
+
+      They don't *answer* questions. They *continue text*. The base model has the knowledge but not the *manners*.
+
+      That's what fine-tuning fixes.
 
   - type: mcq
     xp: 15
@@ -78,11 +101,11 @@ turns:
       - id: a
         text: "\"I'm doing well, thanks for asking!\""
         is_correct: false
-        rationale: "That's a fine-tuned, polite response. Pretraining alone doesn't know to be helpful — it just predicts text."
+        rationale: "That's a fine-tuned, polite response. Pretraining alone doesn't know to be helpful."
       - id: b
-        text: "Continue the text — maybe \"and how is your morning going? I was just thinking about...\""
+        text: "Continue the text — \"and how is your morning going? I was just thinking about...\""
         is_correct: true
-        rationale: "Yes — pretraining is pure next-token prediction. Without fine-tuning, it just keeps writing whatever sounds plausible next, often as if the user's message was the start of a longer story."
+        rationale: "Yes — pretraining is pure next-token prediction. It keeps writing whatever sounds plausible next."
       - id: c
         text: "Refuse to answer"
         is_correct: false
@@ -90,50 +113,80 @@ turns:
       - id: d
         text: "Output a JSON object"
         is_correct: false
-        rationale: "Structured output is something fine-tuning teaches. Pretraining is wild text completion."
+        rationale: "Structured output is something fine-tuning teaches."
 
   - type: tutor_message
     persona: nova
     text: |
       *Step 2 — Fine-tuning.*
 
-      Fine-tuning is where the feral pretrain becomes a cooperative assistant.
+      This is where the feral pretrain becomes a cooperative assistant.
 
-      Engineers feed the model thousands of polished examples of "*good* assistant behaviour":
-
-      - Sample question: *"What's the capital of France?"*
-      - Sample answer: *"Paris."*
-      - Sample question: *"Write me a haiku about Mumbai monsoon."*
-      - Sample answer: *(a real haiku)*
-      - Sample question: *"Hi, how are you?"*
-      - Sample answer: *"I'm doing well, thanks. How can I help today?"*
-
-      The model adjusts its parameters slightly to be more likely to produce that *kind* of answer. Repeat across thousands of examples and the model learns the *shape* of being a helpful assistant.
-
-      It's like the model finished college, and now it's doing on-the-job training. The base knowledge was already there — fine-tuning just teaches the *behaviour* of an assistant.
-
-      Cost: thousands of dollars and weeks. Compared to pretraining, this is cheap.
+      Engineers feed thousands of polished examples of "*good* assistant behaviour."
 
   - type: tutor_message
     persona: nova
     text: |
+      For example:
+
+      - Q: "What's the capital of France?" / A: "Paris."
+      - Q: "Hi, how are you?" / A: "I'm doing well, thanks. How can I help today?"
+
+      The model adjusts its parameters slightly to favour that *kind* of answer.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Repeat across thousands of examples and the model learns the *shape* of being a helpful assistant.
+
+      Like the model finished college, now doing on-the-job training.
+
+      The base knowledge was already there. Fine-tuning teaches the *behaviour* of an assistant.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Cost: thousands of dollars and weeks. Cheap, compared to pretraining.
+
       *Step 3 — RLHF.* Reinforcement Learning from Human Feedback.
 
       Here's where personality gets baked in.
 
-      The fine-tuned model writes *two* candidate replies to the same prompt. A human contractor — yes, a real person — picks the better one. The model adjusts to favour the kind of replies humans pick.
+  - type: tutor_message
+    persona: nova
+    text: |
+      The fine-tuned model writes *two* candidate replies. A human contractor — yes, a real person — picks the better one.
 
-      Repeat thousands of times across thousands of contractors. Slowly, the model learns what humans *prefer*:
+      The model adjusts to favour the kind of replies humans pick.
 
-      - More helpful > less helpful (most of the time)
+      Repeat thousands of times across thousands of contractors.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Slowly, the model learns what humans *prefer*:
+
+      - More helpful > less helpful
       - More accurate > more confident-sounding
       - Polite > brusque
       - Will admit uncertainty > pretends to know
-      - Won't help with harmful requests > will help with anything
+      - Refuses harmful requests > helps with anything
 
-      RLHF is what gives ChatGPT its specific *vibe* — friendly, somewhat over-cautious, prone to lists. RLHF is also why different models *feel* different. Claude's personality, ChatGPT's personality, Gemini's personality — all emerge from each company's RLHF preferences.
+  - type: tutor_message
+    persona: nova
+    text: |
+      RLHF is what gives ChatGPT its specific *vibe* — friendly, somewhat over-cautious, prone to lists.
 
-      And it's why models can be over-tuned: too aggressive RLHF and you get a model that refuses everything ("I can't help with that"). Too little and you get one that goes off the rails.
+      It's also why different models *feel* different. Claude, ChatGPT, Gemini personalities all emerge from each company's RLHF preferences.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Why models can be over-tuned: too aggressive RLHF and you get a model that refuses everything.
+
+      Too little and it goes off the rails.
+
+      Tuning RLHF is more art than science. It's why "GPT-4 used to feel different last year" — they kept tuning.
 
   - type: drag_to_reorder
     xp: 15
@@ -152,15 +205,31 @@ turns:
     text: |
       A worked example to make all 3 stages tangible.
 
-      Pretend you're training a new model from scratch.
+      Pretend you're training a new model.
 
-      *After pretraining (~9 months, ~$30M):* You ask the model "What's a good Python error to catch?" Result: it might dump 200 lines of mixed Python, English, and Stack Overflow noise. Knowledge is in there — it's just not extractable as an answer.
+      *After pretraining (~9 months, ~$30M):*
 
-      *After fine-tuning (~3 weeks, ~$50K):* You ask the same question. Result: a clean answer like "ValueError or KeyError, depending on context. Avoid blanket `except` clauses." Now the model is an assistant.
+      Ask "What's a good Python error to catch?" → 200 lines of mixed Python, English, Stack Overflow noise.
 
-      *After RLHF (~6 weeks, ~$1M including contractor labour):* Same question. Result: the same useful answer, plus appropriately formatted code blocks, a follow-up offer ("want a small example?"), and a refusal-to-help if you'd asked something harmful.
+      Knowledge in there. Just not extractable.
 
-      Three stages, each adds a layer. Each is essential.
+  - type: tutor_message
+    persona: nova
+    text: |
+      *After fine-tuning (~3 weeks, ~$50K):*
+
+      Same question → "ValueError or KeyError, depending on context. Avoid blanket `except` clauses."
+
+      Now the model is an assistant.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      *After RLHF (~6 weeks, ~$1M including contractor labour):*
+
+      Same question + appropriately formatted code blocks + a follow-up offer ("want a small example?") + a refusal-to-help if you'd asked something harmful.
+
+      Three stages. Each adds a layer.
 
   - type: tap_to_match
     xp: 15
@@ -189,33 +258,40 @@ turns:
     text: |
       Two myths to demolish.
 
-      *Myth: "Models are programmed to be polite."*
+      *Myth 1 — "Models are programmed to be polite."*
 
-      No engineer wrote a "be polite" rule. Politeness was *RLHF'd* in — humans repeatedly rated polite replies as better, and the model adjusted. Different RLHF priorities give different models different personalities. The same base model, RLHF'd by 100 different teams, would produce 100 different "vibes".
+      No engineer wrote a "be polite" rule. Politeness was *RLHF'd* in.
 
-      *Myth: "Refusals come from a hard-coded blocklist."*
+      Different RLHF priorities give different models different personalities.
 
-      Sometimes — but mostly no. Refusals come from RLHF too. Humans rated "I can't help with making a bomb" higher than "Sure, here's how..." Train enough of those and the model learns to refuse certain topics. That's why refusals are sometimes inconsistent — there's no rule book, just a *preference pattern* the model picked up.
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Myth 2 — "Refusals come from a hard-coded blocklist."*
 
-      Both myths point at the same truth: a model's *behaviour* isn't programmed. It's *trained*. Every quirk and choice you see in ChatGPT was learned, not coded.
+      Mostly no. Refusals come from RLHF too.
+
+      Humans rated "I can't help with making a bomb" higher than "Sure, here's how..." Train enough → the model learns to refuse.
+
+      That's why refusals are sometimes inconsistent. No rule book — a *preference pattern*.
 
   - type: ai_conversation
     xp: 15
-    goal: "User identifies a behaviour they've seen in ChatGPT/Claude and connects it to one of the three training stages."
+    goal: "User identifies a behaviour they've seen in ChatGPT and connects it to one of the three training stages."
     max_turns: 4
-    success_criteria: "User names a specific behaviour (refusal, formatting, tone, length) and identifies whether it most likely came from pretraining, fine-tuning, or RLHF."
+    success_criteria: "User names a specific behaviour and identifies whether it most likely came from pretraining, fine-tuning, or RLHF."
     starter_text: |
       Quick test of your new mental model.
 
       Tell me ONE thing ChatGPT or Claude does that you have an opinion about. Maybe you love it, maybe it annoys you. Just describe the behaviour.
     system_prompt: |
-      You are Nova, a warm but direct coach. The user just learned the 3-step recipe — pretraining (knowledge from internet), fine-tuning (polished assistant examples), RLHF (human-preferred replies).
+      You are Nova, a warm but direct coach. The user just learned the 3-step recipe — pretraining (knowledge), fine-tuning (assistant behaviour), RLHF (human-preferred replies).
 
-      Step 1: Ask the user about a specific behaviour they've noticed.
-      Step 2: After their answer, tell them which stage that behaviour most likely came from. Be specific. e.g. "That refusal pattern is RLHF — humans rated those replies higher in training." Or: "That long-list formatting is fine-tuning — they trained it on examples that used lists."
+      Step 1: Ask user about a specific behaviour they've noticed.
+      Step 2: Tell them which stage it most likely came from. Be specific. e.g. "That refusal pattern is RLHF — humans rated those replies higher in training."
       Step 3: Affirm and close with <END/>.
 
-      Replies under 60 words. Coach, not textbook.
+      Replies under 50 words. Coach, not textbook.
 
   - type: fill_in_the_blank
     xp: 15
@@ -223,12 +299,12 @@ turns:
     template: "Pretrain on text. Fine-tune on good {{examples}}. RLHF on human {{feedback}}. Skip any one and the model is either useless or {{rude}}."
     answers:
       - id: examples
-        accepted: ["examples", "demonstrations", "data"]
+        accepted: [examples, demonstrations, data]
       - id: feedback
-        accepted: ["feedback", "ratings", "preferences"]
+        accepted: [feedback, ratings, preferences]
       - id: rude
-        accepted: ["rude", "feral", "broken", "unhelpful"]
-    hint: "Three blanks straight from the lesson. Last one is what a model becomes if you skip RLHF — there are several right answers."
+        accepted: [rude, feral, broken, unhelpful]
+    hint: "Three blanks straight from the lesson."
 
   - type: reflection
     xp: 5
@@ -239,14 +315,12 @@ turns:
     xp: 10
     title: "Three stages. One useful model."
     summary: |
-      *Pretraining* teaches the model language and the world (read everything, predict next token).
+      *Pretraining* teaches language and the world.
+      *Fine-tuning* teaches helpful assistant behaviour.
+      *RLHF* teaches human preferences.
 
-      *Fine-tuning* teaches it to be a helpful assistant (polished examples of good behaviour).
+      Skip any step and you get something useless or insufferable.
 
-      *RLHF* teaches it to match human preferences (humans rate, model learns taste).
+      Behaviour is *trained*, not programmed. Every quirk in ChatGPT, Claude, or Gemini came from one of these three stages.
 
-      Skip any step and you get something either useless or insufferable. The recipe is *all three together*, in this order.
-
-      Behaviour is trained, not programmed. Every quirk in ChatGPT, Claude, or Gemini came from one of these three stages.
-
-      Next up — same model, very different outputs depending on how you ask. Welcome to *prompting*.
+      Next — same model, very different output depending on how you ask. *Prompting*.

@@ -8,98 +8,154 @@ turns:
     text: |
       Quick mental experiment.
 
-      You ask ChatGPT for 5 marketing campaign ideas for a new chai brand. It gives you 5 ideas. Three are mediocre, one is okay, one is genuinely interesting.
+      You ask ChatGPT for 5 marketing campaign ideas for a new chai brand.
 
+      It gives 5. Three are mediocre. One is okay. One is genuinely interesting.
+
+  - type: tutor_message
+    persona: nova
+    text: |
       What do most people do?
 
       Two camps:
 
       *Camp 1: "Eh, this isn't great."* Closes the tab. Tells friends ChatGPT is overhyped.
 
-      *Camp 2: "Hmm, but #4 is interesting. Let me push harder on that one."* Asks a follow-up. Refines. Iterates. Twenty minutes later they've got a campaign that's actually shippable.
-
-      The difference between "ChatGPT is mediocre" and "ChatGPT is amazing" is almost entirely *Camp 2 behaviour*. The first answer is a draft. The follow-ups are where the work gets done.
-
-      Today: how to iterate properly. Four moves you can use on every "meh" first answer.
+      *Camp 2: "Hmm, but #4 is interesting. Let me push harder on that one."* Asks a follow-up. Refines.
 
   - type: tutor_message
     persona: nova
     text: |
-      Why is this lesson even necessary? Because of a specific bias most of us have.
+      The difference between "ChatGPT is mediocre" and "ChatGPT is amazing" is almost entirely *Camp 2 behaviour*.
 
-      We're used to *vending machines*. You put in a coin, you get the exact item. If it doesn't come out, the machine is broken.
+      The first answer is a draft.
 
-      ChatGPT is not a vending machine. It's more like a *colleague who's just heard your rough idea and given you a first sketch*. The first sketch is rarely the final draft. That's true with ChatGPT, and it's true when you brief any human collaborator.
-
-      The expectation should be: *send first prompt → read first answer → identify the part that's working → ask for more of that, less of the rest*. That's iteration.
-
-      The people who get the most out of ChatGPT treat it like a thinking partner, not a search engine. They expect to send 3-5 messages per task. They don't get frustrated when the first reply isn't perfect. They steer.
+      The follow-ups are where the work gets done.
 
   - type: tutor_message
     persona: nova
     text: |
-      Four follow-up moves. The pros use all four. Use them by name.
+      Today: how to iterate properly.
+
+      Four moves you can use on every "meh" first answer.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Why does this lesson exist? A specific bias most of us have.
+
+      We're used to *vending machines*. Put in coin, get exact item. If nothing comes out, machine is broken.
+
+      ChatGPT is not a vending machine.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      It's more like *a colleague who's just heard your rough idea and given you a first sketch*.
+
+      The first sketch is rarely the final draft.
+
+      That's true with ChatGPT, and with any human collaborator.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The expectation should be:
+
+      *Send first prompt → read first answer → identify what's working → ask for more of that, less of the rest.*
+
+      That's iteration.
+
+      Pros expect 3-5 messages per task.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Four follow-up moves. Use them by name.
 
       *Move 1 — Refine.*
+
       Take the answer and make it more specific.
-      *"Take answer #4 and turn it into a detailed campaign plan with budget, channels, and timeline."*
 
-      *Move 2 — Narrow.*
-      Take the answer and shrink it to a tighter slice.
-      *"Now do the same but only for the first month, and only Instagram and email."*
-
-      *Move 3 — Expand.*
-      Take the answer and push it further.
-      *"Give me 5 more ideas in the spirit of #4 — the unexpected one."*
-
-      *Move 4 — Redo with X.*
-      Take the answer and redo it under a new constraint.
-      *"Redo all 5 ideas but assume our audience is Gen-Z students, not 30+ professionals."*
-
-      Refine. Narrow. Expand. Redo with X. Burn these into your hands. They're the difference between using ChatGPT well and using it badly.
+      *"Take answer #4 and turn it into a detailed campaign plan with budget, channels, timeline."*
 
   - type: tutor_message
     persona: nova
     text: |
-      Worked example. Watch all 4 moves in one conversation.
+      *Move 2 — Narrow.*
+
+      Take the answer and shrink it.
+
+      *"Now do the same but only for the first month, and only Instagram and email."*
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Move 3 — Expand.*
+
+      Take the answer and push it further.
+
+      *"Give me 5 more ideas in the spirit of #4 — the unexpected one."*
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Move 4 — Redo with X.*
+
+      Take the answer and redo it under a new constraint.
+
+      *"Redo all 5 ideas but assume our audience is Gen-Z students, not 30+ professionals."*
+
+      Refine. Narrow. Expand. Redo with X.
+
+      Burn these into your hands.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Worked example. All 4 moves in one conversation.
 
       *You:* *"Give me 5 LinkedIn post ideas for a SaaS founder."*
-      *ChatGPT:* gives 5 ideas — generic.
+      *ChatGPT:* 5 generic ideas.
 
       *You (Refine):* *"Take idea #2 and write a full 200-word post in the voice of a tired but optimistic founder."*
-      *ChatGPT:* gives a draft. Decent.
 
+  - type: tutor_message
+    persona: nova
+    text: |
       *You (Narrow):* *"Cut it to 100 words. Punchier opening."*
-      *ChatGPT:* gives a tighter version.
 
       *You (Expand):* *"Give me 3 alternative endings — one funny, one vulnerable, one provocative."*
-      *ChatGPT:* gives 3 alternative endings.
 
-      *You (Redo with X):* *"Redo the whole post but now assume the founder is *not* tired — they're energised, slightly arrogant. Same opening, different middle and end."*
-      *ChatGPT:* gives a fresh version with new energy.
+      *You (Redo with X):* *"Redo the whole post but the founder is energised, slightly arrogant. Different middle and end."*
 
-      Five exchanges. The result is 5× better than what the first prompt produced. That's iteration. That's the whole skill.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Five exchanges. Result is 5× better than the first prompt produced.
+
+      That's iteration. That's the whole skill.
 
   - type: mcq
     xp: 15
-    question: "ChatGPT just gave you a 5-paragraph email draft. Paragraph 3 is great. Paragraphs 1, 2, 4, 5 are bland. What do you do?"
+    question: "ChatGPT just gave a 5-paragraph email draft. Paragraph 3 is great. The rest is bland. What do you do?"
     options:
       - id: a
         text: "Tell ChatGPT \"this is bad, try again\" and start over"
         is_correct: false
-        rationale: "You'll likely get something equally bland — possibly worse, since you've discarded the part that worked. Don't restart when iteration is right there."
+        rationale: "You'll likely get something equally bland — possibly worse, since you've discarded what worked."
       - id: b
-        text: "Quote paragraph 3 and say \"This is great. Rewrite the rest of the email in the same voice.\""
+        text: "Quote paragraph 3 and say \"This is great. Rewrite the rest in the same voice.\""
         is_correct: true
-        rationale: "Right. Anchor on what works. Tell ChatGPT *specifically* what to keep and what to fix. The model can match the voice once you've shown it which one."
+        rationale: "Right. Anchor on what works. Tell ChatGPT specifically what to keep and fix."
       - id: c
         text: "Manually edit it yourself"
         is_correct: false
-        rationale: "Fine, but you're missing the point — iteration is *with* the model. Most of the heavy lifting can still be ChatGPT's; you just steer."
+        rationale: "Fine, but you're missing the point — iteration is *with* the model."
       - id: d
         text: "Open a new chat and try again"
         is_correct: false
-        rationale: "You'll lose the one paragraph that was working. The model has no memory across chats — you've thrown away progress for no reason."
+        rationale: "You'll lose the one paragraph that was working. The model has no memory across chats."
 
   - type: tutor_message
     persona: nova
@@ -110,26 +166,34 @@ turns:
 
       *"What's missing from this answer to make it useful for me?"*
 
-      The model will often *catch its own mistakes*. It'll tell you "I assumed X but might have it wrong" or "this would be sharper if I knew Y about you" or "I gave a generic answer because the topic is broad — want me to focus on a specific angle?"
+  - type: tutor_message
+    persona: nova
+    text: |
+      The model often *catches its own mistakes*.
 
-      Then you give it the missing piece, and the next answer is shockingly better.
+      It'll tell you "I assumed X but might have it wrong" or "this would be sharper if I knew Y about you" or "I gave a generic answer because the topic is broad — want me to focus?"
 
-      This is one of the biggest unlocks in this whole course. Use it whenever an answer is "fine but not quite right" and you're not sure why.
+      Then you give the missing piece. Next answer is shockingly better.
 
   - type: tutor_message
     persona: nova
     text: |
       Another iteration trick — the *"explain what you wanted"* move.
 
-      When the model misreads your prompt and gives you something off-base, don't just resend the prompt. Try:
+      When the model misreads you, don't just resend. Try:
 
       *"Before you redo this — explain back to me what you THOUGHT I was asking for. Then I'll clarify."*
 
-      ChatGPT will say *"I interpreted your ask as X, with focus on Y, in format Z."* Often you'll see immediately where the model misread you.
+  - type: tutor_message
+    persona: nova
+    text: |
+      ChatGPT will say *"I interpreted your ask as X, with focus on Y, in format Z."*
 
-      Then you correct: *"Right interpretation. Wrong on Y. I actually meant Y'."*
+      Often you'll see immediately where it misread.
 
-      The next answer is on target. This trick saves you 3-4 wrong-direction iterations every time. The cost is one extra exchange. Massively worth it.
+      Then: *"Right interpretation. Wrong on Y. I actually meant Y'."*
+
+      Saves you 3-4 wrong-direction iterations every time.
 
   - type: tap_to_match
     xp: 15
@@ -142,7 +206,7 @@ turns:
       - id: more
         label: "Answer hit the right vibe, want similar variations."
       - id: angle
-        label: "Answer is okay but you want a different angle entirely."
+        label: "Answer is okay but you want a different angle."
     right:
       - id: refine
         label: "Refine — go deeper on what worked"
@@ -165,28 +229,38 @@ turns:
 
       *Myth 1 — "If the first answer is bad, the model can't do it."*
 
-      Almost never true. The first answer is a *draft*. Models are trained to take a wide swing on the first try, then refine when given feedback. The first answer underestimates the model's ceiling badly.
+      Almost never true. The first answer is a *draft*.
 
-      I'd estimate: ChatGPT's *iteration ceiling* is 3-5× higher than its *first-answer* ceiling. You're leaving most of the value on the table if you don't iterate.
+      ChatGPT's *iteration ceiling* is 3-5× higher than its *first-answer* ceiling. You're leaving most of the value on the table if you don't iterate.
 
+  - type: tutor_message
+    persona: nova
+    text: |
       *Myth 2 — "Iteration means starting over."*
 
-      It almost never means that. Restarting throws away context the model has already built up about you and your task. Refining beats restarting almost every time.
+      Almost never. Restarting throws away context the model has built up.
 
-      The only reason to start fresh is when the model has gone *deeply* wrong and corrections are getting lost. That's rare. When in doubt, iterate.
+      Refining beats restarting almost every time.
+
+      The only reason to start fresh is when corrections are getting lost — that's rare.
 
   - type: tutor_message
     persona: nova
     text: |
       One more skill — *knowing when to stop iterating*.
 
-      You'll find that for any task, there's a "good enough" point. Iterate too little, the answer is mediocre. Iterate too much, you're sharpening something that's already done.
+      For any task, there's a "good enough" point.
 
-      Rough heuristic: *if the next iteration only marginally improves on the current best, you're done*. Stop. Use what you've got. Move on.
+      Iterate too little: mediocre. Too much: sharpening something already done.
 
-      Pros usually iterate 3-5 rounds and stop. They don't try to make ChatGPT produce a "perfect" answer — they make it produce a *useful* answer, then take it from there.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Heuristic: if the next iteration only marginally improves the current best, you're done. Stop.
 
-      Real-world rule of thumb: budget *15 minutes per ChatGPT task*. Within 15 minutes, you should have iterated 4-5 times and arrived at something usable. If you're at 30 minutes, the task is too vague — start over with a sharper prompt.
+      Pros usually iterate 3-5 rounds.
+
+      Real-world rule: budget *15 minutes per ChatGPT task*. Within 15, you should have iterated 4-5 times and arrived at something usable.
 
   - type: exercise
     xp: 20
@@ -194,32 +268,32 @@ turns:
     instruction: |
       Iterate on a real task, *deliberately*.
 
-      1. Pick a real task — write an email, brainstorm headlines, summarise an article, plan a meal. Something concrete.
-      2. Send a thin first prompt (skip RTCC on purpose — we want to see the iteration kick in).
-      3. Read the answer. Pick the *best part*. Anchor on it.
-      4. Apply at least *3 of the 4 follow-up moves* — Refine, Narrow, Expand, Redo with X.
-      5. Stop when the answer is good enough.
+      1. Pick a real task — write an email, brainstorm headlines, plan a meal.
+      2. Send a thin first prompt (skip RTCC on purpose).
+      3. Read the answer. Pick the *best part*.
+      4. Apply at least 3 of the 4 moves — Refine, Narrow, Expand, Redo with X.
+      5. Stop when good enough.
 
-      Paste the *final* answer and a one-line note on which iteration moves you used.
+      Paste the final answer + which moves you used.
     placeholder: "Final answer: ... I used: Refine + Narrow + Expand."
 
   - type: ai_conversation
     xp: 15
-    goal: "User identifies one task where they always restart instead of iterating, and gets coached on iterating it instead."
+    goal: "User identifies a task where they restart instead of iterating, gets coached on iterating instead."
     max_turns: 4
-    success_criteria: "User names a specific kind of task where they tend to restart, and commits to trying iteration next time with one specific follow-up move."
+    success_criteria: "User names a kind of task where they restart, commits to trying iteration with one specific move."
     starter_text: |
       Quick honesty check.
 
-      What's a kind of ChatGPT task where you tend to *restart* instead of iterate? Could be writing, brainstorming, coding — anything where you've thrown away an okay answer and started over.
+      What's a kind of ChatGPT task where you tend to *restart* instead of iterate? Writing, brainstorming, coding — anything where you've thrown away an okay answer and started over.
     system_prompt: |
-      You are Nova, a warm but direct coach. The user just learned 4 iteration moves: Refine (go deeper on what worked), Narrow (shrink), Expand (give me more like this), Redo with X (same task, new constraint). Plus the "what's missing from this answer?" trick.
+      You are Nova, a warm but direct coach. The user just learned 4 iteration moves: Refine (deeper on what worked), Narrow (shrink), Expand (more like this), Redo with X (same task, new constraint). Plus the "what's missing?" trick.
 
-      Step 1: Ask user about a task where they restart instead of iterating.
-      Step 2: Once they answer, suggest the SPECIFIC iteration move they should try first next time. e.g. "When ChatGPT writes a meh email, try Refine — quote the line that DID work and ask for the rest in the same voice." Be concrete.
+      Step 1: Ask user about a task where they restart.
+      Step 2: Suggest the SPECIFIC move they should try first next time. e.g. "When ChatGPT writes a meh email, try Refine — quote the line that DID work and ask for the rest in the same voice."
       Step 3: Affirm and close with <END/>.
 
-      Replies under 60 words. Direct, warm.
+      Replies under 50 words. Direct, warm.
 
   - type: fill_in_the_blank
     xp: 15
@@ -227,30 +301,30 @@ turns:
     template: "{{Refine}} (deeper on what worked). {{Narrow}} (shrink). {{Expand}} (more in this direction). Redo with {{X}} (same task, new constraint)."
     answers:
       - id: Refine
-        accepted: ["refine", "Refine"]
+        accepted: [refine, Refine]
       - id: Narrow
-        accepted: ["narrow", "Narrow"]
+        accepted: [narrow, Narrow]
       - id: Expand
-        accepted: ["expand", "Expand"]
+        accepted: [expand, Expand]
       - id: X
-        accepted: ["X", "x", "constraint"]
+        accepted: [X, x, constraint]
     hint: "All four are the move names from the lesson."
 
   - type: reflection
     xp: 5
-    prompt: "When was the last time you closed a ChatGPT chat thinking 'this isn't good enough'? What might you have iterated on instead?"
+    prompt: "When did you last close a ChatGPT chat thinking 'this isn't good enough'? What might you have iterated on?"
     placeholder: "I asked for marketing ideas, got 5 generic ones, gave up. I should have asked..."
 
   - type: checkpoint
     xp: 10
     title: "Iteration is the skill."
     summary: |
-      ChatGPT's first answer is a draft, not a verdict. The pros iterate 3-5 rounds.
+      ChatGPT's first answer is a draft, not a verdict.
 
       Four moves: *Refine, Narrow, Expand, Redo with X.*
 
-      Two unlock phrases: *"What's missing from this answer to make it useful?"* and *"Explain back what you thought I was asking."*
+      Two unlock phrases: *"What's missing from this answer?"* and *"Explain back what you thought I was asking."*
 
       Don't restart when iteration is right there.
 
-      Tomorrow — what to do when ChatGPT confidently makes things up. The hallucination problem and how to spot it.
+      Tomorrow — what to do when ChatGPT confidently makes things up.
