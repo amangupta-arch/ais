@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "content:load": "tsx scripts/load-content.ts"
+    "content:load": "tsx scripts/load-content.ts",
+    "content:generate": "tsx scripts/generate-lesson.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.90.0",

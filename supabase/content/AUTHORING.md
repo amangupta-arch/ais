@@ -1,80 +1,195 @@
 # Authoring lessons
 
-All lessons are **human-authored**. You write one YAML file per lesson. A loader turns them into rows in `lessons` + `lesson_turns`.
+Lessons are **AI-authored from a tiny human outline**. Humans write
+`_outline.yaml` per course (~30 lines per course). The generator reads
+it, calls Claude, and writes the full per-lesson YAML files.
 
-## Quick start
+The goal is teacher-grade depth — not a quiz wearing lesson clothes.
 
-1. Pick the course slug from the list below (must match `courses.slug` exactly).
-2. Create a file under `supabase/content/<course-slug>/NN-<lesson-slug>.yaml` — `NN` is a two-digit prefix (`01`, `02`, …) that drives the lesson's order within the course.
-3. Write the lesson (see spec below).
-4. `npm run content:load`.
+## Pipeline
 
-The loader upserts the lesson row and **replaces** its turns in file order. Re-running is safe.
+```
+_outline.yaml  ──►  scripts/generate-lesson.ts  ──►  NN-<slug>.yaml
+                         (Claude opus-4-7)
+                         (validates against schema, retries on fail)
 
-## File layout
+NN-<slug>.yaml  ──►  npm run content:load  ──►  Supabase
+```
+
+Per-course directory layout:
 
 ```
 supabase/content/
   AUTHORING.md
+  _exemplar.yaml                # one hand-tuned reference lesson; few-shot anchor
+  nlp-basics/
+    _outline.yaml               # 10-lesson curriculum (human-edited)
+    01-what-is-nlp.yaml         # AI-generated; do not hand-edit
+    02-from-nlp-to-llm.yaml
+    …
   chatgpt-basics/
+    _outline.yaml
     01-first-real-conversation.yaml
-    02-build-your-first-gpt.yaml
-  canva-magic/
-    01-<slug>.yaml
+    …
 ```
 
-- The directory name **is** the course slug.
-- The filename prefix **is** the order index.
+The loader regex is `NN-<slug>.yaml`, so `_outline.yaml` and
+`_exemplar.yaml` are ignored automatically.
 
-## Course slugs (seeded)
+## Quick commands
 
-`chatgpt-basics`, `canva-magic`, `ai-basics`, `how-does-machine-learn`, `nlp-basics`, `how-does-ai-work`, `photo-editing-ai`, `insta-post-with-ai`, `what-is-ai`, `chatgpt-pro`, `design-with-canva-ai`, `all-in-one-gemini`, `translate-with-deepl`, `character-ai`, `perplexity-scholar`, `remove-bg-one-click`, `quillbot-rewrite`, `midjourney-art`, `prompt-engineering-14d`, `claude-deepthink`, `copilot-at-work`, `runway-video`, `zapier-automation`, `cursor-for-builders`, `kheti-mein-ai`, `ielts-success`, `neet-ug-prep`, `kirana-ai`, `ai-for-weddings`, `diet-planner`, `resume-ai`, `english-seekhna-ai-se`.
+```bash
+# Regenerate one lesson
+npm run content:generate -- --course=nlp-basics --slug=embeddings
 
-## Lesson file spec
+# Regenerate every lesson in a course
+npm run content:generate -- --course=nlp-basics --all
 
-Top-level fields mirror the `lessons` table.
+# Validate every YAML without writing to DB
+npx tsx scripts/load-content.ts --dry-run
+
+# Push validated YAML to Supabase
+npm run content:load
+```
+
+## Depth floor (hard minimums every generated lesson must hit)
+
+| Metric | Floor | Target |
+|---|---|---|
+| Total turns | 14 | 16–20 |
+| `tutor_message` turns | 8 | 10–14 |
+| Tutor text (chars, all turns combined) | 4,000 | 5,000–7,000 |
+| Distinct turn types used | 5 | 6+ |
+| `estimated_minutes` | 12 | 14–18 |
+| Worked examples per major concept | 2 | 3+ |
+| Misconceptions explicitly named & corrected | 1 | 2+ |
+| Callbacks to prior lessons | 1 (when not lesson 01) | 2+ |
+
+The generator measures these after parsing and retries with specific
+feedback when a lesson falls below the floor.
+
+## Pacing rule
+
+No interactive turn (mcq, tap_to_match, drag_to_reorder,
+fill_in_the_blank, free_text) before turn 5 unless it is `reflection`.
+
+A concept gets the full beat:
+
+```
+hook  →  explain  →  analogy  →  worked example #1  →  worked example #2
+     →  edge case / counter-example  →  misconception  →  quiz
+```
+
+Then the next concept. Three concepts per lesson is the typical
+target — more makes the lesson too dense, fewer too thin.
+
+## Mechanic mix rule
+
+Every lesson uses at least 5 of the 11 turn types. The previous
+authoring iteration leaned on the same 4 (tutor + mcq + tap_to_match +
+fill_in_the_blank) for every lesson; the result was monotonous.
+
+Lean into the underused mechanics:
+
+- `ai_conversation` — Socratic mini-chat with Claude; great for
+  prompting / RAG / "now you try"
+- `exercise` — sends the learner to ChatGPT/Claude/Gemini in another
+  tab to do the thing
+- `free_text` — AI-graded open answer with a rubric; use sparingly
+  but powerfully for "explain this back to me"
+- `media` — image or video; best for diagrams of concepts
+  (transformers, embeddings) when a hosted asset is available
+
+## Voice (preserved from earlier guide)
+
+- Italic for emphasis (`*word*`). **Never bold.**
+- Em-dash without spaces: `learning is a practice—not an event`.
+- Digits for counts: `3 tasks`, not `three tasks`.
+- Tutor voice: warm but direct. "You're doing fine. One small
+  thing —" not "Great job! 🎉".
+- No "leverage", "empower", "elevate", "unlock your potential".
+- Lowercase UI labels when referenced (`"sign in"`, `"continue"`).
+- Emojis fine inside lesson content. Never in UI chrome.
+- One rhetorical question per screen, max.
+- Indian context where natural — Mumbai monsoon, biryani,
+  Devanagari, ₹, Goa flights — but only when it lands.
+
+## Outline file spec — `<course>/_outline.yaml`
+
+The single source of human input. Edit this when you want to add,
+remove, reorder, or re-scope lessons.
+
+```yaml
+course:
+  slug: nlp-basics                  # must match courses.slug in DB
+  title: NLP Basics
+  audience: |
+    Adult learners, no CS background. Indian context welcome.
+    Comfortable with English, mixed-script writing fine.
+  voice: |
+    Nova — warm, direct, plain English. Short paragraphs.
+    Italic for emphasis. Concrete examples over abstract claims.
+  callback_policy: |
+    Reference earlier lessons explicitly when a concept builds on
+    one we've covered. e.g. "Remember tokens from lesson 03? Now —"
+
+lessons:
+  - prefix: "01"                    # filename order index
+    slug: what-is-nlp               # final filename: 01-what-is-nlp.yaml
+    target_minutes: 14
+    target_xp: 50
+    objectives:
+      - Define NLP in one sentence a non-technical friend can repeat.
+      - Distinguish NLP from "AI in general".
+      - Name 4 NLP-powered products the learner already uses today.
+    key_concepts:
+      - what NLP is (and isn't)
+      - the three hard things about language for computers
+      - everyday NLP: search, autocomplete, translation, voice
+    misconceptions_to_demolish:
+      - "AI = LLMs" (NLP is older and broader)
+      - "NLP only means chatbots"
+    prerequisites: []               # other lesson slugs
+  - prefix: "02"
+    slug: from-nlp-to-llm
+    …
+```
+
+## Lesson file spec (the AI-generated artefact)
+
+Top-level fields mirror the `lessons` table:
 
 ```yaml
 title: <string>                # required
 subtitle: <string>             # optional
-estimated_minutes: 10          # default 5
-xp_reward: 40                  # default 20
-turns:                         # required, at least one
+estimated_minutes: 14          # default 5 — must hit depth floor
+xp_reward: 50                  # default 20
+turns:                         # required, must hit depth floor
   - ...
 ```
 
-## XP
+## Turn types (11 total)
 
-Every turn can award XP via an optional top-level `xp:` field. The loader writes it to `lesson_turns.xp_reward`. For `mcq` and `checkpoint` it also surfaces in the UI as a "+X XP" chip.
+The generator must use these exactly. Each turn has a `type`
+discriminator; the loader validates against `lib/content/schema.ts`.
 
-```yaml
-- type: exercise
-  xp: 20
-  ...
-```
-
-Omit `xp` for turns that shouldn't award any (e.g. `tutor_message` usually has none).
-
-## Turn types
-
-Each turn has a `type` discriminator and shape. Eleven types exist. Pick the right one — don't bend a type to fit something it isn't.
-
-### 1. `tutor_message` — the tutor speaks
+### `tutor_message` — the tutor speaks
 
 ```yaml
 - type: tutor_message
-  persona: nova              # optional: nova | arjun | riya | sensei
-  typing_ms: 1200            # optional, default 1200 (how long the "..." shows)
+  persona: nova                # nova | arjun | riya | sensei
   text: |
     Most people type one-line questions and get mediocre answers.
     Sound familiar?
 ```
 
-### 2. `mcq` — multiple choice
+`typing_ms` and `reveal_style` are optional; defaults render fine.
+
+### `mcq` — multiple choice
 
 ```yaml
 - type: mcq
-  xp: 15                     # awarded on correct answer
+  xp: 15
   question: Which prompt gets a better answer?
   options:
     - id: a
@@ -87,9 +202,10 @@ Each turn has a `type` discriminator and shape. Eleven types exist. Pick the rig
       rationale: "Context, constraint, tone, detail. Night and day output."
 ```
 
-Any number of options ≥ 2. Multiple `is_correct: true` is fine — used for reflective-style MCQs.
+Every option must have a `rationale`. ≥ 2 options. `allow_multiple`
+optional.
 
-### 3. `free_text` — AI-graded open answer
+### `free_text` — AI-graded open answer
 
 ```yaml
 - type: free_text
@@ -102,7 +218,7 @@ Any number of options ≥ 2. Multiple `is_correct: true` is fine — used for re
     inputs and outputs. Vague answers like "writing" don't count.
 ```
 
-### 4. `reflection` — open answer, saved locally, not AI-graded
+### `reflection` — open answer, saved locally
 
 ```yaml
 - type: reflection
@@ -111,19 +227,19 @@ Any number of options ≥ 2. Multiple `is_correct: true` is fine — used for re
   placeholder: Write in your own words…
 ```
 
-### 5. `exercise` — do-it-in-another-tab task
+### `exercise` — do-it-in-another-tab task
 
 ```yaml
 - type: exercise
   xp: 20
-  tool: chatgpt              # chatgpt | gemini | claude | midjourney | canva | any label
+  tool: chatgpt                # chatgpt | gemini | claude | midjourney | canva | any label
   instruction: |
     Open ChatGPT. Using RTCC, ask it to write a LinkedIn post
     announcing you're learning AI. Paste your prompt below.
   placeholder: Paste your prompt here…
 ```
 
-### 6. `ai_conversation` — sub-chat with Claude playing the tutor
+### `ai_conversation` — sub-chat with Claude as tutor
 
 ```yaml
 - type: ai_conversation
@@ -141,21 +257,22 @@ Any number of options ≥ 2. Multiple `is_correct: true` is fine — used for re
     and close with <END/>.
 ```
 
-The sub-chat ends when `max_turns` is reached or Claude returns `<END/>`. Keep `max_turns` small (2–4).
+Keep `max_turns` small (2–4).
 
-### 7. `media` — image or video
+### `media` — image or video
 
 ```yaml
 - type: media
-  kind: image                # image | video
+  kind: image                  # image | video
   url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-media/<file>
   caption: The ChatGPT sidebar, first time you open it.
-  aspect_ratio: 1.77         # width/height (16/9 = 1.77)
+  aspect_ratio: 1.77           # width / height
 ```
 
-Upload media to the `lesson-media` public bucket in Supabase Storage and paste the public URL.
+Only use when an asset already exists in the `lesson-media` bucket —
+the generator must not invent URLs.
 
-### 8. `checkpoint` — end-of-lesson summary
+### `checkpoint` — end-of-lesson summary
 
 ```yaml
 - type: checkpoint
@@ -166,9 +283,9 @@ Upload media to the `lesson-media` public bucket in Supabase Storage and paste t
     better when you use it. Tomorrow — we build your first custom GPT.
 ```
 
-Every lesson should end with one. It's the "cliffhanger" that sets up tomorrow.
+Every lesson ends with one. It's the cliffhanger that sets up next.
 
-### 9. `fill_in_the_blank` — typed answers inside a sentence
+### `fill_in_the_blank` — typed answers inside a sentence
 
 ```yaml
 - type: fill_in_the_blank
@@ -187,9 +304,10 @@ Every lesson should end with one. It's the "cliffhanger" that sets up tomorrow.
       accepted: [constraints, constraint]
 ```
 
-Each `{{id}}` token in `template` becomes an inline input. Accepted matches are case-insensitive and trimmed. Provide a few common typos / synonyms in `accepted` rather than a single string. The `hint` only appears after a wrong answer.
+Each `{{id}}` becomes an inline input. Matches are case-insensitive,
+trimmed. List 2–4 common typos / synonyms in `accepted`.
 
-### 10. `drag_to_reorder` — put steps in the right sequence
+### `drag_to_reorder` — put steps in the right sequence
 
 ```yaml
 - type: drag_to_reorder
@@ -207,9 +325,9 @@ Each `{{id}}` token in `template` becomes an inline input. Accepted matches are 
   correct_order: [r, t, c, x]
 ```
 
-`items` are presented to the user in a deterministic shuffled order (stable per-turn). `correct_order` must list every `item.id` exactly once.
+`correct_order` must list every `item.id` exactly once.
 
-### 11. `tap_to_match` — tap to pair the left to the right
+### `tap_to_match` — pair left to right
 
 ```yaml
 - type: tap_to_match
@@ -235,48 +353,46 @@ Each `{{id}}` token in `template` becomes an inline input. Accepted matches are 
     - [c, bg]
 ```
 
-`left.length`, `right.length`, and `pairs.length` must all be equal. Each pair is `[leftId, rightId]`. Tap a left, then a right (or vice versa) to attempt a pair — wrong pairs flash red and release; correct pairs lock green.
+`left.length == right.length == pairs.length`. The right column is
+auto-shuffled at render time, so authored order doesn't matter.
 
-## Voice guide (from the PRD)
+## XP
 
-- Italic for emphasis. **Never bold.** YAML: wrap with `*word*` or plain `<em>word</em>`.
-- Em-dash without spaces: `learning is a practice—not an event`.
-- Digits for counts: `3 tasks`, not `three tasks`. They render in tabular-nums.
-- Tutor voice: warm but direct. "You're doing fine. One small thing —" not "Great job! 🎉".
-- No "leverage", "empower", "elevate", "unlock your potential".
-- Lowercase UI labels when referenced in lesson text (`"sign in"`, `"continue"`).
-- Emojis are welcome inside lesson content. **Never** in UI chrome — that's a UI rule, not a content one.
-- One rhetorical question per screen, max.
+Every turn accepts an optional `xp:` (non-negative int). The loader
+maps it to `lesson_turns.xp_reward`. For `mcq` and `checkpoint` it
+also surfaces in the UI as a "+X XP" chip.
 
-## Canonical example
+Typical xp distribution per lesson:
 
-See `chatgpt-basics/01-first-real-conversation.yaml` for a full 11-turn lesson covering every turn type.
+- tutor_message: 0
+- reflection: 5
+- mcq / fill_in_the_blank / tap_to_match / drag_to_reorder: 10–15
+- ai_conversation / exercise / free_text: 10–20
+- checkpoint: 5–10
 
-## Running the loader
+Total `xp_reward` (top-level) should equal the sum of per-turn xp.
 
-```bash
-npm run content:load
-```
+## Course slugs (seeded)
 
-Needs `SUPABASE_SERVICE_ROLE_KEY` in `.env.local`. Output:
+`chatgpt-basics`, `canva-magic`, `ai-basics`, `how-does-machine-learn`,
+`nlp-basics`, `how-does-ai-work`, `photo-editing-ai`, `insta-post-with-ai`,
+`what-is-ai`, `chatgpt-pro`, `design-with-canva-ai`, `all-in-one-gemini`,
+`translate-with-deepl`, `character-ai`, `perplexity-scholar`,
+`remove-bg-one-click`, `quillbot-rewrite`, `midjourney-art`,
+`prompt-engineering-14d`, `claude-deepthink`, `copilot-at-work`,
+`runway-video`, `zapier-automation`, `cursor-for-builders`,
+`kheti-mein-ai`, `ielts-success`, `neet-ug-prep`, `kirana-ai`,
+`ai-for-weddings`, `diet-planner`, `resume-ai`, `english-seekhna-ai-se`.
 
-```
-chatgpt-basics/01-first-real-conversation.yaml
-  ✓ 1 lesson · 11 turns
+## Errors from the loader
 
-2 lessons · 23 turns · 0 errors
-```
+Validation runs before any DB write. Common failures:
 
-Safe to re-run — it's idempotent. Each lesson's turns are replaced in YAML order.
-
-## Errors
-
-The loader validates every file before touching the database. Typical failures:
-
-- **Unknown course slug** — check the list above; create the file in the right directory.
+- **Unknown course slug** — check the list above; the directory name
+  must match `courses.slug` exactly.
 - **Filename missing prefix** — rename to `NN-<slug>.yaml`.
-- **`persona` must be nova | arjun | riya | sensei** — typo in the YAML.
+- **`persona` must be nova | arjun | riya | sensei** — typo.
 - **`options` must have at least 2 entries** — MCQs need real choices.
-- **`mcq` option missing `rationale`** — every option should explain itself.
 
-Fix the YAML and re-run. No DB rows are written until the whole file validates.
+Re-run the generator (it'll see the validation error and retry) or fix
+by hand, then `npm run content:load`.

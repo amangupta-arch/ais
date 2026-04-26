@@ -1,0 +1,125 @@
+course:
+  slug: chatgpt-basics
+  title: ChatGPT Basics
+  audience: |
+    Total beginners. Have heard of ChatGPT, maybe tried it once,
+    weren't impressed. Indian context welcome. Comfortable with
+    English. Goal is "use ChatGPT well within this week".
+  voice: |
+    Nova — warm but direct, plain English. Short paragraphs.
+    Italic for emphasis (never bold). One concrete example beats
+    one abstract claim. No "leverage", "empower", "elevate".
+    Friendly, but never sycophantic.
+  callback_policy: |
+    Reference earlier lessons explicitly. e.g. "Yesterday we cracked
+    RTCC — now we're going to use it for something bigger."
+    The course is a single arc, not 6 standalone lessons.
+
+lessons:
+  - prefix: "01"
+    slug: first-real-conversation
+    target_minutes: 14
+    target_xp: 65
+    objectives:
+      - Identify why most people get bad ChatGPT answers (one-line prompts).
+      - Apply RTCC (Role, Task, Context, Constraints) to one real prompt.
+      - Walk away with a working RTCC prompt they can paste tomorrow.
+    key_concepts:
+      - the "thin prompt" problem — why typing a question fails
+      - RTCC framework — role, task, context, constraints
+      - what "context" actually means (the model's blank-slate problem)
+      - before/after demo — same ask, two prompts, very different output
+    misconceptions_to_demolish:
+      - "ChatGPT should just understand what I want" — it isn't telepathic
+      - "Long prompts are 'cheating'" — specificity is the whole game
+    prerequisites: []
+
+  - prefix: "02"
+    slug: make-chatgpt-yours
+    target_minutes: 14
+    target_xp: 65
+    objectives:
+      - Set up Custom Instructions to stop re-pasting context every chat.
+      - Recognise what ChatGPT 'remembers' vs 'forgets' between sessions.
+      - Apply 3 tone/style rules that improve every future answer.
+    key_concepts:
+      - the "cold start" cost — every chat starts blank
+      - Custom Instructions (the two boxes — about you, how to respond)
+      - how Memory differs from Custom Instructions
+      - tone shaping — "no preamble", "skip apologies", style examples
+    misconceptions_to_demolish:
+      - "ChatGPT remembers me from yesterday" — only with Memory on
+      - "Setting tone is a one-time thing" — you'll iterate as taste sharpens
+    prerequisites: [first-real-conversation]
+
+  - prefix: "03"
+    slug: build-a-custom-gpt
+    target_minutes: 16
+    target_xp: 75
+    objectives:
+      - Create one Custom GPT for a real, recurring task in their life.
+      - Write a strong system prompt using RTCC at "GPT" scale.
+      - Distinguish a Custom GPT from a regular ChatGPT chat.
+    key_concepts:
+      - what a Custom GPT actually is (saved system prompt + optional files)
+      - when to use a Custom GPT vs Custom Instructions
+      - the GPT system-prompt structure (role + behaviour + examples)
+      - sharing — link sharing, private vs public
+    misconceptions_to_demolish:
+      - "Custom GPTs need code" — they don't, you write English
+      - "Custom GPTs are smarter than regular ChatGPT" — same model, better setup
+    prerequisites: [make-chatgpt-yours]
+
+  - prefix: "04"
+    slug: iterate-dont-expect
+    target_minutes: 14
+    target_xp: 65
+    objectives:
+      - Recognise the "first answer trap" and break it.
+      - Apply 4 follow-up moves (refine, narrow, expand, redo).
+      - Show their working in the next chat by iterating instead of restarting.
+    key_concepts:
+      - the first answer is a draft, not the final
+      - the four follow-ups — "more specific", "shorter", "different angle", "redo with X"
+      - when to start fresh vs when to keep iterating
+      - the "explain what you wanted" trick when the model misreads
+    misconceptions_to_demolish:
+      - "If the first answer is bad, the model can't do it" — usually it just needs steering
+      - "Iteration means starting over" — refining beats restarting
+    prerequisites: [first-real-conversation]
+
+  - prefix: "05"
+    slug: when-chatgpt-is-wrong
+    target_minutes: 16
+    target_xp: 70
+    objectives:
+      - Spot a confident hallucination (specific facts, citations, numbers).
+      - Apply 3 anti-hallucination prompt moves.
+      - Decide which kinds of questions are safe vs risky for ChatGPT.
+    key_concepts:
+      - hallucination = confident wrong answer, not random failure
+      - high-risk question types (citations, exact quotes, recent events, specific numbers)
+      - low-risk question types (definitions, summaries, brainstorms, code patterns)
+      - prompt moves — "say if you don't know", paste source, ask for citations and check
+    misconceptions_to_demolish:
+      - "ChatGPT is unreliable, period" — it's reliable for the right tasks
+      - "If it sounds confident it's probably right" — confidence is decoupled from accuracy
+    prerequisites: [iterate-dont-expect]
+
+  - prefix: "06"
+    slug: think-with-not-just-through
+    target_minutes: 16
+    target_xp: 75
+    objectives:
+      - Use ChatGPT as a thinking partner, not just an answer machine.
+      - Apply 3 "think-with" patterns — devil's advocate, what-if, explain-back.
+      - Walk away with a personal practice they'll actually use this week.
+    key_concepts:
+      - vending-machine vs thinking-partner mode
+      - the devil's advocate prompt ("argue against my plan")
+      - the what-if prompt (explore an option without committing)
+      - the explain-back prompt ("explain my idea back to me as if you're skeptical")
+    misconceptions_to_demolish:
+      - "Asking ChatGPT to disagree wastes a turn" — it surfaces blind spots
+      - "Real thinking should be done alone" — sharpening with a partner is the move
+    prerequisites: [make-chatgpt-yours, iterate-dont-expect]

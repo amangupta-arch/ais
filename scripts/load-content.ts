@@ -77,7 +77,7 @@ function collectFiles(): { lessons: ParsedLesson[]; errors: FileError[] } {
   for (const courseSlug of courseDirs) {
     const dir = join(CONTENT_ROOT, courseSlug);
     const files = readdirSync(dir)
-      .filter((f) => f.endsWith(".yaml") || f.endsWith(".yml"))
+      .filter((f) => (f.endsWith(".yaml") || f.endsWith(".yml")) && !f.startsWith("_"))
       .sort();
     for (const file of files) {
       const rel = `${courseSlug}/${file}`;

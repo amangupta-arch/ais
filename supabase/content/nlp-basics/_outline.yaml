@@ -1,0 +1,196 @@
+course:
+  slug: nlp-basics
+  title: NLP Basics
+  audience: |
+    Adult learners, no CS background. Indian context welcome — Mumbai
+    monsoon, biryani, Devanagari token costs, ₹ pricing all land well.
+    Comfortable with English; mixed-script writing is fine.
+  voice: |
+    Nova — warm but direct, plain English. Short paragraphs.
+    Italic for emphasis (never bold). One concrete example beats one
+    abstract claim. No "leverage", "empower", "elevate".
+  callback_policy: |
+    Reference earlier lessons explicitly when a concept builds on one
+    we've covered. e.g. "Remember tokens from lesson 03? Now —"
+    Make the curriculum feel cumulative, not parallel.
+
+lessons:
+  - prefix: "01"
+    slug: what-is-nlp
+    target_minutes: 14
+    target_xp: 60
+    objectives:
+      - Define NLP in one sentence a non-technical friend can repeat.
+      - Distinguish NLP from "AI in general".
+      - Name 4 NLP-powered products the learner already uses today.
+    key_concepts:
+      - what NLP actually is — teaching computers to handle language
+      - the three hard things about language for computers (ambiguity, context, world knowledge)
+      - everyday NLP: search, autocomplete, translation, voice assistants
+      - why NLP "got hard" before LLMs and what changed
+    misconceptions_to_demolish:
+      - "AI = LLMs" — NLP is older and broader than chatbots
+      - "NLP only means chatbots" — spam filters and search are NLP
+    prerequisites: []
+
+  - prefix: "02"
+    slug: from-nlp-to-llm
+    target_minutes: 14
+    target_xp: 60
+    objectives:
+      - Explain the difference between "NLP model" and "LLM".
+      - Explain what makes an LLM "large" — parameters and training data.
+      - Recognise emergent ability and why scale changed everything.
+    key_concepts:
+      - parameters — what they are, why billions matter
+      - training tokens — trillions of words of internet text
+      - emergent ability — skills that appear past a size threshold
+      - the timeline from GPT-2 (1.5B) to GPT-4 (~1T+)
+    misconceptions_to_demolish:
+      - "Bigger model = always better" — diminishing returns at the top
+      - "An LLM was 'programmed' to chat" — it learned from prediction
+    prerequisites: [what-is-nlp]
+
+  - prefix: "03"
+    slug: tokens
+    target_minutes: 14
+    target_xp: 60
+    objectives:
+      - Define a token and explain why models use tokens, not words.
+      - Estimate token cost for English vs Devanagari sentences.
+      - Apply 2 practical token-saving moves in their own prompts.
+    key_concepts:
+      - what a token is (sub-word chunks)
+      - the rough rule (1 token ≈ ¾ English word)
+      - why Devanagari/Tamil/Bengali cost 3-8x more
+      - how tokenisation actually works (BPE intuition, no math)
+    misconceptions_to_demolish:
+      - "1 token = 1 word" — sometimes 1 word = 5 tokens
+      - "Token cost doesn't matter for short prompts" — it adds up over conversations
+    prerequisites: [from-nlp-to-llm]
+
+  - prefix: "04"
+    slug: embeddings
+    target_minutes: 16
+    target_xp: 70
+    objectives:
+      - Explain embeddings as "meaning turned into geometry".
+      - Predict which word pairs would have close embeddings.
+      - Name 3 real products powered by embeddings.
+    key_concepts:
+      - what an embedding vector actually is (a list of numbers)
+      - similar meaning → close in space (the king − man + woman = queen example)
+      - why opposites are surprisingly close (shared context)
+      - real uses — semantic search, recommendations, plagiarism detection
+    misconceptions_to_demolish:
+      - "Synonyms have identical embeddings" — close, not identical
+      - "Embeddings encode dictionary meaning" — they encode usage patterns
+    prerequisites: [tokens]
+
+  - prefix: "05"
+    slug: transformers-attention
+    target_minutes: 16
+    target_xp: 70
+    objectives:
+      - Explain what attention does in plain English (no math).
+      - Explain why 2017 changed everything — parallel reading.
+      - Order the major NLP eras chronologically.
+    key_concepts:
+      - the "it" disambiguation problem (the bottle/water classic)
+      - attention as "every word looks at every other word"
+      - why sequential RNNs failed at long context
+      - the 2017 Attention Is All You Need paper as the unlock
+    misconceptions_to_demolish:
+      - "Transformers think like humans" — they pattern-match, they don't reason
+      - "Attention is the model's 'focus' in a conscious sense" — it's a weight
+    prerequisites: [embeddings]
+
+  - prefix: "06"
+    slug: how-models-are-trained
+    target_minutes: 16
+    target_xp: 70
+    objectives:
+      - Order the three training stages — pretrain, fine-tune, RLHF.
+      - Predict what a pretrain-only model would do given a chat prompt.
+      - Recognise when over-tuning makes a model unhelpful or boring.
+    key_concepts:
+      - pretraining — predict next token across the whole internet
+      - fine-tuning — show polished examples of being helpful
+      - RLHF — humans rate, model learns preferences
+      - the "feral but brilliant" pretrain stage
+    misconceptions_to_demolish:
+      - "Models are programmed to be polite" — politeness is RLHF'd in
+      - "Refusals come from rules" — they come from preference training
+    prerequisites: [transformers-attention]
+
+  - prefix: "07"
+    slug: prompting
+    target_minutes: 16
+    target_xp: 75
+    objectives:
+      - Apply zero-shot, few-shot, and chain-of-thought to real tasks.
+      - Recognise prompt fragility — same intent, different output.
+      - Write a 3x more specific version of one of their own past prompts.
+    key_concepts:
+      - zero-shot vs few-shot vs chain-of-thought, with worked examples
+      - persona prompts (Act as a senior editor…)
+      - prompt fragility — wording matters more than people think
+      - structured prompting (RTCC, role/task/context/constraints)
+    misconceptions_to_demolish:
+      - "Smart phrasing makes the model smarter" — it just gives it more to work with
+      - "Bigger prompts are always better" — past a point you confuse it
+    prerequisites: [how-models-are-trained]
+
+  - prefix: "08"
+    slug: hallucinations
+    target_minutes: 16
+    target_xp: 75
+    objectives:
+      - Explain why models hallucinate (predicting plausible tokens, not truth).
+      - Identify which question types are highest hallucination risk.
+      - Apply 3 concrete moves to reduce hallucination.
+    key_concepts:
+      - the lawyer-and-the-fake-cases story (real 2023 case)
+      - hallucination patterns — citations, exact quotes, post-cutoff facts
+      - grounding moves — paste source, allow uncertainty, verify specifics
+      - why "confidence" is not "knowledge"
+    misconceptions_to_demolish:
+      - "Hallucinations mean the model is broken" — it's working as designed
+      - "More training data fixes it" — partly, but the architecture lies confidently
+    prerequisites: [prompting]
+
+  - prefix: "09"
+    slug: beyond-chat
+    target_minutes: 16
+    target_xp: 75
+    objectives:
+      - Name the 5 main production NLP jobs (classify, translate, summarise, search, RAG).
+      - Explain RAG in 30 seconds without using the word "embedding".
+      - Identify a real workflow in their own life that RAG would help.
+    key_concepts:
+      - five production NLP workhorses with real-product anchors
+      - RAG = retrieval + generation, in plain English
+      - why RAG dominates business AI (not pretraining your own LLM)
+      - the boundary between "AI assistant" marketing and the actual plumbing
+    misconceptions_to_demolish:
+      - "Every AI assistant is a custom-trained model" — most are RAG
+      - "RAG is some new fancy tech" — it's embeddings (lesson 04) + prompting (lesson 07) glued together
+    prerequisites: [embeddings, prompting]
+
+  - prefix: "10"
+    slug: whats-next
+    target_minutes: 14
+    target_xp: 80
+    objectives:
+      - Distinguish multimodal AI, agents, and on-device AI.
+      - Pick which of the three shifts will most change their own work.
+      - Walk away with the vocabulary to choose their next course.
+    key_concepts:
+      - multimodal — text + image + audio + video in one model
+      - agents — LLM + tools, taking actions instead of just talking
+      - on-device — Apple Intelligence / Gemini Nano / on-device Llama
+      - the 24-month forward view, grounded in shipping products
+    misconceptions_to_demolish:
+      - "Agents are just smarter chatbots" — it's the tool wrapper that matters
+      - "On-device AI means weaker AI" — small + local is a different design point
+    prerequisites: [hallucinations, beyond-chat]

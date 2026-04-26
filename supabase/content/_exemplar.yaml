@@ -1,0 +1,263 @@
+# Reference lesson — used as a few-shot anchor in the generation prompt.
+# Topic deliberately chosen to be OUTSIDE both courses' curricula so the
+# generator copies its STRUCTURE / DEPTH / VOICE, not its content.
+# Topic: the context window — why models forget, what to do about it.
+
+title: "The context window — why ChatGPT forgets you"
+subtitle: "And the three moves that make long conversations actually work"
+estimated_minutes: 16
+xp_reward: 75
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      You've had this conversation.
+
+      You're 30 messages deep with ChatGPT. You've fed it your project brief, your tone of voice, the names of your three co-founders.
+
+      You ask one more question — and it answers like it just met you.
+
+      *"Wait. I told you all of this."*
+
+      Yeah. You did. And it forgot. Not because it's broken, but because of one specific limit nobody told you about.
+
+      It's called the **context window**, and once you understand it, you'll never lose another long chat again.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here's what's actually happening.
+
+      Every model has a fixed-size workspace it can read at one time. Imagine a whiteboard. The model can see everything written on the whiteboard right now — your prompt, the system instructions, the entire chat so far, the document you pasted. That's the context window.
+
+      It's measured in **tokens** (remember tokens? roughly ¾ of an English word).
+
+      Today's typical sizes:
+
+      - GPT-4o → 128,000 tokens (~96,000 words → ~300 pages of a paperback)
+      - Claude Sonnet 4 → 200,000 tokens (~150,000 words → ~500 pages)
+      - Gemini 1.5 Pro → 1,000,000 tokens (yes, a million → ~2,500 pages)
+
+      So why does it still forget? Two reasons coming up.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Reason 1 — the window is finite.**
+
+      When the conversation hits the limit, something has to give. The model uses a *sliding window*: it drops the oldest messages to make room for the new one.
+
+      Concretely:
+      - You paste a 50-page brief at message 1.
+      - You chat for 40 turns.
+      - At some point, message 1 — your brief — silently falls off the edge.
+      - The model now answers with no idea your brief ever existed.
+
+      No warning. No "context exceeded" popup. It just… forgets the start of the conversation, smoothly.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Reason 2 — bigger windows cost more.**
+
+      Even when the model *can* see all 200K tokens, every call charges you for them. A long conversation = expensive every-message bill.
+
+      That's why some apps quietly trim or summarise older messages even when the limit isn't hit — saves you ₹.
+
+      So between sliding windows and trimming, a few things become clear:
+
+      - There is no "memory between sessions" by default. New chat = blank slate.
+      - "Memory" features (ChatGPT's Memory, Claude Projects) are *separate systems* that re-paste relevant facts into your next chat. The window itself doesn't remember.
+      - Even within one session, very long chats lose the start.
+
+  - type: mcq
+    xp: 15
+    question: "You're 60 messages into a chat with ChatGPT. You first introduced yourself by name in message 1. Will it still know your name?"
+    options:
+      - id: a
+        text: "Yes — it remembers everything in the same session."
+        is_correct: false
+        rationale: "Common misconception. The session matters, but only up to the context window. Past that, oldest messages get dropped silently."
+      - id: b
+        text: "Probably not — by message 60 your introduction may have slid out of the window."
+        is_correct: true
+        rationale: "Right. Long chats lose the start. The model isn't 'forgetting' — it literally can't see message 1 anymore."
+      - id: c
+        text: "Only if you used the Memory feature."
+        is_correct: false
+        rationale: "Memory is a *separate* system that re-injects facts. Inside one chat, the context window is what matters."
+      - id: d
+        text: "Only if you switched models mid-chat."
+        is_correct: false
+        rationale: "Model switches do reset some state, but the main reason for forgetting in a long chat is the context window — not the switch."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Quick myth-bust before we move on:
+
+      **Myth: "ChatGPT remembers me from yesterday."**
+
+      Mostly no. Each new chat is a blank context window — unless you're on a plan with the *Memory* feature explicitly turned on, and even then, what gets remembered is a short list of facts the system saved, not the actual conversation.
+
+      **Myth: "A bigger window means better answers."**
+
+      Not always. Studies (Anthropic, 2024) show models pay less attention to the *middle* of very long context. Information at the start and end is recalled well; stuff in the middle gets fuzzy. Researchers call this the *"lost-in-the-middle"* effect.
+
+      Stuff your most important fact at the top OR the bottom of your prompt — never in the middle of a 50K-token wall.
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Match each model to its rough context window — the thing that actually limits how much it can 'see' at once."
+    left:
+      - id: gpt4
+        label: "GPT-4o"
+      - id: claude
+        label: "Claude Sonnet 4"
+      - id: gemini
+        label: "Gemini 1.5 Pro"
+      - id: gpt35
+        label: "GPT-3.5 (legacy)"
+    right:
+      - id: huge
+        label: "~1 million tokens (~2,500 paperback pages)"
+      - id: large
+        label: "~200,000 tokens (~500 pages)"
+      - id: medium
+        label: "~128,000 tokens (~300 pages)"
+      - id: small
+        label: "~16,000 tokens (~40 pages)"
+    pairs:
+      - [gpt4, medium]
+      - [claude, large]
+      - [gemini, huge]
+      - [gpt35, small]
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      OK — you understand the *problem*. Now the three moves that fix it.
+
+      **Move 1 — Start a new chat for a new task.**
+
+      Sounds obvious. Almost nobody does it.
+
+      You spent 40 messages debugging your React component. Now you want to plan a vacation to Goa. Don't keep going in the same chat — every message now hauls 40 messages of irrelevant React context along, eating tokens and confusing the model.
+
+      *New chat. Fresh window. Cleaner answers.*
+
+      Rule of thumb: when the *topic* changes, the *chat* changes.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Move 2 — Summarise, then reset.**
+
+      If your conversation is genuinely long *on the same topic* (you're 50 messages into a complex writing project), do this:
+
+      1. Type: *"Summarise the entire conversation so far in 200 words. Include the project goal, decisions made, and current open questions."*
+      2. Copy that summary.
+      3. Open a new chat. Paste the summary as your first message: *"Here's where we left off — let's continue from here."*
+
+      You've just compressed 50 messages of context into 200 words. The new chat starts with full awareness, fresh tokens, and a clean window.
+
+      Pros do this every 30-40 messages on long projects. It's the single biggest "long conversations" trick.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Move 3 — Structure long documents at the edges.**
+
+      When you paste a long document into a prompt, put the *most important framing* at the top OR the bottom — never the middle.
+
+      Bad:
+      ```
+      [50,000 words of source text]
+      Question: which section discusses Q3 revenue?
+      ```
+
+      The question is way at the bottom. Fine — that's an "edge". But if you'd written:
+
+      ```
+      [25,000 words]
+      Question: which section discusses Q3 revenue?
+      [25,000 more words]
+      ```
+
+      …the model would likely miss it. Lost in the middle.
+
+      Always: framing/instruction at TOP, big content in MIDDLE, key question at BOTTOM. Edges win.
+
+  - type: exercise
+    xp: 20
+    tool: chatgpt
+    instruction: |
+      Try the *summarise-and-reset* trick right now.
+
+      1. Open ChatGPT (or Claude, or Gemini) in another tab.
+      2. Find an old chat that's 15+ messages long. Any topic.
+      3. Send: *"Summarise this entire conversation in 200 words. Include the goal, key decisions, and open questions."*
+      4. Copy the summary it produces.
+      5. Open a new chat and paste the summary as message 1.
+
+      Paste the summary it generated below.
+    placeholder: "Paste the 200-word summary the model produced…"
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Why this matters way beyond chat:
+
+      Every "AI assistant for your business" you've seen advertised — the kind that "knows your company docs" — is solving exactly this context-window problem.
+
+      They can't fit 10,000 company documents into one prompt. So they store the docs as embeddings (remember those?), search for the *relevant chunks* at query time, and stuff only those chunks into the model's window.
+
+      That's RAG — Retrieval-Augmented Generation. We'll cover it later. But the whole field exists *because* the context window is finite.
+
+      Once you see the window, you see why every smart AI product does what it does.
+
+  - type: fill_in_the_blank
+    xp: 15
+    prompt: "Lock in the three moves for handling the context window."
+    template: "When the topic changes, start a {{new}} chat. When the same chat gets too long, ask it to {{summarise}} and reset. When pasting long docs, put the key question at the {{edge}} — top or bottom, not the middle."
+    answers:
+      - id: new
+        accepted: [new, fresh]
+      - id: summarise
+        accepted: [summarise, summarize, summary]
+      - id: edge
+        accepted: [edge, edges, end, top, bottom]
+    hint: "First blank: opposite of 'old' or 'continued'. Second blank: turn long thing into short thing. Third blank: not the middle."
+
+  - type: ai_conversation
+    xp: 15
+    goal: "User practises identifying when their own work hits the context window — and which of the three moves they'd use."
+    max_turns: 4
+    success_criteria: "User describes one real situation where they ran into context-window pain, and picks an appropriate fix."
+    starter_text: |
+      Quick coaching moment.
+
+      Tell me one situation — any chat tool, any time — where the AI clearly forgot something you'd told it earlier. Be specific about what it forgot.
+    system_prompt: |
+      You are Nova, a warm but direct coach. The lesson just covered the context window and three handling moves: (1) start a new chat per topic, (2) summarise-and-reset for long single-topic chats, (3) put key info at edges of long documents.
+
+      Step 1: Ask the user to describe a real situation where AI forgot something they'd told it.
+      Step 2: After their answer, name which of the three moves would have helped most, and explain in 2-3 sentences why.
+      Step 3: Affirm and close with <END/>.
+
+      Keep every reply under 60 words. No bullet lists in your replies — speak like a coach.
+
+  - type: reflection
+    xp: 5
+    prompt: "Where in your work do you hit AI 'forgetting' most often? What will you try differently next time?"
+    placeholder: "Long debugging chats… pasting client briefs… asking ChatGPT for ongoing project help…"
+
+  - type: checkpoint
+    xp: 10
+    title: "You see the window now."
+    summary: |
+      Every model has a fixed-size workspace. When chats get long, the oldest stuff slides off — silently.
+
+      Three moves: new chat per topic, summarise-and-reset for long chats, key info at the edges of long documents.
+
+      Bonus: now you understand why RAG exists — it's the same problem at scale, solved with embeddings + retrieval.
