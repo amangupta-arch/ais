@@ -1,0 +1,123 @@
+title: "Embeddings — meaning as math"
+subtitle: "How a computer 'understands' that king and queen are related"
+estimated_minutes: 8
+xp_reward: 35
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Quick puzzle. Without thinking too hard, what comes after this?
+
+      **king − man + woman = ?**
+
+      You said *queen*. So would a computer that's learned embeddings.
+
+      That equation is the most famous trick in NLP — and it's how computers turned "meaning" into something they can do actual math with.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here's the move.
+
+      Every word (or token) gets turned into a long list of numbers — usually a few hundred to a few thousand of them. That list is called an **embedding**.
+
+      You can't read it. It looks like noise: `[0.27, -0.81, 0.04, ..., 0.66]`.
+
+      But — and this is the magic — words with similar meanings get embeddings that point in similar directions. "Mumbai" lives near "Delhi". "Biryani" lives near "pulao". "Bug" (the insect) lives in a different neighbourhood than "bug" (the software defect), once you give the model context.
+
+      Meaning becomes geometry.
+
+  - type: mcq
+    question: "If 'doctor' and 'physician' have similar meanings, what's true about their embeddings?"
+    options:
+      - id: a
+        text: "They are identical"
+        is_correct: false
+        rationale: "Synonyms aren't identical — they have shades of meaning. The embeddings are CLOSE, not the same."
+      - id: b
+        text: "They point in similar directions, close together in vector space"
+        is_correct: true
+        rationale: "Exactly. Semantic similarity = geometric closeness. That's the whole game."
+      - id: c
+        text: "They have the same number of letters"
+        is_correct: false
+        rationale: "Embeddings encode meaning, not spelling. 'Doctor' and 'PhD' aren't spelled alike but live close in the meaning-space."
+      - id: d
+        text: "They use the same first letter"
+        is_correct: false
+        rationale: "Spelling has nothing to do with embedding distance. 'Cat' and 'feline' don't share letters but ARE close."
+    xp: 10
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Where does this actually show up in your life?
+
+      **Semantic search.** Type "cheap flight Mumbai to Goa" — the search engine finds pages with "affordable airfare BOM-GOI." Different words, same meaning, similar embeddings.
+
+      **Recommendations.** Watched "3 Idiots"? Netflix's embedding for it sits near "Munna Bhai MBBS." That's why the next-up plays.
+
+      **Plagiarism detection.** Two essays that say the same thing in different words — embeddings catch it instantly. Keyword matching never could.
+
+  - type: tap_to_match
+    prompt: "Match each pair of words to roughly how close their embeddings would be."
+    left:
+      - id: doctor
+        label: "doctor ↔ physician"
+      - id: cat
+        label: "cat ↔ photosynthesis"
+      - id: mumbai
+        label: "Mumbai ↔ Delhi"
+      - id: happy
+        label: "happy ↔ sad"
+    right:
+      - id: very_close
+        label: "Very close — synonyms, near-identical meaning"
+      - id: far
+        label: "Far apart — totally different topics"
+      - id: close
+        label: "Close — same category (cities)"
+      - id: opposite_close
+        label: "Surprisingly close — opposites share context (emotions)"
+    pairs:
+      - [doctor, very_close]
+      - [cat, far]
+      - [mumbai, close]
+      - [happy, opposite_close]
+    xp: 10
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The one that trips everyone — opposites are *close* in embedding space.
+
+      Why? Because "happy" and "sad" appear in similar sentences: "She felt happy/sad about the news." Same context = similar embedding direction.
+
+      Embeddings learn from the company words keep, not from a dictionary of opposites.
+
+      It's a beautiful little limitation — and the reason early sentiment-analysis models kept getting "this movie is not bad" wrong.
+
+  - type: fill_in_the_blank
+    prompt: "Lock in the core idea."
+    template: "An embedding turns a word into a list of {{numbers}}, and words with similar {{meanings}} land close together in space."
+    hint: "First blank: what's the data type? Second blank: what aspect of language?"
+    answers:
+      - id: numbers
+        accepted: [numbers, vectors, floats, coordinates]
+      - id: meanings
+        accepted: [meanings, meaning, semantics]
+    xp: 10
+
+  - type: reflection
+    prompt: "Where have you seen 'similar but different words' work — search, Spotify, YouTube? One example."
+    placeholder: "I searched for 'sneakers' and got results for 'kicks'…"
+    xp: 5
+
+  - type: checkpoint
+    title: "Meaning is geometry now."
+    summary: |
+      Embeddings turn words into vectors. Similar meanings sit close together; opposites share context so they sit close too.
+      That's the math behind semantic search, recommendations, plagiarism detection, and most of "AI understands me."
+
+      Next up — once we have embeddings, how does the model actually decide what to say next? Time to meet the Transformer.
+    xp: 5

@@ -1,0 +1,94 @@
+title: "From NLP to LLM"
+subtitle: "What makes a Large Language Model 'large'"
+estimated_minutes: 7
+xp_reward: 30
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Last lesson you learned NLP — teaching computers to understand and generate language.
+
+      Now the spicy part. **An LLM is just NLP done at a scale that nobody believed would work.**
+
+      How much scale? Imagine reading every book ever written. Twice. Then reading every public webpage. Twice more.
+      That's the homework an LLM does *before* you ever talk to it.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      "Large" comes from two numbers — and both are wild:
+
+      1. **Parameters** — the dials the model can turn. GPT-3 had 175 *billion*. GPT-4 is estimated past 1 trillion. Each one is a tiny knob the model adjusts to predict the next word better.
+      2. **Training tokens** — how much text it read. Roughly *the entire public internet*, plus books and papers. Trillions of tokens.
+
+      That's it. That's the whole "secret sauce." Just… more.
+
+  - type: mcq
+    question: "Quick check — when people say a model is 'larger', what are they usually talking about?"
+    options:
+      - id: a
+        text: "It uses more memory on your laptop"
+        is_correct: false
+        rationale: "Memory follows from size, but it's not the headline number people quote."
+      - id: b
+        text: "It has more parameters — more internal dials it tuned during training"
+        is_correct: true
+        rationale: "Exactly. 'Large' = parameter count. GPT-3: 175B. GPT-4: estimated 1T+. Each parameter is a knob trained to predict text."
+      - id: c
+        text: "It can answer in more languages"
+        is_correct: false
+        rationale: "Bigger models DO speak more languages well, but 'large' refers to parameters, not features."
+      - id: d
+        text: "It costs more per query"
+        is_correct: false
+        rationale: "Cost is downstream — it's high because the model is large. Not the definition itself."
+    xp: 10
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here's the wild part nobody saw coming.
+
+      Around a certain size, LLMs started doing things they were *never explicitly taught* — solving math word problems, writing working code, explaining jokes, translating between languages they barely saw in training.
+
+      Researchers call this **emergent ability**. Smaller models couldn't. Bigger ones suddenly could.
+
+      It's like a child who reads enough books to start writing their own poetry. No one taught them poetry — they just absorbed enough patterns.
+
+  - type: drag_to_reorder
+    prompt: "Drag these models into order — smallest to largest by parameters."
+    items:
+      - id: gpt2
+        label: "GPT-2 (2019) — 1.5 billion params"
+      - id: gpt3
+        label: "GPT-3 (2020) — 175 billion"
+      - id: gpt4
+        label: "GPT-4 (2023) — estimated 1 trillion+"
+    correct_order: [gpt2, gpt3, gpt4]
+    xp: 10
+
+  - type: fill_in_the_blank
+    prompt: "Lock in the two numbers that define an LLM's size."
+    template: "An LLM is 'large' because of two things — billions of {{params}} and trillions of {{tokens}} in training."
+    hint: "First word: the dials. Second word: the chunks of text it reads."
+    answers:
+      - id: params
+        accepted: [parameters, params]
+      - id: tokens
+        accepted: [tokens, words]
+    xp: 10
+
+  - type: reflection
+    prompt: "In one line — has any LLM ever surprised you with something it could do?"
+    placeholder: "It debugged my code, wrote a wedding speech, explained a meme…"
+    xp: 5
+
+  - type: checkpoint
+    title: "You get what 'L' in LLM means."
+    summary: |
+      LLMs are NLP models scaled to billions of parameters trained on trillions of tokens.
+      Past a certain size, they start showing emergent abilities — skills nobody explicitly taught them.
+      That's what makes ChatGPT feel almost magical, even though under the hood it's just predicting the next token.
+
+      Next up — what's a "token", anyway? And why does writing in Hindi cost you more?
+    xp: 5

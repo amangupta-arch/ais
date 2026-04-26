@@ -1,0 +1,116 @@
+title: "Hallucinations — when the model makes stuff up"
+subtitle: "Why even the smartest LLMs sometimes lie with a straight face"
+estimated_minutes: 8
+xp_reward: 35
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Real story. A lawyer in 2023 used ChatGPT to research case law for a court filing.
+
+      ChatGPT cited six cases, complete with judges, dates, and quotes. The lawyer filed the brief.
+
+      Every. Single. Case. Was. Made. Up.
+
+      The judge was furious. The lawyer got fined. ChatGPT had **hallucinated** with absolute confidence.
+
+      It does this because — and you already know this from earlier lessons — it predicts plausible next tokens. *It has no built-in concept of "true."*
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Where models hallucinate the most:
+
+      - **Specific facts they don't know** — citations, court cases, scientific papers, exact statistics, dates.
+      - **Things that *sound* like they should exist** — a Wikipedia article about a small town, a quote by a famous person, an obscure API method.
+      - **Anything past their training cutoff** — events from last week, the latest version of a library, a celebrity's current age.
+
+      The pattern: when the model has no answer but a plausible-sounding answer would fit, it fills in the blank with confidence.
+
+      Confidence is not knowledge.
+
+  - type: mcq
+    question: "Which question is the model MOST likely to hallucinate on?"
+    options:
+      - id: a
+        text: '"What''s the capital of France?"'
+        is_correct: false
+        rationale: "Memorised a million times. Paris. Solid."
+      - id: b
+        text: '"Who wrote 1984?"'
+        is_correct: false
+        rationale: "Famous fact. Orwell. Solid."
+      - id: c
+        text: '"Quote a passage from The Great Gatsby about the green light."'
+        is_correct: true
+        rationale: "Specific quote retrieval is hallucination central. The model knows the topic but rarely the exact text — it'll generate something Gatsby-flavoured that may or may not exist."
+      - id: d
+        text: '"What''s 17 × 23?"'
+        is_correct: false
+        rationale: "Modern models do small arithmetic reliably. (Big numbers, less so.) Quote retrieval is way riskier."
+    xp: 10
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The fix isn't "hope it doesn't lie." The fix is to **ground** the model.
+
+      Three moves that drop hallucination dramatically:
+
+      1. **Give it the source material.** Paste the document, the email, the data. Then ask. The model now has facts to draw from instead of making them up.
+      2. **Tell it to admit uncertainty.** *"If you don't know, say 'I'm not sure.'"* This single line works shockingly well.
+      3. **Verify the specifics.** Anything with a name, date, citation, number — assume it might be wrong and check.
+
+      Don't trust. Verify.
+
+  - type: tap_to_match
+    prompt: "Match each anti-hallucination move to what it actually does."
+    left:
+      - id: source
+        label: "Paste the source document into the prompt"
+      - id: uncertain
+        label: "Say 'admit if you don't know'"
+      - id: verify
+        label: "Manually check every name and date"
+      - id: cite
+        label: "Ask for citations and check they exist"
+    right:
+      - id: ground
+        label: "Grounds the model in real facts, not its memory"
+      - id: refuse
+        label: "Gives the model permission to refuse instead of guess"
+      - id: catch
+        label: "Catches whatever slipped through"
+      - id: trap
+        label: "Surfaces fake citations — the classic hallucination tell"
+    pairs:
+      - [source, ground]
+      - [uncertain, refuse]
+      - [verify, catch]
+      - [cite, trap]
+    xp: 10
+
+  - type: fill_in_the_blank
+    prompt: "Lock in the rule."
+    template: "Models hallucinate because they predict plausible {{tokens}}, not {{truth}}. Always verify specifics."
+    hint: "First blank: what they actually generate. Second blank: what they don't have a built-in sense of."
+    answers:
+      - id: tokens
+        accepted: [tokens, words]
+      - id: truth
+        accepted: [truth, facts, reality]
+    xp: 10
+
+  - type: reflection
+    prompt: "Have you ever caught an LLM hallucinating on you? What was it confidently wrong about?"
+    placeholder: "It made up a book title… it cited a paper that doesn't exist… it gave the wrong year for…"
+    xp: 5
+
+  - type: checkpoint
+    title: "Healthy paranoia, locked in."
+    summary: |
+      Models predict tokens, not truth. They hallucinate most on specifics — citations, quotes, exact data, anything past their training cutoff.
+      Ground them with source material. Permit them to say 'I don't know'. Verify the specifics yourself.
+
+      Next up — beyond chat. Where else does NLP show up in production right now?
+    xp: 5

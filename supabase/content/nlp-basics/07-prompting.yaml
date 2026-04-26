@@ -1,0 +1,122 @@
+title: "Prompting — phrasing changes everything"
+subtitle: "Same model. Wildly different outputs."
+estimated_minutes: 8
+xp_reward: 35
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Two prompts. Same model. Same day.
+
+      Prompt A: *"Write a poem about Mumbai."*
+      Output: Bland, generic, monsoon-and-vada-pav cliché.
+
+      Prompt B: *"Write a 4-line poem about Mumbai monsoon traffic, from the POV of a wet auto driver. Hindi-English mix. Wry tone."*
+      Output: Specific, funny, sharp.
+
+      The model didn't get smarter between A and B. *You* gave it more to work with.
+
+      That's prompting. The single biggest skill in using AI well.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      There are three classic prompting moves. You've already used the first one without knowing.
+
+      **Zero-shot:** Just ask. "Translate this to Hindi." No examples, no setup. Works for easy tasks.
+
+      **Few-shot:** Show 2–3 examples of what you want, then ask.
+
+      *"English: Hello → Hindi: नमस्ते*
+      *English: Thank you → Hindi: धन्यवाद*
+      *English: Goodbye → Hindi:"*
+
+      The model picks up the pattern. Way more accurate for tricky asks.
+
+      **Chain-of-thought:** Add "Think step by step." For math, logic, debugging — it nearly doubles accuracy. The model literally thinks longer when you tell it to.
+
+  - type: mcq
+    question: "You're solving a multi-step word problem. Which prompt gets the best answer?"
+    options:
+      - id: a
+        text: '"Just give me the answer."'
+        is_correct: false
+        rationale: "Telling the model to skip its work makes it more likely to skip the actual reasoning. Worse accuracy."
+      - id: b
+        text: '"Solve this step by step, then state the final answer."'
+        is_correct: true
+        rationale: "Classic chain-of-thought prompt. Forces the model to write its reasoning out, which makes the reasoning correct more often."
+      - id: c
+        text: '"Try harder."'
+        is_correct: false
+        rationale: "Doesn't change behaviour — the model has no concept of 'effort'. Specific instructions beat motivation."
+      - id: d
+        text: '"This is important."'
+        is_correct: false
+        rationale: "Some studies show urgency phrasing helps slightly, but step-by-step is the proven, robust move."
+    xp: 10
+
+  - type: tap_to_match
+    prompt: "Match each prompting style to when you'd use it."
+    left:
+      - id: zero
+        label: "Zero-shot"
+      - id: few
+        label: "Few-shot"
+      - id: cot
+        label: "Chain-of-thought"
+      - id: persona
+        label: "Persona prompt ('Act as a senior editor…')"
+    right:
+      - id: simple
+        label: "Simple, common task — translation, definitions"
+      - id: format
+        label: "Specific format the model can't guess (your weird CSV layout)"
+      - id: math
+        label: "Multi-step reasoning, math, code debugging"
+      - id: tone
+        label: "Want a particular tone, voice, or expertise level"
+    pairs:
+      - [zero, simple]
+      - [few, format]
+      - [cot, math]
+      - [persona, tone]
+    xp: 10
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      One thing nobody warns you about — prompts are *fragile*.
+
+      "Summarise in 3 bullets" works. "Summarize in 3 bullet points" might give 5. "Give me the key points" might give a paragraph.
+
+      Same intent, different wording, very different output. Models are pattern-matchers, not mind-readers.
+
+      Pro move: when a prompt works well, *save the exact wording.* Don't paraphrase next time.
+
+  - type: fill_in_the_blank
+    prompt: "Lock in the three classic prompting moves."
+    template: "{{Zero}}-shot is just asking. {{Few}}-shot shows examples. Chain-of-{{thought}} forces step-by-step reasoning."
+    hint: "All three blanks are words from the lesson above."
+    answers:
+      - id: Zero
+        accepted: [zero, Zero]
+      - id: Few
+        accepted: [few, Few]
+      - id: thought
+        accepted: [thought, thoughts]
+    xp: 10
+
+  - type: reflection
+    prompt: "Pick a recent ChatGPT/Claude prompt of yours. How could you rewrite it to be 30% more specific?"
+    placeholder: "I asked 'write me an email' — I should've added recipient, length, tone…"
+    xp: 5
+
+  - type: checkpoint
+    title: "Phrasing is a skill. You have it."
+    summary: |
+      Same model, very different output depending on how you phrase the ask.
+      Zero-shot for easy stuff. Few-shot when format matters. Chain-of-thought for reasoning. Persona prompts for tone.
+
+      Next up — sometimes models confidently make stuff up. Why, and how to spot it.
+    xp: 5

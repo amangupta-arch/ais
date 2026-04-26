@@ -1,0 +1,106 @@
+title: "The Transformer & Attention"
+subtitle: "Why every word knows what every other word means"
+estimated_minutes: 8
+xp_reward: 35
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Read these two sentences. Out loud, even.
+
+      *"I poured the water into the bottle until **it** was full."*
+
+      *"I poured the water from the bottle until **it** was empty."*
+
+      Same word — "it" — pointing at completely different things. You figured it out without trying.
+
+      For 50 years, computers couldn't do this.
+
+      Then in 2017, a paper called **"Attention Is All You Need"** changed everything.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here's the simple version of what attention does.
+
+      For every word, the model asks: *"which OTHER words should I look at to understand what this one really means?"*
+
+      In sentence 1 — "it" looks back at "bottle" (the bottle was full).
+      In sentence 2 — "it" also looks back at "bottle" (the bottle was empty).
+
+      But it could also have looked at "water". Attention scores let the model weigh both options and pick the one that makes the sentence make sense.
+
+      Every word looks at every other word. Every time. That's it. That's the Transformer.
+
+  - type: mcq
+    question: "In the sentence 'The cat sat on the mat because **it** was warm', what does 'it' most likely refer to?"
+    options:
+      - id: a
+        text: "The cat"
+        is_correct: false
+        rationale: "Possible reading, but the context — 'because it was warm' — fits the mat (a heated surface) more than the cat. Attention would weigh 'mat' higher."
+      - id: b
+        text: "The mat"
+        is_correct: true
+        rationale: "Right. Attention reads 'warm' and links it to whichever noun makes more sense — the surface, not the animal sitting on it."
+      - id: c
+        text: "The reason"
+        is_correct: false
+        rationale: "'Reason' isn't a noun in the sentence. Attention only looks at words actually present."
+      - id: d
+        text: "Impossible to tell without more context"
+        is_correct: false
+        rationale: "Humans (and good models) infer this confidently from 'warm'. That's exactly the move attention makes."
+    xp: 10
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Why was 2017 such a big deal?
+
+      Before transformers, models read text **left to right, one word at a time.** By the time they got to the end of a long paragraph, they'd half-forgotten the start. Long context = broken model.
+
+      Transformers said: *forget the line. Read every word at the same time, and let each one look at every other one in parallel.*
+
+      Suddenly: long documents made sense. Code worked. Translation became fluent. Five years later — ChatGPT.
+
+      Attention was the unlock.
+
+  - type: drag_to_reorder
+    prompt: "Drag the NLP eras into chronological order — oldest to newest."
+    items:
+      - id: rules
+        label: "Hand-coded grammar rules (1950s–80s)"
+      - id: rnn
+        label: "Sequential neural networks — read one word at a time (~2010)"
+      - id: transformer
+        label: "Transformers — every word reads every other word (2017)"
+      - id: llm
+        label: "Large Language Models — transformers at massive scale (2020s)"
+    correct_order: [rules, rnn, transformer, llm]
+    xp: 10
+
+  - type: fill_in_the_blank
+    prompt: "Lock in the core mechanism."
+    template: "{{Attention}} lets every word look at every other word at the same time, which is why {{transformers}} broke open NLP in 2017."
+    hint: "Two words — both are in the title of this lesson."
+    answers:
+      - id: Attention
+        accepted: [attention, Attention]
+      - id: transformers
+        accepted: [transformers, transformer, Transformers, Transformer]
+    xp: 10
+
+  - type: reflection
+    prompt: "Now that you know about attention — read your last text message. Pick one ambiguous word and notice what it's pointing to."
+    placeholder: "I wrote 'send it' — 'it' was the link from earlier…"
+    xp: 5
+
+  - type: checkpoint
+    title: "Transformers, demystified."
+    summary: |
+      A transformer reads the whole sentence at once and uses attention so every word can look at every other word.
+      That solved the long-context problem. Five years and a lot of GPUs later, you got ChatGPT.
+
+      Next up — how do you actually train one of these things to be useful?
+    xp: 5

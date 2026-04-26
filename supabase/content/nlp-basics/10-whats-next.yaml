@@ -1,0 +1,135 @@
+title: "What's next — multimodal, agents, on-device"
+subtitle: "Where language AI is heading in the next 24 months"
+estimated_minutes: 8
+xp_reward: 40
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      You've made it. You understand NLP from tokens to RAG.
+
+      Last lesson is the fun one — where this is all going.
+
+      Three big shifts are happening right now, and any one of them will change how you use AI in your work and life.
+
+      Let's walk through them.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Shift 1 — Multimodal.**
+
+      "NLP" used to mean only text. That door is gone.
+
+      The same model that chats with you can now:
+
+      - **See.** Send GPT-4 a photo of your fridge — it'll suggest dinner.
+      - **Hear.** ChatGPT Voice and Gemini Live carry full conversations.
+      - **Watch.** Models can summarise a YouTube video without you watching it.
+      - **Generate images.** "A poster for my food truck, retro neon, hot pink." Done.
+
+      "Language" is just the first sense. The next versions of these models are *embodied* — text, image, audio, video, all in one head.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Shift 2 — Agents.**
+
+      Today: you ask, model answers, you act. Three steps, all run by you.
+
+      Soon (and starting now): the model just *acts.*
+
+      *"Book me a flight to Goa next Friday under ₹6000, aisle seat, return Sunday evening."*
+
+      An agent can already open the booking site, search, compare options, ask you to confirm, and complete the purchase. ChatGPT's "Operator", Claude's "computer use", autonomous AI assistants — all here in 2025.
+
+      You go from prompter to *delegator.*
+
+  - type: mcq
+    question: "What's the biggest difference between a regular LLM and an agent?"
+    options:
+      - id: a
+        text: "Agents have more parameters"
+        is_correct: false
+        rationale: "Agents often use the SAME LLMs underneath. The difference is what wraps the model, not the model itself."
+      - id: b
+        text: "Agents can take actions in the world — open apps, click, submit forms — not just reply with text"
+        is_correct: true
+        rationale: "Exactly. Agents = LLM + tools (browser, email, code execution). They DO things instead of just describing them."
+      - id: c
+        text: "Agents only work in English"
+        is_correct: false
+        rationale: "Agents inherit whatever language abilities the underlying LLM has. Multilingual."
+      - id: d
+        text: "Agents are open-source and free"
+        is_correct: false
+        rationale: "Mostly closed and paid. Open-source agent frameworks exist, but most consumer agents are commercial."
+    xp: 10
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Shift 3 — On-device AI.**
+
+      Today's LLMs run in datacenters. Your phone sends them text, they send text back.
+
+      Soon: the LLM lives *on your phone*. Apple Intelligence, Google's Gemini Nano, on-device Llama — all running with no internet at all.
+
+      Why this matters:
+
+      - **Privacy.** Your data never leaves your device.
+      - **Speed.** No round-trip to a server.
+      - **Cost.** No per-token bill.
+      - **Offline.** Works on a flight, in a tunnel, anywhere.
+
+      Smaller, smarter, local. The next iPhone you buy will probably ship with a real LLM in your pocket.
+
+  - type: tap_to_match
+    prompt: "Match each shift to its real-world impact."
+    left:
+      - id: multi
+        label: "Multimodal AI"
+      - id: agents
+        label: "Agentic AI"
+      - id: ondevice
+        label: "On-device AI"
+    right:
+      - id: senses
+        label: "Models that see, hear, and generate beyond text"
+      - id: act
+        label: "AI that books your flight, not just suggests one"
+      - id: privacy
+        label: "Your data stays on your phone — fast, private, offline"
+    pairs:
+      - [multi, senses]
+      - [agents, act]
+      - [ondevice, privacy]
+    xp: 10
+
+  - type: fill_in_the_blank
+    prompt: "Lock in the three big shifts — one word each."
+    template: "{{Multimodal}} (sees + hears), {{Agents}} (act for you), {{On-device}} (run locally)."
+    hint: "All three are the lesson section headings."
+    answers:
+      - id: Multimodal
+        accepted: [multimodal, Multimodal]
+      - id: Agents
+        accepted: [agents, Agents, agentic]
+      - id: On-device
+        accepted: ["on-device", "ondevice", "on device", "On-device"]
+    xp: 10
+
+  - type: reflection
+    prompt: "Pick one shift — multimodal, agents, or on-device. Which one would change YOUR work most?"
+    placeholder: "Agents would save me hours on… on-device would let me…"
+    xp: 5
+
+  - type: checkpoint
+    title: "You speak NLP fluently now."
+    summary: |
+      You started knowing NLP was "the thing behind ChatGPT." You leave knowing tokens, embeddings, transformers, attention, training stages, prompting moves, hallucinations, RAG, and where it's all going.
+
+      That's the whole field. In ten short lessons.
+
+      Next course on the shelf? Pick whatever your work demands. You now have the vocabulary to choose well.
+    xp: 10

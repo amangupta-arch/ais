@@ -1,0 +1,114 @@
+title: "How a model gets trained"
+subtitle: "Pretrain, fine-tune, RLHF — the three-step recipe"
+estimated_minutes: 8
+xp_reward: 35
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      You've heard "trained on the internet." But that's only step one of three.
+
+      Building an LLM is closer to raising a kid than running a programme:
+
+      1. **Pretrain** — read everything.
+      2. **Fine-tune** — show it good examples of being useful.
+      3. **RLHF** — humans rate its replies, it learns to please us.
+
+      Skip any step and you get a model that's smart but uselessly so. Or polite but stupid. The combination is what you talk to today.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Step 1 — Pretraining.**
+
+      The model reads roughly the entire public internet. Books, papers, Wikipedia, Reddit, code, cooking blogs.
+
+      Its only task: *given the text so far, predict the next token.* That's it. Billions of times.
+
+      Out of that simple game emerges grammar, facts, coding, reasoning, world knowledge. No one explicitly taught the model what a verb is. It just figured it out from reading enough sentences.
+
+      This is the expensive step — months, thousands of GPUs, eye-watering electricity bills.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      After pretraining, the model is *brilliant but feral*.
+
+      Ask it "What's the capital of France?" and it might answer "Paris" — or it might generate three more questions, or paste a Wikipedia-style article. It only knows "predict next token", not "be helpful".
+
+      **Step 2 — Fine-tuning.**
+
+      Engineers feed it thousands of polished examples: "When a human asks X, a good answer looks like Y." The model adjusts.
+
+      Now it answers questions instead of continuing them.
+
+  - type: mcq
+    question: "After pretraining alone, how would the model most likely respond to 'Hi, how are you?'"
+    options:
+      - id: a
+        text: '"I''m doing well, thanks for asking!"'
+        is_correct: false
+        rationale: "That's a fine-tuned, polite response. Pretraining alone doesn't know to be helpful — it just predicts text."
+      - id: b
+        text: 'Continue the text — maybe "and how is your morning going? I was just thinking about…"'
+        is_correct: true
+        rationale: "Yes — pretraining is pure next-token prediction. Without fine-tuning, it just keeps writing whatever sounds plausible next."
+      - id: c
+        text: "Refuse to answer"
+        is_correct: false
+        rationale: "Refusals come from RLHF (step 3). A pretrain-only model has no idea what 'refusing' means."
+      - id: d
+        text: "Output a JSON object"
+        is_correct: false
+        rationale: "Structured output is something fine-tuning teaches. Pretraining is wild text completion."
+    xp: 10
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Step 3 — RLHF.** *Reinforcement Learning from Human Feedback.*
+
+      The model writes two replies. A human picks the better one. Repeat thousands of times.
+
+      Slowly, the model learns what humans *prefer* — not just what's grammatically correct, but what feels helpful, honest, kind, and not weird.
+
+      This is why ChatGPT and Claude have personalities. RLHF baked one in.
+
+      It's also why models can be over-cautious — too much "I shouldn't answer that." Tuned too aggressively, RLHF makes the model boring. Too little, it goes off the rails.
+
+  - type: drag_to_reorder
+    prompt: "Drag the three training stages into the order they happen."
+    items:
+      - id: rlhf
+        label: "Humans rate responses; model learns preferences (RLHF)"
+      - id: pretrain
+        label: "Read the entire internet; predict next token"
+      - id: finetune
+        label: "Show polished examples of being helpful"
+    correct_order: [pretrain, finetune, rlhf]
+    xp: 10
+
+  - type: fill_in_the_blank
+    prompt: "Lock in the recipe."
+    template: "Pretrain on text. Fine-tune on good {{examples}}. RLHF on human {{feedback}}."
+    hint: "Both blanks are nouns straight out of the section above."
+    answers:
+      - id: examples
+        accepted: [examples, demonstrations]
+      - id: feedback
+        accepted: [feedback, ratings, preferences]
+    xp: 10
+
+  - type: reflection
+    prompt: "Have you ever felt a model was 'over-trained' on safety — refusing harmless asks?"
+    placeholder: "It wouldn't help me with a normal cooking question because…"
+    xp: 5
+
+  - type: checkpoint
+    title: "Three stages. One useful model."
+    summary: |
+      Pretrain teaches the model language and the world. Fine-tuning teaches it to be helpful. RLHF teaches it to match human preferences.
+      Skip any step and you get something either useless or insufferable.
+
+      Next up — same model, very different outputs depending on how you ask. Welcome to prompting.
+    xp: 5

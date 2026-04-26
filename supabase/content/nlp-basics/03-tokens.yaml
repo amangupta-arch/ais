@@ -1,0 +1,119 @@
+title: "Tokens — what the model actually sees"
+subtitle: "Why ChatGPT pricing is in 'tokens' and not words"
+estimated_minutes: 7
+xp_reward: 30
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Plot twist — ChatGPT doesn't actually read words.
+
+      It reads **tokens**. A token is roughly a word-sized chunk, but not always. Sometimes it's a syllable, a punctuation mark, even a single letter.
+
+      Why? Because the alphabet has 26 letters but English has millions of words. Tokens are the model's compromise — small enough to handle anything, big enough to be efficient.
+
+      Rough rule: **1 token ≈ ¾ of an English word.** "Hello, world!" is 4 tokens.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here's where it gets interesting for us.
+
+      English splits cleanly into tokens because most LLMs were trained mostly on English text.
+
+      Hindi, Marathi, Tamil — they get **3 to 8 times more tokens** for the same meaning. Devanagari script characters often become one token *each*.
+
+      "How are you" → 3 tokens.
+      "आप कैसे हैं" → can be 8–12 tokens.
+
+      Same sentence. Same meaning. Way more cost. That's why most non-English ChatGPT bills feel high.
+
+  - type: mcq
+    question: "Which sentence will likely cost the MOST tokens?"
+    options:
+      - id: a
+        text: '"What time is the meeting?"'
+        is_correct: false
+        rationale: "Plain English, 6 short words. ~6–7 tokens. Cheap."
+      - id: b
+        text: '"मीटिंग कब है?"'
+        is_correct: true
+        rationale: "Devanagari is heavy on tokens — typically 8–14 for the same meaning. Same sentence, multiplied cost."
+      - id: c
+        text: '"Hello there."'
+        is_correct: false
+        rationale: "Two short English words. ~3 tokens. Cheapest of the lot."
+      - id: d
+        text: '"Yes."'
+        is_correct: false
+        rationale: "Literally 1 token. The cheapest sentence in any LLM's universe."
+    xp: 10
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      One more weird thing about tokens.
+
+      Word: "ChatGPT"
+      Tokens: "Chat" + "G" + "PT" — *three* tokens for one brand name.
+
+      Word: "ridiculous"
+      Tokens: "rid" + "iculous" — two tokens.
+
+      Word: "the"
+      Tokens: "the" — one token. The model loves common words because it sees them so often.
+
+      Common words get their own token. Weird words get split into pieces.
+
+  - type: fill_in_the_blank
+    prompt: "Lock in the rough rule."
+    template: "One token is roughly {{fraction}} of an English word, and Devanagari scripts cost about {{multiplier}} times more."
+    hint: "First blank: a fraction (try ¾ or 0.75). Second blank: a number between 3 and 8."
+    answers:
+      - id: fraction
+        accepted: ["3/4", "0.75", "three quarters", "three-quarters", "¾"]
+      - id: multiplier
+        accepted: ["3", "4", "5", "6", "7", "8", "three", "four", "five", "six", "seven", "eight"]
+    xp: 10
+
+  - type: tap_to_match
+    prompt: "Match each token-economy decision to its impact."
+    left:
+      - id: english
+        label: "Write your prompt in English"
+      - id: hindi
+        label: "Write the same prompt in Hindi"
+      - id: short
+        label: "Cut filler words"
+      - id: long
+        label: "Add 'please' and 'thank you' to every message"
+    right:
+      - id: cheap
+        label: "Cheaper, fewer tokens"
+      - id: pricey
+        label: "Roughly 5× more expensive"
+      - id: save
+        label: "Saves a small amount per request"
+      - id: waste
+        label: "Wastes tokens on politeness the model ignores"
+    pairs:
+      - [english, cheap]
+      - [hindi, pricey]
+      - [short, save]
+      - [long, waste]
+    xp: 10
+
+  - type: reflection
+    prompt: "If you mostly chat in English, you're paying token-cheap. If in Hindi or another script — what could you do differently?"
+    placeholder: "Switch to English for the LLM, mix scripts, accept the cost…"
+    xp: 5
+
+  - type: checkpoint
+    title: "Tokens are the unit. You speak the language now."
+    summary: |
+      Models read tokens, not words. ~¾ word each in English, way more in Devanagari and other scripts.
+      Common words get their own token; rare ones get sliced into pieces.
+      That's why every ChatGPT bill is in tokens — and why language choice quietly changes your cost.
+
+      Next up — once words become tokens, how does the model turn them into something it can actually *think* with? Hello, embeddings.
+    xp: 5

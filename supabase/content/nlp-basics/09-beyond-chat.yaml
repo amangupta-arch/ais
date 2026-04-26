@@ -1,0 +1,121 @@
+title: "Beyond chat — what NLP does in production"
+subtitle: "Translation, search, summarization, RAG — the quiet workhorses"
+estimated_minutes: 8
+xp_reward: 35
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Most of what you've seen so far is *chatting* with an LLM. That's the loud, visible bit.
+
+      The quieter — and frankly bigger — story is NLP doing serious work behind the scenes:
+
+      - The Gmail spam filter that catches phishing before you see it.
+      - The search bar at your bank that understands "show me last month's Swiggy spends."
+      - The customer support bot that pulls answers from your company's FAQ.
+      - The summary on top of every news app showing you the gist in 3 lines.
+
+      None of these *feel* like AI. All of them are NLP.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here are the five biggest production NLP jobs:
+
+      1. **Classification** — sort text into buckets. Spam vs not-spam. Positive vs negative review. Urgent vs not-urgent ticket.
+      2. **Translation** — one language to another. Google Translate. Live captions on YouTube.
+      3. **Summarization** — long thing → short thing. News digests, meeting notes from Zoom recordings.
+      4. **Semantic search** — find things by meaning, not just keywords. The "you might also like" engine.
+      5. **RAG** — Retrieval-Augmented Generation. The current king of business AI.
+
+      RAG deserves its own breath. Up next.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **RAG = Retrieval + Generation.**
+
+      Problem: ChatGPT doesn't know anything about *your* company. Your products, your policies, your inventory — it's never seen them.
+
+      Solution:
+
+      1. Take all your company docs (FAQs, manuals, Slack history).
+      2. Turn each chunk into an embedding (remember lesson 04?).
+      3. When a user asks something, find the most semantically-similar chunks.
+      4. Stuff those chunks into the prompt: *"Answer this question using only the text below."*
+      5. Model answers using YOUR data.
+
+      That's the engine behind every "AI assistant trained on your business" you've seen advertised. It's just NLP plumbing.
+
+  - type: mcq
+    question: "A bank wants a chatbot that can answer customer questions about its specific products. What approach makes most sense?"
+    options:
+      - id: a
+        text: "Train a brand-new LLM from scratch on the bank's documents"
+        is_correct: false
+        rationale: "Pretraining a fresh LLM costs millions and takes months. Massive overkill."
+      - id: b
+        text: "Use RAG — feed bank documents into an existing LLM at query time"
+        is_correct: true
+        rationale: "Exactly. RAG is fast, cheap, easy to update when policies change. The dominant approach for business AI today."
+      - id: c
+        text: "Just hope the LLM figures it out"
+        is_correct: false
+        rationale: "It will hallucinate confidently. We covered this last lesson — don't let it."
+      - id: d
+        text: "Hire 50 humans to write FAQs"
+        is_correct: false
+        rationale: "Worth doing once, but a chatbot needs to read those FAQs at query time. That's RAG."
+    xp: 10
+
+  - type: tap_to_match
+    prompt: "Match each NLP job to a real product you've probably used."
+    left:
+      - id: classify
+        label: "Text classification"
+      - id: translate
+        label: "Translation"
+      - id: summarize
+        label: "Summarization"
+      - id: rag
+        label: "RAG (retrieval + generation)"
+    right:
+      - id: spam
+        label: "Gmail's spam folder"
+      - id: gtrans
+        label: "Google Translate"
+      - id: news
+        label: "Inshorts / Apple News digests"
+      - id: support
+        label: "Intercom's AI support agent that knows your company"
+    pairs:
+      - [classify, spam]
+      - [translate, gtrans]
+      - [summarize, news]
+      - [rag, support]
+    xp: 10
+
+  - type: fill_in_the_blank
+    prompt: "Lock in the most-used acronym in business AI."
+    template: "{{RAG}} stands for Retrieval-{{Augmented}} Generation — find relevant docs, then let the model answer using them."
+    hint: "First blank: the acronym itself. Second blank: starts with 'A', means 'enhanced by'."
+    answers:
+      - id: RAG
+        accepted: [rag, RAG]
+      - id: Augmented
+        accepted: [augmented, Augmented]
+    xp: 10
+
+  - type: reflection
+    prompt: "Where in your work could RAG help — letting an AI answer questions over a body of docs you control?"
+    placeholder: "Onboarding docs, customer FAQs, project history…"
+    xp: 5
+
+  - type: checkpoint
+    title: "NLP is bigger than chat."
+    summary: |
+      Five workhorses: classification, translation, summarization, semantic search, and RAG.
+      Most production AI in business today is RAG — feed your docs, let the model answer using them.
+
+      Last lesson — what's coming next. Multimodal models, agents, and on-device AI.
+    xp: 5
