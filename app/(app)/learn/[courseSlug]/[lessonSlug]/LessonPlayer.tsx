@@ -5,7 +5,7 @@ import type { MouseEvent as ReactMouseEvent, RefObject } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, Check, Flame, MessagesSquare, Send, Sparkles, Volume2, VolumeX, Zap } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Flame, MessagesSquare, Send, Sparkles, Volume2, VolumeX, Zap } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
 import { TutorAvatar } from "@/components/ui/TutorAvatar";
@@ -171,8 +171,17 @@ export function LessonPlayer(props: Props) {
     [alreadyCompleted, audio, courseId, lessonId, revealedCount, turns],
   );
 
+  // Step back to the previous turn — undoes the last advance. Used by the
+  // back button next to the progress bar. Cancels in-flight narration so
+  // we don't speak the new active turn over the old one.
+  const goBack = useCallback(() => {
+    audio.cancel();
+    setRevealedCount((c) => Math.max(1, c - 1));
+  }, [audio]);
+
   const active = turns[revealedCount - 1];
   const onLastTurn = revealedCount >= turns.length;
+  const canGoBack = revealedCount > 1;
 
   return (
     <LessonFxProvider
@@ -212,8 +221,27 @@ export function LessonPlayer(props: Props) {
               borderBottom: "1px solid var(--border-soft)",
             }}
           >
-            <div className="mx-auto max-w-2xl" style={{ padding: "12px 20px" }}>
-              <ProgressBar current={revealedCount} total={turns.length} />
+            <div
+              className="mx-auto max-w-2xl flex items-center"
+              style={{ padding: "12px 20px", gap: 12 }}
+            >
+              <button
+                type="button"
+                onClick={goBack}
+                disabled={!canGoBack}
+                aria-label="Back to previous segment"
+                className="lm-btn lm-btn--icon"
+                style={{
+                  flexShrink: 0,
+                  opacity: canGoBack ? 1 : 0.35,
+                  cursor: canGoBack ? "pointer" : "not-allowed",
+                }}
+              >
+                <ArrowLeft className="h-4 w-4" />
+              </button>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <ProgressBar current={revealedCount} total={turns.length} />
+              </div>
             </div>
           </div>
           <div
@@ -513,8 +541,8 @@ function TutorMessage({
                 <p
                   className="lm-serif"
                   style={{
-                    fontSize: 19,
-                    lineHeight: 1.45,
+                    fontSize: 16,
+                    lineHeight: 1.5,
                     color: "var(--text)",
                     whiteSpace: "pre-line",
                   }}
