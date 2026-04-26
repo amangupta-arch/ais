@@ -90,7 +90,6 @@ export function FillInTheBlankBlock({
         const rect = ev.currentTarget.getBoundingClientRect();
         fx.addXp(turn.xp_reward, rect);
       }
-      fx.scrollActiveIntoView();
       return;
     }
     setShakeId(wrong.id);
@@ -299,7 +298,6 @@ export function DragToReorderBlock({
         xpAwardedRef.current = true;
         fx.addXp(turn.xp_reward, ev.currentTarget.getBoundingClientRect());
       }
-      fx.scrollActiveIntoView();
     } else {
       setWrongFlash(true);
       setTimeout(() => setWrongFlash(false), 320);
@@ -452,7 +450,6 @@ export function TapToMatchBlock({
       if (next.length === turn.content.pairs.length && !xpAwardedRef.current) {
         xpAwardedRef.current = true;
         fx.addXp(turn.xp_reward, ev.currentTarget.getBoundingClientRect());
-        fx.scrollActiveIntoView();
       }
     } else {
       setWrongPair({ left: leftId, right: rightId });

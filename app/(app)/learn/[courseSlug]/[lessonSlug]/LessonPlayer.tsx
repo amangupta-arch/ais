@@ -77,25 +77,51 @@ export function LessonPlayer(props: Props) {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const activeTurnRef = useRef<HTMLDivElement | null>(null);
 
-  // After every advance, scroll so the BOTTOM of the active turn lands
-  // just above the viewport bottom. `block: "end"` respects each turn's
-  // `scroll-margin-bottom` (set below) for breathing room. Why bottom-not-
-  // top: a tall turn (MCQ + 4 options + rationale) is taller than the
-  // viewport, so aligning the top would push the Continue button below
-  // the fold. Aligning the bottom keeps Continue visible regardless of
-  // turn height. Short turns still look natural — the previous turn
-  // remains visible above. Two rAFs let Framer mount + lay out the
-  // motion.div before scrollIntoView measures.
-  const scrollActiveIntoView = useCallback(() => {
-    requestAnimationFrame(() => {
+  // Keep the BOTTOM of the active turn pinned to the viewport bottom — even
+  // as the turn grows after mount. A one-shot scrollIntoView was wrong:
+  //   1. Tutor-message bubble swaps from typing dots (~60 px) to full text
+  //      (~240 px) ~1 s after mount; pinning the dots' bottom leaves the
+  //      message's TOP off-screen above the fold.
+  //   2. Framer's `layout` prop animates the previous turn's height down
+  //      over ~360 ms while the smooth scroll is in flight; the new turn's
+  //      offsetTop keeps moving and the smooth-scroll lands at the wrong
+  //      position.
+  //   3. AI conversation messages stream in over seconds; image / video
+  //      load fires async layout shifts; wrong-answer hints reveal later.
+  // A ResizeObserver on the active turn watches all of these and re-pins
+  // every time the turn grows. Shrinks (AnimatePresence exits, layout
+  // collapses) are ignored so we don't fight them.
+  useEffect(() => {
+    const node = activeTurnRef.current;
+    if (!node) return;
+
+    let lastH = node.getBoundingClientRect().height;
+
+    // Initial smooth scroll on advance — two rAFs let Framer mount + lay
+    // out the new motion.div before we measure.
+    const id1 = requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        activeTurnRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+        node.scrollIntoView({ behavior: "smooth", block: "end" });
       });
     });
-  }, []);
-  useEffect(() => {
-    scrollActiveIntoView();
-  }, [revealedCount, scrollActiveIntoView]);
+
+    // Re-pin instantly on every growth tick. `behavior: "auto"` (instant)
+    // makes the bottom feel glued to the viewport as content expands,
+    // instead of stuttering through overlapping smooth scrolls.
+    const ro = new ResizeObserver(() => {
+      const h = node.getBoundingClientRect().height;
+      if (h > lastH + 0.5) {
+        node.scrollIntoView({ behavior: "auto", block: "end" });
+      }
+      lastH = h;
+    });
+    ro.observe(node);
+
+    return () => {
+      cancelAnimationFrame(id1);
+      ro.disconnect();
+    };
+  }, [revealedCount]);
 
   // Drive narration from the parent so we can replay on activate AND on
   // audio-toggle. The TutorMessage renderer no longer owns this; the
@@ -154,7 +180,6 @@ export function LessonPlayer(props: Props) {
       xpTargetRef={xpChipRef}
       onXpLanded={handleXpLanded}
       onStreakChange={handleStreakChange}
-      scrollActiveIntoView={scrollActiveIntoView}
     >
       {/* Bound the lesson player to viewport height so the inner scroller
           actually scrolls — without this, page contents push the body to
@@ -212,7 +237,7 @@ export function LessonPlayer(props: Props) {
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: isActive ? 1 : 0.65, y: 0 }}
                     transition={{ duration: 0.36, ease: EASE_OUT_EXPO }}
-                    style={{ scrollMarginTop: 72, scrollMarginBottom: 24 }}
+                    style={{ scrollMarginBottom: 24 }}
                   >
                     <TurnView
                       turn={turn}
@@ -569,8 +594,6 @@ function McqBlock({
       fx.bumpStreak(true);
       const rect = ev.currentTarget.getBoundingClientRect();
       fx.addXp(turn.xp_reward, rect);
-      // Continue button just appeared — make sure it's in view.
-      fx.scrollActiveIntoView();
     } else {
       setWrongId(id);
       setTimeout(() => setWrongId(null), 280);
