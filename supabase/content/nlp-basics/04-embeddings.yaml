@@ -1,123 +1,227 @@
-title: "Embeddings — meaning as math"
-subtitle: "How a computer 'understands' that king and queen are related"
-estimated_minutes: 8
-xp_reward: 35
+title: "Embeddings — meaning turned into geometry"
+subtitle: "How a computer 'understands' that king and queen belong together"
+estimated_minutes: 16
+xp_reward: 95
 turns:
   - type: tutor_message
     persona: nova
     text: |
-      Quick puzzle. Without thinking too hard, what comes after this?
+      Quick warm-up. Don't think too hard.
 
-      **king − man + woman = ?**
+      *king − man + woman = ?*
 
-      You said *queen*. So would a computer that's learned embeddings.
+      You said *queen*, didn't you. So would a computer that's learned **embeddings** — and that's the trick we're cracking today.
 
-      That equation is the most famous trick in NLP — and it's how computers turned "meaning" into something they can do actual math with.
+      Last lesson we turned words into tokens (small chunks of text). Useful, but a token like \"Mumbai\" is still just a string of characters to the model — no idea what it *means*.
+
+      Today, the upgrade. Tokens → embeddings → meaning a computer can do math with.
 
   - type: tutor_message
     persona: nova
     text: |
-      Here's the move.
+      Here's the move, in one sentence.
 
-      Every word (or token) gets turned into a long list of numbers — usually a few hundred to a few thousand of them. That list is called an **embedding**.
+      Every token gets turned into a long list of numbers — typically a few hundred to a few thousand of them. That list is called an *embedding*.
 
-      You can't read it. It looks like noise: `[0.27, -0.81, 0.04, ..., 0.66]`.
+      It looks like meaningless noise:
 
-      But — and this is the magic — words with similar meanings get embeddings that point in similar directions. "Mumbai" lives near "Delhi". "Biryani" lives near "pulao". "Bug" (the insect) lives in a different neighbourhood than "bug" (the software defect), once you give the model context.
+      ```
+      Mumbai → [0.27, −0.81, 0.04, 0.66, …, −0.12]
+      ```
+
+      You can't read it. Nobody can. But here's the magic — the model arranges these numbers so that *words with similar meanings end up close together in space*.
+
+      \"Mumbai\" lives near \"Delhi\". \"Biryani\" lives near \"pulao\". \"Joy\" lives near \"happiness\".
 
       Meaning becomes geometry.
 
-  - type: mcq
-    question: "If 'doctor' and 'physician' have similar meanings, what's true about their embeddings?"
-    options:
-      - id: a
-        text: "They are identical"
-        is_correct: false
-        rationale: "Synonyms aren't identical — they have shades of meaning. The embeddings are CLOSE, not the same."
-      - id: b
-        text: "They point in similar directions, close together in vector space"
-        is_correct: true
-        rationale: "Exactly. Semantic similarity = geometric closeness. That's the whole game."
-      - id: c
-        text: "They have the same number of letters"
-        is_correct: false
-        rationale: "Embeddings encode meaning, not spelling. 'Doctor' and 'PhD' aren't spelled alike but live close in the meaning-space."
-      - id: d
-        text: "They use the same first letter"
-        is_correct: false
-        rationale: "Spelling has nothing to do with embedding distance. 'Cat' and 'feline' don't share letters but ARE close."
-    xp: 10
+  - type: tutor_message
+    persona: nova
+    text: |
+      An analogy that helps.
+
+      Imagine a giant 3D map of every word in the English language. Walk around it.
+
+      In one neighbourhood — *cities* — you'll find Mumbai, Delhi, Bangalore, Tokyo, Paris, all clustered together. They're not the same word, but they share a *role* (they're all cities), so they sit nearby.
+
+      Walk a bit further and you hit *foods* — biryani, pulao, pasta, sushi. Different cluster. Different neighbourhood.
+
+      Now — the real embedding space isn't 3D. It's a few hundred dimensions, which your brain can't visualise. But the *idea* is identical: similar meanings live in similar neighbourhoods. \"Close in vector space\" is just \"close on the map\".
 
   - type: tutor_message
     persona: nova
     text: |
       Where does this actually show up in your life?
 
-      **Semantic search.** Type "cheap flight Mumbai to Goa" — the search engine finds pages with "affordable airfare BOM-GOI." Different words, same meaning, similar embeddings.
+      *Example 1 — semantic search.* You type \"cheap flights from Mumbai to Goa\" into a search engine. The page that ranks #1 might use the words \"affordable airfare BOM-GOI.\" Different words. *Same meaning.* The embeddings for both phrases sit close together, so the search engine pulls the right page. Old keyword search couldn't do this — you'd type \"cheap\" and it would skip pages that said \"affordable\".
 
-      **Recommendations.** Watched "3 Idiots"? Netflix's embedding for it sits near "Munna Bhai MBBS." That's why the next-up plays.
+      *Example 2 — Netflix recommendations.* Watched *3 Idiots*? Netflix has an embedding for that movie. The next films it suggests — *Munna Bhai MBBS*, *Chhichhore* — have embeddings that sit near *3 Idiots* in its space. That's why \"because you watched\" rows feel weirdly accurate. They're geometric distance, not human curation.
 
-      **Plagiarism detection.** Two essays that say the same thing in different words — embeddings catch it instantly. Keyword matching never could.
-
-  - type: tap_to_match
-    prompt: "Match each pair of words to roughly how close their embeddings would be."
-    left:
-      - id: doctor
-        label: "doctor ↔ physician"
-      - id: cat
-        label: "cat ↔ photosynthesis"
-      - id: mumbai
-        label: "Mumbai ↔ Delhi"
-      - id: happy
-        label: "happy ↔ sad"
-    right:
-      - id: very_close
-        label: "Very close — synonyms, near-identical meaning"
-      - id: far
-        label: "Far apart — totally different topics"
-      - id: close
-        label: "Close — same category (cities)"
-      - id: opposite_close
-        label: "Surprisingly close — opposites share context (emotions)"
-    pairs:
-      - [doctor, very_close]
-      - [cat, far]
-      - [mumbai, close]
-      - [happy, opposite_close]
-    xp: 10
+      *Example 3 — plagiarism detection.* Two students hand in essays. Different sentences, different words, but the *ideas* match. Keyword tools miss it. Embeddings catch it instantly — the two essays sit suspiciously close in space.
 
   - type: tutor_message
     persona: nova
     text: |
-      The one that trips everyone — opposites are *close* in embedding space.
+      So far, so neat. Now the bit that surprises everyone.
 
-      Why? Because "happy" and "sad" appear in similar sentences: "She felt happy/sad about the news." Same context = similar embedding direction.
+      *\"Doctor\" and \"physician\" sit close.* Obvious — they're synonyms.
+      *\"Mumbai\" and \"Delhi\" sit close.* Fine — same category.
 
-      Embeddings learn from the company words keep, not from a dictionary of opposites.
+      *\"Happy\" and \"sad\" sit close too.* Wait. They're opposites. Why?
 
-      It's a beautiful little limitation — and the reason early sentiment-analysis models kept getting "this movie is not bad" wrong.
+      Because embeddings learn from the *company a word keeps* — not from a dictionary of opposites. \"Happy\" and \"sad\" appear in nearly identical sentences:
+
+      *\"She felt **happy** about the news.\"*
+      *\"She felt **sad** about the news.\"*
+
+      Same context, same syntax, same neighbours. So the model decides — they must be related. They end up in the same neighbourhood, just on opposite ends of one specific axis.
+
+      Embeddings know words are *related*. They can't always tell that the relation is *opposition*.
+
+  - type: mcq
+    xp: 15
+    question: "Which two words would you expect to have the closest embeddings?"
+    options:
+      - id: a
+        text: "doctor and physician"
+        is_correct: true
+        rationale: "Synonyms appear in nearly identical contexts — same neighbours, same syntax. Embeddings will sit very close. This is the classic case."
+      - id: b
+        text: "doctor and photosynthesis"
+        is_correct: false
+        rationale: "Wildly different topics — doctor lives near medical words, photosynthesis lives near biology/plant words. Far apart."
+      - id: c
+        text: "doctor and stethoscope"
+        is_correct: false
+        rationale: "Related (one uses the other) but different *kinds* of word — a person vs an object. Closer than photosynthesis, but not as close as a true synonym."
+      - id: d
+        text: "doctor and the letter D"
+        is_correct: false
+        rationale: "Single letters live in their own embedding space and don't pattern-match with profession words. Distant."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Quick myth-bust before we move on.
+
+      *Myth: \"Synonyms have identical embeddings.\"*
+
+      Almost — but never *exactly*. \"Doctor\" and \"physician\" have *almost* the same embedding, with tiny differences that capture nuance: \"physician\" feels slightly more formal, more clinical; \"doctor\" is broader (includes \"PhD\"). The embedding captures that subtlety. Two close points, not one shared point.
+
+      *Myth: \"Embeddings encode dictionary meaning.\"*
+
+      Nope. They encode *usage patterns*. The model never reads a dictionary — it reads billions of sentences and learns which words show up together. That's why slang works perfectly in embeddings, even slang that no dictionary has yet recorded. \"Sus\" sits near \"suspicious\" today, because everyone uses them in the same kind of sentence.
+
+      Embeddings are a snapshot of how a language is actually *used* in the wild — not how a textbook says it should be.
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Match each pair of words to roughly how close their embeddings would be."
+    left:
+      - id: synonyms
+        label: "doctor ↔ physician"
+      - id: same_cat
+        label: "Mumbai ↔ Delhi"
+      - id: opposites
+        label: "happy ↔ sad"
+      - id: unrelated
+        label: "biryani ↔ algorithm"
+    right:
+      - id: very_close
+        label: "Very close — they share contexts almost perfectly"
+      - id: close
+        label: "Close — same category, different members"
+      - id: opposite_close
+        label: "Surprisingly close — same contexts, opposite axis"
+      - id: far
+        label: "Far — totally different topics, different neighbours"
+    pairs:
+      - [synonyms, very_close]
+      - [same_cat, close]
+      - [opposites, opposite_close]
+      - [unrelated, far]
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      One last thing, then a real exercise.
+
+      Embeddings aren't just for *words* — they work for whole *sentences*, paragraphs, even images.
+
+      The embedding of \"How do I cancel my flight?\" sits close to the embedding of \"I need to refund a ticket I booked.\" Different words. Same intent. That's how *every* AI customer support bot routes your message — it doesn't pattern-match keywords, it embeds your sentence and asks \"which FAQ entry has the closest embedding?\"
+
+      And in lesson 09 when we hit *RAG* (Retrieval-Augmented Generation), this same trick is the entire engine. Convert your company's docs to embeddings, convert the user's question to an embedding, find the closest match, hand it to the model. RAG = embeddings + a clever wrapper.
+
+      Once you see embeddings, you start seeing them everywhere.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The wildest part — embeddings cross *modalities*.
+
+      A modern model can embed an image of a dog and the word \"dog\" into the *same* space. Their vectors land close together. Same trick — \"things that mean the same thing\" map to nearby points, regardless of whether the input was text, a photo, or audio.
+
+      That's how Google Image Search works when you type \"sunset over Marine Drive\" — the text and the photos live in one shared embedding space, so it can match them. It's how Spotify finds songs that *sound like* a track you liked. It's how every AI photo app turns a written prompt into the right picture.
+
+      Same idea you just learned. Different inputs. One geometry.
+
+  - type: exercise
+    xp: 20
+    tool: chatgpt
+    instruction: |
+      Try this in ChatGPT (or Claude, or Gemini) right now.
+
+      Send: *\"List 5 words that would have embeddings very close to the word 'Mumbai'. Don't pick obvious synonyms — pick words that share its 'context neighbourhood'.\"*
+
+      Then ask for 5 words *far* from Mumbai. Compare. The patterns will surprise you — words like \"monsoon\" or \"local train\" might be closer than you'd guess.
+
+      Paste the model's two lists below.
+    placeholder: "Close: ...\nFar: ..."
 
   - type: fill_in_the_blank
+    xp: 15
     prompt: "Lock in the core idea."
-    template: "An embedding turns a word into a list of {{numbers}}, and words with similar {{meanings}} land close together in space."
-    hint: "First blank: what's the data type? Second blank: what aspect of language?"
+    template: "An embedding turns a word into a list of {{numbers}}, and words with similar {{meanings}} land close together in space — even when they're {{opposites}}."
     answers:
       - id: numbers
         accepted: [numbers, vectors, floats, coordinates]
       - id: meanings
-        accepted: [meanings, meaning, semantics]
-    xp: 10
+        accepted: [meanings, meaning, contexts, context]
+      - id: opposites
+        accepted: [opposites, antonyms, opposite]
+    hint: "First blank: the data type. Second blank: what they share. Third blank: the surprising case from earlier."
+
+  - type: ai_conversation
+    xp: 15
+    goal: "User predicts embedding distance for one word pair from their own life and explains why."
+    max_turns: 4
+    success_criteria: "User picks a real word pair, predicts whether their embeddings would be close or far, and gives a reason that references context/usage."
+    starter_text: |
+      Quick test of your new mental model.
+
+      Pick any two words from your daily life — your job, your hobby, your city, anything. Tell me the pair, and predict: would their embeddings sit close or far? Why?
+    system_prompt: |
+      You are Nova, a warm but direct coach. The lesson just covered embeddings — words become vectors, similar meanings sit close in space, and even opposites are close because they share contexts.
+
+      Step 1: Ask the user for two words from their life and their prediction (close or far) with a reason.
+      Step 2: After their answer, affirm what they got right, and add one sharpening insight — e.g. "yes, but here's the subtle reason" or "actually, those might be closer than you think because they often appear in the same sentence types".
+      Step 3: Affirm and close with <END/>.
+
+      Keep every reply under 60 words. Speak like a coach, not a textbook. No bullet lists.
 
   - type: reflection
-    prompt: "Where have you seen 'similar but different words' work — search, Spotify, YouTube? One example."
-    placeholder: "I searched for 'sneakers' and got results for 'kicks'…"
     xp: 5
+    prompt: "Where have you seen 'similar but different words' actually work for you — search, Spotify, YouTube, anywhere? One sentence."
+    placeholder: "I searched for 'sneakers' and got results for 'kicks'…"
 
   - type: checkpoint
+    xp: 10
     title: "Meaning is geometry now."
     summary: |
-      Embeddings turn words into vectors. Similar meanings sit close together; opposites share context so they sit close too.
-      That's the math behind semantic search, recommendations, plagiarism detection, and most of "AI understands me."
+      Tokens become embeddings — long lists of numbers where similar meanings land close in space.
 
-      Next up — once we have embeddings, how does the model actually decide what to say next? Time to meet the Transformer.
-    xp: 5
+      Synonyms cluster tight. Same-category words cluster nearby. Opposites cluster *closely* because they share contexts. Unrelated topics live in different neighbourhoods entirely.
+
+      This is the math behind semantic search, recommendations, plagiarism detection, customer-support routing, and — coming up in lesson 09 — RAG, the engine of every "AI assistant for your business."
+
+      Next up: how do these embedded tokens actually get *used* to predict the next word? Time to meet the *Transformer*.

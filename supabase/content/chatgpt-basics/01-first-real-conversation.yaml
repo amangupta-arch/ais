@@ -1,149 +1,289 @@
-title: Your First Real Conversation
-subtitle: Why most people use ChatGPT wrong
-estimated_minutes: 8
-xp_reward: 30
-
+title: "Your first real conversation"
+subtitle: "Why most people get bad answers from ChatGPT — and the 4-letter framework that fixes it"
+estimated_minutes: 14
+xp_reward: 110
 turns:
   - type: tutor_message
     persona: nova
-    typing_ms: 900
     text: |
-      Hey — glad you're here. Before we touch ChatGPT, I want to ask you something.
+      Hey. Glad you're here.
+
+      Before we touch ChatGPT, I want to ask you something.
+
+      You've probably tried ChatGPT before. Maybe a few times. Maybe a lot. And maybe — like most people — you walked away thinking *"this is fine, I guess. Why is everyone losing their minds about it?"*
+
+      That's not because ChatGPT is overhyped.
+
+      It's because *most people use it wrong*.
+
+      Today, we fix that. By the end of this lesson, you'll have a 4-letter framework that turns ChatGPT from "kind of useful" into "wait, did it really just do that?"
 
   - type: tutor_message
     persona: nova
-    typing_ms: 1400
     text: |
-      Most people type one-line questions and get mediocre answers. Then they blame the tool. Sound familiar?
+      Here's the problem nobody warns you about.
 
-  - type: mcq
-    xp: 10
-    question: Be honest — when you've used ChatGPT, you mostly…
-    options:
-      - id: a
-        text: Typed a short question
-        is_correct: true
-        rationale: Most people start here. We'll fix it together.
-      - id: b
-        text: Wrote a detailed prompt with context
-        is_correct: true
-        rationale: You're ahead of the curve. Let's sharpen it anyway.
-      - id: c
-        text: Never really used it
-        is_correct: true
-        rationale: Perfect — you get to skip bad habits entirely.
+      Most people open ChatGPT, type a one-line question, and judge the model on what comes back.
 
-  - type: tutor_message
-    persona: nova
-    typing_ms: 1600
-    text: |
-      Good. Here's the one idea that changes everything: ChatGPT is not a search engine. It's a thinking partner. And thinking partners need context.
+      *"Write me an email to my boss."*
+      *"Help me plan a trip."*
+      *"Give me ideas for a startup."*
+
+      ChatGPT does its best — but its best, with that little input, is *generic*. The reply is forgettable. So you assume that's the model's ceiling. And you stop trying.
+
+      But here's the thing. You haven't told ChatGPT:
+
+      - Who you are.
+      - What kind of email it is (apology? request? celebration?).
+      - Who your boss is, what your relationship is like.
+      - What tone you want.
+      - How long.
+      - What's at stake.
+
+      The model isn't reading your mind. It's working with what you gave it. *Which is almost nothing.*
 
   - type: tutor_message
     persona: nova
-    typing_ms: 700
     text: |
-      Watch. Same request, two versions.
+      The fix is dead simple, and once you've seen it you can't un-see it.
+
+      It's a 4-letter checklist for every prompt you write. Memorise it.
+
+      *RTCC.*
+
+      - **R** — Role. Who should ChatGPT pretend to be? (A senior editor? A patient teacher? A startup investor?)
+      - **T** — Task. What exactly do you want it to produce? (An email, a 3-point summary, 5 ideas with one-line rationales.)
+      - **C** — Context. What does the model need to know about you, the situation, the recipient?
+      - **C** — Constraints. How long? What tone? What to avoid? What format?
+
+      Four pieces. Every prompt. Once it's a habit, your output quality jumps 5×. I'm not exaggerating. We'll prove it in 60 seconds.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Watch the difference. Same task, two prompts.
+
+      *Prompt 1 (no RTCC):*
+      *"Write an email asking my boss for two days off."*
+
+      Output: a polite, generic, four-paragraph email. Has phrases like "I would be most grateful" and "I trust this finds you well." It's fine. It's also *exactly* the kind of email everyone's boss has seen 100 times.
+
+      *Prompt 2 (full RTCC):*
+      *"Act as a confident, no-fluff communicator (Role). Write me a 4-line email asking my boss for 2 days off (Task) — Friday and Monday next week, for a family wedding (Context). My boss is direct and busy, prefers brevity, knows my workload is light next week. Skip the "I hope this finds you well" opener. Casual but professional. (Constraints)"*
+
+      Output: a clean 4-line email that gets straight to the point, references the workload thing, sounds like *you*. Done in 30 seconds.
+
+      Same model. Same minute. The first prompt got you what most people get. The second got you what *pros* get. The difference was 50 extra words and a checklist.
 
   - type: mcq
     xp: 15
-    question: Which prompt gets a better answer?
+    question: "You want ChatGPT to help you write a witty Instagram caption for a new café you visited. Which prompt is best?"
     options:
       - id: a
-        text: '"Write me an email to my boss"'
+        text: "\"Write a caption for my café photo.\""
         is_correct: false
-        rationale: Too thin. The AI has no idea what you want.
+        rationale: "No role, task is vague, no context (what café? what mood?), no constraints. The output will be generic café-quote drivel."
       - id: b
-        text: '"Draft a 4-line email to my boss asking for 2 days off next week. Tone: polite but confident. Mention I''ll hand over the Figma files to Priya."'
+        text: "\"Act as a witty Mumbai food blogger (Role). Write a 1-line Instagram caption (Task) for my photo of a sourdough at a new café in Bandra called Bombay Bread (Context). Self-deprecating, no emojis, under 12 words (Constraints).\""
         is_correct: true
-        rationale: Context, constraint, tone, detail. Night and day output.
+        rationale: "Full RTCC. The model has a persona, an exact format, a specific subject, and clear style rules. The output will sound like a real food blogger, not Hallmark."
+      - id: c
+        text: "\"Make it witty.\""
+        is_correct: false
+        rationale: "ChatGPT will either ask 'about what?' or invent something disconnected. Witty *what*?"
+      - id: d
+        text: "\"Write a long, detailed, comprehensive caption with lots of adjectives.\""
+        is_correct: false
+        rationale: "More words but no RTCC. You've added length, not direction. The output will be long and equally generic."
 
   - type: tutor_message
     persona: nova
-    typing_ms: 1400
     text: |
-      There's your first rule: every prompt needs Role, Task, Context, and Constraints. Four words. RTCC.
+      Let's go deeper into each letter, because the difference is in the details.
 
-  - type: fill_in_the_blank
-    xp: 10
-    prompt: Quick recall — what does RTCC stand for?
-    template: "{{r}}, {{t}}, {{c}}, {{x}}"
-    hint: One word per blank. All lowercase is fine.
-    answers:
-      - id: r
-        accepted: [role]
-      - id: t
-        accepted: [task]
-      - id: c
-        accepted: [context]
-      - id: x
-        accepted: [constraints, constraint]
+      *R — Role.*
 
-  - type: drag_to_reorder
-    xp: 10
-    prompt: Drag these into RTCC order.
-    items:
-      - id: t
-        label: Task — what you want produced
-      - id: r
-        label: Role — who the AI should act as
-      - id: x
-        label: Constraints — length, tone, rules
-      - id: c
-        label: Context — background it needs
-    correct_order: [r, t, c, x]
+      The role you give ChatGPT changes its vocabulary, depth, and tone.
+
+      - *"Act as a senior editor at The Hindu"* → cleaner sentences, sharper word choice, journalist's instinct.
+      - *"Act as my career coach who's also my friend"* → warm, direct, asks the right questions back.
+      - *"Act as a skeptical investor"* → pokes holes, demands evidence.
+
+      The role doesn't change *what the model knows*. It changes *which patterns the model reaches for first*. A "senior editor" answer pulls from one neighbourhood of training data; a "stand-up comedian" answer from a totally different one. Same data, different lens.
+
+      Pick the role that matches the *kind of expertise* you want to talk to.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      *T — Task.*
+
+      Vague task = vague output. The fix is *specifying the deliverable*.
+
+      Bad: *"Help me with my essay."*
+      Better: *"Review this essay for clarity."*
+      Best: *"Identify the 3 weakest paragraphs in this essay and explain in one line each why they're weak."*
+
+      Notice how the best version specifies:
+      - The format (3 things, not "some thoughts")
+      - The dimension (clarity, specifically — not "generally good")
+      - The reasoning style (one line each — not paragraphs of analysis)
+
+      The pattern: *what's the exact shape of the output you want?* If you can imagine it on the screen before you ask, your task description is sharp enough.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      *C — Context.*
+
+      This is where most people lose. They forget the model has *zero* memory of them, their situation, or their goals.
+
+      Context is anything the model needs to know to be useful:
+
+      - *Who you are* ("I'm a 23-year-old marketing intern in Bangalore")
+      - *Who's involved* ("my boss is a no-fluff founder who replies in 1-line emails")
+      - *What's the situation* ("I'm asking for time off for the first time after joining 3 months ago")
+      - *Why this matters* ("the wedding is my sister's, I really need this approved")
+      - *What you've already tried* ("I drafted this version, it feels too formal")
+
+      Pasting *the actual document* you're working on counts as context too — and is hugely powerful.
+
+      *Rule of thumb:* if a smart friend was about to help you, what would you tell them first? Tell ChatGPT the same.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      *C — Constraints.*
+
+      Without constraints, ChatGPT defaults to long, generic, hedge-everything answers. Constraints sharpen the output.
+
+      Examples:
+      - *Length:* "in 3 bullets", "under 100 words", "exactly 4 lines"
+      - *Format:* "as a markdown table", "as JSON", "as a numbered list"
+      - *Tone:* "casual but professional", "direct, no preamble", "warm, like talking to a friend"
+      - *Vocabulary:* "no jargon", "no emojis", "use simple words a 12-year-old understands"
+      - *Things to avoid:* "skip the 'I hope this email finds you well' opener", "no hedging", "don't apologise"
+
+      A common one I use a lot: *"No preamble. Just the answer."* Cuts straight to the substance, removes the "Of course! Here's a thoughtful response to your question..." filler.
+
+      Two or three constraints is plenty. More than that gets brittle.
 
   - type: tap_to_match
-    xp: 10
-    prompt: Match each piece to what it actually does.
+    xp: 15
+    prompt: "Match each prompt-piece to its definition."
     left:
       - id: r
-        label: Role
+        label: "Role"
       - id: t
-        label: Task
-      - id: c
-        label: Context
-      - id: x
-        label: Constraints
+        label: "Task"
+      - id: ctx
+        label: "Context"
+      - id: con
+        label: "Constraints"
     right:
       - id: who
-        label: Who the AI plays
+        label: "Who the AI should pretend to be"
       - id: what
-        label: What it should produce
+        label: "What exactly you want produced"
       - id: bg
-        label: Background it should know
+        label: "Background it needs to know"
       - id: rules
-        label: Rules, length, tone
+        label: "Rules — length, tone, format, what to avoid"
     pairs:
       - [r, who]
       - [t, what]
-      - [c, bg]
-      - [x, rules]
+      - [ctx, bg]
+      - [con, rules]
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      One last thing — RTCC isn't sacred order.
+
+      You don't have to literally type *"Role: ... Task: ... Context: ... Constraints: ..."* every time. The pros internalise the *checklist* and weave the four pieces into natural sentences.
+
+      *"As my career coach (Role), help me think through whether I should take the new job offer (Task) — it's 30% more money but in a city I don't love, and I'm 28 with a partner who'd have to move (Context). Be direct, ask me one or two questions back instead of just listing pros and cons (Constraints)."*
+
+      One sentence. RTCC all in there. That's the goal: not paint-by-numbers, but *internal habit*.
+
+      Worth it? Massively. RTCC promotes you from "ChatGPT user" to "ChatGPT operator" in a week.
+
+  - type: drag_to_reorder
+    xp: 15
+    prompt: "Drag these into the correct RTCC order."
+    items:
+      - id: t
+        label: "Task — what you want produced"
+      - id: r
+        label: "Role — who the AI should act as"
+      - id: c
+        label: "Context — background it needs"
+      - id: x
+        label: "Constraints — rules, length, tone"
+    correct_order: [r, t, c, x]
 
   - type: exercise
     xp: 20
     tool: chatgpt
     instruction: |
-      Your turn. Open ChatGPT in another tab. Using RTCC, ask it to write a LinkedIn post announcing you're learning AI. Paste what you wrote below.
-    placeholder: Paste your prompt here…
+      Apply RTCC to a *real* task right now.
+
+      1. Pick one thing you actually need to write this week — an email, a message, a caption, a paragraph. Real, not hypothetical.
+      2. Open ChatGPT.
+      3. Write the prompt with all 4 pieces — Role, Task, Context, Constraints.
+      4. Send it.
+
+      Compare what you get to what you would have written yourself. Be honest.
+
+      Paste your prompt below.
+    placeholder: "Act as ... Write me ... My situation is ... Make sure to ..."
 
   - type: ai_conversation
-    xp: 10
-    goal: Help the user articulate a specific personal reason for learning AI.
-    max_turns: 3
-    success_criteria: User names a concrete outcome (e.g., a project, role, or skill).
+    xp: 15
+    goal: "User identifies which of the 4 RTCC letters they're most likely to skip — and why — and gets coached on it."
+    max_turns: 4
+    success_criteria: "User picks one letter (R/T/C/C) they tend to forget and gets a concrete tip for catching it."
     starter_text: |
-      I'm your sparring partner for one minute. Tell me why you're learning AI, and I'll push back once. Ready?
+      Honest moment.
+
+      Of the 4 letters in RTCC — Role, Task, Context, Constraints — which one are you *most likely to skip* when you're in a rush?
     system_prompt: |
-      You are a warm but direct coach named Nova. The user is a beginner learner. Ask them why they are learning AI, then challenge their answer once to make it more specific. Keep replies under 40 words. After 2 exchanges, affirm them and close.
+      You are Nova, a warm but direct coach. The user just learned RTCC — Role, Task, Context, Constraints — for prompting ChatGPT.
+
+      Step 1: Ask which letter they tend to skip when rushed.
+      Step 2: Give them ONE specific catch-tip for that letter. e.g. "If you skip Role often, try this: every time you open ChatGPT, type 'Act as my [X]' first, then your task. Becomes a muscle memory in a week." Be specific, useful, short.
+      Step 3: Affirm and close with <END/>.
+
+      Replies under 60 words. Coach, not lecturer.
+
+  - type: fill_in_the_blank
+    xp: 15
+    prompt: "Lock in the framework."
+    template: "RTCC: {{role}}, {{task}}, {{context}}, {{constraints}}. Every prompt. Eventually as a habit, not a checklist."
+    answers:
+      - id: role
+        accepted: ["role", "Role"]
+      - id: task
+        accepted: ["task", "Task"]
+      - id: context
+        accepted: ["context", "Context"]
+      - id: constraints
+        accepted: ["constraints", "Constraints", "constraint"]
+    hint: "Spell out each letter of RTCC."
 
   - type: reflection
     xp: 5
-    prompt: One sentence. What will you use ChatGPT for this week?
-    placeholder: Write in your own words…
+    prompt: "What's one prompt you've sent ChatGPT recently that — knowing what you know now — you'd rewrite using RTCC?"
+    placeholder: "I asked 'write me an email' — should've added recipient, length, tone..."
 
   - type: checkpoint
     xp: 10
-    title: You just learned RTCC.
+    title: "RTCC. Locked in."
     summary: |
-      Role. Task. Context. Constraints. Every future prompt gets 5× better when you use it. Tomorrow — we build your first custom GPT.
+      Most people get bad ChatGPT answers because their prompts are too thin. The fix is *RTCC*.
+
+      *Role* (who AI plays). *Task* (what to produce). *Context* (background). *Constraints* (rules).
+
+      Four pieces, every prompt. Eventually internal habit, not a checklist.
+
+      Tomorrow — we *bake* RTCC into ChatGPT itself, so you don't have to retype your context every single chat. Hello, Custom Instructions.

@@ -1,141 +1,256 @@
 title: "What is Natural Language Processing?"
-subtitle: "How computers learned to read your mind (almost)"
-estimated_minutes: 8
-xp_reward: 30
+subtitle: "The whole field, in plain English, by the end of this lesson"
+estimated_minutes: 14
+xp_reward: 80
 turns:
   - type: tutor_message
     persona: nova
     text: |
-      You type "I am" on WhatsApp and your phone suggests "fine, how are you?" before you finish.
-      You say "navigate home" to Google Maps and it just… knows.
-      You paste a paragraph into Translate and out comes perfect Hindi.
+      Quick experiment.
 
-      All of that is one quiet little field of AI doing the heavy lifting.
-      It's called **NLP — Natural Language Processing.**
-      And it's the reason ChatGPT exists.
+      You opened your phone this morning. Before breakfast, you almost certainly:
 
-  - type: mcq
-    question: "Quick check — which of these is NOT NLP at work?"
-    options:
-      - id: a
-        text: "Gmail finishing your sentence as you type"
-        is_correct: false
-        rationale: "That's Smart Compose — pure NLP. It predicts the next words from patterns it has seen before."
-      - id: b
-        text: "Instagram tagging your friend's face in a photo"
-        is_correct: true
-        rationale: "Correct. Face recognition is computer vision, not language. NLP only deals with text and speech."
-      - id: c
-        text: "Alexa understanding 'play Arijit Singh'"
-        is_correct: false
-        rationale: "Speech-to-text plus intent recognition — classic NLP."
-      - id: d
-        text: "Google Translate converting English to Hindi"
-        is_correct: false
-        rationale: "Machine translation — one of NLP's oldest jobs."
-    xp: 10
+      - Typed a message and let autocomplete finish a word for you.
+      - Searched something — your search bar quietly auto-completed it.
+      - Got a notification that your bank flagged a transaction as suspicious.
+      - Maybe asked Siri or Alexa about the weather.
+
+      Each of those — every single one — is *Natural Language Processing*. NLP. The thing this whole course is about.
+
+      You've been using it for years. Today we put a name on it.
 
   - type: tutor_message
     persona: nova
     text: |
-      Here's NLP in one line:
+      Here's the one-sentence definition. Memorise this — your non-techie friends will ask, and you'll want to give a clean answer.
 
-      **Teaching computers to understand and generate human language.**
+      *Natural Language Processing is the field of teaching computers to handle human language — to read it, understand it, and write it back.*
 
-      That's it. The whole field.
+      That's the whole field. Every spam filter, every translation tool, every customer-support bot, every ChatGPT — they're all NLP.
 
-      Now how does it actually pull that off? Three moves, repeated billions of times:
+      Notice what NLP is *not* about:
 
-      1. **Break it down** — Split your sentence into tiny pieces called *tokens* (roughly: words or word-parts).
-      2. **Find patterns** — Learn from massive amounts of text which tokens tend to follow which.
-      3. **Predict** — Given what's been said, guess what comes next. Or what it means. Or how to translate it.
+      - Recognising your face on Instagram → that's *Computer Vision*.
+      - Predicting which video you'll watch next → that's *Recommendation Systems*.
+      - Driving a car → that's *Robotics + Vision*.
 
-      ChatGPT is just step 3 done at terrifying scale.
+      NLP is specifically the *language* corner of AI. There's a lot of AI that has nothing to do with words.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      An analogy that helps.
+
+      Imagine teaching a five-year-old to read. You don't dump a dictionary on them. You show them simple sentences. You point at *cat*, then at the picture. You repeat. Slowly, the patterns click — letters, sounds, words, sentences, meanings.
+
+      NLP is the version of this where the \"five-year-old\" is a computer that has zero intuition for language and infinite patience for being shown examples.
+
+      The problem: the patterns of human language are *enormous*. English has half a million words. Each can mean different things in different sentences. You and I figure that out without thinking. A computer has to learn it all from scratch, from data.
+
+      The history of NLP is the history of *how* we taught it.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Four NLP-powered products you almost certainly use every week. Let's name them so you can spot the field in the wild.
+
+      *1. Search.* Type \"best biryani near me\" — Google has to figure out you mean food, not the singer Biryani. NLP.
+
+      *2. Autocomplete.* Your phone keyboard guessing the next word. NLP, running locally on your phone.
+
+      *3. Spam filters.* Gmail catches \"Congratulations! You've won ₹50 lakhs!\" before you see it. The model read the email's language and decided it smelled wrong. NLP.
+
+      *4. Translation.* Google Translate, YouTube auto-captions, WhatsApp's \"translate this message\" — all NLP, all running on the same family of techniques you'll learn this week.
+
+      One field. Quietly running half your phone.
+
+  - type: mcq
+    xp: 15
+    question: "Which of these is NOT a job for NLP?"
+    options:
+      - id: a
+        text: "Auto-correcting your typos in WhatsApp"
+        is_correct: false
+        rationale: "Pure NLP — the model reads the text and predicts the right word."
+      - id: b
+        text: "Identifying who is in a photograph"
+        is_correct: true
+        rationale: "Right. That's *Computer Vision*, not NLP. NLP is specifically about language. Faces and objects belong to a different corner of AI."
+      - id: c
+        text: "Detecting whether a customer review is positive or negative"
+        is_correct: false
+        rationale: "Classic NLP — sentiment analysis. Reads the words, classifies the feeling."
+      - id: d
+        text: "Converting a voice memo into text"
+        is_correct: false
+        rationale: "NLP — specifically speech recognition. Audio → text is the input side; the language modelling that follows is also NLP."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      OK — you know what NLP *is*. Now: why is it *hard*?
+
+      Three reasons. They've been the same three reasons for 60 years, and even today's smartest models still wobble on all three.
+
+      *1. Ambiguity.* Words mean different things in different sentences.
+      *2. Context.* Pronouns, references, and \"the obvious thing\" depend on what came before.
+      *3. World knowledge.* You know things about the world that nobody bothered writing down.
+
+      Each one's worth a closer look. Coming up next.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Hard thing 1 — Ambiguity.*
+
+      Read this sentence:
+
+      *\"I saw the man with the telescope.\"*
+
+      Did you see the man *while you were holding* a telescope? Or did you see a man *who was holding* a telescope?
+
+      Both are valid English. You picked one without noticing. A computer sees both at once and panics.
+
+      Or this — the word \"bank\":
+
+      - *\"I went to the bank to withdraw cash.\"* (financial institution)
+      - *\"We sat by the river bank.\"* (edge of a river)
+      - *\"You can bank on it.\"* (rely)
+
+      Same letters. Three completely different meanings. The model has to pick the right one based on the *rest of the sentence*.
+
+      English is a swamp of these. Every language is.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Hard thing 2 — Context.*
+
+      Read these two sentences:
+
+      *\"The trophy didn't fit in the suitcase because **it** was too big.\"*
+      *\"The trophy didn't fit in the suitcase because **it** was too small.\"*
+
+      Same sentence, one word different — but \"it\" suddenly points at *opposite things*.
+
+      In the first sentence, the *trophy* was too big.
+      In the second, the *suitcase* was too small.
+
+      You worked that out instantly. A computer needs to track which noun \"it\" might refer to, weigh both options, and pick whichever makes the sentence make physical sense. That's a hard problem — and it took until 2017 to crack it well. (We'll meet the breakthrough in lesson 05.)
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Hard thing 3 — World knowledge.*
+
+      Try this sentence:
+
+      *\"I dropped the laptop on the floor and it broke.\"*
+
+      What broke? The laptop, obviously. The floor's fine.
+
+      But how do you *know*? Nothing in the sentence says \"laptops are fragile\" or \"floors are tough\". You know it because you live in a world where laptops break and floors don't.
+
+      A computer that's only ever read the sentence has no such common sense. To answer correctly, it needs to have absorbed *millions* of similar real-world facts during training.
+
+      This is why ChatGPT can answer most everyday questions — it has, effectively, read the internet. But it's also why it slips on the weird ones it hasn't seen before. World knowledge is the hardest of the three.
 
   - type: tap_to_match
-    prompt: "Match each everyday tool to the NLP job it does."
+    xp: 15
+    prompt: "Match each tricky sentence to the hard thing it depends on."
     left:
-      - id: trans
-        label: "Google Translate"
-      - id: alexa
-        label: "Alexa / Siri"
-      - id: gmail
-        label: "Gmail spam filter"
-      - id: chatgpt
-        label: "ChatGPT"
+      - id: bank
+        label: "\"Meet me at the bank.\""
+      - id: trophy
+        label: "\"The award didn't fit because it was too small.\""
+      - id: laptop
+        label: "\"I dropped the glass and it broke.\""
+      - id: telescope
+        label: "\"I saw the man with the telescope.\""
     right:
-      - id: convert
-        label: "Convert one language to another"
-      - id: speech
-        label: "Turn voice into text and intent"
-      - id: classify
-        label: "Sort text into categories"
-      - id: generate
-        label: "Generate new text from a prompt"
+      - id: ambig
+        label: "Ambiguity — same word, multiple meanings"
+      - id: ctx
+        label: "Context — what 'it' refers to"
+      - id: world
+        label: "World knowledge — knowing glass is fragile"
+      - id: ambig2
+        label: "Ambiguity — same sentence, multiple readings"
     pairs:
-      - [trans, convert]
-      - [alexa, speech]
-      - [gmail, classify]
-      - [chatgpt, generate]
-    xp: 10
+      - [bank, ambig]
+      - [trophy, ctx]
+      - [laptop, world]
+      - [telescope, ambig2]
 
   - type: tutor_message
     persona: nova
     text: |
-      Here's the catch — language is *hard*.
+      Two myths to clear up before we close.
 
-      Read this: "I saw the man with the telescope."
+      *Myth 1 — \"AI = LLMs.\"*
 
-      Did you use the telescope to see him? Or did he have one?
+      ChatGPT is so dominant in conversation today that people use \"AI\" and \"LLM\" interchangeably. They're not the same.
 
-      You and I figure it out from context. A computer has to learn that move from millions of examples.
+      AI is the giant umbrella. NLP is one corner of it. *Large Language Models* (LLMs like ChatGPT, Claude, Gemini) are one *very recent* tool inside NLP. NLP existed for 60 years before LLMs showed up. Spam filters, search, autocomplete — none of those are LLMs. They're older NLP.
 
-      That's why NLP took 60 years to get good.
-      And why it suddenly got *very* good around 2017 — when **transformers** (the T in GPT) cracked the context problem.
+      *Myth 2 — \"NLP only means chatbots.\"*
 
-  - type: mcq
-    question: "Which of these would be HARDEST for an NLP system to handle correctly?"
-    options:
-      - id: a
-        text: '"What time is it?"'
-        is_correct: false
-        rationale: "Direct question, no ambiguity. Easy."
-      - id: b
-        text: '"Translate hello to Spanish."'
-        is_correct: false
-        rationale: "Clear instruction, fixed answer. Easy."
-      - id: c
-        text: '"Oh great, another Monday. Can''t wait."'
-        is_correct: true
-        rationale: "Sarcasm. The literal words read positive, the meaning is the opposite. Even modern LLMs trip on this without strong context."
-      - id: d
-        text: '"Summarize this article in 3 lines."'
-        is_correct: false
-        rationale: "Summarization is solved well by today's LLMs."
-    xp: 10
+      ChatGPT is the loud, visible bit. The quieter — and frankly bigger — story is the NLP doing serious work in the background. Every \"smart\" feature in your apps. The fraud-detection system at your bank. The grading on your child's English homework app. None of these *feel* like AI. All of them are NLP.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      A 60-second history so the rest of the course makes sense.
+
+      *1950s–80s — Hand-coded rules.* Linguists wrote thousands of grammar rules by hand. The computer applied them. It was brittle, narrow, and any sentence the linguists hadn't anticipated would break it.
+
+      *1990s–2000s — Statistical methods.* Instead of hand-coded rules, count word frequencies in massive text. The model learns \"the\" usually comes before nouns, \"running\" usually means motion. Better, but still shallow.
+
+      *2010s — Neural networks.* Models that read text one word at a time, building up meaning. A big jump in fluency, but they couldn't handle long sentences.
+
+      *2017 — Transformers.* The breakthrough. A new architecture that could read whole paragraphs at once, with all words weighing each other. Five years later, you got ChatGPT.
+
+      That's it. That's the field. Now you know where the rest of this course is going.
+
+  - type: exercise
+    xp: 20
+    tool: chatgpt
+    instruction: |
+      Test your new NLP-spotting eye in the wild.
+
+      1. Open any one of your most-used apps (WhatsApp, Gmail, Instagram, Swiggy, Maps — anything).
+      2. Find *3* features in that app where the app is clearly handling language.
+      3. Note which of the three hard things — ambiguity, context, world knowledge — that feature is most likely wrestling with.
+
+      Paste your three findings below.
+    placeholder: "1. Gmail — auto-categorising my email into Promotions / Primary. World knowledge.\n2. ..."
 
   - type: fill_in_the_blank
-    prompt: "Lock in the definition — fill the blanks."
-    template: "NLP teaches computers to {{understand}} and {{generate}} human language."
-    hint: "Two verbs. One is about input, one is about output."
+    xp: 15
+    prompt: "Lock in the definition and the three hard things."
+    template: "NLP teaches computers to handle human {{language}}. The three things that make it hard: {{ambiguity}}, context, and {{world}} knowledge."
     answers:
-      - id: understand
-        accepted: [understand, comprehend, read, interpret]
-      - id: generate
-        accepted: [generate, produce, create, write]
-    xp: 10
+      - id: language
+        accepted: [language, languages, words, text]
+      - id: ambiguity
+        accepted: [ambiguity, ambiguous]
+      - id: world
+        accepted: [world, common-sense, common, real-world]
+    hint: "First blank: what NLP is about. Second blank: the 'bank means three things' problem. Third blank: knowing glass is fragile."
 
   - type: reflection
-    prompt: "In one line — where do YOU use NLP every day without thinking about it?"
-    placeholder: "WhatsApp autocomplete, voice typing, Google search…"
     xp: 5
+    prompt: "When was the last time you noticed a piece of NLP working — or breaking — in your day? One sentence."
+    placeholder: "Autocomplete in Hindi gave me the wrong word again..."
 
   - type: checkpoint
-    title: "You get NLP now."
+    xp: 10
+    title: "You can spot NLP in the wild now."
     summary: |
-      NLP = teaching computers to understand and generate language.
-      It works by breaking text into tokens, finding patterns, and predicting what comes next.
-      It's the foundation under ChatGPT, translation, voice assistants, and spam filters.
+      *Natural Language Processing* — the field of teaching computers to handle human language. Read it, understand it, write it back.
 
-      Next up — how an LLM is just NLP turned up to eleven.
-    xp: 5
+      It's a corner of AI, not the whole thing. It's older than ChatGPT by 60 years.
+
+      The three perpetually-hard things: *ambiguity, context, world knowledge*. Every model from 1955 to 2025 has been trying to crack these.
+
+      Tomorrow — what makes a *Large Language Model* large, and why scale changed everything.

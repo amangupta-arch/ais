@@ -1,125 +1,282 @@
-title: When ChatGPT Is Wrong
-subtitle: How to spot a confident lie and what to do about it
-estimated_minutes: 9
-xp_reward: 40
-
+title: "When ChatGPT is wrong"
+subtitle: "How to spot a confident lie — and the 3 moves that make it almost stop happening"
+estimated_minutes: 16
+xp_reward: 95
 turns:
   - type: tutor_message
     persona: nova
-    typing_ms: 1000
     text: |
-      ChatGPT will sometimes tell you something with total confidence — and be completely wrong. This has a name. Hallucination.
+      You've now used ChatGPT for 4 lessons. Time for the lesson that decides whether you trust it for *real* work.
+
+      Because here's the thing nobody warns new users about — *ChatGPT is sometimes confidently, completely, beautifully wrong*.
+
+      Real cases:
+      - It cites a court case that doesn't exist.
+      - It quotes Einstein saying something Einstein never said.
+      - It invents an API method that isn't in any library.
+      - It tells you a celebrity is alive when they died last year.
+      - It gives you a confident statistic that's wrong by 60%.
+
+      All in fluent, professional, "this sounds right" language. No tells. No "I'm not sure." Just confident, plausible, *fabricated*.
+
+      This is called *hallucination*. Today: when it happens, how to spot it, and the 3 prompt moves that nearly eliminate it.
 
   - type: tutor_message
     persona: nova
-    typing_ms: 1300
     text: |
-      It's not lying. It's not buggy. It's the model doing exactly what it was trained to do — predicting plausible words. Plausible isn't the same as true.
+      Why does it happen?
+
+      The simplest answer — and one you'll hear again if you take the NLP basics course — is this:
+
+      *ChatGPT predicts plausible next words. It has no built-in concept of "true."*
+
+      When you ask "Cite three court cases from 2019 about lost luggage," the model has read millions of court briefs and *knows what one looks like*. So it produces text that *sounds like* a competent legal answer — judges' names, dates, rulings.
+
+      Whether those citations actually exist? It has no mechanism to check. It just generates what's likely to come next given the kind of question you asked.
+
+      Hallucination isn't a bug. It's the same mechanism that makes the model fluent and useful, applied where it shouldn't be trusted.
+
+      *Confidence ≠ accuracy.* Burn that into your brain.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Now the *useful* part — *where* does it hallucinate most? It's not random. It's predictable.
+
+      *Three high-risk question types:*
+
+      *1. Specific facts the model doesn't know but a plausible-sounding answer would fit.*
+      Court cases. Scientific paper citations. Statistics. Exact quotes. Population numbers. Death dates of obscure people. Anything specific where it'd be embarrassing to say "I don't know."
+
+      *2. Things that *sound like they should exist*.*
+      Wikipedia article on a small town. Quote by a famous person on a niche topic. An obscure function in a programming library. The model fluently constructs a *very plausible* version when it has no actual data.
+
+      *3. Anything past its training cutoff.*
+      Last week's news. The latest version of a JavaScript library. The current Indian PM (if model was trained before they took office). A celebrity's current age.
+
+      Pattern: *when the model has no answer but a plausible one would fit, it fills in confidently.*
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Worked example — high vs low risk asks.
+
+      *Low risk (trust the answer):*
+
+      - *"What's the capital of France?"* — Paris. Memorised a million times. Solid.
+      - *"Summarise this article I'm pasting."* — model has the text. Hard to lie.
+      - *"Brainstorm 10 ideas for a chai brand campaign."* — subjective, no truth value to violate.
+      - *"Refactor this Python code."* — code patterns are well-trained.
+
+      *High risk (verify before trusting):*
+
+      - *"Cite three studies showing turmeric helps with arthritis."* — likely fabricates citations.
+      - *"What did Sachin Tendulkar say about retirement?"* — may invent a quote that *sounds* Sachin-like.
+      - *"What's the population of Pune as of 2024?"* — could be wrong by 20%.
+      - *"What's the latest method for X in this library?"* — probably wrong if past cutoff.
+
+      Pattern recognition:
+      - *Specifics with verifiable answers* = high risk. Verify.
+      - *Open-ended creative tasks* = low risk. Trust.
+      - *You provided the source* = low risk. Trust.
 
   - type: mcq
-    xp: 10
-    question: Which of these is ChatGPT most likely to hallucinate?
+    xp: 15
+    question: "Which question is ChatGPT MOST likely to hallucinate on?"
     options:
       - id: a
-        text: A general definition of "machine learning"
+        text: "\"Summarise this email I'm pasting in 3 bullets.\""
         is_correct: false
-        rationale: Common, well-documented topics are usually safe. Move on.
+        rationale: "You provided the source. Hard to hallucinate when the data is right there. Low risk."
       - id: b
-        text: A specific quote from a 2024 news article
-        is_correct: true
-        rationale: Specific recent facts, citations, statistics — these are the danger zones.
+        text: "\"What's a good Python function for parsing dates?\""
+        is_correct: false
+        rationale: "Common code pattern, well-trained. Mostly reliable. Verify before pasting into production but low risk."
       - id: c
-        text: How to refactor a Python loop
-        is_correct: false
-        rationale: General code patterns are usually fine. Always run before you trust though.
+        text: "\"Quote a passage from the Mahabharata about karma, with the exact chapter and verse.\""
+        is_correct: true
+        rationale: "Specific quote retrieval is hallucination central. The model knows the topic but rarely the exact text — it'll generate something Mahabharata-flavoured that may or may not exist, with chapter/verse numbers that may be invented."
       - id: d
-        text: A book recommendation
+        text: "\"What are some pros and cons of working from home?\""
         is_correct: false
-        rationale: Could be wrong, but not in a confident-fact way. Different risk.
+        rationale: "Subjective, opinion-based. No truth value to violate. The model can offer a balanced view safely."
 
   - type: tutor_message
     persona: nova
-    typing_ms: 1300
     text: |
-      The danger zones: dates, citations, statistics, names of less-famous people, specific quotes, recent events, anything from after the model's knowledge cutoff.
+      Now the good part. *Three prompt moves that nearly eliminate hallucination.*
+
+      *Move 1 — Ground the model.*
+
+      Instead of asking *"What does my company's refund policy say about cancellations?"*, paste the policy doc *into the prompt* and ask: *"Based on the text below, what does the refund policy say about cancellations?"*
+
+      The model now has facts to work from instead of guessing from memory. Hallucinations crater because there's nothing to make up.
+
+      This single move — *paste the source* — is the most powerful trick in this whole course. Once you internalise it, you stop trusting ChatGPT's memory and start trusting *the text you provided + the model's ability to read it*. Massive accuracy upgrade.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Move 2 — Allow uncertainty.*
+
+      Add this clause to your prompt: *"If you don't know, say 'I'm not sure.' Don't make anything up."*
+
+      Crazy how well it works. That single line gives the model permission to *refuse instead of guess*. Without it, the model has been RLHF'd to *always provide an answer* — being unhelpful is rated worse than being slightly wrong.
+
+      Adding "if you don't know, say so" flips that. The model is way more likely to admit gaps than to invent.
+
+      *Pro version:* go further. *"Answer only if you're confident. Anything you're unsure about, mark with [UNSURE] and explain what you'd need to be more confident."* Now you get an honest "I don't know enough about X" instead of a fluent fabrication.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Move 3 — Verify the specifics yourself.*
+
+      Anything with:
+
+      - A specific number (statistic, percentage, date)
+      - A name (person, place, paper title)
+      - A citation (book, study, court case, law section)
+      - A specific API/library detail
+      - An "X said Y" quote
+
+      …assume it might be wrong. *Spend 30 seconds Googling before you use it for anything that matters*.
+
+      This sounds tedious. It is. It's also what separates "I trusted ChatGPT and got embarrassed" from "I use ChatGPT and look competent."
+
+      Real story: a New York lawyer in 2023 used ChatGPT to research case citations for a court filing. Got 6 specific citations — judges, dates, quotes. Filed without checking. Every single case was made up. The lawyer was sanctioned. The story made global news.
+
+      He'd have been fine if he'd Googled even *one* citation. Don't be that person.
 
   - type: tap_to_match
     xp: 15
-    prompt: Match each prompt to its hallucination risk.
+    prompt: "Match each anti-hallucination move to what it actually does."
     left:
-      - id: stats
-        label: '"Cite the latest unemployment rate"'
-      - id: explain
-        label: '"Explain photosynthesis"'
-      - id: quote
-        label: '"Quote what Marie Curie said about radium"'
-      - id: code
-        label: '"Write a function to reverse a string"'
+      - id: source
+        label: "Paste the source document into the prompt"
+      - id: uncertain
+        label: "Say 'admit if you don't know'"
+      - id: verify
+        label: "Manually check every name and date"
+      - id: cite
+        label: "Ask for citations and check they exist"
     right:
-      - id: high1
-        label: High risk — recent specific number
-      - id: low1
-        label: Low risk — well-documented topic
-      - id: high2
-        label: High risk — verifiable specific quote
-      - id: low2
-        label: Low risk — common code pattern
+      - id: ground
+        label: "Grounds the model in real facts, not its memory"
+      - id: refuse
+        label: "Gives the model permission to refuse instead of guess"
+      - id: catch
+        label: "Catches whatever still slipped through"
+      - id: trap
+        label: "Surfaces fake citations — the classic hallucination tell"
     pairs:
-      - [stats, high1]
-      - [explain, low1]
-      - [quote, high2]
-      - [code, low2]
+      - [source, ground]
+      - [uncertain, refuse]
+      - [verify, catch]
+      - [cite, trap]
 
   - type: tutor_message
     persona: nova
-    typing_ms: 1400
     text: |
-      Three habits that make hallucination almost a non-issue: ask for sources, verify dates yourself, and watch for "as of [date]" disclaimers.
+      Two myths to demolish.
 
-  - type: mcq
-    xp: 15
-    question: ChatGPT just gave you a beautiful quote attributed to Einstein. Best next move?
-    options:
-      - id: a
-        text: Use it. Einstein quotes are easy to find.
-        is_correct: false
-        rationale: This is exactly how fake Einstein quotes spread on the internet.
-      - id: b
-        text: Search the quote on Google to see if it appears in real sources.
-        is_correct: true
-        rationale: 30 seconds. Saves you from looking foolish later.
-      - id: c
-        text: Ask ChatGPT to confirm.
-        is_correct: false
-        rationale: It will confidently confirm itself. The model can't fact-check the model.
+      *Myth 1 — "ChatGPT is unreliable, period."*
+
+      It's not. It's reliable for *the right tasks*. The trick is matching the task to where the model is strong:
+
+      - Summarising text *you provide* → reliable.
+      - Brainstorming, drafting, rewording → reliable.
+      - Coding patterns and refactoring → mostly reliable.
+      - Specific facts/quotes/citations → unreliable. Verify.
+
+      The wrongness has a *shape*. Once you know the shape, you avoid the unreliable lanes and ChatGPT becomes very trustworthy in the lanes that remain.
+
+      *Myth 2 — "If it sounds confident, it's probably right."*
+
+      Confidence and accuracy are *almost decoupled* in LLMs. The model has been trained to sound fluent and authoritative regardless of whether it knows. *Don't trust the tone — trust the verification.*
+
+      Both myths point at the same lesson: trust the *task type*, not the *vibe of the answer*.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      One more practical tip — *the "are you sure?" trick.*
+
+      When you suspect a fact ChatGPT just told you, ask:
+
+      *"Are you sure about that? Show me your reasoning step by step. If any part is uncertain, say so."*
+
+      The model will often catch its *own* hallucinations. It'll say "On reflection, I'm not certain about the date — I may have confused it with X" or "Let me reconsider — I don't have a specific source for that statistic."
+
+      It's not perfect (sometimes the model doubles down on the wrong answer), but it works often enough to be a real first-pass check. Costs you 5 seconds. Catches a lot of hallucinations.
+
+      Use it any time something specific feels too clean or convenient. Trust the gut, then verify.
 
   - type: exercise
     xp: 20
     tool: chatgpt
     instruction: |
-      Open ChatGPT. Ask it for a specific recent statistic — anything specific (e.g. "what was India's GDP growth rate in Q1 2025?"). Paste the response below. Then verify the number against an official source. Note in your paste whether it matched.
-    placeholder: ChatGPT said… and the official source said…
+      Catch ChatGPT in a hallucination, deliberately.
+
+      1. Pick a topic *you know very well* — your hometown, your hobby, your job, a book you love, your favourite cricketer's stats.
+      2. Open ChatGPT. Ask: *"Tell me 5 specific facts about [your topic]. Include exact dates, numbers, and names."*
+      3. Read each fact carefully. At least 1 is probably wrong. Find which.
+      4. Re-ask with: *"Repeat your answer, but this time mark anything you're not 100% sure about with [UNSURE]. Don't make anything up."*
+
+      Compare the two responses. The second should have honest [UNSURE] tags.
+
+      Paste the second response below.
+    placeholder: "Topic: ... Marked-up answer: ..."
+
+  - type: ai_conversation
+    xp: 15
+    goal: "User identifies one kind of question they used to ask ChatGPT that's now revealed as hallucination-risky."
+    max_turns: 4
+    success_criteria: "User names a specific question type they used to trust and now know to verify, and commits to one specific verification habit."
+    starter_text: |
+      Real talk.
+
+      Knowing what you now know about hallucinations, what's a kind of question you've asked ChatGPT in the past that you should NOT have trusted blindly?
+    system_prompt: |
+      You are Nova, a warm but direct coach. The user just learned: models hallucinate on specifics (citations, exact quotes, post-cutoff facts); 3 moves help (paste source, allow uncertainty, verify); confidence ≠ accuracy.
+
+      Step 1: Ask user for a question type they used to trust blindly.
+      Step 2: Affirm — most people had that exact blind spot. Suggest ONE concrete verification habit they could build for that kind of question. e.g. "Anytime you ask for a stat or a quote, copy-paste it into Google before using it. 30 seconds. Saves you from being That Lawyer."
+      Step 3: Affirm and close with <END/>.
+
+      Replies under 60 words. Direct, kind.
 
   - type: fill_in_the_blank
-    xp: 10
-    prompt: The three habits — fill in the blanks.
-    template: "Ask for {{1}}, verify {{2}} yourself, watch for {{3}} disclaimers."
-    hint: Sources, dates, knowledge cutoff — three short words.
+    xp: 15
+    prompt: "Lock in the rule and the moves."
+    template: "ChatGPT predicts plausible {{tokens}}, not {{truth}}. Three anti-hallucination moves: paste the {{source}}, allow uncertainty, verify {{specifics}}."
     answers:
-      - id: "1"
-        accepted: [sources, source, citations]
-      - id: "2"
-        accepted: [dates, date, facts]
-      - id: "3"
-        accepted: [knowledge cutoff, cutoff, "as of"]
+      - id: tokens
+        accepted: ["tokens", "words", "text"]
+      - id: truth
+        accepted: ["truth", "facts", "reality"]
+      - id: source
+        accepted: ["source", "document", "doc", "context"]
+      - id: specifics
+        accepted: ["specifics", "facts", "details"]
+    hint: "Four blanks straight from the lesson."
 
   - type: reflection
     xp: 5
-    prompt: One thing you've taken from ChatGPT recently that you didn't verify. Will you check it now?
-    placeholder: Honest answer…
+    prompt: "Have you ever caught ChatGPT being confidently wrong about something? What was it? One sentence."
+    placeholder: "It made up a Sachin Tendulkar quote... it gave the wrong year for Independence Day... it cited a paper that doesn't exist..."
 
   - type: checkpoint
     xp: 10
-    title: Verify. Always.
+    title: "Healthy paranoia, locked in."
     summary: |
-      ChatGPT is a brilliant first draft. Never the final word on facts. Tomorrow — using ChatGPT to think, not just to do.
+      ChatGPT predicts plausible tokens, not truth. It hallucinates most on *specifics* — citations, exact quotes, exact data, post-cutoff facts.
+
+      Three moves to nearly eliminate it:
+      - *Ground the model* (paste the source).
+      - *Allow uncertainty* ("if you don't know, say so").
+      - *Verify specifics yourself* (30-second Google).
+
+      Confidence isn't knowledge. Trust the task type, not the vibe of the answer.
+
+      Tomorrow — last lesson. Using ChatGPT not as an answer machine but as a *thinking partner*. The pattern that separates ChatGPT-as-tool from ChatGPT-as-superpower.

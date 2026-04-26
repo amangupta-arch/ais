@@ -1,38 +1,73 @@
 title: "The Transformer & Attention"
-subtitle: "Why every word knows what every other word means"
-estimated_minutes: 8
-xp_reward: 35
+subtitle: "How 2017 cracked the problem that broke NLP for 50 years"
+estimated_minutes: 16
+xp_reward: 95
 turns:
   - type: tutor_message
     persona: nova
     text: |
-      Read these two sentences. Out loud, even.
+      Read these two sentences out loud.
 
       *"I poured the water into the bottle until **it** was full."*
 
       *"I poured the water from the bottle until **it** was empty."*
 
-      Same word — "it" — pointing at completely different things. You figured it out without trying.
+      Same word — *it* — pointing at completely different things. In the first, the *bottle* is full. In the second, the *bottle* is empty. (And in both, the same word "it" could *also* refer to "water" — your brain just decided it doesn't.)
 
-      For 50 years, computers couldn't do this.
+      You worked that out without thinking. For 50 years, computers couldn't.
 
-      Then in 2017, a paper called **"Attention Is All You Need"** changed everything.
+      Then in 2017, four researchers at Google published a paper called *"Attention Is All You Need."* Six years later, that paper produced ChatGPT.
+
+      Today: what *attention* is, what *transformers* are, and why 2017 was the year NLP changed.
 
   - type: tutor_message
     persona: nova
     text: |
-      Here's the simple version of what attention does.
+      Here's the simplest version of what attention does.
 
-      For every word, the model asks: *"which OTHER words should I look at to understand what this one really means?"*
+      *For every word in a sentence, the model asks: "which OTHER words should I look at, to understand what this one really means?"*
 
-      In sentence 1 — "it" looks back at "bottle" (the bottle was full).
-      In sentence 2 — "it" also looks back at "bottle" (the bottle was empty).
+      In our bottle example, when the model processes the word "it":
 
-      But it could also have looked at "water". Attention scores let the model weigh both options and pick the one that makes the sentence make sense.
+      - It looks at "water" — possibility.
+      - It looks at "bottle" — possibility.
+      - It looks at "full" / "empty" — clue.
+      - It weighs each option and picks the most plausible.
 
-      Every word looks at every other word. Every time. That's it. That's the Transformer.
+      That weighing is *attention*. Each word "pays attention to" every other word, with varying strength. Some words get a lot of attention from "it"; others get almost none.
+
+      Every word does this for every other word. *In parallel.* That's the transformer.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      An analogy.
+
+      Imagine you walk into a noisy party. Twenty conversations at once. You don't process all the audio equally — your brain *attends* heavily to the friend talking to you, lightly to the conversation 2 feet away, and almost zero to the one across the room.
+
+      Without realising it, you're constantly running an attention algorithm: *based on what I'm trying to understand right now, which sounds matter most?*
+
+      A transformer does the same thing across a sentence. For every word it processes, it weighs all the other words by relevance. The clever bit isn't that this happens — it's that the weights are *learned* from billions of sentences. The model isn't told "look at 'bottle' when you process 'it'." It figured that out on its own from training.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Why was this such a big deal in 2017?
+
+      Because the *previous* approach was fundamentally broken for long text.
+
+      Before transformers, the dominant approach was *recurrent neural networks* (RNNs). They read text *one word at a time, left to right*, building up a "memory" as they went.
+
+      The problem: by the time the RNN reached word #200, it had half-forgotten word #1. Like reading a novel where you can only remember the last paragraph at any moment. You can't follow long arguments. You can't track who "she" is when she was introduced 5 pages ago.
+
+      Long context was broken. Long documents made no sense. Translations of long sentences fell apart.
+
+      Transformers said: *forget the line. Read every word at the same time, and let each one look at every other one in parallel.* No memory bottleneck. No half-forgetting.
+
+      The unlock was instant. Code, translation, summarisation — everything that needed to handle context jumped to a new level overnight.
 
   - type: mcq
+    xp: 15
     question: "In the sentence 'The cat sat on the mat because **it** was warm', what does 'it' most likely refer to?"
     options:
       - id: a
@@ -48,59 +83,171 @@ turns:
         is_correct: false
         rationale: "'Reason' isn't a noun in the sentence. Attention only looks at words actually present."
       - id: d
-        text: "Impossible to tell without more context"
+        text: "It's impossible to tell without more context"
         is_correct: false
         rationale: "Humans (and good models) infer this confidently from 'warm'. That's exactly the move attention makes."
-    xp: 10
 
   - type: tutor_message
     persona: nova
     text: |
-      Why was 2017 such a big deal?
+      Here's a worked example to make attention concrete.
 
-      Before transformers, models read text **left to right, one word at a time.** By the time they got to the end of a long paragraph, they'd half-forgotten the start. Long context = broken model.
+      Take the sentence: *"The dog chased the cat because it was fast."*
 
-      Transformers said: *forget the line. Read every word at the same time, and let each one look at every other one in parallel.*
+      What does *it* refer to? The dog? The cat?
 
-      Suddenly: long documents made sense. Code worked. Translation became fluent. Five years later — ChatGPT.
+      A transformer processing the word "it" looks at every other word in the sentence and computes an attention weight. Roughly:
 
-      Attention was the unlock.
+      - "The" → ~0.01 (filler word, irrelevant)
+      - "dog" → ~0.4 (a candidate noun)
+      - "chased" → ~0.05 (a verb, not a referent)
+      - "the" → ~0.01
+      - "cat" → ~0.45 (the other candidate noun)
+      - "because" → ~0.03
+      - "was" → ~0.02
+      - "fast" → ~0.04 (a clue!)
+
+      The model weighs "dog" and "cat" against each other, factors in "fast" as a clue, and picks. In *this* sentence, modern transformers correctly pick "dog" — the chaser is the fast one, in most stories the model has read.
+
+      That's attention. Every word weighing every other word. All in parallel.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      One more layer worth knowing — *multi-head attention*.
+
+      A real transformer doesn't run *one* attention pass. It runs many, in parallel. Eight, twelve, sixteen, sometimes more. Each one is called a "head", and each head learns to attend to a *different aspect* of the sentence.
+
+      For our cat-and-mat sentence, you might find:
+
+      - Head 1: tracks pronoun references ("it" → "mat")
+      - Head 2: tracks subject-verb agreement
+      - Head 3: tracks emotional or descriptive words
+      - Head 4: tracks the broad topic of the sentence
+      - …and so on
+
+      All heads compute their own attention pattern, all at the same time. Then their outputs combine. It's like having a dozen specialists reading the same sentence simultaneously, each looking for different patterns.
+
+      You don't need to remember the exact mechanics. Just know — when you read "GPT-4 has 96 attention heads", that's what they mean. 96 specialists, all reading the prompt at once.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      And one more piece of the puzzle — *layers*.
+
+      A transformer doesn't apply attention once. It applies it *layer by layer*, dozens of times. GPT-3 had 96 layers. Each layer takes the output of the previous layer and refines it.
+
+      Think of it like editing a document. The first layer might just figure out what each word means. The second layer might figure out which words are subjects vs objects. The fifth layer might track relationships between sentences. The fiftieth layer might be doing high-level reasoning about the topic.
+
+      Nobody *programs* what each layer does. The layers learn during training what's most useful at each level. The deeper layers naturally end up doing more abstract, more "reasoning-like" work.
+
+      Stack 96 layers, each with 96 attention heads, run them on trillions of tokens — and you've built GPT-4.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Two myths to bust before we close.
+
+      *Myth: "Transformers think like humans."*
+
+      They don't. They pattern-match brilliantly across enormous amounts of text. There's no understanding, no consciousness, no internal experience. When a transformer "knows" what "it" refers to, it's because it's seen billions of sentences and learned which weighting works most often.
+
+      Pattern-matching at scale *looks like* thinking. It isn't.
+
+      *Myth: "Attention is the model's 'focus' in a conscious sense."*
+
+      Also no. The word "attention" was a name researchers chose — it's just a maths operation that produces weights. The model isn't deliberately *attending* to anything. The weights happen automatically every time the model processes a sentence.
+
+      The *behaviour* resembles focus. The *mechanism* is multiplication. Two different things.
 
   - type: drag_to_reorder
-    prompt: "Drag the NLP eras into chronological order — oldest to newest."
+    xp: 15
+    prompt: "Drag the major NLP eras into chronological order — oldest to newest."
     items:
       - id: rules
-        label: "Hand-coded grammar rules (1950s–80s)"
+        label: "Hand-coded grammar rules — every sentence type pre-programmed"
+      - id: stats
+        label: "Statistical methods — count word frequencies in big text"
       - id: rnn
-        label: "Sequential neural networks — read one word at a time (~2010)"
-      - id: transformer
-        label: "Transformers — every word reads every other word (2017)"
+        label: "RNNs — read one word at a time, left to right"
+      - id: tfm
+        label: "Transformers — every word reads every other word, in parallel"
       - id: llm
-        label: "Large Language Models — transformers at massive scale (2020s)"
-    correct_order: [rules, rnn, transformer, llm]
-    xp: 10
+        label: "LLMs — transformers at massive scale"
+    correct_order: [rules, stats, rnn, tfm, llm]
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Match each technique to what made it limited."
+    left:
+      - id: rules
+        label: "1950s-80s — hand-coded rules"
+      - id: stats
+        label: "1990s-2000s — statistical methods"
+      - id: rnn
+        label: "2010s — RNNs"
+      - id: tfm
+        label: "2017+ — Transformers"
+    right:
+      - id: rules_lim
+        label: "Brittle — couldn't handle anything not pre-programmed"
+      - id: stats_lim
+        label: "Shallow — counted patterns but missed deep meaning"
+      - id: rnn_lim
+        label: "Forgetful — couldn't track long sentences"
+      - id: tfm_lim
+        label: "Hungry — needs vast data and compute, but it works"
+    pairs:
+      - [rules, rules_lim]
+      - [stats, stats_lim]
+      - [rnn, rnn_lim]
+      - [tfm, tfm_lim]
+
+  - type: exercise
+    xp: 20
+    tool: chatgpt
+    instruction: |
+      Try to break attention.
+
+      Open ChatGPT. Send it this sentence and ask: *"In this sentence, what does 'it' refer to and why?"*
+
+      *"The lawyer gave the briefcase to the assistant because it was important."*
+
+      Now flip the sentence and ask again:
+
+      *"The lawyer gave the briefcase to the assistant because it was running late."*
+
+      Same structure. Different "it". Watch how the model reasons through both. That's attention working in real-time on your eyes.
+
+      Paste the model's answer to ONE of the two below.
+    placeholder: "The model said..."
 
   - type: fill_in_the_blank
+    xp: 15
     prompt: "Lock in the core mechanism."
-    template: "{{Attention}} lets every word look at every other word at the same time, which is why {{transformers}} broke open NLP in 2017."
-    hint: "Two words — both are in the title of this lesson."
+    template: "{{Attention}} lets every word look at every other word at the same time, in {{parallel}}. That's the breakthrough that made {{transformers}} the architecture of every modern LLM."
     answers:
       - id: Attention
-        accepted: [attention, Attention]
+        accepted: ["attention", "Attention"]
+      - id: parallel
+        accepted: ["parallel", "in parallel"]
       - id: transformers
-        accepted: [transformers, transformer, Transformers, Transformer]
-    xp: 10
+        accepted: ["transformers", "transformer", "Transformers", "Transformer"]
+    hint: "First blank: the lesson title. Second blank: opposite of 'sequential'. Third blank: the architecture."
 
   - type: reflection
-    prompt: "Now that you know about attention — read your last text message. Pick one ambiguous word and notice what it's pointing to."
-    placeholder: "I wrote 'send it' — 'it' was the link from earlier…"
     xp: 5
+    prompt: "Now that you know about attention — read your last text message. Pick one ambiguous word and notice what it's pointing to."
+    placeholder: "I wrote 'send it' — 'it' was the link from earlier..."
 
   - type: checkpoint
+    xp: 10
     title: "Transformers, demystified."
     summary: |
-      A transformer reads the whole sentence at once and uses attention so every word can look at every other word.
-      That solved the long-context problem. Five years and a lot of GPUs later, you got ChatGPT.
+      A *transformer* reads the whole sentence at once and uses *attention* — a learned weighting — so every word can look at every other word, in parallel.
 
-      Next up — how do you actually train one of these things to be useful?
-    xp: 5
+      That solved the long-context problem RNNs couldn't. Five years and a lot of GPUs later, you got ChatGPT.
+
+      Pattern-matching at scale, not consciousness. The mechanism is maths. The behaviour looks like understanding.
+
+      Next up — how do you actually *train* one of these things to be useful?

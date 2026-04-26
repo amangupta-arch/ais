@@ -1,51 +1,82 @@
 title: "What's next — multimodal, agents, on-device"
-subtitle: "Where language AI is heading in the next 24 months"
-estimated_minutes: 8
-xp_reward: 40
+subtitle: "The 3 shifts happening right now that will reshape how you use AI"
+estimated_minutes: 15
+xp_reward: 90
 turns:
   - type: tutor_message
     persona: nova
     text: |
-      You've made it. You understand NLP from tokens to RAG.
+      You made it.
 
-      Last lesson is the fun one — where this is all going.
+      Ten lessons ago, you knew NLP was "the thing behind ChatGPT." Now you know tokens, embeddings, transformers, attention, training stages, prompting moves, hallucinations, RAG.
 
-      Three big shifts are happening right now, and any one of them will change how you use AI in your work and life.
+      That's the whole field. In ten short lessons.
 
-      Let's walk through them.
+      The last lesson is the fun one. Where's all this *going*?
+
+      Three big shifts are happening right now, in 2025-2026. Any one of them will change how you use AI in your work and life. Together, they'll change what *AI even means*.
+
+      Let's walk through each one.
 
   - type: tutor_message
     persona: nova
     text: |
-      **Shift 1 — Multimodal.**
+      *Shift 1 — Multimodal AI.*
 
-      "NLP" used to mean only text. That door is gone.
+      "NLP" used to mean only text. That door is gone, fast.
 
       The same model that chats with you can now:
 
-      - **See.** Send GPT-4 a photo of your fridge — it'll suggest dinner.
-      - **Hear.** ChatGPT Voice and Gemini Live carry full conversations.
-      - **Watch.** Models can summarise a YouTube video without you watching it.
-      - **Generate images.** "A poster for my food truck, retro neon, hot pink." Done.
+      - *See.* Send GPT-4o a photo of your fridge — it'll suggest dinner from what's inside. Send Claude a screenshot of a website — it'll tell you the bug.
+      - *Hear.* ChatGPT Voice and Gemini Live carry full spoken conversations. You don't even type.
+      - *Watch.* Models can now summarise a YouTube video without you watching it. Or analyse a video clip and describe what happened.
+      - *Generate images and video.* "A poster for my food truck, retro neon, hot pink" → DALL-E or Midjourney generates it. "A 5-second clip of a chef tossing dough" → Runway, Sora generate it.
 
-      "Language" is just the first sense. The next versions of these models are *embodied* — text, image, audio, video, all in one head.
+      "Language" was just the *first sense*. The next versions of these models are *embodied* — text, image, audio, video, all in one head, all using the same attention mechanism you learned about in lesson 05.
+
+      For you: this means the things you can *ask* AI explode. Not just "write me an email" but "look at this room and suggest where to put the sofa."
 
   - type: tutor_message
     persona: nova
     text: |
-      **Shift 2 — Agents.**
+      *Shift 2 — Agents.*
 
-      Today: you ask, model answers, you act. Three steps, all run by you.
+      Today's pattern: *you ask, model answers, you act.* Three steps, all run by you.
 
-      Soon (and starting now): the model just *acts.*
+      The agent pattern: *you give a goal, the model just acts.*
 
-      *"Book me a flight to Goa next Friday under ₹6000, aisle seat, return Sunday evening."*
+      Concretely:
 
-      An agent can already open the booking site, search, compare options, ask you to confirm, and complete the purchase. ChatGPT's "Operator", Claude's "computer use", autonomous AI assistants — all here in 2025.
+      *"Book me a flight to Goa next Friday under ₹6000, aisle seat preferred, return Sunday evening. Confirm with me before paying."*
 
-      You go from prompter to *delegator.*
+      An *agent* can already:
+      - Open a booking website
+      - Search and compare options
+      - Filter by your constraints
+      - Stop, ask you to confirm
+      - Complete the purchase
+
+      All without you touching the browser. ChatGPT's "Operator", Claude's "computer use", devin and similar coding agents — all here in 2025. Most are still rough — they break, they get confused, they need supervision. But the trajectory is clear.
+
+      For you: you go from *prompter* (asking for things) to *delegator* (assigning goals). The skill shifts from "write a good prompt" to "describe a goal precisely and define the boundaries."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      What makes an agent different from "just a smarter chatbot"?
+
+      Three things.
+
+      *1. Tools.* An agent has access to real-world tools — a browser, a code interpreter, an email account, your calendar. The LLM is the brain, but the *tools* are the hands. Without tools, an LLM can only produce text.
+
+      *2. Multi-step planning.* An agent breaks a goal into a sequence: "first I need to search for flights, then filter by price, then check seats, then ask the user…" The LLM thinks through the plan and executes it step by step.
+
+      *3. Loops with feedback.* When something goes wrong (page doesn't load, button missing), the agent notices, adjusts, retries. Modern agents can recover from many failures without restarting.
+
+      The model itself is often the *same* LLM you've been using — Claude, GPT-4, Gemini. The agent-ness is in the *wrapper*. The wrapper plus the LLM = an entity that takes actions in the world.
 
   - type: mcq
+    xp: 15
     question: "What's the biggest difference between a regular LLM and an agent?"
     options:
       - id: a
@@ -53,9 +84,9 @@ turns:
         is_correct: false
         rationale: "Agents often use the SAME LLMs underneath. The difference is what wraps the model, not the model itself."
       - id: b
-        text: "Agents can take actions in the world — open apps, click, submit forms — not just reply with text"
+        text: "Agents can take actions in the world — browse, click, submit forms — not just reply with text"
         is_correct: true
-        rationale: "Exactly. Agents = LLM + tools (browser, email, code execution). They DO things instead of just describing them."
+        rationale: "Exactly. Agents = LLM + tools (browser, email, code execution) + planning + loops. They DO things instead of just describing them."
       - id: c
         text: "Agents only work in English"
         is_correct: false
@@ -63,28 +94,86 @@ turns:
       - id: d
         text: "Agents are open-source and free"
         is_correct: false
-        rationale: "Mostly closed and paid. Open-source agent frameworks exist, but most consumer agents are commercial."
-    xp: 10
+        rationale: "Mostly closed and paid. Open-source agent frameworks exist, but consumer agents are mostly commercial."
 
   - type: tutor_message
     persona: nova
     text: |
-      **Shift 3 — On-device AI.**
+      *Shift 3 — On-device AI.*
 
-      Today's LLMs run in datacenters. Your phone sends them text, they send text back.
+      Today's LLMs run in datacenters. Your phone sends them text over the internet, they think, they send text back. Every API call is a round-trip to a remote server.
 
-      Soon: the LLM lives *on your phone*. Apple Intelligence, Google's Gemini Nano, on-device Llama — all running with no internet at all.
+      Soon — the LLM lives *on your phone*. Not as a chatbot you open, but as a layer of intelligence baked into your operating system.
+
+      Already shipping in 2024-2025:
+
+      - *Apple Intelligence.* Runs on iPhone 15 Pro and up. Most of it works offline.
+      - *Google Gemini Nano.* Runs on Pixel and Samsung flagship phones.
+      - *Microsoft Copilot+ PCs.* Local LLMs as part of Windows itself.
+      - *On-device Llama.* Open-source 8B models that run on a good laptop.
 
       Why this matters:
 
-      - **Privacy.** Your data never leaves your device.
-      - **Speed.** No round-trip to a server.
-      - **Cost.** No per-token bill.
-      - **Offline.** Works on a flight, in a tunnel, anywhere.
+      - *Privacy.* Your data never leaves your device. Email summaries, photo descriptions, voice transcription — all local.
+      - *Speed.* No round-trip to a server. Replies are instant.
+      - *Cost.* No per-token bill once the model is on your device.
+      - *Offline.* Works on a flight, in a tunnel, anywhere.
 
-      Smaller, smarter, local. The next iPhone you buy will probably ship with a real LLM in your pocket.
+      Smaller, smarter, local. The next iPhone you buy probably ships with a real LLM in your pocket.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Two myths worth busting before we close the course.
+
+      *Myth: "Agents are just smarter chatbots."*
+
+      They're not. The chatbot is one *part* of an agent. The other parts — tools, planning, feedback loops — are at least as important. The model could be identical and the agent's behaviour totally different based on which tools you give it. An LLM with browser access acts very differently from one without.
+
+      *Myth: "On-device AI means weaker AI."*
+
+      A local 8B model can't replace GPT-4 for hard reasoning — that's true. But for the *specific* tasks people use AI for on a phone — auto-replies, photo organising, voice transcription, simple queries — a 7-8B local model is *more than enough*, and the privacy/speed/cost wins are huge.
+
+      Different design point, not weaker. The future is *both*: small local models for daily tasks, big cloud models for hard ones.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here's the part nobody quite has the words for yet — *the three shifts are converging*.
+
+      Picture: in 2026, you wear AR glasses. They have an *on-device* model running 24/7. The model is *multimodal* — it sees what you see, hears what you hear, watches what you watch. When you ask it something, it's an *agent* — it can browse, click, book, file, on your behalf.
+
+      *"Hey, that store I'm walking past — check if they have my size in stock and order it for pickup tomorrow if they do."*
+
+      Vision (multimodal) + action (agent) + privacy (on-device). One assistant, present at the moment, doing the thing.
+
+      None of this is sci-fi anymore. Apple Vision Pro with Apple Intelligence. Samsung's planned Galaxy AR. Meta's Ray-Ban smart glasses with Llama on-device. The hardware is shipping. The software is catching up.
+
+      You're going to be one of the first generations who never has to "open an AI app." The AI is just there, in the room, watching with you.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      What does this mean for *you*, today, with what you've learned in this course?
+
+      You walk into 2026 with a real foundation. You know:
+
+      - *What an LLM is* and what makes it large.
+      - *What tokens, embeddings, transformers, and attention* are doing under the hood.
+      - *How models are trained* — pretrain, fine-tune, RLHF.
+      - *How to prompt them* — zero-shot, few-shot, chain-of-thought, persona.
+      - *Why they hallucinate* and how to ground them.
+      - *What RAG is* and why it dominates business AI.
+      - *Where the field is heading* — multimodal, agents, on-device.
+
+      You can read every announcement from OpenAI, Anthropic, Google, Apple in 2026 and understand what they're saying. You can spot when a product is RAG vs an agent vs a fine-tune. You can choose tools wisely.
+
+      You can also ignore the hype that doesn't actually matter. You'll know when "we trained a 1T-parameter model" is meaningful and when it's just a marketing number.
+
+      That's the goal of this course. Not to make you an ML engineer. To make you *literate*. The next 10 years of AI will be unreadable for people who don't have this vocabulary. You have it now.
 
   - type: tap_to_match
+    xp: 15
     prompt: "Match each shift to its real-world impact."
     left:
       - id: multi
@@ -95,7 +184,7 @@ turns:
         label: "On-device AI"
     right:
       - id: senses
-        label: "Models that see, hear, and generate beyond text"
+        label: "Models that see, hear, generate beyond just text"
       - id: act
         label: "AI that books your flight, not just suggests one"
       - id: privacy
@@ -104,32 +193,69 @@ turns:
       - [multi, senses]
       - [agents, act]
       - [ondevice, privacy]
-    xp: 10
+
+  - type: drag_to_reorder
+    xp: 15
+    prompt: "Drag these in the order they happened (or are happening), oldest first."
+    items:
+      - id: gpt2
+        label: "GPT-2 — text only, modest size (2019)"
+      - id: chatgpt
+        label: "ChatGPT — chat interface for an LLM (2022)"
+      - id: gpt4o
+        label: "GPT-4o — text + image + voice in one model (2024)"
+      - id: agents
+        label: "Computer-use agents — Claude/ChatGPT operate browsers (2025)"
+      - id: nano
+        label: "On-device LLMs in your phone OS (2024-2026)"
+    correct_order: [gpt2, chatgpt, gpt4o, nano, agents]
 
   - type: fill_in_the_blank
-    prompt: "Lock in the three big shifts — one word each."
-    template: "{{Multimodal}} (sees + hears), {{Agents}} (act for you), {{On-device}} (run locally)."
-    hint: "All three are the lesson section headings."
+    xp: 15
+    prompt: "Lock in the three big shifts."
+    template: "{{Multimodal}} (sees + hears + generates). {{Agents}} (act for you, not just chat). {{On-device}} (run locally, private and fast)."
     answers:
       - id: Multimodal
-        accepted: [multimodal, Multimodal]
+        accepted: ["multimodal", "Multimodal"]
       - id: Agents
-        accepted: [agents, Agents, agentic]
+        accepted: ["agents", "Agents", "agentic"]
       - id: On-device
-        accepted: ["on-device", "ondevice", "on device", "On-device"]
-    xp: 10
+        accepted: ["on-device", "ondevice", "on device", "On-device", "local"]
+    hint: "All three are the lesson section headings."
 
   - type: reflection
-    prompt: "Pick one shift — multimodal, agents, or on-device. Which one would change YOUR work most?"
-    placeholder: "Agents would save me hours on… on-device would let me…"
     xp: 5
+    prompt: "Pick ONE shift — multimodal, agents, or on-device. Which one would change YOUR work most? One sentence."
+    placeholder: "Agents would save me hours on... on-device would let me..."
+
+  - type: ai_conversation
+    xp: 15
+    goal: "User picks the shift most relevant to their life and identifies one specific way they'd start using it."
+    max_turns: 4
+    success_criteria: "User commits to one concrete experiment with one of the three shifts (a multimodal feature, an agent, or an on-device model) within the next 2 weeks."
+    starter_text: |
+      Last task of the course.
+
+      Of the three shifts — *multimodal, agents, on-device* — pick whichever excites or unsettles you most. Which is it, and why?
+    system_prompt: |
+      You are Nova, a warm but direct coach. The course is over. The user just learned about three coming shifts: multimodal AI (text+image+audio in one model), agents (LLM + tools + planning, takes actions), on-device AI (local models on your phone for privacy/speed/cost).
+
+      Step 1: Ask which shift they care most about.
+      Step 2: Once they answer, suggest ONE concrete experiment they could try in the next 2 weeks. Be specific. e.g. "Try Apple Intelligence on your iPhone for a day," or "Open Operator and ask it to research a flight for you." End with a warm send-off.
+      Step 3: Affirm and close with <END/>.
+
+      Replies under 60 words. This is the LAST exchange of the course — make it land.
 
   - type: checkpoint
+    xp: 10
     title: "You speak NLP fluently now."
     summary: |
-      You started knowing NLP was "the thing behind ChatGPT." You leave knowing tokens, embeddings, transformers, attention, training stages, prompting moves, hallucinations, RAG, and where it's all going.
+      You started knowing NLP was "the thing behind ChatGPT." You leave knowing *tokens, embeddings, transformers, attention, training stages, prompting moves, hallucinations, RAG, and where it's all going.*
 
       That's the whole field. In ten short lessons.
 
-      Next course on the shelf? Pick whatever your work demands. You now have the vocabulary to choose well.
-    xp: 10
+      The next 24 months: *multimodal, agents, on-device*. Each one is real, each one is shipping, each one will change what you can do with AI.
+
+      You now have the vocabulary to read AI announcements with a clear head, choose tools wisely, and not get fooled by the marketing.
+
+      Next course on the shelf? Pick whatever your work demands. You're equipped.

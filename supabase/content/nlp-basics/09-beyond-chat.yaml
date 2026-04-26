@@ -1,74 +1,109 @@
-title: "Beyond chat — what NLP does in production"
-subtitle: "Translation, search, summarization, RAG — the quiet workhorses"
-estimated_minutes: 8
-xp_reward: 35
+title: "Beyond chat — what NLP actually does in production"
+subtitle: "The five quiet workhorses, and why RAG runs every 'AI for your business' you've seen"
+estimated_minutes: 16
+xp_reward: 95
 turns:
   - type: tutor_message
     persona: nova
     text: |
-      Most of what you've seen so far is *chatting* with an LLM. That's the loud, visible bit.
+      Most of what you've seen in this course so far has been *chatting* with an LLM. That's the loud, visible bit.
 
-      The quieter — and frankly bigger — story is NLP doing serious work behind the scenes:
+      The quieter — and frankly bigger — story is NLP doing serious work in the background, in apps you use every day:
 
       - The Gmail spam filter that catches phishing before you see it.
       - The search bar at your bank that understands "show me last month's Swiggy spends."
-      - The customer support bot that pulls answers from your company's FAQ.
+      - The customer support widget that pulls answers from your company's FAQ in 0.4 seconds.
       - The summary on top of every news app showing you the gist in 3 lines.
 
-      None of these *feel* like AI. All of them are NLP.
+      None of these *feel* like AI. Most of them have no chat interface. All of them are NLP.
+
+      Today: the 5 production NLP jobs that quietly run a huge fraction of the modern internet.
 
   - type: tutor_message
     persona: nova
     text: |
-      Here are the five biggest production NLP jobs:
+      Here are the 5 biggest production NLP jobs. Memorise these — when you see "AI feature" in any product, you can place it in one of these buckets.
 
-      1. **Classification** — sort text into buckets. Spam vs not-spam. Positive vs negative review. Urgent vs not-urgent ticket.
-      2. **Translation** — one language to another. Google Translate. Live captions on YouTube.
-      3. **Summarization** — long thing → short thing. News digests, meeting notes from Zoom recordings.
-      4. **Semantic search** — find things by meaning, not just keywords. The "you might also like" engine.
-      5. **RAG** — Retrieval-Augmented Generation. The current king of business AI.
+      *1. Classification* — sort text into buckets.
+      Spam vs not-spam. Positive vs negative review. Urgent vs not-urgent ticket. Hate speech vs OK. Phishing vs legitimate email.
 
-      RAG deserves its own breath. Up next.
+      *2. Translation* — one language to another.
+      Google Translate. Live captions on YouTube. WhatsApp's "translate this message." Real-time call captions in different languages.
+
+      *3. Summarisation* — long thing → short thing.
+      News digests. Meeting notes auto-generated from Zoom recordings. The 3-line summary on top of long articles.
+
+      *4. Semantic search* — find things by *meaning*, not just keywords.
+      The "you might also like" engine. Most modern site search bars. Spotify's "songs that sound like" feature.
+
+      *5. RAG (Retrieval-Augmented Generation)* — the current king of business AI.
+      Every "AI assistant trained on your company docs" you've seen advertised in 2024. Worth its own breath. Coming up next.
 
   - type: tutor_message
     persona: nova
     text: |
-      **RAG = Retrieval + Generation.**
+      *RAG = Retrieval + Generation.*
 
-      Problem: ChatGPT doesn't know anything about *your* company. Your products, your policies, your inventory — it's never seen them.
+      The problem RAG solves is fundamental. ChatGPT doesn't know anything about *your* company. Your products, your policies, your inventory — it has never seen them. So it'll either hallucinate or refuse.
 
-      Solution:
+      You can't easily train a custom GPT on your docs (lessons 06 told you why — it costs millions and takes months). So how does *every* business AI assistant work today?
 
-      1. Take all your company docs (FAQs, manuals, Slack history).
-      2. Turn each chunk into an embedding (remember lesson 04?).
-      3. When a user asks something, find the most semantically-similar chunks.
-      4. Stuff those chunks into the prompt: *"Answer this question using only the text below."*
-      5. Model answers using YOUR data.
+      The trick:
 
-      That's the engine behind every "AI assistant trained on your business" you've seen advertised. It's just NLP plumbing.
+      1. Take all your company docs (FAQs, manuals, Slack history, Confluence pages).
+      2. Turn each chunk of text into an *embedding* (remember lesson 04? meaning as geometry).
+      3. Store all embeddings in a database that can search by similarity.
+      4. When a user asks a question, *embed the question* and find the most similar chunks.
+      5. Stuff those retrieved chunks into the LLM's prompt: *"Answer this question using only the text below."*
+      6. Model answers. Using YOUR data. Without ever being trained on it.
+
+      That's RAG. It's the engine behind every "AI assistant trained on your business" you've seen advertised. And it's just NLP plumbing — embeddings (lesson 04) + prompting (lesson 07) + a clever wrapper.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Worked example. Suppose you run a SaaS company and want a customer support bot that knows your product.
+
+      *Without RAG:*
+
+      Customer asks: *"How do I export my data?"*
+      Generic LLM: gives generic data-export advice. Not tied to your product. Probably wrong about your specific UI.
+
+      *With RAG:*
+
+      1. You've already chunked your help docs. Each section is in your vector database.
+      2. Customer's question: *"How do I export my data?"* — embedded.
+      3. Top 3 retrieved chunks: your "Exporting Data" doc, your "API Reference for Export Endpoints" doc, your "Common Export FAQ" doc.
+      4. Prompt sent to LLM: *"Using only the following text, answer: 'How do I export my data?'\n\n[3 chunks pasted]"*
+      5. Model: *"Go to Settings > Data > Export. Choose CSV or JSON. Click Download. The export takes 2-3 minutes for accounts with up to 10,000 records."*
+
+      Same model. Now grounded in your data. Costs ~₹2 per query. Took 2 weeks to set up. Replaces a tier-1 support agent.
+
+      That's why every B2B SaaS in 2024 has a "talk to our docs" feature.
 
   - type: mcq
-    question: "A bank wants a chatbot that can answer customer questions about its specific products. What approach makes most sense?"
+    xp: 15
+    question: "A bank wants a chatbot that can answer customer questions about its specific products and policies. What approach makes most sense?"
     options:
       - id: a
         text: "Train a brand-new LLM from scratch on the bank's documents"
         is_correct: false
-        rationale: "Pretraining a fresh LLM costs millions and takes months. Massive overkill."
+        rationale: "Pretraining a fresh LLM costs millions and takes months. Massive overkill — and the bank's data isn't 'large' enough to train one anyway."
       - id: b
         text: "Use RAG — feed bank documents into an existing LLM at query time"
         is_correct: true
         rationale: "Exactly. RAG is fast, cheap, easy to update when policies change. The dominant approach for business AI today."
       - id: c
-        text: "Just hope the LLM figures it out"
+        text: "Just use ChatGPT and hope it figures things out"
         is_correct: false
-        rationale: "It will hallucinate confidently. We covered this last lesson — don't let it."
+        rationale: "It will hallucinate confidently. We covered this in lesson 08 — don't let it."
       - id: d
         text: "Hire 50 humans to write FAQs"
         is_correct: false
-        rationale: "Worth doing once, but a chatbot needs to read those FAQs at query time. That's RAG."
-    xp: 10
+        rationale: "Worth doing once, but a chatbot needs to *read* those FAQs at query time. That's RAG."
 
   - type: tap_to_match
+    xp: 15
     prompt: "Match each NLP job to a real product you've probably used."
     left:
       - id: classify
@@ -76,9 +111,11 @@ turns:
       - id: translate
         label: "Translation"
       - id: summarize
-        label: "Summarization"
+        label: "Summarisation"
+      - id: search
+        label: "Semantic search"
       - id: rag
-        label: "RAG (retrieval + generation)"
+        label: "RAG"
     right:
       - id: spam
         label: "Gmail's spam folder"
@@ -86,36 +123,150 @@ turns:
         label: "Google Translate"
       - id: news
         label: "Inshorts / Apple News digests"
+      - id: spotify
+        label: "Spotify's 'Discover Weekly'"
       - id: support
-        label: "Intercom's AI support agent that knows your company"
+        label: "Intercom's AI agent that knows your specific company"
     pairs:
       - [classify, spam]
       - [translate, gtrans]
       - [summarize, news]
+      - [search, spotify]
       - [rag, support]
-    xp: 10
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Two myths to clear up.
+
+      *Myth: "Every AI assistant is a custom-trained model."*
+
+      Almost none are. Training a custom model is rare and expensive. *Most* "AI assistants" are RAG — same off-the-shelf LLM (GPT-4 or Claude), just with retrieval over the company's docs at the front. The customisation is in the *retrieval and prompting*, not the *model weights*.
+
+      That's actually good news. It means a small team can build a credible "AI for X" product in 2-3 weeks, not 2-3 years.
+
+      *Myth: "RAG is some new fancy tech."*
+
+      It's three things you already know glued together: embeddings (lesson 04) + similarity search (also lesson 04) + prompting with context (lesson 07). The novelty is the assembly, not any single piece.
+
+      Once you see RAG, you stop being impressed by the marketing and start seeing the plumbing. Most "AI agents trained on your data" are just RAG.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      A few real-world products and the NLP jobs they're doing under the hood.
+
+      *Spotify Discover Weekly* — semantic similarity over song embeddings. Songs you like → embed them → find nearby songs in vector space.
+
+      *Intercom Fin* — RAG over your support docs. Answers customer questions using your help center.
+
+      *Notion AI* — summarisation + question-answering. Pull up doc, generate brief, answer questions about it.
+
+      *Grammarly* — multiple jobs at once. Classification (which sentences need fixing) + generation (rewriting suggestions) + classification (tone matching).
+
+      *DeepL Translator* — translation, but better quality than Google for many languages. Same job, different model.
+
+      *YouTube auto-captions* — speech-to-text (an NLP cousin) + classification + sometimes translation. Three jobs stacked.
+
+      Once you can name the NLP jobs, you can reverse-engineer almost any AI product into "ah, that's what they're doing."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      One important thing about RAG that the marketing skips — *RAG is only as good as your chunking*.
+
+      When you turn a 50-page document into RAG-able chunks, *how you split it* matters enormously. Split it badly and the model retrieves the wrong piece for any given question.
+
+      Bad chunking:
+      - Cut the doc into fixed 500-word blocks. A definition might end up split across two chunks. Neither chunk has the full meaning.
+
+      Good chunking:
+      - Split by section headers. Each chunk is a coherent unit (a full FAQ, a full policy section).
+
+      Better chunking:
+      - Use the document structure (markdown headings, sections, sub-sections) to chunk hierarchically. Keep each chunk under ~500 tokens but make sure it doesn't break a thought.
+
+      Whenever a RAG system feels "stupid" — gives confidently wrong answers from your docs — chunking is usually the culprit. The retrieval embeddings are doing their job; the chunks just don't contain useful self-contained answers.
+
+      You don't need to build RAG to know this. Just know — when an "AI for your docs" feature doesn't work well, the *data prep* (chunking + ingest) is usually the bottleneck, not the model.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      And one limit worth knowing — *RAG isn't the answer to every problem*.
+
+      When does RAG shine?
+      - You have a *finite, defined corpus* (your help docs, your project history).
+      - The questions are mostly *factual lookups* (what does this policy say, when was this decided).
+      - The corpus *changes occasionally* and you want updates without retraining.
+
+      When does RAG struggle?
+      - The question requires *synthesis across the entire corpus* ("what's the overall theme of all our customer feedback") — RAG retrieves chunks, not whole-corpus understanding.
+      - The answer requires *deep reasoning* the source docs don't directly contain.
+      - The corpus is *enormous and structured* (full SQL databases, code repos) — at that point you want different tools (text-to-SQL, code-aware models).
+
+      RAG is the right answer for *factual question-answering over documents*. Match it to the problem. Don't assume "AI assistant for X" means RAG is the right hammer for every X.
+
+  - type: exercise
+    xp: 20
+    tool: chatgpt
+    instruction: |
+      Build a tiny RAG-style prompt yourself.
+
+      1. Find any document — your company's policy doc, a long article, a recipe, the user manual for an appliance. Anything.
+      2. Open ChatGPT. Send: *"I'm going to paste a document. Then I'll ask questions about it. Answer ONLY using the document. If something's not in the doc, say so."*
+      3. Paste the document.
+      4. Ask 2-3 specific questions about it.
+
+      You've just done DIY RAG. The "retrieval" was you (manually pasting), the "generation" is the model. Real RAG just automates step 1-3 over a database of documents.
+
+      Paste one of your questions and the model's answer below.
+    placeholder: "Question: ... Answer: ..."
+
+  - type: ai_conversation
+    xp: 15
+    goal: "User identifies a real workflow in their own life that RAG would help."
+    max_turns: 4
+    success_criteria: "User names a specific body of documents (work, hobby, life admin) where having an AI that 'knows' those docs would save real time, and identifies what kinds of questions they'd ask."
+    starter_text: |
+      Now apply RAG to your real life.
+
+      Think — what's a body of documents you find yourself searching through, again and again? Could be work docs, your old emails, a hobby community, a project's history, anything. Tell me what it is.
+    system_prompt: |
+      You are Nova, a warm but direct coach. The user just learned RAG = embed company docs + retrieve relevant chunks + stuff into LLM prompt at query time. It's the engine behind every "AI assistant trained on your business."
+
+      Step 1: Ask the user about a body of documents in their life.
+      Step 2: Affirm it's a great RAG candidate. Suggest 2-3 *specific kinds of questions* they'd ask if they had RAG over those docs. Mention one limitation (e.g. RAG is only as good as the docs and how they're chunked).
+      Step 3: Affirm and close with <END/>.
+
+      Replies under 60 words. Practical, not theoretical.
 
   - type: fill_in_the_blank
+    xp: 15
     prompt: "Lock in the most-used acronym in business AI."
-    template: "{{RAG}} stands for Retrieval-{{Augmented}} Generation — find relevant docs, then let the model answer using them."
-    hint: "First blank: the acronym itself. Second blank: starts with 'A', means 'enhanced by'."
+    template: "{{RAG}} stands for Retrieval-{{Augmented}} Generation. Step 1: turn your docs into {{embeddings}}. Step 2: at query time, find the most similar chunks and stuff them into the prompt."
     answers:
       - id: RAG
-        accepted: [rag, RAG]
+        accepted: ["rag", "RAG"]
       - id: Augmented
-        accepted: [augmented, Augmented]
-    xp: 10
+        accepted: ["augmented", "Augmented"]
+      - id: embeddings
+        accepted: ["embeddings", "vectors", "embedding"]
+    hint: "First blank: the acronym. Second blank: the 'A' word. Third blank: lesson 04's main concept."
 
   - type: reflection
-    prompt: "Where in your work could RAG help — letting an AI answer questions over a body of docs you control?"
-    placeholder: "Onboarding docs, customer FAQs, project history…"
     xp: 5
+    prompt: "Where in your work could RAG help — letting an AI answer questions over a body of docs you control?"
+    placeholder: "Onboarding docs, customer FAQs, project history, my own notes..."
 
   - type: checkpoint
+    xp: 10
     title: "NLP is bigger than chat."
     summary: |
-      Five workhorses: classification, translation, summarization, semantic search, and RAG.
-      Most production AI in business today is RAG — feed your docs, let the model answer using them.
+      Five workhorses of production NLP: *classification, translation, summarisation, semantic search, and RAG*.
 
-      Last lesson — what's coming next. Multimodal models, agents, and on-device AI.
-    xp: 5
+      Most production AI in business today is *RAG* — embed your docs, retrieve the relevant chunks at query time, let the model answer using them.
+
+      It's just embeddings (lesson 04) + prompting (lesson 07) glued together. Not magic. Just well-assembled NLP.
+
+      Last lesson — what's coming next. *Multimodal models, agents, and on-device AI.*
