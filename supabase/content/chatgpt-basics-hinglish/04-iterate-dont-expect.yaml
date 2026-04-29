@@ -1,0 +1,258 @@
+title: Iterate karo, expect mat karo
+subtitle: Ek prompt aksar kaafi nahi hota — asli magic hamesha follow-up mein hai
+estimated_minutes: 14
+xp_reward: 95
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ek mental experiment.
+
+      ChatGPT se poochha — Zomato ke liye 5 marketing campaign ideas do.
+
+      5 mile. Teen bekaar hain. Ek theek hai. Ek genuinely interesting hai.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Zyaadatar log kya karte hain?
+
+      Do camps hain:
+
+      *Camp 1: "Yaar, kuch nahi nikla."* Tab band karta hai. Dosto ko batata hai ChatGPT overhyped hai.
+
+      *Camp 2: "Hmm, #4 interesting hai. Aur push karta hoon."* Follow-up karta hai. Refine karta hai.
+  - type: tutor_message
+    persona: nova
+    text: |
+      "ChatGPT mediocre hai" aur "ChatGPT amazing hai" ka fark almost entirely *Camp 2 behaviour* hai.
+
+      Pehla jawab draft hai.
+
+      Follow-ups mein kaam hota hai.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Aaj: properly iterate karna seekhenge.
+
+      Chaar moves jo har "meh" pehle jawab pe use kar sakte ho.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Yeh lesson kyun hai? Ek specific bias jo humme hai.
+
+      Hum *vending machines* ke aadat hain. Coin daalo, exact item lo. Kuch nahi aaya = machine kharab hai.
+
+      ChatGPT vending machine nahi hai.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Yeh zyada aise hai — *ek colleague jisne tumhara rough idea suna aur pehla sketch diya*.
+
+      Pehla sketch rarely final draft hota hai.
+
+      ChatGPT ke saath bhi, aur kisi bhi insaan ke saath bhi.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Expectation yeh honi chahiye:
+
+      *Pehla prompt bhejo → pehla jawab padho → kya kaam kar raha hai identify karo → woh aur maango, baaki kam.*
+
+      Yahi iteration hai.
+
+      Pros 3-5 messages per task expect karte hain.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Chaar follow-up moves. Naam se use karo.
+
+      *Move 1 — Refine.*
+
+      Jawab lo aur more specific banao.
+
+      *"#4 ko lo aur ek detailed campaign plan banao — budget, channels, timeline ke saath."*
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Move 2 — Narrow.*
+
+      Jawab lo aur shrink karo.
+
+      *"Wahi karo lekin sirf pehle mahine ke liye, aur sirf Instagram aur WhatsApp."*
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Move 3 — Expand.*
+
+      Jawab lo aur aage push karo.
+
+      *"#4 ki spirit mein 5 aur ideas do — woh unexpected wala."*
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Move 4 — Redo with X.*
+
+      Jawab lo aur naye constraint ke saath redo karo.
+
+      *"Saare 5 ideas redo karo lekin assume karo audience Gen-Z college students hain, 30+ professionals nahi."*
+
+      Refine. Narrow. Expand. Redo with X.
+
+      Haath mein jhalo inhe.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Worked example. Ek conversation mein charon moves.
+
+      *Tum:* *"5 LinkedIn post ideas do ek SaaS founder ke liye."*
+      *ChatGPT:* 5 generic ideas.
+
+      *Tum (Refine):* *"Idea #2 lo aur ek poora 200-word post likho ek thake lekin optimistic founder ki voice mein."*
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Tum (Narrow):* *"100 words mein cut karo. Punchier opening."*
+
+      *Tum (Expand):* *"3 alternative endings do — ek funny, ek vulnerable, ek provocative."*
+
+      *Tum (Redo with X):* *"Poora post redo karo lekin founder energised hai, thoda arrogant. Alag middle aur end."*
+  - type: tutor_message
+    persona: nova
+    text: |
+      Paanch exchanges. Result 5× better hai pehle prompt se.
+
+      Yahi iteration hai. Yahi pura skill hai.
+  - type: mcq
+    xp: 15
+    question: ChatGPT ne 5-paragraph email draft diya. Paragraph 3 great hai. Baaki bland. Kya karte ho?
+    options:
+      - id: a
+        text: ChatGPT ko bolo 'yeh bakwaas hai, dobara karo' aur fresh start
+        is_correct: false
+        rationale: Utna hi bland milega — ya worse, kyunki kaam karne wala part discard kar diya.
+      - id: b
+        text: Paragraph 3 quote karo aur bolo 'Yeh great hai. Baaki isi voice mein rewrite karo.'
+        is_correct: true
+        rationale: Sahi. Jo kaam karta hai uss pe anchor karo. ChatGPT ko specifically batao kya rakho kya fix karo.
+      - id: c
+        text: Khud manually edit karo
+        is_correct: false
+        rationale: Theek hai, lekin point miss ho raha hai — iteration *model ke saath* hoti hai.
+      - id: d
+        text: Nayi chat kholo aur dobara try karo
+        is_correct: false
+        rationale: Woh ek paragraph jo kaam kar raha tha woh khoga. Model ka cross-chat memory nahi hai.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Sabse useful follow-up phrase, ever.
+
+      Agar pehla jawab sahi nahi laga, explain karne ki bajay yeh try karo:
+
+      *"Is jawab mein kya missing hai jo ise mere liye useful banata?"*
+  - type: tutor_message
+    persona: nova
+    text: |
+      Model aksar *apni mistakes khud pakad leta hai*.
+
+      Woh batayega "Maine X assume kiya tha lekin shayad galat" ya "Agar tumhara Y pata hota toh yeh sharper hota."
+
+      Phir missing piece do. Agla jawab shockingly better hoga.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ek aur iteration trick — *"explain karo kya socha tha"* move.
+
+      Jab model misread kare, seedha resend mat karo. Try karo:
+
+      *"Redo karne se pehle — mujhe batao tumne kya SOCHA tha ki main kya pooch raha hoon. Phir main clarify karoonga."*
+  - type: tutor_message
+    persona: nova
+    text: |
+      ChatGPT bolega *"Maine tumhara ask X ke roop mein interpret kiya, Y pe focus ke saath, Z format mein."*
+
+      Aksar immediately dikh jaata hai kahaan misread hua.
+
+      Phir: *"Interpretation sahi. Y par galat. Mera matlab tha Y'."*
+
+      Har baar 3-4 wrong-direction iterations bachata hai.
+  - type: tap_to_match
+    xp: 15
+    prompt: Har iteration scenario ko sahi move se match karo.
+    left:
+      - id: spark
+        label: "ChatGPT ne 5 ideas diye; sirf #3 acchi lagti hai."
+      - id: long
+        label: Jawab accha hai lekin bahut lamba.
+      - id: more
+        label: Jawab ka vibe sahi hai, similar variations chahiye.
+      - id: angle
+        label: Jawab theek hai lekin alag angle chahiye.
+    right:
+      - id: refine
+        label: Refine — jo kaam kiya uss pe deeper jao
+      - id: narrow
+        label: Narrow — chhote slice mein shrink karo
+      - id: expand
+        label: Expand — is direction mein aur do
+      - id: redo
+        label: Redo with X — same kaam, naya constraint
+    pairs:
+      - - spark
+        - refine
+      - - long
+        - narrow
+      - - more
+        - expand
+      - - angle
+        - redo
+  - type: exercise
+    xp: 20
+    tool: chatgpt
+    instruction: |
+      Ek real kaam pe deliberately iterate karo.
+
+      1. Koi real kaam choose karo — email, headlines, meal plan kuch bhi.
+      2. Thin pehla prompt bhejo (RKSM skip karo on purpose).
+      3. Jawab padho. *Best part* choose karo.
+      4. Kam se kam 3 moves apply karo — Refine, Narrow, Expand, Redo with X.
+      5. Ruko jab good enough ho.
+
+      Final answer + konse moves use kiye paste karo.
+    placeholder: "Final answer: ... Maine use kiya: Refine + Narrow + Expand."
+  - type: fill_in_the_blank
+    xp: 15
+    prompt: Chaar iteration moves lock karo.
+    template: "{{Refine}} (jo kaam kiya uss pe deeper). {{Narrow}} (shrink karo). {{Expand}} (is direction mein aur). Redo with {{X}} (same kaam, naya constraint)."
+    answers:
+      - id: Refine
+        accepted:
+          - refine
+          - Refine
+      - id: Narrow
+        accepted:
+          - narrow
+          - Narrow
+      - id: Expand
+        accepted:
+          - expand
+          - Expand
+      - id: X
+        accepted:
+          - X
+          - x
+          - constraint
+    hint: Charon lesson ke move names hain.
+  - type: checkpoint
+    xp: 10
+    title: Iteration hi skill hai.
+    summary: |
+      ChatGPT ka pehla jawab draft hai, verdict nahi.
+
+      Chaar moves: *Refine, Narrow, Expand, Redo with X.*
+
+      Do unlock phrases: *"Is jawab mein kya missing hai?"* aur *"Kya socha tha ki main kya pooch raha hoon?"*
+
+      Jab iteration right there hai toh restart mat karo.
+
+      Kal — jab ChatGPT confidently galat ho tab kya karo.

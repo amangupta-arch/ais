@@ -1,0 +1,260 @@
+title: Jab ChatGPT galat ho
+subtitle: Confident jhooth kaise pakdo — aur 3 moves jo ise almost rokti hain
+estimated_minutes: 16
+xp_reward: 95
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      4 lessons ChatGPT use kiya.
+
+      Ab woh lesson jo decide karta hai ki *real kaam* ke liye use kar sakte ho ya nahi.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Kyunki yeh koi nahi batata naye users ko — *ChatGPT kabhi kabhi confidently, completely, khoobsoorat tarike se GALAT hota hai.*
+
+      Real cases:
+
+      - Ek court case cite karta hai jo exist hi nahi karta.
+      - Einstein ka quote deta hai jo usne kabhi nahi kaha.
+      - Ek API method invent karta hai jo kisi library mein hai hi nahi.
+  - type: tutor_message
+    persona: nova
+    text: |
+      - Kisi celebrity ko zinda batata hai jo pichle saal mar gaye.
+      - Ek confident statistic deta hai jo 60% se galat hai.
+
+      Sab kuch fluent, professional, "sahi lagta hai" language mein.
+
+      Koi clue nahi. Koi "mujhe nahi pata". Sirf confident, plausible, *fabricated*.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ise *hallucination* kehte hain.
+
+      Aaj: kab hota hai. Kaise pakdo. 3 prompt moves jo ise almost khatam kar deti hain.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Kyun hota hai?
+
+      Sabse simple jawab:
+
+      *ChatGPT plausible next words predict karta hai. Iske paas "sach" ka koi concept hi nahi.*
+  - type: tutor_message
+    persona: nova
+    text: |
+      Jab poochho "2019 ke 3 court cases cite karo luggage ke baare mein," model ne lakho legal documents padhe hain.
+
+      Woh text produce karta hai jo *ek competent legal jawab jaisa lagta hai* — judges, dates, rulings.
+
+      Kya woh citations actually exist karti hain? Check karne ka koi mechanism nahi. Bas generate karta hai.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Hallucination bug nahi hai.
+
+      Wahi mechanism hai jo model ko fluent aur useful banata hai — jahan trust nahi karna chahiye wahan bhi apply ho raha hai.
+
+      *Confidence ≠ accuracy.* Yeh brain mein burn kar lo.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ab *useful* part — *kahaan* hallucinate karta hai zyaadatar?
+
+      Random nahi. Predictable. Teen high-risk types.
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Type 1 — Specific facts jo model jaanta nahi lekin plausible jawab fit hoga.*
+
+      Court cases. Scientific paper citations. Statistics. Exact quotes. Population numbers.
+
+      Koi bhi specific cheez jahan "pata nahi" kehna embarrassing ho.
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Type 2 — Cheezein jo *exist karti lagti hain*.*
+
+      Ek chhote shehar par Wikipedia article. Kisi famous insan ka obscure topic pe quote. Obscure programming library function.
+
+      Model fluently ek *bahut plausible* version construct karta hai jab actual data nahi hota.
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Type 3 — Kuch bhi jo training cutoff ke baad ka hai.*
+
+      Pichhle hafte ki news. JavaScript library ka latest version. Current PM (agar model training pehle ki thi). Kisi celebrity ki current age.
+
+      Pattern: *jawab nahi + plausible fit → confidently fill in karta hai.*
+  - type: tutor_message
+    persona: nova
+    text: |
+      Worked example — high vs low risk.
+
+      *Low risk (trust karo):*
+
+      - "France ki capital kya hai?" — Paris. Yaad hai.
+      - "Yeh article summarise karo" — text saamne hai.
+      - "10 chai brand ideas do" — subjective, koi truth value nahi.
+      - "Yeh Python code refactor karo" — well-trained patterns.
+  - type: tutor_message
+    persona: nova
+    text: |
+      *High risk (verify karo):*
+
+      - "Haldi aur arthritis pe teen studies cite karo." → likely fabricate karega.
+      - "Virat Kohli ne retirement ke baare mein kya kaha?" → quote invent kar sakta hai.
+      - "2024 mein Pune ki population?" → 20% se galat ho sakta hai.
+      - "Is library mein X ka latest method?" → galat agar cutoff ke baad ka hai.
+  - type: mcq
+    xp: 15
+    question: Kaunse sawaal pe ChatGPT sabse ZYADA hallucinate karta hai?
+    options:
+      - id: a
+        text: "\"Yeh email jo main paste kar raha hoon 3 bullets mein summarise karo.\""
+        is_correct: false
+        rationale: Tumne source diya. Hallucinate karna mushkil. Low risk.
+      - id: b
+        text: "\"Date parse karne ke liye ek Python function kya hoga?\""
+        is_correct: false
+        rationale: Common code pattern, well-trained. Mostly reliable.
+      - id: c
+        text: "\"Mahabharat mein karma ke baare mein ek passage quote karo, adhyaya aur shloka number ke saath.\""
+        is_correct: true
+        rationale: Specific quote retrieval = hallucination central. Model adhyaya/shloka numbers invent kar sakta hai.
+      - id: d
+        text: "\"Work from home ke pros aur cons kya hain?\""
+        is_correct: false
+        rationale: Subjective, opinion-based. Violate karne ke liye koi truth value nahi.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ab accha part.
+
+      *Teen prompt moves jo hallucination almost khatam kar deti hain.*
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Move 1 — Model ko ground karo.*
+
+      "*Meri company ka refund policy cancellations ke baare mein kya kehti hai?"* poochhe ki bajay, policy doc *prompt mein paste karo*.
+
+      Phir poochho: *"Neeche diye text ke basis par, refund policy kya kehti hai?"*
+  - type: tutor_message
+    persona: nova
+    text: |
+      Model ke paas ab facts hain kaam karne ke liye. Memory nahi.
+
+      Hallucinations gir jaate hain kyunki kuch banane ki zaroorat hi nahi.
+
+      *Source paste karo* — is poore course ki sabse powerful trick. Jab internalize ho jaaye, tum ChatGPT ki memory pe bharosa karna band kar dete ho aur text pe jo tumne diya + model ki padhne ki ability pe trust karne lagte ho.
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Move 2 — Uncertainty allow karo.*
+
+      Yeh clause add karo: *"Agar nahi pata toh 'mujhe nahi pata' bolo. Kuch banao mat."*
+
+      Crazy hai kitna well kaam karta hai.
+
+      Woh ek line model ko permission deta hai guess karne ki bajay refuse karne ki.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Bina iske, model RLHF se *hamesha jawab dene* ke liye trained hai.
+
+      "Agar nahi pata toh batao" add karna yeh flip kar deta hai.
+
+      *Pro version:* *"Sirf tab jawab do jab confident ho. Unsure parts [UNSURE] se mark karo aur explain karo kya chahiye zyada confident hone ke liye."*
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Move 3 — Specifics khud verify karo.*
+
+      Koi bhi specific number, naam, citation, API detail, ya "X ne Y kaha" — assume karo galat ho sakta hai.
+
+      *Use karne se pehle 30 seconds Google karo.*
+  - type: tutor_message
+    persona: nova
+    text: |
+      Tedious lagta hai. Hai bhi.
+
+      Lekin yeh alag karta hai "ChatGPT pe trust kiya, sharminda hua" se "ChatGPT use karta hai, competent lagta hai."
+
+      Real story: ek NY lawyer ne ChatGPT se case citations liye. 6 mile. File kiya bina check kiye. Sab made up the. Sanctioned. Global news.
+
+      Woh mat bano.
+  - type: tap_to_match
+    xp: 15
+    prompt: Har anti-hallucination move ko uske kaam se match karo.
+    left:
+      - id: source
+        label: Source document prompt mein paste karo
+      - id: uncertain
+        label: Bolo 'agar nahi pata toh admit karo'
+      - id: verify
+        label: Manually har naam aur date check karo
+      - id: cite
+        label: Citations maango aur check karo exist karti hain
+    right:
+      - id: ground
+        label: Model ko real facts pe ground karta hai, memory nahi
+      - id: refuse
+        label: Guess karne ki bajay refuse karne ki permission
+      - id: catch
+        label: Jo bhi slip kiya use pakadta hai
+      - id: trap
+        label: Fake citations surface karta hai — classic tell
+    pairs:
+      - - source
+        - ground
+      - - uncertain
+        - refuse
+      - - verify
+        - catch
+      - - cite
+        - trap
+  - type: fill_in_the_blank
+    xp: 15
+    prompt: Rule aur moves lock karo.
+    template: "ChatGPT plausible {{tokens}} predict karta hai, {{truth}} nahi. Teen moves: {{source}} paste karo, uncertainty allow karo, {{specifics}} verify karo."
+    answers:
+      - id: tokens
+        accepted:
+          - tokens
+          - words
+          - text
+          - shabda
+      - id: truth
+        accepted:
+          - truth
+          - facts
+          - reality
+          - sach
+      - id: source
+        accepted:
+          - source
+          - document
+          - doc
+          - context
+      - id: specifics
+        accepted:
+          - specifics
+          - facts
+          - details
+    hint: Chaar blanks seedhe lesson se.
+  - type: checkpoint
+    xp: 10
+    title: Healthy paranoia, locked in.
+    summary: |
+      ChatGPT plausible tokens predict karta hai, sach nahi.
+
+      *Specifics* pe sabse zyada hallucinate karta hai — citations, exact quotes, exact data, post-cutoff facts.
+
+      Teen moves hallucination almost khatam karne ke liye: *model ko ground karo*, *uncertainty allow karo*, *specifics verify karo*.
+
+      Confidence knowledge nahi hai. Task type pe trust karo, vibe pe nahi.
+
+      Kal — ChatGPT ko *thinking partner* ki tarah use karna.

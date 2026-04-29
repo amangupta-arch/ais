@@ -1,359 +1,342 @@
-title: "Pehli asli baat-cheet"
-subtitle: "Why most log ChatGPT se bekaar jawaab nikaalte hain — aur 4-letter ka framework jo sab fix kar deta hai"
+title: Pehli baat seedhi baat
+subtitle: ChatGPT se generic jawab kyun aata hai — aur 4-letter trick jo sab fix karti hai
 estimated_minutes: 14
 xp_reward: 110
 turns:
   - type: tutor_message
     persona: nova
     text: |
-      Hey. Aa gaye, badhiya.
+      Ek sawaal poochho khud se.
 
-      Sun, ChatGPT toh tu pehle bhi try kar chuka hoga. Maybe socha bhi hoga *"theek hai yaar, sab itne crazy kyun ho rahe hain iske peeche?"*
+      ChatGPT try kiya hai kabhi? Shayad socha hoga — *"theek hai, kaam ka hai, but itna hype kyun?"*
 
-      ChatGPT galat nahi hai.
+      Woh hype galat nahi hai.
 
-      Problem ye hai — *most log isse galat tarah use karte hain*.
-
+      Problem ye hai ki *zyaadatar log isko galat use karte hain.*
   - type: tutor_message
     persona: nova
     text: |
-      Aaj wahi fix karte hain.
+      Aaj hum woh galti fix karenge.
 
-      Lesson khatam hone tak tujhe ek 4-letter framework mil jayega jo ChatGPT ko *"thoda useful"* se *"abey ye toh kamaal kar diya"* mein convert kar dega.
-
+      Is lesson ke baad, ek 4-letter framework hoga tumhare paas — jisse ChatGPT "thoda useful" se "yaar, usne yeh kar diya?!" ban jaata hai.
   - type: tutor_message
     persona: nova
     text: |
-      Asli problem kya hai — sun.
+      Problem yeh hai jo koi nahi batata.
 
-      Most log ChatGPT khol ke ek line ka sawaal dete hain, aur uske jawaab pe model ko judge karte hain.
+      Log ChatGPT kholte hain, ek line type karte hain, aur jo milta hai us par judge karte hain.
 
-      *"Boss ke liye email likh do."*
-      *"Trip plan kar do."*
-      *"Startup ideas do."*
-
+      *"Meri HR ko ek email likho."*
+      *"Trip plan karo Goa ka."*
+      *"Business idea do."*
   - type: tutor_message
     persona: nova
     text: |
-      ChatGPT apna best deta hai. Lekin itne thode input pe, "best" matlab *generic*.
+      ChatGPT apni taraf se best karta hai. Lekin itne kam input mein, "best" ka matlab hai — *generic*.
 
-      Reply bhool jaane wala hota hai. Tu sochta hai bas yahi limit hai. Aur try karna chod deta hai.
+      Reply milega jo kisi ko bhi diya ja sakta tha. Toh tumhe lagta hai — yahi ceiling hai is tool ki. Band kar dete hain tab.
 
-      Lekin tune ChatGPT ko bataya hi nahi:
+      Lekin tumne ChatGPT ko bataya hi nahi:
 
-      - Tu kaun hai
-      - Email kis tarah ka chahiye
-      - Boss kaisa hai
-      - Tone kya rakhna hai
-      - Length kitni
-      - Stake kya hai
-
+      - Tum kaun ho
+      - Kaunse HR ko email hai
+      - Tone kya chahiye
+      - Kitna lamba
+      - Situation kya hai
   - type: tutor_message
     persona: nova
     text: |
-      Model tera mind padh nahi raha.
+      Model mind-reader nahi hai.
 
-      Jo tune diya hai, usi se kaam chala raha hai. *Aur tune diya hai almost kuch nahi.*
-
+      Jo diya ussi pe kaam kiya. *Aur diya tha almost kuch nahi.*
   - type: tutor_message
     persona: nova
     text: |
-      Fix bahut simple hai. Ek baar dekh liya toh dimaag se nikalega nahi.
+      Fix ekdum simple hai. Ek baar dikh gaya toh bhool nahi sakte.
 
-      Har prompt ke liye ek 4-letter checklist. Yaad kar le.
+      4-letter checklist. Har prompt ke liye. Yaad karo isko.
 
-      *RTCC.*
-
+      *RKSM.*
   - type: tutor_message
     persona: nova
     text: |
-      - **R** — Role. ChatGPT ko kya banna hai?
-      - **T** — Task. Tujhe exactly kya chahiye?
-      - **C** — Context. Model ko kya pata hona chahiye?
-      - **C** — Constraints. Length kitni? Tone kya? Format kaisa?
+      - **R** — Role. ChatGPT ko kaun banana hai?
+      - **K** — Kaam. Exactly kya chahiye?
+      - **S** — Sandarbh. Model ko kya jaanna chahiye?
+      - **M** — Maryada. Kitna lamba? Tone kya? Format kya?
 
-      Char pieces. Har prompt mein. Aage chal ke ye habit ban jaayegi, checklist nahi.
-
+      Chaar cheezein. Har prompt. Dheere dheere yeh habit ban jaati hai, checklist nahi rehti.
   - type: tutor_message
     persona: nova
     text: |
-      Habit ban gayi toh teri output quality 5× jump karegi.
+      Jab habit ban jaati hai, output quality 5× jump karti hai.
 
-      Mai exaggerate nahi kar raha. 60 second mein prove kar deta hoon.
-
+      Sach mein. 60 seconds mein prove karenge.
   - type: tutor_message
     persona: nova
     text: |
-      Difference dekh. Same task, do prompts.
+      Same kaam, do prompts. Difference dekho.
 
-      *Prompt 1 (RTCC nahi):*
-      *"Boss ko email likh do, 2 din ki chhutti chahiye."*
+      *Prompt 1 (bina RKSM):*
+      *"HR ko leave ke liye email likho."*
 
-      Output: ek polite, generic, 4-paragraph email. *"I would be most grateful"* type filler. Theek hai. Yaad bhi nahi rahega.
-
+      Output: Polite, 4-paragraph email. "I would be most grateful" wala. Theek hai. Yaadgaar nahi.
   - type: tutor_message
     persona: nova
     text: |
-      *Prompt 2 (full RTCC):*
+      *Prompt 2 (full RKSM):*
 
-      *"Act kar ek confident, no-fluff communicator ka (Role). 4-line email likh boss ke liye, 2 din ki chhutti maangne ke liye (Task) — Friday-Monday, family wedding hai (Context). Boss seedha aur busy aadmi hai. 'I hope this finds you well' wala intro skip kar. Casual but professional. (Constraints)"*
-
+      *"Ek confident aur seedha bolne wale professional ki taraf se bolo (Role). Meri HR ko ek 4-line email likho jisme Friday-Monday ki leave maangi ho (Kaam) — shaadi hai cousin ki, pehle se project handover kar diya hai (Sandarbh). HR seedha sochtii hai, time nahi hai. 'I hope this finds you well' mat likhna. Casual but professional tone. (Maryada)"*
   - type: tutor_message
     persona: nova
     text: |
-      Output: ekdum clean 4-line email. Seedha point pe. Workload reference. Tujhi jaisa sound karta hai.
+      Output: Clean 4-line email. Point pe. Handover ka mention. Tum jaisa lagta hai.
 
-      30 second mein ho gaya.
+      30 seconds mein kaam tamam.
 
-      Same model. Same minute. Difference sirf 50 extra words aur ek checklist ka tha.
-
+      Same model. Same minute. Fark tha — 50 extra words aur ek checklist.
   - type: mcq
     xp: 15
-    question: "Naya cafe gaya, witty Instagram caption chahiye. Best prompt kaun sa hai?"
+    question: Tumhara ek naya chai ka dhaba khula hai — Instagram caption chahiye photo ke liye. Konsa prompt best hai?
     options:
       - id: a
-        text: "\"Mere cafe ki photo ke liye caption likh do.\""
+        text: "\"Mere café ki photo ke liye caption likho.\""
         is_correct: false
-        rationale: "No role, vague task, no context, no constraints. Output generic cafe-quote drivel hi aayega."
+        rationale: Koi role nahi, vague kaam, context zero, maryada kuch nahi. Output aaega waisa hi — generic chai-shayari.
       - id: b
-        text: "\"Act kar ek witty Mumbai food blogger ka (Role). 1-line Instagram caption likh (Task) — Bandra ke naye cafe Bombay Bread mein sourdough ki photo (Context). Self-deprecating, no emojis, 12 words ke andar (Constraints).\""
+        text: "\"Ek witty Mumbai food blogger ki taraf se bolo (Role). Instagram ke liye 1-line caption likho (Kaam) mere cutting chai ke photo ke liye — Andheri ki galli mein naya dhaba, naam 'Tapri 2.0' (Sandarbh). Self-deprecating, emoji nahi, 10 words se kam (Maryada).\""
         is_correct: true
-        rationale: "Full RTCC. Persona, format, subject, style — sab clear. Output asli food blogger jaisa aayega, Hallmark nahi."
+        rationale: Full RKSM. Persona, format, subject, style rules. Output hoga real food blogger jaisa — not Hallmark.
       - id: c
-        text: "\"Witty bana de.\""
+        text: "\"Thoda witty karo.\""
         is_correct: false
-        rationale: "ChatGPT pooch lega 'kis baare mein?' ya kuch random invent karega. Witty *kya*?"
+        rationale: ChatGPT poochega 'kis baare mein?' Ya invent karega kuch disconnect cheez.
       - id: d
-        text: "\"Lambi, detailed, comprehensive caption likh, lots of adjectives ke saath.\""
+        text: "\"Lamba, detailed, adjectives bhar ke caption likho.\""
         is_correct: false
-        rationale: "Words zyada hain par RTCC nahi hai. Length direction nahi hai. Output lamba aur equally generic hi aayega."
-
+        rationale: Zyada words hain, RKSM nahi. Length = direction nahi hoti. Output lamba aur equally generic hoga.
   - type: tutor_message
     persona: nova
     text: |
-      Har letter ko thoda deep mein samajhte hain.
+      Har letter thoda aur gehraai se samjhte hain.
 
       *R — Role.*
 
-      Role ChatGPT ki vocabulary, depth, tone — sab change kar deta hai.
+      Role se ChatGPT ki vocabulary, depth, tone change hoti hai.
 
-      - "Act kar a senior editor at The Hindu" → cleaner sentences, journalist instinct.
-      - "Act kar mere career coach ka jo dost bhi hai" → warm, direct, vapas sawaal poochega.
-      - "Act kar a skeptical investor" → holes nikalega, evidence maangega.
-
+      - "Ek senior journalist ki tarah baat karo" → tight sentences, newsy angle.
+      - "Mera career coach jo mera dost bhi hai" → warm, direct.
+      - "Ek skeptical investor ban jao" → holes podhega, evidence maangega.
   - type: tutor_message
     persona: nova
     text: |
-      Role ye nahi badalta ki *model kya jaanta hai*.
+      Role model ki *knowledge* nahi badalta.
 
-      Ye badalta hai *kaunse patterns model pehle reach karega*.
+      Yeh badalta hai ki *model pehle kaunse patterns reach karta hai*.
 
-      "Senior editor" ka jawaab training data ke ek mohalle se aata hai. "Stand-up comedian" ka jawaab ekdum doosre mohalle se. Same data, alag lens.
+      "Senior editor" ka jawab training data ke ek neighbourhood se aata hai. "Stand-up comedian" ka doosre se. Same data, alag lens.
 
-      Jis tarah ki expertise se baat karni hai, wahi role pick kar.
-
+      Jo expertise tumhe chahiye — waisa role do.
   - type: tutor_message
     persona: nova
     text: |
-      *T — Task.*
+      *K — Kaam.*
 
-      Vague task = vague output. Solution — exact deliverable bata.
+      Vague kaam = vague output. Deliverable specify karo.
 
-      Bekaar: *"Mere essay mein help kar."*
-      Better: *"Is essay ko clarity ke liye review kar."*
-      Best: *"Is essay ke 3 weakest paragraphs identify kar aur ek line mein bata kyun weak hain."*
-
+      Bura: *"Meri assignment mein help karo."*
+      Better: *"Meri assignment ki clarity review karo."*
+      Best: *"Is assignment ke 3 sabse kamzor paragraphs batao aur ek line mein kyun kamzor hain."*
   - type: tutor_message
     persona: nova
     text: |
-      Best version ne bata diya:
+      Best version specify karta hai:
 
       - Format (3 cheezein, "kuch thoughts" nahi)
-      - Dimension (clarity specifically, "general acha" nahi)
-      - Reasoning style (ek line each, paragraph nahi)
+      - Dimension (clarity, "generally acchi" nahi)
+      - Reasoning style (ek line each)
 
-      *Pattern:* agar tu screen pe output imagine kar sake bhejne se pehle, toh task description sharp hai.
-
+      *Pattern:* Agar tumhare mann mein output ka picture bann sakta hai poochne se pehle — toh kaam description sharp hai.
   - type: tutor_message
     persona: nova
     text: |
-      *C — Context.*
+      *S — Sandarbh.*
 
-      Yahan most log lose karte hain.
+      Yahan zyaadatar log lose karte hain.
 
-      Bhool jaate hain ki model ko *zero* memory hai tere baare mein.
+      Bhool jaate hain — model ko tumhare baare mein *kuch pata nahi*.
 
-      Context matlab kuch bhi jo model ko useful hone ke liye chahiye:
-
+      Sandarbh matlab kuch bhi jo model ko jaanna chahiye:
   - type: tutor_message
     persona: nova
     text: |
-      - *Tu kaun hai* ("23 saal ka marketing intern, Bangalore mein")
-      - *Aur kaun involved hai* ("boss no-fluff founder hai")
-      - *Situation kya hai* ("3 mahine ho gaye join kiye, pehli baar leave maang raha")
-      - *Stake kya hai* ("meri sister ki shaadi hai")
-      - *Kya try kiya* ("draft kiya tha, formal lag raha")
-
+      - *Tum kaun ho* ("Noida mein 23 saal ka marketing intern")
+      - *Kaun involved hai* ("Mera manager no-nonsense hai, seedha bolta hai")
+      - *Situation* ("Pehli baar leave maang raha hoon, 3 mahine hi hua hai join kiye")
+      - *Why matters* ("Bhai ki shaadi hai, miss nahi kar sakta")
+      - *Jo try kiya* ("Yeh draft banaya tha, bahut formal lag raha hai")
   - type: tutor_message
     persona: nova
     text: |
-      *Actual document paste karna* bhi context mein aata hai — aur bahut powerful hai.
+      Actual document paste karna bhi sandarbh hai — aur yeh bahut powerful hai.
 
-      *Rule of thumb:* agar ek smart dost help karne wala hota, tu pehle use kya batata?
-
-      Wahi ChatGPT ko bata.
-
+      *Rule of thumb:* Agar ek smart dost help karne wala ho — toh pehle kya batate? Wahi ChatGPT ko batao.
   - type: tutor_message
     persona: nova
     text: |
-      *C — Constraints.*
+      *M — Maryada.*
 
-      Bina constraints ke ChatGPT lambe, generic, hedge-everything jawaab dega. Constraints output ko sharp karte hain.
+      Bina maryada ke, ChatGPT default karta hai lamba, generic, sabko-satisfy-karne-wala jawab. Maryada output ko sharpen karti hai.
 
-      - *Length:* "3 bullets mein", "100 words ke andar", "exactly 4 lines"
-      - *Format:* "markdown table", "JSON"
-      - *Tone:* "casual but professional", "no preamble"
-
+      - *Length:* "3 bullets mein", "100 words se kam", "exactly 4 lines"
+      - *Format:* "markdown table", "numbered list"
+      - *Tone:* "casual but professional", "direct, no preamble"
   - type: tutor_message
     persona: nova
     text: |
-      - *Vocabulary:* "no jargon", "no emojis"
-      - *Avoid:* "skip the 'I hope this finds you well' opener", "no hedging"
+      - *Vocabulary:* "jargon nahi", "emoji nahi"
+      - *Kya avoid karna:* "'I hope this finds you well' mat likhna", "hedging nahi"
 
-      Ek mai bahut use karta hoon: *"No preamble. Bas answer."*
+      Ek jo main bahut use karta hoon: *"Preamble nahi. Seedha jawab do."*
 
-      "Of course! Here's a thoughtful response..." wala filler ekdum kat jaata hai.
+      "Of course! Here's a thoughtful response..." wala filler cut ho jaata hai.
 
-      Do-teen constraints kaafi hain. Zyada karoge toh brittle ho jata hai.
-
+      2-3 maaryade kaafi hain. Zyada fragile ho jaata hai.
   - type: tap_to_match
     xp: 15
-    prompt: "Har prompt-piece ko uski definition ke saath match kar."
+    prompt: Har prompt-piece ko uski definition se match karo.
     left:
       - id: r
-        label: "Role"
-      - id: t
-        label: "Task"
-      - id: ctx
-        label: "Context"
-      - id: con
-        label: "Constraints"
+        label: Role
+      - id: k
+        label: Kaam
+      - id: s
+        label: Sandarbh
+      - id: m
+        label: Maryada
     right:
       - id: who
-        label: "AI ko kaun banna hai"
+        label: AI ko kaun banana hai
       - id: what
-        label: "Exactly kya chahiye"
+        label: Exactly kya produce karna hai
       - id: bg
-        label: "Background jo pata hona chahiye"
+        label: Background jo jaanna chahiye
       - id: rules
-        label: "Rules — length, tone, format, kya avoid karna hai"
+        label: Rules — length, tone, format, kya avoid
     pairs:
-      - [r, who]
-      - [t, what]
-      - [ctx, bg]
-      - [con, rules]
-
+      - - r
+        - who
+      - - k
+        - what
+      - - s
+        - bg
+      - - m
+        - rules
   - type: tutor_message
     persona: nova
     text: |
-      Ek aur baat — RTCC ka order paththar pe lakeer nahi hai.
+      Ek aur baat — RKSM ka order sacred nahi hai.
 
-      Tujhe literally *"Role: ... Task: ... Context: ..."* type karne ki zaroorat nahi.
+      Literally "Role: ... Kaam: ... Sandarbh: ..." type karna zaroori nahi.
 
-      Pros isko *checklist* ki tarah dimaag mein rakhte hain aur naturally ek sentence mein woven kar dete hain.
-
+      Pros checklist *internalize* karte hain aur charon cheezein natural sentences mein weave karte hain.
   - type: tutor_message
     persona: nova
     text: |
-      *"As mere career coach (Role), help me think through job offer leni hai ya nahi (Task) — 30% zyada paisa hai par city mein nahi rehna chahta, 28 saal ka hoon, partner ko bhi shift karna padega (Context). Direct rehna, mere se ek-do sawaal poochna pros-cons list dene ki jagah (Constraints)."*
+      *"Mera career coach ban ke (Role) help karo — kya new job offer lena chahiye (Kaam). 40% zyada salary hai lekin doosre city mein, aur meri girlfriend ka transfer mushkil hoga (Sandarbh). Direct raho, pros-cons list mat do — ek ya do sawaal wapas poochho mujhse (Maryada)."*
 
-      Ek sentence. RTCC andar baith gaya.
-
+      RKSM sab hai. Ek paragraph mein.
   - type: tutor_message
     persona: nova
     text: |
-      Goal yahi hai. Paint-by-numbers nahi, *internal habit*.
+      Yahi goal hai. Paint-by-numbers nahi, *internal habit*.
 
-      Worth it? Bahut.
+      Worth it? Bilkul.
 
-      RTCC tujhe "ChatGPT user" se "ChatGPT operator" bana dega — ek week mein.
-
+      RKSM tumhe "ChatGPT user" se "ChatGPT operator" bana deta hai — ek hafte mein.
   - type: drag_to_reorder
     xp: 15
-    prompt: "Inhe sahi RTCC order mein rakh."
+    prompt: Inhe sahi RKSM order mein drag karo.
     items:
-      - id: t
-        label: "Task — kya chahiye"
+      - id: k
+        label: Kaam — kya produce karna hai
       - id: r
-        label: "Role — AI kya banega"
-      - id: c
-        label: "Context — background"
-      - id: x
-        label: "Constraints — rules, length, tone"
-    correct_order: [r, t, c, x]
-
+        label: Role — AI ko kaun banana hai
+      - id: s
+        label: Sandarbh — background
+      - id: m
+        label: Maryada — rules, length, tone
+    correct_order:
+      - r
+      - k
+      - s
+      - m
   - type: exercise
     xp: 20
     tool: chatgpt
     instruction: |
-      Ab RTCC ek *real* task pe apply kar.
+      Abhi ek real kaam ke liye RKSM apply karo.
 
-      1. Ek aisi cheez pick kar jo tujhe is week likhni hai — email, message, caption.
-      2. ChatGPT khol.
-      3. Prompt likh saare 4 pieces ke saath — Role, Task, Context, Constraints.
-      4. Bhej.
+      1. Koi ek cheez choose karo jo is hafte actually likhna hai — email, message, caption, kuch bhi.
+      2. ChatGPT kholo.
+      3. RKSM ke charon pieces ke saath prompt likho.
+      4. Bhejo.
 
-      Output ko compare kar usse jo tu khud likhta. Honest reh.
+      Jo mila, usse compare karo jo tum khud likhte. Honest raho.
 
-      Apna prompt yahaan paste kar.
-    placeholder: "Act as ... Likh do ... Meri situation hai ... Make sure to ..."
-
+      Apna prompt paste karo.
+    placeholder: Ek [role] ki taraf se baat karo... [kaam] karo... Meri situation hai... Dhyan rakho...
   - type: ai_conversation
     xp: 15
-    goal: "User identifies which RTCC letter they're most likely to skip and gets coached on it."
+    goal: User identify kare RKSM ka konsa letter woh rush mein skip karta hai aur coaching mile.
     max_turns: 4
-    success_criteria: "User picks one letter (R/T/C/C) they tend to forget and gets a concrete tip."
+    success_criteria: User ek letter (R/K/S/M) choose kare jo aksar bhool jaata hai aur concrete tip mile.
     starter_text: |
-      Honest moment, yaar.
+      Honest moment.
 
-      RTCC ke 4 letters mein se — Role, Task, Context, Constraints — kaun sa tu *most likely* skip karta hai jab jaldi mein hota hai?
+      RKSM ke charon letters mein — Role, Kaam, Sandarbh, Maryada — rush mein kaun sa *sabse pehle* skip ho jaata hai tumhara?
     system_prompt: |
-      You are Nova, a warm but direct coach. Speak Hinglish (Roman script, mix Hindi connectors with English tech terms). User just learned RTCC — Role, Task, Context, Constraints.
+      You are Nova, a warm but direct coach speaking in Hinglish (mix of Hindi and English, casual Indian tone). The user just learned RKSM — Role, Kaam, Sandarbh, Maryada (the Hinglish adaptation of RTCC).
 
-      Step 1: Pooch which letter they tend to skip when rushed.
-      Step 2: Unhe ek specific catch-tip de uss letter ke liye. e.g. "Agar Role skip hota hai, har baar ChatGPT khol ke pehle 'Act as my [X]' type karna start kar. Ek week mein muscle memory ban jayega."
+      Step 1: Ask which letter they tend to skip when rushed.
+      Step 2: Give them ONE specific catch-tip for that letter in Hinglish. e.g. "Agar Role aksar bhool jaate ho — try karo: jab bhi ChatGPT kholo, pehli cheez type karo 'Ek [X] ki tarah baat karo'."
       Step 3: Affirm and close with <END/>.
 
-      Replies under 50 words. Coach, lecturer nahi.
-
+      Replies under 60 words. Hinglish. Coach, lecturer nahi.
   - type: fill_in_the_blank
     xp: 15
-    prompt: "Framework lock kar le."
-    template: "RTCC: {{role}}, {{task}}, {{context}}, {{constraints}}. Har prompt. Habit ban jaaye, checklist nahi."
+    prompt: Framework lock karo.
+    template: "RKSM: {{role}}, {{kaam}}, {{sandarbh}}, {{maryada}}. Har prompt. Dheere dheere habit ban jaayegi."
     answers:
       - id: role
-        accepted: ["role", "Role"]
-      - id: task
-        accepted: ["task", "Task"]
-      - id: context
-        accepted: ["context", "Context"]
-      - id: constraints
-        accepted: ["constraints", "Constraints", "constraint"]
-    hint: "RTCC ka har letter spell out kar."
-
+        accepted:
+          - role
+          - Role
+      - id: kaam
+        accepted:
+          - kaam
+          - Kaam
+      - id: sandarbh
+        accepted:
+          - sandarbh
+          - Sandarbh
+      - id: maryada
+        accepted:
+          - maryada
+          - Maryada
+    hint: RKSM ke charon letters spell out karo.
   - type: reflection
     xp: 5
-    prompt: "Recently kaun sa prompt bheja tha jo — ab pata hai toh — RTCC use kar ke rewrite karta?"
-    placeholder: "Maine pucha tha 'email likh do' — recipient, length, tone add karna chahiye tha..."
-
+    prompt: Haal hi mein koi prompt bheja jo — ab RKSM jaante hue — dobara likhte kaise?
+    placeholder: Maine ek email maanga tha HR se... better hota agar tone, length, aur context add karta...
   - type: checkpoint
     xp: 10
-    title: "RTCC. Lock ho gaya."
+    title: RKSM. Lock hai.
     summary: |
-      Most log bekaar ChatGPT answers isliye paate hain kyunki prompts patle hain.
+      Zyaadatar log ChatGPT se generic jawab paate hain kyunki unka prompt bahut thin hota hai.
 
-      *Role* (AI kya banega). *Task* (kya chahiye). *Context* (background). *Constraints* (rules).
+      *Role* (AI kaun banega). *Kaam* (kya produce karna). *Sandarbh* (background). *Maryada* (rules).
 
-      Char pieces, har prompt. Aage chal ke internal habit.
+      Chaar cheezein, har prompt. Dheere dheere internal habit.
 
-      Kal — RTCC ko ChatGPT mein hi *bake* karenge. *Custom Instructions*.
+      Kal — ChatGPT ko apna bana lo permanently. *Custom Instructions.*

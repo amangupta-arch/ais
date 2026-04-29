@@ -1,0 +1,240 @@
+title: Iske saath socho, isse sirf kaam mat lo
+subtitle: ChatGPT ko thinking partner ki tarah use karna — teen patterns jo sab change kar dete hain
+estimated_minutes: 16
+xp_reward: 105
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Course ka last lesson.
+
+      RKSM seekha. Custom Instructions. Custom GPTs. Iteration. Hallucinations kaise pakdein.
+
+      Yeh sab ChatGPT ko *useful* banane ke liye kaafi hai.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Lekin ek aur shift hai jo ChatGPT ko useful → *transformative* bana deta hai.
+
+      Shift yeh hai ki *ChatGPT ke baare mein kaise sochte ho*.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Zyaadatar log ise *answer machine* ki tarah use karte hain.
+
+      Sawaal bhejo, jawab lo. Tool. Vending machine.
+
+      Pros ise *thinking partner* ki tarah use karte hain.
+
+      Adha-adhoora idea bhejo. Pushback lo. Sharpen karo. Kabhi kabhi puri soch badal jaati hai.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Same model. Wildly alag relationship.
+
+      Is lesson ke baad 3 patterns honge tumhare paas — jo ChatGPT ko "tool" se "thought-partner" banate hain.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Practical fark kya hai?
+
+      *Vending machine mode:*
+
+      Tum: "Kya mujhe yeh naya job offer lena chahiye?"
+      ChatGPT: pros aur cons ki balanced list.
+      Tum: padha, thoda sira hilaya, apne aap decide kiya.
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Thinking partner mode:*
+
+      Tum: "Ek job offer consider kar raha hoon. 40% zyada salary lekin doosre city mein. Mere against argue karo isko lene ke liye. Relentless raho."
+
+      ChatGPT: hard pushback karta hai. Risks name karta hai jo tumne soche nahi. Ek sharp sawaal poochta hai.
+
+      Tum: kuch realize karte ho jo avoid kar rahe the.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Same starting input.
+
+      Pehla ChatGPT ko *situation summarise* karne ke liye use karta hai.
+
+      Doosra ChatGPT ko *woh dekhne mein help karne ke liye* jo tum akele nahi dekh sakte.
+
+      Vending mode tasks ke liye theek hai. Thinking partner mode tumhe apne kaam mein *better* bana deta hai time ke saath.
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Pattern 1 — Devil's Advocate.*
+
+      Sabse useful "thinking partner" prompt ever:
+
+      *"Main [decision] consider kar raha hoon. Iske against argue karo jaise tum ek skeptical [expert] ho. Strongest objections dhundho. Mujhe validate mat karo — pushback karo."*
+  - type: tutor_message
+    persona: nova
+    text: |
+      Kyon kaam karta hai:
+
+      Default ChatGPT *agree* karta hai tumse. RLHF ne ise agreeable banya hai.
+
+      Tumhe explicitly *disagreement invite karna* hoga.
+
+      Jab karte ho, ek useful sparring partner ban jaata hai. Woh objections surface karta hai jo tum avoid kar rahe the.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Powerful hai:
+
+      - Career decisions (job offer, field switch, freelance jaana)
+      - Badi purchases (flat, gadget, course)
+      - Project plans (kya meri startup idea real problem solve karti hai?)
+      - Arguments jo bhejna hai (kya main miss kar raha hoon doosra perspective?)
+
+      "Devil's advocate" prompt hai difference sochne aur *better sochne* mein.
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Pattern 2 — What-If.*
+
+      Jab ek option consider kar rahe ho lekin commit nahi karne ke liye ready:
+
+      *"Mujhe walk through karo kya hoga agar main [option] karoon. Yeh mat batao karna chahiye ya nahi — bas aage play karo, hafte hafte. Kya accha jaata hai, kya mushkil hota hai, kya surprise karta hai?"*
+  - type: tutor_message
+    persona: nova
+    text: |
+      Yeh ChatGPT ko tumhara decision *simulate* karne pe majboor karta hai, sirf opine karne pe nahi.
+
+      Real example. Substack start karne ke baare mein soch rahe ho:
+
+      *What-If mode:* *"6 mahine walk through karo ek naye substack writer ke roop mein. Weekly posting. Main marketing professional hoon 20s mein, Delhi mein. Honest raho — week 1, 2, month 3. Motivation kab dip karti hai? Zyaadatar log kahan quit karte hain?"*
+
+      Output padhe jaise real preview. Traps dikh jaate hain.
+  - type: mcq
+    xp: 15
+    question: Stable job chhod ke startup join karna decide kar rahe ho. Kaunsa prompt ChatGPT ko thinking partner ki tarah use karta hai?
+    options:
+      - id: a
+        text: "\"Startup join karne vs rehne ke pros aur cons list karo.\""
+        is_correct: false
+        rationale: Vending mode. Balanced, generic list milegi.
+      - id: b
+        text: "\"Startup join karne ke against argue karo, jaise tum mera woh dost ho jo mujhe jaanta hai. Woh objections dhundho jo main avoid kar raha hoon.\""
+        is_correct: true
+        rationale: Thinking partner mode. Devil's advocate. Model ko woh surface karne pe majboor karta hai jo tum avoid kar rahe ho.
+      - id: c
+        text: "\"Startup kya hota hai?\""
+        is_correct: false
+        rationale: Pure information. Learning ke liye useful, *tumhare* decision ke liye nahi.
+      - id: d
+        text: "\"Haan ya naa batao — lena chahiye?\""
+        is_correct: false
+        rationale: Model se *tumhare liye* decide karne ko bol rahe ho. Model ko tumhari real life ke baare mein kuch pata nahi.
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Pattern 3 — Explain Back.*
+
+      Jab kuch *samajhna* chahte ho — ya apni understanding check karna hai.
+
+      *Pattern A — apni thinking check karna:*
+
+      *"Main tumhe [concept] explain karta hoon. Baad mein woh parts batao jo galat hain, jahan vague hoon, aur kya miss kiya."*
+  - type: tutor_message
+    persona: nova
+    text: |
+      Tum explain karo. Model reflect back karta hai. Apne gaps clear dikh jaate hain.
+
+      *Pattern B — kuch mushkil samajhna:*
+
+      *"[Concept] mujhe aise explain karo jaise main 12 saal ka hoon. Phir college student. Phir related field mein expert. Same idea teen depths mein dikhao."*
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Pattern C — mushkil conversation ke liye prep:*
+
+      *"Main apne manager ko salary raise maangne wala hoon. Yeh mera pitch hai: [paste]. Ab mera manager ban jao — busy founder, thoda skeptical. Waise pushback karo jaise woh karte."*
+
+      Model ke saath rehearse karo. Taiyaar hokar jaao.
+  - type: tap_to_match
+    xp: 15
+    prompt: Har pattern ko uske sahi use case se match karo.
+    left:
+      - id: devil
+        label: Devil's Advocate
+      - id: whatif
+        label: What-If
+      - id: explain_a
+        label: Explain Back (tumhara idea)
+      - id: explain_b
+        label: Explain Back (conversation rehearse karna)
+    right:
+      - id: pushback
+        label: Tum suspect karte ho ki objections avoid kar rahe ho
+      - id: simulate
+        label: Kuch naya karne ka consider kar rahe ho
+      - id: gaps
+        label: Idea mein blind spots dhundhne hain
+      - id: rehearse
+        label: Mushkil conversation aane wali hai
+    pairs:
+      - - devil
+        - pushback
+      - - whatif
+        - simulate
+      - - explain_a
+        - gaps
+      - - explain_b
+        - rehearse
+  - type: exercise
+    xp: 25
+    tool: chatgpt
+    instruction: |
+      Ek real decision choose karo jo abhi tumhare dimaag mein hai. Real, hypothetical nahi.
+
+      Job offer. Purchase. Project. Conversation. Goal.
+
+      *Teeno patterns* is order mein use karo:
+
+      1. *Devil's Advocate* — *"Mere plan ke against argue karo. Relentless raho."*
+      2. *What-If* — *"Walk through karo kya hoga agar main yeh karoon. Mahine mahine."*
+      3. *Explain Back* — *"Summarise karo kya risk kar raha hoon, kya gain, aur ek sawaal poochho mujhse."*
+
+      Woh *ek* insight paste karo jo sabse zyada surprise kiya.
+    placeholder: "Jo mujhe surprise kiya: ..."
+  - type: fill_in_the_blank
+    xp: 15
+    prompt: Teen thinking-partner patterns lock karo.
+    template: "{{Devil}}'s Advocate (mere plan pe pushback). {{What-if}} (simulate karo kya hoga). {{Explain}} Back (mere gaps dhundho, conversations rehearse karo)."
+    answers:
+      - id: Devil
+        accepted:
+          - devil
+          - Devil
+      - id: What-if
+        accepted:
+          - what-if
+          - what if
+          - whatif
+          - What-if
+          - What-If
+          - What if
+      - id: Explain
+        accepted:
+          - explain
+          - Explain
+    hint: Teeno lesson ke pattern names hain.
+  - type: checkpoint
+    xp: 10
+    title: Tum ab ChatGPT bolte ho.
+    summary: |
+      Vending machine vs thinking partner. *Same model. Alag relationship.*
+
+      Teen patterns:
+      - *Devil's Advocate* — mere plan pe pushback karo.
+      - *What-If* — simulate karo kya hoga.
+      - *Explain Back* — mere gaps dhundho, mushkil conversations rehearse karo.
+
+      Practice: ek recurring weekly moment choose karo. ChatGPT ko thinking-partner mode mein use karo.
+
+      Course complete. Tum "ChatGPT user" se "ChatGPT operator" ban gaye ho. Ready ho.

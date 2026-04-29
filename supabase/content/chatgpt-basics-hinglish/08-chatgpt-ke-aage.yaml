@@ -1,0 +1,189 @@
+title: ChatGPT akela nahi hai
+subtitle: AI tools ka full map — kaun kya karta hai, tumhare liye kaunsa
+estimated_minutes: 15
+xp_reward: 100
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Aaj tak sirf ChatGPT ka lesson tha.
+
+      Lekin AI tools ka ecosystem bahut bada hai.
+
+      Yeh lesson map hai — taaki overwhelm na ho, aur sahi tool sahi kaam ke liye milta rahe.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ek important framing pehle.
+
+      *Har AI tool ek hi cheez pe best hota hai.*
+
+      ChatGPT = text mein sochna aur likhna.
+      Midjourney = image banana.
+      Suno = voice/audio.
+      Cursor = code likhna.
+      Notion AI = documents aur notes.
+
+      Tool mixing karna — tab shuru karo jab basics solid hon.
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Category 1: Text AI (Large Language Models)*
+
+      Yeh text padhte, samajhte, likhte hain.
+
+      - *ChatGPT (OpenAI)* — sabse popular. Conversation, writing, reasoning.
+      - *Claude (Anthropic)* — longer documents, nuanced analysis, safer.
+      - *Gemini (Google)* — Google products ke saath integrated. Research aur summarization.
+      - *Llama (Meta)* — open source. Developers ke liye.
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Category 2: Image AI*
+
+      - *Midjourney* — highest quality art aur design images.
+      - *DALL-E (OpenAI)* — ChatGPT ke andar hi available. Quick concepts.
+      - *Canva AI* — non-designers ke liye best. Social media graphics.
+      - *Adobe Firefly* — designers ke liye, Adobe tools ke saath integrated.
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Category 3: Video AI*
+
+      - *Sora (OpenAI)* — text se video, cinematic quality.
+      - *Kling* — realistic video generation, Indian creators bhi use karte hain.
+      - *HeyGen* — AI avatar videos. Product demos, explainers.
+      - *Runway* — professional video editing + generation.
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Category 4: Audio + Voice AI*
+
+      - *ElevenLabs* — realistic voice cloning aur text-to-speech.
+      - *Suno* — text se music banao.
+      - *Whisper (OpenAI)* — speech to text, bahut accurate.
+      - *Otter.ai* — meetings automatically transcribe karta hai.
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Category 5: Code AI*
+
+      - *GitHub Copilot* — code likhne mein help, VS Code ke andar.
+      - *Cursor* — AI-first code editor.
+      - *Replit AI* — beginners ke liye, browser mein code karo.
+
+      *Category 6: Productivity AI*
+
+      - *Notion AI* — notes aur docs mein built-in AI.
+      - *Perplexity* — AI-powered search engine, sources ke saath.
+      - *Gamma* — ek prompt se presentations.
+  - type: mcq
+    xp: 15
+    question: Tumhare boss ne tumhe ek investor presentation ke liye 10 slides banana kaha hai. Tumhare paas 2 ghante hain. Konsa AI tool combination best hai?
+    options:
+      - id: a
+        text: Sirf ChatGPT se saara content likho
+        is_correct: false
+        rationale: ChatGPT text likhega, lekin slides format nahi karega. Manual kaam bahut zyada hoga.
+      - id: b
+        text: ChatGPT se outline + content likho, phir Gamma se slides automatically generate karo
+        is_correct: true
+        rationale: Sahi. ChatGPT thinking + structure, Gamma instant slides. 45 minute mein draft ready.
+      - id: c
+        text: Midjourney se saari images banao
+        is_correct: false
+        rationale: Images important hain lekin slides mein text content main cheez hai. Start wrong jagah se ho raha.
+      - id: d
+        text: GitHub Copilot use karo
+        is_correct: false
+        rationale: Copilot code ke liye hai. Presentations ke liye relevant nahi.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Beginner ke liye recommended sequence.
+
+      *Mahina 1:* ChatGPT master karo. Sirf yahi. RKSM, Custom Instructions, iteration — sab solid ho jaaye.
+
+      *Mahina 2:* Apne specific kaam ke liye ek tool add karo. Designer? Canva AI. Writer? Perplexity. Presenter? Gamma.
+
+      *Mahina 3+:* Combine karna shuru karo. Workflow banana.
+  - type: tutor_message
+    persona: nova
+    text: |
+      Sabse common mistake: sab tools ek saath try karna.
+
+      15 accounts. Koi bhi properly master nahi. Confusion aur frustration.
+
+      *One tool at a time. Master karo. Phir aage.*
+  - type: tutor_message
+    persona: nova
+    text: |
+      India-specific tools jo kaam ke hain:
+
+      - *Sarvam AI* — Indian languages mein AI (Hindi, Tamil, Telugu).
+      - *Krutrim (Ola)* — India-focused LLM, Hinglish mein better.
+      - *DesiVocal* — Indian accent text-to-speech.
+
+      Ecosystem grow ho raha hai. Tier 2/3 ke liye better tools aa rahe hain.
+  - type: tap_to_match
+    xp: 15
+    prompt: Har task ko best AI tool se match karo.
+    left:
+      - id: article
+        label: Ek research article likhna sources ke saath
+      - id: logo
+        label: Brand ke liye logo concept banana
+      - id: meeting
+        label: 1-ghante ki meeting automatically transcribe karna
+      - id: pitch
+        label: 5-minute ki product pitch deck banana
+    right:
+      - id: perp
+        label: Perplexity (AI search with sources)
+      - id: mid
+        label: Midjourney ya Canva AI
+      - id: otter
+        label: Otter.ai
+      - id: gamma
+        label: Gamma (text to slides)
+    pairs:
+      - - article
+        - perp
+      - - logo
+        - mid
+      - - meeting
+        - otter
+      - - pitch
+        - gamma
+  - type: ai_conversation
+    xp: 15
+    goal: User identify kare unka next AI tool jo try karna chahiye.
+    max_turns: 4
+    success_criteria: User ek specific tool name kare (ChatGPT ke alawa) aur ek concrete use case.
+    starter_text: |
+      Map dekha. Ab tumhara kaam.
+
+      ChatGPT ke alawa, kaunsa ek AI tool tumhare liye most useful hoga? Apna kaam batao — main suggest karoonga.
+    system_prompt: |
+      You are Nova, a warm but direct Hinglish coach. The user just learned the AI tools landscape.
+
+      Step 1: Ask about their work/goal.
+      Step 2: Recommend ONE specific tool (not ChatGPT) with a clear use case in Hinglish. Keep it simple and actionable.
+      Step 3: Affirm and close with <END/>.
+
+      Replies under 70 words. Hinglish. Give a specific tool and specific use case, not a menu of options.
+  - type: reflection
+    xp: 5
+    prompt: Aaj ke baad, kaun sa ek AI tool hai jise is hafte try karna chahte ho? Kyun?
+    placeholder: Gamma try karna hai — presentations mein bahut time lagta hai aur boss ko weekly update dena hota hai...
+  - type: checkpoint
+    xp: 10
+    title: AI ka full map — tumhare haath mein.
+    summary: |
+      6 AI categories: Text, Image, Video, Audio, Code, Productivity.
+
+      *One tool at a time.* Mahina 1: ChatGPT master karo. Phir expand.
+
+      India-specific tools bhi aa rahe hain — ecosystem grow ho raha hai.
+
+      Kal — apna AI workflow design karo. Sab kuch ek system mein laao.
