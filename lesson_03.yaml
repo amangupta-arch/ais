@@ -1,0 +1,305 @@
+- lesson: 3
+  title: "Apna pehla Custom GPT banao"
+  subtitle: "Ek specific kaam ke liye tumhara apna AI — 10 minute mein, koi code nahi"
+  estimated_minutes: 16
+  xp_reward: 95
+  turns:
+
+    - type: tutor_message
+      persona: nova
+      text: |
+        Kal Custom Instructions set kiya — tumhari *static* preferences har chat ke liye.
+
+        Aaj, next level.
+
+        *Custom GPTs.*
+
+    - type: tutor_message
+      persona: nova
+      text: |
+        Custom GPT ek saved version hai ChatGPT ka — *ek specific kaam* ke liye specialized.
+
+        Tumhara dietitian. Tumhara code reviewer. Tumhara essay editor. Interview prep coach.
+
+        Ek specific recurring kaam → ek specific GPT → ek click mein use.
+
+    - type: tutor_message
+      persona: nova
+      text: |
+        Custom Instructions se fark:
+
+        - Custom Instructions = tumhari defaults *har* chat ke liye.
+        - Custom GPTs = ek *alag, dedicated* assistant ek kaam ke liye — apna setup, apni files, apna behavior.
+
+    - type: tutor_message
+      persona: nova
+      text: |
+        Is lesson ke baad ek real recurring need ke liye Custom GPT banaya hoga.
+
+        Koi code nahi. Koi prompt-engineering jargon nahi. Seedha English/Hinglish ek setup form mein.
+
+    - type: tutor_message
+      persona: nova
+      text: |
+        Custom GPT actually kya ho sakta hai?
+
+        Real examples — yeh sab exist karte hain jo log daily use karte hain:
+
+        - *"Mera LinkedIn writer"* — tumhari tone, industry, audience jaanta hai.
+        - *"Code reviewer"* — tumhara stack, conventions jaanta hai.
+        - *"Devil's advocate"* — har plan pe pushback karta hai.
+        - *"Interview prep coach"* — common HR questions aur STAR format jaanta hai.
+
+    - type: tutor_message
+      persona: nova
+      text: |
+        - *"IELTS essay coach"* — rubric jaanta hai, draft score karta hai.
+        - *"Goa trip planner"* — tumhara travel style, budget jaanta hai.
+        - *"Recipe translator"* — elaborate recipe ko "Tuesday ko kya cook kar sakta hoon" mein convert karta hai.
+
+    - type: tutor_message
+      persona: nova
+      text: |
+        Pattern notice karo.
+
+        Har ek *ek specific recurring kaam hai jiska shape clear hai*.
+
+        "Trip planner" GPT se saal mein 5 baar baat karoge. Har conversation chhoti aur sharper hogi — pre-loaded hai woh.
+
+    - type: tutor_message
+      persona: nova
+      text: |
+        Custom GPT ka anatomy — actually kya configure karte ho.
+
+        Code nahi likhte. Form fill karte ho.
+
+        *1. Name* — *"Goa Trip Planner"*, *"Mera Brutal Editor"*.
+
+        *2. Description* — ek line jo click karne par dikhti hai.
+
+    - type: tutor_message
+      persona: nova
+      text: |
+        *3. Instructions* — sabse badi cheez.
+
+        System prompt: GPT kaun hai, kaise behave karta hai, kya karta hai kya nahi.
+
+        Aaj yahan zyada time spend karenge.
+
+    - type: tutor_message
+      persona: nova
+      text: |
+        *4. Conversation starters* — 4 example first messages.
+
+        *5. Knowledge* — optional. PDFs, docs upload karo jo GPT reference kar sake.
+
+        *6. Capabilities* — checkboxes. Web browsing? Image generation? Mostly defaults rakho.
+
+        Poora kaam: pehli baar 10-20 minute. Teesri baar 5 minute.
+
+    - type: tutor_message
+      persona: nova
+      text: |
+        *Instructions* field — yahan magic hota hai.
+
+        Yeh system prompt hai — RKSM GPT scale pe.
+
+        Ek strong template:
+
+    - type: tutor_message
+      persona: nova
+      text: |
+        ```
+        Tum [ROLE] ho. Tum [KAUN] ki [KYA] mein help karte ho.
+
+        Tumhara behavior:
+        - [behaviour 1]
+        - [behaviour 2]
+
+        Tum kya KARTE ho:
+        - [task 1] [task 2]
+
+        Tum kya NAHI karte:
+        - [boundary 1] [boundary 2]
+
+        Format:
+        - [format rule]
+
+        Ek example exchange:
+        User: [example] / Tum: [response]
+        ```
+
+    - type: tutor_message
+      persona: nova
+      text: |
+        Yeh template lo. Apne kaam ke liye fill karo. Done.
+
+        Specificity lever hai. Vague Instructions = vague behaviour. Sharp Instructions = sharp behaviour.
+
+    - type: mcq
+      xp: 15
+      question: "Custom GPT kab banana chahiye vs regular ChatGPT use karna?"
+      options:
+        - id: a
+          text: "Jab yeh exact kaam 3-4 baar se zyada karoge"
+          is_correct: true
+          rationale: "Sahi. Setup 10-20 minute ka hai. Tab worth it hai jab kaam repeatedly ho. One-offs ke liye sirf RKSM use karo."
+        - id: b
+          text: "Jab kaam bahut creative ho"
+          is_correct: false
+          rationale: "Creativity deciding factor nahi hai. Recurrence hai."
+        - id: c
+          text: "Sirf tab jab API ke saath code likh rahe ho"
+          is_correct: false
+          rationale: "Custom GPTs UI feature hain, koi code nahi chahiye."
+        - id: d
+          text: "Jab tumhe alag underlying model chahiye"
+          is_correct: false
+          rationale: "Custom GPTs same models pe run karte hain. Customisation *system prompt* hai."
+
+    - type: tutor_message
+      persona: nova
+      text: |
+        Worked example. Real Instructions *"Mera Brutal Editor"* ke liye.
+
+        ```
+        Tum ek brutal lekin fair senior editor ho jisne 12 saal major Indian publications mein kaam kiya hai. Tum writing improve karne mein help karte ho — usually 100-500 word pieces.
+        ```
+
+    - type: tutor_message
+      persona: nova
+      text: |
+        ```
+        Tumhara behavior:
+        - Sabse PEHLE ek biggest weakness identify karo.
+        - Specific line-level edits do, vague suggestions nahi.
+        - Exact weak phrase quote karo, replacement suggest karo.
+        - Taarif sparingly karo, sirf woh jo actually kaam karta hai.
+        ```
+
+    - type: tutor_message
+      persona: nova
+      text: |
+        ```
+        Tum kya KARTE ho:
+        - Filler ruthlessly cut karo.
+        - Jargon, hedging, lazy verbs pakdo.
+
+        Tum kya NAHI karte:
+        - Ant mein "great work!" mat likho.
+        - Poora piece rewrite mat karo — diagnose aur suggest karo.
+        - Direct hone ke liye apologise mat karo.
+        ```
+
+    - type: tutor_message
+      persona: nova
+      text: |
+        ```
+        Format:
+        - Shuru karo: "SABSE BADI PROBLEM:" 1-2 lines mein.
+        - Phir "LINE EDITS:" max 5 specific changes ke saath.
+        - Ant mein ek suggestion — aage kya karna hai.
+        ```
+
+        Yahi Custom GPT hai. Model ab *us editor ki tarah* behave karta hai, har chat mein.
+
+    - type: tutor_message
+      persona: nova
+      text: |
+        *Knowledge feature* — kab use karna.
+
+        Knowledge se up to 20 files upload kar sakte ho (PDFs, .txt, .docx) jo Custom GPT reference kar sake.
+
+        Basically RAG (baad mein cover hoga).
+
+    - type: tutor_message
+      persona: nova
+      text: |
+        Kab shine karta hai:
+
+        - Tumhara brand guide → "Mera Marketing Copywriter" tumhari voice mein likhta hai.
+        - Tumhare last 30 LinkedIn posts → "Mera LinkedIn Writer" tumhara style jaanta hai.
+        - IELTS rubric → "Mera IELTS Coach" jaanta hai exactly kaise marks milenge.
+
+        Kab nahi:
+
+        - Chhoti info jo Instructions mein fit ho → sirf paste karo.
+        - Info jo weekly change hoti hai → Knowledge files static hain.
+
+    - type: tap_to_match
+      xp: 15
+      prompt: "Har scenario ko sahi tool se match karo."
+      left:
+        - id: every
+          label: "Apna naam aur tone har future chat ke liye set karna"
+        - id: weekly
+          label: "Hafte mein 5-10 LinkedIn posts apni voice mein review karna"
+        - id: once
+          label: "Aaj ek news article summarise karna"
+        - id: support
+          label: "50-page manual pe customer questions answer karna"
+      right:
+        - id: ci
+          label: "Custom Instructions"
+        - id: gpt_writer
+          label: "Custom GPT (past posts Knowledge files ke saath)"
+        - id: oneoff
+          label: "Sirf ek one-off RKSM prompt"
+        - id: gpt_support
+          label: "Custom GPT (manual Knowledge ke saath)"
+      pairs:
+        - [every, ci]
+        - [weekly, gpt_writer]
+        - [once, oneoff]
+        - [support, gpt_support]
+
+    - type: exercise
+      xp: 20
+      tool: chatgpt
+      instruction: |
+        Apna pehla Custom GPT banao.
+
+        1. ChatGPT kholo. "Explore GPTs" → "Create" click karo.
+        2. Ek real recurring kaam choose karo. (Editor, Hinglish email translator, recipe interpreter, workout planner.)
+        3. Template use karo:
+           - Role + audience
+           - Behavior (3-5 bullets)
+           - DO + DON'T
+           - Format
+           - Ek example exchange
+        4. Save karo. Real kaam se test karo.
+
+        Apna Instructions text paste karo.
+      placeholder: "Tum ek [role] ho. Tum [kaun] ki [kya] mein help karte ho. ..."
+
+    - type: ai_conversation
+      xp: 15
+      goal: "User ek recurring kaam identify kare jo Custom GPT ka acha candidate ho."
+      max_turns: 4
+      success_criteria: "User ek specific recurring kaam name kare jiska shape clear ho — kya karega aur kya nahi."
+      starter_text: |
+        Quick scoping.
+
+        Teen cheezein batao jo tum *zyaadatar hafte* karte ho jisme likhna, sochna, ya review karna ho. Kaam, hobby, ya life admin.
+      system_prompt: |
+        You are Nova, a warm but direct Hinglish coach. The user just learned about Custom GPTs.
+
+        Step 1: Ask for 3 weekly recurring tasks.
+        Step 2: Pick the BEST candidate (most repeatable + most-defined shape) and explain why in Hinglish, briefly sketch Instructions emphasis.
+        Step 3: Affirm and close with <END/>.
+
+        Replies under 70 words. Decisive. Hinglish.
+
+    - type: checkpoint
+      xp: 10
+      title: "Tumhare apne AI assistants, ek click door."
+      summary: |
+        *Custom GPTs* — ek specific recurring kaam ke liye saved personas. System prompt + optional knowledge files. Koi code nahi.
+
+        Instructions likho jaise RKSM at scale: role, behaviour rules, do/don't, format, ek example.
+
+        Same model. Alag *briefing*.
+
+        Kal — jab ChatGPT ka pehla jawab sahi na ho tab kya karo. (Hint: restart mat karo. *Iterate karo*.)
+
+---
