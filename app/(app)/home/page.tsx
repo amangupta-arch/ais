@@ -6,7 +6,7 @@ import {
   getAllBundles, getAllCourses, getMe, getMyCourseProgress,
 } from "@/lib/supabase/queries";
 import { firstName } from "@/lib/utils";
-import { bundleDescription, bundleTitle } from "@/lib/types";
+import { bundleDescription, bundleTitle, pickLanguageVariants } from "@/lib/types";
 import type { Bundle, Course, PlanTier, Persona } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
@@ -55,7 +55,7 @@ export default async function HomePage() {
 
   // Free section: courses (free has no bundles).
   // Basic / Advanced sections: bundles, scoped to the user's preferred language with EN fallback.
-  const freeCourses     = courses.filter((c) => c.plan_tier === "free" && (c.language_code === lang || c.language_code === "en"));
+  const freeCourses     = pickLanguageVariants(courses.filter((c) => c.plan_tier === "free"), lang);
   const basicBundles    = bundles.filter((b) => b.plan_tier === "basic").slice(0, 12);
   const advancedBundles = bundles.filter((b) => b.plan_tier === "advanced").slice(0, 12);
 

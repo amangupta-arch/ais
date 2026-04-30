@@ -3,6 +3,7 @@ import { notFound, redirect } from "next/navigation";
 import { ArrowRight, Clock } from "lucide-react";
 
 import { getCourseBySlug, getMe, getMyLessonProgress } from "@/lib/supabase/queries";
+import { createClient } from "@/lib/supabase/server";
 import type { PlanTier } from "@/lib/types";
 import { formatTier } from "@/lib/utils";
 
@@ -19,11 +20,29 @@ export default async function CourseDetailPage({
   params: Promise<{ courseSlug: string }>;
 }) {
   const { courseSlug } = await params;
-  const { user, planId } = await getMe();
+  const { user, profile, planId } = await getMe();
   if (!user) redirect("/login");
 
   const { course, lessons } = await getCourseBySlug(courseSlug);
   if (!course) notFound();
+
+  // If the user prefers a different language and a sibling variant exists in
+  // that language, redirect there. Direct URL hits to the EN slug should land
+  // a Hinglish-preferring user on the Hinglish variant.
+  const preferredLang = profile?.preferred_language ?? "en";
+  if (course.course_group_id && course.language_code !== preferredLang) {
+    const supabase = await createClient();
+    const { data: sibling } = await supabase
+      .from("courses")
+      .select("slug")
+      .eq("course_group_id", course.course_group_id)
+      .eq("language_code", preferredLang)
+      .eq("is_published", true)
+      .maybeSingle();
+    if (sibling?.slug && sibling.slug !== course.slug) {
+      redirect(`/learn/${sibling.slug}`);
+    }
+  }
 
   const tier: PlanTier = (planId as PlanTier) ?? "free";
   const locked = !tierCanAccess(tier, course.plan_tier);

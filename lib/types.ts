@@ -140,6 +140,34 @@ export function bundleDescription(b: Bundle, lang: string): string | null {
   return b.translations[lang]?.description ?? b.translations.en?.description ?? null;
 }
 
+/**
+ * Dedupe a list of courses to one variant per `course_group_id`, preferring
+ * the requested language, falling back to English, then to whichever exists.
+ * Courses without a course_group_id are language-neutral and pass through.
+ */
+export function pickLanguageVariants(courses: Course[], lang: string): Course[] {
+  const ungrouped: Course[] = [];
+  const groups = new Map<string, Course[]>();
+  for (const c of courses) {
+    if (!c.course_group_id) {
+      ungrouped.push(c);
+      continue;
+    }
+    const arr = groups.get(c.course_group_id) ?? [];
+    arr.push(c);
+    groups.set(c.course_group_id, arr);
+  }
+  const picked: Course[] = [...ungrouped];
+  for (const variants of groups.values()) {
+    const match =
+      variants.find((v) => v.language_code === lang) ??
+      variants.find((v) => v.language_code === "en") ??
+      variants[0];
+    if (match) picked.push(match);
+  }
+  return picked.sort((a, b) => a.order_index - b.order_index);
+}
+
 export type Lesson = {
   id: string;
   course_id: string;
