@@ -18,6 +18,79 @@ insert into achievements (id, title, description, icon, category, xp_reward) val
   ('five_courses', 'Polymath',       'Five courses deep. You''re covering real ground.',        'trophy', 'progress',300),
   ('night_owl',    'Night Owl',      'A lesson finished after 11pm. Rare breed.',              'moon',   'special',  40);
 
+-- BUNDLES — BASIC TIER (43)
+-- Each bundle gates 9 courses. Courses are mapped via courses.bundle_id.
+-- Translations are jsonb keyed by language code (en, hi, hinglish, mr, pa, te, ta, fr, es, bn).
+insert into bundles (slug, plan_tier, emoji, cover_gradient, order_index, translations) values
+  ('b-what-is-ai',                'basic', '🌱', 'moss',  100, '{"en":{"title":"What is AI & How Will It Help Me?","description":"The context behind the hype."}}'::jsonb),
+  ('b-easier-life-with-chatgpt',  'basic', '💬', 'ember', 101, '{"en":{"title":"Make Your Life Easier with ChatGPT","description":"Daily wins with the world''s most popular AI."}}'::jsonb),
+  ('b-chatgpt-pro',               'basic', '⚡', 'ember', 102, '{"en":{"title":"How to Use ChatGPT''s Pro Version","description":"Squeeze every drop out of Plus."}}'::jsonb),
+  ('b-design-with-canva-ai',      'basic', '✨', 'moss',  103, '{"en":{"title":"Design Anything in Minutes with Canva AI","description":"Magic Studio, mastered."}}'::jsonb),
+  ('b-gemini-all-in-one',         'basic', '💎', 'ember', 104, '{"en":{"title":"Your All-in-One AI Assistant with Gemini","description":"Google''s quiet powerhouse."}}'::jsonb),
+  ('b-deepl-translate',           'basic', '🌐', 'paper', 105, '{"en":{"title":"Speak Any Language with DeepL — Translate Like a Pro","description":"Translation that sounds native."}}'::jsonb),
+  ('b-character-ai',              'basic', '🎭', 'moss',  106, '{"en":{"title":"Chat with AI Characters — Learn, Play & Create","description":"Roleplay, practice, create."}}'::jsonb),
+  ('b-perplexity-research',       'basic', '🔎', 'ember', 107, '{"en":{"title":"Research Smarter with Perplexity — Your AI Scholar","description":"Sourced answers, faster."}}'::jsonb),
+  ('b-removebg',                  'basic', '🪄', 'paper', 108, '{"en":{"title":"One-Click Photo Magic — Backgrounds Gone","description":"Remove.bg, unlocked."}}'::jsonb),
+  ('b-quillbot',                  'basic', '📝', 'moss',  109, '{"en":{"title":"Rewrite Smarter, Write Faster with QuillBot","description":"Paraphrase without flattening."}}'::jsonb),
+  ('b-ai-grammar-coach',          'basic', '🎓', 'paper', 110, '{"en":{"title":"Perfect Your Writing — AI Grammar Coach","description":"Polish every line."}}'::jsonb),
+  ('b-claude-conversations',      'basic', '🧬', 'moss',  111, '{"en":{"title":"Think Big with Claude — Smarter AI Conversations","description":"Long context, thoughtful answers."}}'::jsonb),
+  ('b-suno-music',                'basic', '🎵', 'ember', 112, '{"en":{"title":"Make Music with AI — Your Suno Studio","description":"Text to track in minutes."}}'::jsonb),
+  ('b-ai-app-hub',                'basic', '🧩', 'paper', 113, '{"en":{"title":"All-in-One AI App Hub — Discover, Compare, Use","description":"One place for every model."}}'::jsonb),
+  ('b-capcut-ai',                 'basic', '🎞️', 'moss',  114, '{"en":{"title":"Edit Videos Like a Pro with CapCut AI","description":"Cut, caption, polish."}}'::jsonb),
+  ('b-office-copilot',            'basic', '💼', 'paper', 115, '{"en":{"title":"Your Everyday Office Copilot — Work Smarter","description":"Microsoft Copilot for daily work."}}'::jsonb),
+  ('b-quizizz',                   'basic', '🧠', 'ember', 116, '{"en":{"title":"AI-Powered Learning Games with Quizizz","description":"Make learning stick."}}'::jsonb),
+  ('b-elevenlabs',                'basic', '🎙️', 'moss',  117, '{"en":{"title":"Give AI a Voice — Create Speech with ElevenLabs","description":"Realistic voices, on demand."}}'::jsonb),
+  ('b-deepai',                    'basic', '🌊', 'paper', 118, '{"en":{"title":"Explore the World of AI Tools with DeepAI","description":"A buffet of models."}}'::jsonb),
+  ('b-midjourney-art',            'basic', '🖼️', 'ember', 119, '{"en":{"title":"Create Stunning Art with Midjourney","description":"Prompt to poster."}}'::jsonb),
+  ('b-runway-video',              'basic', '🎬', 'moss',  120, '{"en":{"title":"AI Video Magic — Editing with Runway","description":"Generative video, day one."}}'::jsonb),
+  ('b-copy-ai',                   'basic', '✍️', 'paper', 121, '{"en":{"title":"Write Anything in Seconds with Copy.ai","description":"From blank page to polished copy."}}'::jsonb),
+  ('b-otter-ai',                  'basic', '🦦', 'ember', 122, '{"en":{"title":"Never Miss a Meeting — Transcribe with Otter AI","description":"Notes that take themselves."}}'::jsonb),
+  ('b-jasper',                    'basic', '👻', 'moss',  123, '{"en":{"title":"AI Copywriter for Businesses — Jasper Mastery","description":"On-brand at scale."}}'::jsonb),
+  ('b-adobe-firefly',             'basic', '🔥', 'ember', 124, '{"en":{"title":"Creative Superpowers with Adobe Firefly","description":"Generative inside Adobe."}}'::jsonb),
+  ('b-github-copilot',            'basic', '👨‍💻', 'paper', 125, '{"en":{"title":"Code Smarter, Faster with GitHub Copilot","description":"Pair-programmer in your IDE."}}'::jsonb),
+  ('b-notion-ai',                 'basic', '🗒️', 'moss',  126, '{"en":{"title":"Organize Life & Work with Notion AI","description":"Notes, docs, plans — assisted."}}'::jsonb),
+  ('b-synthesia',                 'basic', '🎥', 'ember', 127, '{"en":{"title":"Make AI Videos with Synthesia — No Camera Needed","description":"Avatar videos in minutes."}}'::jsonb),
+  ('b-zapier',                    'basic', '🔗', 'paper', 128, '{"en":{"title":"Automate Your Life with Zapier AI","description":"Workflows that run themselves."}}'::jsonb),
+  ('b-fireflies',                 'basic', '🪰', 'moss',  129, '{"en":{"title":"AI Meeting Notes with Fireflies","description":"Capture, search, share."}}'::jsonb),
+  ('b-gamma',                     'basic', '📊', 'ember', 130, '{"en":{"title":"AI Presentations in Minutes with Gamma","description":"From prompt to deck."}}'::jsonb),
+  ('b-sudowrite',                 'basic', '📚', 'paper', 131, '{"en":{"title":"Write Better Stories with Sudowrite AI","description":"A novelist''s second pair of hands."}}'::jsonb),
+  ('b-consensus',                 'basic', '📑', 'moss',  132, '{"en":{"title":"Research Papers Simplified with Consensus","description":"Evidence-backed answers."}}'::jsonb),
+  ('b-descript',                  'basic', '🎚️', 'ember', 133, '{"en":{"title":"Edit Audio & Video by Editing Text — Descript AI","description":"Type to cut."}}'::jsonb),
+  ('b-veo-3',                     'basic', '🎬', 'paper', 134, '{"en":{"title":"Next-Gen Video Creation with Veo 3","description":"State-of-the-art video gen."}}'::jsonb),
+  ('b-fathom',                    'basic', '🐟', 'moss',  135, '{"en":{"title":"AI Meeting Highlights & Summaries with Fathom","description":"Skip to the point."}}'::jsonb),
+  ('b-murf',                      'basic', '🎤', 'ember', 136, '{"en":{"title":"Studio-Quality Voiceovers with Murf AI","description":"Pro voiceovers, no booth."}}'::jsonb),
+  ('b-grok',                      'basic', '🤖', 'paper', 137, '{"en":{"title":"Smart Conversations Anywhere with Grok AI","description":"Real-time AI on X."}}'::jsonb),
+  ('b-deepseek',                  'basic', '🔬', 'moss',  138, '{"en":{"title":"Push AI Limits — Explore with DeepSeek","description":"Open frontier model."}}'::jsonb),
+  ('b-cursor-code',               'basic', '⌨️', 'ember', 139, '{"en":{"title":"Code Like a Pro with Cursor AI","description":"AI-first code editor."}}'::jsonb),
+  ('b-simplified-ai',             'basic', '🪶', 'paper', 140, '{"en":{"title":"Design, Write & Market with Simplified AI","description":"One studio for content teams."}}'::jsonb),
+  ('b-wordtune',                  'basic', '🗣️', 'moss',  141, '{"en":{"title":"Say It Better — AI Writing with Wordtune","description":"Rephrase like a native."}}'::jsonb),
+  ('b-writesonic',                'basic', '🎙️', 'ember', 142, '{"en":{"title":"Content Creation at Scale with Writesonic","description":"Volume content, on brand."}}'::jsonb);
+
+-- BUNDLES — ADVANCED TIER (22)
+insert into bundles (slug, plan_tier, emoji, cover_gradient, order_index, translations) values
+  ('b-prompt-engineering-mastery',  'advanced', '🎯', 'ember', 200, '{"en":{"title":"Prompt Engineering Mastery — Become an AI Power User in 14 Days","description":"Structured prompting, few-shot, eval."}}'::jsonb),
+  ('b-gemini-grandmastery',         'advanced', '💎', 'moss',  201, '{"en":{"title":"Gemini Grandmastery — Multimodal AI Skills for Work & Life","description":"Text, vision, code, audio with Gemini."}}'::jsonb),
+  ('b-claude-deepthink',            'advanced', '🧬', 'paper', 202, '{"en":{"title":"Claude DeepThink — Advanced AI Research & Writing Lab","description":"Projects, Artifacts, extended thinking."}}'::jsonb),
+  ('b-workplace-copilot',           'advanced', '💼', 'ember', 203, '{"en":{"title":"Workplace AI Mastery — Excel, Word & Outlook with Copilot","description":"Real office work — not demos."}}'::jsonb),
+  ('b-coding-architect-copilot',    'advanced', '🏗️', 'moss',  204, '{"en":{"title":"AI Coding Architect — Build Software Faster with Copilot","description":"Architect, ship, review with AI."}}'::jsonb),
+  ('b-midjourney-art-studio',       'advanced', '🎨', 'paper', 205, '{"en":{"title":"AI Art Studio — Midjourney Visual Mastery Program","description":"Style libraries, consistent characters."}}'::jsonb),
+  ('b-runway-cinematic',            'advanced', '🎬', 'ember', 206, '{"en":{"title":"Cinematic AI — 14 Days to Video Editing with Runway","description":"Gen-3 workflows, motion brush."}}'::jsonb),
+  ('b-notion-productivity',         'advanced', '🗂️', 'moss',  207, '{"en":{"title":"Productivity Architect — 14 Days to Organizing with Notion AI","description":"Build a second brain that runs itself."}}'::jsonb),
+  ('b-zapier-automation-empire',    'advanced', '⚙️', 'paper', 208, '{"en":{"title":"Automation Empire — Build AI Workflows with Zapier","description":"Stop doing it by hand."}}'::jsonb),
+  ('b-creators-ai-studio',          'advanced', '🎚️', 'ember', 209, '{"en":{"title":"Creator''s AI Studio — Edit Audio & Video Like Text","description":"Descript end-to-end."}}'::jsonb),
+  ('b-ai-music-lab',                'advanced', '🎼', 'moss',  210, '{"en":{"title":"AI Music Lab — Compose & Produce Tracks in 14 Days","description":"Songwriting with AI co-producers."}}'::jsonb),
+  ('b-virtual-studio-pro',          'advanced', '🎥', 'paper', 211, '{"en":{"title":"Virtual Studio Pro — AI Video Presentations Mastery","description":"Synthesia + scripts + voice."}}'::jsonb),
+  ('b-firefly-mastery',             'advanced', '🔥', 'ember', 212, '{"en":{"title":"Creative Intelligence — Master AI Design with Firefly","description":"Generative inside Photoshop and Illustrator."}}'::jsonb),
+  ('b-cursor-developer-mastery',    'advanced', '⌨️', 'moss',  213, '{"en":{"title":"AI Developer Mastery — Supercharge Coding with Cursor","description":"Composer, rules files, full features."}}'::jsonb),
+  ('b-photo-cleanup-mastery',       'advanced', '🪄', 'paper', 214, '{"en":{"title":"AI Photo Cleanup — Background Removal Mastery","description":"Bulk, batch, brand-perfect."}}'::jsonb),
+  ('b-rewrite-genius',              'advanced', '✏️', 'ember', 215, '{"en":{"title":"Rewrite Genius — Paraphrasing & Polishing with AI","description":"Tone, voice, register — at will."}}'::jsonb),
+  ('b-pro-writing-lab',             'advanced', '📐', 'moss',  216, '{"en":{"title":"Pro Writing Lab — Error-Free Communication with AI","description":"Grammar, clarity, style — locked in."}}'::jsonb),
+  ('b-meeting-memory-pro',          'advanced', '🧠', 'paper', 217, '{"en":{"title":"Meeting Memory Pro — Capture Every Word with AI","description":"Otter + Fireflies + Fathom, mastered."}}'::jsonb),
+  ('b-marketing-copy-accelerator',  'advanced', '📣', 'ember', 218, '{"en":{"title":"Marketing Copy Accelerator — 10x Content with AI","description":"Funnels, landing pages, ads."}}'::jsonb),
+  ('b-jasper-brand-writer',         'advanced', '👻', 'moss',  219, '{"en":{"title":"AI Brand Writer — Advanced Business Copy with Jasper","description":"Brand voice at scale."}}'::jsonb),
+  ('b-pitch-deck-studio',           'advanced', '📊', 'paper', 220, '{"en":{"title":"AI Pitch Deck Studio — Create Killer Presentations Fast","description":"Story, design, delivery."}}'::jsonb),
+  ('b-consensus-research',          'advanced', '📑', 'ember', 221, '{"en":{"title":"AI Research Assistant — Mastering Consensus","description":"Literature reviews, faster."}}'::jsonb);
+
 -- COURSES — FREE TIER (8)
 insert into courses (slug, title, subtitle, description, category, plan_tier, emoji, cover_gradient, difficulty, estimated_minutes, order_index, tags) values
   ('chatgpt-basics',          'ChatGPT Basics',                        'Your first real conversation',  'The single most useful habit of the decade, in about an hour.', 'foundations', 'free', '💬', 'ember',  'beginner', 45, 1, '{ai,chatgpt,starter}'),
@@ -62,6 +135,17 @@ insert into courses (slug, title, subtitle, description, category, plan_tier, is
   ('diet-planner',            'Plan My Diet',                  'A real plan, not a generic one',    'Turn goals, prefs, groceries into a weekly meal plan.',           'real_life', 'basic',    true, '🥗', 'moss',  'beginner',     30, 35, '{health,diet}'),
   ('resume-ai',               'Keep Your Resume Updated with AI','Always ready for the call',       'Living resume + JD-matched rewrites.',                             'real_life', 'advanced', true, '📄', 'paper', 'intermediate', 40, 36, '{career,resume}'),
   ('english-seekhna-ai-se',   'AI Se English Seekhna',         'Hindi se English tak',              'Conversation practice in Hinglish with AI.',                       'real_life', 'advanced', true, '🗣️', 'ember', 'beginner',     90, 37, '{english,india,hindi}');
+
+-- LANGUAGE LINKAGE: link Hinglish course to its English sibling.
+-- Future language variants append to the same group with their own language_code.
+do $$
+declare v_group uuid := uuid_generate_v4();
+begin
+  update courses set course_group_id = v_group, language_code = 'en'
+    where slug = 'chatgpt-basics';
+  update courses set course_group_id = v_group, language_code = 'hinglish'
+    where slug = 'chatgpt-basics-hinglish';
+end $$;
 
 -- Lessons and turns are authored as YAML under supabase/content/ and loaded
 -- via `npm run content:load`. See supabase/content/AUTHORING.md.
