@@ -55,12 +55,19 @@ export default async function HomePage() {
 
   // Free section: courses (free has no bundles).
   // Basic / Advanced sections: bundles, scoped to the user's preferred language with EN fallback.
-  const freeCourses     = pickLanguageVariants(courses.filter((c) => c.plan_tier === "free"), lang);
+  const dedupedCourses  = pickLanguageVariants(courses, lang);
+  const freeCourses     = dedupedCourses.filter((c) => c.plan_tier === "free");
   const basicBundles    = bundles.filter((b) => b.plan_tier === "basic").slice(0, 12);
   const advancedBundles = bundles.filter((b) => b.plan_tier === "advanced").slice(0, 12);
 
-  const todaysLessonCourse =
-    inProgress[0] ?? courses.find((c) => c.slug === "chatgpt-basics") ?? courses[0];
+  // "Today's lesson" hero: resolve the canonical chatgpt-basics group, then
+  // pick the variant in the user's language (or EN fallback).
+  const cgptGroupId = courses.find((c) => c.slug === "chatgpt-basics")?.course_group_id;
+  const cgptForUser = cgptGroupId
+    ? dedupedCourses.find((c) => c.course_group_id === cgptGroupId)
+    : courses.find((c) => c.slug === "chatgpt-basics");
+
+  const todaysLessonCourse = inProgress[0] ?? cgptForUser ?? dedupedCourses[0];
 
   const personaId = (profile?.preferred_tutor_persona as Persona["id"]) ?? "nova";
 
