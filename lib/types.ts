@@ -4,7 +4,30 @@ export type UserRole = "student" | "professional" | "entrepreneur" | "homemaker"
 export type Interest =
   | "business" | "creative" | "writing" | "coding"
   | "marketing" | "research" | "video" | "exams" | "hindi";
-export type PreferredLanguage = "en" | "hinglish" | "hi";
+export type PreferredLanguage =
+  | "en"        // English
+  | "hi"        // Hindi
+  | "hinglish"  // Hinglish
+  | "mr"        // Marathi
+  | "pa"        // Punjabi
+  | "te"        // Telugu
+  | "ta"        // Tamil
+  | "bn"        // Bengali
+  | "fr"        // French
+  | "es";       // Spanish
+
+export const LANGUAGES: { code: PreferredLanguage; native: string; english: string }[] = [
+  { code: "en",       native: "English",   english: "English"  },
+  { code: "hi",       native: "हिन्दी",      english: "Hindi"    },
+  { code: "hinglish", native: "Hinglish",  english: "Hinglish" },
+  { code: "mr",       native: "मराठी",      english: "Marathi"  },
+  { code: "pa",       native: "ਪੰਜਾਬੀ",     english: "Punjabi"  },
+  { code: "te",       native: "తెలుగు",      english: "Telugu"   },
+  { code: "ta",       native: "தமிழ்",       english: "Tamil"    },
+  { code: "bn",       native: "বাংলা",       english: "Bengali"  },
+  { code: "fr",       native: "Français",   english: "French"   },
+  { code: "es",       native: "Español",    english: "Spanish"  },
+];
 export type DailyGoalMinutes = 5 | 10 | 20 | 30;
 export type PlanTier = "free" | "basic" | "advanced";
 

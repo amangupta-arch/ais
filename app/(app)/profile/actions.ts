@@ -17,4 +17,5 @@ export async function updateProfile(patch: Record<string, unknown>) {
   await supabase.from("profiles").update(patch).eq("id", user.id);
   revalidatePath("/profile");
   revalidatePath("/home");
+  revalidatePath("/learn");
 }

@@ -2,10 +2,10 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 
 import { getMe, getPlans } from "@/lib/supabase/queries";
-import { PERSONAS } from "@/lib/types";
+import { LANGUAGES, PERSONAS } from "@/lib/types";
 import { signOutAction } from "./actions";
 import { formatTier } from "@/lib/utils";
-import type { Persona, PlanTier } from "@/lib/types";
+import type { Persona, PlanTier, PreferredLanguage } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
@@ -16,6 +16,7 @@ export default async function ProfilePage() {
   const plans = await getPlans();
   const plan = plans.find((p) => p.id === planId) ?? plans[0];
   const currentPersona: Persona["id"] = (profile?.preferred_tutor_persona as Persona["id"]) ?? "nova";
+  const currentLanguage: PreferredLanguage = (profile?.preferred_language as PreferredLanguage) ?? "en";
   const tier: PlanTier = (planId as PlanTier) ?? "free";
 
   return (
@@ -115,6 +116,42 @@ export default async function ProfilePage() {
         <section style={{ marginTop: 40 }}>
           <p className="lm-eyebrow">
             <span className="lm-tabular" style={{ marginRight: 8 }}>02</span>
+            language
+          </p>
+          <p style={{ marginTop: 6, fontSize: 13, color: "var(--text-3)" }}>
+            Bundles, courses, and lessons render in this language when a translation exists.
+          </p>
+          <div
+            className="flex flex-wrap"
+            style={{ gap: 8, marginTop: 12 }}
+          >
+            {LANGUAGES.map((l) => {
+              const active = currentLanguage === l.code;
+              return (
+                <form key={l.code} action={updateLanguageAction}>
+                  <input type="hidden" name="language" value={l.code} />
+                  <button
+                    type="submit"
+                    className={`lm-btn ${active ? "lm-btn--accent" : "lm-btn--secondary"} lm-btn--sm`}
+                    style={{ flexDirection: "column", alignItems: "flex-start", gap: 0, padding: "8px 12px" }}
+                    aria-pressed={active}
+                  >
+                    <span style={{ fontWeight: 600 }}>{l.native}</span>
+                    {l.native !== l.english ? (
+                      <span style={{ fontSize: 11, opacity: 0.7, fontWeight: 400 }}>
+                        {l.english}
+                      </span>
+                    ) : null}
+                  </button>
+                </form>
+              );
+            })}
+          </div>
+        </section>
+
+        <section style={{ marginTop: 40 }}>
+          <p className="lm-eyebrow">
+            <span className="lm-tabular" style={{ marginRight: 8 }}>03</span>
             daily protected time
           </p>
           <form
@@ -200,4 +237,14 @@ async function updateDailyGoalAction(formData: FormData) {
   const minutes = Number(formData.get("minutes"));
   if (!Number.isFinite(minutes)) return;
   await updateProfile({ daily_goal_minutes: minutes });
+}
+
+async function updateLanguageAction(formData: FormData) {
+  "use server";
+  const { updateProfile } = await import("./actions");
+  const language = formData.get("language");
+  if (typeof language !== "string") return;
+  const allowed = ["en", "hi", "hinglish", "mr", "pa", "te", "ta", "bn", "fr", "es"];
+  if (!allowed.includes(language)) return;
+  await updateProfile({ preferred_language: language });
 }
