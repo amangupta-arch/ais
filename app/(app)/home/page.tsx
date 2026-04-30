@@ -1,12 +1,13 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { ArrowRight, Compass, Flame, Star, Check } from "lucide-react";
+import { ArrowRight, Compass, Flame, Lock, Star, Check } from "lucide-react";
 
 import {
-  getAllCourses, getMe, getMyCourseProgress,
+  getAllBundles, getAllCourses, getMe, getMyCourseProgress,
 } from "@/lib/supabase/queries";
 import { firstName } from "@/lib/utils";
-import type { Course, PlanTier, Persona } from "@/lib/types";
+import { bundleDescription, bundleTitle } from "@/lib/types";
+import type { Bundle, Course, PlanTier, Persona } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
@@ -34,8 +35,13 @@ export default async function HomePage() {
   if (!user) redirect("/login");
   if (profile && !profile.onboarding_completed_at) redirect("/onboarding");
 
-  const [courses, progress] = await Promise.all([getAllCourses(), getMyCourseProgress()]);
+  const [courses, bundles, progress] = await Promise.all([
+    getAllCourses(),
+    getAllBundles(),
+    getMyCourseProgress(),
+  ]);
   const tier: PlanTier = (planId as PlanTier) ?? "free";
+  const lang = profile?.preferred_language ?? "en";
   const nowHour = new Date().getHours();
   const greeting = nowHour < 12 ? "Good morning" : nowHour < 18 ? "Good afternoon" : "Good evening";
 
@@ -47,9 +53,11 @@ export default async function HomePage() {
   const completedCount = progress.filter((p) => p.status === "completed").length;
   const progressByCourse = new Map(progress.map((p) => [p.course_id, p]));
 
-  const starters = courses.filter((c) => c.plan_tier === "free").slice(0, 6);
-  const forYou   = courses.filter((c) => c.plan_tier !== "free" && !c.is_bonus_badge).slice(0, 6);
-  const bonus    = courses.filter((c) => c.is_bonus_badge).slice(0, 6);
+  // Free section: courses (free has no bundles).
+  // Basic / Advanced sections: bundles, scoped to the user's preferred language with EN fallback.
+  const freeCourses     = courses.filter((c) => c.plan_tier === "free" && (c.language_code === lang || c.language_code === "en"));
+  const basicBundles    = bundles.filter((b) => b.plan_tier === "basic").slice(0, 12);
+  const advancedBundles = bundles.filter((b) => b.plan_tier === "advanced").slice(0, 12);
 
   const todaysLessonCourse =
     inProgress[0] ?? courses.find((c) => c.slug === "chatgpt-basics") ?? courses[0];
@@ -183,9 +191,27 @@ export default async function HomePage() {
           />
         ) : null}
 
-        <CourseRow number="02" title="Starters"      courses={starters} tier={tier} progressByCourse={progressByCourse} />
-        <CourseRow number="03" title="For you"       courses={forYou}   tier={tier} progressByCourse={progressByCourse} />
-        <CourseRow number="04" title="Bonus bundles" courses={bonus}    tier={tier} progressByCourse={progressByCourse} />
+        <CourseRow
+          number="02"
+          title="Free"
+          courses={freeCourses}
+          tier={tier}
+          progressByCourse={progressByCourse}
+        />
+        <BundleRow
+          number="03"
+          title="Basic"
+          bundles={basicBundles}
+          tier={tier}
+          lang={lang}
+        />
+        <BundleRow
+          number="04"
+          title="Advanced"
+          bundles={advancedBundles}
+          tier={tier}
+          lang={lang}
+        />
 
         <div className="flex justify-center" style={{ marginTop: 40 }}>
           <Link href="/learn" className="lm-btn lm-btn--ghost lm-btn--sm">
@@ -283,6 +309,139 @@ function CourseRow({
         })}
       </div>
     </section>
+  );
+}
+
+function BundleRow({
+  number, title, bundles, tier, lang,
+}: {
+  number: string;
+  title: string;
+  bundles: Bundle[];
+  tier: PlanTier;
+  lang: string;
+}) {
+  if (bundles.length === 0) return null;
+  return (
+    <section style={{ marginTop: 32 }}>
+      <div className="flex items-baseline justify-between">
+        <p className="lm-eyebrow">
+          <span className="lm-tabular" style={{ marginRight: 8 }}>{number}</span>
+          {title}
+        </p>
+        <Link
+          href="/learn"
+          className="lm-mono"
+          style={{ fontSize: 11, color: "var(--text-3)", textDecoration: "none" }}
+        >
+          more →
+        </Link>
+      </div>
+      <div
+        className="no-scrollbar"
+        style={{
+          marginTop: 12,
+          marginLeft: -20,
+          marginRight: -20,
+          padding: "0 20px",
+          display: "flex",
+          gap: 12,
+          overflowX: "auto",
+          scrollSnapType: "x mandatory",
+        }}
+      >
+        {bundles.map((b) => {
+          const locked = !tierCanAccess(tier, b.plan_tier);
+          return (
+            <div
+              key={b.id}
+              style={{ width: "68%", flexShrink: 0, scrollSnapAlign: "start", maxWidth: 280 }}
+            >
+              <HomeBundleCard bundle={b} locked={locked} lang={lang} />
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
+function HomeBundleCard({
+  bundle, locked, lang,
+}: {
+  bundle: Bundle;
+  locked: boolean;
+  lang: string;
+}) {
+  const hue: Hue =
+    bundle.cover_gradient === "ember"  ? "saffron" :
+    bundle.cover_gradient === "moss"   ? "moss"    :
+    bundle.cover_gradient === "plum"   ? "plum"    :
+    "indigo";
+  const title = bundleTitle(bundle, lang);
+  const desc  = bundleDescription(bundle, lang);
+
+  return (
+    <div
+      className="lm-card"
+      style={{ position: "relative", padding: 0, overflow: "hidden", opacity: locked ? 0.55 : 1 }}
+    >
+      <div
+        style={{
+          height: 80,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: 30,
+          background: `var(--${hue}-soft)`,
+          color: `var(--${hue}-deep)`,
+          borderBottom: "1px solid var(--border)",
+        }}
+        aria-hidden
+      >
+        {bundle.emoji ?? "·"}
+      </div>
+      <div style={{ padding: 14 }}>
+        <h3
+          className="lm-serif"
+          style={{ fontSize: 16, lineHeight: 1.25, color: "var(--text)" }}
+        >
+          {title}
+        </h3>
+        {desc ? (
+          <p
+            style={{
+              marginTop: 6,
+              fontSize: 12,
+              color: "var(--text-3)",
+              lineHeight: 1.35,
+              display: "-webkit-box",
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+            }}
+          >
+            {desc}
+          </p>
+        ) : null}
+        <div
+          className="flex items-center"
+          style={{ gap: 8, marginTop: 10, fontSize: 11, color: "var(--text-3)" }}
+        >
+          {locked ? (
+            <>
+              <Lock className="h-3 w-3" />
+              <span style={{ textTransform: "capitalize" }}>{bundle.plan_tier}</span>
+              <span>plan</span>
+            </>
+          ) : (
+            <span style={{ textTransform: "uppercase", letterSpacing: "0.08em" }}>
+              Bundle
+            </span>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }
 

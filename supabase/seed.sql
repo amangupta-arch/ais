@@ -91,6 +91,45 @@ insert into bundles (slug, plan_tier, emoji, cover_gradient, order_index, transl
   ('b-pitch-deck-studio',           'advanced', '📊', 'paper', 220, '{"en":{"title":"AI Pitch Deck Studio — Create Killer Presentations Fast","description":"Story, design, delivery."}}'::jsonb),
   ('b-consensus-research',          'advanced', '📑', 'ember', 221, '{"en":{"title":"AI Research Assistant — Mastering Consensus","description":"Literature reviews, faster."}}'::jsonb);
 
+-- BUNDLES — UTILITY (35: 11 basic + 24 advanced)
+-- 'utility' is the first tag — practical, real-life bundles. More tags to come.
+insert into bundles (slug, plan_tier, emoji, cover_gradient, order_index, tags, translations) values
+  ('b-plan-my-diet',              'basic', '🥗', 'moss',  300, '{utility}', '{"en":{"title":"Plan My Diet","description":"A real meal plan, built from your goals and groceries."}}'::jsonb),
+  ('b-kheti-mein-ai',             'basic', '🌾', 'moss',  301, '{utility}', '{"en":{"title":"Kheti Mein AI Ka Sahara","description":"Weather, pest ID, mandi prices, schemes — via AI, in Hindi."}}'::jsonb),
+  ('b-travel-planning',           'basic', '🧳', 'paper', 302, '{utility}', '{"en":{"title":"Travel Planning with AI Tools","description":"Itineraries, bookings, and budgets — assisted."}}'::jsonb),
+  ('b-career-growth',             'basic', '🌱', 'ember', 303, '{utility}', '{"en":{"title":"How to Build a Career & Grow Personally in Life","description":"AI-guided career and growth playbooks."}}'::jsonb),
+  ('b-social-media-success',      'basic', '📱', 'moss',  304, '{utility}', '{"en":{"title":"AI-Powered Learning for Social Media Success","description":"From idea to viral, with AI in the loop."}}'::jsonb),
+  ('b-masters-degree-with-ai',    'basic', '🎓', 'paper', 305, '{utility}', '{"en":{"title":"Guide for a Successful Master''s Degree using AI","description":"Coursework, research, and applications — accelerated."}}'::jsonb),
+  ('b-upsc-prep',                 'basic', '🇮🇳', 'ember', 306, '{utility}', '{"en":{"title":"Crack UPSC Using Relevant AI Tools Smartly","description":"Prelims, mains, and interview prep with the right AI stack."}}'::jsonb),
+  ('b-resume-with-ai',            'basic', '📄', 'paper', 307, '{utility}', '{"en":{"title":"Keep Your Resume Updated with AI","description":"Living resume + JD-matched rewrites."}}'::jsonb),
+  ('b-smm-with-chatgpt',          'basic', '💸', 'moss',  308, '{utility}', '{"en":{"title":"Earning in Social Media Marketing via ChatGPT","description":"Monetise SMM skills with AI leverage."}}'::jsonb),
+  ('b-ai-image-income',           'basic', '🖼️', 'ember', 309, '{utility}', '{"en":{"title":"AI Image Income","description":"Sell AI-generated images on the right marketplaces."}}'::jsonb),
+  ('b-affiliate-marketing',       'basic', '🔗', 'paper', 310, '{utility}', '{"en":{"title":"AI Driven Affiliate Marketing Essentials","description":"Niches, content, conversion — with AI."}}'::jsonb),
+  ('b-outfit-assistant',          'advanced', '👗', 'plum',  320, '{utility}', '{"en":{"title":"Build an Outfit Assistant for You or Others using AI","description":"A personal stylist GPT for everyday and events."}}'::jsonb),
+  ('b-ielts-success-kit',         'advanced', '🎓', 'ember', 321, '{utility}', '{"en":{"title":"AI-Powered IELTS Success Kit","description":"Band 7+ with your phone."}}'::jsonb),
+  ('b-astro-numero',              'advanced', '🔮', 'paper', 322, '{utility}', '{"en":{"title":"Learn Astro/Numero with AI Tools","description":"Astrology and numerology — explained and explored with AI."}}'::jsonb),
+  ('b-parental-school-success',   'advanced', '👨‍👩‍👧', 'moss', 323, '{utility}', '{"en":{"title":"Parental AI Guide for School Success","description":"Help your child do better at school using AI."}}'::jsonb),
+  ('b-stock-market',              'advanced', '📈', 'ember', 324, '{utility}', '{"en":{"title":"Stock Market Made Simple with AI","description":"From basics to portfolio building, AI as your analyst."}}'::jsonb),
+  ('b-crypto-trading',            'advanced', '🪙', 'paper', 325, '{utility}', '{"en":{"title":"Smart Crypto Trading with AI","description":"Risk-aware crypto strategies with AI in the loop."}}'::jsonb),
+  ('b-neet-ug-prep',              'advanced', '🩺', 'ember', 326, '{utility}', '{"en":{"title":"AI-Powered NEET-UG Prep Course + Survival Guide","description":"AI as 24/7 tutor for Bio, Physics, Chemistry."}}'::jsonb),
+  ('b-jee-main-prep',             'advanced', '⚙️', 'moss',  327, '{utility}', '{"en":{"title":"AI-Powered JEE-MAIN Prep Course + Survival Guide","description":"Crack JEE with AI explanations, mocks, and review."}}'::jsonb),
+  ('b-teaching-mastery',          'advanced', '👩‍🏫', 'paper', 328, '{utility}', '{"en":{"title":"AI Teaching Mastery — Engage Students Smartly","description":"Lesson plans, assignments, and engagement with AI."}}'::jsonb),
+  ('b-startup-with-ai',           'advanced', '🚀', 'ember', 329, '{utility}', '{"en":{"title":"Startup with AI — From Idea to Success","description":"Validation, GTM, and scaling — AI-assisted."}}'::jsonb),
+  ('b-krishi-2',                  'advanced', '🌱', 'moss',  330, '{utility}', '{"en":{"title":"Krishi 2.0 — AI ke madad se kheti me kaise grow karen","description":"Hindi-first AI playbook for farmers."}}'::jsonb),
+  ('b-kirana-with-ai',            'advanced', '🛒', 'paper', 331, '{utility}', '{"en":{"title":"Kirana Shop par AI ka Istemaal Kaise Karen","description":"Billing, WhatsApp marketing, AI-written posters."}}'::jsonb),
+  ('b-salon-growth',              'advanced', '💇', 'plum',  332, '{utility}', '{"en":{"title":"Grow Your Salon Using AI Tools","description":"Bookings, marketing, retention — AI-led."}}'::jsonb),
+  ('b-upskill-with-ai',           'advanced', '📚', 'ember', 333, '{utility}', '{"en":{"title":"Use AI Smartly to Upskill Yourself","description":"A self-directed AI-powered upskilling system."}}'::jsonb),
+  ('b-better-job-with-ai',        'advanced', '💼', 'moss',  334, '{utility}', '{"en":{"title":"How AI Can Land You a Better Job","description":"Search, prep, and land the right offer with AI."}}'::jsonb),
+  ('b-office-performance',        'advanced', '🏢', 'paper', 335, '{utility}', '{"en":{"title":"How to Perform Better Using AI at Your Office","description":"Daily AI workflows for desk jobs."}}'::jsonb),
+  ('b-restaurant-business',       'advanced', '🍽️', 'ember', 336, '{utility}', '{"en":{"title":"AI Business Kit for Restaurant Owners","description":"Menus, marketing, ops — AI-assisted."}}'::jsonb),
+  ('b-cloud-kitchen-profit',      'advanced', '🍱', 'moss',  337, '{utility}', '{"en":{"title":"Take AI''s Help to Turn Your Cloud Kitchen Profitable","description":"Acquisition, retention, and unit economics."}}'::jsonb),
+  ('b-new-mother-guide',          'advanced', '🤱', 'plum',  338, '{utility}', '{"en":{"title":"A New Mother''s Survival Guide with AI","description":"Sleep, feeding, milestones — AI-supported."}}'::jsonb),
+  ('b-english-seekhna-with-ai',   'advanced', '🗣️', 'ember', 339, '{utility}', '{"en":{"title":"AI se English Seekhen Bina Kisi App ke","description":"Conversation practice in Hinglish with AI."}}'::jsonb),
+  ('b-operation-management',      'advanced', '🛠️', 'paper', 340, '{utility}', '{"en":{"title":"Using AI in Operation Management","description":"Process design, dashboards, and SOPs with AI."}}'::jsonb),
+  ('b-first-step-profit',         'advanced', '💰', 'moss',  341, '{utility}', '{"en":{"title":"First Step to Profit with AI","description":"Find your first paying use case."}}'::jsonb),
+  ('b-online-income',             'advanced', '🌐', 'ember', 342, '{utility}', '{"en":{"title":"AI Powered Online Income Strategies","description":"Multiple online income engines, AI-leveraged."}}'::jsonb),
+  ('b-parent-school-result',      'advanced', '👨‍👧', 'paper', 343, '{utility}', '{"en":{"title":"Parent''s AI Guide For Better School Result of Children","description":"Day-to-day AI rituals for academic improvement."}}'::jsonb);
+
 -- COURSES — FREE TIER (8)
 insert into courses (slug, title, subtitle, description, category, plan_tier, emoji, cover_gradient, difficulty, estimated_minutes, order_index, tags) values
   ('chatgpt-basics',          'ChatGPT Basics',                        'Your first real conversation',  'The single most useful habit of the decade, in about an hour.', 'foundations', 'free', '💬', 'ember',  'beginner', 45, 1, '{ai,chatgpt,starter}'),

@@ -1,5 +1,6 @@
 import { createClient } from "./server";
 import type {
+  Bundle,
   Course, Lesson, Plan, Profile, UserStreak, UserXp, UserCourseProgress, UserLessonProgress,
 } from "@/lib/types";
 import type { LessonTurn } from "@/lib/turns";
@@ -46,6 +47,16 @@ export async function getAllCourses(): Promise<Course[]> {
     .eq("is_published", true)
     .order("order_index", { ascending: true });
   return (data ?? []) as Course[];
+}
+
+export async function getAllBundles(): Promise<Bundle[]> {
+  const supabase = await createClient();
+  const { data } = await supabase
+    .from("bundles")
+    .select("*")
+    .eq("is_published", true)
+    .order("order_index", { ascending: true });
+  return (data ?? []) as Bundle[];
 }
 
 export async function getCourseBySlug(slug: string): Promise<{ course: Course | null; lessons: Lesson[] }> {

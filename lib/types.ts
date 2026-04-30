@@ -89,7 +89,33 @@ export type Course = {
   lesson_count: number;
   order_index: number;
   is_published: boolean;
+  bundle_id: string | null;
+  language_code: string;
+  course_group_id: string | null;
 };
+
+export type BundleTranslation = { title: string; description?: string };
+
+export type Bundle = {
+  id: string;
+  slug: string;
+  plan_tier: Exclude<PlanTier, "free">;
+  emoji: string | null;
+  cover_gradient: "ember" | "moss" | "paper" | "plum" | string | null;
+  order_index: number;
+  is_published: boolean;
+  tags: string[];
+  translations: Record<string, BundleTranslation>;
+};
+
+/** Pull a bundle's title in the user's preferred language with English fallback. */
+export function bundleTitle(b: Bundle, lang: string): string {
+  return b.translations[lang]?.title ?? b.translations.en?.title ?? b.slug;
+}
+
+export function bundleDescription(b: Bundle, lang: string): string | null {
+  return b.translations[lang]?.description ?? b.translations.en?.description ?? null;
+}
 
 export type Lesson = {
   id: string;
