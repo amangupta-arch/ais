@@ -2,42 +2,43 @@ import Link from "next/link";
 import { Clock, Lock } from "lucide-react";
 import { redirect } from "next/navigation";
 
-import { getAllCourses, getMe } from "@/lib/supabase/queries";
-import type { Course, PlanTier } from "@/lib/types";
+import { getAllBundles, getAllCourses, getMe } from "@/lib/supabase/queries";
+import { bundleDescription, bundleTitle } from "@/lib/types";
+import type { Bundle, Course, PlanTier } from "@/lib/types";
 import { formatTier } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
 type Hue = "indigo" | "saffron" | "moss" | "coral" | "ocean" | "plum";
 
-const CATEGORY_ORDER: { key: string; label: string; number: string; hue: Hue }[] = [
-  { key: "foundations",  label: "Foundations",   number: "01", hue: "indigo"  },
-  { key: "tools",        label: "Tools",         number: "02", hue: "ocean"   },
-  { key: "creative",     label: "Creative",      number: "03", hue: "plum"    },
-  { key: "productivity", label: "Productivity",  number: "04", hue: "moss"    },
-  { key: "real_life",    label: "Real life",     number: "05", hue: "saffron" },
-  { key: "exam_prep",    label: "Exams",         number: "06", hue: "coral"   },
-];
-
-function tierCanAccess(user: PlanTier, course: PlanTier): boolean {
+function tierCanAccess(user: PlanTier, target: PlanTier): boolean {
   const rank: Record<PlanTier, number> = { free: 0, basic: 1, advanced: 2 };
-  return rank[user] >= rank[course];
+  return rank[user] >= rank[target];
+}
+
+function hueForGradient(g: string | null | undefined): Hue {
+  switch (g) {
+    case "ember": return "saffron";
+    case "moss":  return "moss";
+    case "plum":  return "plum";
+    case "paper": return "indigo";
+    default:      return "indigo";
+  }
 }
 
 export default async function LearnPage() {
-  const { user, planId } = await getMe();
+  const { user, profile, planId } = await getMe();
   if (!user) redirect("/login");
 
   const tier: PlanTier = (planId as PlanTier) ?? "free";
-  const courses = await getAllCourses();
+  const lang = profile?.preferred_language ?? "en";
 
-  const grouped = new Map<string, Course[]>();
-  courses.forEach((c) => {
-    const key = c.category ?? "other";
-    const arr = grouped.get(key) ?? [];
-    arr.push(c);
-    grouped.set(key, arr);
-  });
+  const [courses, bundles] = await Promise.all([getAllCourses(), getAllBundles()]);
+
+  const freeCourses = courses
+    .filter((c) => c.plan_tier === "free" && (c.language_code === lang || c.language_code === "en"));
+  const basicBundles    = bundles.filter((b) => b.plan_tier === "basic");
+  const advancedBundles = bundles.filter((b) => b.plan_tier === "advanced");
 
   return (
     <main className="lm-page" style={{ paddingBottom: 56 }}>
@@ -58,41 +59,118 @@ export default async function LearnPage() {
               color: "var(--text-2)",
             }}
           >
-            Short, deliberate courses. Add them one at a time.
+            Three sections — pick where you are, and start small.
           </p>
         </header>
 
-        {CATEGORY_ORDER.map((cat) => {
-          const items = grouped.get(cat.key);
-          if (!items || items.length === 0) return null;
-          return (
-            <section key={cat.key} style={{ marginTop: 40 }}>
-              <p className="lm-eyebrow">
-                <span className="lm-tabular" style={{ marginRight: 8 }}>{cat.number}</span>
-                {cat.label}
-              </p>
-              <div
-                className="grid"
-                style={{
-                  marginTop: 12,
-                  gap: 12,
-                  gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
-                }}
-              >
-                {items.map((c) => (
-                  <CourseCardLumen
-                    key={c.id}
-                    course={c}
-                    hue={cat.hue}
-                    locked={!tierCanAccess(tier, c.plan_tier)}
-                  />
-                ))}
-              </div>
-            </section>
-          );
-        })}
+        <CoursesSection
+          number="01"
+          title="Free"
+          subtitle="Eight starter courses. No card, no pressure."
+          courses={freeCourses}
+          tier={tier}
+        />
+
+        <BundlesSection
+          number="02"
+          title="Basic"
+          subtitle={`${basicBundles.length} bundles — daily-use AI tools and life utilities.`}
+          bundles={basicBundles}
+          tier={tier}
+          lang={lang}
+        />
+
+        <BundlesSection
+          number="03"
+          title="Advanced"
+          subtitle={`${advancedBundles.length} mastery bundles — depth, not breadth.`}
+          bundles={advancedBundles}
+          tier={tier}
+          lang={lang}
+        />
       </div>
     </main>
+  );
+}
+
+function CoursesSection({
+  number, title, subtitle, courses, tier,
+}: {
+  number: string;
+  title: string;
+  subtitle?: string;
+  courses: Course[];
+  tier: PlanTier;
+}) {
+  if (courses.length === 0) return null;
+  return (
+    <section style={{ marginTop: 40 }}>
+      <p className="lm-eyebrow">
+        <span className="lm-tabular" style={{ marginRight: 8 }}>{number}</span>
+        {title}
+      </p>
+      {subtitle ? (
+        <p style={{ marginTop: 6, fontSize: 13, color: "var(--text-3)" }}>{subtitle}</p>
+      ) : null}
+      <div
+        className="grid"
+        style={{
+          marginTop: 12,
+          gap: 12,
+          gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
+        }}
+      >
+        {courses.map((c) => (
+          <CourseCardLumen
+            key={c.id}
+            course={c}
+            hue="indigo"
+            locked={!tierCanAccess(tier, c.plan_tier)}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function BundlesSection({
+  number, title, subtitle, bundles, tier, lang,
+}: {
+  number: string;
+  title: string;
+  subtitle?: string;
+  bundles: Bundle[];
+  tier: PlanTier;
+  lang: string;
+}) {
+  if (bundles.length === 0) return null;
+  return (
+    <section style={{ marginTop: 40 }}>
+      <p className="lm-eyebrow">
+        <span className="lm-tabular" style={{ marginRight: 8 }}>{number}</span>
+        {title}
+      </p>
+      {subtitle ? (
+        <p style={{ marginTop: 6, fontSize: 13, color: "var(--text-3)" }}>{subtitle}</p>
+      ) : null}
+      <div
+        className="grid"
+        style={{
+          marginTop: 12,
+          gap: 12,
+          gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
+        }}
+      >
+        {bundles.map((b) => (
+          <BundleCardLumen
+            key={b.id}
+            bundle={b}
+            locked={!tierCanAccess(tier, b.plan_tier)}
+            lang={lang}
+          />
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -199,5 +277,94 @@ function CourseCardLumen({
     >
       {body}
     </Link>
+  );
+}
+
+function BundleCardLumen({
+  bundle, locked, lang,
+}: {
+  bundle: Bundle;
+  locked: boolean;
+  lang: string;
+}) {
+  const hue = hueForGradient(bundle.cover_gradient);
+  const title = bundleTitle(bundle, lang);
+  const desc  = bundleDescription(bundle, lang);
+
+  return (
+    <div
+      className="lm-card"
+      style={{
+        position: "relative",
+        padding: 0,
+        overflow: "hidden",
+        opacity: locked ? 0.55 : 1,
+      }}
+    >
+      <div
+        style={{
+          height: 96,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: 36,
+          background: `var(--${hue}-soft)`,
+          color: `var(--${hue}-deep)`,
+          borderBottom: "1px solid var(--border)",
+        }}
+        aria-hidden
+      >
+        {bundle.emoji ?? "·"}
+      </div>
+
+      <div style={{ padding: 16 }}>
+        <div className="flex items-center" style={{ gap: 8 }}>
+          <span className="lm-eyebrow">{formatTier(bundle.plan_tier)}</span>
+          {bundle.tags.includes("utility") ? (
+            <span className="lm-eyebrow" style={{ color: `var(--${hue}-deep)` }}>
+              utility
+            </span>
+          ) : null}
+        </div>
+        <h3
+          className="lm-serif"
+          style={{ marginTop: 8, fontSize: 20, lineHeight: 1.2, color: "var(--text)" }}
+        >
+          {title}
+        </h3>
+        {desc ? (
+          <p
+            style={{
+              marginTop: 4,
+              fontSize: 14,
+              lineHeight: 1.5,
+              color: "var(--text-3)",
+            }}
+          >
+            {desc}
+          </p>
+        ) : null}
+      </div>
+
+      {locked ? (
+        <div
+          className="inline-flex items-center justify-center"
+          style={{
+            position: "absolute",
+            top: 12,
+            right: 12,
+            width: 28,
+            height: 28,
+            borderRadius: "var(--r-2)",
+            background: "rgba(255, 255, 255, 0.95)",
+            backdropFilter: "blur(4px)",
+            border: "1px solid var(--border)",
+            color: "var(--text-3)",
+          }}
+        >
+          <Lock className="h-3.5 w-3.5" />
+        </div>
+      ) : null}
+    </div>
   );
 }
