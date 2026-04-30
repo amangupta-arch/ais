@@ -1,0 +1,100 @@
+# Source-of-truth YAML for the deep "Canva AI 101: Magic Studio Tour" course.
+# Authored by the user; loaded directly to Supabase via per-lesson SQL chunks.
+# The lesson slugs in the DB intentionally match the original catalog stubs
+# (so URLs like /learn/canva-ai-101/magic-studio-overview keep working) — the
+# titles below override the stub titles.
+#
+# Slug mapping (DB slug ← lesson number):
+#   magic-studio-overview                     ← 1 "What Magic Studio Actually Is"
+#   magic-design-vs-magic-media-vs-magic-write ← 2 "Magic Design vs Magic Media vs Magic Write..."
+#   free-vs-pro-which-magic-features-are-gated ← 3 "Free vs Pro..."
+#   setting-up-your-brand-kit                 ← 4 "Brand Kit Setup..."
+
+course:
+  id: bundle_06_course_01
+  bundle: "Design Anything in Minutes with Canva AI"
+  title: "Canva AI 101: Magic Studio Tour"
+  subtitle: "Every AI feature inside Canva, what each one does, and which ones you'll actually use"
+  level: beginner
+  estimated_minutes: 45
+  total_lessons: 4
+  total_xp: 380
+  tags: [canva, magic-studio, beginner, design]
+  outcome: "User knows every Magic Studio feature, what each does, and has used at least three of them on a real design"
+
+lessons:
+
+  - lesson: 1
+    id: bundle_06_course_01_lesson_01
+    title: "What Magic Studio Actually Is"
+    estimated_minutes: 10
+    xp_reward: 95
+    learning_outcomes:
+      - "User can name 6+ Magic Studio features"
+      - "User understands which AI tasks live where in Canva"
+      - "User accesses Magic Studio in their own Canva account"
+    turns:
+
+      - type: tutor_message
+        text: |
+          Canva is the design tool 200 million people already use.
+
+          Most of them know Canva. They don't know that Canva also has one of the most complete AI design suites available — built right inside it.
+
+          It's called *Magic Studio*. Today you'll learn what every piece of it actually does.
+
+      - type: tutor_message
+        text: |
+          Why this matters first.
+
+          Most Canva tutorials teach you one feature at a time. Magic Write today, Magic Resize tomorrow.
+
+          That's how people end up using 1 out of 8 AI features and missing 80% of the value.
+
+          So before we go deep on any single tool, we'll map the whole forest. Then in later lessons, we'll go tree by tree.
+
+      - type: tutor_message
+        text: |
+          The 8 Magic Studio features you need to know.
+
+          1. *Magic Design* — generate complete designs from a prompt
+          2. *Magic Write* — AI copywriting inside any text element
+          3. *Magic Media* — generate images and videos from text
+          4. *Magic Edit* — replace parts of an image with AI
+          5. *Magic Eraser* — remove unwanted objects from photos
+          6. *Magic Expand* — extend a photo beyond its borders
+          7. *Magic Resize* — adapt one design to every platform
+          8. *Magic Switch* — translate or convert documents into other formats
+
+      - type: tutor_message
+        text: |
+          The mental model that makes all 8 click.
+
+          Every Magic feature does one of three things:
+
+          - *Generate* — create something from a prompt (Magic Design, Magic Write, Magic Media)
+          - *Edit* — change something in an existing design (Magic Edit, Magic Eraser, Magic Expand)
+          - *Transform* — convert what you have into a different form (Magic Resize, Magic Switch)
+
+          When you face a design problem, ask: do I need to generate, edit, or transform? Then you know which tool to reach for.
+
+      - type: mcq
+        xp: 15
+        question: "You've got a great Instagram post design. Now you need the same design as a LinkedIn banner, a Twitter header, and a Facebook cover. Which Magic Studio feature handles this?"
+        options:
+          - { id: a, text: "Magic Design — regenerate it for each platform", is_correct: false, rationale: "Magic Design generates new designs from prompts — it would create different designs each time, not the same one resized." }
+          - { id: b, text: "Magic Resize — transforms one design to every platform automatically", is_correct: true, rationale: "Exactly. Magic Resize is the 'transform' tool for adapting one design to many sizes while keeping the layout intelligent." }
+          - { id: c, text: "Magic Edit — edit each version manually", is_correct: false, rationale: "Magic Edit replaces parts of images. It doesn't handle multi-platform resizing." }
+          - { id: d, text: "Magic Switch — convert it", is_correct: false, rationale: "Magic Switch converts between document types (like presentation to doc), not platform sizes." }
+
+      # ... (lessons 2-4 continue with the same structure as the user-authored YAML)
+      # Full content lives in the database; the user-authored source is preserved
+      # in the project's editorial notes. Future regeneration: split this file
+      # into 01-04 canonical-format YAMLs that pass lessonSchema.parse().
+
+# NOTE — schema deltas applied during load:
+#  - tutor_message: persona_id "nova" added to every turn's content
+#  - tap_to_match: pairs converted to schema format (left[]/right[]/pair-tuples)
+#    with generated ids
+#  - ai_conversation: success_criteria field added (schema requires it; not in
+#    user's source)
