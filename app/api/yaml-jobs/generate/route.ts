@@ -167,20 +167,32 @@ export async function POST(req: Request) {
     );
   }
 
-  // 2. Write to disk.
-  let yamlPath: string;
-  try {
-    yamlPath = writeLessonYaml(entry, language, gen.yamlText);
-  } catch (e) {
-    await finalize({
-      status: "failed",
-      attempts: gen.attempts,
-      error: `disk write: ${String(e)}`,
-    });
-    return NextResponse.json(
-      { ok: false, stage: "disk", message: `disk write: ${String(e)}`, attempts: gen.attempts },
-      { status: 500 },
-    );
+  // Persist the generated YAML on the row IMMEDIATELY, before any disk
+  // or DB write. Even if the next stages fail, we keep the text so the
+  // user can recover it from /yaml-status without re-spending Anthropic
+  // credits.
+  await admin
+    .from("yaml_generation_jobs")
+    .update({ attempts: gen.attempts, yaml_text: gen.yamlText })
+    .eq("course_slug", entry.courseSlug)
+    .eq("lesson_slug", entry.lessonSlug)
+    .eq("language", language);
+
+  // 2. Write to disk — best-effort. Vercel serverless filesystems are
+  // read-only outside /tmp, so on the deployed instance we deliberately
+  // skip this step (the YAML is already preserved on the job row +
+  // applied to DB below). Locally and on any non-Vercel runtime, we
+  // still write to the canonical path so git diffs continue to work.
+  let yamlPath: string | null = null;
+  let diskNote: string | null = null;
+  if (process.env.VERCEL === "1") {
+    diskNote = "skipped on Vercel (read-only fs); copy YAML from /yaml-status to commit.";
+  } else {
+    try {
+      yamlPath = writeLessonYaml(entry, language, gen.yamlText);
+    } catch (e) {
+      diskNote = `skipped: ${String(e)}`;
+    }
   }
 
   // 3. Auto-load into DB via the same path /update-yaml uses, so the
@@ -215,13 +227,14 @@ export async function POST(req: Request) {
     status: "done",
     attempts: gen.attempts,
     yaml_path: yamlPath,
-    error: null,
+    error: diskNote,
   });
 
   return NextResponse.json({
     ok: true,
     attempts: gen.attempts,
     yamlPath,
+    diskNote,
     lesson: submit.lesson,
   });
 }
