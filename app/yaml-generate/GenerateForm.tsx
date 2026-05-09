@@ -33,7 +33,8 @@ type ApiResult = {
   ok: boolean;
   message?: string;
   attempts?: number;
-  yamlPath?: string;
+  yamlPath?: string | null;
+  diskNote?: string | null;
   stage?: string;
   lesson?: { slug: string; turn_count: number; language: string };
 };
@@ -247,9 +248,24 @@ export default function GenerateForm({
             fontFamily: "ui-monospace, monospace",
           }}
         >
-          {result.ok
-            ? `✓ Generated in ${result.attempts ?? "?"} attempt(s)\n${result.yamlPath ?? ""}\n→ ${result.lesson?.turn_count ?? "?"} turns loaded into DB`
-            : `✗ ${result.stage ? `[${result.stage}] ` : ""}${result.message ?? "Unknown error"}`}
+          {result.ok ? (
+            <>
+              {`✓ Generated in ${result.attempts ?? "?"} attempt(s)\n→ ${result.lesson?.turn_count ?? "?"} turns loaded into DB`}
+              {result.yamlPath ? `\non disk: ${result.yamlPath}` : ""}
+              {result.diskNote ? `\nnote: ${result.diskNote}` : ""}
+              {"\n\n"}
+              <a
+                href={`/api/yaml-jobs/text?course=${encodeURIComponent(courseSlug)}&lesson=${encodeURIComponent(lessonSlug)}&language=${encodeURIComponent(language)}`}
+                target="_blank"
+                rel="noreferrer"
+                style={{ color: "#4F46BA", fontWeight: 700 }}
+              >
+                view yaml →
+              </a>
+            </>
+          ) : (
+            `✗ ${result.stage ? `[${result.stage}] ` : ""}${result.message ?? "Unknown error"}`
+          )}
         </div>
       ) : null}
     </div>

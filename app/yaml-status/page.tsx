@@ -2,10 +2,16 @@
  *  been generated vs. how many are still pending across the whole
  *  catalog. Public (matches /database-schema). Auto-refreshes every 8s
  *  via meta http-equiv refresh.
+ *
+ *  Each row carries:
+ *   - the EN status badge (primary)
+ *   - a small per-language strip below for non-EN languages, each
+ *     clickable to view the generated YAML if available
  */
 
 import { createClient as createServiceClient } from "@supabase/supabase-js";
 
+import { LANGUAGE_OPTIONS } from "@/app/update-yaml/constants";
 import {
   enumerateAllLessons,
   lessonYamlExists,
@@ -23,6 +29,7 @@ type JobRow = {
   started_at: string | null;
   finished_at: string | null;
   yaml_path: string | null;
+  yaml_text: string | null;
   error: string | null;
   model: string | null;
   updated_at: string | null;
@@ -35,26 +42,36 @@ function adminClient() {
   return createServiceClient(url, key, { auth: { persistSession: false } });
 }
 
+function jobKey(c: string, l: string, lang: string): string {
+  return `${c}::${l}::${lang}`;
+}
+
 async function loadJobsByKey(): Promise<Map<string, JobRow>> {
   const admin = adminClient();
   if (!admin) return new Map();
   const { data } = await admin
     .from("yaml_generation_jobs")
     .select(
-      "course_slug, lesson_slug, language, status, attempts, started_at, finished_at, yaml_path, error, model, updated_at",
+      "course_slug, lesson_slug, language, status, attempts, started_at, finished_at, yaml_path, yaml_text, error, model, updated_at",
     );
   const map = new Map<string, JobRow>();
   for (const j of (data ?? []) as JobRow[]) {
-    map.set(`${j.course_slug}::${j.lesson_slug}::${j.language}`, j);
+    map.set(jobKey(j.course_slug, j.lesson_slug, j.language), j);
   }
   return map;
 }
 
 type Status = "done" | "running" | "failed" | "pending";
 
-function statusFor(entry: LessonEntry, jobs: Map<string, JobRow>): Status {
-  if (lessonYamlExists(entry, "en")) return "done";
-  const job = jobs.get(`${entry.courseSlug}::${entry.lessonSlug}::en`);
+/** Status of one lesson in one language. Considers on-disk YAML AND
+ *  job-row state; either being terminal-good counts as done. */
+function statusOfLang(
+  entry: LessonEntry,
+  language: string,
+  jobs: Map<string, JobRow>,
+): Status {
+  if (lessonYamlExists(entry, language)) return "done";
+  const job = jobs.get(jobKey(entry.courseSlug, entry.lessonSlug, language));
   if (!job) return "pending";
   if (job.status === "done") return "done";
   if (job.status === "running" || job.status === "queued") return "running";
@@ -69,11 +86,24 @@ const STATUS_STYLE: Record<Status, { bg: string; fg: string; label: string }> = 
   pending: { bg: "#F1F5F9", fg: "#475569", label: "PENDING" },
 };
 
+const LANG_STYLE: Record<Status, { bg: string; fg: string; mark: string }> = {
+  done:    { bg: "#DCFCE7", fg: "#166534", mark: "✓" },
+  running: { bg: "#DBEAFE", fg: "#1E40AF", mark: "⏳" },
+  failed:  { bg: "#FEE2E2", fg: "#991B1B", mark: "✗" },
+  pending: { bg: "#F8FAFC", fg: "#94A3B8", mark: "·" },
+};
+
+const NON_EN_LANGS = LANGUAGE_OPTIONS.filter((l) => l.code !== "en");
+
+function textHref(courseSlug: string, lessonSlug: string, language: string): string {
+  const q = new URLSearchParams({ course: courseSlug, lesson: lessonSlug, language });
+  return `/api/yaml-jobs/text?${q.toString()}`;
+}
+
 export default async function YamlStatusPage() {
   const entries = enumerateAllLessons();
   const jobs = await loadJobsByKey();
 
-  // Group by course for the table.
   const byCourse = new Map<string, LessonEntry[]>();
   for (const e of entries) {
     const arr = byCourse.get(e.courseSlug) ?? [];
@@ -81,17 +111,30 @@ export default async function YamlStatusPage() {
     byCourse.set(e.courseSlug, arr);
   }
 
-  // Aggregate counts (English only — the canonical track).
-  const counts: Record<Status, number> = { done: 0, running: 0, failed: 0, pending: 0 };
-  for (const e of entries) counts[statusFor(e, jobs)]++;
+  // Tiles still EN-track (the primary content axis). Translations roll
+  // up in a smaller summary line under the tiles.
+  const enCounts: Record<Status, number> = { done: 0, running: 0, failed: 0, pending: 0 };
+  for (const e of entries) enCounts[statusOfLang(e, "en", jobs)]++;
   const total = entries.length;
+
+  // Translations summary across all non-EN languages: "done" total +
+  // "started" total (anything not pending).
+  let trDone = 0;
+  let trStarted = 0;
+  const trUniverse = entries.length * NON_EN_LANGS.length;
+  for (const e of entries) {
+    for (const l of NON_EN_LANGS) {
+      const s = statusOfLang(e, l.code, jobs);
+      if (s !== "pending") trStarted++;
+      if (s === "done") trDone++;
+    }
+  }
 
   return (
     <main style={{ minHeight: "100dvh", background: "#FAFAFA", padding: "32px 16px 80px" }}>
-      {/* Auto-refresh — gentle so it's not a server hammer. */}
       <meta httpEquiv="refresh" content="8" />
 
-      <div style={{ maxWidth: 1080, margin: "0 auto" }}>
+      <div style={{ maxWidth: 1180, margin: "0 auto" }}>
         <header style={{ marginBottom: 16 }}>
           <a
             href="/yaml-generate"
@@ -110,28 +153,44 @@ export default async function YamlStatusPage() {
             YAML generation status
           </h1>
           <p style={{ marginTop: 6, fontSize: 14, color: "#475569", lineHeight: 1.5 }}>
-            English (canonical) lessons across every bundle. Auto-refreshes every 8s.
-            "Done" = on-disk YAML present (or job marked done by the API).
+            EN tiles are the canonical track. Each row also shows a translations bar
+            for the {NON_EN_LANGS.length} other languages; click a chip to view the
+            generated YAML. Auto-refreshes every 8s.
           </p>
         </header>
 
-        {/* Counts */}
+        {/* EN tiles */}
         <section
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(5, 1fr)",
             gap: 8,
-            marginBottom: 24,
+            marginBottom: 8,
           }}
         >
-          <Tile label="Total"   value={total}             tone="neutral" />
-          <Tile label="Done"    value={counts.done}       tone="done" />
-          <Tile label="Running" value={counts.running}    tone="running" />
-          <Tile label="Failed"  value={counts.failed}     tone="failed" />
-          <Tile label="Pending" value={counts.pending}    tone="pending" />
+          <Tile label="EN total"   value={total}             tone="neutral" />
+          <Tile label="EN done"    value={enCounts.done}     tone="done" />
+          <Tile label="EN running" value={enCounts.running}  tone="running" />
+          <Tile label="EN failed"  value={enCounts.failed}   tone="failed" />
+          <Tile label="EN pending" value={enCounts.pending}  tone="pending" />
         </section>
 
-        {/* Per-course tables */}
+        {/* Translations summary line */}
+        <p
+          style={{
+            marginBottom: 24,
+            fontSize: 12,
+            color: "#475569",
+            fontFamily: "ui-monospace, monospace",
+            letterSpacing: "0.04em",
+          }}
+        >
+          translations: <strong style={{ color: "#0F172A" }}>{trDone}</strong> done ·{" "}
+          <strong style={{ color: "#0F172A" }}>{trStarted - trDone}</strong> in flight ·{" "}
+          {trUniverse - trStarted} pending
+          ({NON_EN_LANGS.map((l) => l.code).join(", ")})
+        </p>
+
         {[...byCourse.entries()].map(([courseSlug, lessons]) => {
           const courseTitle = lessons[0]!.courseTitle;
           const bundleSlug = lessons[0]!.bundleSlug;
@@ -168,68 +227,105 @@ export default async function YamlStatusPage() {
                   {courseTitle}
                 </h2>
               </div>
-              <div style={{ padding: 0 }}>
+              <div>
                 {lessons.map((e) => {
-                  const status = statusFor(e, jobs);
-                  const job = jobs.get(`${e.courseSlug}::${e.lessonSlug}::en`);
-                  const style = STATUS_STYLE[status];
+                  const enStatus = statusOfLang(e, "en", jobs);
+                  const enJob = jobs.get(jobKey(e.courseSlug, e.lessonSlug, "en"));
+                  const style = STATUS_STYLE[enStatus];
+                  const enYamlHref =
+                    enJob?.yaml_text || lessonYamlExists(e, "en")
+                      ? textHref(e.courseSlug, e.lessonSlug, "en")
+                      : null;
+
                   return (
                     <div
                       key={e.lessonSlug}
                       style={{
-                        display: "grid",
-                        gridTemplateColumns: "32px 1fr 110px 130px",
-                        gap: 12,
-                        padding: "10px 16px",
+                        padding: "12px 16px",
                         borderTop: "1px solid #F1F5F9",
-                        alignItems: "center",
                       }}
                     >
-                      <span
+                      {/* primary row */}
+                      <div
                         style={{
-                          fontFamily: "ui-monospace, monospace",
-                          fontSize: 12,
-                          color: "#94A3B8",
+                          display: "grid",
+                          gridTemplateColumns: "32px 1fr auto",
+                          gap: 12,
+                          alignItems: "center",
                         }}
                       >
-                        {String(e.lessonIndex).padStart(2, "0")}
-                      </span>
-                      <span style={{ fontSize: 14, color: "#0F172A", minWidth: 0 }}>
-                        {e.lessonTitle}
-                      </span>
-                      <span
-                        style={{
-                          padding: "3px 10px",
-                          borderRadius: 999,
-                          background: style.bg,
-                          color: style.fg,
-                          fontSize: 11,
-                          fontWeight: 700,
-                          letterSpacing: "0.06em",
-                          textAlign: "center",
-                          fontFamily: "ui-monospace, monospace",
-                        }}
-                      >
-                        {style.label}
-                      </span>
-                      <span
-                        style={{
-                          fontSize: 11,
-                          color: "#64748B",
-                          fontFamily: "ui-monospace, monospace",
-                          textAlign: "right",
-                        }}
-                      >
-                        {job?.attempts ? `${job.attempts}× attempts` : ""}
-                        {job?.finished_at
-                          ? ` · ${new Date(job.finished_at).toLocaleTimeString()}`
-                          : ""}
-                      </span>
-                      {job?.error ? (
+                        <span
+                          style={{
+                            fontFamily: "ui-monospace, monospace",
+                            fontSize: 12,
+                            color: "#94A3B8",
+                          }}
+                        >
+                          {String(e.lessonIndex).padStart(2, "0")}
+                        </span>
+                        <span style={{ fontSize: 14, color: "#0F172A", minWidth: 0 }}>
+                          {e.lessonTitle}
+                        </span>
+                        <span
+                          style={{
+                            display: "inline-flex",
+                            gap: 8,
+                            alignItems: "center",
+                            justifyContent: "flex-end",
+                          }}
+                        >
+                          {enYamlHref ? (
+                            <a
+                              href={enYamlHref}
+                              target="_blank"
+                              rel="noreferrer"
+                              style={{
+                                fontSize: 11,
+                                fontFamily: "ui-monospace, monospace",
+                                color: "#4F46BA",
+                                textDecoration: "none",
+                              }}
+                            >
+                              view yaml
+                            </a>
+                          ) : null}
+                          <span
+                            style={{
+                              padding: "3px 10px",
+                              borderRadius: 999,
+                              background: style.bg,
+                              color: style.fg,
+                              fontSize: 11,
+                              fontWeight: 700,
+                              letterSpacing: "0.06em",
+                              fontFamily: "ui-monospace, monospace",
+                            }}
+                          >
+                            {style.label}
+                          </span>
+                          <span
+                            style={{
+                              fontSize: 11,
+                              color: "#64748B",
+                              fontFamily: "ui-monospace, monospace",
+                              minWidth: 110,
+                              textAlign: "right",
+                            }}
+                          >
+                            {enJob?.attempts ? `${enJob.attempts}× attempts` : ""}
+                            {enJob?.finished_at
+                              ? ` · ${new Date(enJob.finished_at).toLocaleTimeString()}`
+                              : ""}
+                          </span>
+                        </span>
+                      </div>
+
+                      {/* error (EN) */}
+                      {enJob?.error ? (
                         <div
                           style={{
-                            gridColumn: "2 / -1",
-                            marginTop: 4,
+                            marginTop: 6,
+                            marginLeft: 44,
                             fontSize: 11,
                             color: "#991B1B",
                             fontFamily: "ui-monospace, monospace",
@@ -237,9 +333,74 @@ export default async function YamlStatusPage() {
                             lineHeight: 1.4,
                           }}
                         >
-                          {job.error.split("\n").slice(0, 3).join("\n")}
+                          {enJob.error.split("\n").slice(0, 3).join("\n")}
                         </div>
                       ) : null}
+
+                      {/* translations bar */}
+                      <div
+                        style={{
+                          marginTop: 8,
+                          marginLeft: 44,
+                          display: "flex",
+                          flexWrap: "wrap",
+                          gap: 4,
+                          alignItems: "center",
+                        }}
+                      >
+                        <span
+                          style={{
+                            fontSize: 10,
+                            fontFamily: "ui-monospace, monospace",
+                            color: "#94A3B8",
+                            letterSpacing: "0.06em",
+                            marginRight: 4,
+                            textTransform: "uppercase",
+                          }}
+                        >
+                          translations
+                        </span>
+                        {NON_EN_LANGS.map((lang) => {
+                          const s = statusOfLang(e, lang.code, jobs);
+                          const job = jobs.get(jobKey(e.courseSlug, e.lessonSlug, lang.code));
+                          const ls = LANG_STYLE[s];
+                          const hasYaml =
+                            !!job?.yaml_text || lessonYamlExists(e, lang.code);
+                          const inner = (
+                            <span
+                              style={{
+                                display: "inline-flex",
+                                alignItems: "center",
+                                gap: 3,
+                                padding: "2px 7px",
+                                borderRadius: 999,
+                                background: ls.bg,
+                                color: ls.fg,
+                                fontSize: 10,
+                                fontWeight: 700,
+                                fontFamily: "ui-monospace, monospace",
+                                letterSpacing: "0.04em",
+                              }}
+                              title={`${lang.label} · ${s}${job?.error ? ` · ${job.error.split("\n")[0]}` : ""}`}
+                            >
+                              {lang.code} {ls.mark}
+                            </span>
+                          );
+                          return hasYaml ? (
+                            <a
+                              key={lang.code}
+                              href={textHref(e.courseSlug, e.lessonSlug, lang.code)}
+                              target="_blank"
+                              rel="noreferrer"
+                              style={{ textDecoration: "none" }}
+                            >
+                              {inner}
+                            </a>
+                          ) : (
+                            <span key={lang.code}>{inner}</span>
+                          );
+                        })}
+                      </div>
                     </div>
                   );
                 })}
