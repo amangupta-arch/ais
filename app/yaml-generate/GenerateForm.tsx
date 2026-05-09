@@ -104,10 +104,19 @@ export default function GenerateForm({
   const [result, setResult] = useState<ApiResult | null>(null);
 
   // Poll the jobs table while a generation is in flight so the UI keeps
-  // updating even if the API request connection drops.
+  // updating even if the API request connection drops. Stops on
+  // terminal status (done/failed). Also stops after MAX_POLLS so a
+  // stranded "running" row can't burn the tab forever.
   useEffect(() => {
     if (!polling) return;
+    const MAX_POLLS = 120; // 120 × 3s = 6 minutes
+    let n = 0;
     const id = setInterval(async () => {
+      n++;
+      if (n > MAX_POLLS) {
+        setPolling(false);
+        return;
+      }
       const res = await fetch("/api/yaml-jobs/list", { cache: "no-store" });
       if (!res.ok) return;
       const data = (await res.json()) as { jobs: JobRow[] };
@@ -124,6 +133,10 @@ export default function GenerateForm({
     if (!courseSlug || !lessonSlug) return;
     setSubmitting(true);
     setResult(null);
+    // Start polling BEFORE the fetch — and keep it running across the
+    // fetch outcome. The poller stops itself once the row hits a
+    // terminal state (done/failed). This way a network drop or Vercel
+    // timeout doesn't strand the UI on stale status.
     setPolling(true);
     try {
       const res = await fetch("/api/yaml-jobs/generate", {
@@ -134,10 +147,12 @@ export default function GenerateForm({
       const data = (await res.json()) as ApiResult;
       setResult(data);
     } catch (e) {
-      setResult({ ok: false, message: `Network error: ${String(e)}` });
+      setResult({
+        ok: false,
+        message: `Request lost (${String(e)}) — still watching the job row in case it finishes server-side.`,
+      });
     } finally {
       setSubmitting(false);
-      setPolling(false);
     }
   }
 

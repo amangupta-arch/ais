@@ -24,10 +24,13 @@ import { NextResponse } from "next/server";
 import { createClient as createServiceClient } from "@supabase/supabase-js";
 
 import { submitLessonYaml } from "@/app/update-yaml/actions";
+import { LANGUAGE_OPTIONS } from "@/app/update-yaml/constants";
 import { createClient } from "@/lib/supabase/server";
 import { enumerateAllLessons } from "@/lib/yaml-generation/catalog";
 import { GENERATOR_MODEL, generateLessonYaml } from "@/lib/yaml-generation/generate";
 import { writeLessonYaml } from "@/lib/yaml-generation/persist";
+
+const ALLOWED_LANGS: ReadonlySet<string> = new Set(LANGUAGE_OPTIONS.map((l) => l.code));
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 300; // seconds — Vercel Pro/Enterprise
@@ -68,6 +71,14 @@ export async function POST(req: Request) {
   if (!courseSlug || !lessonSlug) {
     return NextResponse.json(
       { ok: false, message: "Missing courseSlug or lessonSlug." },
+      { status: 400 },
+    );
+  }
+  // Allowlist the language code BEFORE any filesystem touch — the value
+  // flows into directory + file path construction in writeLessonYaml.
+  if (!ALLOWED_LANGS.has(language)) {
+    return NextResponse.json(
+      { ok: false, message: `Unsupported language "${language}".` },
       { status: 400 },
     );
   }
