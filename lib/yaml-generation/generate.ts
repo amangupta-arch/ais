@@ -33,6 +33,10 @@ function loadKnowledge(): string {
 export type GenerateInput = {
   entry: LessonEntry;
   language: string;
+  /** Canonical EN YAML, required when language !== "en". The generator
+   *  embeds it in the prompt so the translation keeps the same
+   *  structure, ids, persona names, tool names, URLs, and markup. */
+  enReference?: string | null;
 };
 
 export type GenerateOk = {
@@ -49,8 +53,40 @@ export type GenerateErr = {
 
 export type GenerateResult = GenerateOk | GenerateErr;
 
-function buildUserPrompt(entry: LessonEntry, language: string): string {
+function buildUserPrompt(
+  entry: LessonEntry,
+  language: string,
+  enReference?: string | null,
+): string {
   const langLabel = language === "en" ? "English (canonical)" : language;
+
+  // ---------- Translation path: EN YAML is the base ----------
+  if (language !== "en" && enReference) {
+    return [
+      `Translate the canonical English lesson YAML below into ${langLabel}.`,
+      `Output ONLY the translated YAML — no markdown fences, no preamble.`,
+      ``,
+      `BUNDLE: ${entry.bundleSlug}`,
+      `COURSE: ${entry.courseTitle}`,
+      `LESSON: "${entry.lessonTitle}"`,
+      ``,
+      `Translation rules (also in the system prompt — restated here because they matter):`,
+      `  • Keep the same top-level structure (title, subtitle?, estimated_minutes, xp_reward, turns).`,
+      `  • Keep the same turn count and order.`,
+      `  • Keep all id values verbatim (mcq option ids, fill_in_the_blank answer ids, drag_to_reorder item ids, tap_to_match left/right ids, pair tuples).`,
+      `  • Keep persona names (nova, arjun, riya, sensei) verbatim.`,
+      `  • Keep tool names (chatgpt, claude, gemini, perplexity, canva, midjourney, …) verbatim.`,
+      `  • Keep URLs verbatim.`,
+      `  • Keep SVG/HTML markup verbatim — only translate visible text inside.`,
+      `  • Translate user-visible strings: title, subtitle, all text/prompt/question/option text/rationale/caption/summary/goal/success_criteria/starter_text/system_prompt/instruction/label.`,
+      `  • For Hinglish specifically: keep universally-English nouns (ChatGPT, Python, Excel, "AI") in English; weave Hindi and English naturally as a Mumbai/Delhi 20-something would speak.`,
+      ``,
+      `CANONICAL ENGLISH YAML:`,
+      enReference.trim(),
+    ].join("\n");
+  }
+
+  // ---------- Generation path: write from scratch ----------
   return [
     `Generate the lesson YAML for the lesson below. Output ONLY the YAML — no markdown fences, no preamble.`,
     ``,
@@ -66,9 +102,6 @@ function buildUserPrompt(entry: LessonEntry, language: string): string {
     ``,
     `Strictly follow every rule in the system prompt's checklist.`,
     `Aim for 14–18 turns. Last turn MUST be a checkpoint.`,
-    language === "en"
-      ? ``
-      : `This is the ${langLabel} translation. Keep the same lesson structure as the canonical EN version would have, but translate ALL user-visible strings (title, subtitle, tutor text, prompts, options, rationales, summaries). Do NOT translate ids, persona names, tool names, URLs, or markup contents.`,
   ].join("\n");
 }
 
@@ -144,9 +177,20 @@ export async function generateLessonYaml(input: GenerateInput): Promise<Generate
     };
   }
 
+  // Translations require the canonical EN as the source. Refuse early —
+  // generating a translation without an EN base produces drift.
+  if (input.language !== "en" && !input.enReference) {
+    return {
+      ok: false,
+      message:
+        "English YAML must exist before generating a translation. Generate the EN version first.",
+      attempts: 0,
+    };
+  }
+
   const client = new Anthropic({ apiKey });
   const systemPrompt = loadKnowledge();
-  const userPrompt = buildUserPrompt(input.entry, input.language);
+  const userPrompt = buildUserPrompt(input.entry, input.language, input.enReference);
 
   let feedback: string | null = null;
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {

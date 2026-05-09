@@ -1,0 +1,66 @@
+# Drains generated lesson YAMLs from the Supabase yaml_generation_jobs
+# table back onto disk under supabase/content/, then commits + pushes
+# any new files to main.
+#
+# Triggers:
+#   - workflow_dispatch: run manually from the Actions tab when you want
+#     to sync immediately after generating something via /yaml-generate.
+#   - schedule: hourly safety net so nothing stays DB-only forever.
+#
+# Required repository secrets (Settings → Secrets and variables → Actions):
+#   - NEXT_PUBLIC_SUPABASE_URL
+#   - SUPABASE_SERVICE_ROLE_KEY
+#
+# The default GITHUB_TOKEN is enough to push to main from this workflow
+# because we ask for `contents: write` in the job permissions block.
+
+name: Sync generated YAMLs to repo
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 * * * *" # every hour at :00
+
+# Don't pile up runs if a previous one is still going.
+concurrency:
+  group: sync-yaml-to-repo
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Sync DB → disk
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: npm run yaml:sync-to-disk
+
+      - name: Commit + push if anything changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add supabase/content/
+          if git diff --cached --quiet; then
+            echo "No new YAMLs to sync."
+          else
+            git commit -m "chore(content): sync generated lesson YAMLs from DB
+
+            Pulled by .github/workflows/sync-yaml-to-repo.yml from the
+            yaml_generation_jobs table. See /yaml-status for source rows."
+            git push
+          fi
