@@ -27,6 +27,7 @@ import { submitLessonYaml } from "@/app/update-yaml/actions";
 import { LANGUAGE_OPTIONS } from "@/app/update-yaml/constants";
 import { createClient } from "@/lib/supabase/server";
 import { enumerateAllLessons } from "@/lib/yaml-generation/catalog";
+import { loadEnYamlText } from "@/lib/yaml-generation/en-source";
 import { GENERATOR_MODEL, generateLessonYaml } from "@/lib/yaml-generation/generate";
 import { writeLessonYaml } from "@/lib/yaml-generation/persist";
 
@@ -157,8 +158,31 @@ export async function POST(req: Request) {
       .eq("language", language);
   };
 
+  // For non-EN runs, load the canonical EN YAML so the generator can
+  // use it as the translation base. Refuse early if EN doesn't exist.
+  let enReference: string | null = null;
+  if (language !== "en") {
+    enReference = await loadEnYamlText(entry);
+    if (!enReference) {
+      await finalize({
+        status: "failed",
+        attempts: 0,
+        error: "English YAML must exist before generating a translation. Generate the EN version first.",
+      });
+      return NextResponse.json(
+        {
+          ok: false,
+          stage: "prerequisite",
+          message: "English YAML must exist before generating a translation. Generate the EN version first.",
+          attempts: 0,
+        },
+        { status: 409 },
+      );
+    }
+  }
+
   // 1. Generate.
-  const gen = await generateLessonYaml({ entry, language });
+  const gen = await generateLessonYaml({ entry, language, enReference });
   if (!gen.ok) {
     await finalize({ status: "failed", attempts: gen.attempts, error: gen.message });
     return NextResponse.json(

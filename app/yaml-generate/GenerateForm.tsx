@@ -99,6 +99,12 @@ export default function GenerateForm({
 
   const selectedJob = jobsByKey.get(jobKey(courseSlug, lessonSlug, language)) ?? null;
   const selectedRow = lessons.find((l) => l.lessonSlug === lessonSlug) ?? null;
+  // Translations require the EN canonical to exist as a base. Anything
+  // that proves EN content is available counts: an on-disk file at
+  // deploy time, or a prior generator job that completed.
+  const enJob = jobsByKey.get(jobKey(courseSlug, lessonSlug, "en")) ?? null;
+  const enReady = !!(selectedRow?.enExists || enJob?.status === "done");
+  const blockedTranslation = language !== "en" && !enReady;
 
   const [submitting, setSubmitting] = useState(false);
   const [polling, setPolling] = useState(false);
@@ -216,22 +222,46 @@ export default function GenerateForm({
 
       <StatusBlock row={selectedRow} job={selectedJob} language={language} />
 
+      {blockedTranslation ? (
+        <div
+          style={{
+            marginTop: 8,
+            padding: 10,
+            borderRadius: 8,
+            background: "#FEF3C7",
+            color: "#78350F",
+            fontSize: 13,
+            lineHeight: 1.45,
+          }}
+        >
+          Translations use the canonical English YAML as their base. Generate{" "}
+          <strong>English</strong> for this lesson first, then come back for{" "}
+          {language}.
+        </div>
+      ) : null}
+
       <button
         onClick={onStart}
-        disabled={submitting || !lessonSlug}
+        disabled={submitting || !lessonSlug || blockedTranslation}
         style={{
           marginTop: 8,
           padding: "12px 18px",
           borderRadius: 10,
           border: 0,
-          background: submitting ? "#94A3B8" : "#4F46BA",
+          background:
+            submitting || blockedTranslation ? "#94A3B8" : "#4F46BA",
           color: "#fff",
           fontWeight: 600,
           fontSize: 15,
-          cursor: submitting ? "not-allowed" : "pointer",
+          cursor:
+            submitting || blockedTranslation ? "not-allowed" : "pointer",
         }}
       >
-        {submitting ? "Generating… (≈30–60s)" : "Start generation"}
+        {submitting
+          ? "Generating… (≈30–60s)"
+          : blockedTranslation
+          ? "Generate English first"
+          : "Start generation"}
       </button>
 
       {result ? (
