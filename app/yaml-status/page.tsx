@@ -61,6 +61,52 @@ async function loadJobsByKey(): Promise<Map<string, JobRow>> {
   return map;
 }
 
+/** Returns map: `${courseSlug}::${lessonSlug}::${language}` → chunk count
+ *  in lesson_audio_manifest. Used to render the audio coverage chip per
+ *  language on each row. Three small queries; manageable for now. */
+async function loadAudioCoverage(): Promise<Map<string, number>> {
+  const admin = adminClient();
+  if (!admin) return new Map();
+  const { data: rows } = await admin
+    .from("lesson_audio_manifest")
+    .select("lesson_id, language");
+  if (!rows?.length) return new Map();
+
+  const lessonIds = [...new Set(rows.map((r) => r.lesson_id as string))];
+  const { data: lessons } = await admin
+    .from("lessons")
+    .select("id, slug, course_id")
+    .in("id", lessonIds);
+
+  const courseIds = [
+    ...new Set((lessons ?? []).map((l) => l.course_id as string)),
+  ];
+  const { data: courses } = await admin
+    .from("courses")
+    .select("id, slug")
+    .in("id", courseIds);
+
+  type LessonRow = { id: string; slug: string; course_id: string };
+  type CourseRow = { id: string; slug: string };
+  const lessonById = new Map<string, LessonRow>(
+    (lessons ?? []).map((l) => [l.id as string, l as unknown as LessonRow]),
+  );
+  const courseSlugById = new Map<string, string>(
+    (courses ?? []).map((c) => [c.id as string, c.slug as string]),
+  );
+
+  const out = new Map<string, number>();
+  for (const r of rows) {
+    const lesson = lessonById.get(r.lesson_id as string);
+    if (!lesson) continue;
+    const courseSlug = courseSlugById.get(lesson.course_id);
+    if (!courseSlug) continue;
+    const k = jobKey(courseSlug, lesson.slug, r.language as string);
+    out.set(k, (out.get(k) ?? 0) + 1);
+  }
+  return out;
+}
+
 type Status = "done" | "running" | "failed" | "pending";
 
 /** Status of one lesson in one language. Considers on-disk YAML AND
@@ -102,7 +148,10 @@ function textHref(courseSlug: string, lessonSlug: string, language: string): str
 
 export default async function YamlStatusPage() {
   const entries = enumerateAllLessons();
-  const jobs = await loadJobsByKey();
+  const [jobs, audioCoverage] = await Promise.all([
+    loadJobsByKey(),
+    loadAudioCoverage(),
+  ]);
 
   const byCourse = new Map<string, LessonEntry[]>();
   for (const e of entries) {
@@ -236,6 +285,9 @@ export default async function YamlStatusPage() {
                     enJob?.yaml_text || lessonYamlExists(e, "en")
                       ? textHref(e.courseSlug, e.lessonSlug, "en")
                       : null;
+                  const enAudioCount = audioCoverage.get(
+                    jobKey(e.courseSlug, e.lessonSlug, "en"),
+                  ) ?? 0;
 
                   return (
                     <div
@@ -303,6 +355,22 @@ export default async function YamlStatusPage() {
                           >
                             {style.label}
                           </span>
+                          {enAudioCount > 0 ? (
+                            <span
+                              title={`${enAudioCount} audio chunks generated`}
+                              style={{
+                                padding: "3px 8px",
+                                borderRadius: 999,
+                                background: "#EDE9FE",
+                                color: "#5B21B6",
+                                fontSize: 11,
+                                fontWeight: 700,
+                                fontFamily: "ui-monospace, monospace",
+                              }}
+                            >
+                              ♪ {enAudioCount}
+                            </span>
+                          ) : null}
                           <span
                             style={{
                               fontSize: 11,
@@ -366,6 +434,8 @@ export default async function YamlStatusPage() {
                           const ls = LANG_STYLE[s];
                           const hasYaml =
                             !!job?.yaml_text || lessonYamlExists(e, lang.code);
+                          const audioCount =
+                            audioCoverage.get(jobKey(e.courseSlug, e.lessonSlug, lang.code)) ?? 0;
                           const inner = (
                             <span
                               style={{
@@ -381,9 +451,12 @@ export default async function YamlStatusPage() {
                                 fontFamily: "ui-monospace, monospace",
                                 letterSpacing: "0.04em",
                               }}
-                              title={`${lang.label} · ${s}${job?.error ? ` · ${job.error.split("\n")[0]}` : ""}`}
+                              title={`${lang.label} · ${s}${job?.error ? ` · ${job.error.split("\n")[0]}` : ""}${audioCount > 0 ? ` · ♪ ${audioCount} chunks` : ""}`}
                             >
                               {lang.code} {ls.mark}
+                              {audioCount > 0 ? (
+                                <span style={{ color: "#5B21B6", marginLeft: 2 }}>♪</span>
+                              ) : null}
                             </span>
                           );
                           return hasYaml ? (
