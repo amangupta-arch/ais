@@ -51,35 +51,47 @@ type TurnRow = {
 
 // ---- data fetching --------------------------------------------------------
 
+// Fetch every row of a table in 1000-row pages. Supabase Cloud caps
+// SELECTs at max-rows server-side; an explicit `.range(0, 99999)` is
+// honoured only up to that cap, so to get the full table we paginate.
+type AnyClient = Awaited<ReturnType<typeof createClient>>;
+
+async function fetchAll<T>(
+  supabase: AnyClient,
+  table: string,
+  select = "*",
+  pageSize = 1000,
+): Promise<T[]> {
+  const all: T[] = [];
+  for (let offset = 0; ; offset += pageSize) {
+    const { data, error } = await supabase
+      .from(table)
+      .select(select)
+      .range(offset, offset + pageSize - 1);
+    if (error || !data || data.length === 0) break;
+    all.push(...(data as unknown as T[]));
+    if (data.length < pageSize) break;
+  }
+  return all;
+}
+
 async function loadAll() {
   const supabase = await createClient();
-  // PostgREST caps each select at 1000 rows by default. The dashboard
-  // counts every row, so we need to bypass the cap for each layer.
-  // .range(0, N) is the cheapest way: it forces PostgREST to return up
-  // to N rows with no other side effects. Tables that fit comfortably
-  // below ~10k rows (lessons ≈ 1.9k, turns ≈ 0.6k today) get a 100k
-  // ceiling; bundles + courses get 10k for symmetry.
   const [bundles, courses, lessons, turns] = await Promise.all([
-    supabase.from("bundles").select("*").order("order_index").range(0, 9999),
-    supabase.from("courses").select("*").order("order_index").range(0, 9999),
-    supabase
-      .from("lessons")
-      .select("*")
-      .order("course_id")
-      .order("order_index")
-      .range(0, 99999),
-    // Just need translations + lesson_id for stats — keep payload small.
-    supabase
-      .from("lesson_turns")
-      .select("id, lesson_id, turn_type, translations")
-      .range(0, 99999),
+    fetchAll<BundleRow>(supabase, "bundles"),
+    fetchAll<CourseRow>(supabase, "courses"),
+    fetchAll<LessonRow>(supabase, "lessons"),
+    // Skip the heavy `content` jsonb on turns; we only need translations.
+    fetchAll<TurnRow>(supabase, "lesson_turns", "id, lesson_id, turn_type, translations"),
   ]);
-  return {
-    bundles: (bundles.data ?? []) as BundleRow[],
-    courses: (courses.data ?? []) as CourseRow[],
-    lessons: (lessons.data ?? []) as LessonRow[],
-    turns: (turns.data ?? []) as TurnRow[],
-  };
+  // Sort client-side since pagination doesn't preserve a single ORDER BY.
+  bundles.sort((a, b) => a.order_index - b.order_index);
+  courses.sort((a, b) => a.order_index - b.order_index);
+  lessons.sort((a, b) => {
+    if (a.course_id !== b.course_id) return a.course_id.localeCompare(b.course_id);
+    return a.order_index - b.order_index;
+  });
+  return { bundles, courses, lessons, turns };
 }
 
 // ---- yaml file tree -------------------------------------------------------
@@ -148,6 +160,15 @@ function languagesIn(translations: Record<string, unknown>): string[] {
   return Object.keys(translations);
 }
 
+/** Expected on-disk YAML path for a lesson, matching the loader regex
+ *  `^(\d{2,})-([a-z0-9-]+)\.yaml$` under `<course-slug>/`. Order index
+ *  is zero-padded to two digits (loader uses 2+ digits, so this matches
+ *  every authored file we have today). */
+function expectedYamlPath(courseSlug: string, lessonOrder: number, lessonSlug: string): string {
+  const nn = String(lessonOrder).padStart(2, "0");
+  return `${courseSlug}/${nn}-${lessonSlug}.yaml`;
+}
+
 // ---- page -----------------------------------------------------------------
 
 type SearchParams = { yaml?: string };
@@ -170,6 +191,21 @@ export default async function DatabaseSchemaPage({
   // since the lessons SELECT may be capped server-side regardless of the
   // .range() we ask for. courses is small (< 1k rows) so this is reliable.
   const totalLessonsFromCourses = courses.reduce((n, c) => n + (c.lesson_count ?? 0), 0);
+
+  // Index of every YAML path on disk → for the per-lesson 📄 link.
+  const yamlPaths = new Set<string>();
+  for (const dir of yamlTree) for (const f of dir.files) yamlPaths.add(f.path);
+
+  // YAML coverage: how many DB lessons have a matching YAML on disk.
+  const courseSlugById = new Map(courses.map((c) => [c.id, c.slug]));
+  let lessonsWithYaml = 0;
+  for (const l of lessons) {
+    const cslug = courseSlugById.get(l.course_id);
+    if (!cslug) continue;
+    if (yamlPaths.has(expectedYamlPath(cslug, l.order_index, l.slug))) {
+      lessonsWithYaml += 1;
+    }
+  }
 
   // languages: union of every layer's translation keys
   const langSet = new Set<string>();
@@ -305,10 +341,17 @@ export default async function DatabaseSchemaPage({
                                 {clessons.map((l) => {
                                   const tt = turnsByLesson.get(l.id) ?? [];
                                   const hasTrans = tt.some((t) => Object.keys(t.translations ?? {}).length > 0);
+                                  const ypath = expectedYamlPath(c.slug, l.order_index, l.slug);
+                                  const hasYaml = yamlPaths.has(ypath);
                                   return (
                                     <li key={l.id}>
                                       <code>{l.slug}</code> · {tt.length} turn{tt.length === 1 ? "" : "s"}
                                       {hasTrans ? " · 🌐 has translations" : ""}
+                                      {hasYaml ? (
+                                        <> · <a href={`?yaml=${encodeURIComponent(ypath)}#yaml-${ypath}`}>📄 yaml</a></>
+                                      ) : (
+                                        <span style={mutedInlineStyle}> · no yaml</span>
+                                      )}
                                     </li>
                                   );
                                 })}
@@ -346,10 +389,17 @@ export default async function DatabaseSchemaPage({
                         {clessons.map((l) => {
                           const tt = turnsByLesson.get(l.id) ?? [];
                           const hasTrans = tt.some((t) => Object.keys(t.translations ?? {}).length > 0);
+                          const ypath = expectedYamlPath(c.slug, l.order_index, l.slug);
+                          const hasYaml = yamlPaths.has(ypath);
                           return (
                             <li key={l.id}>
                               <code>{l.slug}</code> · {tt.length} turn{tt.length === 1 ? "" : "s"}
                               {hasTrans ? " · 🌐 has translations" : ""}
+                              {hasYaml ? (
+                                <> · <a href={`?yaml=${encodeURIComponent(ypath)}#yaml-${ypath}`}>📄 yaml</a></>
+                              ) : (
+                                <span style={mutedInlineStyle}> · no yaml</span>
+                              )}
                             </li>
                           );
                         })}
@@ -366,7 +416,9 @@ export default async function DatabaseSchemaPage({
         <Section title={`Raw YAML files (${yamlTree.reduce((n, d) => n + d.files.length, 0)})`}>
           <p style={mutedStyle}>
             Source-of-truth YAML for authored content under <code>supabase/content/</code>.
-            Click a file to view it.
+            Click a file to view it. <strong>{lessonsWithYaml}</strong> of {totalLessonsFromCourses} lessons have a matching YAML
+            ({Math.round((lessonsWithYaml / Math.max(1, totalLessonsFromCourses)) * 100)}%).
+            Lessons without YAMLs were seeded by <code>scripts/load-bundle-courses.ts</code> (stub titles only) and don't have authored content yet.
           </p>
           {yamlTree.map((d) => (
             <details key={d.name} style={detailsStyle}>
