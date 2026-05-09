@@ -1,0 +1,327 @@
+title: "SOH CAH TOA — the three ratios"
+estimated_minutes: 14
+xp_reward: 110
+
+turns:
+
+  - type: tutor_message
+    text: |
+      Now the payoff.
+
+      Three ratios. Each one connects an angle to two of the sides.
+      Memorize one mnemonic — SOH CAH TOA — and you can solve a huge class of problems.
+
+  - type: svg_graphic
+    title: "SOH CAH TOA — the three core ratios"
+    caption: "S = Sin, C = Cos, T = Tan. O = Opposite, A = Adjacent, H = Hypotenuse."
+    svg: |
+      <svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <style>
+            .ratio-box { fill: #fef3c7; stroke: #f59e0b; stroke-width: 2; rx: 12; }
+            .ratio-letter { font-family: 'Courier New', monospace; font-size: 36px; font-weight: bold; }
+            .ratio-meaning { font-family: system-ui, sans-serif; font-size: 14px; fill: #78350f; }
+            .formula { font-family: 'Courier New', monospace; font-size: 16px; fill: #1e293b; font-weight: bold; }
+            .frac-line { stroke: #1e293b; stroke-width: 2; }
+          </style>
+        </defs>
+
+        <rect class="ratio-box" x="20" y="20" width="170" height="180" />
+        <text class="ratio-letter" x="50" y="65" fill="#dc2626">S</text>
+        <text class="ratio-letter" x="80" y="65" fill="#2563eb">O</text>
+        <text class="ratio-letter" x="110" y="65" fill="#16a34a">H</text>
+        <text class="ratio-meaning" x="40" y="95">Sin = Opposite</text>
+        <text class="ratio-meaning" x="65" y="115">/ Hypotenuse</text>
+        <text class="formula" x="55" y="160">sin(θ) =</text>
+        <text class="formula" x="120" y="150" fill="#2563eb">opp</text>
+        <line class="frac-line" x1="115" y1="155" x2="160" y2="155" />
+        <text class="formula" x="118" y="172" fill="#dc2626">hyp</text>
+
+        <rect class="ratio-box" x="215" y="20" width="170" height="180" />
+        <text class="ratio-letter" x="245" y="65" fill="#dc2626">C</text>
+        <text class="ratio-letter" x="275" y="65" fill="#16a34a">A</text>
+        <text class="ratio-letter" x="305" y="65" fill="#16a34a">H</text>
+        <text class="ratio-meaning" x="232" y="95">Cos = Adjacent</text>
+        <text class="ratio-meaning" x="260" y="115">/ Hypotenuse</text>
+        <text class="formula" x="247" y="160">cos(θ) =</text>
+        <text class="formula" x="315" y="150" fill="#16a34a">adj</text>
+        <line class="frac-line" x1="310" y1="155" x2="355" y2="155" />
+        <text class="formula" x="313" y="172" fill="#dc2626">hyp</text>
+
+        <rect class="ratio-box" x="410" y="20" width="170" height="180" />
+        <text class="ratio-letter" x="440" y="65" fill="#dc2626">T</text>
+        <text class="ratio-letter" x="470" y="65" fill="#2563eb">O</text>
+        <text class="ratio-letter" x="500" y="65" fill="#16a34a">A</text>
+        <text class="ratio-meaning" x="425" y="95">Tan = Opposite</text>
+        <text class="ratio-meaning" x="455" y="115">/ Adjacent</text>
+        <text class="formula" x="442" y="160">tan(θ) =</text>
+        <text class="formula" x="510" y="150" fill="#2563eb">opp</text>
+        <line class="frac-line" x1="505" y1="155" x2="550" y2="155" />
+        <text class="formula" x="510" y="172" fill="#16a34a">adj</text>
+      </svg>
+
+  - type: tutor_message
+    text: |
+      Memorization tricks for SOH CAH TOA.
+
+      The classic: "Some Old Horse Caught Another Horse Taking Oats Away"
+
+      Visual: SOH = Sin Opposite Hypotenuse. The "S" of sin pairs with "O" then "H".
+
+      The story: "Toa" is what you say when you're surprised — toa, opposite over adjacent!
+
+      Pick whichever sticks for you. Trig is built on this. Once it's automatic, half the work is done.
+
+  - type: svg_graphic
+    title: "Worked example: a 3-4-5 triangle"
+    caption: "Classic 3-4-5 right triangle. Use SOH CAH TOA to find sin, cos, tan of angle θ."
+    svg: |
+      <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <style>
+            .hyp { stroke: #dc2626; stroke-width: 3.5; fill: none; }
+            .opp { stroke: #2563eb; stroke-width: 3.5; fill: none; }
+            .adj { stroke: #16a34a; stroke-width: 3.5; fill: none; }
+            .right-mark { fill: none; stroke: #475569; stroke-width: 1.5; }
+            .label { font-family: system-ui, sans-serif; font-size: 15px; }
+            .num { font-family: 'Courier New', monospace; font-size: 18px; font-weight: bold; }
+            .angle-mark { fill: #fbbf24; stroke: #d97706; stroke-width: 1.5; }
+          </style>
+        </defs>
+
+        <line class="hyp" x1="60" y1="220" x2="320" y2="60" />
+        <line class="opp" x1="320" y1="60" x2="320" y2="220" />
+        <line class="adj" x1="60" y1="220" x2="320" y2="220" />
+
+        <polyline class="right-mark" points="300,220 300,200 320,200" />
+
+        <path class="angle-mark" d="M 100,220 A 40,40 0 0 0 80,196 Z" opacity="0.6"/>
+        <text class="label" x="105" y="208" font-weight="bold">θ</text>
+
+        <text class="num" x="180" y="245" fill="#16a34a">4</text>
+        <text class="num" x="335" y="145" fill="#2563eb">3</text>
+        <text class="num" x="135" y="115" fill="#dc2626" transform="rotate(-32 165 130)">5</text>
+      </svg>
+
+  - type: tutor_message
+    text: |
+      Reading the diagram:
+
+      - Opposite (across from θ) = 3
+      - Adjacent (touching θ) = 4
+      - Hypotenuse (slanted) = 5
+
+      Now apply SOH CAH TOA:
+
+      - sin(θ) = opp / hyp = 3/5 = 0.6
+      - cos(θ) = adj / hyp = 4/5 = 0.8
+      - tan(θ) = opp / adj = 3/4 = 0.75
+
+      That's it. Three numbers. Three ratios. No calculator needed for this one.
+
+  - type: mcq
+    xp: 15
+    question: "In a right triangle, the side opposite angle θ is 5. The hypotenuse is 13. What is sin(θ)?"
+    options:
+      - id: a
+        text: "13/5"
+        is_correct: false
+        rationale: "You flipped the ratio. Sin = opposite/hypotenuse, not the other way around."
+      - id: b
+        text: "5/13"
+        is_correct: true
+        rationale: "Correct. SOH = Sin is Opposite over Hypotenuse = 5/13."
+      - id: c
+        text: "12/13"
+        is_correct: false
+        rationale: "12/13 is the cosine (adjacent over hypotenuse — adjacent here would be 12 from the 5-12-13 triple). Wrong ratio for sin."
+      - id: d
+        text: "5/12"
+        is_correct: false
+        rationale: "5/12 is opposite over adjacent — that's tan, not sin."
+
+  - type: tutor_message
+    text: |
+      The deciding question: which ratio do I use?
+
+      Look at what you have, look at what you need.
+
+      - Have opposite + hypotenuse → use sin
+      - Have adjacent + hypotenuse → use cos
+      - Have opposite + adjacent → use tan
+
+      The two sides involved tell you which ratio applies. No guessing.
+
+  - type: svg_graphic
+    title: "Decision flowchart: which ratio to use"
+    caption: "Look at the two sides you have. The flowchart picks the ratio."
+    svg: |
+      <svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <style>
+            .node { fill: #f1f5f9; stroke: #475569; stroke-width: 2; rx: 8; }
+            .start-node { fill: #fef3c7; stroke: #f59e0b; stroke-width: 2; rx: 8; }
+            .ratio-node { stroke-width: 2; rx: 8; }
+            .sin-node { fill: #dbeafe; stroke: #2563eb; }
+            .cos-node { fill: #dcfce7; stroke: #16a34a; }
+            .tan-node { fill: #fee2e2; stroke: #dc2626; }
+            .text { font-family: system-ui, sans-serif; font-size: 13px; fill: #1e293b; }
+            .text-bold { font-family: system-ui, sans-serif; font-size: 16px; font-weight: bold; fill: #1e293b; }
+            .arrow { stroke: #475569; stroke-width: 1.8; fill: none; marker-end: url(#fa); }
+          </style>
+          <marker id="fa" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="#475569" />
+          </marker>
+        </defs>
+
+        <rect class="start-node" x="220" y="20" width="160" height="50" />
+        <text class="text-bold" x="245" y="50">Two sides given?</text>
+
+        <rect class="node" x="60" y="120" width="160" height="50" />
+        <text class="text" x="80" y="145">Opposite + Hypotenuse</text>
+
+        <rect class="node" x="220" y="120" width="160" height="50" />
+        <text class="text" x="237" y="145">Adjacent + Hypotenuse</text>
+
+        <rect class="node" x="380" y="120" width="160" height="50" />
+        <text class="text" x="405" y="145">Opposite + Adjacent</text>
+
+        <line class="arrow" x1="280" y1="70" x2="140" y2="118" />
+        <line class="arrow" x1="300" y1="70" x2="300" y2="118" />
+        <line class="arrow" x1="320" y1="70" x2="460" y2="118" />
+
+        <rect class="ratio-node sin-node" x="80" y="220" width="120" height="60" />
+        <text class="text-bold" x="125" y="245" fill="#2563eb">SIN</text>
+        <text class="text" x="105" y="265">opp / hyp</text>
+
+        <rect class="ratio-node cos-node" x="240" y="220" width="120" height="60" />
+        <text class="text-bold" x="285" y="245" fill="#16a34a">COS</text>
+        <text class="text" x="265" y="265">adj / hyp</text>
+
+        <rect class="ratio-node tan-node" x="400" y="220" width="120" height="60" />
+        <text class="text-bold" x="445" y="245" fill="#dc2626">TAN</text>
+        <text class="text" x="425" y="265">opp / adj</text>
+
+        <line class="arrow" x1="140" y1="170" x2="140" y2="218" />
+        <line class="arrow" x1="300" y1="170" x2="300" y2="218" />
+        <line class="arrow" x1="460" y1="170" x2="460" y2="218" />
+      </svg>
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Match each scenario to the correct trig ratio."
+    left:
+      - id: l_oh
+        label: "You have: opposite = 3, hypotenuse = 5. You want the angle"
+      - id: l_ah
+        label: "You have: adjacent = 4, hypotenuse = 5. You want the angle"
+      - id: l_oa
+        label: "You have: opposite = 3, adjacent = 4. You want the angle"
+    right:
+      - id: r_sin
+        label: "Use sin"
+      - id: r_cos
+        label: "Use cos"
+      - id: r_tan
+        label: "Use tan"
+    pairs:
+      - [l_oh, r_sin]
+      - [l_ah, r_cos]
+      - [l_oa, r_tan]
+
+  - type: html_animation
+    title: "SOH CAH TOA in motion"
+    caption: "Each ratio highlighted in turn. Pause and pattern-match."
+    html: |
+      <div style="background: #f8fafc; padding: 20px; border-radius: 12px;">
+        <style>
+          @keyframes cycleSOH {
+            0%, 30% { opacity: 1; transform: scale(1.05); }
+            33%, 100% { opacity: 0.3; transform: scale(1); }
+          }
+          @keyframes cycleCAH {
+            0%, 30% { opacity: 0.3; transform: scale(1); }
+            33%, 63% { opacity: 1; transform: scale(1.05); }
+            66%, 100% { opacity: 0.3; transform: scale(1); }
+          }
+          @keyframes cycleTOA {
+            0%, 63% { opacity: 0.3; transform: scale(1); }
+            66%, 96% { opacity: 1; transform: scale(1.05); }
+            100% { opacity: 0.3; transform: scale(1); }
+          }
+          .cycle-soh { animation: cycleSOH 6s infinite; transform-origin: center; }
+          .cycle-cah { animation: cycleCAH 6s infinite; transform-origin: center; }
+          .cycle-toa { animation: cycleTOA 6s infinite; transform-origin: center; }
+        </style>
+        <div style="display: flex; justify-content: space-around; gap: 16px; flex-wrap: wrap;">
+          <div class="cycle-soh" style="background: #fef3c7; padding: 20px; border-radius: 12px; min-width: 140px; text-align: center; border: 2px solid #f59e0b;">
+            <div style="font-family: 'Courier New', monospace; font-size: 28px; font-weight: bold;">
+              <span style="color: #dc2626;">S</span><span style="color: #2563eb;">O</span><span style="color: #16a34a;">H</span>
+            </div>
+            <div style="font-family: system-ui, sans-serif; font-size: 13px; color: #78350f; margin-top: 8px;">
+              Sin = Opp/Hyp
+            </div>
+          </div>
+          <div class="cycle-cah" style="background: #fef3c7; padding: 20px; border-radius: 12px; min-width: 140px; text-align: center; border: 2px solid #f59e0b;">
+            <div style="font-family: 'Courier New', monospace; font-size: 28px; font-weight: bold;">
+              <span style="color: #dc2626;">C</span><span style="color: #16a34a;">A</span><span style="color: #16a34a;">H</span>
+            </div>
+            <div style="font-family: system-ui, sans-serif; font-size: 13px; color: #78350f; margin-top: 8px;">
+              Cos = Adj/Hyp
+            </div>
+          </div>
+          <div class="cycle-toa" style="background: #fef3c7; padding: 20px; border-radius: 12px; min-width: 140px; text-align: center; border: 2px solid #f59e0b;">
+            <div style="font-family: 'Courier New', monospace; font-size: 28px; font-weight: bold;">
+              <span style="color: #dc2626;">T</span><span style="color: #2563eb;">O</span><span style="color: #16a34a;">A</span>
+            </div>
+            <div style="font-family: system-ui, sans-serif; font-size: 13px; color: #78350f; margin-top: 8px;">
+              Tan = Opp/Adj
+            </div>
+          </div>
+        </div>
+      </div>
+
+  - type: exercise
+    xp: 25
+    instruction: |
+      The 5-12-13 right triangle.
+
+      - Side opposite angle θ = 5
+      - Side adjacent to angle θ = 12
+      - Hypotenuse = 13
+
+      Calculate (no calculator needed — leave as fractions):
+      1. sin(θ) = ?
+      2. cos(θ) = ?
+      3. tan(θ) = ?
+
+      Show your three answers.
+    placeholder: "sin(θ) = ___, cos(θ) = ___, tan(θ) = ___"
+
+  - type: fill_in_the_blank
+    xp: 15
+    prompt: "Complete each ratio's definition."
+    template: "SOH: sin = {{opp1}} / {{hyp}}. CAH: cos = {{adj1}} / hypotenuse. TOA: tan = opposite / {{adj2}}."
+    answers:
+      - id: opp1
+        accepted: ["opposite", "opp"]
+      - id: hyp
+        accepted: ["hypotenuse", "hyp"]
+      - id: adj1
+        accepted: ["adjacent", "adj"]
+      - id: adj2
+        accepted: ["adjacent", "adj"]
+
+  - type: reflection
+    xp: 5
+    prompt: "Why do you think mathematicians defined three ratios instead of just one? What would be lost if we only had sin?"
+
+  - type: checkpoint
+    xp: 10
+    title: "SOH CAH TOA. Locked in."
+    summary: |
+      Sin = Opposite / Hypotenuse
+      Cos = Adjacent / Hypotenuse
+      Tan = Opposite / Adjacent
+      Pick the ratio based on which two sides you have or need.
+      Next: using these ratios to solve real problems — finding missing sides and angles.

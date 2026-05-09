@@ -475,6 +475,10 @@ function TurnView({
       return <DragToReorderBlock turn={turn} isActive={isActive} onContinue={onContinue} />;
     case "tap_to_match":
       return <TapToMatchBlock turn={turn} isActive={isActive} onContinue={onContinue} />;
+    case "svg_graphic":
+      return <SvgGraphicBlock turn={turn} isActive={isActive} onContinue={onContinue} />;
+    case "html_animation":
+      return <HtmlAnimationBlock turn={turn} isActive={isActive} onContinue={onContinue} />;
   }
 }
 
@@ -1261,6 +1265,110 @@ function MediaBlock({
             onClick={() => onContinue({ xp: turn.xp_reward, source: "media" })}
           >
             {continueLabel("media", turn.id)} <ArrowRight className="h-4 w-4" />
+          </button>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+function VisualFigure({
+  title, caption, html,
+}: {
+  title?: string;
+  caption?: string;
+  html: string;
+}) {
+  return (
+    <figure style={{ margin: 0 }}>
+      {title ? (
+        <figcaption
+          className="lm-mono"
+          style={{
+            fontSize: 11,
+            fontWeight: 600,
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+            color: "var(--text-3)",
+            marginBottom: 8,
+          }}
+        >
+          {title}
+        </figcaption>
+      ) : null}
+      <div
+        style={{
+          width: "100%",
+          borderRadius: "var(--r-3)",
+          border: "1px solid var(--border)",
+          padding: 16,
+          background: "var(--surface-2, #fff)",
+          overflow: "hidden",
+        }}
+        // Trusted-author content from supabase/content/*.yaml — no user input
+        // flows here. If that ever changes, sanitize with DOMPurify.
+        dangerouslySetInnerHTML={{ __html: html }}
+      />
+      {caption ? (
+        <p
+          className="lm-serif"
+          style={{
+            marginTop: 8,
+            fontSize: 14,
+            fontStyle: "italic",
+            color: "var(--text-3)",
+          }}
+        >
+          {caption}
+        </p>
+      ) : null}
+    </figure>
+  );
+}
+
+function SvgGraphicBlock({
+  turn, isActive, onContinue,
+}: {
+  turn: Extract<LessonTurn, { turn_type: "svg_graphic" }>;
+  isActive: boolean;
+  onContinue: (opts?: { xp?: number; source?: string }) => void;
+}) {
+  return (
+    <div>
+      <VisualFigure title={turn.content.title} caption={turn.content.caption} html={turn.content.svg} />
+      {isActive ? (
+        <div className="flex justify-end" style={{ marginTop: 16 }}>
+          <button
+            type="button"
+            className="lm-btn lm-btn--accent"
+            onClick={() => onContinue({ xp: turn.xp_reward, source: "svg_graphic" })}
+          >
+            {continueLabel("svg_graphic", turn.id)} <ArrowRight className="h-4 w-4" />
+          </button>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+function HtmlAnimationBlock({
+  turn, isActive, onContinue,
+}: {
+  turn: Extract<LessonTurn, { turn_type: "html_animation" }>;
+  isActive: boolean;
+  onContinue: (opts?: { xp?: number; source?: string }) => void;
+}) {
+  return (
+    <div>
+      <VisualFigure title={turn.content.title} caption={turn.content.caption} html={turn.content.html} />
+      {isActive ? (
+        <div className="flex justify-end" style={{ marginTop: 16 }}>
+          <button
+            type="button"
+            className="lm-btn lm-btn--accent"
+            onClick={() => onContinue({ xp: turn.xp_reward, source: "html_animation" })}
+          >
+            {continueLabel("html_animation", turn.id)} <ArrowRight className="h-4 w-4" />
           </button>
         </div>
       ) : null}

@@ -16,6 +16,8 @@ const LABELS: Record<string, readonly string[]> = {
   ai_conversation: ["Wrap it up", "Done chatting", "Onward"],
   media: ["Got it", "Onward"],
   exercise: ["Logged it", "Onward", "Done"],
+  svg_graphic: ["Got it", "Onward", "I see it"],
+  html_animation: ["Got it", "Onward", "I see it"],
 };
 
 function hashStr(s: string): number {

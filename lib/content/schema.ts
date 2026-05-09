@@ -114,6 +114,22 @@ const dragToReorderTurn = z.object({
   { message: "correct_order must list every item.id exactly once" },
 );
 
+const svgGraphicTurn = z.object({
+  type: z.literal("svg_graphic"),
+  title: z.string().optional(),
+  caption: z.string().optional(),
+  svg: z.string().min(1),
+  ...withXp,
+});
+
+const htmlAnimationTurn = z.object({
+  type: z.literal("html_animation"),
+  title: z.string().optional(),
+  caption: z.string().optional(),
+  html: z.string().min(1),
+  ...withXp,
+});
+
 const matchItem = z.object({
   id: z.string().min(1),
   label: z.string().min(1),
@@ -144,6 +160,8 @@ export const turnSchema = z.discriminatedUnion("type", [
   fillInTheBlankTurn,
   dragToReorderTurn,
   tapToMatchTurn,
+  svgGraphicTurn,
+  htmlAnimationTurn,
 ]);
 
 export const lessonSchema = z.object({
