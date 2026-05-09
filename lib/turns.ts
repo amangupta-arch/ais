@@ -120,17 +120,40 @@ export type TurnType =
   | "fill_in_the_blank" | "drag_to_reorder" | "tap_to_match"
   | "svg_graphic" | "html_animation";
 
+/** Per-language partial override of a turn's content text fields. Keys
+ *  inside the override mirror the corresponding *Content type, but every
+ *  field is optional — only the fields that need translating are present.
+ *  At render time the override is shallow-merged on top of `content`. */
+export type LessonTurnTranslations = Record<string, Record<string, unknown>>;
+
 export type LessonTurn =
-  | { id: string; order_index: number; turn_type: "tutor_message";      content: TutorMessageContent;     xp_reward: number; is_required: boolean }
-  | { id: string; order_index: number; turn_type: "mcq";                content: McqContent;              xp_reward: number; is_required: boolean }
-  | { id: string; order_index: number; turn_type: "free_text";          content: FreeTextContent;         xp_reward: number; is_required: boolean }
-  | { id: string; order_index: number; turn_type: "reflection";         content: ReflectionContent;       xp_reward: number; is_required: boolean }
-  | { id: string; order_index: number; turn_type: "exercise";           content: ExerciseContent;         xp_reward: number; is_required: boolean }
-  | { id: string; order_index: number; turn_type: "ai_conversation";    content: AiConversationContent;   xp_reward: number; is_required: boolean }
-  | { id: string; order_index: number; turn_type: "checkpoint";         content: CheckpointContent;       xp_reward: number; is_required: boolean }
-  | { id: string; order_index: number; turn_type: "media";              content: MediaContent;            xp_reward: number; is_required: boolean }
-  | { id: string; order_index: number; turn_type: "fill_in_the_blank";  content: FillInTheBlankContent;   xp_reward: number; is_required: boolean }
-  | { id: string; order_index: number; turn_type: "drag_to_reorder";    content: DragToReorderContent;    xp_reward: number; is_required: boolean }
-  | { id: string; order_index: number; turn_type: "tap_to_match";       content: TapToMatchContent;       xp_reward: number; is_required: boolean }
-  | { id: string; order_index: number; turn_type: "svg_graphic";        content: SvgGraphicContent;       xp_reward: number; is_required: boolean }
-  | { id: string; order_index: number; turn_type: "html_animation";     content: HtmlAnimationContent;    xp_reward: number; is_required: boolean };
+  | { id: string; order_index: number; turn_type: "tutor_message";      content: TutorMessageContent;     translations: LessonTurnTranslations; xp_reward: number; is_required: boolean }
+  | { id: string; order_index: number; turn_type: "mcq";                content: McqContent;              translations: LessonTurnTranslations; xp_reward: number; is_required: boolean }
+  | { id: string; order_index: number; turn_type: "free_text";          content: FreeTextContent;         translations: LessonTurnTranslations; xp_reward: number; is_required: boolean }
+  | { id: string; order_index: number; turn_type: "reflection";         content: ReflectionContent;       translations: LessonTurnTranslations; xp_reward: number; is_required: boolean }
+  | { id: string; order_index: number; turn_type: "exercise";           content: ExerciseContent;         translations: LessonTurnTranslations; xp_reward: number; is_required: boolean }
+  | { id: string; order_index: number; turn_type: "ai_conversation";    content: AiConversationContent;   translations: LessonTurnTranslations; xp_reward: number; is_required: boolean }
+  | { id: string; order_index: number; turn_type: "checkpoint";         content: CheckpointContent;       translations: LessonTurnTranslations; xp_reward: number; is_required: boolean }
+  | { id: string; order_index: number; turn_type: "media";              content: MediaContent;            translations: LessonTurnTranslations; xp_reward: number; is_required: boolean }
+  | { id: string; order_index: number; turn_type: "fill_in_the_blank";  content: FillInTheBlankContent;   translations: LessonTurnTranslations; xp_reward: number; is_required: boolean }
+  | { id: string; order_index: number; turn_type: "drag_to_reorder";    content: DragToReorderContent;    translations: LessonTurnTranslations; xp_reward: number; is_required: boolean }
+  | { id: string; order_index: number; turn_type: "tap_to_match";       content: TapToMatchContent;       translations: LessonTurnTranslations; xp_reward: number; is_required: boolean }
+  | { id: string; order_index: number; turn_type: "svg_graphic";        content: SvgGraphicContent;       translations: LessonTurnTranslations; xp_reward: number; is_required: boolean }
+  | { id: string; order_index: number; turn_type: "html_animation";     content: HtmlAnimationContent;    translations: LessonTurnTranslations; xp_reward: number; is_required: boolean };
+
+/** Return a copy of `turn` with `content` shallow-merged with any
+ *  language-specific overrides from `translations[lang]` (falling back
+ *  to translations.en if present, then to content as authored).
+ *
+ *  The renderer never reads `translations` directly — pages call this
+ *  once before passing turns to the LessonPlayer, so every component
+ *  downstream sees a turn whose content is already in the right
+ *  language. Empty translations (the common case) yields an unchanged
+ *  turn. */
+export function localizeTurn(turn: LessonTurn, lang: string): LessonTurn {
+  const t = turn.translations;
+  if (!t) return turn;
+  const override = t[lang] ?? t.en;
+  if (!override) return turn;
+  return { ...turn, content: { ...turn.content, ...override } } as LessonTurn;
+}
