@@ -166,6 +166,10 @@ export default async function DatabaseSchemaPage({
   const populatedBundles = new Set(courses.map((c) => c.bundle_id).filter(Boolean) as string[]);
   const orphanCourses = courses.filter((c) => !c.bundle_id);
   const bundledCourses = courses.filter((c) => c.bundle_id);
+  // Sum the maintained lesson_count column rather than `lessons.length`,
+  // since the lessons SELECT may be capped server-side regardless of the
+  // .range() we ask for. courses is small (< 1k rows) so this is reliable.
+  const totalLessonsFromCourses = courses.reduce((n, c) => n + (c.lesson_count ?? 0), 0);
 
   // languages: union of every layer's translation keys
   const langSet = new Set<string>();
@@ -230,7 +234,7 @@ export default async function DatabaseSchemaPage({
               <Row label="Book"    total={0}                  populated={0}                            empty={0}                               muted />
               <Row label="Bundle"  total={bundles.length}     populated={populatedBundles.size}        empty={bundles.length - populatedBundles.size} />
               <Row label="Course"  total={courses.length}     populated={bundledCourses.length}        empty={orphanCourses.length}            emptyLabel="orphan" />
-              <Row label="Lesson"  total={lessons.length}     populated={lessons.length}               empty={0} />
+              <Row label="Lesson"  total={totalLessonsFromCourses} populated={totalLessonsFromCourses} empty={0} />
               <Row label="Turn"    total={turns.length}       populated={turns.length}                 empty={0} />
             </tbody>
           </table>
@@ -286,12 +290,16 @@ export default async function DatabaseSchemaPage({
                   ) : (
                     <ul style={listStyle}>
                       {bcourses.map((c) => {
+                        // Prefer the maintained lesson_count column over
+                        // the fetched-rows length — courses query is
+                        // small but lessons fetch can be capped.
                         const clessons = lessonsByCourse.get(c.id) ?? [];
+                        const lessonCount = c.lesson_count ?? clessons.length;
                         return (
                           <li key={c.id} style={{ marginBottom: 4 }}>
                             <details>
                               <summary>
-                                <code>{c.slug}</code> ({clessons.length} lesson{clessons.length === 1 ? "" : "s"}) — {pickEnTitle(c.translations ?? {})}
+                                <code>{c.slug}</code> ({lessonCount} lesson{lessonCount === 1 ? "" : "s"}) — {pickEnTitle(c.translations ?? {})}
                               </summary>
                               <ul style={{ ...listStyle, paddingLeft: 18 }}>
                                 {clessons.map((l) => {
@@ -323,11 +331,12 @@ export default async function DatabaseSchemaPage({
           <ul style={listStyle}>
             {orphanCourses.map((c) => {
               const clessons = lessonsByCourse.get(c.id) ?? [];
+              const lessonCount = c.lesson_count ?? clessons.length;
               return (
                 <li key={c.id}>
                   <details>
                     <summary>
-                      <code>{c.slug}</code> · {c.plan_tier} · {clessons.length} lesson{clessons.length === 1 ? "" : "s"} — {pickEnTitle(c.translations ?? {})}
+                      <code>{c.slug}</code> · {c.plan_tier} · {lessonCount} lesson{lessonCount === 1 ? "" : "s"} — {pickEnTitle(c.translations ?? {})}
                     </summary>
                     <p style={{ ...mutedStyle, paddingLeft: 18 }}>
                       languages: {Object.keys(c.translations ?? {}).join(", ") || "none"}
