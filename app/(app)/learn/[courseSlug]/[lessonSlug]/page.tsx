@@ -8,6 +8,7 @@ import { LessonPlayer } from "./LessonPlayer";
 import { getLessonByCourseAndSlug, getMe } from "@/lib/supabase/queries";
 import type { Persona } from "@/lib/types";
 import { lessonTitle, lessonSubtitle } from "@/lib/types";
+import { localizeTurn } from "@/lib/turns";
 
 export const dynamic = "force-dynamic";
 
@@ -49,7 +50,7 @@ export default async function LessonPage({
       lessonXpReward={lesson.xp_reward}
       courseId={course.id}
       lessonId={lesson.id}
-      turns={turns}
+      turns={turns.map((t) => localizeTurn(t, preferredLang))}
       personaId={(profile?.preferred_tutor_persona as Persona["id"]) ?? "nova"}
       initialTurnIndex={progress?.current_turn_index ?? 0}
       alreadyCompleted={progress?.status === "completed"}
