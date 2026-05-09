@@ -5,6 +5,7 @@ import { ArrowRight, Clock } from "lucide-react";
 import { getCourseBySlug, getMe, getMyLessonProgress } from "@/lib/supabase/queries";
 import { createClient } from "@/lib/supabase/server";
 import type { PlanTier } from "@/lib/types";
+import { courseTitle, courseSubtitle, courseDescription, lessonTitle, lessonSubtitle } from "@/lib/types";
 import { formatTier } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -69,9 +70,9 @@ export default async function CourseDetailPage({
             className="lm-serif"
             style={{ marginTop: 8, fontSize: 40, lineHeight: 1.05, color: "var(--text)" }}
           >
-            {course.title}
+            {courseTitle(course, preferredLang)}
           </h1>
-          {course.subtitle ? (
+          {courseSubtitle(course, preferredLang) ? (
             <p
               className="lm-serif"
               style={{
@@ -82,10 +83,10 @@ export default async function CourseDetailPage({
                 color: "var(--text-2)",
               }}
             >
-              {course.subtitle}
+              {courseSubtitle(course, preferredLang)}
             </p>
           ) : null}
-          {course.description ? (
+          {courseDescription(course, preferredLang) ? (
             <p
               style={{
                 marginTop: 16,
@@ -94,7 +95,7 @@ export default async function CourseDetailPage({
                 color: "var(--text-2)",
               }}
             >
-              {course.description}
+              {courseDescription(course, preferredLang)}
             </p>
           ) : null}
 
@@ -174,9 +175,9 @@ export default async function CourseDetailPage({
                         className="lm-serif"
                         style={{ fontSize: 18, lineHeight: 1.25, color: "var(--text)" }}
                       >
-                        {l.title}
+                        {lessonTitle(l, preferredLang)}
                       </p>
-                      {l.subtitle ? (
+                      {lessonSubtitle(l, preferredLang) ? (
                         <p
                           style={{
                             marginTop: 2,
@@ -185,7 +186,7 @@ export default async function CourseDetailPage({
                             lineHeight: 1.4,
                           }}
                         >
-                          {l.subtitle}
+                          {lessonSubtitle(l, preferredLang)}
                         </p>
                       ) : null}
                       <div

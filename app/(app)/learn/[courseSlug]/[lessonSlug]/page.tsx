@@ -7,6 +7,7 @@ import { LessonPlayer } from "./LessonPlayer";
 
 import { getLessonByCourseAndSlug, getMe } from "@/lib/supabase/queries";
 import type { Persona } from "@/lib/types";
+import { lessonTitle, lessonSubtitle } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
@@ -21,6 +22,8 @@ export default async function LessonPage({
 
   const { course, lesson, turns, progress } = await getLessonByCourseAndSlug(courseSlug, lessonSlug);
   if (!course || !lesson) notFound();
+
+  const preferredLang = profile?.preferred_language ?? "en";
 
   if (turns.length === 0) {
     return (
@@ -41,8 +44,8 @@ export default async function LessonPage({
     <LessonPlayer
       courseSlug={courseSlug}
       lessonSlug={lessonSlug}
-      lessonTitle={lesson.title}
-      lessonSubtitle={lesson.subtitle}
+      lessonTitle={lessonTitle(lesson, preferredLang)}
+      lessonSubtitle={lessonSubtitle(lesson, preferredLang)}
       lessonXpReward={lesson.xp_reward}
       courseId={course.id}
       lessonId={lesson.id}

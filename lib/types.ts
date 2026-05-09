@@ -95,6 +95,13 @@ export type Plan = {
   sort_order: number;
 };
 
+/** Per-language translation entry for a course. */
+export type CourseTranslation = {
+  title?: string;
+  subtitle?: string;
+  description?: string;
+};
+
 export type Course = {
   id: string;
   slug: string;
@@ -115,7 +122,38 @@ export type Course = {
   bundle_id: string | null;
   language_code: string;
   course_group_id: string | null;
+  translations: Record<string, CourseTranslation>;
 };
+
+/** Pull a course's title for the requested language, falling back through
+ *  the translations jsonb to English, then to the legacy `title` column,
+ *  then finally to the slug. Mirrors `bundleTitle`. */
+export function courseTitle(c: Course, lang: string): string {
+  return (
+    c.translations?.[lang]?.title ??
+    c.translations?.en?.title ??
+    c.title ??
+    c.slug
+  );
+}
+
+export function courseSubtitle(c: Course, lang: string): string | null {
+  return (
+    c.translations?.[lang]?.subtitle ??
+    c.translations?.en?.subtitle ??
+    c.subtitle ??
+    null
+  );
+}
+
+export function courseDescription(c: Course, lang: string): string | null {
+  return (
+    c.translations?.[lang]?.description ??
+    c.translations?.en?.description ??
+    c.description ??
+    null
+  );
+}
 
 export type BundleTranslation = { title: string; description?: string };
 
@@ -168,6 +206,11 @@ export function pickLanguageVariants(courses: Course[], lang: string): Course[] 
   return picked.sort((a, b) => a.order_index - b.order_index);
 }
 
+export type LessonTranslation = {
+  title?: string;
+  subtitle?: string;
+};
+
 export type Lesson = {
   id: string;
   course_id: string;
@@ -179,7 +222,26 @@ export type Lesson = {
   xp_reward: number;
   format: "ai_chat" | string;
   is_published: boolean;
+  translations: Record<string, LessonTranslation>;
 };
+
+export function lessonTitle(l: Lesson, lang: string): string {
+  return (
+    l.translations?.[lang]?.title ??
+    l.translations?.en?.title ??
+    l.title ??
+    l.slug
+  );
+}
+
+export function lessonSubtitle(l: Lesson, lang: string): string | null {
+  return (
+    l.translations?.[lang]?.subtitle ??
+    l.translations?.en?.subtitle ??
+    l.subtitle ??
+    null
+  );
+}
 
 export type UserStreak = {
   user_id: string;

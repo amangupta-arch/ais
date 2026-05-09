@@ -3,7 +3,7 @@ import { Clock, Lock } from "lucide-react";
 import { redirect } from "next/navigation";
 
 import { getAllBundles, getAllCourses, getMe } from "@/lib/supabase/queries";
-import { bundleDescription, bundleTitle, pickLanguageVariants } from "@/lib/types";
+import { bundleDescription, bundleTitle, courseSubtitle, courseTitle, pickLanguageVariants } from "@/lib/types";
 import type { Bundle, Course, PlanTier } from "@/lib/types";
 import { formatTier } from "@/lib/utils";
 
@@ -68,6 +68,7 @@ export default async function LearnPage() {
           subtitle="Eight starter courses. No card, no pressure."
           courses={freeCourses}
           tier={tier}
+          lang={lang}
         />
 
         <BundlesSection
@@ -93,13 +94,14 @@ export default async function LearnPage() {
 }
 
 function CoursesSection({
-  number, title, subtitle, courses, tier,
+  number, title, subtitle, courses, tier, lang,
 }: {
   number: string;
   title: string;
   subtitle?: string;
   courses: Course[];
   tier: PlanTier;
+  lang: string;
 }) {
   if (courses.length === 0) return null;
   return (
@@ -125,6 +127,7 @@ function CoursesSection({
             course={c}
             hue="indigo"
             locked={!tierCanAccess(tier, c.plan_tier)}
+            lang={lang}
           />
         ))}
       </div>
@@ -174,11 +177,12 @@ function BundlesSection({
 }
 
 function CourseCardLumen({
-  course, hue, locked,
+  course, hue, locked, lang,
 }: {
   course: Course;
   hue: Hue;
   locked: boolean;
+  lang: string;
 }) {
   const body = (
     <div
@@ -218,9 +222,9 @@ function CourseCardLumen({
           className="lm-serif"
           style={{ marginTop: 8, fontSize: 20, lineHeight: 1.2, color: "var(--text)" }}
         >
-          {course.title}
+          {courseTitle(course, lang)}
         </h3>
-        {course.subtitle ? (
+        {courseSubtitle(course, lang) ? (
           <p
             style={{
               marginTop: 4,
@@ -229,7 +233,7 @@ function CourseCardLumen({
               color: "var(--text-3)",
             }}
           >
-            {course.subtitle}
+            {courseSubtitle(course, lang)}
           </p>
         ) : null}
 
