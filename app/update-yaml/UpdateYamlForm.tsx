@@ -3,9 +3,6 @@
 import { useEffect, useMemo, useState, useTransition } from "react";
 
 import {
-  ALL_BUNDLES,
-  LANGUAGE_OPTIONS,
-  ORPHAN_BUNDLE,
   getCourseStats,
   listCourses,
   submitLessonYaml,
@@ -14,6 +11,7 @@ import {
   type CourseStats,
   type SubmitResult,
 } from "./actions";
+import { ALL_BUNDLES, LANGUAGE_OPTIONS, ORPHAN_BUNDLE } from "./constants";
 
 type Props = {
   bundles: BundleOption[];
