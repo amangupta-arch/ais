@@ -1,6 +1,8 @@
 /** Loads the canonical English YAML for a lesson, in two-tier order:
- *    1. supabase/content/<course-slug>/NN-<lesson-slug>.yaml on disk
- *    2. yaml_generation_jobs.yaml_text for (course, lesson, "en")
+ *    1. yaml_generation_jobs.yaml_text for (course, lesson, "en")
+ *    2. supabase/content/<course-slug>/NN-<lesson-slug>.yaml on disk
+ *
+ *  DB-first is deliberate; see loadEnYamlText() doc for why.
  *
  *  Used by:
  *    - the generator route, to embed the EN YAML in the prompt when

@@ -1,23 +1,19 @@
 /**
  * POST /api/yaml-jobs/generate
  *
- * Generate one lesson YAML and persist it to disk + DB. Triggered from
- * /yaml-generate. Long-running (≈30–60s per call) — needs maxDuration
- * past Vercel Hobby's 10s ceiling.
+ * Generates one lesson YAML, applies it to the DB, then runs the
+ * ElevenLabs audio pipeline for that (lesson, language) inline.
+ * Long-running (≈45–120s); needs maxDuration past Vercel Hobby's 10s.
  *
- * Body: { courseSlug: string, lessonSlug: string, language: string }
+ * Response: NDJSON stream of progress events. One event per line:
+ *   {"kind":"step","at":"...","message":"..."}
+ *   {"kind":"audio:start","total":12,"voiceId":"...","model":"..."}
+ *   {"kind":"audio:chunk","done":1,"total":12,"cacheHit":true,"bytes":0,"preview":"..."}
+ *   {"kind":"audio:done","total":12,"hits":3,"misses":9,"failed":0,"bytesFromTts":...}
+ *   {"kind":"result","ok":true,"attempts":1,"yamlPath":null,"diskNote":"...","audio":{...},"lesson":{...}}
  *
- * Side effects per call:
- *  1. Inserts/updates a yaml_generation_jobs row (queued → running →
- *     done|failed) so /yaml-status can render progress without polling
- *     the API.
- *  2. Calls Anthropic Sonnet 4.6 with docs/lesson-yaml-knowledge.md
- *     baked in as the system prompt, retries up to 3× on validation
- *     failure.
- *  3. Writes the validated YAML to supabase/content/<course>/NN-<slug>.yaml
- *     (or <course>-<lang>/... for translations).
- *  4. Calls submitLessonYaml() to upsert the same content into the DB so
- *     the lesson goes live immediately.
+ * Validation errors before streaming starts (auth, bad body) are
+ * returned as plain JSON with non-200 status.
  */
 
 import { NextResponse } from "next/server";
@@ -25,6 +21,7 @@ import { createClient as createServiceClient } from "@supabase/supabase-js";
 
 import { submitLessonYaml } from "@/app/update-yaml/actions";
 import { LANGUAGE_OPTIONS } from "@/app/update-yaml/constants";
+import { runAudioPipeline, type PipelineProgress } from "@/lib/audio/pipeline";
 import { createClient } from "@/lib/supabase/server";
 import { enumerateAllLessons } from "@/lib/yaml-generation/catalog";
 import { loadEnYamlText } from "@/lib/yaml-generation/en-source";
@@ -34,7 +31,7 @@ import { writeLessonYaml } from "@/lib/yaml-generation/persist";
 const ALLOWED_LANGS: ReadonlySet<string> = new Set(LANGUAGE_OPTIONS.map((l) => l.code));
 
 export const dynamic = "force-dynamic";
-export const maxDuration = 300; // seconds — Vercel Pro/Enterprise
+export const maxDuration = 300;
 
 function adminClient() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -52,7 +49,7 @@ type Body = {
 };
 
 export async function POST(req: Request) {
-  // Cookie-based auth: only signed-in users can spend Anthropic credits.
+  // ---------- pre-stream validation ----------
   const auth = await createClient();
   const { data: { user } } = await auth.auth.getUser();
   if (!user) {
@@ -75,8 +72,6 @@ export async function POST(req: Request) {
       { status: 400 },
     );
   }
-  // Allowlist the language code BEFORE any filesystem touch — the value
-  // flows into directory + file path construction in writeLessonYaml.
   if (!ALLOWED_LANGS.has(language)) {
     return NextResponse.json(
       { ok: false, message: `Unsupported language "${language}".` },
@@ -84,7 +79,6 @@ export async function POST(req: Request) {
     );
   }
 
-  // Resolve the catalog entry (source of truth for slug + ordering).
   const entry = enumerateAllLessons().find(
     (e) => e.courseSlug === courseSlug && e.lessonSlug === lessonSlug,
   );
@@ -95,170 +89,237 @@ export async function POST(req: Request) {
     );
   }
 
-  const admin = adminClient();
+  // ---------- streaming work ----------
+  const stream = new ReadableStream({
+    async start(controller) {
+      const enc = new TextEncoder();
+      const send = (event: Record<string, unknown>) => {
+        controller.enqueue(enc.encode(JSON.stringify(event) + "\n"));
+      };
+      const step = (message: string) =>
+        send({ kind: "step", at: new Date().toISOString(), message });
+      const result = (event: Record<string, unknown>) =>
+        send({ kind: "result", at: new Date().toISOString(), ...event });
 
-  // Resolve the courseId so submitLessonYaml can target the right row.
-  const { data: course, error: courseErr } = await admin
-    .from("courses")
-    .select("id")
-    .eq("slug", entry.courseSlug)
-    .maybeSingle();
-  if (courseErr) {
-    return NextResponse.json(
-      { ok: false, message: `course lookup: ${courseErr.message}` },
-      { status: 500 },
-    );
-  }
-  if (!course) {
-    return NextResponse.json(
-      {
-        ok: false,
-        message: `Course "${entry.courseSlug}" not in DB. Run scripts/load-bundle-courses.ts first.`,
-      },
-      { status: 409 },
-    );
-  }
+      try {
+        const admin = adminClient();
+        step(`resolving course "${entry.courseSlug}" in DB…`);
+        const { data: course, error: courseErr } = await admin
+          .from("courses")
+          .select("id")
+          .eq("slug", entry.courseSlug)
+          .maybeSingle();
+        if (courseErr) {
+          result({ ok: false, stage: "lookup", message: `course lookup: ${courseErr.message}` });
+          controller.close();
+          return;
+        }
+        if (!course) {
+          result({
+            ok: false,
+            stage: "lookup",
+            message: `Course "${entry.courseSlug}" not in DB. Run scripts/load-bundle-courses.ts first.`,
+          });
+          controller.close();
+          return;
+        }
+        step(`course id ${(course.id as string).slice(0, 8)}…`);
 
-  // Mark the job as running. Upsert so re-runs reset state cleanly.
-  const startedAt = new Date().toISOString();
-  const { error: jobErr } = await admin.from("yaml_generation_jobs").upsert(
-    {
-      bundle_slug: entry.bundleSlug,
-      course_slug: entry.courseSlug,
-      course_title: entry.courseTitle,
-      lesson_slug: entry.lessonSlug,
-      lesson_title: entry.lessonTitle,
-      lesson_index: entry.lessonIndex,
-      language,
-      status: "running",
-      attempts: 0,
-      model: GENERATOR_MODEL,
-      yaml_path: null,
-      error: null,
-      started_at: startedAt,
-      finished_at: null,
+        // Mark job running. Fail fast if the row can't be persisted —
+        // otherwise downstream finalize() updates would silently target
+        // a missing row and /yaml-status would never reflect the real
+        // state.
+        const startedAt = new Date().toISOString();
+        const { error: upsertErr } = await admin.from("yaml_generation_jobs").upsert(
+          {
+            bundle_slug: entry.bundleSlug,
+            course_slug: entry.courseSlug,
+            course_title: entry.courseTitle,
+            lesson_slug: entry.lessonSlug,
+            lesson_title: entry.lessonTitle,
+            lesson_index: entry.lessonIndex,
+            language,
+            status: "running",
+            attempts: 0,
+            model: GENERATOR_MODEL,
+            yaml_path: null,
+            error: null,
+            started_at: startedAt,
+            finished_at: null,
+          },
+          { onConflict: "course_slug,lesson_slug,language" },
+        );
+        if (upsertErr) {
+          result({
+            ok: false,
+            stage: "record",
+            message: `record job: ${upsertErr.message}`,
+          });
+          controller.close();
+          return;
+        }
+
+        const finalize = async (fields: Record<string, unknown>) => {
+          await admin
+            .from("yaml_generation_jobs")
+            .update({ ...fields, finished_at: new Date().toISOString() })
+            .eq("course_slug", entry.courseSlug)
+            .eq("lesson_slug", entry.lessonSlug)
+            .eq("language", language);
+        };
+
+        // EN reference for translations.
+        let enReference: string | null = null;
+        if (language !== "en") {
+          step(`loading canonical EN reference for "${entry.lessonSlug}"…`);
+          enReference = await loadEnYamlText(entry);
+          if (!enReference) {
+            const msg =
+              "English YAML must exist before generating a translation. Generate the EN version first.";
+            await finalize({ status: "failed", attempts: 0, error: msg });
+            result({ ok: false, stage: "prerequisite", message: msg });
+            controller.close();
+            return;
+          }
+          step(`EN reference loaded (${enReference.length.toLocaleString()} chars)`);
+        }
+
+        // Generate.
+        step(
+          `calling ${GENERATOR_MODEL} (${language === "en" ? "fresh generation" : `${language} translation`})…`,
+        );
+        const gen = await generateLessonYaml({ entry, language, enReference });
+        if (!gen.ok) {
+          await finalize({ status: "failed", attempts: gen.attempts, error: gen.message });
+          result({
+            ok: false,
+            stage: "generate",
+            message: gen.message,
+            attempts: gen.attempts,
+          });
+          controller.close();
+          return;
+        }
+        step(`YAML received & validated (${gen.attempts} attempt${gen.attempts === 1 ? "" : "s"})`);
+
+        // Persist yaml_text early so it survives downstream failures.
+        await admin
+          .from("yaml_generation_jobs")
+          .update({ attempts: gen.attempts, yaml_text: gen.yamlText })
+          .eq("course_slug", entry.courseSlug)
+          .eq("lesson_slug", entry.lessonSlug)
+          .eq("language", language);
+
+        // Disk write — best effort, skipped on Vercel.
+        let yamlPath: string | null = null;
+        let diskNote: string | null = null;
+        if (process.env.VERCEL === "1") {
+          diskNote = "skipped on Vercel (read-only fs); GH workflow will sync to repo.";
+          step(diskNote);
+        } else {
+          try {
+            yamlPath = writeLessonYaml(entry, language, gen.yamlText);
+            step(`wrote ${yamlPath}`);
+          } catch (e) {
+            diskNote = `skipped: ${String(e)}`;
+            step(diskNote);
+          }
+        }
+
+        // Apply to DB.
+        step(`applying to lesson_turns…`);
+        const submit = await submitLessonYaml({
+          courseId: course.id as string,
+          yamlText: gen.yamlText,
+          language,
+          slug: entry.lessonSlug,
+          orderIndex: entry.lessonIndex,
+        });
+        if (!submit.ok) {
+          await finalize({
+            status: "failed",
+            attempts: gen.attempts,
+            yaml_path: yamlPath,
+            error: `db apply: ${submit.message}`,
+          });
+          result({
+            ok: false,
+            stage: "apply",
+            message: submit.message,
+            attempts: gen.attempts,
+            yamlPath,
+          });
+          controller.close();
+          return;
+        }
+        const lessonId = submit.lesson?.id;
+        const turnCount = submit.lesson?.turn_count ?? 0;
+        step(`applied: ${turnCount} turns → lesson ${lessonId?.slice(0, 8)}…`);
+
+        // ---------- AUDIO PIPELINE ----------
+        let audioSummary: Record<string, unknown> | null = null;
+        if (lessonId) {
+          const audio = await runAudioPipeline({
+            lessonId,
+            language,
+            yamlText: gen.yamlText,
+            onProgress: (e: PipelineProgress) => send(e),
+          });
+          audioSummary = {
+            ok: audio.ok,
+            total: audio.total,
+            hits: audio.hits,
+            misses: audio.misses,
+            failed: audio.failed,
+            bytesFromTts: audio.bytesFromTts,
+            skipReason: audio.skipReason,
+          };
+        } else {
+          send({
+            kind: "audio:skipped",
+            reason: "no lesson id returned from submitLessonYaml",
+          });
+          audioSummary = {
+            ok: false,
+            total: 0,
+            hits: 0,
+            misses: 0,
+            failed: 0,
+            bytesFromTts: 0,
+            skipReason: "no_lesson_id",
+          };
+        }
+
+        await finalize({
+          status: "done",
+          attempts: gen.attempts,
+          yaml_path: yamlPath,
+          error: diskNote,
+        });
+
+        result({
+          ok: true,
+          attempts: gen.attempts,
+          yamlPath,
+          diskNote,
+          lesson: submit.lesson,
+          audio: audioSummary,
+        });
+        controller.close();
+      } catch (e) {
+        const msg = e instanceof Error ? e.message : String(e);
+        send({ kind: "step", at: new Date().toISOString(), message: `unexpected: ${msg}` });
+        result({ ok: false, stage: "unexpected", message: msg });
+        controller.close();
+      }
     },
-    { onConflict: "course_slug,lesson_slug,language" },
-  );
-  if (jobErr) {
-    return NextResponse.json(
-      { ok: false, message: `record job: ${jobErr.message}` },
-      { status: 500 },
-    );
-  }
-
-  const finalize = async (
-    fields: Record<string, unknown>,
-  ) => {
-    await admin
-      .from("yaml_generation_jobs")
-      .update({ ...fields, finished_at: new Date().toISOString() })
-      .eq("course_slug", entry.courseSlug)
-      .eq("lesson_slug", entry.lessonSlug)
-      .eq("language", language);
-  };
-
-  // For non-EN runs, load the canonical EN YAML so the generator can
-  // use it as the translation base. Refuse early if EN doesn't exist.
-  let enReference: string | null = null;
-  if (language !== "en") {
-    enReference = await loadEnYamlText(entry);
-    if (!enReference) {
-      await finalize({
-        status: "failed",
-        attempts: 0,
-        error: "English YAML must exist before generating a translation. Generate the EN version first.",
-      });
-      return NextResponse.json(
-        {
-          ok: false,
-          stage: "prerequisite",
-          message: "English YAML must exist before generating a translation. Generate the EN version first.",
-          attempts: 0,
-        },
-        { status: 409 },
-      );
-    }
-  }
-
-  // 1. Generate.
-  const gen = await generateLessonYaml({ entry, language, enReference });
-  if (!gen.ok) {
-    await finalize({ status: "failed", attempts: gen.attempts, error: gen.message });
-    return NextResponse.json(
-      { ok: false, stage: "generate", message: gen.message, attempts: gen.attempts },
-      { status: 502 },
-    );
-  }
-
-  // Persist the generated YAML on the row IMMEDIATELY, before any disk
-  // or DB write. Even if the next stages fail, we keep the text so the
-  // user can recover it from /yaml-status without re-spending Anthropic
-  // credits.
-  await admin
-    .from("yaml_generation_jobs")
-    .update({ attempts: gen.attempts, yaml_text: gen.yamlText })
-    .eq("course_slug", entry.courseSlug)
-    .eq("lesson_slug", entry.lessonSlug)
-    .eq("language", language);
-
-  // 2. Write to disk — best-effort. Vercel serverless filesystems are
-  // read-only outside /tmp, so on the deployed instance we deliberately
-  // skip this step (the YAML is already preserved on the job row +
-  // applied to DB below). Locally and on any non-Vercel runtime, we
-  // still write to the canonical path so git diffs continue to work.
-  let yamlPath: string | null = null;
-  let diskNote: string | null = null;
-  if (process.env.VERCEL === "1") {
-    diskNote = "skipped on Vercel (read-only fs); copy YAML from /yaml-status to commit.";
-  } else {
-    try {
-      yamlPath = writeLessonYaml(entry, language, gen.yamlText);
-    } catch (e) {
-      diskNote = `skipped: ${String(e)}`;
-    }
-  }
-
-  // 3. Auto-load into DB via the same path /update-yaml uses, so the
-  //    lesson is live immediately.
-  const submit = await submitLessonYaml({
-    courseId: course.id as string,
-    yamlText: gen.yamlText,
-    language,
-    slug: entry.lessonSlug,
-    orderIndex: entry.lessonIndex,
-  });
-  if (!submit.ok) {
-    await finalize({
-      status: "failed",
-      attempts: gen.attempts,
-      yaml_path: yamlPath,
-      error: `db apply: ${submit.message}`,
-    });
-    return NextResponse.json(
-      {
-        ok: false,
-        stage: "apply",
-        message: submit.message,
-        attempts: gen.attempts,
-        yamlPath,
-      },
-      { status: 500 },
-    );
-  }
-
-  await finalize({
-    status: "done",
-    attempts: gen.attempts,
-    yaml_path: yamlPath,
-    error: diskNote,
   });
 
-  return NextResponse.json({
-    ok: true,
-    attempts: gen.attempts,
-    yamlPath,
-    diskNote,
-    lesson: submit.lesson,
+  return new Response(stream, {
+    headers: {
+      "content-type": "application/x-ndjson; charset=utf-8",
+      "cache-control": "no-store",
+      "x-content-type-options": "nosniff",
+    },
   });
 }
