@@ -385,7 +385,6 @@ export default function CourseDetailView({
               const completed = p?.status === "completed";
               const isCurrent = i === currentIdx;
               const lockedBySequence = currentIdx >= 0 && i > currentIdx;
-              const isLockedRow = locked || lockedBySequence;
               const expanded = expandedId === l.id;
               const prevCompleted =
                 i > 0 && progByLesson[lessons[i - 1]!.id]?.status === "completed";
@@ -397,7 +396,8 @@ export default function CourseDetailView({
                   index={i}
                   completed={completed}
                   isCurrent={isCurrent}
-                  isLocked={isLockedRow}
+                  isLockedByTier={locked}
+                  isLockedBySequence={lockedBySequence}
                   expanded={expanded}
                   prevCompleted={prevCompleted}
                   isFirst={i === 0}
@@ -473,7 +473,8 @@ export default function CourseDetailView({
 }
 
 function LessonRow({
-  course, lesson, index, completed, isCurrent, isLocked, expanded,
+  course, lesson, index, completed, isCurrent,
+  isLockedByTier, isLockedBySequence, expanded,
   prevCompleted, isFirst, isLast, lang, onToggle,
 }: {
   course: Course;
@@ -481,7 +482,8 @@ function LessonRow({
   index: number;
   completed: boolean;
   isCurrent: boolean;
-  isLocked: boolean;
+  isLockedByTier: boolean;
+  isLockedBySequence: boolean;
   expanded: boolean;
   prevCompleted: boolean;
   isFirst: boolean;
@@ -490,6 +492,7 @@ function LessonRow({
   onToggle: () => void;
 }) {
   void index;
+  const isLocked = isLockedByTier || isLockedBySequence;
   const title = lessonTitle(lesson, lang);
   const subtitle = lessonSubtitle(lesson, lang);
   const href = `/learn/${course.slug}/${lesson.slug}`;
@@ -711,37 +714,38 @@ function LessonRow({
     </>
   );
 
-  // Locked-by-sequence rows are visual only (no toggle, no link).
-  const card =
-    isLocked && !completed && !isCurrent ? (
-      <div
-        className="lm-card"
-        style={{
-          padding: 14,
-          opacity: 0.55,
-          background: cardBg,
-          border: cardBorder,
-        }}
-      >
-        {headerRow}
-        {meta}
-      </div>
-    ) : (
-      <div
-        className="lm-card"
-        style={{
-          padding: 14,
-          cursor: "pointer",
-          background: cardBg,
-          border: cardBorder,
-          boxShadow: isCurrent ? "0 0 0 3px rgba(79, 70, 186, 0.10)" : "none",
-          transition: "box-shadow 160ms",
-        }}
-        {...interactiveCardProps}
-      >
-        {inner}
-      </div>
-    );
+  // Tier-locked OR sequence-locked rows are visual only — no expand, no
+  // navigation. Tier-locked completed/current rows still show their progress
+  // state (strikethrough, waveform), but never expose the lesson Link.
+  const card = isLocked ? (
+    <div
+      className="lm-card"
+      style={{
+        padding: 14,
+        opacity: isLockedBySequence && !completed && !isCurrent ? 0.55 : 1,
+        background: cardBg,
+        border: cardBorder,
+      }}
+    >
+      {headerRow}
+      {meta}
+    </div>
+  ) : (
+    <div
+      className="lm-card"
+      style={{
+        padding: 14,
+        cursor: "pointer",
+        background: cardBg,
+        border: cardBorder,
+        boxShadow: isCurrent ? "0 0 0 3px rgba(79, 70, 186, 0.10)" : "none",
+        transition: "box-shadow 160ms",
+      }}
+      {...interactiveCardProps}
+    >
+      {inner}
+    </div>
+  );
 
   return (
     <li
