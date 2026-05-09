@@ -94,12 +94,31 @@ export type TapToMatchContent = {
   xp?: number;
 };
 
+// ---- Visual turns -------------------------------------------------------
+
+/** Inline SVG diagram authored in YAML. Trusted-author content; rendered raw. */
+export type SvgGraphicContent = {
+  title?: string;
+  caption?: string;
+  svg: string;
+  xp?: number;
+};
+
+/** Inline HTML+CSS (typically with @keyframes). Trusted-author content. */
+export type HtmlAnimationContent = {
+  title?: string;
+  caption?: string;
+  html: string;
+  xp?: number;
+};
+
 // -------------------------------------------------------------------------
 
 export type TurnType =
   | "tutor_message" | "mcq" | "free_text" | "reflection"
   | "exercise" | "ai_conversation" | "checkpoint" | "media"
-  | "fill_in_the_blank" | "drag_to_reorder" | "tap_to_match";
+  | "fill_in_the_blank" | "drag_to_reorder" | "tap_to_match"
+  | "svg_graphic" | "html_animation";
 
 export type LessonTurn =
   | { id: string; order_index: number; turn_type: "tutor_message";      content: TutorMessageContent;     xp_reward: number; is_required: boolean }
@@ -112,4 +131,6 @@ export type LessonTurn =
   | { id: string; order_index: number; turn_type: "media";              content: MediaContent;            xp_reward: number; is_required: boolean }
   | { id: string; order_index: number; turn_type: "fill_in_the_blank";  content: FillInTheBlankContent;   xp_reward: number; is_required: boolean }
   | { id: string; order_index: number; turn_type: "drag_to_reorder";    content: DragToReorderContent;    xp_reward: number; is_required: boolean }
-  | { id: string; order_index: number; turn_type: "tap_to_match";       content: TapToMatchContent;       xp_reward: number; is_required: boolean };
+  | { id: string; order_index: number; turn_type: "tap_to_match";       content: TapToMatchContent;       xp_reward: number; is_required: boolean }
+  | { id: string; order_index: number; turn_type: "svg_graphic";        content: SvgGraphicContent;       xp_reward: number; is_required: boolean }
+  | { id: string; order_index: number; turn_type: "html_animation";     content: HtmlAnimationContent;    xp_reward: number; is_required: boolean };

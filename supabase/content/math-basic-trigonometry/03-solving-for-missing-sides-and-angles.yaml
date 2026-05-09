@@ -1,0 +1,344 @@
+title: "Solving for missing sides and angles"
+estimated_minutes: 14
+xp_reward: 110
+
+turns:
+
+  - type: tutor_message
+    text: |
+      Real trig problems have a missing piece — a side you don't know, or an angle you need.
+
+      Two solving patterns cover most of what you'll see:
+
+      Pattern 1: You have an angle + one side. Find another side.
+      Pattern 2: You have two sides. Find the angle.
+
+      Both use SOH CAH TOA. The difference is what you're solving for.
+
+  - type: svg_graphic
+    title: "Pattern 1: Missing side"
+    caption: "Angle = 30°, hypotenuse = 10. Find the side opposite the 30° angle."
+    svg: |
+      <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <style>
+            .hyp { stroke: #dc2626; stroke-width: 3.5; fill: none; }
+            .opp { stroke: #2563eb; stroke-width: 3.5; fill: none; stroke-dasharray: 6,4; }
+            .adj { stroke: #16a34a; stroke-width: 3.5; fill: none; }
+            .right-mark { fill: none; stroke: #475569; stroke-width: 1.5; }
+            .label { font-family: system-ui, sans-serif; font-size: 15px; }
+            .num { font-family: 'Courier New', monospace; font-size: 18px; font-weight: bold; }
+            .unknown { font-family: 'Courier New', monospace; font-size: 22px; font-weight: bold; fill: #2563eb; }
+            .angle-mark { fill: #fbbf24; stroke: #d97706; stroke-width: 1.5; }
+          </style>
+        </defs>
+
+        <line class="hyp" x1="60" y1="220" x2="320" y2="60" />
+        <line class="opp" x1="320" y1="60" x2="320" y2="220" />
+        <line class="adj" x1="60" y1="220" x2="320" y2="220" />
+
+        <polyline class="right-mark" points="300,220 300,200 320,200" />
+
+        <path class="angle-mark" d="M 100,220 A 40,40 0 0 0 80,196 Z" opacity="0.6"/>
+        <text class="label" x="100" y="210" font-weight="bold">30°</text>
+
+        <text class="num" x="135" y="115" fill="#dc2626" transform="rotate(-32 165 130)">10</text>
+        <text class="unknown" x="335" y="148">x = ?</text>
+      </svg>
+
+  - type: tutor_message
+    text: |
+      Setting up the problem.
+
+      What we know:
+      - Angle θ = 30°
+      - Hypotenuse = 10
+      - We want the opposite side (call it x)
+
+      Which ratio uses opposite and hypotenuse? Sin.
+
+      sin(30°) = opposite / hypotenuse = x / 10
+
+      Rearrange: x = 10 × sin(30°)
+
+      sin(30°) = 0.5 (a value worth memorizing)
+
+      So x = 10 × 0.5 = 5
+
+  - type: tutor_message
+    text: |
+      Three sin/cos values worth memorizing.
+
+      - sin(30°) = 0.5, cos(30°) ≈ 0.866
+      - sin(45°) ≈ 0.707, cos(45°) ≈ 0.707
+      - sin(60°) ≈ 0.866, cos(60°) = 0.5
+
+      Notice the symmetry: sin(30°) = cos(60°), sin(60°) = cos(30°).
+      Sin and cos are mirror images around 45°.
+
+      For other angles: a calculator gives you the value. Same method either way.
+
+  - type: mcq
+    xp: 15
+    question: "A right triangle has hypotenuse = 8 and angle θ = 60°. Find the side adjacent to θ."
+    options:
+      - id: a
+        text: "x = 8 × sin(60°)"
+        is_correct: false
+        rationale: "Sin = opp/hyp. You'd be finding the opposite side, not adjacent."
+      - id: b
+        text: "x = 8 × cos(60°) = 8 × 0.5 = 4"
+        is_correct: true
+        rationale: "Correct. Cos = adj/hyp, so adj = hyp × cos(θ) = 8 × 0.5 = 4."
+      - id: c
+        text: "x = 8 × tan(60°)"
+        is_correct: false
+        rationale: "Tan needs the adjacent side, not the hypotenuse. Wrong ratio for the given info."
+      - id: d
+        text: "x = 8 / cos(60°)"
+        is_correct: false
+        rationale: "You flipped the formula. Cos = adj/hyp means adj = hyp × cos, not hyp / cos."
+
+  - type: svg_graphic
+    title: "Pattern 2: Missing angle"
+    caption: "Opposite = 3, Hypotenuse = 5. Find angle θ."
+    svg: |
+      <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <style>
+            .hyp { stroke: #dc2626; stroke-width: 3.5; fill: none; }
+            .opp { stroke: #2563eb; stroke-width: 3.5; fill: none; }
+            .adj { stroke: #16a34a; stroke-width: 3.5; fill: none; }
+            .right-mark { fill: none; stroke: #475569; stroke-width: 1.5; }
+            .label { font-family: system-ui, sans-serif; font-size: 15px; }
+            .num { font-family: 'Courier New', monospace; font-size: 18px; font-weight: bold; }
+            .unknown { font-family: 'Courier New', monospace; font-size: 22px; font-weight: bold; fill: #d97706; }
+            .angle-mark { fill: #fbbf24; stroke: #d97706; stroke-width: 1.5; stroke-dasharray: 4,3; }
+          </style>
+        </defs>
+
+        <line class="hyp" x1="60" y1="220" x2="320" y2="60" />
+        <line class="opp" x1="320" y1="60" x2="320" y2="220" />
+        <line class="adj" x1="60" y1="220" x2="320" y2="220" />
+
+        <polyline class="right-mark" points="300,220 300,200 320,200" />
+
+        <path class="angle-mark" d="M 100,220 A 40,40 0 0 0 80,196 Z" fill="none"/>
+        <text class="unknown" x="98" y="208">θ = ?</text>
+
+        <text class="num" x="335" y="145" fill="#2563eb">3</text>
+        <text class="num" x="135" y="115" fill="#dc2626" transform="rotate(-32 165 130)">5</text>
+      </svg>
+
+  - type: tutor_message
+    text: |
+      For finding angles, we use inverse trig functions.
+
+      On a calculator, look for: sin⁻¹, cos⁻¹, tan⁻¹ (sometimes labeled arcsin, arccos, arctan).
+
+      They do the reverse: take a ratio, give back an angle.
+
+      For this problem:
+      - We have opposite = 3, hypotenuse = 5
+      - sin(θ) = 3/5 = 0.6
+      - To find θ: θ = sin⁻¹(0.6) ≈ 36.87°
+
+  - type: tutor_message
+    text: |
+      The one-line workflow for finding angles:
+
+      1. Identify the two sides you have
+      2. Pick the ratio (sin, cos, or tan) using SOH CAH TOA
+      3. Calculate the ratio (the actual decimal value)
+      4. Apply the inverse of that ratio
+      5. The result is your angle
+
+      Step 4 is where students get stuck. Don't skip it.
+      sin(θ) = 0.6 doesn't tell you θ. You need sin⁻¹(0.6) to get θ.
+
+  - type: html_animation
+    title: "Side vs Angle: which workflow"
+    caption: "Solving for a side and solving for an angle look similar but use different final steps."
+    html: |
+      <div style="background: #f8fafc; padding: 20px; border-radius: 12px; font-family: system-ui, sans-serif;">
+        <style>
+          @keyframes leftHighlight {
+            0%, 45% { background: #dbeafe; transform: scale(1.02); }
+            50%, 100% { background: #f1f5f9; transform: scale(1); }
+          }
+          @keyframes rightHighlight {
+            0%, 45% { background: #f1f5f9; transform: scale(1); }
+            50%, 100% { background: #fed7aa; transform: scale(1.02); }
+          }
+          .panel-side { animation: leftHighlight 5s infinite; }
+          .panel-angle { animation: rightHighlight 5s infinite; }
+        </style>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <div class="panel-side" style="flex: 1; min-width: 240px; padding: 16px; border-radius: 8px; border: 2px solid #2563eb;">
+            <h4 style="margin: 0 0 12px 0; color: #1e40af; font-size: 16px;">Find a SIDE</h4>
+            <div style="font-size: 13px; line-height: 1.7; color: #1e293b;">
+              Have: angle + 1 side<br/>
+              Want: another side<br/>
+              <strong>Step:</strong> Multiply by sin/cos/tan<br/>
+              <code style="background: #e0e7ff; padding: 2px 6px; border-radius: 4px;">side = hyp × sin(angle)</code>
+            </div>
+          </div>
+          <div class="panel-angle" style="flex: 1; min-width: 240px; padding: 16px; border-radius: 8px; border: 2px solid #d97706;">
+            <h4 style="margin: 0 0 12px 0; color: #b45309; font-size: 16px;">Find an ANGLE</h4>
+            <div style="font-size: 13px; line-height: 1.7; color: #1e293b;">
+              Have: 2 sides<br/>
+              Want: the angle<br/>
+              <strong>Step:</strong> Use sin⁻¹/cos⁻¹/tan⁻¹<br/>
+              <code style="background: #fef3c7; padding: 2px 6px; border-radius: 4px;">angle = sin⁻¹(opp/hyp)</code>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Match each problem setup to the right approach."
+    left:
+      - id: l_45_hyp
+        label: "Angle = 45°, hypotenuse = 10, find opposite"
+      - id: l_inv_sin
+        label: "Opposite = 7, hypotenuse = 14, find angle"
+      - id: l_60_adj
+        label: "Angle = 60°, adjacent = 5, find hypotenuse"
+      - id: l_inv_tan
+        label: "Opposite = 4, adjacent = 4, find angle"
+      - id: l_30_hyp
+        label: "Angle = 30°, hypotenuse = 12, find adjacent"
+    right:
+      - id: r_mul_sin45
+        label: "Multiply: 10 × sin(45°)"
+      - id: r_inv_sin
+        label: "Inverse: sin⁻¹(7/14)"
+      - id: r_div_cos60
+        label: "Divide: 5 ÷ cos(60°)"
+      - id: r_inv_tan1
+        label: "Inverse: tan⁻¹(4/4) = tan⁻¹(1)"
+      - id: r_mul_cos30
+        label: "Multiply: 12 × cos(30°)"
+    pairs:
+      - [l_45_hyp, r_mul_sin45]
+      - [l_inv_sin, r_inv_sin]
+      - [l_60_adj, r_div_cos60]
+      - [l_inv_tan, r_inv_tan1]
+      - [l_30_hyp, r_mul_cos30]
+
+  - type: svg_graphic
+    title: "Real-world example: ladder against a wall"
+    caption: "10ft ladder leaning at 60° from the ground. How high up does it reach on the wall?"
+    svg: |
+      <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <style>
+            .ground { stroke: #78350f; stroke-width: 4; fill: none; }
+            .wall { stroke: #475569; stroke-width: 4; fill: none; }
+            .ladder { stroke: #b91c1c; stroke-width: 5; fill: none; }
+            .height { stroke: #2563eb; stroke-width: 3; fill: none; stroke-dasharray: 6,4; }
+            .label { font-family: system-ui, sans-serif; font-size: 14px; fill: #1e293b; }
+            .num { font-family: 'Courier New', monospace; font-size: 16px; font-weight: bold; }
+            .unknown { font-family: 'Courier New', monospace; font-size: 18px; font-weight: bold; fill: #2563eb; }
+            .angle-mark { fill: #fbbf24; stroke: #d97706; stroke-width: 1.5; }
+          </style>
+        </defs>
+
+        <line class="ground" x1="40" y1="280" x2="360" y2="280" />
+        <line class="wall" x1="280" y1="280" x2="280" y2="50" />
+
+        <line class="ladder" x1="80" y1="280" x2="280" y2="80" />
+        <line class="height" x1="280" y1="280" x2="280" y2="80" />
+
+        <path class="angle-mark" d="M 120,280 A 40,40 0 0 0 100,256 Z" opacity="0.7"/>
+        <text class="label" x="115" y="270" font-weight="bold">60°</text>
+
+        <text class="num" x="140" y="170" fill="#b91c1c" transform="rotate(-45 175 180)">10 ft</text>
+        <text class="unknown" x="295" y="180">h = ?</text>
+
+        <text class="label" x="180" y="305" fill="#78350f">ground</text>
+        <text class="label" x="295" y="60" fill="#475569">wall</text>
+      </svg>
+
+  - type: tutor_message
+    text: |
+      Setting it up.
+
+      - The ladder = hypotenuse = 10 ft
+      - Angle with ground = 60°
+      - We want the height up the wall = the opposite side to 60°
+
+      Pick the ratio: opposite + hypotenuse → sin
+
+      sin(60°) = h / 10
+
+      h = 10 × sin(60°) ≈ 10 × 0.866 = 8.66 ft
+
+      The ladder reaches about 8.66 feet up the wall.
+
+  - type: exercise
+    xp: 25
+    instruction: |
+      A real problem.
+
+      You're standing 50 meters from the base of a tower. Looking up at the top, your line of sight makes an angle of 35° with the ground (this is called the "angle of elevation").
+
+      Find the height of the tower.
+
+      Hints:
+      - Sketch the right triangle: ground, line of sight, tower
+      - 50m is the adjacent side to the 35° angle
+      - You want the opposite side (the tower's height)
+      - Pick the right ratio
+      - tan(35°) ≈ 0.700
+
+      Show your work and final answer.
+    placeholder: "Step 1: ratio = ... Step 2: equation = ... Step 3: height = ..."
+
+  - type: ai_conversation
+    xp: 20
+    goal: "User explains in their own words when to use sin vs cos vs tan."
+    success_criteria: "User correctly identifies that the choice between sin, cos, and tan depends on which two sides are involved in the problem (or what's given vs needed)."
+    max_turns: 4
+    starter_text: |
+      Test your understanding.
+
+      In your own words: how do you decide whether to use sin, cos, or tan when solving a trig problem?
+
+      (No need to be formal — just explain it like you'd tell a friend who's also learning.)
+    system_prompt: |
+      You are Nova, a warm and encouraging math tutor.
+
+      Step 1: Listen to the user's explanation.
+      Step 2: If they get the core idea right (the choice depends on which two sides are involved), affirm and add one nuance they missed.
+      Step 3: If they're confused (e.g., picking randomly, mixing up the ratios), gently correct with one specific example.
+      Step 4: Close with <END/>.
+
+      Under 80 words. Be supportive. Math anxiety is real.
+
+  - type: fill_in_the_blank
+    xp: 15
+    prompt: "Complete the workflow summary."
+    template: "To find a missing side: pick the right ratio, then {{multiply}} (or divide). To find a missing angle: pick the right ratio, calculate it, then apply the {{inverse}} function (sin⁻¹, cos⁻¹, or tan⁻¹). The ratio choice always depends on which two {{sides}} are involved."
+    answers:
+      - id: multiply
+        accepted: ["multiply"]
+      - id: inverse
+        accepted: ["inverse", "inverse trig"]
+      - id: sides
+        accepted: ["sides"]
+
+  - type: reflection
+    xp: 5
+    prompt: "Where in everyday life might trig actually be useful? (Hint: anything involving heights, distances, ramps, angles, or shadows.)"
+
+  - type: checkpoint
+    xp: 10
+    title: "You can now solve right triangles."
+    summary: |
+      Two patterns cover almost every problem:
+      • Missing side: side = (other side) × sin/cos/tan(angle)
+      • Missing angle: angle = sin⁻¹/cos⁻¹/tan⁻¹(ratio)
+      The choice between sin, cos, and tan always comes from SOH CAH TOA — driven by which two sides are involved.
+      Course complete. You now have the foundation for every trig problem you'll meet next: unit circle, identities, and trig functions over real numbers.
