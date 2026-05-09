@@ -160,13 +160,48 @@ function languagesIn(translations: Record<string, unknown>): string[] {
   return Object.keys(translations);
 }
 
-/** Expected on-disk YAML path for a lesson, matching the loader regex
- *  `^(\d{2,})-([a-z0-9-]+)\.yaml$` under `<course-slug>/`. Order index
- *  is zero-padded to two digits (loader uses 2+ digits, so this matches
- *  every authored file we have today). */
-function expectedYamlPath(courseSlug: string, lessonOrder: number, lessonSlug: string): string {
+/** Find every YAML file on disk that matches a lesson, across the
+ *  canonical EN folder and any sibling translation folders.
+ *
+ *  Convention:
+ *    EN:        supabase/content/<course-slug>/NN-<lesson-slug>.yaml
+ *    Translations: supabase/content/<course-slug>-<lang>/NN-<lesson-slug>.yaml
+ *
+ *  Returns one entry per language found, in the order [en, hinglish, hi, …]
+ *  (en first, then alpha by lang code).
+ */
+function findLessonYamls(
+  courseSlug: string,
+  lessonOrder: number,
+  lessonSlug: string,
+  yamlPaths: Set<string>,
+): { lang: string; path: string }[] {
   const nn = String(lessonOrder).padStart(2, "0");
-  return `${courseSlug}/${nn}-${lessonSlug}.yaml`;
+  const filename = `${nn}-${lessonSlug}.yaml`;
+  const found: { lang: string; path: string }[] = [];
+
+  const enPath = `${courseSlug}/${filename}`;
+  if (yamlPaths.has(enPath)) found.push({ lang: "en", path: enPath });
+
+  // Sibling-language folders share the canonical course slug as prefix
+  // followed by `-<lang>`. We could enumerate languages, but it's
+  // cheaper to scan the path set once for any directory matching the
+  // pattern.
+  const prefix = `${courseSlug}-`;
+  for (const path of yamlPaths) {
+    if (!path.endsWith(`/${filename}`)) continue;
+    const dir = path.slice(0, -filename.length - 1);
+    if (!dir.startsWith(prefix)) continue;
+    const lang = dir.slice(prefix.length);
+    if (lang === "en" || !lang) continue; // already handled
+    found.push({ lang, path });
+  }
+
+  return found.sort((a, b) => {
+    if (a.lang === "en") return -1;
+    if (b.lang === "en") return 1;
+    return a.lang.localeCompare(b.lang);
+  });
 }
 
 // ---- page -----------------------------------------------------------------
@@ -196,13 +231,14 @@ export default async function DatabaseSchemaPage({
   const yamlPaths = new Set<string>();
   for (const dir of yamlTree) for (const f of dir.files) yamlPaths.add(f.path);
 
-  // YAML coverage: how many DB lessons have a matching YAML on disk.
+  // YAML coverage: how many DB lessons have at least one matching YAML
+  // (in any language) on disk.
   const courseSlugById = new Map(courses.map((c) => [c.id, c.slug]));
   let lessonsWithYaml = 0;
   for (const l of lessons) {
     const cslug = courseSlugById.get(l.course_id);
     if (!cslug) continue;
-    if (yamlPaths.has(expectedYamlPath(cslug, l.order_index, l.slug))) {
+    if (findLessonYamls(cslug, l.order_index, l.slug, yamlPaths).length > 0) {
       lessonsWithYaml += 1;
     }
   }
@@ -341,14 +377,21 @@ export default async function DatabaseSchemaPage({
                                 {clessons.map((l) => {
                                   const tt = turnsByLesson.get(l.id) ?? [];
                                   const hasTrans = tt.some((t) => Object.keys(t.translations ?? {}).length > 0);
-                                  const ypath = expectedYamlPath(c.slug, l.order_index, l.slug);
-                                  const hasYaml = yamlPaths.has(ypath);
+                                  const yamls = findLessonYamls(c.slug, l.order_index, l.slug, yamlPaths);
                                   return (
                                     <li key={l.id}>
                                       <code>{l.slug}</code> · {tt.length} turn{tt.length === 1 ? "" : "s"}
                                       {hasTrans ? " · 🌐 has translations" : ""}
-                                      {hasYaml ? (
-                                        <> · <a href={`?yaml=${encodeURIComponent(ypath)}#yaml-${ypath}`}>📄 yaml</a></>
+                                      {yamls.length > 0 ? (
+                                        <>
+                                          {" · "}
+                                          {yamls.map((y, i) => (
+                                            <span key={y.path}>
+                                              {i > 0 ? " · " : ""}
+                                              <a href={`?yaml=${encodeURIComponent(y.path)}#yaml-${y.path}`}>📄 {y.lang}</a>
+                                            </span>
+                                          ))}
+                                        </>
                                       ) : (
                                         <span style={mutedInlineStyle}> · no yaml</span>
                                       )}
@@ -389,14 +432,21 @@ export default async function DatabaseSchemaPage({
                         {clessons.map((l) => {
                           const tt = turnsByLesson.get(l.id) ?? [];
                           const hasTrans = tt.some((t) => Object.keys(t.translations ?? {}).length > 0);
-                          const ypath = expectedYamlPath(c.slug, l.order_index, l.slug);
-                          const hasYaml = yamlPaths.has(ypath);
+                          const yamls = findLessonYamls(c.slug, l.order_index, l.slug, yamlPaths);
                           return (
                             <li key={l.id}>
                               <code>{l.slug}</code> · {tt.length} turn{tt.length === 1 ? "" : "s"}
                               {hasTrans ? " · 🌐 has translations" : ""}
-                              {hasYaml ? (
-                                <> · <a href={`?yaml=${encodeURIComponent(ypath)}#yaml-${ypath}`}>📄 yaml</a></>
+                              {yamls.length > 0 ? (
+                                <>
+                                  {" · "}
+                                  {yamls.map((y, i) => (
+                                    <span key={y.path}>
+                                      {i > 0 ? " · " : ""}
+                                      <a href={`?yaml=${encodeURIComponent(y.path)}#yaml-${y.path}`}>📄 {y.lang}</a>
+                                    </span>
+                                  ))}
+                                </>
                               ) : (
                                 <span style={mutedInlineStyle}> · no yaml</span>
                               )}
