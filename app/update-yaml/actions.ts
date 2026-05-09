@@ -7,6 +7,12 @@ import { revalidatePath } from "next/cache";
 import { lessonSchema, turnContent, turnXpReward } from "@/lib/content/schema";
 import { createClient } from "@/lib/supabase/server";
 
+import { ALL_BUNDLES, LANGUAGE_OPTIONS, ORPHAN_BUNDLE } from "./constants";
+
+const ALLOWED_LANGS: ReadonlySet<string> = new Set(
+  LANGUAGE_OPTIONS.map((l) => l.code),
+);
+
 /** Service-role client for the writes. Uses the same env var the
  *  scripts/load-content.ts CLI uses. Server-only. */
 function adminClient() {
@@ -29,11 +35,19 @@ async function requireAuthed() {
   return user.id;
 }
 
+export type BundleOption = {
+  id: string;
+  slug: string;
+  title: string | null;
+  course_count: number;
+};
+
 export type CourseOption = {
   id: string;
   slug: string;
   title: string | null;
   lesson_count: number;
+  bundle_id: string | null;
 };
 
 /** Lesson list for the picked course — used to display the next slot
@@ -45,17 +59,55 @@ export type CourseStats = {
     order_index: number;
     title: string | null;
     is_published: boolean;
+    /** Languages already authored for this lesson — keys present in the
+     *  translations jsonb. EN is always present after the canonical load. */
+    languages: string[];
   }>;
 };
 
-export async function listCourses(): Promise<CourseOption[]> {
+export async function listBundles(): Promise<BundleOption[]> {
   await requireAuthed();
   const admin = adminClient();
-  // Pull all published + unpublished — authors need to fill empty courses too.
-  const { data, error } = await admin
+  // Pull bundles + a course count per bundle. PostgREST can't aggregate
+  // cleanly with select(), so we do two queries and join in memory.
+  const [{ data: bundles, error: bErr }, { data: courses, error: cErr }] = await Promise.all([
+    admin.from("bundles").select("id, slug, translations").order("order_index", { ascending: true }),
+    admin.from("courses").select("bundle_id"),
+  ]);
+  if (bErr) throw new Error(`list bundles: ${bErr.message}`);
+  if (cErr) throw new Error(`count courses: ${cErr.message}`);
+  const counts = new Map<string, number>();
+  for (const c of courses ?? []) {
+    const b = c.bundle_id as string | null;
+    if (!b) continue;
+    counts.set(b, (counts.get(b) ?? 0) + 1);
+  }
+  return (bundles ?? []).map((b) => {
+    const t = (b.translations as Record<string, { title?: string }> | null) ?? {};
+    return {
+      id: b.id as string,
+      slug: b.slug as string,
+      title: t.en?.title ?? null,
+      course_count: counts.get(b.id as string) ?? 0,
+    };
+  });
+}
+
+export async function listCourses(args?: {
+  bundleId?: string | typeof ORPHAN_BUNDLE | typeof ALL_BUNDLES;
+}): Promise<CourseOption[]> {
+  await requireAuthed();
+  const admin = adminClient();
+  let query = admin
     .from("courses")
-    .select("id, slug, translations, lesson_count")
+    .select("id, slug, translations, lesson_count, bundle_id")
     .order("slug", { ascending: true });
+  if (args?.bundleId === ORPHAN_BUNDLE) {
+    query = query.is("bundle_id", null);
+  } else if (args?.bundleId && args.bundleId !== ALL_BUNDLES) {
+    query = query.eq("bundle_id", args.bundleId);
+  }
+  const { data, error } = await query;
   if (error) throw new Error(`list courses: ${error.message}`);
   return (data ?? []).map((c) => {
     const t = (c.translations as Record<string, { title?: string }> | null) ?? {};
@@ -64,6 +116,7 @@ export async function listCourses(): Promise<CourseOption[]> {
       slug: c.slug as string,
       title: t.en?.title ?? null,
       lesson_count: (c.lesson_count as number | null) ?? 0,
+      bundle_id: (c.bundle_id as string | null) ?? null,
     };
   });
 }
@@ -84,6 +137,7 @@ export async function getCourseStats(courseId: string): Promise<CourseStats> {
       order_index: l.order_index as number,
       title: t.en?.title ?? null,
       is_published: l.is_published as boolean,
+      languages: Object.keys(t).sort(),
     };
   });
   const nextOrderIndex =
@@ -108,9 +162,14 @@ function slugify(input: string): string {
 export type SubmitArgs = {
   courseId: string;
   yamlText: string;
-  /** Optional explicit slug. If omitted, slugified from the YAML title. */
+  /** Language code for this YAML. "en" writes the canonical lesson row
+   *  + lesson_turns. Anything else folds into lessons.translations[<lang>]
+   *  as a full alternative document, leaving the canonical untouched. */
+  language: string;
+  /** Optional explicit slug. If omitted, slugified from the YAML title.
+   *  For non-EN languages this MUST match an existing canonical slug. */
   slug?: string;
-  /** Optional explicit order index. If omitted, uses next available. */
+  /** Optional explicit order index. Ignored for non-EN languages. */
   orderIndex?: number;
 };
 
@@ -123,6 +182,7 @@ export type SubmitResult = {
     order_index: number;
     title: string;
     turn_count: number;
+    language: string;
   };
 };
 
@@ -147,7 +207,7 @@ export async function submitLessonYaml(args: SubmitArgs): Promise<SubmitResult> 
   }
   const doc = parsed.data;
 
-  // 3. Resolve slug + order index.
+  // 3. Resolve slug.
   const slug = (args.slug && args.slug.trim()) || slugify(doc.title);
   if (!/^[a-z0-9][a-z0-9-]*$/.test(slug)) {
     return {
@@ -157,6 +217,16 @@ export async function submitLessonYaml(args: SubmitArgs): Promise<SubmitResult> 
   }
 
   const admin = adminClient();
+  const language = args.language || "en";
+  // Allowlist the language code. Rejects typos and crafted requests that
+  // would otherwise write arbitrary keys into lessons.translations that
+  // the renderer never consults.
+  if (!ALLOWED_LANGS.has(language)) {
+    return {
+      ok: false,
+      message: `Unsupported language "${language}". Pick one of: ${[...ALLOWED_LANGS].join(", ")}.`,
+    };
+  }
 
   // 4. Look up the course.
   const { data: course, error: courseErr } = await admin
@@ -166,6 +236,71 @@ export async function submitLessonYaml(args: SubmitArgs): Promise<SubmitResult> 
     .maybeSingle();
   if (courseErr) return { ok: false, message: `course lookup: ${courseErr.message}` };
   if (!course) return { ok: false, message: `Course ${args.courseId} not found.` };
+
+  // ---------------- non-EN: translation overlay -----------------
+  if (language !== "en") {
+    const { data: existingLesson, error: lookupErr } = await admin
+      .from("lessons")
+      .select("id, translations")
+      .eq("course_id", args.courseId)
+      .eq("slug", slug)
+      .maybeSingle();
+    if (lookupErr) {
+      return { ok: false, message: `lesson lookup: ${lookupErr.message}` };
+    }
+    if (!existingLesson) {
+      return {
+        ok: false,
+        message: `No canonical lesson "${slug}" in this course. Author the English version first, then translate.`,
+      };
+    }
+
+    const translatedTurns = doc.turns.map((turn, idx) => ({
+      order_index: idx + 1,
+      turn_type: turn.type,
+      content: turnContent(turn),
+      xp_reward: turnXpReward(turn),
+    }));
+    const langDoc: Record<string, unknown> = {
+      title: doc.title,
+      ...(doc.subtitle ? { subtitle: doc.subtitle } : {}),
+      turns: translatedTurns,
+    };
+    const merged = {
+      ...((existingLesson.translations as Record<string, unknown> | null) ?? {}),
+      [language]: langDoc,
+    };
+    const { error: updErr } = await admin
+      .from("lessons")
+      .update({ translations: merged })
+      .eq("id", existingLesson.id);
+    if (updErr) return { ok: false, message: `update translations: ${updErr.message}` };
+
+    revalidatePath("/database-schema");
+    revalidatePath(`/learn/${course.slug}`);
+    revalidatePath(`/learn/${course.slug}/${slug}`);
+
+    // Read order_index back so the result reflects the canonical row.
+    const { data: row } = await admin
+      .from("lessons")
+      .select("order_index")
+      .eq("id", existingLesson.id)
+      .single();
+    return {
+      ok: true,
+      message: `Folded ${translatedTurns.length} ${language} turns into ${slug}.`,
+      lesson: {
+        id: existingLesson.id as string,
+        slug,
+        order_index: (row?.order_index as number) ?? 0,
+        title: doc.title,
+        turn_count: translatedTurns.length,
+        language,
+      },
+    };
+  }
+
+  // ---------------- EN: canonical lesson upsert -----------------
 
   // 5. Decide order_index.
   let orderIndex = args.orderIndex ?? 0;
@@ -182,7 +317,7 @@ export async function submitLessonYaml(args: SubmitArgs): Promise<SubmitResult> 
       : ((existing ?? []).reduce((m, l) => Math.max(m, l.order_index as number), 0) + 1);
   }
 
-  // 6. Read existing translations.en if any so we don't drop other lang keys.
+  // 6. Read existing translations so we don't drop other lang keys.
   const { data: existingLesson } = await admin
     .from("lessons")
     .select("id, translations")
@@ -253,6 +388,7 @@ export async function submitLessonYaml(args: SubmitArgs): Promise<SubmitResult> 
       order_index: orderIndex,
       title: doc.title,
       turn_count: turnRows.length,
+      language: "en",
     },
   };
 }

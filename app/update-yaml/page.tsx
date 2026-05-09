@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 
 import { createClient } from "@/lib/supabase/server";
 import { UpdateYamlForm } from "./UpdateYamlForm";
-import { listCourses } from "./actions";
+import { listBundles, listCourses } from "./actions";
 
 export const dynamic = "force-dynamic";
 
@@ -13,7 +13,7 @@ export default async function UpdateYamlPage() {
   } = await supabase.auth.getUser();
   if (!user) redirect("/login?next=/update-yaml");
 
-  const courses = await listCourses();
+  const [bundles, courses] = await Promise.all([listBundles(), listCourses()]);
 
   return (
     <main
@@ -42,10 +42,12 @@ export default async function UpdateYamlPage() {
           Paste a lesson YAML
         </h1>
         <p style={{ fontSize: 14, color: "#444", lineHeight: 1.5 }}>
-          Pick a course, paste the lesson YAML below, and submit. The server
-          validates with the same schema the loader uses, then upserts the
-          lesson row + replaces its turns. The next order index updates after
-          a successful load — paste lesson 02 next, etc.
+          Pick a bundle to filter the course list, then a course, then a
+          language. Paste the lesson YAML below and submit. The server
+          validates with the same schema the loader uses. <b>English</b>{" "}
+          writes the canonical lesson + turns; <b>any other language</b>{" "}
+          folds the YAML into <code>lessons.translations.&lt;lang&gt;</code>{" "}
+          (the canonical lesson must already exist for that slug).
         </p>
         <p style={{ fontSize: 13, color: "#666", marginTop: 8 }}>
           Same shape as <code>supabase/content/&lt;course&gt;/NN-&lt;slug&gt;.yaml</code>.
@@ -55,7 +57,7 @@ export default async function UpdateYamlPage() {
         </p>
       </header>
 
-      <UpdateYamlForm courses={courses} />
+      <UpdateYamlForm bundles={bundles} initialCourses={courses} />
     </main>
   );
 }

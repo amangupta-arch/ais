@@ -4,20 +4,33 @@ import { useEffect, useMemo, useState, useTransition } from "react";
 
 import {
   getCourseStats,
+  listCourses,
   submitLessonYaml,
+  type BundleOption,
   type CourseOption,
   type CourseStats,
   type SubmitResult,
 } from "./actions";
+import { ALL_BUNDLES, LANGUAGE_OPTIONS, ORPHAN_BUNDLE } from "./constants";
 
 type Props = {
-  courses: CourseOption[];
+  bundles: BundleOption[];
+  initialCourses: CourseOption[]; // courses for ALL_BUNDLES on first paint
 };
 
-export function UpdateYamlForm({ courses }: Props) {
-  const [courseId, setCourseId] = useState<string>(courses[0]?.id ?? "");
+type BundleSelection = string; // bundle.id | ORPHAN_BUNDLE | ALL_BUNDLES
+
+export function UpdateYamlForm({ bundles, initialCourses }: Props) {
+  const [bundleSel, setBundleSel] = useState<BundleSelection>(ALL_BUNDLES);
+  const [courses, setCourses] = useState<CourseOption[]>(initialCourses);
+  const [coursesLoading, setCoursesLoading] = useState(false);
+  const [courseId, setCourseId] = useState<string>(initialCourses[0]?.id ?? "");
+
+  const [language, setLanguage] = useState<string>("en");
+
   const [stats, setStats] = useState<CourseStats | null>(null);
   const [statsLoading, setStatsLoading] = useState(false);
+
   const [yamlText, setYamlText] = useState("");
   const [slugOverride, setSlugOverride] = useState("");
   const [orderOverride, setOrderOverride] = useState<string>("");
@@ -28,20 +41,59 @@ export function UpdateYamlForm({ courses }: Props) {
     () => courses.find((c) => c.id === courseId),
     [courses, courseId],
   );
+  const isTranslation = language !== "en";
 
+  // Refetch courses when bundle changes. Guard against stale responses:
+  // if the user flips the dropdown faster than the network resolves, an
+  // older request must not overwrite a newer bundle's results.
+  useEffect(() => {
+    let cancelled = false;
+    setCoursesLoading(true);
+    listCourses({ bundleId: bundleSel })
+      .then((next) => {
+        if (cancelled) return;
+        setCourses(next);
+        if (!next.find((c) => c.id === courseId)) {
+          setCourseId(next[0]?.id ?? "");
+        }
+      })
+      .catch((e) => {
+        if (!cancelled) console.error(e);
+      })
+      .finally(() => {
+        if (!cancelled) setCoursesLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+    // courseId intentionally omitted — we only want to react to bundle changes
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [bundleSel]);
+
+  // Refetch stats when course changes. Same stale-response guard as above.
   useEffect(() => {
     if (!courseId) {
       setStats(null);
       return;
     }
+    let cancelled = false;
     setStatsLoading(true);
     getCourseStats(courseId)
-      .then(setStats)
-      .catch((e) => {
-        console.error(e);
-        setStats(null);
+      .then((s) => {
+        if (!cancelled) setStats(s);
       })
-      .finally(() => setStatsLoading(false));
+      .catch((e) => {
+        if (!cancelled) {
+          console.error(e);
+          setStats(null);
+        }
+      })
+      .finally(() => {
+        if (!cancelled) setStatsLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
   }, [courseId]);
 
   const onSubmit = (e: React.FormEvent) => {
@@ -51,16 +103,15 @@ export function UpdateYamlForm({ courses }: Props) {
       const r = await submitLessonYaml({
         courseId,
         yamlText,
+        language,
         slug: slugOverride.trim() || undefined,
         orderIndex: orderOverride.trim() ? Number(orderOverride) : undefined,
       });
       setResult(r);
       if (r.ok) {
-        // Reset paste box for the next lesson, but keep course selection.
         setYamlText("");
         setSlugOverride("");
         setOrderOverride("");
-        // Refresh stats so "next" advances to the new index.
         try {
           const next = await getCourseStats(courseId);
           setStats(next);
@@ -72,24 +123,93 @@ export function UpdateYamlForm({ courses }: Props) {
   };
 
   const nextOrderHint = stats?.nextOrderIndex ?? 1;
+  // For translation mode the slug must match an existing canonical lesson.
+  // Surface those slugs as suggestions in a datalist.
+  const canonicalSlugs = stats?.lessons.map((l) => l.slug) ?? [];
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
       <form onSubmit={onSubmit} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: 16,
+          }}
+        >
+          <label style={fieldLabel}>
+            <span style={labelText}>Bundle</span>
+            <select
+              value={bundleSel}
+              onChange={(e) => setBundleSel(e.target.value)}
+              style={inputStyle}
+            >
+              <option value={ALL_BUNDLES}>All bundles ({bundles.length})</option>
+              <option value={ORPHAN_BUNDLE}>— Orphan courses (no bundle) —</option>
+              <optgroup label="Bundles">
+                {bundles.map((b) => (
+                  <option key={b.id} value={b.id}>
+                    {b.slug} {b.title ? `— ${b.title}` : ""} ({b.course_count})
+                  </option>
+                ))}
+              </optgroup>
+            </select>
+            <span style={hintText}>
+              Filters the course list below. Pick &ldquo;Orphan&rdquo; for courses
+              like <code>canva-magic</code> that aren&apos;t in any bundle.
+            </span>
+          </label>
+
+          <label style={fieldLabel}>
+            <span style={labelText}>
+              Course {coursesLoading ? "(loading…)" : `(${courses.length})`}
+            </span>
+            <select
+              value={courseId}
+              onChange={(e) => setCourseId(e.target.value)}
+              required
+              style={inputStyle}
+            >
+              {courses.length === 0 ? (
+                <option value="">No courses in this bundle</option>
+              ) : null}
+              {courses.map((c) => (
+                <option key={c.id} value={c.id}>
+                  {c.slug} {c.title ? `— ${c.title}` : ""} ({c.lesson_count} lessons)
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+
         <label style={fieldLabel}>
-          <span style={labelText}>Course</span>
+          <span style={labelText}>Language</span>
           <select
-            value={courseId}
-            onChange={(e) => setCourseId(e.target.value)}
-            required
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
             style={inputStyle}
           >
-            {courses.map((c) => (
-              <option key={c.id} value={c.id}>
-                {c.slug} {c.title ? `— ${c.title}` : ""} ({c.lesson_count} lessons)
+            {LANGUAGE_OPTIONS.map((l) => (
+              <option key={l.code} value={l.code}>
+                {l.label}
               </option>
             ))}
           </select>
+          <span style={hintText}>
+            {isTranslation ? (
+              <>
+                Translation mode. The slug must match an existing canonical lesson.
+                The YAML&apos;s turns are folded into{" "}
+                <code>lessons.translations.{language}</code> as a full alternative
+                document. Turn count and structure can differ from English.
+              </>
+            ) : (
+              <>
+                English (canonical). Writes the lesson row + replaces lesson_turns.
+                Other-language overlays on the same lesson are preserved.
+              </>
+            )}
+          </span>
         </label>
 
         <div
@@ -101,33 +221,45 @@ export function UpdateYamlForm({ courses }: Props) {
         >
           <label style={fieldLabel}>
             <span style={labelText}>
-              Next order index
-              {statsLoading ? " (loading…)" : null}
+              Order index{statsLoading ? " (loading…)" : ""}
             </span>
             <input
               type="number"
               min={1}
               value={orderOverride}
               onChange={(e) => setOrderOverride(e.target.value)}
-              placeholder={String(nextOrderHint)}
-              style={inputStyle}
+              placeholder={isTranslation ? "(set by canonical)" : String(nextOrderHint)}
+              disabled={isTranslation}
+              style={{ ...inputStyle, opacity: isTranslation ? 0.5 : 1 }}
             />
             <span style={hintText}>
-              Leave blank to use {nextOrderHint}. Submit a slug that already
-              exists to overwrite it in place.
+              {isTranslation
+                ? "Translations inherit the canonical lesson's order."
+                : `Leave blank to use ${nextOrderHint}. Enter an existing slot to overwrite.`}
             </span>
           </label>
 
           <label style={fieldLabel}>
-            <span style={labelText}>Lesson slug (optional)</span>
+            <span style={labelText}>
+              Lesson slug {isTranslation ? "(must match canonical)" : "(optional)"}
+            </span>
             <input
               type="text"
               value={slugOverride}
               onChange={(e) => setSlugOverride(e.target.value)}
-              placeholder="auto-generated from title"
+              placeholder={isTranslation ? "e.g. first-real-conversation" : "auto-generated from title"}
+              required={isTranslation}
               pattern="[a-z0-9][a-z0-9\\-]*"
+              list={isTranslation ? "canonical-slugs" : undefined}
               style={inputStyle}
             />
+            {isTranslation ? (
+              <datalist id="canonical-slugs">
+                {canonicalSlugs.map((s) => (
+                  <option key={s} value={s} />
+                ))}
+              </datalist>
+            ) : null}
             <span style={hintText}>
               Lowercase, hyphens. URL becomes{" "}
               <code>
@@ -187,7 +319,11 @@ turns:
               border: "none",
             }}
           >
-            {pending ? "Loading…" : "Validate + load"}
+            {pending
+              ? "Loading…"
+              : isTranslation
+                ? `Validate + fold ${language}`
+                : "Validate + load"}
           </button>
         </div>
       </form>
@@ -218,9 +354,20 @@ turns:
           {stats.lessons.length === 0 ? (
             <p style={{ fontSize: 13, color: "#666" }}>
               No lessons yet. The first paste will be order 1.
+              {isTranslation
+                ? " You must author English first before adding translations."
+                : null}
             </p>
           ) : (
-            <ol style={{ display: "flex", flexDirection: "column", gap: 4, paddingLeft: 0, listStyle: "none" }}>
+            <ol
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 4,
+                paddingLeft: 0,
+                listStyle: "none",
+              }}
+            >
               {stats.lessons.map((l) => (
                 <li
                   key={l.slug}
@@ -229,15 +376,19 @@ turns:
                     gap: 12,
                     fontSize: 13,
                     fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, monospace",
+                    alignItems: "baseline",
                   }}
                 >
                   <span style={{ color: "#999", minWidth: 24, textAlign: "right" }}>
                     {l.order_index}.
                   </span>
                   <span style={{ minWidth: 240 }}>{l.slug}</span>
-                  <span style={{ color: "#666" }}>{l.title ?? "(no title)"}</span>
+                  <span style={{ color: "#666", flex: 1 }}>{l.title ?? "(no title)"}</span>
+                  <span style={{ color: "#888", fontSize: 11 }}>
+                    {l.languages.join(", ") || "—"}
+                  </span>
                   {!l.is_published ? (
-                    <span style={{ color: "#dc2626" }}>(unpublished)</span>
+                    <span style={{ color: "#dc2626" }}>(unpub)</span>
                   ) : null}
                 </li>
               ))}
