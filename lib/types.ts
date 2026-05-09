@@ -160,6 +160,17 @@ export function bundleDescription(b: Bundle, lang: string): string | null {
 export type LessonTranslation = {
   title?: string;
   subtitle?: string;
+  /** Full alternative turn list for this language. When present, the
+   *  renderer uses these instead of the canonical lesson_turns rows
+   *  (the lengths and structures may differ across languages). Each
+   *  entry mirrors the LessonTurn shape stored in lesson_turns.content
+   *  but without DB row metadata; the renderer synthesises ids. */
+  turns?: Array<{
+    order_index: number;
+    turn_type: string;
+    content: Record<string, unknown>;
+    xp_reward?: number;
+  }>;
 };
 
 export type Lesson = {
@@ -224,6 +235,11 @@ export type UserLessonProgress = {
   time_spent_seconds: number;
   started_at: string | null;
   completed_at: string | null;
+  /** Language the learner was using when this progress was last written.
+   *  Lessons can have language-specific turn lists with different lengths,
+   *  so the renderer ignores `current_turn_index` whenever this differs
+   *  from the user's current preferred_language. */
+  language: string;
 };
 
 export type Subscription = {

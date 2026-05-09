@@ -6,6 +6,19 @@
  *
  * Reads every supabase/content/<course-slug>/NN-<lesson-slug>.yaml, validates
  * via lib/content/schema.ts, and upserts lessons + lesson_turns. Idempotent.
+ *
+ * Translation folders (`<course-slug>-<lang>/`) are treated as alternative
+ * lesson documents for the canonical course of the same slug-prefix:
+ * each translation YAML is folded into the canonical lesson row's
+ * `translations.<lang>` jsonb as a full sub-document
+ * (`{title, subtitle, turns}`). Lesson structures may differ freely
+ * across languages — the loader does not require turn counts to match.
+ *
+ * To opt a folder into translation mode, drop a `_lang.yaml` marker file
+ * inside it. The marker may be empty (lang inferred from the folder's
+ * `-<lang>` suffix) or contain `lang: <code>` to override. Folders without
+ * a marker are always treated as canonical, so course slugs that happen
+ * to end in `-hi`/`-fr`/etc. are not silently absorbed.
  */
 
 import { readdirSync, readFileSync, statSync } from "node:fs";
@@ -24,11 +37,92 @@ import {
 
 type ParsedLesson = {
   path: string;           // relative path for error messages
-  courseSlug: string;
+  courseSlug: string;     // canonical course slug (target of the import)
   lessonSlug: string;
   orderIndex: number;
   doc: LessonYaml;
+  lang?: string;          // set for translation YAMLs; undefined for canonical EN
 };
+
+/** Translation languages we recognise for the `<canonical>-<lang>/`
+ *  folder convention. Mirrors lib/types.ts LANGUAGES. */
+const TRANSLATION_LANGS = [
+  "hinglish", "hi", "mr", "pa", "te", "ta", "bn", "fr", "es",
+] as const;
+
+type FolderKind =
+  | { kind: "canonical"; slug: string }
+  | { kind: "translation"; canonicalSlug: string; lang: string };
+
+/** A folder is treated as a translation overlay only if it contains an
+ *  explicit `_lang.yaml` (or `.yml`) marker. The marker disambiguates from
+ *  canonical courses whose slug happens to end in `-hi`, `-fr`, etc. The
+ *  marker may be empty or contain `lang: <code>` to override the lang
+ *  inferred from the folder suffix. */
+function readLangMarker(dir: string): string | null {
+  for (const name of ["_lang.yaml", "_lang.yml"]) {
+    const p = join(dir, name);
+    try {
+      const raw = readFileSync(p, "utf8");
+      if (raw.trim() === "") return ""; // marker present, infer from suffix
+      const parsed = yaml.load(raw) as unknown;
+      if (parsed && typeof parsed === "object" && "lang" in parsed) {
+        const v = (parsed as { lang: unknown }).lang;
+        return typeof v === "string" ? v : "";
+      }
+      return "";
+    } catch {
+      // file missing — try next name
+    }
+  }
+  return null;
+}
+
+function classifyFolder(
+  folderName: string,
+  knownCanonicals: Set<string>,
+  langMarker: string | null,
+): FolderKind {
+  // No marker → canonical, regardless of suffix. A future course slug ending
+  // in -hi/-fr/etc. is safe by default; an existing translation folder
+  // without a marker must opt in by adding _lang.yaml.
+  if (langMarker === null) return { kind: "canonical", slug: folderName };
+
+  // Marker present. Determine lang: explicit override wins, otherwise
+  // infer from the folder suffix.
+  const explicit = langMarker.trim();
+  if (explicit) {
+    if (!(TRANSLATION_LANGS as readonly string[]).includes(explicit)) {
+      // Unknown lang — treat as canonical so we don't silently lose data.
+      return { kind: "canonical", slug: folderName };
+    }
+    // Strip whichever suffix matches; if none, the canonical slug is
+    // the folder itself (the author is overriding everything).
+    for (const lang of TRANSLATION_LANGS) {
+      const sfx = `-${lang}`;
+      if (folderName.endsWith(sfx)) {
+        const canonical = folderName.slice(0, -sfx.length);
+        if (knownCanonicals.has(canonical)) {
+          return { kind: "translation", canonicalSlug: canonical, lang: explicit };
+        }
+      }
+    }
+    return { kind: "canonical", slug: folderName };
+  }
+
+  // Marker present but no explicit lang — infer from suffix.
+  for (const lang of TRANSLATION_LANGS) {
+    const sfx = `-${lang}`;
+    if (folderName.endsWith(sfx)) {
+      const canonical = folderName.slice(0, -sfx.length);
+      if (knownCanonicals.has(canonical)) {
+        return { kind: "translation", canonicalSlug: canonical, lang };
+      }
+    }
+  }
+  // Marker but no inferable lang and no override — canonical fallback.
+  return { kind: "canonical", slug: folderName };
+}
 
 type FileError = { path: string; message: string };
 
@@ -60,10 +154,15 @@ function loadEnv(): { url: string; serviceKey: string } {
   return { url, serviceKey };
 }
 
-function collectFiles(): { lessons: ParsedLesson[]; errors: FileError[] } {
+function collectFiles(): {
+  lessons: ParsedLesson[];
+  translationLessons: ParsedLesson[];
+  errors: FileError[];
+} {
   const lessons: ParsedLesson[] = [];
+  const translationLessons: ParsedLesson[] = [];
   const errors: FileError[] = [];
-  const seenKeys = new Map<string, string>(); // `${course}/${slug}` → first path using it
+  const seenKeys = new Map<string, string>();
 
   let courseDirs: string[] = [];
   try {
@@ -71,16 +170,28 @@ function collectFiles(): { lessons: ParsedLesson[]; errors: FileError[] } {
       .filter((name) => statSync(join(CONTENT_ROOT, name)).isDirectory())
       .sort();
   } catch {
-    return { lessons, errors };
+    return { lessons, translationLessons, errors };
   }
 
-  for (const courseSlug of courseDirs) {
-    const dir = join(CONTENT_ROOT, courseSlug);
+  // Pass 1: identify canonical folders so we can detect translation siblings.
+  // A folder is canonical unless its name is `<X>-<lang>` AND folder `<X>`
+  // also exists. (`bundle-courses` is not a course folder; skip it explicitly.)
+  const candidateCanonicals = new Set(courseDirs.filter((n) => n !== "bundle-courses"));
+  // Note: classifyFolder uses this set as-is; if a folder's prefix doesn't
+  // match a real canonical, it falls through to canonical-by-default.
+
+  for (const folderName of courseDirs) {
+    if (folderName === "bundle-courses") continue;
+    const dir = join(CONTENT_ROOT, folderName);
     const files = readdirSync(dir)
       .filter((f) => (f.endsWith(".yaml") || f.endsWith(".yml")) && !f.startsWith("_"))
       .sort();
+
+    const langMarker = readLangMarker(dir);
+    const kind = classifyFolder(folderName, candidateCanonicals, langMarker);
+
     for (const file of files) {
-      const rel = `${courseSlug}/${file}`;
+      const rel = `${folderName}/${file}`;
       const match = file.match(FILENAME_RE);
       if (!match) {
         errors.push({ path: rel, message: `filename must match NN-<slug>.yaml` });
@@ -89,7 +200,7 @@ function collectFiles(): { lessons: ParsedLesson[]; errors: FileError[] } {
       const orderIndex = Number.parseInt(match[1]!, 10);
       const lessonSlug = match[2]!;
 
-      const key = `${courseSlug}/${lessonSlug}`;
+      const key = `${folderName}/${lessonSlug}`;
       const firstSeen = seenKeys.get(key);
       if (firstSeen) {
         errors.push({
@@ -117,33 +228,40 @@ function collectFiles(): { lessons: ParsedLesson[]; errors: FileError[] } {
         continue;
       }
 
-      lessons.push({
+      const parsedLesson: ParsedLesson = {
         path: rel,
-        courseSlug,
+        courseSlug: kind.kind === "canonical" ? kind.slug : kind.canonicalSlug,
         lessonSlug,
         orderIndex,
         doc: parsed.data,
-      });
+        ...(kind.kind === "translation" ? { lang: kind.lang } : {}),
+      };
+      if (kind.kind === "canonical") {
+        lessons.push(parsedLesson);
+      } else {
+        translationLessons.push(parsedLesson);
+      }
     }
   }
 
-  return { lessons, errors };
+  return { lessons, translationLessons, errors };
 }
 
 async function run() {
   const dryRun = process.argv.includes("--dry-run");
 
-  const { lessons, errors: fileErrors } = collectFiles();
+  const { lessons, translationLessons, errors: fileErrors } = collectFiles();
 
-  if (lessons.length === 0 && fileErrors.length === 0) {
+  if (lessons.length === 0 && translationLessons.length === 0 && fileErrors.length === 0) {
     console.log(`No lesson files under ${CONTENT_ROOT}.`);
     return;
   }
 
   if (dryRun) {
     let turns = 0;
-    for (const lesson of lessons) {
-      console.log(`${lesson.path}`);
+    for (const lesson of [...lessons, ...translationLessons]) {
+      const tag = lesson.lang ? ` [translation: ${lesson.lang}]` : "";
+      console.log(`${lesson.path}${tag}`);
       console.log(`  course=${lesson.courseSlug} slug=${lesson.lessonSlug} order=${lesson.orderIndex} title="${lesson.doc.title}"`);
       lesson.doc.turns.forEach((turn, idx) => {
         const xp = turnXpReward(turn);
@@ -152,7 +270,10 @@ async function run() {
       turns += lesson.doc.turns.length;
     }
     console.log("");
-    console.log(`${lessons.length} lesson${lessons.length === 1 ? "" : "s"} · ${turns} turns · ${fileErrors.length} errors (dry run)`);
+    const total = lessons.length + translationLessons.length;
+    console.log(
+      `${lessons.length} canonical · ${translationLessons.length} translation · ${total} files · ${turns} turns · ${fileErrors.length} errors (dry run)`,
+    );
     if (fileErrors.length > 0) {
       console.error("");
       console.error("Errors:");
@@ -177,10 +298,15 @@ async function run() {
   const runErrors: FileError[] = [];
   let lessonsLoaded = 0;
   let turnsLoaded = 0;
+  let translationsLoaded = 0;
 
   // Cache course lookups.
   const courseIdBySlug = new Map<string, string>();
+  // (lessonId by `${courseSlug}/${lessonSlug}`) — populated by canonical pass,
+  // reused by translation pass to find the row to merge into.
+  const lessonIdByKey = new Map<string, string>();
 
+  // ---------------- pass 1: canonical lessons ----------------
   for (const lesson of lessons) {
     try {
       let courseId = courseIdBySlug.get(lesson.courseSlug);
@@ -196,11 +322,21 @@ async function run() {
         courseIdBySlug.set(lesson.courseSlug, courseId);
       }
 
-      // Upsert lesson row.
-      // Lessons store text fields in `translations` jsonb keyed by language.
-      // Authored YAML is English by convention; future translation YAMLs
-      // will deep-merge into the same row (see docs).
-      const translations: Record<string, { title: string; subtitle?: string }> = {
+      // Upsert lesson row. Canonical pass sets only translations.en;
+      // the translation pass below deep-merges other languages on top.
+      // Read existing translations first so we don't clobber languages
+      // already loaded from previous runs.
+      const { data: existing } = await supabase
+        .from("lessons")
+        .select("translations")
+        .eq("course_id", courseId)
+        .eq("slug", lesson.lessonSlug)
+        .maybeSingle();
+      const existingTrans =
+        (existing?.translations as Record<string, unknown> | null) ?? {};
+
+      const translations: Record<string, unknown> = {
+        ...existingTrans,
         en: {
           title: lesson.doc.title,
           ...(lesson.doc.subtitle ? { subtitle: lesson.doc.subtitle } : {}),
@@ -225,6 +361,11 @@ async function run() {
         .select("id")
         .single();
       if (upsertErr || !lessonRow) throw new Error(`upsert lesson: ${upsertErr?.message}`);
+
+      lessonIdByKey.set(
+        `${lesson.courseSlug}/${lesson.lessonSlug}`,
+        lessonRow.id as string,
+      );
 
       // Replace turns for this lesson.
       const { error: delErr } = await supabase
@@ -254,10 +395,91 @@ async function run() {
     }
   }
 
+  // ---------------- pass 2: translation overlays ----------------
+  // For each translation YAML, fold its full content (title, subtitle,
+  // turns) into the canonical lesson row's `translations[<lang>]`.
+  // The renderer reads from there for non-EN users (see the lesson page).
+  for (const t of translationLessons) {
+    if (!t.lang) continue;
+    const key = `${t.courseSlug}/${t.lessonSlug}`;
+    try {
+      let lessonId = lessonIdByKey.get(key);
+      if (!lessonId) {
+        // Not loaded in this run; look it up. Translation may exist
+        // for a lesson that didn't change in the canonical folder.
+        let courseId = courseIdBySlug.get(t.courseSlug);
+        if (!courseId) {
+          const { data: cdata, error: cerr } = await supabase
+            .from("courses")
+            .select("id")
+            .eq("slug", t.courseSlug)
+            .maybeSingle();
+          if (cerr) throw new Error(`course lookup failed: ${cerr.message}`);
+          if (!cdata) throw new Error(`unknown canonical course "${t.courseSlug}"`);
+          courseId = cdata.id as string;
+          courseIdBySlug.set(t.courseSlug, courseId);
+        }
+        const { data: ldata, error: lerr } = await supabase
+          .from("lessons")
+          .select("id")
+          .eq("course_id", courseId)
+          .eq("slug", t.lessonSlug)
+          .maybeSingle();
+        if (lerr) throw new Error(`lesson lookup failed: ${lerr.message}`);
+        if (!ldata)
+          throw new Error(
+            `no canonical lesson "${t.courseSlug}/${t.lessonSlug}" — author the EN version first`,
+          );
+        lessonId = ldata.id as string;
+        lessonIdByKey.set(key, lessonId);
+      }
+
+      // Build the translation document. We store turns as a jsonb array
+      // mirroring the LessonTurn shape used at render time.
+      const translatedTurns = t.doc.turns.map((turn, idx) => ({
+        order_index: idx + 1,
+        turn_type: turn.type,
+        content: turnContent(turn),
+        xp_reward: turnXpReward(turn),
+      }));
+      const langDoc: Record<string, unknown> = {
+        title: t.doc.title,
+        ...(t.doc.subtitle ? { subtitle: t.doc.subtitle } : {}),
+        turns: translatedTurns,
+      };
+
+      // Deep-merge into translations jsonb. Read-modify-write so we
+      // don't clobber other languages.
+      const { data: cur, error: curErr } = await supabase
+        .from("lessons")
+        .select("translations")
+        .eq("id", lessonId)
+        .single();
+      if (curErr) throw new Error(`read translations: ${curErr.message}`);
+      const merged = {
+        ...((cur?.translations as Record<string, unknown> | null) ?? {}),
+        [t.lang]: langDoc,
+      };
+      const { error: updErr } = await supabase
+        .from("lessons")
+        .update({ translations: merged })
+        .eq("id", lessonId);
+      if (updErr) throw new Error(`update translations: ${updErr.message}`);
+
+      console.log(`${t.path} [${t.lang}]\n  ✓ folded ${translatedTurns.length} turns into translations.${t.lang}`);
+      translationsLoaded += 1;
+    } catch (e) {
+      const message = e instanceof Error ? e.message : String(e);
+      runErrors.push({ path: `${t.path} [${t.lang}]`, message });
+      console.error(`${t.path} [${t.lang}]\n  ✗ ${message}`);
+    }
+  }
+
   console.log("");
   console.log(
-    `${lessonsLoaded} lesson${lessonsLoaded === 1 ? "" : "s"} · ` +
-    `${turnsLoaded} turn${turnsLoaded === 1 ? "" : "s"} · ` +
+    `${lessonsLoaded} canonical lesson${lessonsLoaded === 1 ? "" : "s"} · ` +
+    `${turnsLoaded} canonical turn${turnsLoaded === 1 ? "" : "s"} · ` +
+    `${translationsLoaded} translation${translationsLoaded === 1 ? "" : "s"} · ` +
     `${runErrors.length} error${runErrors.length === 1 ? "" : "s"}`,
   );
 

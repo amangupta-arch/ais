@@ -36,6 +36,10 @@ type Props = {
   personaId: Persona["id"];
   initialTurnIndex: number;
   alreadyCompleted: boolean;
+  /** Language the learner is currently viewing. Used to scope progress
+   *  writes so a saved turn index from another language doesn't get
+   *  applied to a translated turn list of a different length. */
+  language: string;
 };
 
 type ChatMessage = { role: "user" | "assistant"; content: string };
@@ -52,7 +56,7 @@ export function LessonPlayer(props: Props) {
   const {
     courseSlug, lessonTitle, lessonSubtitle, lessonXpReward,
     courseId, lessonId, turns, personaId,
-    initialTurnIndex, alreadyCompleted,
+    initialTurnIndex, alreadyCompleted, language,
   } = props;
 
   const persona = useMemo(() => personaById(personaId), [personaId]);
@@ -163,12 +167,13 @@ export function LessonPlayer(props: Props) {
             turnIndex: idx,
             xpAwarded: opts?.xp ?? currentTurn.xp_reward,
             source: opts?.source ?? `turn:${currentTurn.turn_type}`,
+            language,
           });
         }
       }
       setRevealedCount((c) => Math.min(turns.length, c + 1));
     },
-    [alreadyCompleted, audio, courseId, lessonId, revealedCount, turns],
+    [alreadyCompleted, audio, courseId, language, lessonId, revealedCount, turns],
   );
 
   // Step back to the previous turn — undoes the last advance. Used by the
@@ -287,6 +292,7 @@ export function LessonPlayer(props: Props) {
                 lessonId={lessonId}
                 lessonXpReward={lessonXpReward}
                 alreadyCompleted={alreadyCompleted}
+                language={language}
               />
             ) : null}
           </div>
@@ -1441,12 +1447,13 @@ function CheckpointBlock({
 }
 
 function CompleteCta({
-  courseId, lessonId, lessonXpReward, alreadyCompleted,
+  courseId, lessonId, lessonXpReward, alreadyCompleted, language,
 }: {
   courseId: string;
   lessonId: string;
   lessonXpReward: number;
   alreadyCompleted: boolean;
+  language: string;
 }) {
   const router = useRouter();
   const fx = useLessonFx();
@@ -1457,7 +1464,7 @@ function CompleteCta({
   const onClick = () => {
     start(async () => {
       try {
-        const res = await completeLesson({ courseId, lessonId, lessonXpReward });
+        const res = await completeLesson({ courseId, lessonId, lessonXpReward, language });
         setAwarded(res.awarded);
         if (!res.alreadyCompleted) {
           fx.celebrate();

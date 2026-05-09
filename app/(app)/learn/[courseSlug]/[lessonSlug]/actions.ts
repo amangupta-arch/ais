@@ -9,6 +9,9 @@ type AdvanceArgs = {
   turnIndex: number; // zero-based index of the turn just completed
   xpAwarded?: number;
   source?: string;   // tag for xp_events.source
+  /** Language the learner is currently rendering. Stored alongside the
+   *  turn index so we can detect a language switch on next load. */
+  language: string;
 };
 
 export async function advanceTurn(args: AdvanceArgs): Promise<void> {
@@ -18,12 +21,18 @@ export async function advanceTurn(args: AdvanceArgs): Promise<void> {
 
   const { data: existing } = await supabase
     .from("user_lesson_progress")
-    .select("current_turn_index, xp_earned, status, started_at")
+    .select("current_turn_index, xp_earned, status, started_at, language")
     .eq("user_id", user.id)
     .eq("lesson_id", args.lessonId)
     .maybeSingle();
 
-  const nextTurnIndex = Math.max(existing?.current_turn_index ?? 0, args.turnIndex + 1);
+  // If the user switched languages mid-lesson, the saved index is from a
+  // different turn list and is not safe to advance from. Use only this
+  // request's turnIndex.
+  const sameLanguage =
+    existing != null && existing.language === args.language;
+  const baseIndex = sameLanguage ? (existing.current_turn_index ?? 0) : 0;
+  const nextTurnIndex = Math.max(baseIndex, args.turnIndex + 1);
   const xp = args.xpAwarded ?? 0;
   const xpEarned = (existing?.xp_earned ?? 0) + xp;
   const startedAt = existing?.started_at ?? new Date().toISOString();
@@ -37,6 +46,7 @@ export async function advanceTurn(args: AdvanceArgs): Promise<void> {
       current_turn_index: nextTurnIndex,
       xp_earned: xpEarned,
       started_at: startedAt,
+      language: args.language,
       updated_at: new Date().toISOString(),
     },
     { onConflict: "user_id,lesson_id" },
@@ -59,6 +69,7 @@ export async function completeLesson(args: {
   courseId: string;
   lessonId: string;
   lessonXpReward: number;
+  language: string;
 }): Promise<{ awarded: number; alreadyCompleted: boolean }> {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
@@ -87,6 +98,7 @@ export async function completeLesson(args: {
       xp_earned: (existing?.xp_earned ?? 0) + xp,
       started_at: existing?.started_at ?? now,
       completed_at: now,
+      language: args.language,
       updated_at: now,
     },
     { onConflict: "user_id,lesson_id" },

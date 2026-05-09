@@ -8,7 +8,7 @@ import { LessonPlayer } from "./LessonPlayer";
 import { getLessonByCourseAndSlug, getMe } from "@/lib/supabase/queries";
 import type { Persona } from "@/lib/types";
 import { lessonTitle, lessonSubtitle } from "@/lib/types";
-import { localizeTurn } from "@/lib/turns";
+import { localizeTurn, type LessonTurn } from "@/lib/turns";
 
 export const dynamic = "force-dynamic";
 
@@ -26,7 +26,32 @@ export default async function LessonPage({
 
   const preferredLang = profile?.preferred_language ?? "en";
 
-  if (turns.length === 0) {
+  // Translation strategy:
+  //   1. If `lesson.translations[<lang>].turns` exists, the lesson has a
+  //      full alternative document for this language — use it verbatim.
+  //      Lessons may have different turn counts per language.
+  //   2. Otherwise, run each canonical turn through `localizeTurn` so
+  //      any per-field overrides in `lesson_turns.translations[<lang>]`
+  //      apply (the Phase 3 path).
+  //   3. EN users always get the canonical content; localizeTurn is a
+  //      no-op when there's no override.
+  const translatedTurns = lesson.translations?.[preferredLang]?.turns;
+  const displayTurns: LessonTurn[] =
+    preferredLang !== "en" && translatedTurns && translatedTurns.length > 0
+      ? translatedTurns.map((t, idx) => ({
+          // Synthetic id keyed by lesson+lang+idx — stable for React
+          // and for progress (current_turn_index) tracking.
+          id: `${lesson.id}-${preferredLang}-${idx}`,
+          order_index: t.order_index ?? idx + 1,
+          turn_type: t.turn_type,
+          content: t.content,
+          translations: {},
+          xp_reward: t.xp_reward ?? 0,
+          is_required: true,
+        }) as LessonTurn)
+      : turns.map((t) => localizeTurn(t, preferredLang));
+
+  if (displayTurns.length === 0) {
     return (
       <main className="mx-auto max-w-2xl px-5 pt-8 pb-10">
         <Link href={`/learn/${courseSlug}`} className="text-sm text-ink-500 hover:text-ink-800 transition-colors">← back to course</Link>
@@ -41,6 +66,14 @@ export default async function LessonPage({
     );
   }
 
+  // If the saved progress was on a different language, reset to turn 0.
+  // Translated turn lists can have a different length and structure than
+  // the canonical, so a turn index from another language can land past
+  // the end or skip content. The user can scroll forward as before.
+  const progressLang = (progress?.language as string | undefined) ?? "en";
+  const sameLanguage = progressLang === preferredLang;
+  const safeInitialTurnIndex = sameLanguage ? (progress?.current_turn_index ?? 0) : 0;
+
   return (
     <LessonPlayer
       courseSlug={courseSlug}
@@ -50,10 +83,11 @@ export default async function LessonPage({
       lessonXpReward={lesson.xp_reward}
       courseId={course.id}
       lessonId={lesson.id}
-      turns={turns.map((t) => localizeTurn(t, preferredLang))}
+      turns={displayTurns}
       personaId={(profile?.preferred_tutor_persona as Persona["id"]) ?? "nova"}
-      initialTurnIndex={progress?.current_turn_index ?? 0}
+      initialTurnIndex={safeInitialTurnIndex}
       alreadyCompleted={progress?.status === "completed"}
+      language={preferredLang}
     />
   );
 }
