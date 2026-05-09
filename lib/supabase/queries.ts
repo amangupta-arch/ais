@@ -59,6 +59,26 @@ export async function getAllBundles(): Promise<Bundle[]> {
   return (data ?? []) as Bundle[];
 }
 
+export async function getBundleBySlug(
+  slug: string,
+): Promise<{ bundle: Bundle | null; courses: Course[] }> {
+  const supabase = await createClient();
+  const { data: bundle } = await supabase
+    .from("bundles")
+    .select("*")
+    .eq("slug", slug)
+    .eq("is_published", true)
+    .maybeSingle();
+  if (!bundle) return { bundle: null, courses: [] };
+  const { data: courses } = await supabase
+    .from("courses")
+    .select("*")
+    .eq("bundle_id", (bundle as Bundle).id)
+    .eq("is_published", true)
+    .order("order_index", { ascending: true });
+  return { bundle: bundle as Bundle, courses: (courses ?? []) as Course[] };
+}
+
 export async function getCourseBySlug(slug: string): Promise<{ course: Course | null; lessons: Lesson[] }> {
   const supabase = await createClient();
   const { data: course } = await supabase
@@ -81,6 +101,17 @@ export async function getPlans(): Promise<Plan[]> {
   const supabase = await createClient();
   const { data } = await supabase.from("plans").select("*").eq("is_active", true).order("sort_order");
   return (data ?? []).map((p) => ({ ...p, features: (p.features as string[]) ?? [] })) as Plan[];
+}
+
+export async function getLessonsByCourseId(courseId: string): Promise<Lesson[]> {
+  const supabase = await createClient();
+  const { data } = await supabase
+    .from("lessons")
+    .select("*")
+    .eq("course_id", courseId)
+    .eq("is_published", true)
+    .order("order_index", { ascending: true });
+  return (data ?? []) as Lesson[];
 }
 
 export async function getMyCourseProgress(): Promise<UserCourseProgress[]> {

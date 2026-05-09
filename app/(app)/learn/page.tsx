@@ -294,14 +294,13 @@ function BundleCardLumen({
   const title = bundleTitle(bundle, lang);
   const desc  = bundleDescription(bundle, lang);
 
-  return (
+  const body = (
     <div
       className="lm-card"
       style={{
         position: "relative",
         padding: 0,
         overflow: "hidden",
-        opacity: locked ? 0.55 : 1,
       }}
     >
       <div
@@ -369,5 +368,15 @@ function BundleCardLumen({
         </div>
       ) : null}
     </div>
+  );
+
+  if (locked) return <div style={{ opacity: 0.55 }}>{body}</div>;
+  return (
+    <Link
+      href={`/learn/bundles/${bundle.slug}`}
+      style={{ display: "block", textDecoration: "none", color: "inherit" }}
+    >
+      {body}
+    </Link>
   );
 }
