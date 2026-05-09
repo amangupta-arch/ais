@@ -235,6 +235,11 @@ export type UserLessonProgress = {
   time_spent_seconds: number;
   started_at: string | null;
   completed_at: string | null;
+  /** Language the learner was using when this progress was last written.
+   *  Lessons can have language-specific turn lists with different lengths,
+   *  so the renderer ignores `current_turn_index` whenever this differs
+   *  from the user's current preferred_language. */
+  language: string;
 };
 
 export type Subscription = {

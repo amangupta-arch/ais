@@ -13,6 +13,12 @@
  * `translations.<lang>` jsonb as a full sub-document
  * (`{title, subtitle, turns}`). Lesson structures may differ freely
  * across languages — the loader does not require turn counts to match.
+ *
+ * To opt a folder into translation mode, drop a `_lang.yaml` marker file
+ * inside it. The marker may be empty (lang inferred from the folder's
+ * `-<lang>` suffix) or contain `lang: <code>` to override. Folders without
+ * a marker are always treated as canonical, so course slugs that happen
+ * to end in `-hi`/`-fr`/etc. are not silently absorbed.
  */
 
 import { readdirSync, readFileSync, statSync } from "node:fs";
@@ -48,16 +54,73 @@ type FolderKind =
   | { kind: "canonical"; slug: string }
   | { kind: "translation"; canonicalSlug: string; lang: string };
 
-function classifyFolder(folderName: string, knownCanonicals: Set<string>): FolderKind {
+/** A folder is treated as a translation overlay only if it contains an
+ *  explicit `_lang.yaml` (or `.yml`) marker. The marker disambiguates from
+ *  canonical courses whose slug happens to end in `-hi`, `-fr`, etc. The
+ *  marker may be empty or contain `lang: <code>` to override the lang
+ *  inferred from the folder suffix. */
+function readLangMarker(dir: string): string | null {
+  for (const name of ["_lang.yaml", "_lang.yml"]) {
+    const p = join(dir, name);
+    try {
+      const raw = readFileSync(p, "utf8");
+      if (raw.trim() === "") return ""; // marker present, infer from suffix
+      const parsed = yaml.load(raw) as unknown;
+      if (parsed && typeof parsed === "object" && "lang" in parsed) {
+        const v = (parsed as { lang: unknown }).lang;
+        return typeof v === "string" ? v : "";
+      }
+      return "";
+    } catch {
+      // file missing — try next name
+    }
+  }
+  return null;
+}
+
+function classifyFolder(
+  folderName: string,
+  knownCanonicals: Set<string>,
+  langMarker: string | null,
+): FolderKind {
+  // No marker → canonical, regardless of suffix. A future course slug ending
+  // in -hi/-fr/etc. is safe by default; an existing translation folder
+  // without a marker must opt in by adding _lang.yaml.
+  if (langMarker === null) return { kind: "canonical", slug: folderName };
+
+  // Marker present. Determine lang: explicit override wins, otherwise
+  // infer from the folder suffix.
+  const explicit = langMarker.trim();
+  if (explicit) {
+    if (!(TRANSLATION_LANGS as readonly string[]).includes(explicit)) {
+      // Unknown lang — treat as canonical so we don't silently lose data.
+      return { kind: "canonical", slug: folderName };
+    }
+    // Strip whichever suffix matches; if none, the canonical slug is
+    // the folder itself (the author is overriding everything).
+    for (const lang of TRANSLATION_LANGS) {
+      const sfx = `-${lang}`;
+      if (folderName.endsWith(sfx)) {
+        const canonical = folderName.slice(0, -sfx.length);
+        if (knownCanonicals.has(canonical)) {
+          return { kind: "translation", canonicalSlug: canonical, lang: explicit };
+        }
+      }
+    }
+    return { kind: "canonical", slug: folderName };
+  }
+
+  // Marker present but no explicit lang — infer from suffix.
   for (const lang of TRANSLATION_LANGS) {
-    const suffix = `-${lang}`;
-    if (folderName.endsWith(suffix)) {
-      const canonical = folderName.slice(0, -suffix.length);
+    const sfx = `-${lang}`;
+    if (folderName.endsWith(sfx)) {
+      const canonical = folderName.slice(0, -sfx.length);
       if (knownCanonicals.has(canonical)) {
         return { kind: "translation", canonicalSlug: canonical, lang };
       }
     }
   }
+  // Marker but no inferable lang and no override — canonical fallback.
   return { kind: "canonical", slug: folderName };
 }
 
@@ -124,7 +187,8 @@ function collectFiles(): {
       .filter((f) => (f.endsWith(".yaml") || f.endsWith(".yml")) && !f.startsWith("_"))
       .sort();
 
-    const kind = classifyFolder(folderName, candidateCanonicals);
+    const langMarker = readLangMarker(dir);
+    const kind = classifyFolder(folderName, candidateCanonicals, langMarker);
 
     for (const file of files) {
       const rel = `${folderName}/${file}`;

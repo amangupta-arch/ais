@@ -66,6 +66,14 @@ export default async function LessonPage({
     );
   }
 
+  // If the saved progress was on a different language, reset to turn 0.
+  // Translated turn lists can have a different length and structure than
+  // the canonical, so a turn index from another language can land past
+  // the end or skip content. The user can scroll forward as before.
+  const progressLang = (progress?.language as string | undefined) ?? "en";
+  const sameLanguage = progressLang === preferredLang;
+  const safeInitialTurnIndex = sameLanguage ? (progress?.current_turn_index ?? 0) : 0;
+
   return (
     <LessonPlayer
       courseSlug={courseSlug}
@@ -77,8 +85,9 @@ export default async function LessonPage({
       lessonId={lesson.id}
       turns={displayTurns}
       personaId={(profile?.preferred_tutor_persona as Persona["id"]) ?? "nova"}
-      initialTurnIndex={progress?.current_turn_index ?? 0}
+      initialTurnIndex={safeInitialTurnIndex}
       alreadyCompleted={progress?.status === "completed"}
+      language={preferredLang}
     />
   );
 }
