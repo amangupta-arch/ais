@@ -3,7 +3,7 @@ import { Clock, Lock } from "lucide-react";
 import { redirect } from "next/navigation";
 
 import { getAllBundles, getAllCourses, getMe } from "@/lib/supabase/queries";
-import { bundleDescription, bundleTitle, courseSubtitle, courseTitle, pickLanguageVariants } from "@/lib/types";
+import { bundleDescription, bundleTitle, courseSubtitle, courseTitle } from "@/lib/types";
 import type { Bundle, Course, PlanTier } from "@/lib/types";
 import { formatTier } from "@/lib/utils";
 
@@ -35,7 +35,7 @@ export default async function LearnPage() {
 
   const [courses, bundles] = await Promise.all([getAllCourses(), getAllBundles()]);
 
-  const freeCourses = pickLanguageVariants(courses.filter((c) => c.plan_tier === "free"), lang);
+  const freeCourses = courses.filter((c) => c.plan_tier === "free");
   const basicBundles    = bundles.filter((b) => b.plan_tier === "basic");
   const advancedBundles = bundles.filter((b) => b.plan_tier === "advanced");
 
