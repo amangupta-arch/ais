@@ -1,6 +1,5 @@
 import { readdirSync, readFileSync, statSync } from "node:fs";
-import { join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { join, resolve, sep } from "node:path";
 
 import { createClient } from "@/lib/supabase/server";
 
@@ -71,7 +70,10 @@ async function loadAll() {
 
 // ---- yaml file tree -------------------------------------------------------
 
-const CONTENT_ROOT = fileURLToPath(new URL("../../supabase/content", import.meta.url));
+// process.cwd() resolves to the repo root in both dev and production
+// builds. Avoid `new URL(..., import.meta.url)` here — webpack inspects
+// that pattern statically and tries to bundle the directory as an asset.
+const CONTENT_ROOT = join(process.cwd(), "supabase", "content");
 
 type YamlFile = { path: string; size: number };
 type YamlDir = { name: string; files: YamlFile[] };
@@ -104,8 +106,19 @@ function readYamlTree(): YamlDir[] {
 }
 
 function readYamlFile(path: string): string | null {
+  // Path-traversal guard. The `?yaml=` query param is user-controlled and
+  // this page is public, so a value like "../../.env" must NOT escape
+  // CONTENT_ROOT. Resolve the absolute path and confirm it still lives
+  // inside the content directory before reading. Also restrict to .yaml/
+  // .yml extensions so other on-disk text files (e.g. .env) can't leak
+  // even if a future refactor relaxes the prefix check.
+  if (!/\.ya?ml$/i.test(path)) return null;
+  const safePath = resolve(CONTENT_ROOT, path);
+  if (safePath !== CONTENT_ROOT && !safePath.startsWith(CONTENT_ROOT + sep)) {
+    return null;
+  }
   try {
-    return readFileSync(join(CONTENT_ROOT, path), "utf8");
+    return readFileSync(safePath, "utf8");
   } catch {
     return null;
   }
