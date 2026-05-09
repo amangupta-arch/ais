@@ -43,37 +43,57 @@ export function UpdateYamlForm({ bundles, initialCourses }: Props) {
   );
   const isTranslation = language !== "en";
 
-  // Refetch courses when bundle changes.
+  // Refetch courses when bundle changes. Guard against stale responses:
+  // if the user flips the dropdown faster than the network resolves, an
+  // older request must not overwrite a newer bundle's results.
   useEffect(() => {
+    let cancelled = false;
     setCoursesLoading(true);
     listCourses({ bundleId: bundleSel })
       .then((next) => {
+        if (cancelled) return;
         setCourses(next);
-        // If the previously-selected course isn't in the new bundle, reset.
         if (!next.find((c) => c.id === courseId)) {
           setCourseId(next[0]?.id ?? "");
         }
       })
-      .catch((e) => console.error(e))
-      .finally(() => setCoursesLoading(false));
+      .catch((e) => {
+        if (!cancelled) console.error(e);
+      })
+      .finally(() => {
+        if (!cancelled) setCoursesLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
     // courseId intentionally omitted — we only want to react to bundle changes
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bundleSel]);
 
-  // Refetch stats when course changes.
+  // Refetch stats when course changes. Same stale-response guard as above.
   useEffect(() => {
     if (!courseId) {
       setStats(null);
       return;
     }
+    let cancelled = false;
     setStatsLoading(true);
     getCourseStats(courseId)
-      .then(setStats)
-      .catch((e) => {
-        console.error(e);
-        setStats(null);
+      .then((s) => {
+        if (!cancelled) setStats(s);
       })
-      .finally(() => setStatsLoading(false));
+      .catch((e) => {
+        if (!cancelled) {
+          console.error(e);
+          setStats(null);
+        }
+      })
+      .finally(() => {
+        if (!cancelled) setStatsLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
   }, [courseId]);
 
   const onSubmit = (e: React.FormEvent) => {

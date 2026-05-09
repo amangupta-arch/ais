@@ -7,7 +7,11 @@ import { revalidatePath } from "next/cache";
 import { lessonSchema, turnContent, turnXpReward } from "@/lib/content/schema";
 import { createClient } from "@/lib/supabase/server";
 
-import { ALL_BUNDLES, ORPHAN_BUNDLE } from "./constants";
+import { ALL_BUNDLES, LANGUAGE_OPTIONS, ORPHAN_BUNDLE } from "./constants";
+
+const ALLOWED_LANGS: ReadonlySet<string> = new Set(
+  LANGUAGE_OPTIONS.map((l) => l.code),
+);
 
 /** Service-role client for the writes. Uses the same env var the
  *  scripts/load-content.ts CLI uses. Server-only. */
@@ -214,6 +218,15 @@ export async function submitLessonYaml(args: SubmitArgs): Promise<SubmitResult> 
 
   const admin = adminClient();
   const language = args.language || "en";
+  // Allowlist the language code. Rejects typos and crafted requests that
+  // would otherwise write arbitrary keys into lessons.translations that
+  // the renderer never consults.
+  if (!ALLOWED_LANGS.has(language)) {
+    return {
+      ok: false,
+      message: `Unsupported language "${language}". Pick one of: ${[...ALLOWED_LANGS].join(", ")}.`,
+    };
+  }
 
   // 4. Look up the course.
   const { data: course, error: courseErr } = await admin
