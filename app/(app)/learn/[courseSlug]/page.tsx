@@ -3,7 +3,6 @@ import { notFound, redirect } from "next/navigation";
 import { ArrowRight, Clock } from "lucide-react";
 
 import { getCourseBySlug, getMe, getMyLessonProgress } from "@/lib/supabase/queries";
-import { createClient } from "@/lib/supabase/server";
 import type { PlanTier } from "@/lib/types";
 import { courseTitle, courseSubtitle, courseDescription, lessonTitle, lessonSubtitle } from "@/lib/types";
 import { formatTier } from "@/lib/utils";
@@ -27,24 +26,10 @@ export default async function CourseDetailPage({
   const { course, lessons } = await getCourseBySlug(courseSlug);
   if (!course) notFound();
 
-  // If the user prefers a different language and a sibling variant exists in
-  // that language, redirect there. Direct URL hits to the EN slug should land
-  // a Hinglish-preferring user on the Hinglish variant.
+  // Translations live on the course row itself (translations jsonb), so a
+  // single canonical course handles every language. No more sibling-row
+  // redirect.
   const preferredLang = profile?.preferred_language ?? "en";
-  if (course.course_group_id && course.language_code !== preferredLang) {
-    const supabase = await createClient();
-    const { data: sibling } = await supabase
-      .from("courses")
-      .select("slug")
-      .eq("course_group_id", course.course_group_id)
-      .eq("language_code", preferredLang)
-      .eq("is_published", true)
-      .maybeSingle();
-    if (sibling?.slug && sibling.slug !== course.slug) {
-      redirect(`/learn/${sibling.slug}`);
-    }
-  }
-
   const tier: PlanTier = (planId as PlanTier) ?? "free";
   const locked = !tierCanAccess(tier, course.plan_tier);
   const progress = await getMyLessonProgress(course.id);

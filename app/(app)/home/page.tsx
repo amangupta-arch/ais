@@ -6,7 +6,7 @@ import {
   getAllBundles, getAllCourses, getMe, getMyCourseProgress,
 } from "@/lib/supabase/queries";
 import { firstName } from "@/lib/utils";
-import { bundleDescription, bundleTitle, courseTitle, pickLanguageVariants } from "@/lib/types";
+import { bundleDescription, bundleTitle, courseSubtitle, courseTitle } from "@/lib/types";
 import type { Bundle, Course, PlanTier, Persona } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
@@ -55,19 +55,13 @@ export default async function HomePage() {
 
   // Free section: courses (free has no bundles).
   // Basic / Advanced sections: bundles, scoped to the user's preferred language with EN fallback.
-  const dedupedCourses  = pickLanguageVariants(courses, lang);
-  const freeCourses     = dedupedCourses.filter((c) => c.plan_tier === "free");
+  const freeCourses     = courses.filter((c) => c.plan_tier === "free");
   const basicBundles    = bundles.filter((b) => b.plan_tier === "basic").slice(0, 12);
   const advancedBundles = bundles.filter((b) => b.plan_tier === "advanced").slice(0, 12);
 
-  // "Today's lesson" hero: resolve the canonical chatgpt-basics group, then
-  // pick the variant in the user's language (or EN fallback).
-  const cgptGroupId = courses.find((c) => c.slug === "chatgpt-basics")?.course_group_id;
-  const cgptForUser = cgptGroupId
-    ? dedupedCourses.find((c) => c.course_group_id === cgptGroupId)
-    : courses.find((c) => c.slug === "chatgpt-basics");
-
-  const todaysLessonCourse = inProgress[0] ?? cgptForUser ?? dedupedCourses[0];
+  // "Today's lesson" hero: chatgpt-basics if present, else first free course, else first course.
+  const cgptForUser = courses.find((c) => c.slug === "chatgpt-basics");
+  const todaysLessonCourse = inProgress[0] ?? cgptForUser ?? freeCourses[0] ?? courses[0];
 
   const personaId = (profile?.preferred_tutor_persona as Persona["id"]) ?? "nova";
 
@@ -161,7 +155,7 @@ export default async function HomePage() {
                 className="lm-serif"
                 style={{ marginTop: 8, fontSize: 24, lineHeight: 1.2 }}
               >
-                {todaysLessonCourse.subtitle ?? todaysLessonCourse.title}
+                {courseSubtitle(todaysLessonCourse, lang) ?? courseTitle(todaysLessonCourse, lang)}
               </p>
               <div
                 className="flex items-center justify-between"
@@ -169,7 +163,7 @@ export default async function HomePage() {
               >
                 <span style={{ fontSize: 12, opacity: 0.85 }}>
                   <span className="lm-tabular">{profile?.daily_goal_minutes ?? 10}</span>{" "}
-                  min · {todaysLessonCourse.title}
+                  min · {courseTitle(todaysLessonCourse, lang)}
                 </span>
                 <div
                   className="inline-flex items-center justify-center"

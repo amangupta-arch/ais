@@ -130,45 +130,34 @@ insert into bundles (slug, plan_tier, emoji, cover_gradient, order_index, tags, 
   ('b-online-income',             'advanced', '🌐', 'ember', 342, '{utility}', '{"en":{"title":"AI Powered Online Income Strategies","description":"Multiple online income engines, AI-leveraged."}}'::jsonb),
   ('b-parent-school-result',      'advanced', '👨‍👧', 'paper', 343, '{utility}', '{"en":{"title":"Parent''s AI Guide For Better School Result of Children","description":"Day-to-day AI rituals for academic improvement."}}'::jsonb);
 
--- COURSES — FREE TIER (8 EN + 1 Hinglish sibling = 9 rows)
--- These 8 EN slugs are the only courses that live outside any bundle
--- ("orphan" courses). Anything else with bundle_id IS NULL is treated
--- as a placeholder and removed. Hinglish/other-language siblings of
--- these 8 are linked via course_group_id, not counted as separate
--- courses (see migration 0004).
-insert into courses (slug, title, subtitle, description, category, plan_tier, emoji, cover_gradient, difficulty, estimated_minutes, order_index, tags) values
-  ('chatgpt-basics',          'ChatGPT Basics',                        'Your first real conversation',  'The single most useful habit of the decade, in about an hour.', 'foundations', 'free', '💬', 'ember',  'beginner', 45, 1, '{ai,chatgpt,starter}'),
-  ('canva-magic',             'Canva Magic',                           'Design without a designer',     'Use Canva''s AI to make posts, decks, and thumbnails.',           'creative',    'free', '🎨', 'moss',   'beginner', 40, 2, '{design,canva,creative}'),
-  ('ai-basics',               'AI Basics',                             'The only primer you need',      'What "AI" actually means, in plain language.',                   'foundations', 'free', '🧭', 'paper',  'beginner', 35, 3, '{ai,fundamentals}'),
-  ('how-does-machine-learn',  'How Does a Machine Learn?',             'The idea behind the idea',      'Training, data, patterns — explained with analogies.',           'foundations', 'free', '🧠', 'ember',  'beginner', 25, 4, '{ml,theory}'),
-  ('nlp-basics',              'What is Natural Language Processing?',  'Why ChatGPT understands you',   'How machines read and write language. Zero jargon.',             'foundations', 'free', '📝', 'moss',   'beginner', 25, 5, '{nlp,theory}'),
-  ('how-does-ai-work',        'How Does AI Work?',                     'Peek under the hood',           'A 25-minute walkthrough of prompt to answer.',                   'foundations', 'free', '⚙️', 'paper',  'beginner', 25, 6, '{ai,theory}'),
-  ('photo-editing-ai',        'Photo Editing with AI',                 'One-click retouching',          'Remove backgrounds, fix lighting, enhance — three tools.',       'creative',    'free', '📸', 'ember',  'beginner', 30, 7, '{photo,creative}'),
-  ('insta-post-with-ai',      'Create an Insta Post with AI',          'Idea to caption in 10 minutes', 'A full post from scratch using only AI.',                        'creative',    'free', '📱', 'moss',   'beginner', 30, 8, '{social,instagram,creative}'),
-  ('chatgpt-basics-hinglish', 'ChatGPT Basics — Hinglish',             'Wahi course, par Hinglish mein','ChatGPT ka asli istemaal — Hindi-English mix mein, Indian dosti waali tone mein.', 'foundations', 'free', '💬', 'ember',  'beginner', 90, 50, '{ai,chatgpt,hinglish,india}');
+-- COURSES — FREE TIER (8 EN orphan courses)
+-- These 8 slugs are the only courses that live outside any bundle.
+-- Anything else with bundle_id IS NULL is treated as a placeholder and
+-- removed. Translations live in the `translations` jsonb keyed by
+-- language code ('en', 'hinglish', 'hi', ...). Phase 5 collapsed every
+-- language sibling into one row per concept.
+insert into courses (slug, category, plan_tier, emoji, cover_gradient, difficulty, estimated_minutes, order_index, tags, translations) values
+  ('chatgpt-basics',          'foundations', 'free', '💬', 'ember',  'beginner', 45, 1, '{ai,chatgpt,starter}',
+   '{"en":{"title":"ChatGPT Basics","subtitle":"Your first real conversation","description":"The single most useful habit of the decade, in about an hour."}}'::jsonb),
+  ('canva-magic',             'creative',    'free', '🎨', 'moss',   'beginner', 40, 2, '{design,canva,creative}',
+   '{"en":{"title":"Canva Magic","subtitle":"Design without a designer","description":"Use Canva''s AI to make posts, decks, and thumbnails."}}'::jsonb),
+  ('ai-basics',               'foundations', 'free', '🧭', 'paper',  'beginner', 35, 3, '{ai,fundamentals}',
+   '{"en":{"title":"AI Basics","subtitle":"The only primer you need","description":"What \"AI\" actually means, in plain language."}}'::jsonb),
+  ('how-does-machine-learn',  'foundations', 'free', '🧠', 'ember',  'beginner', 25, 4, '{ml,theory}',
+   '{"en":{"title":"How Does a Machine Learn?","subtitle":"The idea behind the idea","description":"Training, data, patterns — explained with analogies."}}'::jsonb),
+  ('nlp-basics',              'foundations', 'free', '📝', 'moss',   'beginner', 25, 5, '{nlp,theory}',
+   '{"en":{"title":"What is Natural Language Processing?","subtitle":"Why ChatGPT understands you","description":"How machines read and write language. Zero jargon."}}'::jsonb),
+  ('how-does-ai-work',        'foundations', 'free', '⚙️', 'paper',  'beginner', 25, 6, '{ai,theory}',
+   '{"en":{"title":"How Does AI Work?","subtitle":"Peek under the hood","description":"A 25-minute walkthrough of prompt to answer."}}'::jsonb),
+  ('photo-editing-ai',        'creative',    'free', '📸', 'ember',  'beginner', 30, 7, '{photo,creative}',
+   '{"en":{"title":"Photo Editing with AI","subtitle":"One-click retouching","description":"Remove backgrounds, fix lighting, enhance — three tools."}}'::jsonb),
+  ('insta-post-with-ai',      'creative',    'free', '📱', 'moss',   'beginner', 30, 8, '{social,instagram,creative}',
+   '{"en":{"title":"Create an Insta Post with AI","subtitle":"Idea to caption in 10 minutes","description":"A full post from scratch using only AI."}}'::jsonb);
 
--- COURSES — BASIC TIER
--- (orphan basic placeholders removed — basic courses now only exist
---  inside their bundle. Free-tier orphans live above; bundle courses
---  are seeded separately by the bundle-courses loader.)
-
--- COURSES — ADVANCED TIER
--- (orphan advanced placeholders removed — same rationale as above.)
-
--- COURSES — BONUS BUNDLES
--- (orphan bonus placeholders removed — these all map to utility bundles
---  in the b-* table; courses are seeded under their bundle when authored.)
-
--- LANGUAGE LINKAGE: link Hinglish course to its English sibling.
--- Future language variants append to the same group with their own language_code.
-do $$
-declare v_group uuid := uuid_generate_v4();
-begin
-  update courses set course_group_id = v_group, language_code = 'en'
-    where slug = 'chatgpt-basics';
-  update courses set course_group_id = v_group, language_code = 'hinglish'
-    where slug = 'chatgpt-basics-hinglish';
-end $$;
+-- COURSES — BASIC / ADVANCED / BONUS TIERS
+-- (orphan placeholders removed — bundled courses are seeded by
+--  scripts/load-bundle-courses.ts. Free-tier orphans above are the only
+--  bundle-less courses.)
 
 -- Lessons and turns are authored as YAML under supabase/content/ and loaded
 -- via `npm run content:load`. See supabase/content/AUTHORING.md.

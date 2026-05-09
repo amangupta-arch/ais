@@ -105,9 +105,6 @@ export type CourseTranslation = {
 export type Course = {
   id: string;
   slug: string;
-  title: string;
-  subtitle: string | null;
-  description: string | null;
   category: string | null;
   tags: string[];
   plan_tier: PlanTier;
@@ -120,39 +117,21 @@ export type Course = {
   order_index: number;
   is_published: boolean;
   bundle_id: string | null;
-  language_code: string;
-  course_group_id: string | null;
   translations: Record<string, CourseTranslation>;
 };
 
 /** Pull a course's title for the requested language, falling back through
- *  the translations jsonb to English, then to the legacy `title` column,
- *  then finally to the slug. Mirrors `bundleTitle`. */
+ *  translations.en, then to the slug. Mirrors `bundleTitle`. */
 export function courseTitle(c: Course, lang: string): string {
-  return (
-    c.translations?.[lang]?.title ??
-    c.translations?.en?.title ??
-    c.title ??
-    c.slug
-  );
+  return c.translations?.[lang]?.title ?? c.translations?.en?.title ?? c.slug;
 }
 
 export function courseSubtitle(c: Course, lang: string): string | null {
-  return (
-    c.translations?.[lang]?.subtitle ??
-    c.translations?.en?.subtitle ??
-    c.subtitle ??
-    null
-  );
+  return c.translations?.[lang]?.subtitle ?? c.translations?.en?.subtitle ?? null;
 }
 
 export function courseDescription(c: Course, lang: string): string | null {
-  return (
-    c.translations?.[lang]?.description ??
-    c.translations?.en?.description ??
-    c.description ??
-    null
-  );
+  return c.translations?.[lang]?.description ?? c.translations?.en?.description ?? null;
 }
 
 export type BundleTranslation = { title: string; description?: string };
@@ -178,34 +157,6 @@ export function bundleDescription(b: Bundle, lang: string): string | null {
   return b.translations[lang]?.description ?? b.translations.en?.description ?? null;
 }
 
-/**
- * Dedupe a list of courses to one variant per `course_group_id`, preferring
- * the requested language, falling back to English, then to whichever exists.
- * Courses without a course_group_id are language-neutral and pass through.
- */
-export function pickLanguageVariants(courses: Course[], lang: string): Course[] {
-  const ungrouped: Course[] = [];
-  const groups = new Map<string, Course[]>();
-  for (const c of courses) {
-    if (!c.course_group_id) {
-      ungrouped.push(c);
-      continue;
-    }
-    const arr = groups.get(c.course_group_id) ?? [];
-    arr.push(c);
-    groups.set(c.course_group_id, arr);
-  }
-  const picked: Course[] = [...ungrouped];
-  for (const variants of groups.values()) {
-    const match =
-      variants.find((v) => v.language_code === lang) ??
-      variants.find((v) => v.language_code === "en") ??
-      variants[0];
-    if (match) picked.push(match);
-  }
-  return picked.sort((a, b) => a.order_index - b.order_index);
-}
-
 export type LessonTranslation = {
   title?: string;
   subtitle?: string;
@@ -215,8 +166,6 @@ export type Lesson = {
   id: string;
   course_id: string;
   slug: string;
-  title: string;
-  subtitle: string | null;
   order_index: number;
   estimated_minutes: number;
   xp_reward: number;
@@ -226,21 +175,11 @@ export type Lesson = {
 };
 
 export function lessonTitle(l: Lesson, lang: string): string {
-  return (
-    l.translations?.[lang]?.title ??
-    l.translations?.en?.title ??
-    l.title ??
-    l.slug
-  );
+  return l.translations?.[lang]?.title ?? l.translations?.en?.title ?? l.slug;
 }
 
 export function lessonSubtitle(l: Lesson, lang: string): string | null {
-  return (
-    l.translations?.[lang]?.subtitle ??
-    l.translations?.en?.subtitle ??
-    l.subtitle ??
-    null
-  );
+  return l.translations?.[lang]?.subtitle ?? l.translations?.en?.subtitle ?? null;
 }
 
 export type UserStreak = {

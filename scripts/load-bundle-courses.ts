@@ -128,8 +128,12 @@ function generateBundleSql(
     const minutes = estimateMinutes(course.lessons.length);
     const orderIndex = (bundleIndex + 1) * 1000 + (ci + 1) * 10;
 
+    // Course translations: jsonb keyed by language. Authored YAML is EN.
+    const courseTranslationsJson = JSON.stringify({
+      en: { title: course.title, subtitle, description },
+    });
     courseRows.push(
-      `  (v_bundle_id, '${slug}', ${sqlStr(course.title)}, ${sqlStr(subtitle)}, ${sqlStr(description)}, 'basic', '${emoji}', '${gradient}', '${difficulty}', ${minutes}, ${orderIndex})`,
+      `  (v_bundle_id, '${slug}', '${escapeSqlString(courseTranslationsJson)}'::jsonb, 'basic', '${emoji}', '${gradient}', '${difficulty}', ${minutes}, ${orderIndex})`,
     );
 
     const lessonValues: string[] = [];
@@ -142,8 +146,9 @@ function generateBundleSql(
       let n = 2;
       while (lessonSlugs.has(candidate)) candidate = `${lslug}-${n++}`;
       lessonSlugs.add(candidate);
+      const lessonTranslationsJson = JSON.stringify({ en: { title } });
       lessonValues.push(
-        `    (v_course_id, '${candidate}', ${sqlStr(title)}, ${li + 1}, 10, 50, 'en')`,
+        `    (v_course_id, '${candidate}', '${escapeSqlString(lessonTranslationsJson)}'::jsonb, ${li + 1}, 10, 50)`,
       );
     });
 
@@ -156,14 +161,12 @@ function generateBundleSql(
   // Stage 1: upsert all courses for this bundle in one statement, returning ids.
   // Stage 2: per-course, look up the id and refresh its lesson stubs.
   const courseUpsert = `
-  INSERT INTO courses (bundle_id, slug, title, subtitle, description, plan_tier, emoji, cover_gradient, difficulty, estimated_minutes, order_index)
+  INSERT INTO courses (bundle_id, slug, translations, plan_tier, emoji, cover_gradient, difficulty, estimated_minutes, order_index)
   VALUES
 ${courseRows.join(",\n")}
   ON CONFLICT (slug) DO UPDATE SET
     bundle_id = EXCLUDED.bundle_id,
-    title = EXCLUDED.title,
-    subtitle = EXCLUDED.subtitle,
-    description = EXCLUDED.description,
+    translations = EXCLUDED.translations,
     plan_tier = EXCLUDED.plan_tier,
     emoji = COALESCE(courses.emoji, EXCLUDED.emoji),
     cover_gradient = EXCLUDED.cover_gradient,
@@ -175,8 +178,8 @@ ${courseRows.join(",\n")}
     .map(
       ({ courseSlug, sql }) => `
   SELECT id INTO v_course_id FROM courses WHERE slug = '${courseSlug}';
-  DELETE FROM lessons WHERE course_id = v_course_id AND lesson_group_id IS NULL;
-  INSERT INTO lessons (course_id, slug, title, order_index, estimated_minutes, xp_reward, language_code) VALUES
+  DELETE FROM lessons WHERE course_id = v_course_id;
+  INSERT INTO lessons (course_id, slug, translations, order_index, estimated_minutes, xp_reward) VALUES
 ${sql};
   UPDATE courses SET lesson_count = (SELECT COUNT(*) FROM lessons WHERE course_id = v_course_id) WHERE id = v_course_id;`,
     )

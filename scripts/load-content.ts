@@ -197,14 +197,23 @@ async function run() {
       }
 
       // Upsert lesson row.
+      // Lessons store text fields in `translations` jsonb keyed by language.
+      // Authored YAML is English by convention; future translation YAMLs
+      // will deep-merge into the same row (see docs).
+      const translations: Record<string, { title: string; subtitle?: string }> = {
+        en: {
+          title: lesson.doc.title,
+          ...(lesson.doc.subtitle ? { subtitle: lesson.doc.subtitle } : {}),
+        },
+      };
+
       const { data: lessonRow, error: upsertErr } = await supabase
         .from("lessons")
         .upsert(
           {
             course_id: courseId,
             slug: lesson.lessonSlug,
-            title: lesson.doc.title,
-            subtitle: lesson.doc.subtitle ?? null,
+            translations,
             order_index: lesson.orderIndex,
             estimated_minutes: lesson.doc.estimated_minutes,
             xp_reward: lesson.doc.xp_reward,
