@@ -130,7 +130,12 @@ insert into bundles (slug, plan_tier, emoji, cover_gradient, order_index, tags, 
   ('b-online-income',             'advanced', '🌐', 'ember', 342, '{utility}', '{"en":{"title":"AI Powered Online Income Strategies","description":"Multiple online income engines, AI-leveraged."}}'::jsonb),
   ('b-parent-school-result',      'advanced', '👨‍👧', 'paper', 343, '{utility}', '{"en":{"title":"Parent''s AI Guide For Better School Result of Children","description":"Day-to-day AI rituals for academic improvement."}}'::jsonb);
 
--- COURSES — FREE TIER (8)
+-- COURSES — FREE TIER (8 EN + 1 Hinglish sibling = 9 rows)
+-- These 8 EN slugs are the only courses that live outside any bundle
+-- ("orphan" courses). Anything else with bundle_id IS NULL is treated
+-- as a placeholder and removed. Hinglish/other-language siblings of
+-- these 8 are linked via course_group_id, not counted as separate
+-- courses (see migration 0004).
 insert into courses (slug, title, subtitle, description, category, plan_tier, emoji, cover_gradient, difficulty, estimated_minutes, order_index, tags) values
   ('chatgpt-basics',          'ChatGPT Basics',                        'Your first real conversation',  'The single most useful habit of the decade, in about an hour.', 'foundations', 'free', '💬', 'ember',  'beginner', 45, 1, '{ai,chatgpt,starter}'),
   ('canva-magic',             'Canva Magic',                           'Design without a designer',     'Use Canva''s AI to make posts, decks, and thumbnails.',           'creative',    'free', '🎨', 'moss',   'beginner', 40, 2, '{design,canva,creative}'),
@@ -142,38 +147,17 @@ insert into courses (slug, title, subtitle, description, category, plan_tier, em
   ('insta-post-with-ai',      'Create an Insta Post with AI',          'Idea to caption in 10 minutes', 'A full post from scratch using only AI.',                        'creative',    'free', '📱', 'moss',   'beginner', 30, 8, '{social,instagram,creative}'),
   ('chatgpt-basics-hinglish', 'ChatGPT Basics — Hinglish',             'Wahi course, par Hinglish mein','ChatGPT ka asli istemaal — Hindi-English mix mein, Indian dosti waali tone mein.', 'foundations', 'free', '💬', 'ember',  'beginner', 90, 50, '{ai,chatgpt,hinglish,india}');
 
--- COURSES — BASIC TIER (10 of 43, seed more as content is authored)
-insert into courses (slug, title, subtitle, description, category, plan_tier, emoji, cover_gradient, difficulty, estimated_minutes, order_index, tags) values
-  ('what-is-ai',              'What is AI & How Will It Help Me?',   'The context behind the hype',     'Level-setting deep dive.',                                        'foundations', 'basic', '🌱', 'moss',  'beginner',     35, 10, '{ai,foundations}'),
-  ('chatgpt-pro',             'How to Use ChatGPT Pro',              'Squeeze every drop',              'Projects, GPTs, memory, voice — why Pro is worth it.',            'tools',       'basic', '⚡', 'ember', 'intermediate', 50, 11, '{chatgpt,advanced}'),
-  ('design-with-canva-ai',    'Design Anything in Minutes — Canva AI','Magic Studio, mastered',         'Magic Design, Magic Write, Magic Edit. Complete loop.',           'creative',    'basic', '✨', 'moss',  'beginner',     45, 12, '{canva,design}'),
-  ('all-in-one-gemini',       'Your All-in-One Assistant — Gemini',  'Google''s quiet powerhouse',     'Gemini across Docs, Gmail, Sheets, Drive.',                        'tools',       'basic', '💎', 'ember', 'intermediate', 50, 13, '{gemini,google}'),
-  ('translate-with-deepl',    'Speak Any Language — DeepL',          'Translate like a native',         'DeepL vs Google Translate, multilingual workflow.',                'tools',       'basic', '🌐', 'paper', 'beginner',     35, 14, '{translate,deepl}'),
-  ('character-ai',            'Chat with AI Characters',             'Practice conversations safely',   'Roleplay, interviews, language practice.',                         'creative',    'basic', '🎭', 'moss',  'beginner',     40, 15, '{character-ai,roleplay}'),
-  ('perplexity-scholar',      'Research Smarter — Perplexity',       'Your AI scholar',                 'Real sources, follow-up threading, focused search modes.',         'tools',       'basic', '🔎', 'ember', 'intermediate', 40, 16, '{research,perplexity}'),
-  ('remove-bg-one-click',     'One-Click Photo Magic — Remove.bg',   'Backgrounds, gone',               'Product shots, portraits, bulk replacements.',                     'creative',    'basic', '🪄', 'paper', 'beginner',     20, 17, '{photo,removebg}'),
-  ('quillbot-rewrite',        'Rewrite Smarter — QuillBot',          'Paraphrase without flattening',   'Tone shifts, summarising, grammar.',                               'creative',    'basic', '📝', 'moss',  'beginner',     30, 18, '{writing,quillbot}'),
-  ('midjourney-art',          'Create Stunning Art — Midjourney',    'From prompt to poster',           'Midjourney v6 prompting, parameters, style consistency.',         'creative',    'basic', '🖼️', 'ember', 'intermediate', 55, 19, '{midjourney,art}');
+-- COURSES — BASIC TIER
+-- (orphan basic placeholders removed — basic courses now only exist
+--  inside their bundle. Free-tier orphans live above; bundle courses
+--  are seeded separately by the bundle-courses loader.)
 
--- COURSES — ADVANCED TIER (6 of 22)
-insert into courses (slug, title, subtitle, description, category, plan_tier, emoji, cover_gradient, difficulty, estimated_minutes, order_index, tags) values
-  ('prompt-engineering-14d',  'Prompt Engineering Mastery',          '14 days to AI power user',        'Structured prompting, few-shot, chain-of-thought, eval.',         'foundations', 'advanced', '🎯', 'ember', 'advanced', 240, 20, '{prompting,mastery}'),
-  ('claude-deepthink',        'Claude DeepThink',                    'Advanced research & writing',     'Projects, Artifacts, extended thinking.',                          'tools',       'advanced', '🧬', 'moss',  'advanced', 180, 21, '{claude,research}'),
-  ('copilot-at-work',         'Workplace AI Mastery — Copilot',      'Excel, Word, Outlook, Teams',     'Microsoft Copilot for real office work — not demos.',              'productivity','advanced', '💼', 'paper', 'advanced', 200, 22, '{copilot,microsoft}'),
-  ('runway-video',            'Cinematic AI — Runway',               'Video that doesn''t look AI',      'Gen-3 workflows, motion brush, a 60-second cut.',                  'creative',    'advanced', '🎬', 'ember', 'advanced', 180, 23, '{runway,video}'),
-  ('zapier-automation',       'Automation Empire — Zapier AI',       'Stop doing it by hand',           'Build 10 automations across Gmail, Sheets, Slack, Notion.',        'productivity','advanced', '🔗', 'moss',  'advanced', 220, 24, '{zapier,automation}'),
-  ('cursor-for-builders',     'AI Developer Mastery — Cursor',       'Ship 10× faster',                 'Cursor composer, rules files, building a full feature.',           'tools',       'advanced', '⌨️', 'paper', 'advanced', 240, 25, '{cursor,coding}');
+-- COURSES — ADVANCED TIER
+-- (orphan advanced placeholders removed — same rationale as above.)
 
--- BONUS BUNDLES (8 of 35 — the India moat)
-insert into courses (slug, title, subtitle, description, category, plan_tier, is_bonus_badge, emoji, cover_gradient, difficulty, estimated_minutes, order_index, tags) values
-  ('kheti-mein-ai',           'Kheti Mein AI Ka Sahara',       'Farming, smarter',                  'Weather, pest ID, mandi prices, schemes — via AI, in Hindi.',    'real_life', 'basic',    true, '🌾', 'moss',  'beginner',     50, 30, '{agriculture,india,hindi}'),
-  ('ielts-success',           'AI-Powered IELTS Success Kit',  'Band 7+ with your phone',           'Writing task evaluation, speaking practice, 30-day plan.',       'exam_prep', 'advanced', true, '🎓', 'ember', 'intermediate', 180, 31, '{ielts,exam}'),
-  ('neet-ug-prep',            'AI-Powered NEET-UG Prep',       'Doubt-solving at midnight',         'AI as 24/7 tutor for Bio, Physics, Chemistry.',                  'exam_prep', 'advanced', true, '🩺', 'ember', 'intermediate', 220, 32, '{neet,medical}'),
-  ('kirana-ai',               'Kirana Shop Par AI Ka Istemaal','Chhoti dukaan, badi soch',          'Billing, WhatsApp marketing, AI-written posters.',                'real_life', 'basic',    true, '🛒', 'moss',  'beginner',     45, 33, '{business,india,hindi}'),
-  ('ai-for-weddings',         'Plan My Wedding with AI',       'From invites to itinerary',         'Invite design, vendor shortlisting, budget, schedule.',          'real_life', 'basic',    true, '💍', 'ember', 'beginner',     60, 34, '{wedding,india}'),
-  ('diet-planner',            'Plan My Diet',                  'A real plan, not a generic one',    'Turn goals, prefs, groceries into a weekly meal plan.',           'real_life', 'basic',    true, '🥗', 'moss',  'beginner',     30, 35, '{health,diet}'),
-  ('resume-ai',               'Keep Your Resume Updated with AI','Always ready for the call',       'Living resume + JD-matched rewrites.',                             'real_life', 'advanced', true, '📄', 'paper', 'intermediate', 40, 36, '{career,resume}'),
-  ('english-seekhna-ai-se',   'AI Se English Seekhna',         'Hindi se English tak',              'Conversation practice in Hinglish with AI.',                       'real_life', 'advanced', true, '🗣️', 'ember', 'beginner',     90, 37, '{english,india,hindi}');
+-- COURSES — BONUS BUNDLES
+-- (orphan bonus placeholders removed — these all map to utility bundles
+--  in the b-* table; courses are seeded under their bundle when authored.)
 
 -- LANGUAGE LINKAGE: link Hinglish course to its English sibling.
 -- Future language variants append to the same group with their own language_code.
