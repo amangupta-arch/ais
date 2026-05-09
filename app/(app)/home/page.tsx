@@ -6,7 +6,7 @@ import {
   getAllBundles, getAllCourses, getMe, getMyCourseProgress,
 } from "@/lib/supabase/queries";
 import { firstName } from "@/lib/utils";
-import { bundleDescription, bundleTitle, pickLanguageVariants } from "@/lib/types";
+import { bundleDescription, bundleTitle, courseTitle, pickLanguageVariants } from "@/lib/types";
 import type { Bundle, Course, PlanTier, Persona } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
@@ -195,6 +195,7 @@ export default async function HomePage() {
             courses={inProgress}
             tier={tier}
             progressByCourse={progressByCourse}
+            lang={lang}
           />
         ) : null}
 
@@ -204,6 +205,7 @@ export default async function HomePage() {
           courses={freeCourses}
           tier={tier}
           progressByCourse={progressByCourse}
+          lang={lang}
         />
         <BundleRow
           number="03"
@@ -264,13 +266,14 @@ function NovaAvatar({ personaId }: { personaId: Persona["id"] }) {
 }
 
 function CourseRow({
-  number, title, courses, tier, progressByCourse,
+  number, title, courses, tier, progressByCourse, lang,
 }: {
   number: string;
   title: string;
   courses: Course[];
   tier: PlanTier;
   progressByCourse: Map<string, { progress_pct: number }>;
+  lang: string;
 }) {
   if (courses.length === 0) return null;
   return (
@@ -310,7 +313,7 @@ function CourseRow({
               key={c.id}
               style={{ width: "68%", flexShrink: 0, scrollSnapAlign: "start", maxWidth: 280 }}
             >
-              <HomeCourseCard course={c} hue={hue} locked={locked} progressPct={pct} />
+              <HomeCourseCard course={c} hue={hue} locked={locked} progressPct={pct} lang={lang} />
             </div>
           );
         })}
@@ -453,12 +456,13 @@ function HomeBundleCard({
 }
 
 function HomeCourseCard({
-  course, hue, locked, progressPct,
+  course, hue, locked, progressPct, lang,
 }: {
   course: Course;
   hue: Hue;
   locked: boolean;
   progressPct?: number;
+  lang: string;
 }) {
   const body = (
     <div
@@ -485,7 +489,7 @@ function HomeCourseCard({
           className="lm-serif"
           style={{ fontSize: 16, lineHeight: 1.25, color: "var(--text)" }}
         >
-          {course.title}
+          {courseTitle(course, lang)}
         </h3>
         <div
           className="flex items-center"
