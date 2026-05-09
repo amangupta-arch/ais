@@ -53,12 +53,26 @@ type TurnRow = {
 
 async function loadAll() {
   const supabase = await createClient();
+  // PostgREST caps each select at 1000 rows by default. The dashboard
+  // counts every row, so we need to bypass the cap for each layer.
+  // .range(0, N) is the cheapest way: it forces PostgREST to return up
+  // to N rows with no other side effects. Tables that fit comfortably
+  // below ~10k rows (lessons ≈ 1.9k, turns ≈ 0.6k today) get a 100k
+  // ceiling; bundles + courses get 10k for symmetry.
   const [bundles, courses, lessons, turns] = await Promise.all([
-    supabase.from("bundles").select("*").order("order_index"),
-    supabase.from("courses").select("*").order("order_index"),
-    supabase.from("lessons").select("*").order("course_id").order("order_index"),
+    supabase.from("bundles").select("*").order("order_index").range(0, 9999),
+    supabase.from("courses").select("*").order("order_index").range(0, 9999),
+    supabase
+      .from("lessons")
+      .select("*")
+      .order("course_id")
+      .order("order_index")
+      .range(0, 99999),
     // Just need translations + lesson_id for stats — keep payload small.
-    supabase.from("lesson_turns").select("id, lesson_id, turn_type, translations"),
+    supabase
+      .from("lesson_turns")
+      .select("id, lesson_id, turn_type, translations")
+      .range(0, 99999),
   ]);
   return {
     bundles: (bundles.data ?? []) as BundleRow[],
