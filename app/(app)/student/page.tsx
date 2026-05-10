@@ -1,11 +1,12 @@
 // Student dashboard. Shows the curriculum bundles for the signed-in
-// learner's school class, grouped by subject.
+// learner's (institute, class) pair, grouped by subject.
 //
 //   - Auth-required (under (app)). Anonymous → /login.
 //   - If profile.school_class is null, render an inline picker;
 //     setting it via the server action rerenders this same page.
-//   - Else fetch bundles where tags @> [class:N, curriculum] and
-//     render one section per subject.
+//   - Else fetch bundles tagged for the matching curriculum +
+//     class:<class> + (optionally) institute:<inst>, render one
+//     section per subject.
 
 import { redirect } from "next/navigation";
 import Link from "next/link";
@@ -24,6 +25,7 @@ export default async function StudentPage() {
 
   const lang = profile?.preferred_language ?? "en";
   const schoolClass = profile?.school_class ?? null;
+  const institute = profile?.institute ?? null;
 
   return (
     <main className="lm-page">
@@ -38,7 +40,11 @@ export default async function StudentPage() {
         {schoolClass === null ? (
           <ClassPicker />
         ) : (
-          <StudentDashboardWithData schoolClass={schoolClass} lang={lang} />
+          <StudentDashboardWithData
+            schoolClass={schoolClass}
+            institute={institute}
+            lang={lang}
+          />
         )}
       </div>
     </main>
@@ -47,11 +53,20 @@ export default async function StudentPage() {
 
 async function StudentDashboardWithData({
   schoolClass,
+  institute,
   lang,
 }: {
-  schoolClass: number;
+  schoolClass: string;
+  institute: string | null;
   lang: string;
 }) {
-  const subjects = await getStudentBundles(schoolClass);
-  return <StudentDashboard schoolClass={schoolClass} subjects={subjects} lang={lang} />;
+  const subjects = await getStudentBundles(schoolClass, institute);
+  return (
+    <StudentDashboard
+      schoolClass={schoolClass}
+      institute={institute}
+      subjects={subjects}
+      lang={lang}
+    />
+  );
 }

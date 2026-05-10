@@ -1,26 +1,37 @@
 // Student dashboard body. Renders subject sections + bundle cards
-// for a given (class, lang) pair. Bundle cards link into the existing
-// /learn/bundles/[bundleSlug] route — no new bundle UI here.
+// for a given (class, institute, lang) tuple. Bundle cards link into
+// the existing /learn/bundles/[bundleSlug] route — no new bundle UI
+// here.
 
 import Link from "next/link";
 
 import type { StudentSubject } from "@/lib/supabase/queries";
 import { bundleDescription, bundleTitle } from "@/lib/types";
 
+import { findSchoolPath } from "./paths";
+
 export default function StudentDashboard({
   schoolClass,
+  institute,
   subjects,
   lang,
 }: {
-  schoolClass: number;
+  schoolClass: string;
+  institute: string | null;
   subjects: StudentSubject[];
   lang: string;
 }) {
+  const path = findSchoolPath(institute, schoolClass);
+  const eyebrow = path
+    ? path.subtitle
+      ? `${path.subtitle} · ${path.label}`
+      : path.label
+    : `Class ${schoolClass}`;
   return (
     <>
       <header style={{ marginBottom: 28 }}>
         <div className="lm-eyebrow" style={{ marginBottom: 6 }}>
-          Class {schoolClass}
+          {eyebrow}
         </div>
         <h1
           className="lm-serif"
@@ -132,7 +143,7 @@ function bundleCountLabel(subjects: StudentSubject[]): string {
   return `${total} chapter${total === 1 ? "" : "s"}`;
 }
 
-function EmptyState({ schoolClass }: { schoolClass: number }) {
+function EmptyState({ schoolClass }: { schoolClass: string }) {
   return (
     <div
       className="lm-card"
