@@ -26,7 +26,6 @@ type GraderResult = {
 type AnsweredQuestion = QuizQuestion & {
   result: GraderResult;
   elapsedMs: number;
-  imageDataUrl: string;
 };
 
 type Phase = "question" | "analyzing" | "feedback" | "done";
@@ -131,11 +130,14 @@ export default function MathQuizClient({ questions }: { questions: QuizQuestion[
   }
 
   function goNext() {
-    if (!current || !result || !imageDataUrl) return;
+    // Once grading is back, advancing no longer depends on the photo —
+    // the learner can have cleared it while the request was in flight,
+    // and that shouldn't strand them on the feedback screen.
+    if (!current || !result) return;
     const elapsed = Date.now() - questionStartedAtRef.current;
     const nextHistory: AnsweredQuestion[] = [
       ...history,
-      { ...current, result, elapsedMs: elapsed, imageDataUrl },
+      { ...current, result, elapsedMs: elapsed },
     ];
     setHistory(nextHistory);
 
