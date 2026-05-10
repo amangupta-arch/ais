@@ -18,4 +18,5 @@ export async function updateProfile(patch: Record<string, unknown>) {
   revalidatePath("/profile");
   revalidatePath("/home");
   revalidatePath("/learn");
+  revalidatePath("/student");
 }

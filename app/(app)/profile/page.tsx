@@ -176,6 +176,38 @@ export default async function ProfilePage() {
           </form>
         </section>
 
+        <section style={{ marginTop: 40 }}>
+          <p className="lm-eyebrow">
+            <span className="lm-tabular" style={{ marginRight: 8 }}>04</span>
+            school class
+          </p>
+          <p style={{ marginTop: 6, fontSize: 13, color: "var(--text-3)" }}>
+            Drives the <Link href="/student" style={{ color: "var(--indigo)" }}>/student</Link>{" "}
+            dashboard — you&rsquo;ll see chapters tagged for this class only.
+          </p>
+          <form
+            action={updateSchoolClassAction}
+            className="flex flex-wrap"
+            style={{ gap: 8, marginTop: 12 }}
+          >
+            {[6, 7, 8, 9, 10, 11, 12].map((n) => {
+              const active = (profile?.school_class ?? null) === n;
+              return (
+                <button
+                  key={n}
+                  type="submit"
+                  name="school_class"
+                  value={n}
+                  className={`lm-btn ${active ? "lm-btn--accent" : "lm-btn--secondary"} lm-btn--sm`}
+                  aria-pressed={active}
+                >
+                  Class <span className="lm-tabular" style={{ fontWeight: 700 }}>{n}</span>
+                </button>
+              );
+            })}
+          </form>
+        </section>
+
         <section
           style={{
             marginTop: 56,
@@ -247,4 +279,10 @@ async function updateLanguageAction(formData: FormData) {
   const allowed = ["en", "hi", "hinglish", "mr", "pa", "te", "ta", "bn", "fr", "es"];
   if (!allowed.includes(language)) return;
   await updateProfile({ preferred_language: language });
+}
+
+async function updateSchoolClassAction(formData: FormData) {
+  "use server";
+  const { setSchoolClassAction } = await import("../student/actions");
+  await setSchoolClassAction(formData);
 }
