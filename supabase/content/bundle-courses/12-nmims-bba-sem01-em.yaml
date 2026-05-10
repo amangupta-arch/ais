@@ -1,0 +1,117 @@
+# NMIMS · BBA Semester 01 · Environmental Management
+#
+# 3 bundles, 12 courses, 53 lessons. The bundle rows are seeded via
+# the SQL block in PR #46 (see supabase/migrations/0016_… and the
+# bundles INSERT). Titles below are spelled so scripts/load-bundle-
+# courses.ts produces the slugs the curriculum team requested.
+
+bundles:
+  # ---------- Bundle 1 of 3 ----------
+  - bundle_slug: b-nmims-em-01-foundations
+    courses:
+      - title: "The Environmental Crisis Today"
+        outcome: "Student can articulate the scale of the modern environmental crisis using personal carbon footprints, greenwashing, NIMBYism, and named corporate cases"
+        lessons:
+          - "What is Your Carbon Footprint"
+          - "Greenwashing — When Green Isnt Really Green"
+          - "NIMBY and the Politics of Not In My Backyard"
+          - "Social Issues in Business — Beyond Profit"
+          - "Facebook and GE Ultrasound Case Studies"
+
+      - title: "Climate Change, SDGs, and Business Responsibility"
+        outcome: "Student can frame climate change as a business problem and align firm-level decisions to specific UN Sustainable Development Goals"
+        lessons:
+          - "Climate Change as a Business Problem"
+          - "Role of Business in Environmental Degradation"
+          - "The Union Carbide Bhopal Case"
+          - "The 17 Sustainable Development Goals"
+          - "Aligning Firm Actions with SDGs"
+
+      - title: "Carbon Markets and Environmental Economics"
+        outcome: "Student can explain how carbon markets work, calculate basic carbon-trade scenarios, and run a mock CER trade end-to-end"
+        lessons:
+          - "Introduction to Carbon Markets and Trading"
+          - "Carbon Emission Reductions (CERs)"
+          - "The Polluter Pays Principle"
+          - "Mock Carbon Trading Simulation"
+
+      - title: "Environmental Assessment Frameworks"
+        outcome: "Student can compare EIA, SEA, LCA, and ESG frameworks and apply them to a real Indian case (Navi Mumbai airport)"
+        lessons:
+          - "Environmental Impact Assessment Basics"
+          - "Three Core Values of EIA"
+          - "EIA in India — The Navi Mumbai Airport Case"
+          - "Strategic Environmental Assessment"
+          - "Life Cycle Assessment"
+          - "ESG Framework — What Investors Want"
+
+  # ---------- Bundle 2 of 3 ----------
+  - bundle_slug: b-nmims-em-02-ethics-behavioral
+    courses:
+      - title: "Environmental Ethics"
+        outcome: "Student can distinguish anthropocentric, non-anthropocentric, and sustaincentric ethics and identify ethical fading in business decisions"
+        lessons:
+          - "Anthropocentrism vs Non-Anthropocentrism"
+          - "From Anthropocentrism to Sustaincentrism"
+          - "Ethical Fading and Tangible vs Abstract Harms"
+          - "Altruism, Bounded Ethicality, and Conflicts of Interest"
+
+      - title: "Behavioral Biases in Business Decisions"
+        outcome: "Student can identify framing, conformity, moral myopia, and self-serving biases in case studies and run a Mendelow stakeholder analysis"
+        lessons:
+          - "Framing and Conformity Bias"
+          - "Moral Equilibrium and Moral Muteness"
+          - "Moral Myopia and Self-Serving Bias"
+          - "Stakeholder Analysis with Mendelows Matrix"
+
+      - title: "Behavioral Economics and Nudge Theory"
+        outcome: "Student understands System 1 vs System 2 thinking, defines a nudge per Thaler & Sunstein, and pitches a nudge for a real business problem"
+        lessons:
+          - "Two Types of Thinking — Rational vs Reflexive"
+          - "What is a Nudge — Thaler and Sunstein"
+          - "Characteristics and Benefits of Nudges"
+          - "Pitching a Nudge to Solve a Business Problem"
+
+      - title: "Types of Nudges and Their Application"
+        outcome: "Student can categorise nudges (default, social norming, simplification, reminders) and design pro-environmental nudges for given scenarios"
+        lessons:
+          - "Subtle Suggestions and the Default Option"
+          - "Social Norming and Misperceptions"
+          - "Simplification and Direct Reminders"
+          - "Designing Pro-Environmental Nudges"
+          - "Nudges for Social and Environmental Issues"
+
+  # ---------- Bundle 3 of 3 ----------
+  - bundle_slug: b-nmims-em-03-business-society
+    courses:
+      - title: "Social Entrepreneurship and Innovation"
+        outcome: "Student can define social entrepreneurship, apply design thinking to a social problem, and explain the triple bottom line via Tata and Infosys cases"
+        lessons:
+          - "What is Social Entrepreneurship"
+          - "Gen Z and Millennials as Agents of Social Change"
+          - "Design Thinking in Social Innovation"
+          - "Triple Bottom Line and Tata, Infosys Cases"
+
+      - title: "Measuring Social Impact"
+        outcome: "Student can compute SROI, contrast it with ROI, and explain impact investing through the Grameen Bank case"
+        lessons:
+          - "Social Return on Investment (SROI)"
+          - "SROI vs ROI — Whats the Difference"
+          - "Social Impact Investing and the Grameen Bank Case"
+          - "Sharing Economy and Gift Economy"
+
+      - title: "CSR — Corporate Social Responsibility"
+        outcome: "Student knows the statutory CSR mandate in India, applies social-identity / signaling / social-exchange theories, and can map a company's filings to the CSR Act"
+        lessons:
+          - "CSR Policies and Statutory Mandate in India"
+          - "CSR Theory — Social Identity"
+          - "CSR Theory — Signaling and Social Exchange"
+          - "Mapping Company Compliance to CSR Act"
+
+      - title: "Conscious Capitalism and Corporate Accountability"
+        outcome: "Student can define conscious capitalism per John Mackey, evaluate B-Corp certification criteria, and draft a B-Corp roadmap for a real firm"
+        lessons:
+          - "What is Conscious Capitalism — John Mackey"
+          - "B-Corp Certification"
+          - "Creating a B-Corp Certification Roadmap"
+          - "Corporate Accountability in Practice"

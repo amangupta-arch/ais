@@ -61,26 +61,43 @@ export type StudentSubject = {
   bundles: Bundle[];
 };
 
-/** Returns curriculum bundles for the given school class, grouped and
- *  ordered by subject. Filters strictly on `tags @> ['class:N','curriculum']`,
- *  so adding a non-curriculum bundle with a `class:N` tag (we don't do
- *  this today, but a future tag could collide) won't leak into the
- *  student dashboard.
+/** Returns curriculum bundles for the given (institute, class) pair,
+ *  grouped and ordered by subject.
+ *
+ *  Filters strictly on the `curriculum` + `class:<class>` tags. When
+ *  `institute` is non-null, the `institute:<inst>` tag is required
+ *  too; when it's null, bundles WITH an institute tag are excluded
+ *  so a K-12 (class='10', institute=null) user doesn't accidentally
+ *  see another institute's class-10 content if a name happens to
+ *  collide.
  *
  *  Subject buckets come from each bundle's `subject:*` tag. Bundles
  *  with no `subject:*` tag fall into a single "general" bucket so we
  *  never silently drop content. */
-export async function getStudentBundles(schoolClass: number): Promise<StudentSubject[]> {
+export async function getStudentBundles(
+  schoolClass: string,
+  institute: string | null,
+): Promise<StudentSubject[]> {
   const supabase = await createClient();
-  const classTag = `class:${schoolClass}`;
+  const requiredTags = ["curriculum", `class:${schoolClass}`];
+  if (institute) requiredTags.push(`institute:${institute}`);
+
   const { data } = await supabase
     .from("bundles")
     .select("*")
-    .contains("tags", [classTag, "curriculum"])
+    .contains("tags", requiredTags)
     .order("order_index", { ascending: true });
 
+  // K-12 users (no institute) must not see bundles tagged for ANY
+  // institute. PostgREST lacks a "tag prefix" filter, so we post-
+  // filter in JS. Cheap — there are at most a few dozen rows.
+  const filtered = (data ?? []).filter((b) => {
+    if (institute) return true;
+    return !((b as Bundle).tags ?? []).some((t) => t.startsWith("institute:"));
+  }) as Bundle[];
+
   const bySubject = new Map<string, Bundle[]>();
-  for (const b of (data ?? []) as Bundle[]) {
+  for (const b of filtered) {
     const subjectTag = (b.tags ?? []).find((t) => t.startsWith("subject:"));
     const key = subjectTag ? subjectTag.slice("subject:".length) : "general";
     const arr = bySubject.get(key) ?? [];

@@ -6,6 +6,7 @@ import { LANGUAGES, PERSONAS } from "@/lib/types";
 import { signOutAction } from "./actions";
 import { formatTier } from "@/lib/utils";
 import type { Persona, PlanTier, PreferredLanguage } from "@/lib/types";
+import { SCHOOL_PATH_OPTIONS } from "../student/paths";
 
 export const dynamic = "force-dynamic";
 
@@ -205,33 +206,43 @@ export default async function ProfilePage() {
         <section style={{ marginTop: 40 }}>
           <p className="lm-eyebrow">
             <span className="lm-tabular" style={{ marginRight: 8 }}>04</span>
-            school class
+            school path
           </p>
           <p style={{ marginTop: 6, fontSize: 13, color: "var(--text-3)" }}>
             Drives the <Link href="/student" style={{ color: "var(--indigo)" }}>/student</Link>{" "}
-            dashboard — you&rsquo;ll see chapters tagged for this class only.
+            dashboard — you&rsquo;ll see chapters tagged for this institute and class only.
           </p>
-          <form
-            action={updateSchoolClassAction}
-            className="flex flex-wrap"
-            style={{ gap: 8, marginTop: 12 }}
-          >
-            {[6, 7, 8, 9, 10, 11, 12].map((n) => {
-              const active = (profile?.school_class ?? null) === n;
-              return (
-                <button
-                  key={n}
-                  type="submit"
-                  name="school_class"
-                  value={n}
-                  className={`lm-btn ${active ? "lm-btn--accent" : "lm-btn--secondary"} lm-btn--sm`}
-                  aria-pressed={active}
-                >
-                  Class <span className="lm-tabular" style={{ fontWeight: 700 }}>{n}</span>
-                </button>
-              );
-            })}
-          </form>
+          {SCHOOL_PATH_OPTIONS.length > 0 ? (
+            <div className="flex flex-wrap" style={{ gap: 8, marginTop: 12 }}>
+              {SCHOOL_PATH_OPTIONS.map((opt) => {
+                const active =
+                  (profile?.institute ?? null) === opt.institute &&
+                  profile?.school_class === opt.schoolClass;
+                return (
+                  <form
+                    key={`${opt.institute ?? "school"}::${opt.schoolClass}`}
+                    action={updateSchoolPathAction}
+                  >
+                    <input type="hidden" name="institute" value={opt.institute ?? ""} />
+                    <input type="hidden" name="school_class" value={opt.schoolClass} />
+                    <button
+                      type="submit"
+                      className={`lm-btn ${active ? "lm-btn--accent" : "lm-btn--secondary"} lm-btn--sm`}
+                      style={{ flexDirection: "column", alignItems: "flex-start", gap: 0, padding: "8px 12px" }}
+                      aria-pressed={active}
+                    >
+                      <span style={{ fontWeight: 600 }}>{opt.label}</span>
+                      {opt.subtitle ? (
+                        <span style={{ fontSize: 11, opacity: 0.7, fontWeight: 400 }}>
+                          {opt.subtitle}
+                        </span>
+                      ) : null}
+                    </button>
+                  </form>
+                );
+              })}
+            </div>
+          ) : null}
         </section>
 
         <section
@@ -307,8 +318,8 @@ async function updateLanguageAction(formData: FormData) {
   await updateProfile({ preferred_language: language });
 }
 
-async function updateSchoolClassAction(formData: FormData) {
+async function updateSchoolPathAction(formData: FormData) {
   "use server";
-  const { setSchoolClassAction } = await import("../student/actions");
-  await setSchoolClassAction(formData);
+  const { setSchoolPathAction } = await import("../student/actions");
+  await setSchoolPathAction(formData);
 }

@@ -97,9 +97,16 @@ export type Profile = {
   daily_goal_minutes: DailyGoalMinutes;
   daily_reminder_time: string;
   preferred_tutor_persona: Persona["id"];
-  /** K-12 grade for student-tier learners. Null for adult / non-school
-   *  users; the /student dashboard shows an inline picker when null. */
-  school_class: number | null;
+  /** Optional institute (e.g. 'nmims') for higher-ed cohorts. Null for
+   *  K-12 / public-school learners. Pairs with school_class to scope
+   *  the /student dashboard to one institute's curriculum at a time. */
+  institute: string | null;
+  /** K-12 grade ('10') or college program code ('bba-sem-01'). Free
+   *  text — slug-shaped (lowercase, hyphens) so it can be embedded
+   *  directly in a `class:<value>` bundle tag. Null for users who
+   *  haven't picked a class yet; the /student dashboard shows an
+   *  inline picker in that case. */
+  school_class: string | null;
   onboarding_completed_at: string | null;
   created_at: string;
   updated_at: string;
