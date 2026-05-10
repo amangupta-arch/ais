@@ -12,7 +12,7 @@ import { createClient as createServiceClient } from "@supabase/supabase-js";
 
 import { ensureAudioAsset } from "./cache";
 import { extractFromYamlText, type NarrationChunk } from "./extract";
-import { TTS_MODEL, voiceIdFor } from "./voices";
+import { modelFor, voiceIdFor } from "./voices";
 
 export type PipelineProgress =
   | { kind: "audio:start"; total: number; voiceId: string; model: string }
@@ -90,6 +90,7 @@ export async function runAudioPipeline(input: PipelineInput): Promise<PipelineRe
   const concurrency = input.concurrency ?? 3;
 
   const voiceId = voiceIdFor(language);
+  const model = modelFor(language);
   if (!voiceId) {
     onProgress({
       kind: "audio:skipped",
@@ -159,7 +160,7 @@ export async function runAudioPipeline(input: PipelineInput): Promise<PipelineRe
     kind: "audio:start",
     total: chunks.length,
     voiceId,
-    model: TTS_MODEL,
+    model,
   });
 
   let hits = 0;
@@ -177,7 +178,7 @@ export async function runAudioPipeline(input: PipelineInput): Promise<PipelineRe
       const r = await ensureAudioAsset({
         text: chunk.text,
         voiceId,
-        model: TTS_MODEL,
+        model,
       });
       done++;
       if (r.cacheHit) hits++;
