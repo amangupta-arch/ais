@@ -63,23 +63,44 @@ type SpeakOptions = {
   onEnd?: () => void;
 };
 
+type PlayClipsOptions = {
+  /** Dedupe key — playClips(urls, key) is a no-op on subsequent calls with the same key. */
+  key?: string;
+  /** Fired when the LAST clip in the sequence finishes naturally (not on cancel). */
+  onEnd?: () => void;
+};
+
 export type AudioNarration = {
   enabled: boolean;
   speaking: boolean;
   toggle: () => void;
   setEnabled: (on: boolean) => void;
   speak: (text: string, opts?: SpeakOptions) => void;
+  /** Play a sequence of remote mp3s in order. Used by the lesson player
+   *  when the ElevenLabs manifest has audio for the active turn. */
+  playClips: (urls: string[], opts?: PlayClipsOptions) => void;
   cancel: () => void;
 };
 
-/** Thin wrapper around SpeechSynthesis with enable/disable persisted to
- *  localStorage. Safe to call on the server (it no-ops); the state hydrates
- *  once the client mounts. */
+/** Thin wrapper around SpeechSynthesis + HTMLAudioElement with
+ *  enable/disable persisted to localStorage. Safe to call on the
+ *  server (it no-ops); the state hydrates once the client mounts.
+ *  Two playback paths:
+ *    speak(text) — browser TTS via SpeechSynthesisUtterance, used as
+ *      fallback when no pre-generated mp3 exists for the active turn.
+ *    playClips(urls) — sequentially plays remote mp3s through a
+ *      single HTMLAudioElement, used when the lesson_audio_manifest
+ *      has ElevenLabs audio for the active turn. */
 export function useAudioNarration(): AudioNarration {
   const [enabled, setEnabledState] = useState(false);
   const [speaking, setSpeaking] = useState(false);
   const spokenKeysRef = useRef<Set<string>>(new Set());
   const voiceRef = useRef<SpeechSynthesisVoice | null>(null);
+  // Single shared <audio> element + token used to ignore stale events
+  // after a cancel.
+  const audioElRef = useRef<HTMLAudioElement | null>(null);
+  const playTokenRef = useRef(0);
+  const playedKeysRef = useRef<Set<string>>(new Set());
 
   // Hydrate from localStorage on mount.
   useEffect(() => {
@@ -106,8 +127,22 @@ export function useAudioNarration(): AudioNarration {
   }, []);
 
   const cancel = useCallback(() => {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
-    window.speechSynthesis.cancel();
+    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+    }
+    // Bump the play token so any in-flight onended callbacks from the
+    // mp3 sequence are ignored, then pause the current element.
+    playTokenRef.current++;
+    const el = audioElRef.current;
+    if (el) {
+      try {
+        el.pause();
+        el.removeAttribute("src");
+        el.load();
+      } catch {
+        /* ignore */
+      }
+    }
     setSpeaking(false);
   }, []);
 
@@ -158,14 +193,89 @@ export function useAudioNarration(): AudioNarration {
     [enabled],
   );
 
-  // Cancel on unmount — don't let a lingering utterance carry across pages.
+  const playClips = useCallback(
+    (urls: string[], opts?: PlayClipsOptions) => {
+      if (!enabled) return;
+      if (typeof window === "undefined") return;
+      if (urls.length === 0) return;
+
+      if (opts?.key) {
+        if (playedKeysRef.current.has(opts.key)) return;
+        playedKeysRef.current.add(opts.key);
+      }
+
+      // Cancel any in-flight playback so the new sequence wins.
+      if (typeof window !== "undefined" && "speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+      }
+      playTokenRef.current++;
+      const myToken = playTokenRef.current;
+
+      // Reuse one element across the lesson — avoids autoplay-policy
+      // issues some browsers have with rapidly created <audio> nodes.
+      let el = audioElRef.current;
+      if (!el) {
+        el = new Audio();
+        el.preload = "auto";
+        audioElRef.current = el;
+      }
+
+      let i = 0;
+      const playNext = () => {
+        if (myToken !== playTokenRef.current) return; // cancelled
+        if (i >= urls.length) {
+          setSpeaking(false);
+          opts?.onEnd?.();
+          return;
+        }
+        const url = urls[i++]!;
+        // Re-bind handlers each tick so a previous clip's onended
+        // doesn't fire after we've moved on.
+        el!.onended = () => {
+          if (myToken !== playTokenRef.current) return;
+          playNext();
+        };
+        el!.onerror = () => {
+          if (myToken !== playTokenRef.current) return;
+          // On error, skip the broken clip and keep going.
+          playNext();
+        };
+        el!.src = url;
+        el!.currentTime = 0;
+        const p = el!.play();
+        if (p && typeof p.catch === "function") {
+          p.catch(() => {
+            // Autoplay blocked / network error — bail to next clip.
+            if (myToken !== playTokenRef.current) return;
+            playNext();
+          });
+        }
+      };
+
+      setSpeaking(true);
+      playNext();
+    },
+    [enabled],
+  );
+
+  // Cancel on unmount — don't let a lingering utterance / clip carry
+  // across pages.
   useEffect(() => {
     return () => {
       if (typeof window !== "undefined" && "speechSynthesis" in window) {
         window.speechSynthesis.cancel();
       }
+      const el = audioElRef.current;
+      if (el) {
+        try {
+          el.pause();
+          el.removeAttribute("src");
+        } catch {
+          /* ignore */
+        }
+      }
     };
   }, []);
 
-  return { enabled, speaking, toggle, setEnabled, speak, cancel };
+  return { enabled, speaking, toggle, setEnabled, speak, playClips, cancel };
 }

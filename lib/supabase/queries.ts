@@ -5,6 +5,52 @@ import type {
 } from "@/lib/types";
 import type { LessonTurn } from "@/lib/turns";
 
+/** Per-turn audio playlist: keyed by lesson_turns.order_index, each
+ *  entry is an array of mp3 URLs to play in order (some turn types
+ *  emit 2+ chunks — e.g. fill_in_the_blank prompt + template,
+ *  checkpoint title + summary). Empty / missing key = no manifest
+ *  entry, fall back to browser TTS or silence at the player. */
+export type LessonAudioManifest = Record<number, string[]>;
+
+/** Loads the ElevenLabs manifest for a lesson in one language and
+ *  resolves each row to a public storage URL. Returns {} when no
+ *  audio has been generated yet (or when the env vars aren't set,
+ *  so the lesson page never blows up just because audio is missing). */
+export async function getLessonAudioManifest(
+  lessonId: string,
+  language: string,
+): Promise<LessonAudioManifest> {
+  const supabase = await createClient();
+  const { data } = await supabase
+    .from("lesson_audio_manifest")
+    .select("turn_index, chunk_index, asset:lesson_audio_assets(storage_path)")
+    .eq("lesson_id", lessonId)
+    .eq("language", language)
+    .order("turn_index", { ascending: true })
+    .order("chunk_index", { ascending: true });
+
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  if (!supabaseUrl) return {};
+
+  const out: LessonAudioManifest = {};
+  for (const row of (data ?? []) as unknown as Array<{
+    turn_index: number;
+    chunk_index: number;
+    asset: { storage_path: string } | { storage_path: string }[] | null;
+  }>) {
+    // PostgREST returns the joined row as an object or single-element
+    // array depending on whether the relationship is many-to-one;
+    // normalise both shapes.
+    const asset = Array.isArray(row.asset) ? row.asset[0] : row.asset;
+    if (!asset?.storage_path) continue;
+    const url = `${supabaseUrl}/storage/v1/object/public/lesson-audio/${asset.storage_path}`;
+    const arr = out[row.turn_index] ?? [];
+    arr.push(url);
+    out[row.turn_index] = arr;
+  }
+  return out;
+}
+
 export async function getMe(): Promise<{
   user: { id: string; email: string | null } | null;
   profile: Profile | null;
