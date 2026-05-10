@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { DM_Sans, Fraunces, JetBrains_Mono, Geist, Geist_Mono } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import "./lumen.css";
 
@@ -73,6 +74,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="lm">
         {children}
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
