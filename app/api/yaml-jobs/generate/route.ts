@@ -27,6 +27,7 @@ import { enumerateAllLessons } from "@/lib/yaml-generation/catalog";
 import { loadEnYamlText } from "@/lib/yaml-generation/en-source";
 import { GENERATOR_MODEL, generateLessonYaml } from "@/lib/yaml-generation/generate";
 import { writeLessonYaml } from "@/lib/yaml-generation/persist";
+import { loadBundlePriorContent } from "@/lib/yaml-generation/prior-content";
 
 const ALLOWED_LANGS: ReadonlySet<string> = new Set(LANGUAGE_OPTIONS.map((l) => l.code));
 
@@ -46,7 +47,12 @@ type Body = {
   courseSlug?: string;
   lessonSlug?: string;
   language?: string;
+  /** Free-text guidance from the author. Capped server-side to keep
+   *  prompt size sane; longer notes go in docs/lesson-yaml-knowledge.md. */
+  customInstructions?: string;
 };
+
+const CUSTOM_INSTRUCTIONS_MAX_CHARS = 4000;
 
 export async function POST(req: Request) {
   // ---------- pre-stream validation ----------
@@ -65,6 +71,10 @@ export async function POST(req: Request) {
   const courseSlug = body.courseSlug?.trim();
   const lessonSlug = body.lessonSlug?.trim();
   const language = body.language?.trim() || "en";
+  const customInstructionsRaw = (body.customInstructions ?? "").trim();
+  const customInstructions = customInstructionsRaw.slice(0, CUSTOM_INSTRUCTIONS_MAX_CHARS);
+  const customInstructionsTruncated =
+    customInstructionsRaw.length > CUSTOM_INSTRUCTIONS_MAX_CHARS;
 
   if (!courseSlug || !lessonSlug) {
     return NextResponse.json(
@@ -168,6 +178,26 @@ export async function POST(req: Request) {
             .eq("language", language);
         };
 
+        // Prior-bundle context (EN-only — translations rely on the EN
+        // base of the SAME lesson, not cross-lesson continuity).
+        let priorContext: string | null = null;
+        if (language === "en") {
+          step("loading prior lessons in this bundle for continuity…");
+          const prior = await loadBundlePriorContent(entry);
+          if (prior.totalCount === 0) {
+            step("no prior lessons in this bundle — nothing to carry over.");
+          } else {
+            const droppedNote =
+              prior.droppedCount > 0
+                ? ` (truncated: dropped ${prior.droppedCount} earliest to fit budget)`
+                : "";
+            step(
+              `loaded ${prior.lessons.length}/${prior.totalCount} prior lessons · ${prior.approxTokens.toLocaleString()} approx tokens${droppedNote}`,
+            );
+            priorContext = prior.promptText;
+          }
+        }
+
         // EN reference for translations.
         let enReference: string | null = null;
         if (language !== "en") {
@@ -184,11 +214,27 @@ export async function POST(req: Request) {
           step(`EN reference loaded (${enReference.length.toLocaleString()} chars)`);
         }
 
+        if (customInstructions) {
+          step(
+            `custom instructions: ${customInstructions.length} chars added${
+              customInstructionsTruncated
+                ? ` (truncated from ${customInstructionsRaw.length})`
+                : ""
+            }`,
+          );
+        }
+
         // Generate.
         step(
           `calling ${GENERATOR_MODEL} (${language === "en" ? "fresh generation" : `${language} translation`})…`,
         );
-        const gen = await generateLessonYaml({ entry, language, enReference });
+        const gen = await generateLessonYaml({
+          entry,
+          language,
+          enReference,
+          customInstructions: customInstructions || null,
+          priorContext,
+        });
         if (!gen.ok) {
           await finalize({ status: "failed", attempts: gen.attempts, error: gen.message });
           result({

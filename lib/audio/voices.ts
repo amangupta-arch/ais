@@ -19,13 +19,13 @@ export const VOICE_IDS: Record<string, string | null> = {
   en:       "gHu9GtaHOXcSqFTK06ux",
   hi:       "gHu9GtaHOXcSqFTK06ux",
   hinglish: "gHu9GtaHOXcSqFTK06ux", // ElevenLabs has no separate Hinglish voice; uses Hindi
-  mr:       null, // TODO: paste Marathi voice id
-  pa:       null, // TODO: paste Punjabi voice id
-  te:       null, // TODO: paste Telugu voice id
-  ta:       null, // TODO: paste Tamil voice id
-  bn:       null, // TODO: paste Bengali voice id
-  fr:       null, // TODO: paste French voice id
-  es:       null, // TODO: paste Spanish voice id
+  mr:       "RBxPIvrKOP4ugCK2jVHD", // TODO: paste Marathi voice id
+  pa:       "RxnH5jCRKb1ez2lcmQC1", // TODO: paste Punjabi voice id
+  te:       "EMxdghWQV7gqV33j4J3F", // TODO: paste Telugu voice id
+  ta:       "hhPtGvkQC1ce5z3pPhYh", // TODO: paste Tamil voice id
+  bn:       "WiaIVvI1gDL4vT4y7qUU", // TODO: paste Bengali voice id
+  fr:       "zPy2sgLU4pZ7Xrjh87uz", // TODO: paste French voice id
+  es:       "zl1Ut8dvwcVSuQSB9XkG", // TODO: paste Spanish voice id
 };
 
 export const TTS_MODEL = "eleven_multilingual_v2";
