@@ -3,18 +3,13 @@ import { Clock, Lock } from "lucide-react";
 import { redirect } from "next/navigation";
 
 import { getAllBundles, getAllCourses, getMe } from "@/lib/supabase/queries";
-import { bundleDescription, bundleTitle, courseSubtitle, courseTitle } from "@/lib/types";
+import { bundleDescription, bundleTitle, courseSubtitle, courseTitle, tierCanAccess } from "@/lib/types";
 import type { Bundle, Course, PlanTier } from "@/lib/types";
 import { formatTier } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
 type Hue = "indigo" | "saffron" | "moss" | "coral" | "ocean" | "plum";
-
-function tierCanAccess(user: PlanTier, target: PlanTier): boolean {
-  const rank: Record<PlanTier, number> = { free: 0, basic: 1, advanced: 2 };
-  return rank[user] >= rank[target];
-}
 
 function hueForGradient(g: string | null | undefined): Hue {
   switch (g) {

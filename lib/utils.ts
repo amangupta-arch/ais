@@ -11,9 +11,10 @@ export function cn(...inputs: ClassValue[]): string {
   return out.join(" ");
 }
 
-export function formatTier(tier: "free" | "basic" | "advanced"): string {
-  if (tier === "free")  return "Free";
-  if (tier === "basic") return "Basic";
+export function formatTier(tier: "free" | "basic" | "advanced" | "student"): string {
+  if (tier === "free")    return "Free";
+  if (tier === "basic")   return "Basic";
+  if (tier === "student") return "Student";
   return "Advanced";
 }
 

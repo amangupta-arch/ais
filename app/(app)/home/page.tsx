@@ -6,17 +6,12 @@ import {
   getAllBundles, getAllCourses, getMe, getMyCourseProgress,
 } from "@/lib/supabase/queries";
 import { firstName } from "@/lib/utils";
-import { bundleDescription, bundleTitle, courseSubtitle, courseTitle } from "@/lib/types";
+import { bundleDescription, bundleTitle, courseSubtitle, courseTitle, tierCanAccess } from "@/lib/types";
 import type { Bundle, Course, PlanTier, Persona } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
 type Hue = "indigo" | "saffron" | "moss" | "coral" | "ocean" | "plum";
-
-function tierCanAccess(userTier: PlanTier, courseTier: PlanTier): boolean {
-  const rank: Record<PlanTier, number> = { free: 0, basic: 1, advanced: 2 };
-  return rank[userTier] >= rank[courseTier];
-}
 
 function hueForCategory(cat: string | null | undefined): Hue {
   switch (cat) {

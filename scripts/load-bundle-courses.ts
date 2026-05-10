@@ -133,7 +133,7 @@ function generateBundleSql(
       en: { title: course.title, subtitle, description },
     });
     courseRows.push(
-      `  (v_bundle_id, '${slug}', '${escapeSqlString(courseTranslationsJson)}'::jsonb, 'basic', '${emoji}', '${gradient}', '${difficulty}', ${minutes}, ${orderIndex})`,
+      `  (v_bundle_id, '${slug}', '${escapeSqlString(courseTranslationsJson)}'::jsonb, v_plan_tier, '${emoji}', '${gradient}', '${difficulty}', ${minutes}, ${orderIndex})`,
     );
 
     const lessonValues: string[] = [];
@@ -185,13 +185,18 @@ ${sql};
     )
     .join("\n");
 
+  // v_plan_tier is read from the bundle row at execute time so the
+  // courses inherit the right tier — previously hardcoded to 'basic',
+  // which silently downgraded student/advanced bundles' courses and
+  // broke entitlement gating on /learn/[courseSlug].
   return `-- Bundle: ${bundle.bundle_slug}
 DO $$
 DECLARE
   v_bundle_id uuid;
+  v_plan_tier text;
   v_course_id uuid;
 BEGIN
-  SELECT id INTO v_bundle_id FROM bundles WHERE slug = '${bundle.bundle_slug}';
+  SELECT id, plan_tier INTO v_bundle_id, v_plan_tier FROM bundles WHERE slug = '${bundle.bundle_slug}';
   IF v_bundle_id IS NULL THEN
     RAISE EXCEPTION 'bundle not found: ${bundle.bundle_slug}';
   END IF;

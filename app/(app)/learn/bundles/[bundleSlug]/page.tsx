@@ -25,16 +25,11 @@ import {
   courseSubtitle,
   courseTitle,
 } from "@/lib/types";
-import type { Course, Lesson, PlanTier, UserCourseProgress } from "@/lib/types";
+import { tierCanAccess, type Course, type Lesson, type PlanTier, type UserCourseProgress } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
 type Hue = "indigo" | "moss" | "saffron" | "coral" | "ocean" | "plum";
-
-function tierCanAccess(user: PlanTier, target: PlanTier): boolean {
-  const rank: Record<PlanTier, number> = { free: 0, basic: 1, advanced: 2 };
-  return rank[user] >= rank[target];
-}
 
 function hueForGradient(g: string | null | undefined): Hue {
   switch (g) {
