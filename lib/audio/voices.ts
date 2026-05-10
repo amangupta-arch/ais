@@ -30,6 +30,27 @@ export const VOICE_IDS: Record<string, string | null> = {
 
 export const TTS_MODEL = "eleven_multilingual_v2";
 
+/** Per-language ElevenLabs model selection.
+ *
+ *  Flash v2.5 charges ~0.5 credit/char vs 1 credit/char for
+ *  multilingual_v2 — half the spend. We use it for languages where
+ *  flash quality is known-good (Latin script). Indic + Hinglish stay
+ *  on multilingual_v2 because flash mispronounces Devanagari and
+ *  code-switched text noticeably more often, and pronunciation matters
+ *  for instructional narration.
+ *
+ *  Languages not listed here fall through to TTS_MODEL.
+ */
+const MODEL_BY_LANGUAGE: Record<string, string> = {
+  en: "eleven_flash_v2_5",
+  fr: "eleven_flash_v2_5",
+  es: "eleven_flash_v2_5",
+};
+
 export function voiceIdFor(language: string): string | null {
   return VOICE_IDS[language] ?? null;
+}
+
+export function modelFor(language: string): string {
+  return MODEL_BY_LANGUAGE[language] ?? TTS_MODEL;
 }
