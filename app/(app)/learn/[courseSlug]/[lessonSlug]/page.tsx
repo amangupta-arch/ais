@@ -76,7 +76,19 @@ export default async function LessonPage({
 
   // ElevenLabs mp3 manifest for this (lesson, language) — when present
   // the player plays these urls instead of using the browser TTS.
-  const audioByTurn = await getLessonAudioManifest(lesson.id, preferredLang);
+  //
+  // Audio language must match the TEXT that's actually on screen. When
+  // the learner picks Hindi but no Hindi translation exists, we fall
+  // back to canonical (English) text above; without this mirror, the
+  // player would ask for Hindi audio, get nothing, and silently switch
+  // to browser TTS — which sounds noticeably worse than the English
+  // ElevenLabs narration of the same content. So: if we showed
+  // translated text, ask for translated audio; if we showed English
+  // text, ask for English audio.
+  const showingTranslatedText =
+    preferredLang !== "en" && !!translatedTurns && translatedTurns.length > 0;
+  const audioLang = showingTranslatedText ? preferredLang : "en";
+  const audioByTurn = await getLessonAudioManifest(lesson.id, audioLang);
 
   return (
     <LessonPlayer

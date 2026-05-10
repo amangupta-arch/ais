@@ -50,6 +50,40 @@ function readFileAsDataUrl(file: File): Promise<string> {
   });
 }
 
+// Compress a camera JPEG down to ~1280px on the longest side at 0.85
+// quality. Phone cameras output 3-6 MB shots; base64 in JSON pushes
+// past Vercel's 4.5 MB request body limit, which is why uploads were
+// returning "Request Entity Too Large" (and triggering an opaque JSON
+// parse error on the client). 1280px is plenty for handwriting that
+// Claude vision needs to read.
+async function compressImage(dataUrl: string, maxDim = 1280, quality = 0.85): Promise<string> {
+  const img = await new Promise<HTMLImageElement>((resolve, reject) => {
+    const el = new Image();
+    el.onload = () => resolve(el);
+    el.onerror = () => reject(new Error("Could not decode image."));
+    el.src = dataUrl;
+  });
+
+  const { naturalWidth: w, naturalHeight: h } = img;
+  if (!w || !h) return dataUrl;
+
+  const scale = Math.min(1, maxDim / Math.max(w, h));
+  const targetW = Math.round(w * scale);
+  const targetH = Math.round(h * scale);
+
+  const canvas = document.createElement("canvas");
+  canvas.width = targetW;
+  canvas.height = targetH;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return dataUrl;
+  ctx.drawImage(img, 0, 0, targetW, targetH);
+
+  // toDataURL with image/jpeg is consistently smaller than png for
+  // photographic content. If the source was png/transparent, the white
+  // canvas background is fine — handwriting on paper is opaque.
+  return canvas.toDataURL("image/jpeg", quality);
+}
+
 export default function MathQuizClient({ questions }: { questions: QuizQuestion[] }) {
   const [language, setLanguage] = useState<PreferredLanguage>("en");
   const [phase, setPhase] = useState<Phase>("question");
@@ -88,8 +122,9 @@ export default function MathQuizClient({ questions }: { questions: QuizQuestion[
     if (!file) return;
     setErrorMsg(null);
     try {
-      const url = await readFileAsDataUrl(file);
-      setImageDataUrl(url);
+      const raw = await readFileAsDataUrl(file);
+      const compressed = await compressImage(raw);
+      setImageDataUrl(compressed);
     } catch (e) {
       setErrorMsg(e instanceof Error ? e.message : "Could not read image.");
     }
@@ -111,9 +146,24 @@ export default function MathQuizClient({ questions }: { questions: QuizQuestion[
           image: imageDataUrl,
         }),
       });
-      const data: GraderResult & { error?: string } = await res.json();
-      if (!res.ok || data.error) {
-        throw new Error(data.error ?? `Grader returned ${res.status}.`);
+
+      // Read as text first so we can surface a friendly error when the
+      // upstream returns plain text (e.g. Vercel's 413 "Request Entity
+      // Too Large" or a gateway 502) instead of throwing the cryptic
+      // JSON.parse SyntaxError.
+      const bodyText = await res.text();
+      let data: (GraderResult & { error?: string }) | null = null;
+      try {
+        data = bodyText ? JSON.parse(bodyText) : null;
+      } catch {
+        const friendly =
+          res.status === 413
+            ? "That photo is too large. Try snapping it again."
+            : `Grader returned ${res.status}: ${bodyText.slice(0, 120)}`;
+        throw new Error(friendly);
+      }
+      if (!res.ok || !data || data.error) {
+        throw new Error(data?.error ?? `Grader returned ${res.status}.`);
       }
       setResult({
         isCorrect: Boolean(data.isCorrect),
