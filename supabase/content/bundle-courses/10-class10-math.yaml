@@ -1,0 +1,37 @@
+# Class 10 Mathematics — Chapter 1: Real Numbers (NCERT, India).
+# First school-curriculum bundle on the AIS platform. Lives on the new
+# 'student' plan tier added in migration 0014.
+#
+# Loader: scripts/load-bundle-courses.ts (slugs are derived from titles
+# via slugify() — keep titles spelled so they yield the slugs the
+# product team requested).
+# Bundle slug must match the row in `bundles` (seeded in migration 0014).
+#
+# Class/subject metadata lives in bundles.tags ('class:10',
+# 'subject:mathematics', 'curriculum') — see migration 0014.
+
+bundles:
+  - bundle_slug: b-class-10-math-ch01-real-numbers
+    courses:
+      - title: "Prime Factorization"
+        outcome: "Student can break any whole number into its prime factors and explain why that decomposition is unique"
+        lessons:
+          - "Why Primes Are the Atoms of Numbers"
+          - "The Fundamental Theorem of Arithmetic"
+          - "Using Primes to Prove Things"
+
+      - title: "HCF and LCM"
+        outcome: "Student computes HCF and LCM via prime factorization, applies the product rule, and solves real-world cycle problems"
+        lessons:
+          - "HCF via Prime Factorization"
+          - "LCM via Prime Factorization"
+          - "The HCF–LCM Product Rule"
+          - "Cycles, Meetings, and Real-World HCF/LCM"
+
+      - title: "Irrational Numbers and Proofs"
+        outcome: "Student can identify irrational numbers, follow a proof by contradiction, and reason about combinations of rationals and irrationals"
+        lessons:
+          - "What Makes a Number Irrational"
+          - "Proof by Contradiction: The Secret Weapon"
+          - "Proving Root 2 is Irrational"
+          - "Combining Rationals and Irrationals"

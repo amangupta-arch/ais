@@ -5,7 +5,9 @@ insert into plans (id, name, tagline, description, price_inr, price_usd, billing
   ('basic',    'Basic',    'Build the habit',      'The full tool-literacy ladder — ChatGPT, Canva, Gemini, and 40 more.', 199, 2.99, 30, 9,  1,
     '["9-day streak goal","43 tool mastery courses","Unlimited daily lessons","Streak freezes x2","League access"]'::jsonb),
   ('advanced', 'Advanced', 'Become the operator',  'Deep courses on the stacks professionals actually use.',              499, 6.99, 60, 14, 2,
-    '["14-day streak goal","22 mastery programmes","All Basic perks","Priority new courses","All bonus bundles unlocked","Certificate of completion"]'::jsonb);
+    '["14-day streak goal","22 mastery programmes","All Basic perks","Priority new courses","All bonus bundles unlocked","Certificate of completion"]'::jsonb),
+  ('student',  'Student',  'School, simplified',   'Curriculum-aligned lessons for school students — math, science, and more, taught the AIS way.', 99, 1.49, 30, 5, 3,
+    '["Curriculum-aligned chapters","Class 10 Math + Science","Daily 1 lesson","Streak + XP"]'::jsonb);
 
 -- ACHIEVEMENTS
 insert into achievements (id, title, description, icon, category, xp_reward) values
@@ -129,6 +131,12 @@ insert into bundles (slug, plan_tier, emoji, cover_gradient, order_index, tags, 
   ('b-first-step-profit',         'advanced', '💰', 'moss',  341, '{utility}', '{"en":{"title":"First Step to Profit with AI","description":"Find your first paying use case."}}'::jsonb),
   ('b-online-income',             'advanced', '🌐', 'ember', 342, '{utility}', '{"en":{"title":"AI Powered Online Income Strategies","description":"Multiple online income engines, AI-leveraged."}}'::jsonb),
   ('b-parent-school-result',      'advanced', '👨‍👧', 'paper', 343, '{utility}', '{"en":{"title":"Parent''s AI Guide For Better School Result of Children","description":"Day-to-day AI rituals for academic improvement."}}'::jsonb);
+
+-- BUNDLES — STUDENT TIER (school curriculum, class 10 first)
+-- Tagged class:N + subject:X + curriculum so future filtering pivots on
+-- tags rather than needing a fresh schema column per dimension.
+insert into bundles (slug, plan_tier, emoji, cover_gradient, order_index, tags, translations) values
+  ('b-class-10-math-ch01-real-numbers', 'student', '🔢', 'paper', 400, '{class:10,subject:mathematics,curriculum}', '{"en":{"title":"Class 10 Math · Ch.1 Real Numbers","description":"Master prime factorization, HCF/LCM, and irrational numbers — the building blocks of NCERT Class 10 Real Numbers."}}'::jsonb);
 
 -- COURSES — FREE TIER (8 EN orphan courses)
 -- These 8 slugs are the only courses that live outside any bundle.
