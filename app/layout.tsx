@@ -38,12 +38,32 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+// Resolve the canonical site URL once at module load. Falls back to
+// the production domain so social cards / canonical links keep working
+// during local dev too. NEXT_PUBLIC_APP_URL is set in Vercel env (and
+// .env.example), so production stays in sync if we move domains again.
+const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://myaisetu.com";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: { default: "AIS — a daily AI tutor", template: "%s · AIS" },
   description: "Ten minutes a day. Real AI skill, in short conversations with a tutor that remembers you.",
   manifest: "/manifest.webmanifest",
   applicationName: "AIS",
   appleWebApp: { capable: true, title: "AIS", statusBarStyle: "default" },
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    siteName: "AIS",
+    title: "AIS — a daily AI tutor",
+    description: "Ten minutes a day. Real AI skill, in short conversations with a tutor that remembers you.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AIS — a daily AI tutor",
+    description: "Ten minutes a day. Real AI skill, in short conversations with a tutor that remembers you.",
+  },
   icons: {
     icon: [
       { url: "/icons/icon-192.svg", type: "image/svg+xml", sizes: "192x192" },
