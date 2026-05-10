@@ -17,6 +17,7 @@
  */
 
 import { NextResponse } from "next/server";
+import * as Sentry from "@sentry/nextjs";
 import { createClient as createServiceClient } from "@supabase/supabase-js";
 
 import { submitLessonYaml } from "@/app/update-yaml/actions";
@@ -224,17 +225,32 @@ export async function POST(req: Request) {
           );
         }
 
-        // Generate.
+        // Generate. Wrapped in a Sentry span so the Performance view
+        // shows wall-clock time per language — handy for spotting which
+        // language Anthropic is slowest on (Punjabi has been a suspect).
         step(
           `calling ${GENERATOR_MODEL} (${language === "en" ? "fresh generation" : `${language} translation`})…`,
         );
-        const gen = await generateLessonYaml({
-          entry,
-          language,
-          enReference,
-          customInstructions: customInstructions || null,
-          priorContext,
-        });
+        const gen = await Sentry.startSpan(
+          {
+            name: "anthropic.generateLessonYaml",
+            op: "ai.generate",
+            attributes: {
+              language,
+              course_slug: entry.courseSlug,
+              lesson_slug: entry.lessonSlug,
+              model: GENERATOR_MODEL,
+            },
+          },
+          () =>
+            generateLessonYaml({
+              entry,
+              language,
+              enReference,
+              customInstructions: customInstructions || null,
+              priorContext,
+            }),
+        );
         if (!gen.ok) {
           await finalize({ status: "failed", attempts: gen.attempts, error: gen.message });
           result({
@@ -305,12 +321,24 @@ export async function POST(req: Request) {
         // ---------- AUDIO PIPELINE ----------
         let audioSummary: Record<string, unknown> | null = null;
         if (lessonId) {
-          const audio = await runAudioPipeline({
-            lessonId,
-            language,
-            yamlText: gen.yamlText,
-            onProgress: (e: PipelineProgress) => send(e),
-          });
+          const audio = await Sentry.startSpan(
+            {
+              name: "elevenlabs.runAudioPipeline",
+              op: "ai.audio",
+              attributes: {
+                language,
+                course_slug: entry.courseSlug,
+                lesson_slug: entry.lessonSlug,
+              },
+            },
+            () =>
+              runAudioPipeline({
+                lessonId,
+                language,
+                yamlText: gen.yamlText,
+                onProgress: (e: PipelineProgress) => send(e),
+              }),
+          );
           audioSummary = {
             ok: audio.ok,
             total: audio.total,
@@ -354,6 +382,17 @@ export async function POST(req: Request) {
         controller.close();
       } catch (e) {
         const msg = e instanceof Error ? e.message : String(e);
+        // Tag every capture with the (course, lesson, language) triple so
+        // failures group cleanly in Sentry — Punjabi vs English vs Hindi
+        // each get their own issue stream.
+        Sentry.captureException(e, {
+          tags: {
+            route: "yaml-jobs/generate",
+            language,
+            course_slug: entry.courseSlug,
+            lesson_slug: entry.lessonSlug,
+          },
+        });
         send({ kind: "step", at: new Date().toISOString(), message: `unexpected: ${msg}` });
         result({ ok: false, stage: "unexpected", message: msg });
         controller.close();
