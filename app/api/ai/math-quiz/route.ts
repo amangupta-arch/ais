@@ -82,47 +82,73 @@ function buildSystemPrompt(language: PreferredLanguage, equation: string, expect
     `1. Read the handwritten work in the image carefully.`,
     `2. Decide if their final answer matches the correct answer.`,
     `3. If wrong, identify the SPECIFIC mistake (sign error, arithmetic slip, dropped step, mis-applied operation, etc.).`,
-    `4. If the image is unreadable / blank / not math, set isCorrect to false and explain you couldn't read the work.`,
+    `4. If the image is unreadable / blank / not math, set isCorrect to false and use the feedback to explain you couldn't read the work.`,
     ``,
     `Respond ONLY in ${langName}. Be warm but direct. Keep "feedback" under 40 words. Each entry in "mistakes" should be one short sentence.`,
     ``,
-    `Output exactly one JSON object with this schema, and nothing else (no prose, no markdown fences, no commentary):`,
-    `{`,
-    `  "isCorrect": boolean,`,
-    `  "detectedAnswer": number or null,`,
-    `  "feedback": string,`,
-    `  "mistakes": [string, ...]`,
-    `}`,
+    `Use the submit_grade tool to return your assessment. Do not produce any other output.`,
   ].join("\n");
 }
 
-function safeParse(text: string): GraderResult | null {
-  // Claude usually obeys "no markdown fences" but it's free, so strip them
-  // defensively before parsing.
-  const stripped = text
-    .trim()
-    .replace(/^```(?:json)?\s*/i, "")
-    .replace(/\s*```$/i, "")
-    .trim();
-  try {
-    const parsed = JSON.parse(stripped);
+// Force structured output via tool_use. Earlier we asked Claude to
+// return raw JSON in text and parsed it ourselves — that occasionally
+// failed when the model wrapped the JSON in prose or got truncated
+// mid-object on longer-script languages. tool_use makes the schema
+// non-negotiable and removes the parsing layer entirely.
+const GRADE_TOOL: Anthropic.Tool = {
+  name: "submit_grade",
+  description:
+    "Submit the assessment of the student's handwritten math work. Always call this exactly once.",
+  input_schema: {
+    type: "object",
+    properties: {
+      isCorrect: {
+        type: "boolean",
+        description: "true if the student's final answer matches the correct answer.",
+      },
+      detectedAnswer: {
+        type: ["number", "null"],
+        description:
+          "The numeric value of x the student wrote down, or null if you can't read it.",
+      },
+      feedback: {
+        type: "string",
+        description:
+          "One short paragraph (≤ 40 words) of warm, specific feedback in the required language.",
+      },
+      mistakes: {
+        type: "array",
+        items: { type: "string" },
+        description:
+          "If isCorrect is false, one short sentence per mistake. Empty array when correct.",
+      },
+    },
+    required: ["isCorrect", "detectedAnswer", "feedback", "mistakes"],
+  },
+};
+
+function extractToolResult(response: Anthropic.Message): GraderResult | null {
+  for (const block of response.content) {
+    if (block.type !== "tool_use" || block.name !== "submit_grade") continue;
+    const input = block.input as {
+      isCorrect?: unknown;
+      detectedAnswer?: unknown;
+      feedback?: unknown;
+      mistakes?: unknown;
+    };
     if (
-      typeof parsed === "object" &&
-      parsed !== null &&
-      typeof parsed.isCorrect === "boolean" &&
-      typeof parsed.feedback === "string" &&
-      Array.isArray(parsed.mistakes)
+      typeof input.isCorrect === "boolean" &&
+      typeof input.feedback === "string" &&
+      Array.isArray(input.mistakes)
     ) {
       return {
-        isCorrect: parsed.isCorrect,
+        isCorrect: input.isCorrect,
         detectedAnswer:
-          typeof parsed.detectedAnswer === "number" ? parsed.detectedAnswer : null,
-        feedback: parsed.feedback,
-        mistakes: parsed.mistakes.filter((m: unknown): m is string => typeof m === "string"),
+          typeof input.detectedAnswer === "number" ? input.detectedAnswer : null,
+        feedback: input.feedback,
+        mistakes: input.mistakes.filter((m): m is string => typeof m === "string"),
       };
     }
-  } catch {
-    // fallthrough
   }
   return null;
 }
@@ -164,8 +190,13 @@ export async function POST(request: NextRequest) {
     const anthropic = new Anthropic({ apiKey });
     const response = await anthropic.messages.create({
       model: "claude-sonnet-4-6",
-      max_tokens: 600,
+      // 1024 leaves comfortable headroom for longer-script languages
+      // (Devanagari, Tamil, Telugu) where the same word costs more
+      // tokens; the previous 600 occasionally truncated mid-output.
+      max_tokens: 1024,
       system: buildSystemPrompt(language, equation, expectedAnswer),
+      tools: [GRADE_TOOL],
+      tool_choice: { type: "tool", name: "submit_grade" },
       messages: [
         {
           role: "user",
@@ -176,24 +207,22 @@ export async function POST(request: NextRequest) {
             },
             {
               type: "text",
-              text: `Equation: ${equation}\nCorrect answer: x = ${expectedAnswer}\nGrade the student's working in the image and respond in the required JSON shape.`,
+              text: `Equation: ${equation}\nCorrect answer: x = ${expectedAnswer}\nGrade the student's working in the image and call submit_grade with your assessment.`,
             },
           ],
         },
       ],
     });
 
-    const text = response.content
-      .filter((c): c is Anthropic.TextBlock => c.type === "text")
-      .map((c) => c.text)
-      .join("\n");
-
-    const result = safeParse(text);
+    const result = extractToolResult(response);
     if (!result) {
+      // Genuinely shouldn't happen with tool_choice forced, but if the
+      // model ever stops without calling the tool we surface enough
+      // detail for debugging without dumping the whole response.
       return NextResponse.json(
         {
           error: "Could not parse model response.",
-          raw: text.slice(0, 500),
+          stopReason: response.stop_reason,
         },
         { status: 502 },
       );
