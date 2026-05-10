@@ -87,6 +87,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${geist.variable} ${geistMono.variable} ${dmSans.variable} ${fraunces.variable} ${jetbrainsMono.variable}`}
     >
+      <head>
+        {/* Noto Sans Devanagari / Tamil / Bengali for the landing
+            page's multilingual content. Loaded via display=swap so
+            English text renders immediately and the Indic scripts
+            swap in once the font lands. preconnect first so the TLS
+            handshake happens in parallel with HTML parsing. */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&family=Noto+Sans+Devanagari:wght@400;500;700&family=Noto+Sans+Tamil:wght@400;500;700&display=swap"
+        />
+      </head>
       {/* `lm` scopes the Lumen design tokens to the entire app — any
           page can now use lm-* classes. Pages that haven't been
           migrated to Lumen visuals yet still keep their existing
