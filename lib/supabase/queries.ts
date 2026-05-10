@@ -51,6 +51,63 @@ export async function getLessonAudioManifest(
   return out;
 }
 
+/** A subject (e.g. Mathematics) with the curriculum bundles tagged
+ *  for that subject + the requested class, in `order_index` order. */
+export type StudentSubject = {
+  /** Tag value with the `subject:` prefix stripped, e.g. "mathematics". */
+  key: string;
+  /** Display label for the heading, e.g. "Mathematics". */
+  label: string;
+  bundles: Bundle[];
+};
+
+/** Returns curriculum bundles for the given school class, grouped and
+ *  ordered by subject. Filters strictly on `tags @> ['class:N','curriculum']`,
+ *  so adding a non-curriculum bundle with a `class:N` tag (we don't do
+ *  this today, but a future tag could collide) won't leak into the
+ *  student dashboard.
+ *
+ *  Subject buckets come from each bundle's `subject:*` tag. Bundles
+ *  with no `subject:*` tag fall into a single "general" bucket so we
+ *  never silently drop content. */
+export async function getStudentBundles(schoolClass: number): Promise<StudentSubject[]> {
+  const supabase = await createClient();
+  const classTag = `class:${schoolClass}`;
+  const { data } = await supabase
+    .from("bundles")
+    .select("*")
+    .contains("tags", [classTag, "curriculum"])
+    .order("order_index", { ascending: true });
+
+  const bySubject = new Map<string, Bundle[]>();
+  for (const b of (data ?? []) as Bundle[]) {
+    const subjectTag = (b.tags ?? []).find((t) => t.startsWith("subject:"));
+    const key = subjectTag ? subjectTag.slice("subject:".length) : "general";
+    const arr = bySubject.get(key) ?? [];
+    arr.push(b);
+    bySubject.set(key, arr);
+  }
+
+  const subjects: StudentSubject[] = Array.from(bySubject.entries()).map(([key, bundles]) => ({
+    key,
+    label: humanizeSubject(key),
+    bundles,
+  }));
+  // Stable order across requests: alphabetical by key. We can swap to
+  // an explicit subject_order column later if a particular sequence
+  // becomes important (e.g. Math before Science before English).
+  subjects.sort((a, b) => a.key.localeCompare(b.key));
+  return subjects;
+}
+
+function humanizeSubject(key: string): string {
+  return key
+    .split(/[-_\s]+/)
+    .filter(Boolean)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+}
+
 export async function getMe(): Promise<{
   user: { id: string; email: string | null } | null;
   profile: Profile | null;

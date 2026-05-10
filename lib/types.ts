@@ -91,6 +91,9 @@ export type Profile = {
   daily_goal_minutes: DailyGoalMinutes;
   daily_reminder_time: string;
   preferred_tutor_persona: Persona["id"];
+  /** K-12 grade for student-tier learners. Null for adult / non-school
+   *  users; the /student dashboard shows an inline picker when null. */
+  school_class: number | null;
   onboarding_completed_at: string | null;
   created_at: string;
   updated_at: string;
