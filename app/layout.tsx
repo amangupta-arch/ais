@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { DM_Sans, Fraunces, JetBrains_Mono, Geist, Geist_Mono } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import "./lumen.css";
 
@@ -69,7 +70,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           page can now use lm-* classes. Pages that haven't been
           migrated to Lumen visuals yet still keep their existing
           Tailwind styling (which doesn't reference Lumen tokens). */}
-      <body className="lm">{children}</body>
+      <body className="lm">
+        {children}
+        <SpeedInsights />
+      </body>
     </html>
   );
 }
