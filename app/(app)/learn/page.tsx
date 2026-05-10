@@ -22,10 +22,10 @@ function hueForGradient(g: string | null | undefined): Hue {
 }
 
 export default async function LearnPage() {
-  const { user, profile, planId } = await getMe();
+  const { user, profile, planIds } = await getMe();
   if (!user) redirect("/login");
 
-  const tier: PlanTier = (planId as PlanTier) ?? "free";
+  const tiers: PlanTier[] = planIds;
   const lang = profile?.preferred_language ?? "en";
 
   const [courses, bundles] = await Promise.all([getAllCourses(), getAllBundles()]);
@@ -62,7 +62,7 @@ export default async function LearnPage() {
           title="Free"
           subtitle="Eight starter courses. No card, no pressure."
           courses={freeCourses}
-          tier={tier}
+          tiers={tiers}
           lang={lang}
         />
 
@@ -71,7 +71,7 @@ export default async function LearnPage() {
           title="Basic"
           subtitle={`${basicBundles.length} bundles — daily-use AI tools and life utilities.`}
           bundles={basicBundles}
-          tier={tier}
+          tiers={tiers}
           lang={lang}
         />
 
@@ -80,7 +80,7 @@ export default async function LearnPage() {
           title="Advanced"
           subtitle={`${advancedBundles.length} mastery bundles — depth, not breadth.`}
           bundles={advancedBundles}
-          tier={tier}
+          tiers={tiers}
           lang={lang}
         />
       </div>
@@ -89,13 +89,13 @@ export default async function LearnPage() {
 }
 
 function CoursesSection({
-  number, title, subtitle, courses, tier, lang,
+  number, title, subtitle, courses, tiers, lang,
 }: {
   number: string;
   title: string;
   subtitle?: string;
   courses: Course[];
-  tier: PlanTier;
+  tiers: PlanTier[];
   lang: string;
 }) {
   if (courses.length === 0) return null;
@@ -121,7 +121,7 @@ function CoursesSection({
             key={c.id}
             course={c}
             hue="indigo"
-            locked={!tierCanAccess(tier, c.plan_tier)}
+            locked={!tierCanAccess(tiers, c.plan_tier)}
             lang={lang}
           />
         ))}
@@ -131,13 +131,13 @@ function CoursesSection({
 }
 
 function BundlesSection({
-  number, title, subtitle, bundles, tier, lang,
+  number, title, subtitle, bundles, tiers, lang,
 }: {
   number: string;
   title: string;
   subtitle?: string;
   bundles: Bundle[];
-  tier: PlanTier;
+  tiers: PlanTier[];
   lang: string;
 }) {
   if (bundles.length === 0) return null;
@@ -162,7 +162,7 @@ function BundlesSection({
           <BundleCardLumen
             key={b.id}
             bundle={b}
-            locked={!tierCanAccess(tier, b.plan_tier)}
+            locked={!tierCanAccess(tiers, b.plan_tier)}
             lang={lang}
           />
         ))}

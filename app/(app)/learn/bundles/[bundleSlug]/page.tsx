@@ -57,15 +57,15 @@ export default async function BundleDetailPage({
   params: Promise<{ bundleSlug: string }>;
 }) {
   const { bundleSlug } = await params;
-  const { user, profile, planId } = await getMe();
+  const { user, profile, planIds } = await getMe();
   if (!user) redirect("/login");
 
   const { bundle, courses } = await getBundleBySlug(bundleSlug);
   if (!bundle) notFound();
 
   const lang = profile?.preferred_language ?? "en";
-  const tier: PlanTier = (planId as PlanTier) ?? "free";
-  const bundleLocked = !tierCanAccess(tier, bundle.plan_tier);
+  const tiers: PlanTier[] = planIds;
+  const bundleLocked = !tierCanAccess(tiers, bundle.plan_tier);
   const heroHue = hueForGradient(bundle.cover_gradient);
 
   const progress = await getMyCourseProgress();
@@ -91,7 +91,7 @@ export default async function BundleDetailPage({
     courses.find(
       (c) =>
         !progByCourse.get(c.id)?.completed_at &&
-        tierCanAccess(tier, c.plan_tier) &&
+        tierCanAccess(tiers, c.plan_tier) &&
         !bundleLocked,
     ) ??
     null;
@@ -364,7 +364,7 @@ export default async function BundleDetailPage({
                     course={c}
                     index={i}
                     bundleLocked={bundleLocked}
-                    tier={tier}
+                    tiers={tiers}
                     progress={progByCourse.get(c.id) ?? null}
                     isCurrent={currentCourse?.id === c.id}
                     lang={lang}
@@ -550,17 +550,17 @@ function FeatureRow({
 }
 
 function CourseRow({
-  course, index, bundleLocked, tier, progress, isCurrent, lang,
+  course, index, bundleLocked, tiers, progress, isCurrent, lang,
 }: {
   course: Course;
   index: number;
   bundleLocked: boolean;
-  tier: PlanTier;
+  tiers: PlanTier[];
   progress: UserCourseProgress | null;
   isCurrent: boolean;
   lang: string;
 }) {
-  const courseLocked = bundleLocked || !tierCanAccess(tier, course.plan_tier);
+  const courseLocked = bundleLocked || !tierCanAccess(tiers, course.plan_tier);
   const completed = progress?.status === "completed";
   const pct = progress?.progress_pct ?? 0;
   const sub = courseSubtitle(course, lang);

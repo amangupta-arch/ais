@@ -13,15 +13,15 @@ export default async function CourseDetailPage({
   params: Promise<{ courseSlug: string }>;
 }) {
   const { courseSlug } = await params;
-  const { user, profile, planId, streak } = await getMe();
+  const { user, profile, planIds, streak } = await getMe();
   if (!user) redirect("/login");
 
   const { course, lessons } = await getCourseBySlug(courseSlug);
   if (!course) notFound();
 
   const lang = profile?.preferred_language ?? "en";
-  const tier: PlanTier = (planId as PlanTier) ?? "free";
-  const locked = !tierCanAccess(tier, course.plan_tier);
+  const tiers: PlanTier[] = planIds;
+  const locked = !tierCanAccess(tiers, course.plan_tier);
   const progress = await getMyLessonProgress(course.id);
   const progByLesson: Record<string, UserLessonProgress> = Object.fromEntries(
     progress.map((p) => [p.lesson_id, p]),

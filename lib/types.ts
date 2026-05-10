@@ -31,19 +31,25 @@ export const LANGUAGES: { code: PreferredLanguage; native: string; english: stri
 export type DailyGoalMinutes = 5 | 10 | 20 | 30;
 export type PlanTier = "free" | "basic" | "advanced" | "student";
 
-/** Whether `user`'s plan grants access to content gated at `target`.
+/** Whether ANY of the learner's active plans grants access to content
+ *  gated at `target`.
  *
  *  Two tracks:
  *    AI-tool track: free ⊂ basic ⊂ advanced (rank-ordered)
  *    School track:  free ⊂ student          (parallel — advanced does NOT
  *                   auto-unlock student; it's a separate product)
  *
- *  Free content is always accessible. Same-tier match always passes.
- *  Cross-track (e.g. basic user opening a student-tier course) is denied. */
-export function tierCanAccess(user: PlanTier, target: PlanTier): boolean {
+ *  Learners can hold multiple active subscriptions (e.g. advanced + student),
+ *  so this takes a list of tiers and returns true if any of them clears the
+ *  per-tier rule. `userTiers` should always include "free" implicitly — the
+ *  caller does that today inside getMe(), but defensively we treat free
+ *  content as always accessible regardless. */
+export function tierCanAccess(userTiers: readonly PlanTier[], target: PlanTier): boolean {
   if (target === "free") return true;
-  if (user === target) return true;
-  if (user === "advanced" && target === "basic") return true;
+  for (const t of userTiers) {
+    if (t === target) return true;
+    if (t === "advanced" && target === "basic") return true;
+  }
   return false;
 }
 
