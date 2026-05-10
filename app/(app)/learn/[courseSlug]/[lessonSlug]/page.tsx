@@ -5,7 +5,7 @@ import { Display } from "@/components/ui/Display";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { LessonPlayer } from "./LessonPlayer";
 
-import { getLessonByCourseAndSlug, getMe } from "@/lib/supabase/queries";
+import { getLessonAudioManifest, getLessonByCourseAndSlug, getMe } from "@/lib/supabase/queries";
 import type { Persona } from "@/lib/types";
 import { lessonTitle, lessonSubtitle } from "@/lib/types";
 import { localizeTurn, type LessonTurn } from "@/lib/turns";
@@ -74,6 +74,10 @@ export default async function LessonPage({
   const sameLanguage = progressLang === preferredLang;
   const safeInitialTurnIndex = sameLanguage ? (progress?.current_turn_index ?? 0) : 0;
 
+  // ElevenLabs mp3 manifest for this (lesson, language) — when present
+  // the player plays these urls instead of using the browser TTS.
+  const audioByTurn = await getLessonAudioManifest(lesson.id, preferredLang);
+
   return (
     <LessonPlayer
       courseSlug={courseSlug}
@@ -88,6 +92,7 @@ export default async function LessonPage({
       initialTurnIndex={safeInitialTurnIndex}
       alreadyCompleted={progress?.status === "completed"}
       language={preferredLang}
+      audioByTurn={audioByTurn}
     />
   );
 }

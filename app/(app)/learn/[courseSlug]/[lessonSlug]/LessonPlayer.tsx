@@ -40,6 +40,10 @@ type Props = {
    *  writes so a saved turn index from another language doesn't get
    *  applied to a translated turn list of a different length. */
   language: string;
+  /** Pre-generated ElevenLabs mp3 URLs keyed by lesson_turns.order_index.
+   *  When the active turn has an entry here, the player plays those
+   *  urls instead of falling back to browser TTS. */
+  audioByTurn?: Record<number, string[]>;
 };
 
 type ChatMessage = { role: "user" | "assistant"; content: string };
@@ -57,6 +61,7 @@ export function LessonPlayer(props: Props) {
     courseSlug, lessonTitle, lessonSubtitle, lessonXpReward,
     courseId, lessonId, turns, personaId,
     initialTurnIndex, alreadyCompleted, language,
+    audioByTurn,
   } = props;
 
   const persona = useMemo(() => personaById(personaId), [personaId]);
@@ -132,25 +137,46 @@ export function LessonPlayer(props: Props) {
   // dedupe key it used blocked re-speaks when the user toggled audio on
   // mid-lesson. Tracks (turnId, enabled) so re-renders don't re-speak,
   // but a real change (new turn, or audio just turned on) does.
+  //
+  // Prefer the pre-generated ElevenLabs mp3s from `audioByTurn` when
+  // present (any turn type) — they're keyed by lesson_turns.order_index.
+  // Fall back to browser TTS only for tutor_message turns when no
+  // mp3 manifest entry exists.
   const lastSpokenSigRef = useRef<string | null>(null);
   useEffect(() => {
     const idx = revealedCount - 1;
     const active = turns[idx];
-    if (!active || active.turn_type !== "tutor_message") return;
-    const sig = `${active.id}::${audio.enabled ? 1 : 0}`;
+    if (!active) return;
+    const clipUrls = audioByTurn?.[active.order_index] ?? [];
+    const hasClips = clipUrls.length > 0;
+    const isTutor = active.turn_type === "tutor_message";
+    if (!hasClips && !isTutor) return;
+
+    const sig = `${active.id}::${audio.enabled ? 1 : 0}::${hasClips ? "mp3" : "tts"}`;
     if (lastSpokenSigRef.current === sig) return;
     lastSpokenSigRef.current = sig;
+
     if (!audio.enabled) {
       audio.cancel();
       return;
     }
-    // Wait one tick for the typing-dots → text transition to settle.
+
+    // Wait one tick for typing-dots → text transition (tutor only).
+    const wait = isTutor
+      ? (active.turn_type === "tutor_message"
+          ? (active.content.typing_ms ?? 1000) + 200
+          : 0)
+      : 200;
     const t = setTimeout(() => {
       audio.cancel();
-      audio.speak(active.content.text);
-    }, (active.content.typing_ms ?? 1000) + 200);
+      if (hasClips) {
+        audio.playClips(clipUrls);
+      } else if (active.turn_type === "tutor_message") {
+        audio.speak(active.content.text);
+      }
+    }, wait);
     return () => clearTimeout(t);
-  }, [revealedCount, turns, audio]);
+  }, [revealedCount, turns, audio, audioByTurn]);
 
   const goNext = useCallback(
     (opts?: { xp?: number; source?: string }) => {
