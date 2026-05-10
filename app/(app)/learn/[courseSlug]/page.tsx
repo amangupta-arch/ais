@@ -1,16 +1,11 @@
 import { notFound, redirect } from "next/navigation";
 
 import { getCourseBySlug, getMe, getMyLessonProgress } from "@/lib/supabase/queries";
-import type { PlanTier, UserLessonProgress } from "@/lib/types";
+import { tierCanAccess, type PlanTier, type UserLessonProgress } from "@/lib/types";
 
 import CourseDetailView from "./CourseDetailView";
 
 export const dynamic = "force-dynamic";
-
-function tierCanAccess(user: PlanTier, course: PlanTier): boolean {
-  const rank: Record<PlanTier, number> = { free: 0, basic: 1, advanced: 2 };
-  return rank[user] >= rank[course];
-}
 
 export default async function CourseDetailPage({
   params,

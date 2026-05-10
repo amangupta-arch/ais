@@ -29,7 +29,23 @@ export const LANGUAGES: { code: PreferredLanguage; native: string; english: stri
   { code: "es",       native: "Español",    english: "Spanish"  },
 ];
 export type DailyGoalMinutes = 5 | 10 | 20 | 30;
-export type PlanTier = "free" | "basic" | "advanced";
+export type PlanTier = "free" | "basic" | "advanced" | "student";
+
+/** Whether `user`'s plan grants access to content gated at `target`.
+ *
+ *  Two tracks:
+ *    AI-tool track: free ⊂ basic ⊂ advanced (rank-ordered)
+ *    School track:  free ⊂ student          (parallel — advanced does NOT
+ *                   auto-unlock student; it's a separate product)
+ *
+ *  Free content is always accessible. Same-tier match always passes.
+ *  Cross-track (e.g. basic user opening a student-tier course) is denied. */
+export function tierCanAccess(user: PlanTier, target: PlanTier): boolean {
+  if (target === "free") return true;
+  if (user === target) return true;
+  if (user === "advanced" && target === "basic") return true;
+  return false;
+}
 
 export type Persona = {
   id: "nova" | "arjun" | "riya" | "sensei";
