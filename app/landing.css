@@ -843,3 +843,166 @@
 }
 .landing .reveal.pre { opacity: 0; transform: translateY(16px); }
 .landing .reveal.in  { opacity: 1; transform: translateY(0); }
+
+/* ============ STUDENT PLAN DETAIL PAGES ============
+   Layout helpers for /student-plan-* (stt / eat / bach). The cards
+   themselves reuse .tier / .tier--featured from the landing pricing
+   block — no separate tier styling needed. */
+
+.landing .plan-detail__hero {
+  padding: 80px var(--gut) 64px;
+  border-bottom: 1px solid var(--border);
+}
+.landing .plan-detail__hero-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.landing .plan-detail__title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5.4vw, 72px);
+  line-height: 1; letter-spacing: -0.03em;
+  font-weight: 300;
+  color: var(--ink);
+  max-width: 880px;
+  text-wrap: pretty;
+  margin: 0;
+}
+.landing .plan-detail__title em { font-style: italic; color: var(--indigo); }
+.landing .plan-detail__intro {
+  font-family: var(--font-display); font-style: italic;
+  font-size: clamp(16px, 1.5vw, 19px);
+  line-height: 1.45; color: var(--text-2);
+  max-width: 640px; margin-top: 18px;
+}
+@media (max-width: 700px) {
+  .landing .plan-detail__hero { padding: 48px 20px 36px; }
+  .landing .plan-detail__title { font-size: 36px !important; }
+  .landing .plan-detail__intro { font-size: 15px !important; }
+}
+
+.landing .plan-detail__tiers {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 64px var(--gut) 48px;
+}
+@media (max-width: 700px) {
+  .landing .plan-detail__tiers { padding: 36px 20px 24px; }
+}
+/* Two-column tier grid (the landing's .tiers is 3-col); narrow the
+   grid here so the school plan pair sits tight in the middle. */
+.landing .plan-detail__tiers .tiers {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 800px; margin: 0 auto;
+}
+@media (max-width: 700px) {
+  .landing .plan-detail__tiers .tiers { grid-template-columns: 1fr; }
+}
+
+.landing .plan-detail__included {
+  background: var(--paper-soft);
+  padding: 80px var(--gut);
+  border-top: 1px solid var(--border);
+}
+.landing .plan-detail__included-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.landing .plan-detail__h2 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.4vw, 44px);
+  line-height: 1.05; letter-spacing: -0.025em;
+  font-weight: 300;
+  margin: 0 0 28px;
+}
+.landing .plan-detail__h2 em { font-style: italic; color: var(--indigo); }
+.landing .plan-detail__bullets {
+  list-style: none; padding: 0; margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px 32px;
+  max-width: 880px;
+}
+@media (max-width: 700px) {
+  .landing .plan-detail__included { padding: 56px 20px; }
+  .landing .plan-detail__bullets { grid-template-columns: 1fr; }
+}
+.landing .plan-detail__bullets li {
+  display: flex; gap: 12px;
+  font-size: 15px; line-height: 1.5;
+  color: var(--text-2);
+}
+.landing .plan-detail__bullets li svg {
+  flex-shrink: 0; width: 16px; height: 16px;
+  margin-top: 4px; color: var(--moss);
+}
+
+.landing .plan-detail__others {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 80px var(--gut) 32px;
+}
+.landing .plan-detail__others-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+@media (max-width: 700px) {
+  .landing .plan-detail__others { padding: 56px 20px 16px; }
+  .landing .plan-detail__others-grid { grid-template-columns: 1fr; }
+}
+.landing .plan-detail__other-card {
+  display: block;
+  background: var(--paper-pure);
+  border: 1px solid var(--border);
+  border-radius: var(--r-4);
+  padding: 22px 24px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 220ms var(--ease-emphasize), box-shadow 220ms;
+}
+.landing .plan-detail__other-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-2);
+}
+.landing .plan-detail__other-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; font-weight: 600;
+  margin-bottom: 6px;
+}
+.landing .plan-detail__other-title {
+  font-family: var(--font-display);
+  font-size: 20px; letter-spacing: -0.015em;
+  font-weight: 500; color: var(--ink);
+  margin-bottom: 10px;
+}
+.landing .plan-detail__other-meta {
+  display: flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono); font-size: 12px;
+  color: var(--text-3); font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.landing .plan-detail__other-meta svg { width: 14px; height: 14px; }
+
+.landing .plan-detail__faq {
+  border-top: 1px solid var(--border);
+  padding: 64px var(--gut) 80px;
+}
+.landing .plan-detail__faq-inner {
+  max-width: 720px; margin: 0 auto;
+}
+.landing .plan-detail__faq-p {
+  font-family: var(--font-display); font-style: italic;
+  font-size: 16px; line-height: 1.55;
+  color: var(--text-2);
+  margin: 0 0 14px;
+}
+
+/* The shared tier__cta is an <a>, but on these plan pages it renders
+   as a <button> inside a <form>. Match the visual tightly so they're
+   indistinguishable from each other. */
+.landing .tier__cta[type="submit"] {
+  width: 100%;
+  font-family: var(--font-sans); font-weight: 600;
+  cursor: pointer; appearance: none;
+}
