@@ -314,6 +314,7 @@ export function LessonPlayer(props: Props) {
 
             {onLastTurn && active?.turn_type === "checkpoint" ? (
               <CompleteCta
+                courseSlug={courseSlug}
                 courseId={courseId}
                 lessonId={lessonId}
                 lessonXpReward={lessonXpReward}
@@ -1473,8 +1474,9 @@ function CheckpointBlock({
 }
 
 function CompleteCta({
-  courseId, lessonId, lessonXpReward, alreadyCompleted, language,
+  courseSlug, courseId, lessonId, lessonXpReward, alreadyCompleted, language,
 }: {
+  courseSlug: string;
   courseId: string;
   lessonId: string;
   lessonXpReward: number;
@@ -1498,7 +1500,7 @@ function CompleteCta({
           fx.haptic.success();
         }
         // Hold the celebration on screen briefly before routing away.
-        setTimeout(() => router.push("/home"), 900);
+        setTimeout(() => router.push(`/learn/${courseSlug}`), 900);
       } catch (e) {
         setError(e instanceof Error ? e.message : "Something went wrong.");
       }
@@ -1533,7 +1535,7 @@ function CompleteCta({
         {pending
           ? "Saving…"
           : alreadyCompleted
-            ? "Back to home"
+            ? "Back to course"
             : `Complete lesson · +${lessonXpReward} XP`}
         <ArrowRight className="h-4 w-4" />
       </button>
