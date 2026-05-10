@@ -26,7 +26,7 @@ function hueForCategory(cat: string | null | undefined): Hue {
 }
 
 export default async function HomePage() {
-  const { user, profile, streak, xp, planId } = await getMe();
+  const { user, profile, streak, xp, planIds } = await getMe();
   if (!user) redirect("/login");
   if (profile && !profile.onboarding_completed_at) redirect("/onboarding");
 
@@ -35,7 +35,7 @@ export default async function HomePage() {
     getAllBundles(),
     getMyCourseProgress(),
   ]);
-  const tier: PlanTier = (planId as PlanTier) ?? "free";
+  const tiers: PlanTier[] = planIds;
   const lang = profile?.preferred_language ?? "en";
   const nowHour = new Date().getHours();
   const greeting = nowHour < 12 ? "Good morning" : nowHour < 18 ? "Good afternoon" : "Good evening";
@@ -182,7 +182,7 @@ export default async function HomePage() {
             number="01"
             title="Continue"
             courses={inProgress}
-            tier={tier}
+            tiers={tiers}
             progressByCourse={progressByCourse}
             lang={lang}
           />
@@ -192,7 +192,7 @@ export default async function HomePage() {
           number="02"
           title="Free"
           courses={freeCourses}
-          tier={tier}
+          tiers={tiers}
           progressByCourse={progressByCourse}
           lang={lang}
         />
@@ -200,14 +200,14 @@ export default async function HomePage() {
           number="03"
           title="Basic"
           bundles={basicBundles}
-          tier={tier}
+          tiers={tiers}
           lang={lang}
         />
         <BundleRow
           number="04"
           title="Advanced"
           bundles={advancedBundles}
-          tier={tier}
+          tiers={tiers}
           lang={lang}
         />
 
@@ -255,12 +255,12 @@ function NovaAvatar({ personaId }: { personaId: Persona["id"] }) {
 }
 
 function CourseRow({
-  number, title, courses, tier, progressByCourse, lang,
+  number, title, courses, tiers, progressByCourse, lang,
 }: {
   number: string;
   title: string;
   courses: Course[];
-  tier: PlanTier;
+  tiers: PlanTier[];
   progressByCourse: Map<string, { progress_pct: number }>;
   lang: string;
 }) {
@@ -294,7 +294,7 @@ function CourseRow({
         }}
       >
         {courses.map((c) => {
-          const locked = !tierCanAccess(tier, c.plan_tier);
+          const locked = !tierCanAccess(tiers, c.plan_tier);
           const pct = progressByCourse.get(c.id)?.progress_pct;
           const hue = hueForCategory(c.category);
           return (
@@ -312,12 +312,12 @@ function CourseRow({
 }
 
 function BundleRow({
-  number, title, bundles, tier, lang,
+  number, title, bundles, tiers, lang,
 }: {
   number: string;
   title: string;
   bundles: Bundle[];
-  tier: PlanTier;
+  tiers: PlanTier[];
   lang: string;
 }) {
   if (bundles.length === 0) return null;
@@ -350,7 +350,7 @@ function BundleRow({
         }}
       >
         {bundles.map((b) => {
-          const locked = !tierCanAccess(tier, b.plan_tier);
+          const locked = !tierCanAccess(tiers, b.plan_tier);
           return (
             <div
               key={b.id}

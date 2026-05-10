@@ -1,7 +1,7 @@
 import { createClient } from "./server";
 import type {
   Bundle,
-  Course, Lesson, Plan, Profile, UserStreak, UserXp, UserCourseProgress, UserLessonProgress,
+  Course, Lesson, Plan, PlanTier, Profile, UserStreak, UserXp, UserCourseProgress, UserLessonProgress,
 } from "@/lib/types";
 import type { LessonTurn } from "@/lib/turns";
 
@@ -113,32 +113,40 @@ export async function getMe(): Promise<{
   profile: Profile | null;
   streak: UserStreak | null;
   xp: UserXp | null;
-  planId: string | null;
+  /** Union of every active subscription the user holds. Always
+   *  includes "free" so callers can pass straight to tierCanAccess
+   *  without a guard. Order is not significant. */
+  planIds: PlanTier[];
 }> {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
-  if (!user) return { user: null, profile: null, streak: null, xp: null, planId: null };
+  if (!user) return { user: null, profile: null, streak: null, xp: null, planIds: ["free"] };
 
-  const [{ data: profile }, { data: streak }, { data: xp }, { data: sub }] = await Promise.all([
+  const [{ data: profile }, { data: streak }, { data: xp }, { data: subs }] = await Promise.all([
     supabase.from("profiles").select("*").eq("id", user.id).maybeSingle(),
     supabase.from("user_streaks").select("*").eq("user_id", user.id).maybeSingle(),
     supabase.from("user_xp").select("*").eq("user_id", user.id).maybeSingle(),
+    // Pull EVERY active subscription, not just the most recent. A user
+    // can hold both "advanced" (AI-tool ladder) and "student" (school
+    // curriculum) at the same time — they're parallel products.
     supabase
       .from("subscriptions")
       .select("plan_id,status")
       .eq("user_id", user.id)
-      .eq("status", "active")
-      .order("started_at", { ascending: false })
-      .limit(1)
-      .maybeSingle(),
+      .eq("status", "active"),
   ]);
+
+  const planIdSet = new Set<PlanTier>(["free"]);
+  for (const row of (subs ?? []) as Array<{ plan_id: string }>) {
+    if (row.plan_id) planIdSet.add(row.plan_id as PlanTier);
+  }
 
   return {
     user: { id: user.id, email: user.email ?? null },
     profile: (profile ?? null) as Profile | null,
     streak: (streak ?? null) as UserStreak | null,
     xp: (xp ?? null) as UserXp | null,
-    planId: sub?.plan_id ?? "free",
+    planIds: Array.from(planIdSet),
   };
 }
 

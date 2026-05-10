@@ -10,14 +10,20 @@ import type { Persona, PlanTier, PreferredLanguage } from "@/lib/types";
 export const dynamic = "force-dynamic";
 
 export default async function ProfilePage() {
-  const { user, profile, planId } = await getMe();
+  const { user, profile, planIds } = await getMe();
   if (!user) redirect("/login");
 
   const plans = await getPlans();
-  const plan = plans.find((p) => p.id === planId) ?? plans[0];
+  // Active subscriptions, joined to the plan catalog. Always falls back
+  // to the "free" row so brand-new users still see a card. Order:
+  // paid plans first (sort_order asc), free last.
+  const activePlans = (planIds.length > 0 ? planIds : (["free"] as PlanTier[]))
+    .map((pid) => plans.find((p) => p.id === pid))
+    .filter((p): p is NonNullable<typeof p> => Boolean(p))
+    .sort((a, b) => (a.id === "free" ? 1 : b.id === "free" ? -1 : (a.sort_order ?? 0) - (b.sort_order ?? 0)));
+  const primaryPlan = activePlans[0];
   const currentPersona: Persona["id"] = (profile?.preferred_tutor_persona as Persona["id"]) ?? "nova";
   const currentLanguage: PreferredLanguage = (profile?.preferred_language as PreferredLanguage) ?? "en";
-  const tier: PlanTier = (planId as PlanTier) ?? "free";
 
   return (
     <main className="lm-page">
@@ -43,19 +49,39 @@ export default async function ProfilePage() {
 
         <section className="lm-card" style={{ marginTop: 32, padding: 20 }}>
           <div className="flex items-start justify-between" style={{ gap: 16 }}>
-            <div>
-              <p className="lm-eyebrow">plan</p>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <p className="lm-eyebrow">{activePlans.length > 1 ? "plans" : "plan"}</p>
               <p
                 className="lm-serif"
                 style={{ marginTop: 6, fontSize: 24, lineHeight: 1.15, color: "var(--text)" }}
               >
-                {plan?.name ?? formatTier(tier)}
+                {primaryPlan?.name ?? formatTier("free")}
               </p>
-              {plan?.tagline ? (
+              {primaryPlan?.tagline ? (
                 <p style={{ marginTop: 2, fontSize: 14, color: "var(--text-3)" }}>
-                  {plan.tagline}
+                  {primaryPlan.tagline}
                 </p>
               ) : null}
+              {activePlans.length > 1 && (
+                <div style={{ marginTop: 10, display: "flex", flexWrap: "wrap", gap: 6 }}>
+                  {activePlans.slice(1).map((p) => (
+                    <span
+                      key={p.id}
+                      className="lm-mono"
+                      style={{
+                        fontSize: 11,
+                        padding: "4px 8px",
+                        borderRadius: "var(--r-pill)",
+                        background: "var(--bg-soft)",
+                        border: "1px solid var(--border-soft)",
+                        color: "var(--text-2)",
+                      }}
+                    >
+                      + {p.name}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
             <Link
               href="/learn"
