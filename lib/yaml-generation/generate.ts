@@ -37,6 +37,20 @@ export type GenerateInput = {
    *  embeds it in the prompt so the translation keeps the same
    *  structure, ids, persona names, tool names, URLs, and markup. */
   enReference?: string | null;
+  /** Free-text guidance from the author, captured per-generation in the
+   *  /yaml-generate textarea. Appended verbatim at the END of the user
+   *  prompt as a clearly-delimited section so the model treats it as
+   *  one-shot overrides on top of the system rules. Applied to both
+   *  fresh-EN generation and translations. */
+  customInstructions?: string | null;
+  /** Concatenated YAML of every previously-generated lesson in the same
+   *  bundle (earlier courses + earlier lessons in this course), packed
+   *  into one delimited string by lib/yaml-generation/prior-content.ts.
+   *  Embedded in the user prompt for fresh-EN generation only — gives
+   *  the model continuity context so it doesn't redefine vocabulary or
+   *  re-cover ground. Translations skip this; the EN base of THIS
+   *  lesson is the only context they need. */
+  priorContext?: string | null;
 };
 
 export type GenerateOk = {
@@ -53,10 +67,22 @@ export type GenerateErr = {
 
 export type GenerateResult = GenerateOk | GenerateErr;
 
+function customInstructionsSection(custom: string | null | undefined): string[] {
+  const trimmed = custom?.trim();
+  if (!trimmed) return [];
+  return [
+    ``,
+    `ADDITIONAL INSTRUCTIONS FROM THE AUTHOR (apply these on top of the system rules — they take precedence over defaults but never override the schema or the safety rails):`,
+    trimmed,
+  ];
+}
+
 function buildUserPrompt(
   entry: LessonEntry,
   language: string,
   enReference?: string | null,
+  customInstructions?: string | null,
+  priorContext?: string | null,
 ): string {
   const langLabel = language === "en" ? "English (canonical)" : language;
 
@@ -83,10 +109,19 @@ function buildUserPrompt(
       ``,
       `CANONICAL ENGLISH YAML:`,
       enReference.trim(),
+      ...customInstructionsSection(customInstructions),
     ].join("\n");
   }
 
   // ---------- Generation path: write from scratch ----------
+  const priorSection = priorContext?.trim()
+    ? [
+        ``,
+        `PRIOR LESSONS in this bundle (already generated — read for continuity, don't redefine vocabulary they introduce, don't repeat their examples or exercises):`,
+        priorContext.trim(),
+      ]
+    : [];
+
   return [
     `Generate the lesson YAML for the lesson below. Output ONLY the YAML — no markdown fences, no preamble.`,
     ``,
@@ -94,6 +129,7 @@ function buildUserPrompt(
     `BUNDLE: ${entry.bundleSlug}`,
     `COURSE: ${entry.courseTitle}`,
     `COURSE OUTCOME: ${entry.courseOutcome}`,
+    ...priorSection,
     ``,
     `LESSON ${entry.lessonIndex} of ${entry.courseLessonCount}: "${entry.lessonTitle}"`,
     ``,
@@ -102,6 +138,7 @@ function buildUserPrompt(
     ``,
     `Strictly follow every rule in the system prompt's checklist.`,
     `Aim for 14–18 turns. Last turn MUST be a checkpoint.`,
+    ...customInstructionsSection(customInstructions),
   ].join("\n");
 }
 
@@ -190,7 +227,13 @@ export async function generateLessonYaml(input: GenerateInput): Promise<Generate
 
   const client = new Anthropic({ apiKey });
   const systemPrompt = loadKnowledge();
-  const userPrompt = buildUserPrompt(input.entry, input.language, input.enReference);
+  const userPrompt = buildUserPrompt(
+    input.entry,
+    input.language,
+    input.enReference,
+    input.customInstructions,
+    input.priorContext,
+  );
 
   let feedback: string | null = null;
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {

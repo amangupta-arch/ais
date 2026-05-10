@@ -129,6 +129,9 @@ export default function GenerateForm({
   }, [lessons, lessonSlug]);
 
   const [language, setLanguage] = useState<string>("en");
+  // Free-text guidance attached to this generation only. Persists across
+  // the regen-confirm modal so the user doesn't lose what they typed.
+  const [customInstructions, setCustomInstructions] = useState<string>("");
 
   // Jobs map for quick lookup. Refreshed in-place when polling.
   const [jobsByKey, setJobsByKey] = useState<Map<string, JobRow>>(() => {
@@ -214,7 +217,12 @@ export default function GenerateForm({
       const res = await fetch("/api/yaml-jobs/generate", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ courseSlug, lessonSlug, language }),
+        body: JSON.stringify({
+          courseSlug,
+          lessonSlug,
+          language,
+          customInstructions: customInstructions.trim() || undefined,
+        }),
       });
 
       // Pre-stream errors (auth, bad body) come back as plain JSON.
@@ -371,6 +379,30 @@ export default function GenerateForm({
           onChange={setLanguage}
           options={LANGUAGE_OPTIONS.map((l) => ({ value: l.code, label: l.label }))}
         />
+      </Field>
+
+      <Field label="Custom instructions (optional)">
+        <textarea
+          value={customInstructions}
+          onChange={(e) => setCustomInstructions(e.target.value)}
+          rows={3}
+          maxLength={4000}
+          placeholder='e.g. "Make the third mcq harder." or "Use a coffee-shop metaphor in the hook turn."'
+          style={{
+            padding: "10px 12px",
+            borderRadius: 8,
+            border: "1px solid #CBD5E1",
+            fontSize: 14,
+            background: "#fff",
+            color: "#0F172A",
+            fontFamily: "inherit",
+            resize: "vertical",
+            minHeight: 72,
+          }}
+        />
+        <span style={{ fontSize: 11, color: "#64748B", marginTop: 2 }}>
+          One-shot guidance appended to the prompt. {customInstructions.length}/4000 chars.
+        </span>
       </Field>
 
       <StatusBlock row={selectedRow} job={selectedJob} language={language} />

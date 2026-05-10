@@ -23,6 +23,8 @@ import yaml from "js-yaml";
 
 import { lessonSchema, type LessonYaml } from "@/lib/content/schema";
 
+import { stripMarkdown } from "./sanitize";
+
 export type NarrationChunk = {
   /** 1-based position in turns[] — matches lesson_turns.order_index. */
   turnIndex: number;
@@ -35,9 +37,11 @@ export type NarrationChunk = {
 
 function clean(text: string | undefined | null): string | null {
   if (!text) return null;
-  // Strip leading/trailing whitespace; collapse internal blank lines but
-  // keep single newlines (TTS handles them as pauses).
-  const t = text.trim();
+  // Strip markdown formatting first so TTS doesn't read "**" out loud,
+  // then trim. Done in this single chokepoint so every chunk pushed by
+  // extractNarrationChunks is sanitised — both the cache key and the
+  // bytes sent to ElevenLabs see the same cleaned text.
+  const t = stripMarkdown(text).trim();
   return t.length > 0 ? t : null;
 }
 
