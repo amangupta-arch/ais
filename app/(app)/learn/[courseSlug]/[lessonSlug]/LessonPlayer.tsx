@@ -13,6 +13,7 @@ import { useAudioNarration, type AudioNarration } from "@/lib/hooks/useAudioNarr
 import type { LessonTurn } from "@/lib/turns";
 import type { Persona } from "@/lib/types";
 import { personaById } from "@/lib/types";
+import Typewriter from "./Typewriter";
 import { cn } from "@/lib/utils";
 
 import { advanceTurn, completeLesson } from "./actions";
@@ -86,47 +87,74 @@ export function LessonPlayer(props: Props) {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const activeTurnRef = useRef<HTMLDivElement | null>(null);
 
-  // Keep the BOTTOM of the active turn pinned to the viewport bottom — even
-  // as the turn grows after mount. A one-shot scrollIntoView was wrong:
-  //   1. Tutor-message bubble swaps from typing dots (~60 px) to full text
-  //      (~240 px) ~1 s after mount; pinning the dots' bottom leaves the
-  //      message's TOP off-screen above the fold.
-  //   2. Framer's `layout` prop animates the previous turn's height down
-  //      over ~360 ms while the smooth scroll is in flight; the new turn's
-  //      offsetTop keeps moving and the smooth-scroll lands at the wrong
-  //      position.
-  //   3. AI conversation messages stream in over seconds; image / video
-  //      load fires async layout shifts; wrong-answer hints reveal later.
-  // A ResizeObserver on the active turn watches all of these and re-pins
-  // every time the turn grows. Shrinks (AnimatePresence exits, layout
-  // collapses) are ignored so we don't fight them.
+  // Follow-tail scroll: keep the active turn's growth pinned to the
+  // viewport bottom (chat-app style — Maya types, the page glides
+  // down to the latest word). The earlier behaviour kept the bottom
+  // glued unconditionally; the only thing that changes here is that
+  // we PAUSE the follow as soon as the user scrolls upward to read
+  // an earlier line, and RESUME the moment they scroll back near the
+  // bottom. The prior failure modes (typing-dots height swap, Framer
+  // layout animation racing the smooth scroll, async image/audio
+  // layout shifts) are still handled by the ResizeObserver.
   useEffect(() => {
     const node = activeTurnRef.current;
     if (!node) return;
 
     let lastH = node.getBoundingClientRect().height;
+    // Tracks whether the user wants the page to keep following the
+    // tail. Starts true; flips false the moment the user manually
+    // scrolls more than `STOP_PX` away from the bottom; flips back
+    // true once they're within `RESUME_PX` of the bottom again.
+    let autoFollow = true;
+    // Auto-scrolls we trigger also fire 'scroll' events. Stamp a
+    // short window during which any scroll event is ignored so we
+    // don't read our own keystrokes.
+    let programmaticUntil = 0;
+
+    const STOP_PX = 120;
+    const RESUME_PX = 80;
+
+    const distanceFromBottom = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      return Math.max(0, max - window.scrollY);
+    };
+
+    const pinBottom = (smooth: boolean) => {
+      programmaticUntil = Date.now() + 250;
+      node.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "end" });
+    };
+
+    const onScroll = () => {
+      if (Date.now() < programmaticUntil) return;
+      const d = distanceFromBottom();
+      if (autoFollow && d > STOP_PX) autoFollow = false;
+      else if (!autoFollow && d < RESUME_PX) autoFollow = true;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
 
     // Initial smooth scroll on advance — two rAFs let Framer mount + lay
     // out the new motion.div before we measure.
     const id1 = requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        node.scrollIntoView({ behavior: "smooth", block: "end" });
+        pinBottom(true);
       });
     });
 
-    // Re-pin instantly on every growth tick. `behavior: "auto"` (instant)
-    // makes the bottom feel glued to the viewport as content expands,
-    // instead of stuttering through overlapping smooth scrolls.
+    // Re-pin instantly on every growth tick — but only when auto-
+    // follow is on. If the user scrolled up to re-read, we leave
+    // them alone; the typewriter keeps going and they can catch up
+    // by scrolling back down (RESUME_PX re-arms the follow).
     const ro = new ResizeObserver(() => {
       const h = node.getBoundingClientRect().height;
       if (h > lastH + 0.5) {
-        node.scrollIntoView({ behavior: "auto", block: "end" });
+        if (autoFollow) pinBottom(false);
       }
       lastH = h;
     });
     ro.observe(node);
 
     return () => {
+      window.removeEventListener("scroll", onScroll);
       cancelAnimationFrame(id1);
       ro.disconnect();
     };
@@ -586,7 +614,7 @@ function TutorMessage({
                     whiteSpace: "pre-line",
                   }}
                 >
-                  {turn.content.text}
+                  <Typewriter text={turn.content.text} />
                 </p>
               </div>
               {isActive ? (
@@ -1147,7 +1175,15 @@ function AiConversationBlock({
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, ease: EASE_OUT_EXPO }}
             >
-              <Bubble role={m.role} content={m.content} persona={persona} />
+              {/* Only the starter (i=0, assistant) types out; real
+                  responses appear instantly so the back-and-forth feels
+                  natural. */}
+              <Bubble
+                role={m.role}
+                content={m.content}
+                persona={persona}
+                animate={i === 0 && m.role === "assistant"}
+              />
             </motion.div>
           ))}
         </AnimatePresence>
@@ -1208,8 +1244,15 @@ function AiConversationBlock({
 }
 
 function Bubble({
-  role, content, persona,
-}: { role: ChatMessage["role"]; content: string; persona: Persona }) {
+  role, content, persona, animate,
+}: {
+  role: ChatMessage["role"];
+  content: string;
+  persona: Persona;
+  /** Type the content out word-by-word. Only meaningful when role
+   *  is "assistant"; user bubbles always render instantly. */
+  animate?: boolean;
+}) {
   if (role === "assistant") {
     return (
       <div className="flex items-start" style={{ gap: 8 }}>
@@ -1227,7 +1270,7 @@ function Bubble({
             whiteSpace: "pre-line",
           }}
         >
-          {content}
+          {animate ? <Typewriter text={content} /> : content}
         </div>
       </div>
     );
@@ -1467,7 +1510,7 @@ function CheckpointBlock({
           whiteSpace: "pre-line",
         }}
       >
-        {turn.content.summary}
+        <Typewriter text={turn.content.summary} />
       </p>
     </div>
   );
