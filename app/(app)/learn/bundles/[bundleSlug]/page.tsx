@@ -154,7 +154,17 @@ export default async function BundleDetailPage({
           <ArrowLeft className="h-5 w-5" />
         </Link>
         <div style={{ flex: 1, textAlign: "center" }}>
-          <p className="lm-eyebrow">the library</p>
+          {/* Bundle progress, kept terse so it lives happily in the
+              eyebrow slot. "The library" was redundant with the back
+              arrow; this slot now carries something the learner
+              actually wants to know — am I making progress? */}
+          <p className="lm-eyebrow">
+            {overallPct >= 100
+              ? "complete"
+              : !hasAnyProgress
+              ? "not started"
+              : `${overallPct}% complete`}
+          </p>
         </div>
         <button
           aria-label="More options"
