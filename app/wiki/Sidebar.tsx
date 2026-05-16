@@ -8,7 +8,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ChevronRight, Search, X } from "lucide-react";
 
 import type { WikiNode } from "@/lib/wiki/content";
@@ -97,6 +97,16 @@ function Section({ node, activeSlug }: { node: WikiNode; activeSlug: string }) {
   // or if it has no children (no reason to collapse a leaf).
   const isInside = activeSlug === node.slug || activeSlug.startsWith(`${node.slug}/`);
   const [open, setOpen] = useState(isInside || node.children.length === 0);
+
+  // Sidebar stays mounted across client-side navigations (the wiki
+  // layout doesn't re-mount), so initial `useState(isInside)` only
+  // fires once. Without this effect, navigating into a different
+  // section leaves it collapsed — hiding the page the user is
+  // currently on. Auto-expand on entry; manual collapse still wins
+  // until they navigate elsewhere and come back.
+  useEffect(() => {
+    if (isInside) setOpen(true);
+  }, [isInside]);
 
   return (
     <div className="wiki-tree__section">
