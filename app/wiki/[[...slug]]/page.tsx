@@ -13,6 +13,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { ArrowLeft } from "lucide-react";
 
 import { getWikiPage } from "@/lib/wiki/content";
+import { autolinkBody } from "@/lib/wiki/autolink";
 
 export const dynamic = "force-dynamic";
 
@@ -66,7 +67,11 @@ export default async function WikiPageView({
       </header>
 
       <div className="wiki-body">
-        <MDXRemote source={page.body} />
+        {/* autolinkBody patches in cross-references for proper-noun
+            mentions (Maya, ElevenLabs, Supabase, Sentry, Cashfree…)
+            so the wiki stays navigable without manually adding a
+            link for every reference. Lives in lib/wiki/autolink.ts. */}
+        <MDXRemote source={autolinkBody(page.body, page.slug)} />
       </div>
 
       {(page.meta.related?.length || page.meta.last_reviewed) && (
