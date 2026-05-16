@@ -1,0 +1,23 @@
+---
+title: "Architecture"
+summary: "Tech stack, routes, DB schema, and the pipelines that make Maya talk and read paper."
+section: architecture
+order: 20
+keywords: [architecture, stack, schema]
+last_reviewed: 2026-05-13
+---
+
+The shape of the system, in roughly the order you'd want to read about it.
+
+## Pages in this section
+
+- [Tech stack](/wiki/architecture/tech-stack) — Next.js 15, Supabase, Vercel, Sentry, Anthropic, ElevenLabs
+- [Routes](/wiki/architecture/routes) — every URL, auth posture, and what owns it
+- [DB schema](/wiki/architecture/db-schema) — tables, key columns, FK graph
+- [Auth](/wiki/architecture/auth) — magic-link + Google OAuth via Supabase
+- [Content model](/wiki/architecture/content-model) — bundles → courses → lessons → turns
+- [Audio pipeline](/wiki/architecture/audio-pipeline) — ElevenLabs cache + manifest
+- [Plan model](/wiki/architecture/plan-model) — multi-plan, parallel tracks
+- [Curriculum tags](/wiki/architecture/curriculum-tags) — class / subject / institute
+- [Lesson player](/wiki/architecture/lesson-player) — turn renderers, typewriter, follow-tail scroll
+- [Instrumentation](/wiki/architecture/instrumentation) — Sentry, analytics, speed insights

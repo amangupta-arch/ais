@@ -1,0 +1,60 @@
+---
+title: "Cashfree integration plan"
+summary: "What's in place today, what needs to land for payments to go live, and where to plug in."
+section: operations
+order: 50
+keywords: [cashfree, payments, subscriptions, checkout, autopay, upi, webhook]
+related: [/wiki/architecture/plan-model, /wiki/product/student-plans]
+last_reviewed: 2026-05-13
+---
+
+Today, **payments aren't live**. Plans are granted manually via SQL. The plumbing for Cashfree is staged so the integration is contained to a small set of files.
+
+## Today
+
+| Surface | Behaviour |
+|---|---|
+| `/student-plan-{stt,eat,bach}` | Show the plan cards with stable `plan_id` values |
+| Subscribe button | `<form action={startCheckout}>` posts the plan_id |
+| `app/checkout/actions.ts` | Validates plan_id → redirects to `/checkout?plan=<id>` |
+| `app/checkout/page.tsx` | Renders "Cashfree integration coming soon" with the plan name + mailto |
+
+## What needs to happen for payments to go live
+
+1. **Cashfree account** — Sign up, get a Merchant ID + API key + Webhook signing secret. Add to Vercel env as `CASHFREE_APP_ID` / `CASHFREE_SECRET_KEY` / `CASHFREE_WEBHOOK_SECRET`.
+2. **Pre-register plans with Cashfree** — for Subscriptions, every recurring plan needs a Cashfree-side `plan_id`. Create one per of our six student plan IDs (`school-6-10-one`, `school-6-10-all`, `school-11-12-one`, `school-11-12-all`, `college-bachelors-one`, `college-bachelors-all`).
+3. **Map** internal IDs → Cashfree IDs in a `CASHFREE_PLAN_IDS` constant alongside `lib/student-plans.ts`.
+4. **Rewrite `startCheckout()`** in `app/checkout/actions.ts`:
+   ```ts
+   const cfPlanId = CASHFREE_PLAN_IDS[planId];
+   const sub = await cashfree.subscriptions.create({
+     plan_id: cfPlanId,
+     customer_email: user.email,
+     return_url: "https://myaisetu.com/checkout/success",
+     ...
+   });
+   redirect(sub.authorisation_url);
+   ```
+5. **Add the webhook**: `app/api/webhooks/cashfree/route.ts`. On `PAYMENT_SUCCESS` (and on subsequent recurring charges), insert / update the `subscriptions` row to `status='active'`. Verify the signature against `CASHFREE_WEBHOOK_SECRET`.
+6. **Add the success page**: `/checkout/success` that confirms and links to the user's first lesson.
+7. **Sign-in gating in `startCheckout()`** — anonymous visitors should be redirected to `/login?next=/checkout?plan=<id>` first.
+
+## Cashfree-specific traps
+
+- **Sandbox vs production** — Cashfree has separate keys for each environment. Wire both as Vercel env vars per environment (Preview = sandbox, Production = live).
+- **eMandate / UPI Autopay** — recurring billing on UPI requires NPCI consent. Cashfree handles the redirect to the bank's consent screen; the auth_url they return is what you redirect the user to.
+- **Webhook idempotency** — Cashfree retries on non-200 responses. Use the event's `idempotency_key` (Cashfree provides one) and upsert against it.
+- **Plan price changes** mid-subscription require a Cashfree plan update; old subscribers stay on the old rate.
+
+## Pricing reference
+
+| Internal plan_id | Cohort | INR / mo |
+|---|---|---|
+| `school-6-10-one` | Class 6–10, one subject | 59 |
+| `school-6-10-all` | Class 6–10, all subjects | 199 |
+| `school-11-12-one` | Class 11–12, one subject | 199 |
+| `school-11-12-all` | Class 11–12, all subjects | 499 |
+| `college-bachelors-one` | Bachelors, one subject | 199 |
+| `college-bachelors-all` | Bachelors, all subjects | 499 |
+
+The amounts live in `lib/student-plans.ts:priceInr` — single source of truth. Cashfree plans should be created with the same numbers.

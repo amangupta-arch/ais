@@ -1,0 +1,42 @@
+---
+title: "Parallel student plan"
+summary: "Why `student` isn't above `advanced` on the ladder — it's a separate track entirely."
+section: decisions
+order: 10
+keywords: [plan, student, parallel, tier, gating]
+related: [/wiki/architecture/plan-model]
+last_reviewed: 2026-05-13
+---
+
+## The choice
+
+`tierCanAccess()` models two independent tracks:
+
+```
+AI-tool ladder:   free ⊂ basic ⊂ advanced
+School track:     free ⊂ student          (parallel, not nested)
+```
+
+A user on `advanced` does NOT automatically unlock `student` content. A user on `student` does NOT automatically unlock `basic` content.
+
+## Alternatives considered
+
+- **Nest `student` above `advanced`** — paying for advanced auto-grants school content. Simpler gate; one rank-ordered ladder.
+- **Nest `advanced` above `student`** — the opposite.
+- **Bundle them into an `all-access` plan** — one product, two audiences.
+
+## Why we picked parallel
+
+Adults buying `advanced` for ChatGPT / Cursor / Synthesia training don't need Class 10 Math. Bundling the school content into their plan would feel like padding. Conversely, a parent buying `student` for their kid doesn't want to pay for our AI-tool ladder.
+
+The audiences barely overlap. Pricing them separately matches how the customer thinks about them, and lets us tune each track's price without affecting the other.
+
+## What would have to change to reverse
+
+- `tierCanAccess()` in `lib/types.ts` — change the per-tier rules.
+- The `/profile` "current plan" rendering — would no longer need to list multiple plans.
+- The `subscriptions` table — could in theory add a unique constraint on `user_id` again (we removed it for multi-plan).
+
+## Related
+
+- [Multi-plan support](/wiki/decisions/multi-plan-support) — sibling decision.

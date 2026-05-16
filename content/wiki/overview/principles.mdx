@@ -1,0 +1,29 @@
+---
+title: "Principles"
+summary: "Three refusals that shape every feature: voice-first, paper-friendly, multilingual."
+section: overview
+order: 30
+keywords: [principles, refusals, voice, paper, multilingual]
+related: [/wiki/architecture/audio-pipeline, /wiki/product/paper-grading, /wiki/product/languages]
+last_reviewed: 2026-05-13
+---
+
+The landing page frames the product as *"three small refusals that change the feel of learning."* Each refusal is encoded in concrete architecture, not just marketing copy.
+
+## 01 · We refused *silent* learning
+
+Maya is a voice tutor first. Every prose turn (`tutor_message`, AI conversation starter, checkpoint summary) has an ElevenLabs mp3 generated at authoring time and pre-cached in Supabase Storage. The lesson player plays them by default; the browser's `speechSynthesis` is only a fallback when no manifest entry exists.
+
+See [Audio pipeline](/wiki/architecture/audio-pipeline).
+
+## 02 · We refused the *screen-only* classroom
+
+Math is something you actually do on paper. The `/math-quiz-test` page asks the learner to solve on paper, snap a photo, and submit. Claude Sonnet vision (`claude-sonnet-4-6`) — invoked with **tool_use** to guarantee a structured response — reads the handwriting and returns step-by-step feedback in the learner's language.
+
+See [Paper grading](/wiki/product/paper-grading) and the [tool_use decision](/wiki/decisions/tool-use-vs-json-parse).
+
+## 03 · We refused *English-only*
+
+Ten Indian languages today: English, Hindi, Hinglish, Marathi, Punjabi, Telugu, Tamil, Bengali, French, Spanish (FR + ES kept for the multilingual model's Latin-script strengths). Translations live as JSONB on `bundles`, `courses`, `lessons`, and `lesson_turns`. Audio language follows displayed text — if we fell back to English text because no Hindi translation existed, we ask for English audio too, not Hindi (empty) audio.
+
+See [Languages](/wiki/product/languages) and the [audio-mirrors-text decision](/wiki/decisions/audio-mirrors-text-fallback).

@@ -1,0 +1,34 @@
+---
+title: "Multi-plan support"
+summary: "Why a user can hold both `advanced` and `student` simultaneously, and how `getMe()` returns the union."
+section: decisions
+order: 20
+keywords: [multi-plan, subscriptions, union, plan]
+related: [/wiki/decisions/parallel-student-plan, /wiki/architecture/plan-model]
+last_reviewed: 2026-05-13
+---
+
+## The choice
+
+The `subscriptions` table has no unique constraint on `user_id`. `getMe()` returns `planIds: PlanTier[]` — the union of every active subscription plus an implicit `free`. `tierCanAccess()` checks against the array.
+
+## Alternatives considered
+
+- **One plan per user** — unique constraint. Forces a single tier; clean but rules out anyone holding parallel-track products like advanced + student.
+- **Roles + entitlements** — separate `entitlements` table per content category. More flexible but heavier; we'd need to migrate every existing plan-tier check.
+
+## Why we picked the union
+
+Falls out naturally from [parallel tracks](/wiki/decisions/parallel-student-plan). If `student` and `advanced` are two distinct products, a learner who wants both should be able to buy both. Cleanest model: each `active` row in `subscriptions` is a product the user has paid for, period.
+
+## What would have to change to reverse
+
+- Add `unique (user_id) where status = 'active'` to `subscriptions`.
+- Revert `getMe()` to `planId: string | null`.
+- Revert `tierCanAccess(userTiers[], target)` to `tierCanAccess(user, target)`.
+- Update all five page callers — see PR #45 history for the migration shape (reverse it).
+
+## Notes
+
+- Cancellation just sets `status='cancelled'`; the row stays for lifetime customer view.
+- `free` is always implicit; we never `INSERT` a free subscription row.

@@ -1,0 +1,66 @@
+---
+title: "Bundle tags"
+summary: "When to add curriculum / class:X / subject:Y / institute:Z tags — and what NOT to tag."
+section: authoring
+order: 40
+keywords: [tags, bundles, curriculum, class, subject, institute]
+related: [/wiki/architecture/curriculum-tags]
+last_reviewed: 2026-05-13
+---
+
+`bundles.tags` is a `text[]` column. Each value is a slug-shaped token. Some are "namespaced" via a colon prefix.
+
+## Tag families
+
+| Tag | Required for | Where it shows up |
+|---|---|---|
+| `curriculum` | School / college content | Surfaces the bundle on `/student` |
+| `class:<value>` | Curriculum bundles | Required filter on `/student` |
+| `subject:<slug>` | Curriculum bundles | Subject grouping inside `/student` |
+| `institute:<slug>` | Higher-ed cohorts | Restricts to learners with matching `profiles.institute` |
+| `utility` / `creative` / … | Categorisation | Display only (used by `/learn`) |
+
+## Examples
+
+| Bundle | Tags |
+|---|---|
+| Class 10 Math · Real Numbers (K-12) | `curriculum`, `class:10`, `subject:mathematics` |
+| NMIMS BBA Sem 01 · Foundations | `curriculum`, `class:bba-sem-01`, `subject:environmental-management`, `institute:nmims` |
+| ChatGPT Basics (AI-tool ladder) | `utility` |
+| Synthesia (AI-tool ladder) | `creative` |
+
+## Rules of thumb
+
+- **No `curriculum` tag on AI-tool bundles.** It surfaces them on `/student`, where they shouldn't be.
+- **Always pair `curriculum` with `class:*` AND `subject:*`.** Missing either breaks the grouping.
+- **Use `institute:*` ONLY for higher-ed cohorts.** K-12 bundles must NOT carry it — `getStudentBundles()` actively filters out any `institute:*` bundle when the user has no institute, so a stray tag would hide the bundle from K-12 viewers.
+- **Slug values are lowercase + hyphenated.** `class:bba-sem-01`, not `class:BBA-SEM-01`.
+
+## Adding a new class / subject
+
+Tag-only — no migration. Just include the new value when inserting the bundle:
+
+```sql
+insert into bundles (slug, plan_tier, emoji, cover_gradient, order_index, tags, translations)
+values (
+  'b-class-9-physics-ch01-motion',
+  'student',
+  '⚡',
+  'ocean',
+  410,
+  '{curriculum,class:9,subject:physics}',
+  '{"en":{"title":"Class 9 Physics · Ch.1 Motion","description":"..."}}'::jsonb
+);
+```
+
+Then add a matching option to `app/(app)/student/paths.ts:SCHOOL_PATH_OPTIONS` if the class isn't already there.
+
+## CHECK constraints
+
+`profiles.school_class` and `profiles.institute` have a regex CHECK in migration 0016:
+
+```
+^[a-z0-9-]{1,40}$
+```
+
+Bundle tags aren't formally constrained — that's enforced by convention + the seed scripts.

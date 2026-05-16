@@ -1,0 +1,57 @@
+---
+title: "Sentry debugging"
+summary: "Checklist when errors aren't reaching Sentry, plus useful queries once they are."
+section: operations
+order: 60
+keywords: [sentry, debug, errors, monitoring, dsn]
+related: [/wiki/architecture/instrumentation]
+last_reviewed: 2026-05-13
+---
+
+The build pipeline wires Sentry in — `_sentryDebugIds` show up in production JS chunks even when the runtime DSN is unset. So if errors aren't showing up, it's almost always one of:
+
+## 1. `NEXT_PUBLIC_SENTRY_DSN` not set in Vercel env
+
+Both `instrumentation-client.ts` and `sentry.server.config.ts` short-circuit on `enabled: !!process.env.NEXT_PUBLIC_SENTRY_DSN`. Missing DSN → SDK no-ops silently → nothing reaches Sentry.
+
+**Fix:** Vercel → Settings → Environment Variables → add `NEXT_PUBLIC_SENTRY_DSN` for **Production** (and Preview if wanted). Get the DSN from Sentry → Settings → Client Keys (DSN). Trigger a redeploy — `NEXT_PUBLIC_*` vars are baked at build, so an existing deployment won't pick up the new env until rebuilt.
+
+## 2. DSN points at a wrong/disabled project
+
+Visit the DSN URL in a browser — it should return a small JSON-ish 200, not a 404. If 404, project was deleted or DSN was rotated.
+
+## 3. Ad-blocker eating the events
+
+We tunnel through `/monitoring` to bypass blockers (`tunnelRoute: "/monitoring"` in `next.config.ts`). Verify in DevTools Network: after triggering an error, look for a POST to `/monitoring/<envelope-id>`. If you see `*.ingest.sentry.io` instead, the tunnel rewrite didn't apply — most likely the build didn't pick up the latest `withSentryConfig` invocation (force a clean rebuild).
+
+## 4. Server-side errors caught and swallowed
+
+A `try/catch` that doesn't re-throw or call `Sentry.captureException(e)` will never surface. Most of our API routes wrap with `Sentry.startSpan` and let exceptions bubble; if you wrote a route handler with a catch-all, add `Sentry.captureException(e)` explicitly.
+
+## 5. Vercel Edge runtime
+
+`sentry.edge.config.ts` covers edge functions. If a specific route runs on the edge runtime and lacks proper init, errors won't show. Verify with `export const runtime = "nodejs"` on the route.
+
+## Quick verification
+
+In the browser DevTools console of any production page:
+
+```js
+window.__SENTRY__   // → object with hub / scope etc. if init ran
+```
+
+If it's `undefined`, the client SDK didn't init. The DSN guard is the only thing that disables it.
+
+## Useful Sentry queries
+
+- Errors by route: filter `transaction:<route>`.
+- Errors by release: filter `release:<git-sha>` — we pass `VERCEL_GIT_COMMIT_SHA` as the release tag.
+- Long traces: sort by `transaction.duration desc` — yaml-generate and math-quiz are the long-runners.
+
+## What we instrument explicitly
+
+| Span | Where |
+|---|---|
+| `elevenlabs.runAudioPipeline` | `/api/yaml-jobs/generate` route |
+
+Most spans come automatically from `@sentry/nextjs`'s instrumentation. If a particular operation is invisible, wrap it in `Sentry.startSpan({ name, op: "..." }, () => fn())`.

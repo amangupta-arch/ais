@@ -1,0 +1,40 @@
+---
+title: "Client-side image compression"
+summary: "Phone-camera JPEGs are 3–6 MB; Vercel's body limit is 4.5 MB. Compress to 1280 px / 0.85 quality on the canvas before upload."
+section: decisions
+order: 80
+keywords: [image, compression, canvas, vercel, body-limit, math-quiz]
+related: [/wiki/product/paper-grading]
+last_reviewed: 2026-05-13
+---
+
+## The choice
+
+`/math-quiz-test` runs every selected image through `compressImage(dataUrl, maxDim=1280, quality=0.85)` before posting to `/api/ai/math-quiz`. Implementation uses `<canvas>` — no new dependency.
+
+## The bug we were fixing
+
+A learner uploaded a 5 MB photo. Browser fetch POSTed it as base64-in-JSON to our route. Vercel's serverless function rejected the request body with a 413 → returned `"Request Entity Too Large"` as plain text. Our client did `await res.json()` on it and threw:
+
+> `SyntaxError: Unexpected token 'R', "Request En"... is not valid JSON`
+
+## Why client-side
+
+- **Vercel body limit (4.5 MB)** is the hard ceiling. Anything we do server-side has already crossed it.
+- **Less Anthropic vision tokens** — fewer pixels through the model = lower cost and lower latency. 1280 px is plenty for handwriting recognition.
+- **No new dep** — `<canvas>.toDataURL("image/jpeg", 0.85)` ships with the browser.
+
+## What 1280 px / 0.85 quality gets us
+
+- Typical 12 MP phone photo: 3–6 MB → ~200–400 KB.
+- Quality is plenty for handwriting; you can still read every digit.
+- Anthropic vision is happy.
+
+## Where else this could apply
+
+Any future feature that uploads camera images (paper notes, whiteboard captures, photo-of-screen feedback) should reuse `compressImage()`. Hoist it into `lib/util/` when there's a second caller.
+
+## Trade-offs
+
+- We lose the original-resolution image. For paper grading we don't need it, but for any feature that needs forensic detail (scanning a multi-step proof in tiny handwriting), we'd want a higher `maxDim`.
+- Canvas compression is single-threaded and synchronous-ish; on a low-end Android, ~200 ms for a 5 MB photo. Tolerable.

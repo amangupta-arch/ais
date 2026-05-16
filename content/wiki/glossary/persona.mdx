@@ -1,0 +1,41 @@
+---
+title: "Persona"
+summary: "Tutor personality the learner picks: Nova / Arjun / Riya / Sensei."
+section: glossary
+order: 70
+keywords: [persona, tutor, nova, arjun, riya, sensei]
+related: [/wiki/product/personas, /wiki/glossary/maya]
+last_reviewed: 2026-05-13
+---
+
+A **persona** is a tutor personality the learner chooses in `/profile`. Defined as the `Persona` type in `lib/types.ts`:
+
+```ts
+export type Persona = {
+  id: "nova" | "arjun" | "riya" | "sensei";
+  name: string;
+  tagline: string;
+  blurb: string;
+  glyph: string;
+  avatar_url?: string;
+};
+```
+
+The learner's choice is stored in `profiles.preferred_tutor_persona` (default `nova`).
+
+| ID | Name | Tagline | Glyph |
+|---|---|---|---|
+| `nova` | Nova | Warm & patient | ✦ |
+| `arjun` | Arjun | Direct & demanding | ◆ |
+| `riya` | Riya | Chill & Hinglish | ❁ |
+| `sensei` | Sensei | Old-school discipline | ☯ |
+
+## Maya vs persona
+
+[Maya](/wiki/glossary/maya) is the brand-facing tutor name (one). Personas are the four sub-personalities the learner picks (multiple). They're not interchangeable in copy — say "Maya" externally, refer to "the persona" or specific names internally.
+
+## Where persona affects behaviour
+
+- **Avatar** rendered in the lesson player and home dashboard.
+- **AI conversation system prompt** — `"You are <persona.name>, a <persona.tagline> AI tutor"` (`/api/ai/conversation/route.ts`).
+- **Voice** — currently unaffected (one ElevenLabs voice per language, regardless of persona). Future: distinct voice IDs per persona.

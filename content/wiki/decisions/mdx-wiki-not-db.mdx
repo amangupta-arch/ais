@@ -1,0 +1,41 @@
+---
+title: "Wiki in repo, not DB"
+summary: "The wiki lives as MDX files in content/wiki/. Git is the database; every edit is a commit; future Claude sessions can update the brain in the same PR as the feature."
+section: decisions
+order: 60
+keywords: [wiki, mdx, repo, git, database, storage]
+last_reviewed: 2026-05-13
+---
+
+## The choice
+
+`/wiki` reads MDX files from `content/wiki/**/*.mdx`. Each file path maps 1:1 to its URL. Frontmatter at the top, body below. Edits happen by committing to the repo.
+
+## What we explicitly didn't build
+
+- `wiki_pages` / `wiki_revisions` Supabase tables.
+- An in-browser MDX editor that POSTs back to the GitHub API.
+- A separate publishing system.
+
+## Why files won
+
+1. **Git is already the database.** Every edit gets version history, blame, and rollback for free.
+2. **Future Claude sessions can update the brain in the same PR as the feature** — when we ship a new architectural decision in `LessonPlayer.tsx`, the Claude session can also edit `content/wiki/architecture/lesson-player.mdx` so the doc lands with the code.
+3. **No DB writes during reads.** The wiki is cheap, cold-starts cheap, no Supabase round-trips on every page.
+4. **Search index is built from files at request time** — currently in-memory cache; could be a build-time JSON.
+5. **No editor UI to maintain.** Closing scope. We can graduate to in-browser editing later if non-coders need to edit.
+
+## Trade-offs
+
+- **No anonymous edits** — every edit requires a commit (and an admin who can push).
+- **No "draft" state** — you either commit it or you don't.
+- **Search is naive** — substring match over title + first paragraph + keywords. Fine for a 50-page wiki, not for a 5000-page one.
+
+## When to graduate
+
+If wiki edits start happening hourly, by non-coders, with diff review pressure → move to Supabase tables and an admin UI. Today none of that is true.
+
+## Related
+
+- The wiki content loader lives in `lib/wiki/content.ts`.
+- The admin gate is `lib/wiki/access.ts` (`WIKI_ADMINS` env var).

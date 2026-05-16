@@ -1,0 +1,35 @@
+---
+title: "Learner cohorts"
+summary: "Five doorways into the product, each with a breadcrumb shape, hue, and example persona."
+section: product
+order: 30
+keywords: [cohorts, audience, learners, breadcrumb]
+related: [/wiki/overview/audiences]
+last_reviewed: 2026-05-13
+---
+
+| # | Cohort | Example persona | Hue | Path shape |
+|---|---|---|---|---|
+| 01 | School student | Aanya, 14 — Class 9, Bengaluru | indigo | Class › Subject › Bundle › Lesson |
+| 02 | College student | Rohit, 20 — B.Com Sem 4 | moss | Programme › Sem › Module |
+| 03 | Competitive exams | Priya, 22 — UPSC CSE 2027 | coral | Exam › Section › Syllabus › Drill |
+| 04 | Working professional | Sameer, 34 — marketing manager, Pune | ocean | Goal › Skill bundle › Lesson |
+| 05 | Curious one | Lata, 58 — schoolteacher and grandmother | plum | Ask Maya › Custom path |
+
+## Where each cohort lands
+
+| Cohort | Primary surface | Plan they buy |
+|---|---|---|
+| School / College | `/student` (filtered by class + institute) | `student` |
+| Aspirant | `/learn` (specific bundles, future: dedicated `/aspirant`) | `basic` / `advanced` |
+| Professional | `/learn` (Basic / Advanced sections) | `basic` / `advanced` |
+| Curious | Direct lessons from search / "Ask Maya" (planned) | `free` |
+
+## Mapping back to the landing page
+
+The landing page section IDs (`#audience`, `#features`, `#paths`) tile these cohorts directly:
+
+- **Audience band** — 5 hue-coded cards, one per cohort.
+- **Five journeys** — same 5 cohorts with named example personas + breadcrumbs.
+
+The hues are the Lumen palette tokens (`--indigo`, `--moss`, `--coral`, `--ocean`, `--plum`) and stay consistent everywhere — when you see indigo, think school student.

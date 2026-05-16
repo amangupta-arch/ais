@@ -1,0 +1,56 @@
+---
+title: "Student plans"
+summary: "Three cohort-specific pricing pages: Class 6–10, Class 11–12, Bachelors. Each offers a one-subject vs all-subjects tier."
+section: product
+order: 20
+keywords: [student-plans, stt, eat, bach, pricing, cohorts]
+related: [/wiki/architecture/plan-model, /wiki/operations/cashfree-integration]
+last_reviewed: 2026-05-13
+---
+
+The Student plan tier (`plan_tier='student'`) splits into three audience cohorts, each with its own marketing page and two price points (one subject / all subjects). All three sit on the same `student` plan in the `plans` table — the cohort difference is content gating via `school_class` + `institute`, not a separate billing tier today.
+
+## Routes + pricing
+
+| Cohort | Route | Short key | One subject | All subjects |
+|---|---|---|---|---|
+| School Student · Class 6–10 | `/student-plan-stt` | `stt` (school-to-tenth) | ₹59 / mo | ₹199 / mo |
+| School Student · Class 11–12 | `/student-plan-eat` | `eat` (eleventh-and-twelfth) | ₹199 / mo | ₹499 / mo |
+| College Student · Bachelors | `/student-plan-bach` | `bach` (bachelors) | ₹199 / mo | ₹499 / mo |
+
+The pages are public (no auth gate), structured for Cashfree integration later. CTAs go to a `startCheckout()` server action that today redirects to `/checkout?plan=<id>` and tomorrow will create a Cashfree subscription session.
+
+## Files
+
+| File | Purpose |
+|---|---|
+| `lib/student-plans.ts` | Single source of truth — cohorts, plans, IDs, copy |
+| `components/StudentPlanPage.tsx` | Shared layout; all 3 routes render it |
+| `app/student-plan-stt/page.tsx` | Thin wrapper |
+| `app/student-plan-eat/page.tsx` | Thin wrapper |
+| `app/student-plan-bach/page.tsx` | Thin wrapper |
+| `app/checkout/page.tsx` | "Coming soon" stub |
+| `app/checkout/actions.ts` | `startCheckout()` — Cashfree integration point |
+
+## Plan IDs (stable, used by Cashfree later)
+
+```
+school-6-10-one
+school-6-10-all
+school-11-12-one
+school-11-12-all
+college-bachelors-one
+college-bachelors-all
+```
+
+Each cohort's `plans` list has one `recommended: true` (the all-subjects option) — rendered with the "Most chosen" badge and indigo accent.
+
+## How a learner ends up here
+
+1. From the landing page's pricing block (Setu Pro card → `/onboarding`, then plan-detail).
+2. From inside `/student` when they're prompted to upgrade (planned).
+3. Directly from a marketing URL we share externally.
+
+## Cohort gating in the dashboard
+
+The `/student` dashboard reads `profiles.school_class` + `profiles.institute` and shows only matching curriculum bundles. Pricing pages don't gate by anything — they're sales surfaces.

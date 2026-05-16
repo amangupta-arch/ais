@@ -1,0 +1,40 @@
+---
+title: "Cohort"
+summary: "STT / EAT / BACH — the three audience splits inside the Student plan tier."
+section: glossary
+order: 60
+keywords: [cohort, stt, eat, bach, student-plan]
+related: [/wiki/product/student-plans]
+last_reviewed: 2026-05-13
+---
+
+A **cohort** is a marketing-side audience split inside the `student` plan. Three today:
+
+| Short key | Full name | Class range | Route |
+|---|---|---|---|
+| `stt` | School-to-Tenth | Class 6 – 10 | `/student-plan-stt` |
+| `eat` | Eleventh-and-Twelfth | Class 11 – 12 | `/student-plan-eat` |
+| `bach` | Bachelors | Bachelors | `/student-plan-bach` |
+
+## Where the cohort lives in code
+
+`lib/student-plans.ts:STUDENT_COHORTS` is the single source of truth. Each cohort has:
+
+- `shortKey` — `stt` | `eat` | `bach`
+- `route` — `/student-plan-stt` etc.
+- `title`, `classRange`, `intro`, `hue`
+- `whatsAlsoIncluded` — bullet list shown below the tier cards
+- `plans` — the two `StudentPlan` entries (one subject / all subjects)
+
+## Cohort vs class
+
+A **class** (`profiles.school_class`) is the slug of an actual academic level — `10`, `bba-sem-01`, etc. A **cohort** is a UX bucket grouping related classes for pricing purposes.
+
+A learner whose `profiles.school_class = '10'` belongs to the STT cohort but doesn't carry that label on their profile. The mapping is implicit (UI-side).
+
+## Why three cohorts
+
+Pricing differs by maturity and competition layer:
+- STT (6–10) is value-friendly (₹59 / ₹199).
+- EAT (11–12) layers in entrance-exam prep, justifying a higher tier (₹199 / ₹499).
+- BACH covers programme-specific content with similar pricing to EAT (₹199 / ₹499).

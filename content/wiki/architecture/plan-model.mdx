@@ -1,0 +1,81 @@
+---
+title: "Plan model"
+summary: "Four plans on two parallel tracks. A user can hold multiple subscriptions at once — access is the union."
+section: architecture
+order: 70
+keywords: [plan, tier, subscriptions, multi-plan, parallel, tierCanAccess]
+related: [/wiki/decisions/parallel-student-plan, /wiki/decisions/multi-plan-support, /wiki/product/plans]
+last_reviewed: 2026-05-13
+---
+
+## The four plans
+
+| Plan | Track | Price | Content |
+|---|---|---|---|
+| `free` | shared baseline | ₹0 | A handful of starter lessons. Always accessible. |
+| `basic` | AI-tool ladder | ₹199 / mo | The full tool-literacy ladder — ChatGPT, Canva, Gemini, 40+ tools |
+| `advanced` | AI-tool ladder | ₹499 / 2-mo | Deeper mastery programmes; auto-unlocks `basic` |
+| `student` | School track | ₹99 / mo | Curriculum-aligned chapters (Class 6–12, NMIMS BBA, etc.) |
+
+## Two parallel tracks, not one ladder
+
+```
+AI-tool ladder:   free ⊂ basic ⊂ advanced
+School track:     free ⊂ student            (parallel — advanced does NOT auto-unlock student)
+```
+
+A working professional on `advanced` does **not** get the Class 10 Math chapters by paying for `advanced`. They have to also subscribe to `student`. This is intentional — they're distinct products targeting different audiences and we don't want one to subsidise the other.
+
+See the [parallel student plan decision](/wiki/decisions/parallel-student-plan).
+
+## Multi-plan support
+
+The `subscriptions` table has no unique constraint on `user_id`. A user can hold both `advanced` and `student` at the same time, granting them everything.
+
+`getMe()` returns `planIds: PlanTier[]` — the deduped **union** of every active subscription plus an implicit `free`:
+
+```ts
+const { user, profile, planIds } = await getMe();
+// e.g. ["free", "advanced", "student"]
+```
+
+The gate is `tierCanAccess(userTiers, target)` in `lib/types.ts`:
+
+```ts
+export function tierCanAccess(userTiers: readonly PlanTier[], target: PlanTier): boolean {
+  if (target === "free") return true;
+  for (const t of userTiers) {
+    if (t === target) return true;
+    if (t === "advanced" && target === "basic") return true;
+  }
+  return false;
+}
+```
+
+Decision: [multi-plan support](/wiki/decisions/multi-plan-support).
+
+## Access matrix
+
+| User holds | Can access |
+|---|---|
+| `free` only | free |
+| `basic` | free, basic |
+| `advanced` | free, basic, advanced |
+| `student` | free, student |
+| `advanced` + `student` | free, basic, advanced, student |
+
+## Plan tier on content
+
+Every bundle and course carries a `plan_tier` column. The lesson player checks `tierCanAccess(userTiers, course.plan_tier)` and renders a locked state when false.
+
+## Granting a plan
+
+Outside of the (planned) Cashfree flow, plans are granted by inserting into `subscriptions`:
+
+```sql
+insert into subscriptions (user_id, plan_id, status, started_at)
+values ('<uuid>', 'student', 'active', now())
+on conflict do nothing;
+```
+
+See the [grant-a-plan runbook](/wiki/operations/grant-a-plan).

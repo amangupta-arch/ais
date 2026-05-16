@@ -1,0 +1,117 @@
+---
+title: "DB schema"
+summary: "Postgres tables grouped by concern, with key columns and FK direction."
+section: architecture
+order: 30
+keywords: [schema, postgres, supabase, tables]
+related: [/wiki/architecture/content-model, /wiki/architecture/plan-model, /wiki/operations/migrations]
+last_reviewed: 2026-05-13
+---
+
+The schema lives in `supabase/migrations/0001_init.sql` and grows via numbered migration files. Every table belongs to one of four concerns.
+
+## Identity
+
+### `profiles`
+One row per `auth.users.id`. Holds product-level state.
+
+| Column | Type | Notes |
+|---|---|---|
+| `id` | uuid | PK; FK to `auth.users.id` |
+| `email` | text | mirrored from auth |
+| `display_name` | text | |
+| `avatar_url` | text | |
+| `primary_goal` | text | onboarding |
+| `current_level` | text | onboarding |
+| `role` | text | learner role flavour |
+| `interests` | text[] | |
+| `native_language` | text | default `en` |
+| `preferred_language` | text | default `en` (one of 10) |
+| `daily_goal_minutes` | int | 5 / 10 / 20 / 30 |
+| `daily_reminder_time` | time | |
+| `preferred_tutor_persona` | text | `nova` / `arjun` / `riya` / `sensei` |
+| `institute` | text | nullable; `nmims` for higher-ed cohorts |
+| `school_class` | text | slug-shape (`10`, `bba-sem-01`); CHECK regex |
+| `onboarding_completed_at` | timestamptz | |
+
+### `subscriptions`
+Many rows per user — multi-plan supported.
+
+| Column | Type | Notes |
+|---|---|---|
+| `id` | uuid | PK |
+| `user_id` | uuid | FK → profiles |
+| `plan_id` | text | FK → plans (`free` / `basic` / `advanced` / `student`) |
+| `status` | text | `active` / `cancelled` |
+| `started_at` | timestamptz | |
+
+See [Plan model](/wiki/architecture/plan-model).
+
+### `plans`
+Pricing catalog. Currently `free` / `basic` / `advanced` / `student`.
+
+## Content
+
+### `bundles`
+Top of the content tree. Carries the `tags` array — `class:N`, `subject:X`, `institute:Y`, `curriculum`, plus thematic tags like `utility`.
+
+| Column | Type | Notes |
+|---|---|---|
+| `slug` | text unique | e.g. `b-class-10-math-ch01-real-numbers` |
+| `plan_tier` | text | CHECK constraint: `basic` / `advanced` / `student` |
+| `emoji`, `cover_gradient`, `order_index` | | display |
+| `tags` | text[] | drives `/student` filtering |
+| `translations` | jsonb | `{en: {title, description}, …}` |
+
+### `courses`
+A bundle's child. `bundle_id` FK.
+
+### `lessons`
+A course's child. Per-language `translations` jsonb.
+
+### `lesson_turns`
+The atomic content unit. `turn_type` (text) + `content` (jsonb) + `translations` (jsonb). Order via `order_index`.
+
+See [Content model](/wiki/architecture/content-model) for the full hierarchy and [turn-types](/wiki/authoring/turn-types) for the schemas.
+
+## Audio cache
+
+### `lesson_audio_assets`
+Content-addressable. PK by `hash = sha256(voiceId|model|text)`.
+
+| Column | Type |
+|---|---|
+| `hash` | text unique |
+| `voice_id` | text |
+| `model` | text |
+| `text` | text |
+| `bytes` | int |
+| `storage_path` | text — `{voice_id}/{hash}.mp3` in the `lesson-audio` bucket |
+
+### `lesson_audio_manifest`
+Many-to-one with `lesson_audio_assets`. Tells the player *"for this lesson + this language + this turn + this chunk, play that asset."*
+
+| Column |
+|---|
+| `lesson_id` |
+| `language` |
+| `turn_index` |
+| `chunk_index` |
+| `asset_id` |
+| `text` (denormalised for debugging) |
+
+Unique on `(lesson_id, language, turn_index, chunk_index)`.
+
+## Progress + engagement
+
+| Table | Holds |
+|---|---|
+| `user_course_progress` | status, pct, last_lesson_id |
+| `user_lesson_progress` | status, current_turn_index, xp_earned |
+| `user_streaks` | current_streak, longest_streak |
+| `user_xp` | total_xp |
+| `yaml_generation_jobs` | author-tool job rows for the streaming generator |
+
+## Migrations
+
+See [Migrations list](/wiki/operations/migrations). Current head: **0016**.

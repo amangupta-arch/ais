@@ -1,0 +1,61 @@
+---
+title: "Languages"
+summary: "Ten languages today. Text + audio + cross-script fallback rules."
+section: product
+order: 40
+keywords: [languages, multilingual, hindi, tamil, bengali, fallback, noto, fonts]
+related: [/wiki/architecture/audio-pipeline, /wiki/decisions/audio-mirrors-text-fallback]
+last_reviewed: 2026-05-13
+---
+
+The catalogue today supports ten languages. The list lives in `lib/types.ts:LANGUAGES`.
+
+| Code | Native | English | Script | Notes |
+|---|---|---|---|---|
+| `en` | English | English | Latin | Canonical / base translation |
+| `hi` | हिन्दी | Hindi | Devanagari | |
+| `hinglish` | Hinglish | Hinglish | Latin (with Hindi loanwords) | Uses the Hindi voice with code-switching |
+| `mr` | मराठी | Marathi | Devanagari | |
+| `pa` | ਪੰਜਾਬੀ | Punjabi | Gurmukhi | |
+| `te` | తెలుగు | Telugu | Telugu | |
+| `ta` | தமிழ் | Tamil | Tamil | |
+| `bn` | বাংলা | Bengali | Bengali | |
+| `fr` | Français | French | Latin | Kept for the multilingual model's strengths |
+| `es` | Español | Spanish | Latin | Same as above |
+
+## Text fallback chain
+
+For any displayed string (bundle title, lesson title, turn content), helpers in `lib/types.ts` walk:
+
+1. `translations[<lang>]` for the requested language.
+2. `translations.en` (canonical English).
+3. The top-level column (`title`, `description` — equivalent to English).
+4. The slug (defensive, never expected in production).
+
+If a learner picks `hi` and the lesson has no Hindi translation, they see the English text — not a blank screen.
+
+## Audio fallback chain
+
+Per the [audio-mirrors-text-fallback decision](/wiki/decisions/audio-mirrors-text-fallback):
+
+1. If translated text exists for the user's language → request audio in that language.
+2. If we fell back to canonical English text → request English audio.
+3. If neither manifest entry exists → browser `speechSynthesis` (last resort, sounds notably worse).
+
+## Fonts
+
+Non-Latin scripts need Noto fallback fonts. Three families are loaded via Google Fonts in `app/layout.tsx`:
+
+- Noto Sans Devanagari (Hindi, Marathi)
+- Noto Sans Tamil
+- Noto Sans Bengali
+
+Punjabi (Gurmukhi) and Telugu rely on system fonts today — most Indian phones have them installed. Add to layout if rendering misbehaves.
+
+## Adding a new language
+
+1. Add an entry to `LANGUAGES` in `lib/types.ts`.
+2. Add a voice ID in `lib/audio/voices.ts:VOICE_IDS` (null is fine; means audio skips for that language).
+3. Pick a model in `MODEL_BY_LANGUAGE` (defaults to `eleven_multilingual_v2`).
+4. Add the script-specific font in `app/layout.tsx` if non-Latin and not already loaded.
+5. Update the `WIKI_ADMINS` regex on `profiles.preferred_language` if there's a CHECK (there isn't today; we trust the dropdown).

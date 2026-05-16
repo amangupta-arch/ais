@@ -1,0 +1,42 @@
+---
+title: "Migrations list"
+summary: "Every migration in supabase/migrations/, what it added, and which feature it unblocked."
+section: operations
+order: 80
+keywords: [migrations, schema, postgres, supabase, history]
+related: [/wiki/architecture/db-schema]
+last_reviewed: 2026-05-13
+---
+
+The schema grows via numbered SQL files. Head is **0016**.
+
+| # | File | Purpose |
+|---|---|---|
+| 0001 | `init.sql` | Profiles, plans, subscriptions, courses, lessons, lesson_turns, user progress + streak tables |
+| 0002 | `bump_streak.sql` | Streak helper function |
+| 0003 | `add_xp.sql` | `user_xp` table + helper |
+| 0004 | `bundles_and_languages.sql` | `bundles` table + plan_tier CHECK; language columns on lessons |
+| 0005 | `bundle_tags.sql` | `bundles.tags text[]` |
+| 0006 | `translations_jsonb.sql` | `translations` JSONB on bundles + courses |
+| 0007 | `lesson_turns_translations.sql` | Per-turn `translations` JSONB |
+| 0008 | `translations_collapse_clean_pairs.sql` | Data normalisation pass |
+| 0009 | `translations_drop_legacy.sql` | Drop pre-jsonb columns |
+| 0010 | `lesson_progress_language.sql` | Track which language a progress row was in |
+| 0011 | `yaml_generation_jobs.sql` | `yaml_generation_jobs` for the author tool |
+| 0012 | `yaml_jobs_text_column.sql` | Store the generated YAML text on the job row |
+| 0013 | `lesson_audio.sql` | `lesson_audio_assets` (cache) + `lesson_audio_manifest` |
+| 0014 | `student_plan_class10_math.sql` | Added `student` plan tier; relaxed `bundles_plan_tier_check`; seeded the first curriculum bundle |
+| 0015 | `profiles_school_class.sql` | `profiles.school_class smallint (1..12)` |
+| 0016 | `profiles_institute.sql` | Added `profiles.institute text`; converted `school_class` to text with format CHECK; partial index on institute |
+
+## Running migrations
+
+In Vercel-hosted prod, we apply via the Supabase MCP `apply_migration` tool. The migration file is committed to git so the schema is reproducible; the actual DB change is run separately.
+
+Local dev: `supabase db push` against your local CLI-managed instance (or copy the SQL into the dashboard).
+
+## Convention
+
+- One migration per concern. If a feature needs 3 columns + 1 index, that's ONE file.
+- Idempotent where reasonable (`if not exists`, `on conflict do nothing`). Migration 0016 uses `add column if not exists`, conditional CHECK creation via a DO block.
+- Number monotonically. Never rewrite a merged migration; add a new one to fix it.

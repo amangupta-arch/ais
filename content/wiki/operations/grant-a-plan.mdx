@@ -1,0 +1,58 @@
+---
+title: "Grant a plan"
+summary: "Manually add a subscription row in Supabase so a user can access plan-gated content."
+section: operations
+order: 10
+keywords: [grant, plan, subscription, supabase, manual]
+related: [/wiki/architecture/plan-model]
+last_reviewed: 2026-05-13
+---
+
+Until Cashfree is wired up, plans are granted by hand. This is also the right move for: comping a friendly user, granting a tester access, or seeding your own dev account.
+
+## Via SQL Editor
+
+```sql
+-- 1. Find the user's UUID
+select id, email from auth.users where email = 'foo@example.com';
+
+-- 2. Insert an active subscription
+insert into subscriptions (user_id, plan_id, status, started_at)
+values ('<PASTE_UUID>', 'student', 'active', now())
+on conflict do nothing;
+```
+
+Repeat with `plan_id = 'advanced'` (or `'basic'`) if you want them to hold multiple plans — the schema has no unique constraint on `user_id`, so a learner can stack `advanced` + `student`.
+
+## Via Table Editor (no SQL)
+
+1. **Authentication → Users** → search by email → copy User UID.
+2. **Table Editor → `subscriptions`** → Insert row:
+   - `user_id` = the UUID
+   - `plan_id` = `student` (or `basic` / `advanced`)
+   - `status` = `active`
+   - `started_at` = "Now"
+3. Save.
+
+## Verify
+
+- `select plan_id, status from subscriptions where user_id = '<uuid>'` shows the row.
+- `/profile` for that user shows the plan as the headline (and chips for any extras).
+- Plan-gated content (e.g. a `plan_tier='student'` course) unlocks.
+
+## Revoking
+
+Set `status = 'cancelled'`:
+
+```sql
+update subscriptions
+set status = 'cancelled'
+where user_id = '<uuid>' and plan_id = 'student';
+```
+
+`getMe()` only counts `status = 'active'` rows.
+
+## Trapdoors
+
+- After granting, the user may need to **hard refresh** to clear any cached `/learn` server-rendered pages. `force-dynamic` is set on most pages but middleware caches and CDN can lag a few seconds.
+- Don't `delete` the row — keeping a history of `cancelled` subs is useful when Cashfree lands and we want lifetime customer view.

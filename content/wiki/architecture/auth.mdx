@@ -1,0 +1,65 @@
+---
+title: "Auth"
+summary: "Supabase Auth with magic-link + Google OAuth. Cookie-based session, route-group gating, RLS off by default."
+section: architecture
+order: 40
+keywords: [auth, supabase, oauth, magic-link, google, cookies, ssr]
+related: [/wiki/architecture/routes, /wiki/operations/sentry-debug]
+last_reviewed: 2026-05-13
+---
+
+## Mechanism
+
+- **Supabase Auth** handles identity. Two sign-in methods are wired up in `app/login/LoginForm.tsx`:
+  - **Magic link** via `supabase.auth.signInWithOtp({ email })`
+  - **Google OAuth** via `supabase.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: <origin>/auth/callback?next=… } })`
+- The OAuth callback route at `app/auth/callback/route.ts` exchanges the code for a session and writes the auth cookies, then redirects to `?next=`.
+- Sessions are cookie-based; `@supabase/ssr`'s `createServerClient` reads/writes them transparently.
+
+## Server-side client
+
+`lib/supabase/server.ts` exposes `createClient()`, a server-only factory that pulls the Next request cookie jar into the Supabase JS client so server components / route handlers see the same user that the browser sees.
+
+```ts
+import { createClient } from "@/lib/supabase/server";
+
+const supabase = await createClient();
+const { data: { user } } = await supabase.auth.getUser();
+```
+
+## Browser client
+
+`lib/supabase/client.ts` exposes `createClient()` for use inside `"use client"` files — same auth context.
+
+## Route gating
+
+Pages under the `(app)` route group treat anonymous visitors with `redirect("/login")`. The unified pattern is in `lib/supabase/queries.ts:getMe()`:
+
+```ts
+const { user, profile, streak, xp, planIds } = await getMe();
+if (!user) redirect("/login");
+```
+
+`getMe()` returns `planIds: PlanTier[]` — the **union** of all active subscriptions plus an implicit `free`. See [Plan model](/wiki/architecture/plan-model).
+
+## Custom domain in Supabase config
+
+Whenever the domain changes (today: `https://myaisetu.com`), Supabase needs:
+- **Site URL** updated to the production origin.
+- **Redirect URLs** list to include `https://myaisetu.com/auth/callback`, `https://www.myaisetu.com/auth/callback`, the Vercel preview origin, and `http://localhost:3000/auth/callback`.
+
+## Google OAuth setup (one-time)
+
+1. Google Cloud Console → OAuth consent screen → External, app name "AI Setu", authorised domains include `myaisetu.com` and `supabase.co`.
+2. Credentials → OAuth Client ID → **Web application** → Authorised redirect URI is `https://<supabase-project>.supabase.co/auth/v1/callback` (Supabase handles the dance).
+3. Supabase dashboard → Authentication → Providers → Google → paste the client ID + secret → enable.
+
+## Admin-only surfaces
+
+`/wiki` reads `WIKI_ADMINS` (comma-separated emails) via `lib/wiki/access.ts` and silently redirects non-admin users to `/home`. No DB column today; graduate to `profiles.is_admin` when we have more than a handful of admins.
+
+## What we DON'T use
+
+- Row Level Security — we run with the service role on writes and rely on app-layer auth checks.
+- Supabase database functions / RPC — every query lives in `lib/supabase/queries.ts`.
+- Custom JWT claims — `auth.users.email` is the only thing we route on.

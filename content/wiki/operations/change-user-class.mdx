@@ -1,0 +1,53 @@
+---
+title: "Change a user's class / institute"
+summary: "Flip school_class and institute on profiles to move a learner between K-12 and NMIMS BBA cohorts."
+section: operations
+order: 20
+keywords: [class, institute, profile, school, dashboard]
+related: [/wiki/architecture/curriculum-tags, /wiki/operations/add-an-institute]
+last_reviewed: 2026-05-13
+---
+
+When a learner needs to switch tracks — typical case is moving them onto NMIMS BBA Sem 01 or a different K-12 grade.
+
+## What needs to change
+
+| Column | K-12 example | NMIMS BBA example |
+|---|---|---|
+| `profiles.school_class` | `10` | `bba-sem-01` |
+| `profiles.institute` | `null` | `nmims` |
+
+Both columns are text with a slug-format CHECK (`^[a-z0-9-]{1,40}$`).
+
+## Via SQL Editor
+
+```sql
+-- Move them to NMIMS BBA Sem 01
+update profiles
+   set institute = 'nmims',
+       school_class = 'bba-sem-01'
+ where id = '<UUID>';
+
+-- Or move them to Class 10 K-12 (no institute)
+update profiles
+   set institute = null,
+       school_class = '10'
+ where id = '<UUID>';
+```
+
+## Via Table Editor
+
+1. **Table Editor → `profiles`** → search the row by email or id.
+2. Open the row drawer.
+3. Set `institute` and `school_class`.
+4. Save.
+
+## Plan side-effects
+
+Changing the cohort doesn't change the user's plan. If they're not on `student`, they'll see the dashboard but courses will lock — [grant the student plan](/wiki/operations/grant-a-plan) alongside.
+
+## Where the user can do this themselves
+
+`/profile` → section **"04 school path"** lets the user pick from the `SCHOOL_PATH_OPTIONS` list (K-12 grades 6–12, NMIMS BBA Sem 01). Adding a new option to that list lets users self-select; until then, manual SQL is the path.
+
+See [add an institute](/wiki/operations/add-an-institute) when you're standing up a new cohort.
