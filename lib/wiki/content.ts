@@ -63,9 +63,24 @@ async function readMdxFile(absPath: string): Promise<{ data: WikiFrontmatter; co
   const raw = await fs.readFile(absPath, "utf-8");
   const parsed = matter(raw);
   return {
-    data: parsed.data as WikiFrontmatter,
+    data: normaliseFrontmatter(parsed.data),
     content: parsed.content,
   };
+}
+
+/** Gray-matter's default YAML parser turns unquoted ISO dates
+ *  (`last_reviewed: 2026-05-13`) into JavaScript Date objects. Those
+ *  blow up React when we render them as text. Coerce to ISO date
+ *  strings so the catch-all renderer never has to think about it.
+ *  Also defensively wraps anything else that arrived as a Date. */
+function normaliseFrontmatter(raw: Record<string, unknown>): WikiFrontmatter {
+  const out: Record<string, unknown> = { ...raw };
+  for (const [k, v] of Object.entries(out)) {
+    if (v instanceof Date) {
+      out[k] = v.toISOString().slice(0, 10);
+    }
+  }
+  return out as WikiFrontmatter;
 }
 
 /** Convert an on-disk path to its public wiki slug. */
