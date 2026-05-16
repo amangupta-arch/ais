@@ -99,9 +99,17 @@ export function autolinkBody(body: string, currentSlug: string): string {
       if (inInlineCode.test(working)) continue;
 
       // Word-boundary match; only the first occurrence on this line.
-      // \b works for our terms even with internal spaces — the
-      // assertions only apply at the term's ends.
-      const matcher = new RegExp(`\\b${escapeRegex(rule.term)}\\b`);
+      // We can't use \b at the term's ends because some terms end
+      // in non-word characters (e.g. "getMe()"). \b in JS regex only
+      // matches the boundary between word and non-word, so \b)
+      // never fires. Negative lookbehind / lookahead on the word-
+      // char set handles both flavours: for "Maya" it's equivalent
+      // to \b; for "getMe()" it just asserts the next char isn't a
+      // word character (or is end of line).
+      const wordChar = "[A-Za-z0-9_]";
+      const matcher = new RegExp(
+        `(?<!${wordChar})${escapeRegex(rule.term)}(?!${wordChar})`,
+      );
       const match = matcher.exec(working);
       if (!match) continue;
 
