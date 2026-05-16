@@ -1,0 +1,37 @@
+---
+title: "Tech stack"
+summary: "Every external system the app depends on, with their role and the env var that wires them up."
+section: architecture
+order: 10
+keywords: [stack, next.js, supabase, vercel, sentry, anthropic, elevenlabs, cashfree]
+last_reviewed: 2026-05-13
+---
+
+| Tier | Dependency | Role | Env var(s) |
+|---|---|---|---|
+| Framework | **Next.js 15** (App Router, RSC, force-dynamic) | All UI + API routes | — |
+| Language | **TypeScript** + **Tailwind** + **Lumen** tokens (`app/lumen.css`) | Types + styling | — |
+| Hosting | **Vercel** (Node 24.x runtime) | Build + deploy | `NEXT_PUBLIC_APP_URL` |
+| Domain | **myaisetu.com** | Apex + www | DNS records at the registrar; SSL via Vercel |
+| Database | **Supabase Postgres 17** | Profiles, plans, content, audio manifest, jobs | `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` |
+| Auth | **Supabase Auth** (magic-link + Google OAuth) | Sign-in | Configured in the Supabase dashboard |
+| File storage | **Supabase Storage** bucket `lesson-audio` | ElevenLabs mp3 cache | Public-read; service role for writes |
+| AI · text | **Anthropic Claude Sonnet 4.6** (`claude-sonnet-4-6`) | Lesson YAML generation, AI conversation turns, math-quiz vision grading | `ANTHROPIC_API_KEY` |
+| AI · audio | **ElevenLabs** (Flash v2.5 for EN/FR/ES, multilingual_v2 for Indic) | Lesson narration TTS | `ELEVENLABS_API_KEY` |
+| Errors | **Sentry** (`@sentry/nextjs`) | Browser + server errors, performance traces | `NEXT_PUBLIC_SENTRY_DSN`, `SENTRY_ORG`, `SENTRY_PROJECT`, `SENTRY_AUTH_TOKEN` |
+| Analytics | **Vercel Analytics** + **Speed Insights** | Page-view + Web Vitals | injected by Vercel |
+| Payments | **Cashfree Subscriptions** (planned) | UPI Autopay / cards / net-banking | TBD — integration point is `app/checkout/actions.ts` |
+
+## Key client libraries
+
+- `framer-motion` — `AnimatePresence` and layout animations in the lesson player.
+- `lucide-react` — icon set used across the app.
+- `next-mdx-remote` + `gray-matter` — wiki MDX rendering.
+- `@anthropic-ai/sdk` — Claude API client (used server-side only).
+- `@supabase/ssr` — Supabase client factory that respects request cookies.
+
+## Server-side conventions
+
+- Every route handler / page that talks to Supabase uses `createClient()` from `lib/supabase/server.ts` so auth context is propagated via the request cookie jar.
+- Long-running routes set `export const maxDuration = 300;` (yaml-generate) or `30` (math-quiz) and `runtime = "nodejs"`.
+- Sentry instrumentation lives in `instrumentation.ts` + `sentry.server.config.ts` + `instrumentation-client.ts`; everything no-ops cleanly when `NEXT_PUBLIC_SENTRY_DSN` is unset.

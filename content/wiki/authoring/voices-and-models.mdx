@@ -1,0 +1,67 @@
+---
+title: "Voices and models"
+summary: "Per-language voice IDs + TTS model selection — where to edit when adding a language or swapping a voice."
+section: authoring
+order: 60
+keywords: [voices, elevenlabs, models, tts, fallback]
+related: [/wiki/architecture/audio-pipeline, /wiki/decisions/per-language-tts-model]
+last_reviewed: 2026-05-13
+---
+
+Voice + model selection lives in `lib/audio/voices.ts`. Two maps, one fallback constant.
+
+## Voice IDs
+
+```ts
+export const VOICE_IDS: Record<string, string | null> = {
+  en:       "gHu9GtaHOXcSqFTK06ux",
+  hi:       "gHu9GtaHOXcSqFTK06ux",
+  hinglish: "gHu9GtaHOXcSqFTK06ux",     // shares the Hindi voice; multilingual_v2 handles code-switching
+  mr:       "RBxPIvrKOP4ugCK2jVHD",
+  pa:       "RxnH5jCRKb1ez2lcmQC1",
+  te:       "EMxdghWQV7gqV33j4J3F",
+  ta:       "hhPtGvkQC1ce5z3pPhYh",
+  bn:       "WiaIVvI1gDL4vT4y7qUU",
+  fr:       "zPy2sgLU4pZ7Xrjh87uz",
+  es:       "zl1Ut8dvwcVSuQSB9XkG",
+};
+```
+
+Setting a value to `null` opts that language out of audio — the YAML still applies but the pipeline reports `audio:skipped reason:"voice_id_missing"`.
+
+## Models
+
+```ts
+const MODEL_BY_LANGUAGE: Record<string, string> = {
+  en: "eleven_flash_v2_5",
+  fr: "eleven_flash_v2_5",
+  es: "eleven_flash_v2_5",
+};
+export const TTS_MODEL = "eleven_multilingual_v2";
+```
+
+Everything not listed in `MODEL_BY_LANGUAGE` falls back to `TTS_MODEL`. Flash v2.5 is ~half the cost per character but weak on Devanagari / Tamil / other conjunct scripts — see [per-language TTS model](/wiki/decisions/per-language-tts-model).
+
+## Swapping a voice
+
+1. Pick a new voice from ElevenLabs (Voice Library → My Voices in the dashboard).
+2. Copy its voice ID (20-char string like `gHu9GtaHOXcSqFTK06ux`).
+3. Replace the entry in `VOICE_IDS`.
+4. Ship.
+
+Existing audio assets remain valid (cache keyed on `voiceId|model|text`); only freshly generated chunks use the new voice. To force a refresh, delete the affected `lesson_audio_manifest` rows and re-run `/yaml-generate`.
+
+## Cost reference (per character, normalised)
+
+| Model | Cost |
+|---|---|
+| `eleven_flash_v2_5` | 0.5× |
+| `eleven_turbo_v2_5` | 0.5× |
+| `eleven_multilingual_v2` | 1× |
+| `eleven_v3` (alpha) | ~3× |
+
+The cache means most chunks are paid for once across the whole catalogue. The 50% saving from Flash on EN/FR/ES applies to the misses, not the hits.
+
+## Adding a language
+
+See the [languages page](/wiki/product/languages). Quick recap: add to `LANGUAGES` in `lib/types.ts`, set a `VOICE_IDS` entry (null is fine), decide on the model.

@@ -1,0 +1,44 @@
+---
+title: "Typewriter for prose only"
+summary: "tutor_message, AI conversation starter, and checkpoint summaries reveal word-by-word. Interactive turns appear instantly."
+section: decisions
+order: 100
+keywords: [typewriter, animation, prose, mcq, ux]
+related: [/wiki/architecture/lesson-player, /wiki/decisions/follow-tail-with-pause]
+last_reviewed: 2026-05-13
+---
+
+## The choice
+
+The `<Typewriter>` component (`app/(app)/learn/[courseSlug]/[lessonSlug]/Typewriter.tsx`) reveals text one whitespace-delimited token at a time at ~120 ms/word. It's wrapped around exactly three places:
+
+1. `tutor_message.content.text` (the main bubble).
+2. AI conversation starter — the FIRST assistant bubble (`i === 0 && role === "assistant"`).
+3. `checkpoint.content.summary`.
+
+Everything else (MCQ option labels, free-text inputs, drag chips, fill-in-the-blank templates) renders instantly.
+
+## Why word-by-word, not character-by-character
+
+- **Conjunct scripts.** Devanagari, Tamil, and Bengali use conjuncts that look weird when revealed character-by-character. Whitespace-token reveal sidesteps the issue.
+- **Pace feels right.** ~120 ms/word ≈ a calm reading speed.
+
+## Why prose only
+
+Animating MCQ option labels means the learner has to wait to read what they're picking from. They came to answer a question; making them wait is hostile.
+
+The starter bubble of an AI conversation IS prose-y — it's Maya kicking off the chat. But the back-and-forth that follows (real model responses to user input) appears instantly because the learner is now in active dialogue.
+
+## Tap to skip
+
+Click anywhere on the typing text (or press Space / Enter while focused) immediately reveals the full message. Power users escape the animation in one tap.
+
+## What we DIDN'T do
+
+- **Sync to audio narration.** Beautiful when it works but needs word-level timestamps from ElevenLabs, which we don't have.
+- **Apply to reflection prompts.** They're heading-style (24 px Fraunces), and animating a heading feels gimmicky.
+- **Apply to all text including UI chrome.** Would feel chaotic.
+
+## What would have to change to reverse
+
+Remove the `<Typewriter>` wrappers in `LessonPlayer.tsx`. The component file can stay around for any future use.

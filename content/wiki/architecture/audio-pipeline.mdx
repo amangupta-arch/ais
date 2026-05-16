@@ -1,0 +1,76 @@
+---
+title: "Audio pipeline"
+summary: "ElevenLabs TTS with content-addressable caching, per-language model selection, and language fallback that mirrors the displayed text."
+section: architecture
+order: 60
+keywords: [audio, elevenlabs, tts, cache, manifest, fallback]
+related: [/wiki/decisions/per-language-tts-model, /wiki/decisions/audio-mirrors-text-fallback, /wiki/decisions/content-addressable-audio-cache, /wiki/authoring/voices-and-models]
+last_reviewed: 2026-05-13
+---
+
+When a content author runs `/yaml-generate` for a `(lesson, language)` pair, the audio pipeline runs immediately after the YAML lands in `lesson_turns`.
+
+## Flow
+
+```
+runAudioPipeline(lessonId, language, yamlText)
+  │
+  ├─ voiceId = voiceIdFor(language)            (lib/audio/voices.ts)
+  ├─ model   = modelFor(language)              (Flash v2.5 for en/fr/es; multilingual_v2 otherwise)
+  ├─ chunks  = extractFromYamlText(yamlText)   (lib/audio/extract.ts)
+  │
+  └─ for each chunk:
+       hash = sha256(voiceId | model | text)
+       │
+       ├── cache HIT  → reuse lesson_audio_assets row
+       └── cache MISS → POST elevenlabs.io/v1/text-to-speech/<voiceId>
+                       upload to storage bucket `lesson-audio` at <voiceId>/<hash>.mp3
+                       insert lesson_audio_assets row
+       │
+       upsert lesson_audio_manifest (lesson_id, language, turn_index, chunk_index, asset_id)
+```
+
+## Why content-addressable
+
+`hash = sha256(voiceId | model | text)` means the same sentence spoken by the same voice with the same model is synthesised **once** across the entire catalogue. A common phrase like *"Let's try one more"* could appear in 50 lessons; we pay the ElevenLabs credit for it once.
+
+The cache key intentionally includes `model` — if we change the model we get a fresh asset, and existing manifest rows still point at the old (valid) asset so nothing breaks.
+
+See the [content-addressable cache decision](/wiki/decisions/content-addressable-audio-cache).
+
+## Per-language model
+
+| Language | Voice ID | Model | Cost vs `multilingual_v2` |
+|---|---|---|---|
+| en | `gHu9GtaHOXcSqFTK06ux` | `eleven_flash_v2_5` | 0.5× |
+| fr | `zPy2sgLU4pZ7Xrjh87uz` | `eleven_flash_v2_5` | 0.5× |
+| es | `zl1Ut8dvwcVSuQSB9XkG` | `eleven_flash_v2_5` | 0.5× |
+| hi | `gHu9GtaHOXcSqFTK06ux` | `eleven_multilingual_v2` | 1× |
+| hinglish | (Hindi voice) | `eleven_multilingual_v2` | 1× |
+| mr / pa / te / ta / bn | per `VOICE_IDS` map | `eleven_multilingual_v2` | 1× |
+
+Decision: [per-language TTS model](/wiki/decisions/per-language-tts-model).
+
+## Language fallback rule
+
+The player asks for audio in the language whose **text** is on screen, not necessarily the user's preferred language:
+
+```ts
+const showingTranslatedText = preferredLang !== "en" && translatedTurns?.length > 0;
+const audioLang = showingTranslatedText ? preferredLang : "en";
+```
+
+If the lesson has no Hindi translation, we fall back to English text *and* English audio, never Hindi audio (empty manifest) → browser TTS. This change shipped because learners were hearing the browser's robotic fallback on lessons that we hadn't translated yet.
+
+Decision: [audio mirrors text fallback](/wiki/decisions/audio-mirrors-text-fallback).
+
+## Files
+
+- `lib/audio/tts.ts` — `synthesize()` wraps the ElevenLabs HTTP call.
+- `lib/audio/voices.ts` — `VOICE_IDS`, `MODEL_BY_LANGUAGE`, `voiceIdFor()`, `modelFor()`.
+- `lib/audio/cache.ts` — `ensureAudioAsset()` does cache lookup → synth → upload → manifest write.
+- `lib/audio/pipeline.ts` — `runAudioPipeline()` is the streaming orchestrator (used by the `/api/yaml-jobs/generate` route).
+- `lib/audio/extract.ts` — pulls narratable text out of YAML lesson turns.
+- `lib/audio/sanitize.ts` — strips markdown (`*`, `_`, `~`, etc.) so Maya doesn't speak punctuation.
+- `lib/hooks/useAudioNarration.ts` — the browser-side player that consumes the manifest URLs.
+- `supabase/migrations/0013_lesson_audio.sql` — schema for `lesson_audio_assets` + `lesson_audio_manifest`.

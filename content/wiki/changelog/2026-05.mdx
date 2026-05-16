@@ -1,0 +1,40 @@
+---
+title: "2026-05 · Curriculum + multi-plan + landing + checkout"
+summary: "NMIMS BBA, multi-plan refactor, landing redesign, math quiz, /student dashboard, plan pages, custom domain, lesson player polish, internal wiki."
+section: changelog
+order: 20
+keywords: [may, 2026, nmims, multi-plan, landing, math-quiz, student-dashboard, wiki]
+last_reviewed: 2026-05-13
+---
+
+## What shipped
+
+### Curriculum
+- **NMIMS BBA Sem 01 · Environmental Management** — first higher-ed cohort. 3 bundles, 12 courses, 53 lessons. Migration 0016 added `profiles.institute` and converted `school_class` to text. Tag schema: `institute:nmims` / `class:bba-sem-01` / `subject:environmental-management` / `curriculum`.
+
+### Plans + access
+- **Multi-plan refactor (PR #45)** — `tierCanAccess(userTiers[], target)`. `getMe()` returns `planIds: PlanTier[]`. A user can hold both `advanced` and `student` simultaneously.
+- **Three plan-detail pages (PR #48)** — `/student-plan-stt`, `/student-plan-eat`, `/student-plan-bach`. Public, Cashfree-ready `startCheckout()` integration point in `app/checkout/actions.ts`.
+
+### Audio
+- **Per-language TTS model (PR #39)** — Flash v2.5 for EN/FR/ES, multilingual_v2 for Indic. ~50% cost reduction on Latin-script content.
+- **Audio mirrors text fallback (PR #42)** — when the lesson falls back to English text, audio also asks for English instead of dropping to browser TTS.
+
+### Lesson player polish
+- **Word-by-word typewriter (PR #49)** — `tutor_message`, AI conversation starter, checkpoint summary. Tap-to-skip.
+- **Follow-tail scroll with pause (PR #49)** — page glides with the typing cursor; pauses when the learner scrolls up.
+- **"Back to course" after lesson complete** — was "back to home" before.
+
+### Surfaces
+- **Math quiz (PR #41 · #43)** — `/math-quiz-test` with paper-photo grading via Claude Sonnet vision. Switched from JSON-in-text to `tool_use` for reliability. Client-side image compression to dodge Vercel's 4.5 MB body limit.
+- **Student dashboard (PR #44 · #46)** — `/student` shows curriculum bundles for the learner's class + institute. Inline class picker.
+- **Landing redesign (PR #47)** — `/` rebuilt from the design team's mockup. Sticky nav, animated bridge SVG, audience band, three refusals, five paths, multilingual quotes, pricing block, dark CTA.
+- **Bundle top bar progress (PR #50)** — replaced "THE LIBRARY" with `not started` / `X% complete` / `complete`.
+
+### Infra
+- **Custom domain `myaisetu.com`** — DNS, SSL, Supabase auth allow-list, Google OAuth + magic-link wired through.
+- **Sentry instrumentation** — installed; awaiting `NEXT_PUBLIC_SENTRY_DSN` env var to start receiving events in production.
+- **Canonical URL metadata (PR #47)** — `metadataBase` + `alternates.canonical` + Open Graph + Twitter card all use `NEXT_PUBLIC_APP_URL`.
+
+### Internal
+- **Internal wiki at `/wiki`** — admin-only, MDX in `content/wiki/**/*.mdx`, edits via PR. This page lives there.

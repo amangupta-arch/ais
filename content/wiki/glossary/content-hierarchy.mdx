@@ -1,0 +1,39 @@
+---
+title: "Content hierarchy"
+summary: "Bundle → Course → Lesson → Turn. The four levels of the content tree."
+section: glossary
+order: 40
+keywords: [bundle, course, lesson, turn, hierarchy]
+related: [/wiki/architecture/content-model]
+last_reviewed: 2026-05-13
+---
+
+```
+bundles                   slug: b-class-10-math-ch01-real-numbers
+  └─ courses              slug: prime-factorization
+       └─ lessons         slug: why-primes-are-the-atoms-of-numbers
+            └─ lesson_turns   ordered atomic activities
+```
+
+| Level | Cardinality | What it represents |
+|---|---|---|
+| **Bundle** | Top-level themed grouping; ~1 per chapter / ~1 per AI-tool | "Class 10 Math · Ch.1 Real Numbers" / "ChatGPT Basics" |
+| **Course** | A coherent unit within a bundle | "Prime Factorization" / "Writing Prompts" |
+| **Lesson** | One ~10-minute session | "Why Primes Are the Atoms of Numbers" |
+| **Turn** | Atomic activity inside a lesson | A single MCQ, one tutor message, one fill-in-the-blank |
+
+## Tagging
+
+Bundles carry the `tags` array — that's where curriculum / class / subject / institute / category live. Courses + lessons inherit context from their bundle; they don't carry tags themselves.
+
+## Translations
+
+Every level (bundle, course, lesson, turn) has a `translations` JSONB column — a per-language override map. See [Content model](/wiki/architecture/content-model).
+
+## Slug conventions
+
+- **Bundle slugs** are prefixed with `b-`: `b-class-10-math-ch01-real-numbers`, `b-chatgpt-basics`.
+- **Course slugs** are unique globally (NOT per-bundle): `prime-factorization`, `writing-prompts`.
+- **Lesson slugs** are unique within a course: `why-primes-are-the-atoms-of-numbers`.
+
+The loader (`scripts/load-bundle-courses.ts`) generates course/lesson slugs from titles via `slugify()` — keep titles spelled so the resulting slug matches what you want.

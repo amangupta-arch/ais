@@ -1,0 +1,41 @@
+---
+title: "Tag-driven curriculum"
+summary: "Curriculum bundles are categorised via `bundles.tags` rather than dedicated tables. Cheap to extend, no migration per institute."
+section: decisions
+order: 90
+keywords: [curriculum, tags, schema, classes, subjects, institutes]
+related: [/wiki/architecture/curriculum-tags, /wiki/architecture/db-schema]
+last_reviewed: 2026-05-13
+---
+
+## The choice
+
+`bundles.tags text[]` carries `class:N`, `subject:X`, `institute:Y`, `curriculum`. The `/student` dashboard filters and groups via tag prefixes. There are NO `classes` / `subjects` / `institutes` lookup tables.
+
+## Alternatives considered
+
+- **Dedicated lookup tables** — `classes(id, name)`, `subjects(id, name)`, `institutes(id, name)`, plus FKs from `bundles`. Type-safe, normalisation-friendly.
+- **Polymorphic FK** — `bundles.curriculum_id` references a polymorphic row. Hides complexity in the abstraction.
+- **JSONB column** — `bundles.curriculum jsonb`. Flexible but harder to query.
+
+## Why tags won
+
+1. **Adding a new institute is content-only.** No migration, no Supabase admin step beyond the SQL `INSERT` of the bundle row.
+2. **Composability.** A bundle could be `class:10` AND `class:11` if it spanned both — easy with array tags, awkward with single FKs.
+3. **The lookup tables would have ~5 rows each today.** Over-engineering for the current scale.
+4. **PostgreSQL's array `@>` (contains) operator is a perfectly fine query path** — the `getStudentBundles()` query is `tags @> ['curriculum','class:10']` (plus institute when present). Sub-millisecond on the current dataset.
+
+## What we lose
+
+- **Type safety on tag values.** A typo in `class:10` (e.g. `class:1O` with capital O) won't fail at insert. Mitigation: bundle inserts come from scripts (seed.sql, migration files, the loader) with static slug values, not from user input.
+- **No "list all subjects" query without scanning bundles.** We synthesize the subject list at query time from each bundle's `subject:*` tag. Acceptable at our scale.
+
+## When to graduate
+
+Move to lookup tables if any of these become true:
+
+- > 50 institutes / cohorts (typo risk goes up).
+- Need referential integrity (e.g. "deleting a subject should cascade").
+- Need rich subject metadata (icon, color theme, parent subject).
+
+Today none of those are true.

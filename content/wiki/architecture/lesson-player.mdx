@@ -1,0 +1,80 @@
+---
+title: "Lesson player"
+summary: "How the LessonPlayer renders progressive turns, plays audio, animates prose typewriter-style, and follows the tail on scroll."
+section: architecture
+order: 90
+keywords: [lesson-player, turns, typewriter, scroll, follow-tail, framer-motion, animation]
+related: [/wiki/decisions/typewriter-for-prose-only, /wiki/decisions/follow-tail-with-pause, /wiki/authoring/turn-types]
+last_reviewed: 2026-05-13
+---
+
+The lesson player at `app/(app)/learn/[courseSlug]/[lessonSlug]/LessonPlayer.tsx` is the most code-dense surface in the app — every turn type has its own renderer, audio is wired into the parent, and the scroll behaviour is a small machine.
+
+## Progressive reveal
+
+State: `revealedCount` (number of turns currently visible). Turns are rendered as `<motion.div layout>` so framer-motion smoothly resizes when one collapses or a new one appears below.
+
+```
+Initial: revealedCount = saved current_turn_index + 1   (resume where you left off)
+Advance: revealedCount + 1                              (on Continue / answer-submit)
+```
+
+`activeTurnRef` always points at the LATEST motion.div — used both for scroll-following and to scope the typewriter / typing-dots animation.
+
+## Per-turn renderers
+
+| `turn_type` | Renderer | Interactive? |
+|---|---|---|
+| `tutor_message` | TutorMessage (typing dots → bubble → Continue) | yes (Continue) |
+| `mcq` | MCQ (4 options, immediate feedback) | yes |
+| `fill_in_the_blank` | FillBlank | yes |
+| `free_text` / `reflection` | FreeTextOrReflection | yes (textarea) |
+| `drag_to_reorder` | DragReorder | yes |
+| `tap_to_match` | TapMatch | yes |
+| `exercise` | Exercise (instructions + skip) | yes |
+| `ai_conversation` | AIConversation (multi-turn chat, capped) | yes |
+| `media` / `svg_graphic` / `html_animation` | VisualFigure | no (auto-advance) |
+| `checkpoint` | Checkpoint (title + summary, last turn) | no |
+
+## Prose typewriter
+
+Three places run word-by-word: `tutor_message`, AI-conversation **starter** bubble (i === 0 && role === "assistant"), and `checkpoint.summary`. The `<Typewriter>` component (`./Typewriter.tsx`):
+
+- Splits text on `/\s+/` so it works in Devanagari / Tamil / Bengali (character-by-character looks choppy on conjunct scripts).
+- Reveals one whitespace-delimited token every ~120 ms.
+- Click / Space / Enter jumps to the end immediately.
+- Resets when the text prop changes (re-translation, new turn).
+
+Interactive turn types (MCQ options, free-text inputs) render text instantly so they don't slow the learner down. See [Typewriter decision](/wiki/decisions/typewriter-for-prose-only).
+
+## Audio playback
+
+The parent player owns audio via `useAudioNarration()` (`lib/hooks/useAudioNarration.ts`):
+
+- For every new revealed turn, look up the audio manifest URLs for `(turn_index, language)`.
+- If URLs exist → play them sequentially via `<audio>`.
+- If no URLs AND `turn_type === "tutor_message"` → fall back to browser `speechSynthesis` (last resort).
+- Audio toggle in the header controls play/pause for the whole lesson.
+
+## Follow-tail scroll
+
+The lesson is a long vertical scroll. As the active turn grows (typewriter typing, image loading, MCQ feedback unfolding), the viewport should follow the tail like a chat app. The `useEffect` around line 100 of `LessonPlayer.tsx` does the work:
+
+```
+On new turn:                        scrollIntoView({ block: "end", smooth })
+ResizeObserver on the active turn:  if (autoFollow) scrollIntoView({ block: "end", auto })
+Window scroll listener:             
+  programmatic-scroll guard (250 ms after our own pinBottom)
+  if d > 120 px from bottom → autoFollow = false
+  if d <  80 px from bottom → autoFollow = true
+```
+
+When the learner scrolls UP to re-read, `autoFollow` flips false and the page stops chasing the tail. When they scroll back near the bottom, follow re-arms. See [follow-tail with pause](/wiki/decisions/follow-tail-with-pause).
+
+## Completion + redirect
+
+On the last turn's "Complete lesson" CTA, `completeLesson` server action writes the progress row, the player plays a confetti animation, and routes to `/learn/<courseSlug>` (NOT `/home`) so "next lesson" is one tap away.
+
+## Tier gating
+
+The course page (`app/(app)/learn/[courseSlug]/page.tsx`) checks `tierCanAccess(tiers, course.plan_tier)`. When false, the player isn't rendered — instead the page shows the locked state with a paywall CTA. The bundle page does the same check at bundle level and additionally for each course card.

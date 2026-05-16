@@ -1,0 +1,37 @@
+---
+title: "Audio mirrors text fallback"
+summary: "If we fall back to English text because a translation is missing, we also ask for English audio — not the (empty) translated audio."
+section: decisions
+order: 40
+keywords: [audio, language, fallback, text, mirror]
+related: [/wiki/architecture/audio-pipeline]
+last_reviewed: 2026-05-13
+---
+
+## The choice
+
+The lesson page picks the audio language by mirroring the **displayed text** language, not the user's preferred language:
+
+```ts
+const showingTranslatedText = preferredLang !== "en" && translatedTurns?.length > 0;
+const audioLang = showingTranslatedText ? preferredLang : "en";
+const audioByTurn = await getLessonAudioManifest(lesson.id, audioLang);
+```
+
+## The bug we were fixing
+
+A learner on Hindi visited a course that had no Hindi translation yet. The lesson rendered English text (correct fallback). But the player asked for **Hindi** audio (`manifest @ language='hi'`), got nothing back, and dropped to browser `speechSynthesis` — which sounds notably worse than the English ElevenLabs voice.
+
+## Why mirroring beats other options
+
+- **Falling back to browser TTS in the user's language** — robotic, brand-hostile.
+- **Asking for any-language audio in priority order** — sometimes you'd hear an English clip embedded in a Hindi-text page, which is jarring.
+- **Mirroring** — audio always speaks the same words on screen. Worst case is "you wanted Hindi, you got English (text + audio)" which is consistent at least.
+
+## What we did NOT do
+
+If translated text exists but translated audio doesn't (text translated, audio not yet regenerated for that language), we still hand the player an empty manifest and let it drop to browser TTS. Falling back to English audio while showing Hindi text would be more jarring than browser TTS in Hindi.
+
+## What would have to change to reverse
+
+Reverse the line above to `audioLang = preferredLang`. Browser TTS will rear its head again on non-translated lessons.

@@ -1,0 +1,61 @@
+---
+title: "yaml-generate flow"
+summary: "What happens end-to-end when an author clicks Generate on /yaml-generate."
+section: authoring
+order: 10
+keywords: [yaml-generate, claude, audio-pipeline, ndjson, streaming]
+related: [/wiki/authoring/lesson-yaml-schema, /wiki/architecture/audio-pipeline]
+last_reviewed: 2026-05-13
+---
+
+`/yaml-generate` is the author tool. It picks a `(bundle, course, lesson, language)` tuple, kicks off a streaming job, and streams progress events back to the browser as NDJSON.
+
+## Steps the route executes
+
+1. **Auth check** — only signed-in users; admin-only in practice.
+2. **Load the catalog row** — bundle, course, lesson, plus any existing English YAML.
+3. **Build the system prompt** — Maya persona + lesson outcome + style guide + language instructions.
+4. **Call Claude `claude-sonnet-4-6`** to generate the lesson YAML, streaming the response.
+5. **Parse the YAML** as it streams; surface parse errors back to the UI.
+6. **Apply** — write turns to `lesson_turns` (delete + insert) and update `lessons.translations[<lang>]` for the title / subtitle.
+7. **Run the audio pipeline** — `runAudioPipeline(lessonId, language, yamlText)`. Per-language voice + model. Cache hits skip ElevenLabs calls.
+8. **Stream `audio:start` → `audio:chunk` (one per chunk) → `audio:done`** events.
+
+The whole exchange is one NDJSON stream so the author UI shows real-time progress.
+
+## Files
+
+| File | Role |
+|---|---|
+| `app/yaml-generate/page.tsx` | Picker UI |
+| `app/yaml-generate/GenerateForm.tsx` | Streaming consumer |
+| `app/api/yaml-jobs/generate/route.ts` | Server orchestrator — generation + apply + audio pipeline |
+| `lib/yaml-generation/catalog.ts` | Lists lessons for the picker |
+| `lib/yaml-generation/prompt.ts` | Builds the Claude prompt |
+| `lib/audio/pipeline.ts` | Audio sub-pipeline |
+
+## NDJSON event types
+
+```
+{kind:"yaml:start"}
+{kind:"yaml:delta", text:"..."}            // streamed YAML body
+{kind:"yaml:done", lessonId:"..."}
+{kind:"yaml:error", message:"..."}
+{kind:"audio:start", total:N, voiceId:"...", model:"..."}
+{kind:"audio:chunk", done:N, total:N, cacheHit:true|false, bytes:N, preview:"..."}
+{kind:"audio:chunk_failed", done:N, total:N, error:"...", preview:"..."}
+{kind:"audio:done", total:N, hits:N, misses:N, failed:N, bytesFromTts:N}
+{kind:"audio:skipped", reason:"..."}
+```
+
+## What can go wrong
+
+- **`extractFromYamlText` failure** → `audio:skipped reason:"extract_failed"`. The YAML applied successfully but couldn't be parsed for narration; the lesson works, audio doesn't.
+- **`ELEVENLABS_API_KEY` missing** → `audio:skipped reason:"api_key_missing"`.
+- **No voice configured** → `audio:skipped reason:"voice_id_missing"`. Edit `lib/audio/voices.ts`.
+- **Claude truncates / errors mid-stream** → `yaml:error`. The lesson_turns table is unchanged (we delete + insert as a unit).
+
+## Author UX notes
+
+- The log box auto-scrolls internally during generation; the page itself stays anchored where the author was.
+- A confirm dialog gates re-generation when an existing YAML is already on disk for the lesson (avoids accidental clobbering of carefully-edited translations).

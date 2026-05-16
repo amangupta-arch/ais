@@ -1,0 +1,52 @@
+---
+title: "AI Setu — internal brain"
+summary: "A wiki that holds the why, the what, and the how-to of the AI Setu product. Every architectural decision, runbook and glossary entry lives here."
+section: ""
+order: 0
+keywords: [wiki, index, home]
+last_reviewed: 2026-05-13
+---
+
+This is the internal knowledge base for **AI Setu** (myaisetu.com) — a daily AI tutor for school students, college students, exam aspirants, working professionals, and curious learners across India.
+
+The wiki is **admin-only**, served at `/wiki`, and edited via PRs to `content/wiki/**/*.mdx`. Every Claude session that ships a non-trivial feature is expected to update the relevant wiki page in the same PR.
+
+## Where to start
+
+If you're new to the codebase, read in this order:
+
+1. **Overview** — what AI Setu is and who it's for.
+2. **Architecture** — the tech stack, route map, DB schema, and the pipelines that make Maya talk and read paper.
+3. **Product** — plans, languages, cohorts, personas.
+4. **Authoring** — how lessons get generated (the `/yaml-generate` flow).
+5. **Operations** — runbooks for the things you'll do most often.
+6. **Decisions** — non-obvious choices and why they're that way.
+
+## Conventions
+
+Every page must carry frontmatter:
+
+```yaml
+---
+title: "..."
+summary: "..."
+section: architecture
+order: 30
+keywords: [...]
+related: [/wiki/...]
+last_reviewed: YYYY-MM-DD
+---
+```
+
+A file named `_index.mdx` is the section landing page (e.g. `architecture/_index.mdx` → `/wiki/architecture`).
+
+## Sections
+
+- [Overview](/wiki/overview) — what AI Setu is and who it's for
+- [Architecture](/wiki/architecture) — tech stack, routes, schema, pipelines
+- [Product](/wiki/product) — plans, languages, cohorts, personas
+- [Authoring](/wiki/authoring) — `/yaml-generate` flow + lesson YAML schema
+- [Operations](/wiki/operations) — runbooks and dashboards
+- [Decisions](/wiki/decisions) — non-obvious choices, archived for posterity
+- [Glossary](/wiki/glossary) — Maya, Lumen, bundle, persona, tier
+- [Changelog](/wiki/changelog) — grouped history of merged work

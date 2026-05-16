@@ -1,0 +1,66 @@
+---
+title: "Plans"
+summary: "The four plan tiers and what each one includes. Pricing in INR + USD."
+section: product
+order: 10
+keywords: [plans, pricing, free, basic, advanced, student]
+related: [/wiki/architecture/plan-model, /wiki/product/student-plans]
+last_reviewed: 2026-05-13
+---
+
+The catalog lives in the `plans` table. Seed values come from `supabase/seed.sql` and migration 0014.
+
+| Plan | INR / period | USD / period | Streak unlock | Lessons / day | Sort order |
+|---|---|---|---|---|---|
+| Free | ₹0 / 30 days | $0 | 1 day | 1 | 0 |
+| Basic | ₹199 / 30 days | $2.99 | 9 days | unlimited | 1 |
+| Advanced | ₹499 / 60 days | $6.99 | 14 days | unlimited | 2 |
+| Student | ₹99 / 30 days | $1.49 | 5 days | 1 | 3 |
+
+## Free
+
+> Taste the method.
+
+Eight EN-only starter courses ("ChatGPT basics" and friends) plus the first lesson of every paid course. No card, no pressure.
+
+## Basic
+
+> Build the habit.
+
+The full AI-tool literacy ladder — 43 courses on ChatGPT, Canva, Gemini, Notion AI, Suno, and 38 others. Streak freezes ×2, league access.
+
+## Advanced
+
+> Become the operator.
+
+22 "mastery programmes" — Cursor, GitHub Copilot, automated workflows. Auto-includes everything in Basic. Bonus bundles unlocked. Certificate of completion.
+
+## Student
+
+> School, simplified.
+
+Curriculum-aligned chapters for school + college students. Parallel track to the AI-tool ladder — a learner on Advanced does NOT automatically get Student content; they have to subscribe to both.
+
+The Student plan is fronted by three dedicated marketing pages (`/student-plan-stt`, `/student-plan-eat`, `/student-plan-bach`) with their own price points — see [student plans](/wiki/product/student-plans).
+
+## Access rules
+
+See [Plan model](/wiki/architecture/plan-model). Quick reference:
+
+| User holds | Can open content gated at |
+|---|---|
+| free | free |
+| basic | free, basic |
+| advanced | free, basic, advanced |
+| student | free, student |
+| advanced + student | free, basic, advanced, student |
+
+## Where the pricing shows up
+
+- Landing page (`app/page.tsx`) — pricing block with 3 tiers (Starter / Setu Pro / Schools)
+- `/student-plan-*` — cohort-specific (One subject / All subjects)
+- `/profile` — "current plan" card with all active subscriptions listed
+
+## Future payments
+
+Today, plans are granted manually via `INSERT INTO subscriptions`. The Cashfree integration point is `app/checkout/actions.ts` — see [Cashfree integration](/wiki/operations/cashfree-integration).

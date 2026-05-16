@@ -1,0 +1,46 @@
+---
+title: "Per-language TTS model"
+summary: "Flash v2.5 for EN/FR/ES, multilingual_v2 for Indic — ~50% cost saving on Latin-script content without hurting Indic quality."
+section: decisions
+order: 30
+keywords: [tts, model, elevenlabs, flash, multilingual, cost]
+related: [/wiki/architecture/audio-pipeline, /wiki/authoring/voices-and-models]
+last_reviewed: 2026-05-13
+---
+
+## The choice
+
+`MODEL_BY_LANGUAGE` maps en/fr/es to `eleven_flash_v2_5`. Everything else (hi, hinglish, mr, pa, te, ta, bn) falls back to `eleven_multilingual_v2`.
+
+## The numbers
+
+| Model | Cost (per char, normalised) |
+|---|---|
+| `eleven_flash_v2_5` | 0.5× |
+| `eleven_multilingual_v2` | 1× |
+
+Flash is half the cost. If ~40% of newly authored content is EN/FR/ES, that's a ~20% reduction on the audio line item with no quality loss for those languages.
+
+## Alternatives considered
+
+- **All Flash** — half the cost across the board. But Flash mispronounces Devanagari / Tamil / Bengali conjuncts noticeably more often. For learners trying to absorb concepts, mispronunciation is worse than spending the extra credits.
+- **All multilingual_v2** — known quantity. What we had before. Status quo cost.
+- **Per-language manual tuning of voice settings** — `stability`, `similarity_boost`. Doesn't change cost; deferred until we have signal that the voice settings need work.
+
+## Why we picked the split
+
+Indic pronunciation is the highest-stakes quality factor for our learners. We'd rather pay 1× there. EN/FR/ES are Latin-script, the model handles them cleanly at 0.5×.
+
+## What would have to change to reverse
+
+One line in `lib/audio/voices.ts`:
+
+```ts
+const MODEL_BY_LANGUAGE: Record<string, string> = {};  // all fall back to TTS_MODEL
+```
+
+Or to push Flash everywhere, add every language code with `"eleven_flash_v2_5"` as the value.
+
+## Cache implication
+
+Cache key is `sha256(voiceId|model|text)`. Switching models invalidates the cache for the affected languages — first regeneration of an existing lesson pays the credit again. Acceptable one-time hit.

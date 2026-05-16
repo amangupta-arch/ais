@@ -1,0 +1,66 @@
+---
+title: "Lesson YAML schema"
+summary: "The shape Claude writes when it generates a lesson — turns, content blocks, and translation slots."
+section: authoring
+order: 20
+keywords: [yaml, schema, turns, translations, content]
+related: [/wiki/authoring/turn-types]
+last_reviewed: 2026-05-13
+---
+
+Each lesson YAML is a top-level array of `turns`. The generator (Claude) is prompted to emit YAML matching this shape; the apply step reads it via `js-yaml` and inserts rows into `lesson_turns`.
+
+## Top-level shape
+
+```yaml
+turns:
+  - turn_type: tutor_message
+    content:
+      text: "Hi! Today we'll learn..."
+      typing_ms: 600
+    xp_reward: 5
+  - turn_type: mcq
+    content:
+      question: "What is 2x + 5 = 17?"
+      options:
+        - "x = 4"
+        - "x = 6"
+        - "x = 8"
+      correct_index: 1
+      explanation: "Subtract 5 from both sides, then divide by 2."
+    xp_reward: 10
+  - turn_type: checkpoint
+    content:
+      title: "Real numbers, summed up"
+      summary: "We saw three ways..."
+    xp_reward: 20
+```
+
+## Required keys per turn
+
+| Key | Type | Notes |
+|---|---|---|
+| `turn_type` | enum | One of the [turn types](/wiki/authoring/turn-types) |
+| `content` | object | Turn-type-specific schema |
+| `xp_reward` | int | Optional; default 0 |
+
+## How translations work
+
+For non-English generations (`?language=hi`, etc.), the generator writes a separate YAML in the same shape — applied as `translations[<lang>].turns` on the lesson row. The lesson page resolves the right turn list at request time:
+
+```ts
+const translatedTurns = lesson.translations?.[lang]?.turns;
+const displayTurns = translatedTurns?.length > 0
+  ? translatedTurns
+  : turns.map((t) => localizeTurn(t, lang));
+```
+
+When a translated set exists, it's used wholesale. Otherwise, the canonical EN turns get a per-field override via `localizeTurn()` — useful for partial translations where only some `content` fields have alternatives.
+
+## Validation
+
+The apply step doesn't strict-check the schema. We trust Claude (mostly), and the lesson player tolerates missing optional fields. If a turn type is unknown the player shows a small "(unsupported turn type)" placeholder.
+
+## Hand-edit workflow
+
+Authors who need to tweak content after generation use `/update-yaml` — it loads the current YAML, accepts edits in a textarea, and applies on save. The audio pipeline does NOT re-run automatically on a manual edit; use `/yaml-generate` if you want audio regenerated.

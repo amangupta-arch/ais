@@ -1,0 +1,28 @@
+---
+title: "Audiences"
+summary: "Five doorways into the product, each with its own breadcrumb shape."
+section: overview
+order: 20
+keywords: [audience, school, college, aspirant, professional, curious, breadcrumb]
+related: [/wiki/product/learner-cohorts, /wiki/architecture/curriculum-tags]
+last_reviewed: 2026-05-13
+---
+
+The landing page (`/`) is built around five distinct cohorts. The taxonomy isn't decorative — it drives where in the catalog content sits and what the breadcrumb looks like.
+
+| # | Cohort | Hue | Breadcrumb shape |
+|---|---|---|---|
+| 01 | School student (Class 6–12) | indigo | Class › Subject › Bundle › Lesson |
+| 02 | College student | moss | Programme › Semester › Module |
+| 03 | Competitive exams | coral | Exam › Section › Syllabus › Drill |
+| 04 | Working professional | ocean | Goal › Skill bundle › Lesson |
+| 05 | Curious one | plum | Ask Maya › Custom path |
+
+## How the audience maps to the codebase
+
+- **School + College** content carries `curriculum` + `class:<value>` + (optional) `institute:<slug>` tags on the `bundles` table and surfaces on `/student`. See [curriculum tags](/wiki/architecture/curriculum-tags).
+- **Aspirant / Professional / Curious** content lives in non-curriculum bundles (no `curriculum` tag) and shows up on `/learn` instead.
+
+## Pricing maps to plans, not audiences
+
+Audience is a UX device. Pricing is plan-tier-driven (`free` / `basic` / `advanced` / `student`). A working professional and a Class 10 student can both hold the `advanced` plan; their experience differs because their `/student` flag, persona pick, and content tags differ — but the gating mechanism is the same. See [Plans](/wiki/product/plans) and the [Plan model](/wiki/architecture/plan-model).

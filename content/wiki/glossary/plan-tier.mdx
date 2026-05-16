@@ -1,0 +1,41 @@
+---
+title: "Plan tier"
+summary: "free / basic / advanced / student. The four tier values that gate content access."
+section: glossary
+order: 50
+keywords: [plan, tier, free, basic, advanced, student]
+related: [/wiki/architecture/plan-model, /wiki/product/plans]
+last_reviewed: 2026-05-13
+---
+
+The `PlanTier` TypeScript union (defined in `lib/types.ts`):
+
+```ts
+export type PlanTier = "free" | "basic" | "advanced" | "student";
+```
+
+These are the only valid values stored in `plans.id` and referenced in `subscriptions.plan_id`.
+
+## Where they appear
+
+- `bundles.plan_tier` — required CHECK constraint: `('basic','advanced','student')`. (No bundle is `plan_tier='free'`; free content sits in standalone courses without a bundle.)
+- `courses.plan_tier` — inherited from bundle for non-free content; standalone free courses set it directly.
+- `subscriptions.plan_id` — what a user actually owns.
+
+## Access rule
+
+`tierCanAccess(userTiers, target)` in `lib/types.ts` — see [Plan model](/wiki/architecture/plan-model).
+
+## Adding a new tier
+
+Don't, casually. Adding a tier means:
+
+- New plan row in `plans`.
+- Update the `bundles_plan_tier_check` CHECK constraint (a migration).
+- Update the `PlanTier` union.
+- Add a per-tier rule to `tierCanAccess()`.
+- Update `formatTier()` in `lib/utils.ts`.
+- Add a card on the landing pricing block + corresponding `/student-plan-*` page if it's audience-facing.
+- Cashfree plan setup if it's billable.
+
+The 0014 migration is the template — it added `student`.

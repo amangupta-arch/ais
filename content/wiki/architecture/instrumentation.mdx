@@ -1,0 +1,54 @@
+---
+title: "Instrumentation"
+summary: "Sentry for errors and traces, Vercel Analytics + Speed Insights for product metrics."
+section: architecture
+order: 100
+keywords: [sentry, analytics, speed-insights, monitoring, tracing, vercel]
+related: [/wiki/operations/sentry-debug]
+last_reviewed: 2026-05-13
+---
+
+## Sentry
+
+Installed as `@sentry/nextjs`. Three configs, one entry point, one `withSentryConfig` wrapper:
+
+| File | Loads when |
+|---|---|
+| `instrumentation.ts` | Once per runtime — picks Node or edge |
+| `sentry.server.config.ts` | Node runtime — covers API routes + RSC |
+| `sentry.edge.config.ts` | Edge runtime |
+| `instrumentation-client.ts` | Every client bundle |
+| `next.config.ts` | Wrapped with `withSentryConfig({...})` — source-map upload + `/monitoring` tunnel |
+
+Every init checks `enabled: !!process.env.NEXT_PUBLIC_SENTRY_DSN` — without the DSN the SDK silently no-ops, so missing env doesn't break dev.
+
+### Source-map debug IDs
+
+`withSentryConfig` injects `_sentryDebugIds` into every JS chunk at build time. Production deploy ships them whether or not the runtime DSN is set — proof that build-time instrumentation worked.
+
+### Tunnel route
+
+`tunnelRoute: "/monitoring"` rewrites Sentry's ingest to first-party. Ad-blockers can't see `*.ingest.sentry.io` requests; the events go to `/monitoring/<id>` which Vercel forwards.
+
+### Required env (production)
+
+```
+NEXT_PUBLIC_SENTRY_DSN      = https://<hash>@o<org>.ingest.sentry.io/<project>
+SENTRY_ORG                  = ink-1e
+SENTRY_PROJECT              = the-ai-setu
+SENTRY_AUTH_TOKEN           = <auth-token>     (only needed for sourcemap upload at build)
+```
+
+See [Sentry debug runbook](/wiki/operations/sentry-debug) for what to check if errors aren't reporting.
+
+## Vercel Analytics + Speed Insights
+
+Two `<Analytics />` and `<SpeedInsights />` components from `@vercel/analytics/next` and `@vercel/speed-insights/next` mounted in `app/layout.tsx`. No config — they pick up the deployment automatically. Dashboards live in the Vercel project settings.
+
+## What we DON'T instrument (yet)
+
+- No PostHog / Mixpanel.
+- No structured logging beyond `console.error` (Sentry catches it).
+- No Datadog / NewRelic.
+
+The bar to add another tool is *"would Sentry + Vercel really fail to surface this?"*.

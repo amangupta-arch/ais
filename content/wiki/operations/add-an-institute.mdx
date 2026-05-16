@@ -1,0 +1,81 @@
+---
+title: "Add an institute"
+summary: "The end-to-end process to stand up a new higher-ed cohort (e.g. IIT-Bombay BTech Sem 1)."
+section: operations
+order: 30
+keywords: [institute, cohort, higher-ed, nmims, bba]
+related: [/wiki/architecture/curriculum-tags, /wiki/authoring/adding-content]
+last_reviewed: 2026-05-13
+---
+
+Walking through what NMIMS BBA Sem 01 needed — repeat for a new institute or programme.
+
+## 1. Pick slug values
+
+| Concept | Value |
+|---|---|
+| Institute slug | `nmims` (lowercase, hyphenated) |
+| Class slug | `bba-sem-01` (free-form; could be `btech-cse-sem-1`, `mba-yr1`, etc.) |
+| Subject slug | `environmental-management` |
+
+CHECK constraint: `^[a-z0-9-]{1,40}$`.
+
+## 2. Insert the bundle row(s)
+
+```sql
+insert into bundles (slug, plan_tier, emoji, cover_gradient, order_index, tags, translations)
+values
+  ('b-nmims-em-01-foundations', 'student', '🌍', 'moss', 500,
+   '{curriculum,class:bba-sem-01,subject:environmental-management,institute:nmims}',
+   '{"en":{"title":"…","description":"…"}}'::jsonb);
+```
+
+## 3. Add the path option
+
+`app/(app)/student/paths.ts` exports `SCHOOL_PATH_OPTIONS`. Add an entry:
+
+```ts
+{
+  institute: "nmims",
+  schoolClass: "bba-sem-01",
+  label: "BBA · Sem 01",
+  subtitle: "NMIMS",
+  group: "nmims",
+},
+```
+
+The `ClassPicker` on `/student` and the "04 school path" section on `/profile` both read from this list.
+
+## 4. Author the YAML + run the loader
+
+Standard [adding content](/wiki/authoring/adding-content) flow.
+
+## 5. Generate lesson YAMLs + audio
+
+`/yaml-generate` per `(lesson, language)`.
+
+## 6. Move test users into the cohort
+
+```sql
+update profiles
+   set institute = 'nmims', school_class = 'bba-sem-01'
+ where id = '<UUID>';
+```
+
+And grant them `student` if they don't have it yet — see [grant a plan](/wiki/operations/grant-a-plan).
+
+## 7. Verify
+
+- `/student` shows the new subject section with the bundles.
+- Courses inside unlock (assuming `student` plan).
+- K-12 users (no institute) do NOT see the new bundles — leakage guard in `getStudentBundles()`.
+
+## Edge case: institute-scoped plans
+
+Today all institute content is on the same `plans.id = 'student'` row. If we ever need different pricing per institute (e.g. an enterprise rate for NMIMS), the cleanest path is:
+
+1. Add a new plan row (`institute-nmims`).
+2. Set the bundles' `plan_tier` to that new value.
+3. Extend `tierCanAccess()` to handle it.
+
+Or insert the existing `student` price for those bundles and treat the institute as a content gate, not a pricing gate. We're doing the latter today.

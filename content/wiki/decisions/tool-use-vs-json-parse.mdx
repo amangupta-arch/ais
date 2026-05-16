@@ -1,0 +1,55 @@
+---
+title: "tool_use vs JSON parse"
+summary: "Forcing Claude to call a defined tool eliminates schema drift compared to asking for JSON in a text response."
+section: decisions
+order: 70
+keywords: [tool_use, claude, anthropic, json, schema, math-quiz]
+related: [/wiki/product/paper-grading]
+last_reviewed: 2026-05-13
+---
+
+## The choice
+
+`/api/ai/math-quiz` invokes Claude with a `submit_grade` tool, forces `tool_choice: { type: "tool", name: "submit_grade" }`, and reads the structured input from the `tool_use` content block. No `JSON.parse` anywhere.
+
+## What was wrong before
+
+The earlier version asked Claude to emit raw JSON in its text response. Two failure modes that surfaced in production:
+
+1. Claude occasionally wrapped the JSON in prose (`"Here's my assessment: { ... }"`). Our regex strip handled simple cases but missed others.
+2. On longer-script languages (Devanagari, Tamil), responses sometimes truncated mid-object because we hit `max_tokens`. `JSON.parse` blew up.
+
+Both modes returned `502 Could not parse model response` to the learner.
+
+## Why tool_use fixes it
+
+The schema is enforced by Anthropic's side, not by our parsing. Claude either fills the tool input correctly or doesn't respond at all. There's no "JSON wrapped in prose" path because there's no text-content path to wrap in.
+
+Also bumped `max_tokens` from 600 → 1024 in the same change for comfortable headroom on non-Latin scripts.
+
+## The tool schema
+
+```ts
+const GRADE_TOOL: Anthropic.Tool = {
+  name: "submit_grade",
+  description: "Submit the assessment of the student's handwritten math work.",
+  input_schema: {
+    type: "object",
+    properties: {
+      isCorrect:      { type: "boolean" },
+      detectedAnswer: { type: ["number", "null"] },
+      feedback:       { type: "string" },
+      mistakes:       { type: "array", items: { type: "string" } },
+    },
+    required: ["isCorrect", "detectedAnswer", "feedback", "mistakes"],
+  },
+};
+```
+
+## When to prefer plain text + parsing
+
+For free-form prose responses (lesson YAML generation, AI conversation turns), tool_use is wrong — the model needs the freedom to write naturally. Use tool_use when the response shape is a fixed schema.
+
+## Generalising
+
+Most structured-output use cases in this app should use tool_use. Anywhere you find a `JSON.parse(response.content[0].text)`, ask whether tool_use is a better fit.

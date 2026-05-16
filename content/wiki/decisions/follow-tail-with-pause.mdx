@@ -1,0 +1,58 @@
+---
+title: "Follow-tail scroll with pause"
+summary: "Page glides down with the typewriter cursor like a chat app. Pauses the moment the learner scrolls up to re-read; re-arms when they're back near the bottom."
+section: decisions
+order: 110
+keywords: [scroll, follow-tail, autoFollow, ResizeObserver, ux]
+related: [/wiki/architecture/lesson-player]
+last_reviewed: 2026-05-13
+---
+
+## The choice
+
+The lesson player keeps the bottom of the active turn pinned to the viewport bottom as it grows (typewriter typing, image loading, MCQ feedback unfolding). A `ResizeObserver` re-pins on every height-grow tick. A scroll listener pauses the auto-follow when the learner scrolls up.
+
+## How the pause works
+
+```
+let autoFollow = true
+let programmaticUntil = 0
+
+onScroll:
+  if Date.now() < programmaticUntil → return  (ignore our own scrollIntoView)
+  if dist-to-bottom > 120 px → autoFollow = false
+  if dist-to-bottom <  80 px → autoFollow = true
+
+resizeObserver.onGrow:
+  if autoFollow → scrollIntoView({ block: "end", auto })
+
+triggerAutoScroll:
+  programmaticUntil = Date.now() + 250 ms
+  scrollIntoView(...)
+```
+
+The 250 ms `programmaticUntil` window stops our own auto-scrolls from tripping the pause.
+
+## What this fixes
+
+Earlier behaviour pinned the bottom unconditionally. If a turn was taller than the viewport, the TOP of the turn (where the question was) was off-screen — the learner had to scroll UP to read the start. With autoFollow, they CAN scroll up safely; the typewriter keeps going but the page doesn't chase.
+
+## Hysteresis (120 vs 80 px)
+
+The OFF threshold (120 px) is bigger than the ON threshold (80 px) so the user isn't fighting a "snap back" while they're trying to read mid-page. They have to scroll meaningfully back toward the bottom for follow to re-arm.
+
+## Failure modes accounted for
+
+- **Tutor-message height swap** — typing dots (~60 px) → full text (~240 px). ResizeObserver catches the grow and re-pins.
+- **Framer's `layout` prop animation** — previous turn's height collapses over ~360 ms while a smooth-scroll is in flight. The follow-tail observer keeps re-pinning so the final position lands right.
+- **Async image / video / wrong-answer-hint reveals** — same deal, observer catches them.
+
+## What we DIDN'T do
+
+- **Pin the TOP of the active turn.** Tried it; loses the chat-app feel.
+- **Conditional top vs bottom pinning** based on turn height. Implemented in an earlier draft but the follow-tail-with-pause version turned out to handle all cases.
+- **`scroll-margin-top`** on each turn — layout-level alternative; harder to express the pause-on-user-scroll behaviour.
+
+## What would have to change to reverse
+
+Drop the `autoFollow` flag and the scroll listener. The bottom would re-glue unconditionally; long turns would need the user to scroll up manually.

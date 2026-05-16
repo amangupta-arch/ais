@@ -1,0 +1,59 @@
+---
+title: "Regenerate lesson audio"
+summary: "How to force the ElevenLabs pipeline to re-synthesise audio for a lesson when the cache hides updates."
+section: operations
+order: 40
+keywords: [regenerate, audio, cache, elevenlabs, force]
+related: [/wiki/architecture/audio-pipeline]
+last_reviewed: 2026-05-13
+---
+
+The audio cache is content-addressable on `(voiceId, model, text)`. That's almost always what you want — same chunk played by same voice with same model is paid for once. Sometimes you need to bypass it.
+
+## When you need to regenerate
+
+| Reason | What to do |
+|---|---|
+| You changed the voice ID for a language | Just re-run `/yaml-generate` — new cache key, new mp3. Old assets stay (unused). |
+| You changed the model for a language | Same — new cache key. |
+| You edited the YAML text (e.g. fixed a typo) | New cache key (text changed). New mp3 generated. |
+| You want to FORCE a re-synth without any text change | Manually delete the manifest rows (see below). |
+
+## Force-regenerate by deleting manifest entries
+
+```sql
+-- 1. Confirm the lesson + language you want to regenerate
+select * from lesson_audio_manifest
+ where lesson_id = '<LESSON_UUID>' and language = 'en';
+
+-- 2. Delete the manifest rows. Assets stay (other lessons may use them).
+delete from lesson_audio_manifest
+ where lesson_id = '<LESSON_UUID>' and language = 'en';
+```
+
+Then re-run `/yaml-generate` for that `(lesson, language)`. The pipeline will see no manifest rows and rebuild them — hitting the cache where text matches existing assets, paying for any chunks that drifted.
+
+## Force-regenerate the actual mp3 (e.g. for a voice tuning experiment)
+
+Delete the asset rows too:
+
+```sql
+delete from lesson_audio_assets
+ where voice_id = 'gHu9GtaHOXcSqFTK06ux';
+```
+
+Or, more surgically, by hash:
+
+```sql
+delete from lesson_audio_assets
+ where hash in (
+   select asset_id from lesson_audio_manifest
+   where lesson_id = '<LESSON_UUID>' and language = 'en'
+ );
+```
+
+Storage cleanup is then a separate step (the bucket file lingers; the `lesson-audio` bucket has a 5 MB file cap so it's not free real estate forever).
+
+## Cache hits in `/yaml-generate`
+
+The streaming log on `/yaml-generate` reports `cacheHit: true|false` per chunk and a `hits/misses` rollup in the final `audio:done` event. If you expected misses and got all hits, your text didn't actually change (whitespace + markdown-strip pass means trivial edits often produce the same canonical text).

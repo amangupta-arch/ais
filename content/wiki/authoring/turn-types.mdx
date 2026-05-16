@@ -1,0 +1,137 @@
+---
+title: "Turn types"
+summary: "Every interactive primitive the lesson player can render, with its content schema."
+section: authoring
+order: 30
+keywords: [turns, mcq, fill-in-the-blank, drag-to-reorder, tap-to-match, free-text, reflection, exercise, ai-conversation, media, svg-graphic, html-animation, checkpoint, tutor-message]
+related: [/wiki/architecture/lesson-player, /wiki/authoring/lesson-yaml-schema]
+last_reviewed: 2026-05-13
+---
+
+## `tutor_message`
+Maya speaks. Renders as a chat bubble with typing dots → typewriter reveal.
+
+```yaml
+content:
+  text: "Today we'll factor numbers into their primes."
+  typing_ms: 600       # how long the dots show before text appears
+  persona_id: nova     # optional override
+```
+
+## `mcq`
+Multiple choice.
+
+```yaml
+content:
+  question: "Which is the GCD of 12 and 18?"
+  options: ["3", "6", "9", "12"]
+  correct_index: 1
+  explanation: "12 = 2²·3, 18 = 2·3² → common = 2·3 = 6"
+```
+
+## `fill_in_the_blank`
+Inline input. Underscores in the template become the blank.
+
+```yaml
+content:
+  prompt: "Fill in the prime factorization."
+  template: "12 = ___ × ___ × 3"
+  blanks: ["2", "2"]
+```
+
+## `free_text` / `reflection`
+Textarea answer.
+
+```yaml
+content:
+  prompt: "Why is 1 not considered a prime?"
+  min_chars: 30
+```
+
+The difference: `free_text` expects a problem-solving response; `reflection` is open-ended. The eyebrow label switches between *"your turn"* and *"reflection"* in the player.
+
+## `drag_to_reorder`
+Drag chips into the right order.
+
+```yaml
+content:
+  prompt: "Order these steps to solve 2x + 5 = 17."
+  items: ["Subtract 5", "Divide by 2", "Get x = 6"]
+  correct_order: [0, 1, 2]
+```
+
+## `tap_to_match`
+Two columns; tap one from each to match.
+
+```yaml
+content:
+  prompt: "Match the equation to its solution."
+  left: ["x + 3 = 7", "2x = 10"]
+  right: ["x = 5", "x = 4"]
+  pairs: [[0, 1], [1, 0]]
+```
+
+## `exercise`
+"Try this on your own" — instructions + optional skip.
+
+```yaml
+content:
+  instruction: "Practice on a piece of paper, then continue."
+  estimated_minutes: 3
+```
+
+## `ai_conversation`
+Multi-turn chat with Maya, capped at `max_turns`.
+
+```yaml
+content:
+  starter_text: "I'm going to ask you to explain primes to a 10-year-old. Ready?"
+  system_prompt: "You are roleplaying a curious 10-year-old."
+  goal: "Get the learner to explain primes simply."
+  success_criteria: "They explain primes as numbers with exactly two factors."
+  max_turns: 5
+```
+
+Posts to `/api/ai/conversation`. The starter bubble runs through the typewriter; real assistant replies render instantly.
+
+## `media`
+Image, audio, or video reference.
+
+```yaml
+content:
+  kind: image           # or audio / video
+  url: /img/primes.svg
+  caption: "Primes up to 30."
+```
+
+## `svg_graphic`
+Inline SVG with optional caption.
+
+```yaml
+content:
+  svg: |
+    <svg viewBox=...>...</svg>
+  title: "Sieve of Eratosthenes"
+  caption: "Crosses out composites."
+```
+
+## `html_animation`
+Inline HTML (with light sanitisation) for short animations.
+
+```yaml
+content:
+  html: |
+    <div class="fade-in">...</div>
+  title: "..."
+```
+
+## `checkpoint`
+The closing turn of a lesson. Title + summary; "Complete lesson" CTA appears here.
+
+```yaml
+content:
+  title: "Real numbers, summed up"
+  summary: "Three things to take with you: primes are atoms, HCF and LCM follow from prime factorization, and root-2 is irrational."
+```
+
+Renders the summary through the typewriter; tapping anywhere skips to the end.

@@ -1,0 +1,80 @@
+---
+title: "Routes"
+summary: "Every URL the app serves, what it's for, and the auth posture."
+section: architecture
+order: 20
+keywords: [routes, urls, pages, api]
+related: [/wiki/architecture/auth]
+last_reviewed: 2026-05-13
+---
+
+## Public (no auth required)
+
+| Path | File | Purpose |
+|---|---|---|
+| `/` | `app/page.tsx` | Marketing landing page. Auth-aware — signed-in users redirect to `/home`. |
+| `/login` | `app/login/page.tsx` | Magic-link + Google OAuth |
+| `/onboarding` | `app/onboarding/page.tsx` | 7-question quiz; stores answers in localStorage |
+| `/onboarding/complete` | `app/onboarding/complete/page.tsx` | Finalises the profile after sign-up |
+| `/auth/callback` | `app/auth/callback/route.ts` | Supabase OAuth code exchange |
+| `/math-quiz-test` | `app/math-quiz-test/page.tsx` | Public 10-question algebra quiz (Claude vision) |
+| `/student-plan-stt` | `app/student-plan-stt/page.tsx` | Class 6–10 plan page |
+| `/student-plan-eat` | `app/student-plan-eat/page.tsx` | Class 11–12 plan page |
+| `/student-plan-bach` | `app/student-plan-bach/page.tsx` | Bachelors plan page |
+| `/checkout` | `app/checkout/page.tsx` | Cashfree-stub "coming soon" |
+
+## Auth-required (signed in)
+
+Routes under the `(app)` route group share an auth layer.
+
+| Path | File | Purpose |
+|---|---|---|
+| `/home` | `app/(app)/home/page.tsx` | Post-login dashboard |
+| `/learn` | `app/(app)/learn/page.tsx` | Catalog browse |
+| `/learn/[courseSlug]` | `app/(app)/learn/[courseSlug]/page.tsx` | Course detail + lesson list |
+| `/learn/[courseSlug]/[lessonSlug]` | `app/(app)/learn/[courseSlug]/[lessonSlug]/page.tsx` | Lesson player |
+| `/learn/bundles/[bundleSlug]` | `app/(app)/learn/bundles/[bundleSlug]/page.tsx` | Bundle detail |
+| `/student` | `app/(app)/student/page.tsx` | Class / institute curriculum dashboard |
+| `/profile` | `app/(app)/profile/page.tsx` | Persona, language, class, plans |
+| `/leagues` | `app/(app)/leagues/page.tsx` | (placeholder) |
+
+## Author / admin tools
+
+| Path | File | Purpose |
+|---|---|---|
+| `/yaml-generate` | `app/yaml-generate/page.tsx` | Author tool — pick (course, lesson, language), generate YAML + audio |
+| `/yaml-status` | `app/yaml-status/page.tsx` | Job status list |
+| `/update-yaml` | `app/update-yaml/page.tsx` | Manual YAML edits |
+| `/database-schema` | `app/database-schema/page.tsx` | Live schema inspector |
+| `/wiki` | `app/wiki/[[...slug]]/page.tsx` | This wiki — admin-allow-list gated |
+
+## API routes
+
+| Path | File | Used by |
+|---|---|---|
+| `POST /api/ai/conversation` | `app/api/ai/conversation/route.ts` | `ai_conversation` lesson turn |
+| `POST /api/ai/practice` | `app/api/ai/practice/route.ts` | Practice sandbox |
+| `POST /api/ai/math-quiz` | `app/api/ai/math-quiz/route.ts` | Paper-photo grading (Claude vision + tool_use) |
+| `POST /api/yaml-jobs/generate` | `app/api/yaml-jobs/generate/route.ts` | The `/yaml-generate` streaming generator |
+| `GET /api/yaml-jobs/list` | `app/api/yaml-jobs/list/route.ts` | Job listing for the status page |
+| `POST /api/yaml-jobs/text` | `app/api/yaml-jobs/text/route.ts` | Direct YAML text apply |
+
+## Auth posture flowchart
+
+```
+visitor → /
+  │
+  ├── signed in   → redirect /home
+  └── anonymous   → render landing
+
+visitor → /(app)/*   (any auth-required route)
+  │
+  ├── signed in   → render
+  └── anonymous   → redirect /login?next=<path>
+
+visitor → /wiki/*
+  │
+  ├── admin email   → render
+  ├── signed in     → redirect /home (silent — doesn't leak that /wiki exists)
+  └── anonymous     → redirect /login?next=/wiki
+```

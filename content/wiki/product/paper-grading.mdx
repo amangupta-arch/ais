@@ -1,0 +1,47 @@
+---
+title: "Paper grading"
+summary: "Snap a photo of your handwritten work; Claude Sonnet vision marks it. Powers /math-quiz-test."
+section: product
+order: 60
+keywords: [paper, grading, math, quiz, vision, claude, tool_use]
+related: [/wiki/decisions/tool-use-vs-json-parse, /wiki/decisions/client-side-image-compression]
+last_reviewed: 2026-05-13
+---
+
+`/math-quiz-test` is the proof-of-concept for paper grading. The flow:
+
+1. Public page — no auth.
+2. Ten algebra questions presented one at a time.
+3. Learner solves on paper, taps **Camera** (mobile) or **Upload** (desktop).
+4. Image is compressed client-side to ~1280 px / 0.85 JPEG (`compressImage()` via canvas).
+5. POST to `/api/ai/math-quiz` with the equation, expected answer, language, and base64 image.
+6. Route calls Claude `claude-sonnet-4-6` with an image content block + tool_use forcing `submit_grade`.
+7. Response renders as a green or coral feedback card with detected answer, sentence-long feedback, and a list of mistakes (in the learner's chosen language).
+8. End-of-quiz summary: total time, accuracy, per-question time, fastest / slowest question.
+
+## Why tool_use, not JSON-in-text
+
+An earlier version asked Claude to return raw JSON. It occasionally returned prose-wrapped JSON or got truncated mid-object on longer scripts (Devanagari, Tamil), and the regex strip + `JSON.parse` blew up. Switching to tool_use makes the schema non-negotiable — Claude either fills the tool's input or doesn't respond.
+
+See [tool_use vs JSON parse](/wiki/decisions/tool-use-vs-json-parse).
+
+## Why compress the image client-side
+
+Vercel's serverless functions have a 4.5 MB body limit. Phone-camera JPEGs are 3–6 MB; base64 encoding adds 33% overhead. A naive upload returned `"Request Entity Too Large"` as plain text, the client `JSON.parse`d it, and threw `Unexpected token 'R'`. Canvas-based downscale to 1280 px brings shots to 200–400 KB.
+
+See [client-side image compression](/wiki/decisions/client-side-image-compression).
+
+## What's deliberately NOT done
+
+- No persistence — images are forwarded to Anthropic in-memory and dropped.
+- No subscription gating — the page is public to demo the feature.
+- No tutoring loop — it's a one-shot grader, not a multi-turn back-and-forth.
+
+The next-step product surface is integrating this into the real lesson player as a turn type — students could see a "Solve on paper" turn inside the Class 10 Math course.
+
+## Files
+
+- `app/math-quiz-test/page.tsx`
+- `app/math-quiz-test/MathQuizClient.tsx` — client UI: state machine, timer, image upload, summary
+- `app/math-quiz-test/questions.ts` — the 10 algebra questions (slugs verified by hand)
+- `app/api/ai/math-quiz/route.ts` — Anthropic tool_use grader

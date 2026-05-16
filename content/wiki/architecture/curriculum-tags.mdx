@@ -1,0 +1,78 @@
+---
+title: "Curriculum tags"
+summary: "How bundles get sorted into the /student dashboard via class / subject / institute tags."
+section: architecture
+order: 80
+keywords: [tags, curriculum, class, subject, institute, dashboard]
+related: [/wiki/architecture/content-model, /wiki/authoring/bundle-tags, /wiki/decisions/tag-driven-curriculum]
+last_reviewed: 2026-05-13
+---
+
+The `/student` dashboard groups bundles by **subject**, scoped by the learner's **class** (and optionally **institute**). The grouping is driven entirely by the `bundles.tags` array — no separate `subjects` / `classes` tables.
+
+## Tag schema
+
+A curriculum bundle MUST carry these tags:
+
+```
+curriculum
+class:<value>
+subject:<slug>
+```
+
+It MAY also carry:
+
+```
+institute:<slug>
+```
+
+When `institute:*` is present, the bundle is gated to learners whose `profiles.institute` matches.
+
+## Examples
+
+| Bundle | Tags |
+|---|---|
+| Class 10 Math · Ch.1 Real Numbers | `curriculum`, `class:10`, `subject:mathematics` |
+| NMIMS BBA Sem 01 · Foundations of Environmental Crisis | `curriculum`, `class:bba-sem-01`, `subject:environmental-management`, `institute:nmims` |
+
+## Why slug-shaped values
+
+Tag values are lowercase, hyphen-separated, ≤ 40 chars (`profiles_school_class_format_chk` enforces it for `school_class`; bundles aren't formally constrained but follow the same convention).
+
+This lets us round-trip class IDs through URLs and form fields without escaping. `bba-sem-01` is one string everywhere — in the bundle tag, in `profiles.school_class`, and in the `SchoolPathOption` constants.
+
+## Query
+
+`getStudentBundles(class, institute)` in `lib/supabase/queries.ts`:
+
+```ts
+const requiredTags = ["curriculum", `class:${schoolClass}`];
+if (institute) requiredTags.push(`institute:${institute}`);
+
+const { data } = await supabase
+  .from("bundles")
+  .select("*")
+  .contains("tags", requiredTags);
+
+// K-12 (no institute) explicitly drops any bundle tagged for ANY institute,
+// so NMIMS class:10 content can't leak into the regular K-12 view.
+const filtered = (data ?? []).filter((b) =>
+  institute ? true : !b.tags.some((t) => t.startsWith("institute:"))
+);
+```
+
+## Subject grouping
+
+Subjects are derived at query time from each bundle's `subject:*` tag — `subject:mathematics` → bucket `mathematics` (displayed as "Mathematics" after a `humanizeSubject()` pass). Bundles missing `subject:*` fall into a `general` bucket so we never silently drop content.
+
+## Why tags, not separate tables?
+
+We considered `classes`, `subjects`, `institutes` lookup tables. Tags won because:
+
+1. **Cheap to extend** — adding a new institute is content-only, no migration.
+2. **Self-documenting** — the bundle row carries everything it needs to belong somewhere.
+3. **Composable** — a future `subject:applied-mathematics` doesn't require new schema.
+
+The trade-off: typos in tags don't fail at insert. Mitigation: future curriculum bundles get inserted via a script (or seed.sql) where the slug values are static.
+
+See the [tag-driven curriculum decision](/wiki/decisions/tag-driven-curriculum).

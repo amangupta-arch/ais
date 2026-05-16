@@ -1,0 +1,56 @@
+---
+title: "Domain and DNS"
+summary: "How myaisetu.com is wired to Vercel, plus what Supabase auth needs whenever the domain changes."
+section: operations
+order: 70
+keywords: [domain, dns, vercel, supabase, ssl, redirect]
+related: [/wiki/architecture/auth]
+last_reviewed: 2026-05-13
+---
+
+## Vercel side
+
+1. **Project → Settings → Domains** — `myaisetu.com` and `www.myaisetu.com` are both attached. Vercel auto-redirects www to apex (or vice versa, whichever was set as primary).
+2. DNS at the registrar:
+   - **`myaisetu.com` (apex)** → A record → `76.76.21.21`
+   - **`www.myaisetu.com`** → CNAME → `cname.vercel-dns.com`
+3. SSL is auto-provisioned by Vercel via Let's Encrypt; usually live within a few minutes of DNS propagation.
+
+## Env var
+
+`NEXT_PUBLIC_APP_URL = https://myaisetu.com` is set in Vercel for Production. Consumed by `app/layout.tsx:metadataBase` so canonical link / og:url / Twitter card all resolve correctly regardless of the request host.
+
+## Supabase auth (anytime the domain changes)
+
+**Supabase → Authentication → URL Configuration**:
+
+- **Site URL** — `https://myaisetu.com`
+- **Redirect URLs** allow-list — include ALL of:
+  - `https://myaisetu.com/auth/callback`
+  - `https://www.myaisetu.com/auth/callback`
+  - Vercel preview origin → `https://ais-eight-red.vercel.app/auth/callback`
+  - `http://localhost:3000/auth/callback`
+
+Missing any of these = OAuth round-trip breaks with `redirect_uri_mismatch`.
+
+## Google OAuth
+
+Authorized redirect URI in Google Cloud Console points at Supabase, not at us:
+
+```
+https://dfdocnhhxrnvblbwwium.supabase.co/auth/v1/callback
+```
+
+When we move from Supabase project, this changes. The user-facing domain doesn't appear here.
+
+## Common DNS gotchas
+
+- **TTL too high** — keep TTL around 300s while testing; you can bump to 3600s once stable.
+- **CNAME at apex** — most registrars don't allow this. Use an A record at `@` and CNAME only for `www`.
+- **Two domains pointing at the same Vercel project** — pick a primary; the other 301-redirects to it (Vercel handles the redirect automatically once you mark one as primary).
+
+## Verifying
+
+- `curl -I https://myaisetu.com` — expect `200` (or `301` to www, depending on primary).
+- `dig myaisetu.com` — A record points at Vercel.
+- DevTools Network on `/login` → click "Continue with Google" → request should hit `accounts.google.com/o/oauth2/v2/auth` with `redirect_uri=https://<supabase>.supabase.co/auth/v1/callback`.

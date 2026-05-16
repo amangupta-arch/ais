@@ -1,0 +1,19 @@
+---
+title: "2026-04 · Foundations"
+summary: "Schema, content model, audio pipeline, lesson player, the first curriculum bundle (Class 10 Math · Real Numbers)."
+section: changelog
+order: 10
+keywords: [april, 2026, foundation, audio, lesson-player, class-10-math]
+last_reviewed: 2026-05-13
+---
+
+## What shipped
+
+- **Schema (migrations 0001–0014)** — profiles, plans, subscriptions, bundles, courses, lessons, lesson_turns, audio assets + manifest, yaml jobs.
+- **Auth** — magic-link + Google OAuth via Supabase.
+- **Lesson player** — turn renderers for every type (`tutor_message`, `mcq`, `fill_in_the_blank`, `drag_to_reorder`, `tap_to_match`, `free_text`, `reflection`, `exercise`, `ai_conversation`, `media`, `svg_graphic`, `html_animation`, `checkpoint`).
+- **Audio pipeline** — ElevenLabs synth + content-addressable cache + manifest.
+- **`/yaml-generate` author tool** — Claude generates lesson YAML, applies it, runs the audio pipeline. NDJSON-streaming progress UI.
+- **First curriculum bundle** — Class 10 Math · Ch.1 Real Numbers (3 courses, 11 lessons). Migration 0014.
+- **Student plan tier** — added alongside free / basic / advanced. Migration 0014.
+- **Profile.school_class** — initial smallint version for K-12 cohort. Migration 0015.

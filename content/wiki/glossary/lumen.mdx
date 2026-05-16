@@ -1,0 +1,39 @@
+---
+title: "Lumen"
+summary: "The design system tokens that power the warm, paper-on-ink aesthetic — colors, fonts, radii, shadows."
+section: glossary
+order: 30
+keywords: [lumen, design, tokens, css, style]
+last_reviewed: 2026-05-13
+---
+
+**Lumen** is the internal name for the design system. Tokens live in `app/lumen.css` and apply to any element under the `.lm` class (body root) — i.e. everywhere in the app.
+
+## Token families
+
+| Family | Tokens | Example |
+|---|---|---|
+| Neutrals | `--paper`, `--paper-soft`, `--paper-pure`, `--ink`, `--ink-2..8` | warm cream → near-black warm |
+| Hues (×6) | `<hue>` / `<hue>-deep` / `<hue>-soft` / `<hue>-glow` | indigo, saffron, moss, coral, ocean, plum |
+| Semantic | `--bg`, `--surface`, `--text`, `--text-2..4`, `--border`, `--accent` | tied back to neutrals |
+| Type | `--font-fraunces`, `--font-dm-sans`, `--font-jetbrains-mono` | next/font CSS vars |
+| Type scale | `--fs-12 … --fs-80` | modular 1.2× |
+| Spacing | `--sp-0 … --sp-32` | 4-pt base |
+| Radii | `--r-0 … --r-7`, `--r-pill` | 4 / 8 / 12 / 16 / 20 / 24 / 32 / 999 |
+| Shadows | `--shadow-1..4`, `--shadow-key`, `--shadow-focus` | rising elevations |
+| Motion | `--dur-instant..slower`, `--ease-standard..spring` | 80 ms → 640 ms; 5 ease curves |
+
+## Components
+
+`.lm-page`, `.lm-card`, `.lm-btn`, `.lm-eyebrow`, `.lm-serif`, `.lm-mono`, `.lm-progress`, `.lm-blank`, `.lm-chip`, `.lm-stat`, `.lm-avatar`. All defined in `app/lumen.css`.
+
+## Where Lumen lives in the app
+
+- **Lesson player** — heavy user.
+- **`/student`, `/profile`, `/home`** — dashboards.
+- **Landing page (`app/landing.css`)** — scoped `.landing` namespace; reuses tokens but adds bespoke selectors.
+- **Wiki (`app/wiki/wiki.css`)** — scoped `.wiki-shell` namespace; reuses tokens.
+
+## Adding a new token
+
+Edit `:root` in `app/lumen.css`. Don't add tokens scoped to a single page — that defeats the system. If a single page needs a one-off, use an inline CSS variable.

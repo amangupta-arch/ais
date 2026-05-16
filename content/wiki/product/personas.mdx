@@ -1,0 +1,41 @@
+---
+title: "Personas"
+summary: "Four tutor personalities the learner can switch between. Each has a glyph, a voice flavour, and a preset blurb."
+section: product
+order: 50
+keywords: [personas, nova, arjun, riya, sensei, tutor, voice]
+related: [/wiki/glossary/maya]
+last_reviewed: 2026-05-13
+---
+
+The learner picks a tutor persona from `/profile`. The persona drives:
+
+- The avatar / glyph rendered in the lesson player and home dashboard.
+- A small flavour bias in AI conversation turns (passed as part of the system prompt).
+- Future: voice timbre (today all personas share the same ElevenLabs voice per language).
+
+`PERSONAS` is defined in `lib/types.ts`.
+
+| ID | Name | Tagline | Glyph |
+|---|---|---|---|
+| `nova` | Nova | Warm & patient | ✦ |
+| `arjun` | Arjun | Direct & demanding | ◆ |
+| `riya` | Riya | Chill & Hinglish | ❁ |
+| `sensei` | Sensei | Old-school discipline | ☯ |
+
+`nova` is the default. Stored on `profiles.preferred_tutor_persona`.
+
+## Where the persona shows up
+
+- **Lesson player** — `<NovaAvatar persona={…} />` next to each tutor bubble.
+- **Home dashboard** — persona's avatar in the header.
+- **AI conversation route** (`/api/ai/conversation`) — persona name + tagline are appended to the Claude system prompt as `"You are <persona.name>, a <persona.tagline> AI tutor."` to bias tone.
+- **Profile page** — picker.
+
+## "Maya" is the brand name, not a persona
+
+The marketing surface and the math-quiz feedback call the tutor **Maya**. Maya is the public-facing name of the whole tutoring layer; Nova / Arjun / Riya / Sensei are sub-personalities a learner can pick. See [Maya](/wiki/glossary/maya).
+
+## Avatar storage
+
+Personas have an optional `avatar_url` pointing at the public `tutor` Supabase Storage bucket. Today only Nova has one (`tutor/nova.png` with a signed URL). The others fall back to a glyph block.

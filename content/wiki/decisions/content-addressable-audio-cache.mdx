@@ -1,0 +1,45 @@
+---
+title: "Content-addressable audio cache"
+summary: "ElevenLabs mp3s are stored keyed by sha256(voiceId | model | text) — same line spoken the same way is paid for once globally."
+section: decisions
+order: 50
+keywords: [cache, audio, sha256, deduplication, elevenlabs, cost]
+related: [/wiki/architecture/audio-pipeline, /wiki/decisions/per-language-tts-model]
+last_reviewed: 2026-05-13
+---
+
+## The choice
+
+`lesson_audio_assets` has a unique `hash` column where `hash = sha256(voiceId | model | text)`. `lesson_audio_manifest` rows reference assets via FK. The lesson player gets a public Storage URL by joining the two.
+
+## Why content-addressable
+
+A phrase like *"Let's try one more"* shows up in dozens of lessons. With content-addressable storage, ElevenLabs charges us for it once. Across the catalogue today this saves roughly half the credits — most short connector phrases (greetings, transitions, simple math operators) repeat heavily.
+
+## What's in the key
+
+| Field | Why |
+|---|---|
+| `voiceId` | Same text in a different voice is a different audio |
+| `model` | Same text + voice through a different model is a different audio (and we're allowed to A/B models per language) |
+| `text` | After markdown stripping. Whitespace-trimmed. |
+
+Changing any of the three produces a fresh asset. Old assets stay around; manifest rows still point to them so existing lessons don't break.
+
+## Alternatives considered
+
+- **Per-lesson audio folder** — naive approach. Re-pay for every phrase that repeats. Cost would be ~2× today.
+- **Hash on text alone** — would conflate voices and models.
+- **Compress + hash** — diminishing returns; we'd hash slightly fewer bytes for slightly less determinism.
+
+## Trade-offs
+
+- **Storage** has a 5 MB cap on individual files but no overall cap until we hit account limits. Some assets become unused over time (we changed text in a lesson, the old asset still exists but no manifest row points to it). We don't garbage-collect; storage is cheap.
+- **Cache invalidation** — if a markdown-strip rule changes (e.g., we stop treating em-dash as a pause), the canonical text changes for old lessons too. Regenerating fixes it; the old assets become orphans.
+- **Privacy** — Storage bucket is public-read. Don't put anything sensitive in lesson narration.
+
+## What would have to change to reverse
+
+- Drop the `hash` unique constraint.
+- Switch to a per-lesson storage path scheme (`<lessonId>/<turnIdx>-<chunkIdx>.mp3`).
+- Lose the dedup wins. Don't do this.

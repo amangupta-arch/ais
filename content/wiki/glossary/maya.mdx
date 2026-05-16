@@ -1,0 +1,30 @@
+---
+title: "Maya"
+summary: "The brand-facing tutor name. Personas (Nova / Arjun / Riya / Sensei) are sub-personalities under the Maya umbrella."
+section: glossary
+order: 20
+keywords: [maya, tutor, voice, persona, ai]
+related: [/wiki/product/personas]
+last_reviewed: 2026-05-13
+---
+
+**Maya** is the public-facing name of the AI tutor — the voice the marketing surface sells, the entity the math-quiz feedback comes from, the name the landing page repeats throughout.
+
+Inside the app, Maya is implemented as a layer on top of the four [personas](/wiki/product/personas):
+
+- **Nova** — warm & patient (default)
+- **Arjun** — direct & demanding
+- **Riya** — chill & Hinglish
+- **Sensei** — old-school discipline
+
+A learner picks one in their profile; Maya speaks through that personality.
+
+## Where the name appears
+
+- Marketing copy (landing, plan pages, math-quiz UI).
+- AI conversation system prompts (e.g. *"You are Maya, a math tutor for the AIS learning platform"* in `app/api/ai/math-quiz/route.ts`).
+- Tutor avatar component is named `NovaAvatar` for historical reasons (predates the Maya rename) — keep until the next visual refresh.
+
+## Voice (in the technical sense)
+
+Maya speaks with the language-specific ElevenLabs voice IDs in `lib/audio/voices.ts`. There's no single "Maya voice" today — Hindi Maya and English Maya use different voice IDs.
