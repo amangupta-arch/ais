@@ -3,6 +3,19 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { LANGUAGE_OPTIONS } from "@/app/update-yaml/constants";
+import {
+  INDIAN_BOARDS,
+  MEDIUM_LABELS,
+  mediumsForBoard,
+} from "@/lib/curriculum/boards";
+
+// Sentinel value for the "(none)" option in the board/medium pickers.
+// Picking BOTH means "show me bundles with no board/medium tags" — the
+// AI-tool bundles (gemini, midjourney, etc.). Picking neither board nor
+// medium (the initial "any/any" state) means "show all bundles" — the
+// author hasn't committed to a curriculum lens yet.
+const NONE = "__none__";
+const ANY = "__any__";
 
 export type CatalogRow = {
   bundleSlug: string;
@@ -95,14 +108,88 @@ export default function GenerateForm({
   rows: CatalogRow[];
   initialJobs: JobRow[];
 }) {
-  // Catalog → bundle/course/lesson trees.
-  const bundles = useMemo(() => {
-    const map = new Map<string, string>();
-    for (const r of rows) map.set(r.bundleSlug, r.bundleTitle);
-    return [...map.entries()].map(([slug, title]) => ({ slug, title }));
+  // ──────────────── Board + Medium pickers ────────────────
+  // The pickers do double duty: (1) filter the bundle dropdown so the
+  // author only sees the bundles relevant to the curriculum lens they
+  // care about, (2) override the BOARD/MEDIUM lines sent to the AI
+  // prompt. ANY = no filter / fall back to bundle YAML; NONE = match
+  // bundles with NO board/medium tags AND send empty values to the AI.
+  const [boardPick, setBoardPick] = useState<string>(ANY);
+  const [mediumPick, setMediumPick] = useState<string>(ANY);
+
+  // Medium options depend on the picked board so an author can't
+  // accidentally pair CBSE with Tamil. ANY board → show all mediums.
+  // NONE board → only NONE medium makes sense.
+  const mediumOptionsForPick = useMemo(() => {
+    if (boardPick === ANY) {
+      return Object.keys(MEDIUM_LABELS).map((code) => ({
+        value: code,
+        label: MEDIUM_LABELS[code]!,
+      }));
+    }
+    if (boardPick === NONE) return [];
+    return mediumsForBoard(boardPick).map((code) => ({
+      value: code,
+      label: MEDIUM_LABELS[code] ?? code,
+    }));
+  }, [boardPick]);
+
+  // When the board picker changes and the previously-picked medium is
+  // no longer valid for the new board, snap back to ANY.
+  useEffect(() => {
+    if (mediumPick === ANY || mediumPick === NONE) return;
+    if (!mediumOptionsForPick.some((o) => o.value === mediumPick)) {
+      setMediumPick(ANY);
+    }
+  }, [boardPick, mediumOptionsForPick, mediumPick]);
+
+  // ──────────────── Catalog → filtered bundle/course/lesson trees ───
+  // First pass: every unique bundle in the catalog with its title +
+  // its declared board/medium arrays (from YAML). Used both for the
+  // dropdown and for the filter check below.
+  const allBundles = useMemo(() => {
+    const map = new Map<
+      string,
+      { slug: string; title: string; boards: string[]; mediums: string[] }
+    >();
+    for (const r of rows) {
+      if (!map.has(r.bundleSlug)) {
+        map.set(r.bundleSlug, {
+          slug: r.bundleSlug,
+          title: r.bundleTitle,
+          boards: r.bundleBoards,
+          mediums: r.bundleMediums,
+        });
+      }
+    }
+    return [...map.values()];
   }, [rows]);
 
+  // Bundle dropdown: filtered by the board + medium pickers.
+  const bundles = useMemo(() => {
+    return allBundles.filter((b) => {
+      // Board check
+      if (boardPick === NONE && b.boards.length > 0) return false;
+      if (boardPick !== ANY && boardPick !== NONE && !b.boards.includes(boardPick)) {
+        return false;
+      }
+      // Medium check
+      if (mediumPick === NONE && b.mediums.length > 0) return false;
+      if (mediumPick !== ANY && mediumPick !== NONE && !b.mediums.includes(mediumPick)) {
+        return false;
+      }
+      return true;
+    });
+  }, [allBundles, boardPick, mediumPick]);
+
   const [bundleSlug, setBundleSlug] = useState<string>(bundles[0]?.slug ?? "");
+  // When the filter shrinks and the current pick falls off, snap to
+  // the first available bundle (or empty string if zero matches).
+  useEffect(() => {
+    if (!bundles.find((b) => b.slug === bundleSlug)) {
+      setBundleSlug(bundles[0]?.slug ?? "");
+    }
+  }, [bundles, bundleSlug]);
   const courses = useMemo(() => {
     const map = new Map<string, string>();
     for (const r of rows) {
@@ -227,6 +314,19 @@ export default function GenerateForm({
           lessonSlug,
           language,
           customInstructions: customInstructions.trim() || undefined,
+          // ANY → undefined: API falls back to the bundle's YAML
+          // declarations for BOARD: / MEDIUM: lines.
+          // NONE → '': API omits those lines entirely (non-curriculum
+          // bundles, AI-tool content).
+          // A real slug → API uses it verbatim.
+          board:
+            boardPick === ANY ? undefined : boardPick === NONE ? "" : boardPick,
+          medium:
+            mediumPick === ANY
+              ? undefined
+              : mediumPick === NONE
+              ? ""
+              : mediumPick,
         }),
       });
 
@@ -341,13 +441,52 @@ export default function GenerateForm({
         gap: 14,
       }}
     >
+      <Field label="Board">
+        <Select
+          value={boardPick}
+          onChange={setBoardPick}
+          options={[
+            { value: ANY, label: "— Any board —" },
+            { value: NONE, label: "— No board (AI-tool bundles) —" },
+            ...INDIAN_BOARDS.map((b) => ({ value: b.slug, label: b.label })),
+          ]}
+        />
+        <span style={{ fontSize: 11, color: "#64748B", marginTop: 2 }}>
+          Filters the bundle list and (when set) overrides the BOARD line in the AI prompt.
+        </span>
+      </Field>
+
+      <Field label="Medium of instruction">
+        <Select
+          value={mediumPick}
+          onChange={setMediumPick}
+          options={[
+            { value: ANY, label: "— Any medium —" },
+            { value: NONE, label: "— No medium —" },
+            ...mediumOptionsForPick.map((m) => ({ value: m.value, label: m.label })),
+          ]}
+        />
+        <span style={{ fontSize: 11, color: "#64748B", marginTop: 2 }}>
+          {boardPick === NONE
+            ? "No board picked, so no medium applies."
+            : boardPick === ANY
+            ? "Showing all known mediums (pick a board to narrow)."
+            : `Mediums recognised by ${
+                INDIAN_BOARDS.find((b) => b.slug === boardPick)?.label ?? boardPick
+              }.`}
+        </span>
+      </Field>
+
       <Field label="Bundle">
         <Select
           value={bundleSlug}
           onChange={setBundleSlug}
-          options={bundles.map((b) => ({ value: b.slug, label: `${b.title}  (${b.slug})` }))}
+          options={
+            bundles.length === 0
+              ? [{ value: "", label: "(no bundles match this board + medium)" }]
+              : bundles.map((b) => ({ value: b.slug, label: `${b.title}  (${b.slug})` }))
+          }
         />
-        <BundleContextStrip rows={rows} bundleSlug={bundleSlug} />
       </Field>
 
       <Field label="Course">
@@ -688,51 +827,6 @@ function Select({
         </option>
       ))}
     </select>
-  );
-}
-
-function BundleContextStrip({
-  rows,
-  bundleSlug,
-}: {
-  rows: CatalogRow[];
-  bundleSlug: string;
-}) {
-  // All rows for the same bundle share the same boards/mediums, so
-  // grab the first match. If the bundle has neither (AI-tool bundles),
-  // render nothing — no point taking up space.
-  const sample = rows.find((r) => r.bundleSlug === bundleSlug);
-  const boards = sample?.bundleBoards ?? [];
-  const mediums = sample?.bundleMediums ?? [];
-  if (boards.length === 0 && mediums.length === 0) return null;
-  return (
-    <div
-      style={{
-        marginTop: 4,
-        fontSize: 11.5,
-        color: "#475569",
-        fontFamily: "ui-monospace, monospace",
-        letterSpacing: "0.02em",
-      }}
-    >
-      {boards.length > 0 && (
-        <>
-          board:{" "}
-          <strong style={{ color: "#0F172A" }}>
-            {boards.map((b) => b.toUpperCase()).join(", ")}
-          </strong>
-        </>
-      )}
-      {boards.length > 0 && mediums.length > 0 && "  ·  "}
-      {mediums.length > 0 && (
-        <>
-          medium: <strong style={{ color: "#0F172A" }}>{mediums.join(", ")}</strong>
-        </>
-      )}
-      <span style={{ marginLeft: 8, color: "#94A3B8" }}>
-        (passed to the AI prompt as syllabus context)
-      </span>
-    </div>
   );
 }
 
