@@ -61,8 +61,8 @@ export type StudentSubject = {
   bundles: Bundle[];
 };
 
-/** Returns curriculum bundles for the given (institute, class) pair,
- *  grouped and ordered by subject.
+/** Returns curriculum bundles for the given (institute, class, board,
+ *  medium) tuple, grouped and ordered by subject.
  *
  *  Filters strictly on the `curriculum` + `class:<class>` tags. When
  *  `institute` is non-null, the `institute:<inst>` tag is required
@@ -71,16 +71,27 @@ export type StudentSubject = {
  *  see another institute's class-10 content if a name happens to
  *  collide.
  *
+ *  `board` and `medium` are optional. When provided, the matching
+ *  `board:<slug>` / `medium:<lang>` tag is required — letting a
+ *  CBSE Hindi-medium Class-10 learner see exactly the bundles tuned
+ *  for them. When null (legacy users from before the join funnel
+ *  collected these fields), we skip those filters so the dashboard
+ *  still renders something instead of going blank.
+ *
  *  Subject buckets come from each bundle's `subject:*` tag. Bundles
  *  with no `subject:*` tag fall into a single "general" bucket so we
  *  never silently drop content. */
 export async function getStudentBundles(
   schoolClass: string,
   institute: string | null,
+  board: string | null,
+  medium: string | null,
 ): Promise<StudentSubject[]> {
   const supabase = await createClient();
   const requiredTags = ["curriculum", `class:${schoolClass}`];
   if (institute) requiredTags.push(`institute:${institute}`);
+  if (board) requiredTags.push(`board:${board}`);
+  if (medium) requiredTags.push(`medium:${medium}`);
 
   const { data } = await supabase
     .from("bundles")

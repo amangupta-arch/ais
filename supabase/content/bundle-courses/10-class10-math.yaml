@@ -8,10 +8,17 @@
 # Bundle slug must match the row in `bundles` (seeded in migration 0014).
 #
 # Class/subject metadata lives in bundles.tags ('class:10',
-# 'subject:mathematics', 'curriculum') — see migration 0014.
+# 'subject:mathematics', 'curriculum'). The board + medium fields
+# below are read by scripts/load-bundle-courses.ts and synced into
+# bundles.tags as 'board:<slug>' + 'medium:<lang>' so /student filters
+# by them. Both fields accept a single string or an array — a bundle
+# can serve multiple boards / mediums (e.g. an NCERT-aligned Math
+# chapter is appropriate for CBSE and many state boards).
 
 bundles:
   - bundle_slug: b-class-10-math-ch01-real-numbers
+    board: cbse
+    medium: en
     courses:
       - title: "Prime Factorization"
         outcome: "Student can break any whole number into its prime factors and explain why that decomposition is unique"

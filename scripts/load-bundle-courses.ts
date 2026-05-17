@@ -28,8 +28,26 @@ type CourseStub = {
 
 type BundleStub = {
   bundle_slug: string;
+  /** Optional board(s) the bundle is suitable for. String or array.
+   *  Synced into bundles.tags as 'board:<slug>' so /student filters
+   *  by profile.education_board. Non-curriculum bundles omit this. */
+  board?: string | string[];
+  /** Optional medium(s) of instruction. String or array. Synced into
+   *  bundles.tags as 'medium:<lang>' so /student filters by
+   *  profile.native_language. Non-curriculum bundles omit this. */
+  medium?: string | string[];
   courses: CourseStub[];
 };
+
+/** Normalise board/medium YAML fields (string | string[]) to a flat
+ *  list of tag values, lowercased + trimmed. Empty input → []. */
+function tagValuesFor(value: string | string[] | undefined): string[] {
+  if (!value) return [];
+  const arr = Array.isArray(value) ? value : [value];
+  return arr
+    .map((s) => String(s).trim().toLowerCase())
+    .filter(Boolean);
+}
 
 type YamlFile = {
   bundles: BundleStub[];
@@ -185,6 +203,22 @@ ${sql};
     )
     .join("\n");
 
+  // Sync any board:* / medium:* tags declared in YAML into bundles.tags.
+  // Idempotent: deduplicates the existing tag array so re-runs don't
+  // accumulate copies, and never strips tags it doesn't know about (so
+  // curriculum/class/subject tags from migrations are preserved).
+  const boardTags = tagValuesFor(bundle.board).map((b) => `board:${b}`);
+  const mediumTags = tagValuesFor(bundle.medium).map((m) => `medium:${m}`);
+  const declaredTagLiterals = [...boardTags, ...mediumTags]
+    .map((t) => `'${escapeSqlString(t)}'`)
+    .join(",");
+  const tagSyncSql = declaredTagLiterals
+    ? `
+  UPDATE bundles SET tags = ARRAY(
+    SELECT DISTINCT t FROM unnest(COALESCE(tags, ARRAY[]::text[]) || ARRAY[${declaredTagLiterals}]) AS t
+  ) WHERE id = v_bundle_id;`
+    : "";
+
   // v_plan_tier is read from the bundle row at execute time so the
   // courses inherit the right tier — previously hardcoded to 'basic',
   // which silently downgraded student/advanced bundles' courses and
@@ -200,6 +234,7 @@ BEGIN
   IF v_bundle_id IS NULL THEN
     RAISE EXCEPTION 'bundle not found: ${bundle.bundle_slug}';
   END IF;
+${tagSyncSql}
 ${courseUpsert}
 ${lessonBlocks}
 END $$;

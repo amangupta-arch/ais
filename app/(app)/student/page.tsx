@@ -1,12 +1,17 @@
 // Student dashboard. Shows the curriculum bundles for the signed-in
-// learner's (institute, class) pair, grouped by subject.
+// learner's (institute, class, board, medium) tuple, grouped by
+// subject.
 //
 //   - Auth-required (under (app)). Anonymous → /login.
 //   - If profile.school_class is null, render an inline picker;
 //     setting it via the server action rerenders this same page.
 //   - Else fetch bundles tagged for the matching curriculum +
-//     class:<class> + (optionally) institute:<inst>, render one
-//     section per subject.
+//     class:<class> + (optionally) institute:<inst> + board:<x> +
+//     medium:<y>, render one section per subject.
+//   - board / medium come from profile.education_board and
+//     profile.native_language (set by the join quiz). Legacy users
+//     with null fields bypass those filters so their dashboard isn't
+//     blank.
 
 import { redirect } from "next/navigation";
 import Link from "next/link";
@@ -26,6 +31,8 @@ export default async function StudentPage() {
   const lang = profile?.preferred_language ?? "en";
   const schoolClass = profile?.school_class ?? null;
   const institute = profile?.institute ?? null;
+  const board = profile?.education_board ?? null;
+  const medium = profile?.native_language ?? null;
 
   return (
     <main className="lm-page">
@@ -43,6 +50,8 @@ export default async function StudentPage() {
           <StudentDashboardWithData
             schoolClass={schoolClass}
             institute={institute}
+            board={board}
+            medium={medium}
             lang={lang}
           />
         )}
@@ -54,13 +63,17 @@ export default async function StudentPage() {
 async function StudentDashboardWithData({
   schoolClass,
   institute,
+  board,
+  medium,
   lang,
 }: {
   schoolClass: string;
   institute: string | null;
+  board: string | null;
+  medium: string | null;
   lang: string;
 }) {
-  const subjects = await getStudentBundles(schoolClass, institute);
+  const subjects = await getStudentBundles(schoolClass, institute, board, medium);
   return (
     <StudentDashboard
       schoolClass={schoolClass}

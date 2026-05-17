@@ -65,6 +65,8 @@ export default async function YamlGeneratePage() {
     lessonIndex: e.lessonIndex,
     courseLessonCount: e.courseLessonCount,
     enExists: lessonYamlExists(e, "en"),
+    bundleBoards: e.bundleBoards,
+    bundleMediums: e.bundleMediums,
   }));
 
   return (

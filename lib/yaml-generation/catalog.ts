@@ -29,10 +29,22 @@ type RawCourse = {
 
 type RawBundle = {
   bundle_slug: string;
+  /** Optional board(s) — mirror of scripts/load-bundle-courses.ts shape. */
+  board?: string | string[];
+  /** Optional medium(s) of instruction. */
+  medium?: string | string[];
   courses: RawCourse[];
 };
 
 type RawFile = { bundles?: RawBundle[] };
+
+/** Mirror of scripts/load-bundle-courses.ts:tagValuesFor — normalises
+ *  string | string[] | undefined → flat lowercased trimmed list. */
+function tagValuesFor(value: string | string[] | undefined): string[] {
+  if (!value) return [];
+  const arr = Array.isArray(value) ? value : [value];
+  return arr.map((s) => String(s).trim().toLowerCase()).filter(Boolean);
+}
 
 /** Mirror of scripts/load-bundle-courses.ts:slugify. */
 export function slugify(input: string): string {
@@ -66,6 +78,14 @@ export type LessonEntry = {
   lessonIndex: number;
   /** Total lessons in this course. */
   courseLessonCount: number;
+  /** Inherited from the bundle's YAML `board:` field. Empty array for
+   *  non-curriculum bundles. Surfaced in /yaml-generate as read-only
+   *  context and passed to the AI prompt so it tunes content to the
+   *  right board syllabus. */
+  bundleBoards: string[];
+  /** Inherited from the bundle's YAML `medium:` field. Empty array for
+   *  non-curriculum bundles. */
+  bundleMediums: string[];
 };
 
 /** Read every bundle-courses YAML and flatten into LessonEntry[]. */
@@ -87,6 +107,8 @@ export function enumerateAllLessons(): LessonEntry[] {
 
     for (const bundle of bundles) {
       const bundleHint = bundle.bundle_slug.replace(/^b-/, "");
+      const bundleBoards = tagValuesFor(bundle.board);
+      const bundleMediums = tagValuesFor(bundle.medium);
 
       for (const course of bundle.courses) {
         const baseSlug = shortSlug(course.title);
@@ -118,6 +140,8 @@ export function enumerateAllLessons(): LessonEntry[] {
             lessonTitle: title,
             lessonIndex: idx + 1,
             courseLessonCount: course.lessons.length,
+            bundleBoards,
+            bundleMediums,
           });
         });
       }
