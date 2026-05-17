@@ -1,24 +1,21 @@
 // /students-plan
 //
 // The explicit offer checkpoint between Google sign-up and Cashfree.
-// Used to be: sign-up → /join/finalize → /api/checkout/start →
-// Cashfree (all in one silent chain, with the visitor bounced back
-// to /join?error=… on any failure).
+// Server-rendered chrome (auth gate, profile lookup, eligibility
+// check). The card itself — including the phone input and Pay
+// button — is a client island (CheckoutCard.tsx) because Cashfree's
+// JS SDK runs in the browser.
 //
-// Now: sign-up → /join/finalize → /students-plan (this page) →
-// (visitor clicks Pay) → /api/checkout/start → Cashfree. Cashfree
-// failures redirect back here with ?error=…, so the visitor sees a
-// banner + retry on the same offer they just looked at.
+// Flow:
+//   /join/finalize → /students-plan → (visitor enters phone, clicks
+//   Pay) → Cashfree.js SDK navigates to the hosted payment page →
+//   /payment-success (after Cashfree redirects back).
 //
-// Auth-gated — visitors without a session get punted back to /join.
-// Class 6–10 is the only cohort with Cashfree wired up today; other
+// Auth-gated: visitors without a session get punted to /join.
+// Class 6-10 is the only cohort with Cashfree wired up today; other
 // classes shouldn't reach this page (applyPendingQuiz routes them
-// to /join/contact-us), but if they somehow do, we degrade to a
-// "contact us" message instead of pricing a plan they can't buy yet.
-//
-// Note: we use the same .landing chrome as /checkout because the
-// .tier--featured / .tier__cta styles in app/landing.css are scoped
-// under .landing.
+// to /join/contact-us) but if they somehow do, we show a polite
+// "not live yet" message instead of pricing a plan they can't buy.
 
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -28,6 +25,8 @@ import "../landing.css";
 
 import { createClient } from "@/lib/supabase/server";
 import { STUDENT_COHORTS } from "@/lib/student-plans";
+
+import CheckoutCard from "./CheckoutCard";
 
 export const dynamic = "force-dynamic";
 
@@ -53,10 +52,6 @@ export default async function StudentsPlanPage({
 
   const firstName = profile?.first_name?.trim() || "there";
   const cls = profile?.school_class ?? null;
-
-  // Only Class 6-10 has a real Cashfree plan wired up. Anyone else
-  // who lands here (e.g. by typing the URL directly) gets nudged to
-  // the contact-us page instead of being shown a plan they can't buy.
   const eligible = cls && SCHOOL_6_TO_10.has(cls);
 
   if (!eligible) {
@@ -100,49 +95,7 @@ export default async function StudentsPlanPage({
           by Cashfree (UPI Autopay, cards, net-banking).
         </p>
 
-        {error && (
-          <div
-            role="alert"
-            style={{
-              margin: "0 0 24px",
-              padding: "12px 16px",
-              background: "var(--coral-soft)",
-              border: "1px solid var(--coral)",
-              borderRadius: "var(--r-3)",
-              color: "var(--coral-deep)",
-              fontSize: 14,
-              lineHeight: 1.5,
-            }}
-          >
-            {error}
-          </div>
-        )}
-
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <div className="tier tier--featured" style={{ maxWidth: 380, width: "100%" }}>
-            <div className="tier__badge">Most chosen</div>
-            <div className="tier__name">{plan.label}</div>
-            <div className="tier__price">
-              <span className="cur">₹</span>
-              {plan.priceInr}
-              <span className="per"> / month</span>
-            </div>
-            <div className="tier__sub">{plan.tagline}</div>
-            <ul className="tier__list">
-              {plan.features.map((f) => (
-                <li key={f}>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
-                    <path d="M5 12l5 5 9-12" />
-                  </svg>
-                  {f}
-                </li>
-              ))}
-            </ul>
-            <a className="tier__cta" href={`/api/checkout/start?plan=${plan.id}`}>
-              Pay ₹{plan.priceInr} / month
-            </a>
-          </div>
-        </div>
+        <CheckoutCard plan={plan} initialError={error ?? null} />
 
         <p
           style={{
