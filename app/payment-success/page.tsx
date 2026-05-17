@@ -4,7 +4,9 @@
 // here right after paying (or right after cancelling — same URL).
 // We verify the order's status via the Cashfree API, grant the
 // subscription if it's PAID and the webhook hasn't already done
-// it (defence in depth), then push them to /home.
+// it (defence in depth), then push them to /student — the K-12
+// dashboard that's already class-aware (and isn't gated on
+// onboarding_completed_at the way /home is).
 //
 // We can't rely on the webhook alone because the user's browser
 // is racing it — they often land here BEFORE Cashfree's POST
@@ -84,10 +86,12 @@ export default async function PaymentSuccessPage({
     }
   }
 
-  // If they're signed in (the happy path), bounce them straight
-  // to /home so they hit their dashboard with no friction.
+  // If they're signed in (the happy path), bounce them straight to
+  // /student — the K-12 dashboard that filters bundles by their
+  // class. /home would re-route them to /onboarding because the
+  // join-funnel doesn't run the legacy /onboarding flow.
   if (user) {
-    redirect("/home");
+    redirect("/student");
   }
 
   // Otherwise show a success card with a sign-in CTA.

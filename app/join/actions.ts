@@ -140,6 +140,19 @@ export async function applyPendingQuiz(quiz: PendingQuiz): Promise<ApplyResult> 
       (s): s is string => typeof s === "string",
     );
   }
+  // The join quiz IS the onboarding for these users — they've answered
+  // class, board, medium, preferred language, struggle subjects. Mark
+  // it complete so /home doesn't bounce them to /onboarding (the
+  // legacy 7-step flow) when they navigate there later.
+  //
+  // Gate on quiz.schoolClass: if localStorage was empty when the
+  // visitor hit /join/finalize, the quiz payload is `{}` and we have
+  // nothing to claim as onboarding. Leaving onboarding_completed_at
+  // null in that case keeps /home's bounce-to-/onboarding behaviour
+  // for genuinely empty profiles.
+  if (quiz.schoolClass) {
+    patch.onboarding_completed_at = new Date().toISOString();
+  }
 
   if (Object.keys(patch).length > 0) {
     const { error } = await supabase.from("profiles").update(patch).eq("id", user.id);
