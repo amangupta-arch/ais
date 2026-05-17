@@ -97,10 +97,18 @@ const SUBJECT_OPTIONS: Option[] = [
 // treated as flow steps, not survey steps.
 const TOTAL_QUESTIONS = 7;
 
-export default function JoinQuiz() {
+export default function JoinQuiz({
+  initialError = null,
+}: {
+  // Forwarded from app/join/page.tsx searchParams.error — surfaces
+  // the "Please restart the quiz" message and any future bounce-back
+  // errors. Informational only; we still always boot at step 0.
+  initialError?: string | null;
+}) {
   const [step, setStep] = useState(0);
   const [data, setData] = useState<QuizData>({});
   const [hydrated, setHydrated] = useState(false);
+  const [errorBanner, setErrorBanner] = useState<string | null>(initialError);
 
   // Rehydrate from localStorage on mount so a refresh doesn't
   // dump the user back to step 1. Only used as an extra-resilience
@@ -135,6 +143,37 @@ export default function JoinQuiz() {
   return (
     <div className="join-shell">
       <Header step={step} total={TOTAL_QUESTIONS} onBack={goBack} />
+
+      {errorBanner && (
+        <div
+          role="alert"
+          className="join-error"
+          style={{
+            margin: "0 24px 12px",
+            display: "flex",
+            alignItems: "center",
+            gap: 10,
+          }}
+        >
+          <span style={{ flex: 1 }}>{errorBanner}</span>
+          <button
+            type="button"
+            onClick={() => setErrorBanner(null)}
+            aria-label="Dismiss"
+            style={{
+              background: "transparent",
+              border: 0,
+              color: "inherit",
+              cursor: "pointer",
+              fontSize: 18,
+              lineHeight: 1,
+              padding: "0 4px",
+            }}
+          >
+            ×
+          </button>
+        </div>
+      )}
 
       <main className="join-stage">
         <AnimatePresence mode="wait">
