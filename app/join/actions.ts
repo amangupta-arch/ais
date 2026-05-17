@@ -140,6 +140,11 @@ export async function applyPendingQuiz(quiz: PendingQuiz): Promise<ApplyResult> 
       (s): s is string => typeof s === "string",
     );
   }
+  // The join quiz IS the onboarding for these users — they've answered
+  // class, board, medium, preferred language, struggle subjects. Mark
+  // it complete so /home doesn't bounce them to /onboarding (the
+  // legacy 7-step flow) when they navigate there later.
+  patch.onboarding_completed_at = new Date().toISOString();
 
   if (Object.keys(patch).length > 0) {
     const { error } = await supabase.from("profiles").update(patch).eq("id", user.id);
