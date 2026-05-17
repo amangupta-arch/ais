@@ -51,6 +51,15 @@ type Body = {
   /** Free-text guidance from the author. Capped server-side to keep
    *  prompt size sane; longer notes go in docs/lesson-yaml-knowledge.md. */
   customInstructions?: string;
+  /** Optional board override (e.g. 'cbse'). When the author picks a
+   *  board in the /yaml-generate UI, this becomes the BOARD: line in
+   *  the AI prompt. When omitted, the prompt falls back to whatever
+   *  the bundle's YAML declares. Empty string = explicit "no board"
+   *  (the AI sees no BOARD: line, useful for non-curriculum bundles). */
+  board?: string;
+  /** Optional medium override (e.g. 'en', 'hi'). Same semantics as
+   *  `board` — overrides the bundle's YAML medium for the prompt. */
+  medium?: string;
 };
 
 const CUSTOM_INSTRUCTIONS_MAX_CHARS = 4000;
@@ -76,6 +85,15 @@ export async function POST(req: Request) {
   const customInstructions = customInstructionsRaw.slice(0, CUSTOM_INSTRUCTIONS_MAX_CHARS);
   const customInstructionsTruncated =
     customInstructionsRaw.length > CUSTOM_INSTRUCTIONS_MAX_CHARS;
+  // Board/medium overrides from the UI picker. We accept '' (or
+  // anything falsy) as "explicit no value" so the prompt can omit the
+  // BOARD: / MEDIUM: line entirely for non-curriculum bundles. When
+  // the field is missing from the body, fall through to the bundle's
+  // YAML declarations.
+  const boardOverride =
+    typeof body.board === "string" ? body.board.trim().toLowerCase() : undefined;
+  const mediumOverride =
+    typeof body.medium === "string" ? body.medium.trim().toLowerCase() : undefined;
 
   if (!courseSlug || !lessonSlug) {
     return NextResponse.json(
@@ -249,6 +267,8 @@ export async function POST(req: Request) {
               enReference,
               customInstructions: customInstructions || null,
               priorContext,
+              boardOverride,
+              mediumOverride,
             }),
         );
         if (!gen.ok) {

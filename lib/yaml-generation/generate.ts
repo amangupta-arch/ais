@@ -51,6 +51,16 @@ export type GenerateInput = {
    *  re-cover ground. Translations skip this; the EN base of THIS
    *  lesson is the only context they need. */
   priorContext?: string | null;
+  /** Per-generation board override picked in the /yaml-generate UI.
+   *  When set, the BOARD: line in the prompt uses this single value
+   *  instead of the bundle's full array (a bundle tagged for both
+   *  CBSE and ICSE shouldn't say "tune for CBSE, ICSE" when the
+   *  author is explicitly generating for CBSE). Empty string =
+   *  explicit "no board" → omits the BOARD: line entirely. Undefined
+   *  = fall back to entry.bundleBoards. */
+  boardOverride?: string;
+  /** Same shape as boardOverride, for medium of instruction. */
+  mediumOverride?: string;
 };
 
 export type GenerateOk = {
@@ -67,23 +77,45 @@ export type GenerateErr = {
 
 export type GenerateResult = GenerateOk | GenerateErr;
 
-/** Emit the BOARD / MEDIUM prompt lines for the bundle, if it's a
- *  curriculum bundle (non-empty board/medium arrays). Otherwise empty —
- *  AI-tool bundles don't carry board context.
+/** Emit the BOARD / MEDIUM prompt lines.
  *
- *  The bundle's medium is the language of instruction at school. When
- *  generating in EN for a Hindi-medium bundle, we want the AI to know
- *  that students think in Hindi at school — affects example choice and
+ *  Precedence per dimension:
+ *    1. Explicit override from the UI picker (string — may be "" to
+ *       force an empty line, i.e. "I'm authoring something that
+ *       doesn't belong to a board at all").
+ *    2. Bundle YAML declarations (entry.bundleBoards / .bundleMediums).
+ *    3. Nothing — the line is omitted.
+ *
+ *  The medium is the language of instruction at school. When generating
+ *  in EN for a Hindi-medium bundle, we want the AI to know that
+ *  students think in Hindi at school — affects example choice and
  *  vocabulary, not output language (output is controlled by LANGUAGE). */
-function bundleContextLines(entry: LessonEntry): string[] {
+function bundleContextLines(
+  entry: LessonEntry,
+  boardOverride: string | undefined,
+  mediumOverride: string | undefined,
+): string[] {
+  const boards =
+    boardOverride !== undefined
+      ? boardOverride.trim()
+        ? [boardOverride.trim()]
+        : []
+      : entry.bundleBoards;
+  const mediums =
+    mediumOverride !== undefined
+      ? mediumOverride.trim()
+        ? [mediumOverride.trim()]
+        : []
+      : entry.bundleMediums;
+
   const lines: string[] = [];
-  if (entry.bundleBoards.length > 0) {
-    const list = entry.bundleBoards.map((b) => b.toUpperCase()).join(", ");
+  if (boards.length > 0) {
+    const list = boards.map((b) => b.toUpperCase()).join(", ");
     lines.push(`BOARD: ${list} (tune content to this board's syllabus and convention)`);
   }
-  if (entry.bundleMediums.length > 0) {
+  if (mediums.length > 0) {
     lines.push(
-      `MEDIUM OF INSTRUCTION: ${entry.bundleMediums.join(", ")} (the language students learn this subject in at school)`,
+      `MEDIUM OF INSTRUCTION: ${mediums.join(", ")} (the language students learn this subject in at school)`,
     );
   }
   return lines;
@@ -105,10 +137,12 @@ function buildUserPrompt(
   enReference?: string | null,
   customInstructions?: string | null,
   priorContext?: string | null,
+  boardOverride?: string,
+  mediumOverride?: string,
 ): string {
   const langLabel = language === "en" ? "English (canonical)" : language;
 
-  const bundleContext = bundleContextLines(entry);
+  const bundleContext = bundleContextLines(entry, boardOverride, mediumOverride);
 
   // ---------- Translation path: EN YAML is the base ----------
   if (language !== "en" && enReference) {
@@ -259,6 +293,8 @@ export async function generateLessonYaml(input: GenerateInput): Promise<Generate
     input.enReference,
     input.customInstructions,
     input.priorContext,
+    input.boardOverride,
+    input.mediumOverride,
   );
 
   let feedback: string | null = null;
