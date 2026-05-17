@@ -26,17 +26,22 @@ export async function GET(request: NextRequest) {
   const planId = url.searchParams.get("plan");
 
   if (!planId) {
-    return NextResponse.redirect(new URL("/join?error=Missing+plan", APP_URL));
+    return NextResponse.redirect(
+      new URL(`/students-plan?error=${encodeURIComponent("Missing plan.")}`, APP_URL),
+    );
   }
 
   const plan = findStudentPlan(planId);
   if (!plan) {
     return NextResponse.redirect(
-      new URL(`/join?error=${encodeURIComponent("Unknown plan: " + planId)}`, APP_URL),
+      new URL(`/students-plan?error=${encodeURIComponent("Unknown plan: " + planId)}`, APP_URL),
     );
   }
 
-  // The user is signed in by now (auth-callback ran before us).
+  // The user is signed in by now (auth-callback ran before us). If
+  // they're not, the quiz needs a redo — bounce to /join, not
+  // /students-plan (which would redirect them right back here in a
+  // loop, since /students-plan also gates on auth).
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user || !user.email) {
@@ -46,7 +51,7 @@ export async function GET(request: NextRequest) {
   if (!cashfreeConfigured()) {
     return NextResponse.redirect(
       new URL(
-        `/join?error=${encodeURIComponent(
+        `/students-plan?error=${encodeURIComponent(
           "Payments aren't live yet. Email hello@myaisetu.com and we'll grant you access.",
         )}`,
         APP_URL,
@@ -70,10 +75,16 @@ export async function GET(request: NextRequest) {
     });
     return NextResponse.redirect(order.hostedCheckoutUrl);
   } catch (e) {
-    console.error("Cashfree createOrder failed", e);
+    // Print the message string explicitly (not the Error object) so
+    // the full Cashfree response body reaches Vercel without object-
+    // key truncation. createOrder() embeds status + env + API
+    // version + body into the message — that's what we need to
+    // diagnose failures on the live account.
+    const msg = e instanceof Error ? e.message : String(e);
+    console.error("[checkout/start] createOrder failed:", msg);
     return NextResponse.redirect(
       new URL(
-        `/join?error=${encodeURIComponent(
+        `/students-plan?error=${encodeURIComponent(
           "We couldn't reach the payment gateway. Try again in a minute.",
         )}`,
         APP_URL,

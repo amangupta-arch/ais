@@ -162,9 +162,13 @@ export async function applyPendingQuiz(quiz: PendingQuiz): Promise<ApplyResult> 
     cls = p?.school_class ?? undefined;
   }
 
+  // Class 6-10 → /students-plan, the explicit offer checkpoint. The
+  // visitor clicks "Pay" there to start Cashfree; we no longer chain
+  // sign-up silently into a payment gateway. Other classes still get
+  // the "thanks, not live yet" page.
   const redirectTo =
     cls && SCHOOL_6_TO_10.has(cls)
-      ? `/api/checkout/start?plan=school-6-10-all`
+      ? `/students-plan`
       : `/join/contact-us`;
 
   return { ok: true, redirectTo };

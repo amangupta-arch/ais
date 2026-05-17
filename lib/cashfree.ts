@@ -114,8 +114,15 @@ export async function createOrder(args: CreateOrderArgs): Promise<CreateOrderRes
 
   const body = await res.json();
   if (!res.ok || !body.payment_session_id) {
+    // Embed env + API version + response body into the message so
+    // Vercel logs surface *why* Cashfree rejected the order
+    // (sandbox-vs-prod mismatch, x-api-version drift, invalid phone
+    // placeholder, etc.) without us having to re-deploy with extra
+    // logging.
+    const detail =
+      body && typeof body === "object" ? JSON.stringify(body) : String(body);
     throw new Error(
-      `Cashfree createOrder failed (${res.status}): ${JSON.stringify(body)}`,
+      `Cashfree createOrder ${res.status} ${res.statusText} — env=${cashfreeEnv()} api=${API_VERSION} body=${detail.slice(0, 800)}`,
     );
   }
 
@@ -161,8 +168,14 @@ export async function fetchOrder(orderId: string): Promise<OrderStatus> {
  *  HMAC-SHA256(secret, timestamp + body). We get the raw body
  *  (Buffer-style string) and the two header values.
  *
- *  Returns true if the signature matches. Throws if the webhook
- *  secret env var is missing — that means we forgot to wire prod
+ *  We try CASHFREE_WEBHOOK_SECRET first, then fall back to
+ *  CASHFREE_SECRET_KEY. Cashfree's docs treat the webhook secret as
+ *  separate, but several accounts sign webhooks with the API client
+ *  secret instead — accepting either means we don't have to know
+ *  which mode the account is in.
+ *
+ *  Returns true if either candidate matches. Throws if neither
+ *  secret env var is set — that means we forgot to wire prod
  *  correctly and we'd rather fail loudly than silently accept
  *  unverified webhooks. */
 export function verifyWebhookSignature(
@@ -170,21 +183,31 @@ export function verifyWebhookSignature(
   signatureHeader: string | null,
   timestampHeader: string | null,
 ): boolean {
-  const secret = process.env.CASHFREE_WEBHOOK_SECRET;
-  if (!secret) {
-    throw new Error("CASHFREE_WEBHOOK_SECRET is not configured.");
+  const candidates = [
+    process.env.CASHFREE_WEBHOOK_SECRET,
+    process.env.CASHFREE_SECRET_KEY,
+  ].filter((s): s is string => Boolean(s));
+  if (candidates.length === 0) {
+    throw new Error(
+      "Neither CASHFREE_WEBHOOK_SECRET nor CASHFREE_SECRET_KEY is configured.",
+    );
   }
   if (!signatureHeader || !timestampHeader) return false;
 
-  const expected = createHmac("sha256", secret)
-    .update(timestampHeader + rawBody)
-    .digest("base64");
+  for (const secret of candidates) {
+    const expected = createHmac("sha256", secret)
+      .update(timestampHeader + rawBody)
+      .digest("base64");
+    if (constantTimeEqual(expected, signatureHeader)) return true;
+  }
+  return false;
+}
 
-  // Constant-time compare in case Node 24 drops the leniency.
-  if (expected.length !== signatureHeader.length) return false;
+function constantTimeEqual(a: string, b: string): boolean {
+  if (a.length !== b.length) return false;
   let diff = 0;
-  for (let i = 0; i < expected.length; i++) {
-    diff |= expected.charCodeAt(i) ^ signatureHeader.charCodeAt(i);
+  for (let i = 0; i < a.length; i++) {
+    diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
   }
   return diff === 0;
 }

@@ -15,7 +15,11 @@ import type { Metadata } from "next";
 import "./join.css";
 import JoinQuiz from "./JoinQuiz";
 
-export const dynamic = "force-static";
+// Used to be force-static, but reading searchParams.error to surface
+// an "auth failed, restart the quiz" banner means this has to render
+// per-request. The quiz itself is still a client component — only
+// the thin wrapper here is dynamic.
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Join AI Setu — a Maya plan curated for you",
@@ -23,6 +27,11 @@ export const metadata: Metadata = {
     "A two-minute quiz. Then a Maya-powered plan crafted around your class, board, and language.",
 };
 
-export default function JoinPage() {
-  return <JoinQuiz />;
+export default async function JoinPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string }>;
+}) {
+  const { error } = await searchParams;
+  return <JoinQuiz initialError={error ?? null} />;
 }
