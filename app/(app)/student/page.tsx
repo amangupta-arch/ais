@@ -32,7 +32,14 @@ export default async function StudentPage() {
   const schoolClass = profile?.school_class ?? null;
   const institute = profile?.institute ?? null;
   const board = profile?.education_board ?? null;
-  const medium = profile?.native_language ?? null;
+  // native_language is NOT NULL DEFAULT 'en' in supabase/migrations/0001_init.sql,
+  // so it's *always* set — using it directly would make the medium filter
+  // always-on and hide every bundle that lacks a medium:* tag from legacy
+  // users. Gate it on `board` instead: education_board is truly nullable
+  // and only gets populated by the join quiz, the same step where the user
+  // told us their medium. If they didn't go through the quiz, neither filter
+  // applies and they see the broader class-only set.
+  const medium = board ? (profile?.native_language ?? null) : null;
 
   return (
     <main className="lm-page">

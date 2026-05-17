@@ -203,21 +203,37 @@ ${sql};
     )
     .join("\n");
 
-  // Sync any board:* / medium:* tags declared in YAML into bundles.tags.
-  // Idempotent: deduplicates the existing tag array so re-runs don't
-  // accumulate copies, and never strips tags it doesn't know about (so
-  // curriculum/class/subject tags from migrations are preserved).
+  // Sync the board:* / medium:* tag dimensions from YAML into
+  // bundles.tags. Strips any existing tags in those two namespaces
+  // first, then appends the ones the YAML declares — so dropping or
+  // changing a board/medium in YAML actually propagates (the previous
+  // append-only version left stale tags behind, which served the
+  // wrong cohorts on /student).
+  //
+  // Tags outside the board:/medium: namespaces (curriculum, class:*,
+  // subject:*, institute:*) are preserved verbatim — those come from
+  // migrations, not YAML.
+  //
+  // Emitted unconditionally so removing all board/medium fields from
+  // a bundle's YAML also strips any lingering tags. The empty-array
+  // case is a no-op for bundles that never had them.
   const boardTags = tagValuesFor(bundle.board).map((b) => `board:${b}`);
   const mediumTags = tagValuesFor(bundle.medium).map((m) => `medium:${m}`);
-  const declaredTagLiterals = [...boardTags, ...mediumTags]
+  const declaredArrayLiteral = [...boardTags, ...mediumTags]
     .map((t) => `'${escapeSqlString(t)}'`)
     .join(",");
-  const tagSyncSql = declaredTagLiterals
-    ? `
+  const declaredArraySql = declaredArrayLiteral
+    ? `ARRAY[${declaredArrayLiteral}]`
+    : `ARRAY[]::text[]`;
+  const tagSyncSql = `
   UPDATE bundles SET tags = ARRAY(
-    SELECT DISTINCT t FROM unnest(COALESCE(tags, ARRAY[]::text[]) || ARRAY[${declaredTagLiterals}]) AS t
-  ) WHERE id = v_bundle_id;`
-    : "";
+    SELECT DISTINCT t FROM unnest(
+      ARRAY(
+        SELECT u FROM unnest(COALESCE(tags, ARRAY[]::text[])) AS u
+        WHERE u NOT LIKE 'board:%' AND u NOT LIKE 'medium:%'
+      ) || ${declaredArraySql}
+    ) AS t
+  ) WHERE id = v_bundle_id;`;
 
   // v_plan_tier is read from the bundle row at execute time so the
   // courses inherit the right tier — previously hardcoded to 'basic',
