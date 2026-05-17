@@ -14,6 +14,11 @@ export type CatalogRow = {
   lessonIndex: number;
   courseLessonCount: number;
   enExists: boolean;
+  /** From the bundle's YAML — surfaced as read-only context so the
+   *  author sees which board/medium the AI prompt will be tuned for.
+   *  Empty for AI-tool bundles that don't carry curriculum metadata. */
+  bundleBoards: string[];
+  bundleMediums: string[];
 };
 
 export type JobRow = {
@@ -342,6 +347,7 @@ export default function GenerateForm({
           onChange={setBundleSlug}
           options={bundles.map((b) => ({ value: b.slug, label: `${b.title}  (${b.slug})` }))}
         />
+        <BundleContextStrip rows={rows} bundleSlug={bundleSlug} />
       </Field>
 
       <Field label="Course">
@@ -682,6 +688,51 @@ function Select({
         </option>
       ))}
     </select>
+  );
+}
+
+function BundleContextStrip({
+  rows,
+  bundleSlug,
+}: {
+  rows: CatalogRow[];
+  bundleSlug: string;
+}) {
+  // All rows for the same bundle share the same boards/mediums, so
+  // grab the first match. If the bundle has neither (AI-tool bundles),
+  // render nothing — no point taking up space.
+  const sample = rows.find((r) => r.bundleSlug === bundleSlug);
+  const boards = sample?.bundleBoards ?? [];
+  const mediums = sample?.bundleMediums ?? [];
+  if (boards.length === 0 && mediums.length === 0) return null;
+  return (
+    <div
+      style={{
+        marginTop: 4,
+        fontSize: 11.5,
+        color: "#475569",
+        fontFamily: "ui-monospace, monospace",
+        letterSpacing: "0.02em",
+      }}
+    >
+      {boards.length > 0 && (
+        <>
+          board:{" "}
+          <strong style={{ color: "#0F172A" }}>
+            {boards.map((b) => b.toUpperCase()).join(", ")}
+          </strong>
+        </>
+      )}
+      {boards.length > 0 && mediums.length > 0 && "  ·  "}
+      {mediums.length > 0 && (
+        <>
+          medium: <strong style={{ color: "#0F172A" }}>{mediums.join(", ")}</strong>
+        </>
+      )}
+      <span style={{ marginLeft: 8, color: "#94A3B8" }}>
+        (passed to the AI prompt as syllabus context)
+      </span>
+    </div>
   );
 }
 

@@ -28,8 +28,26 @@ type CourseStub = {
 
 type BundleStub = {
   bundle_slug: string;
+  /** Optional board(s) the bundle is suitable for. String or array.
+   *  Synced into bundles.tags as 'board:<slug>' so /student filters
+   *  by profile.education_board. Non-curriculum bundles omit this. */
+  board?: string | string[];
+  /** Optional medium(s) of instruction. String or array. Synced into
+   *  bundles.tags as 'medium:<lang>' so /student filters by
+   *  profile.native_language. Non-curriculum bundles omit this. */
+  medium?: string | string[];
   courses: CourseStub[];
 };
+
+/** Normalise board/medium YAML fields (string | string[]) to a flat
+ *  list of tag values, lowercased + trimmed. Empty input → []. */
+function tagValuesFor(value: string | string[] | undefined): string[] {
+  if (!value) return [];
+  const arr = Array.isArray(value) ? value : [value];
+  return arr
+    .map((s) => String(s).trim().toLowerCase())
+    .filter(Boolean);
+}
 
 type YamlFile = {
   bundles: BundleStub[];
@@ -185,6 +203,38 @@ ${sql};
     )
     .join("\n");
 
+  // Sync the board:* / medium:* tag dimensions from YAML into
+  // bundles.tags. Strips any existing tags in those two namespaces
+  // first, then appends the ones the YAML declares — so dropping or
+  // changing a board/medium in YAML actually propagates (the previous
+  // append-only version left stale tags behind, which served the
+  // wrong cohorts on /student).
+  //
+  // Tags outside the board:/medium: namespaces (curriculum, class:*,
+  // subject:*, institute:*) are preserved verbatim — those come from
+  // migrations, not YAML.
+  //
+  // Emitted unconditionally so removing all board/medium fields from
+  // a bundle's YAML also strips any lingering tags. The empty-array
+  // case is a no-op for bundles that never had them.
+  const boardTags = tagValuesFor(bundle.board).map((b) => `board:${b}`);
+  const mediumTags = tagValuesFor(bundle.medium).map((m) => `medium:${m}`);
+  const declaredArrayLiteral = [...boardTags, ...mediumTags]
+    .map((t) => `'${escapeSqlString(t)}'`)
+    .join(",");
+  const declaredArraySql = declaredArrayLiteral
+    ? `ARRAY[${declaredArrayLiteral}]`
+    : `ARRAY[]::text[]`;
+  const tagSyncSql = `
+  UPDATE bundles SET tags = ARRAY(
+    SELECT DISTINCT t FROM unnest(
+      ARRAY(
+        SELECT u FROM unnest(COALESCE(tags, ARRAY[]::text[])) AS u
+        WHERE u NOT LIKE 'board:%' AND u NOT LIKE 'medium:%'
+      ) || ${declaredArraySql}
+    ) AS t
+  ) WHERE id = v_bundle_id;`;
+
   // v_plan_tier is read from the bundle row at execute time so the
   // courses inherit the right tier — previously hardcoded to 'basic',
   // which silently downgraded student/advanced bundles' courses and
@@ -200,6 +250,7 @@ BEGIN
   IF v_bundle_id IS NULL THEN
     RAISE EXCEPTION 'bundle not found: ${bundle.bundle_slug}';
   END IF;
+${tagSyncSql}
 ${courseUpsert}
 ${lessonBlocks}
 END $$;

@@ -67,6 +67,28 @@ export type GenerateErr = {
 
 export type GenerateResult = GenerateOk | GenerateErr;
 
+/** Emit the BOARD / MEDIUM prompt lines for the bundle, if it's a
+ *  curriculum bundle (non-empty board/medium arrays). Otherwise empty —
+ *  AI-tool bundles don't carry board context.
+ *
+ *  The bundle's medium is the language of instruction at school. When
+ *  generating in EN for a Hindi-medium bundle, we want the AI to know
+ *  that students think in Hindi at school — affects example choice and
+ *  vocabulary, not output language (output is controlled by LANGUAGE). */
+function bundleContextLines(entry: LessonEntry): string[] {
+  const lines: string[] = [];
+  if (entry.bundleBoards.length > 0) {
+    const list = entry.bundleBoards.map((b) => b.toUpperCase()).join(", ");
+    lines.push(`BOARD: ${list} (tune content to this board's syllabus and convention)`);
+  }
+  if (entry.bundleMediums.length > 0) {
+    lines.push(
+      `MEDIUM OF INSTRUCTION: ${entry.bundleMediums.join(", ")} (the language students learn this subject in at school)`,
+    );
+  }
+  return lines;
+}
+
 function customInstructionsSection(custom: string | null | undefined): string[] {
   const trimmed = custom?.trim();
   if (!trimmed) return [];
@@ -86,6 +108,8 @@ function buildUserPrompt(
 ): string {
   const langLabel = language === "en" ? "English (canonical)" : language;
 
+  const bundleContext = bundleContextLines(entry);
+
   // ---------- Translation path: EN YAML is the base ----------
   if (language !== "en" && enReference) {
     return [
@@ -93,6 +117,7 @@ function buildUserPrompt(
       `Output ONLY the translated YAML — no markdown fences, no preamble.`,
       ``,
       `BUNDLE: ${entry.bundleSlug}`,
+      ...bundleContext,
       `COURSE: ${entry.courseTitle}`,
       `LESSON: "${entry.lessonTitle}"`,
       ``,
@@ -127,6 +152,7 @@ function buildUserPrompt(
     ``,
     `LANGUAGE: ${langLabel}`,
     `BUNDLE: ${entry.bundleSlug}`,
+    ...bundleContext,
     `COURSE: ${entry.courseTitle}`,
     `COURSE OUTCOME: ${entry.courseOutcome}`,
     ...priorSection,
