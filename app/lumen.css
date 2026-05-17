@@ -368,3 +368,30 @@
   40%, 60% { transform: translateX( 3px); }
 }
 .lm-shake { animation: lm-shake-x 320ms ease-out; }
+
+/* ---------- Rich-text colours & highlights ----------
+   Used by <RichText> for `:red[…]`, `:hl-yellow[…]`, etc. The class
+   names are pinned to the allow-list in lib/lesson/RichText.tsx — keep
+   the two in sync. Colours pull from the six-hue Lumen palette so the
+   formatting reads as part of the design system. */
+.lm .lp-color-red    { color: var(--coral-deep); }
+.lm .lp-color-green  { color: var(--moss-deep); }
+.lm .lp-color-blue   { color: var(--ocean-deep); }
+.lm .lp-color-yellow { color: var(--saffron-deep); }
+.lm .lp-color-purple { color: var(--plum-deep); }
+.lm .lp-color-indigo { color: var(--indigo-deep); }
+.lm .lp-color-gray   { color: var(--text-3); }
+
+.lm .lp-hl-yellow { background: var(--saffron-soft); padding: 0 3px; border-radius: 3px; }
+.lm .lp-hl-green  { background: var(--moss-soft);    padding: 0 3px; border-radius: 3px; }
+.lm .lp-hl-red    { background: var(--coral-soft);   padding: 0 3px; border-radius: 3px; }
+.lm .lp-hl-blue   { background: var(--ocean-soft);   padding: 0 3px; border-radius: 3px; }
+
+/* Tighten the default margins react-markdown emits in block mode so
+   summaries and lists sit flush against their containers. */
+.lm .lp-block-text > p:first-child { margin-top: 0; }
+.lm .lp-block-text > p:last-child  { margin-bottom: 0; }
+.lm .lp-block-text p { margin: 0.6em 0; }
+.lm .lp-block-text ul,
+.lm .lp-block-text ol { margin: 0.4em 0; padding-left: 1.4em; }
+.lm .lp-block-text li { margin: 0.15em 0; }
