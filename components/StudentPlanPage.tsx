@@ -1,16 +1,13 @@
 // Shared layout for the three /student-plan-* routes.
 //
-// Server-rendered. Auth-agnostic — any visitor can browse plans and
-// click "Subscribe" before signing in. The Subscribe button submits
-// to startCheckout() in app/checkout/actions.ts, which today
-// redirects to a "coming soon" page and tomorrow will hit Cashfree
-// Subscriptions API. Plan IDs round-trip via the form so neither
-// the page nor the action has to know about the others.
+// Server-rendered. Auth-agnostic — any visitor can browse plans
+// before signing in. Subscribe CTAs route to /join (the quiz
+// funnel) regardless of which plan card was clicked — the funnel
+// handles class detection, sign-in, and Cashfree handoff.
 
 import Link from "next/link";
 
 import LandingClient from "@/app/landing-client";
-import { startCheckout } from "@/app/checkout/actions";
 
 import type { StudentCohort } from "@/lib/student-plans";
 
@@ -103,16 +100,14 @@ export default function StudentPlanPage({ cohort }: { cohort: StudentCohort }) {
                   </li>
                 ))}
               </ul>
-              {/* The integration point. Today the action redirects to
-                  /checkout?plan=<id>; tomorrow it'll create a Cashfree
-                  subscription and redirect to the auth URL. The plan
-                  page never has to know which. */}
-              <form action={startCheckout}>
-                <input type="hidden" name="plan_id" value={plan.id} />
-                <button type="submit" className="tier__cta">
-                  Subscribe · ₹{plan.priceInr}/mo
-                </button>
-              </form>
+              {/* All Subscribe CTAs route to /join — the quiz funnel
+                  is the single source of payment entry now, regardless
+                  of which plan card a visitor came from. The funnel
+                  collects their class and routes Class 6-10 into
+                  Cashfree; other classes get the email-us flow. */}
+              <Link className="tier__cta" href="/join">
+                Subscribe · ₹{plan.priceInr}/mo
+              </Link>
             </div>
           ))}
         </div>

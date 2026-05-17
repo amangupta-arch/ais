@@ -107,6 +107,16 @@ export type Profile = {
    *  haven't picked a class yet; the /student dashboard shows an
    *  inline picker in that case. */
   school_class: string | null;
+  /** Quiz funnel fields — captured at /join. All nullable so existing
+   *  profiles (created before the funnel shipped) don't need backfill. */
+  first_name: string | null;
+  city: string | null;
+  /** Slug-shaped education board: 'cbse', 'icse', 'state', 'ib', etc.
+   *  CHECK constraint in migration 0017. */
+  education_board: string | null;
+  /** Subject slugs the learner self-reports struggling with. Used to
+   *  prioritise content surfacing in /student / /home. */
+  struggle_subjects: string[];
   onboarding_completed_at: string | null;
   created_at: string;
   updated_at: string;
