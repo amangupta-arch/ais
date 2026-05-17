@@ -1,12 +1,23 @@
 /** /yaml-status — read-only board showing how many lesson YAMLs have
  *  been generated vs. how many are still pending across the whole
  *  catalog. Public (matches /database-schema). Auto-refreshes every 8s
- *  via meta http-equiv refresh.
+ *  via meta http-equiv refresh (which preserves query params, so the
+ *  filter selection survives the reload).
  *
  *  Each row carries:
  *   - the EN status badge (primary)
  *   - a small per-language strip below for non-EN languages, each
  *     clickable to view the generated YAML if available
+ *
+ *  Filters (URL searchParams):
+ *   - ?status=done|running|failed|pending — narrows the EN status
+ *   - ?bundle=<slug> — narrows to one bundle
+ *   - ?board=<slug> — narrows to bundles tagged for a board
+ *   - ?medium=<code> — narrows to bundles tagged for a medium
+ *
+ *  Counts on the tiles reflect any active bundle/board/medium filter,
+ *  so "EN pending 47" means "47 pending in the current narrowed set",
+ *  not 47 across the entire catalog.
  */
 
 import { createClient as createServiceClient } from "@supabase/supabase-js";
@@ -17,6 +28,8 @@ import {
   lessonYamlExists,
   type LessonEntry,
 } from "@/lib/yaml-generation/catalog";
+
+import Filters from "./Filters";
 
 export const dynamic = "force-dynamic";
 
@@ -146,38 +159,102 @@ function textHref(courseSlug: string, lessonSlug: string, language: string): str
   return `/api/yaml-jobs/text?${q.toString()}`;
 }
 
-export default async function YamlStatusPage() {
-  const entries = enumerateAllLessons();
+export default async function YamlStatusPage({
+  searchParams,
+}: {
+  searchParams: Promise<{
+    status?: string;
+    bundle?: string;
+    board?: string;
+    medium?: string;
+  }>;
+}) {
+  const sp = await searchParams;
+  const statusFilter: Status | null =
+    sp.status === "done" || sp.status === "running" || sp.status === "failed" || sp.status === "pending"
+      ? sp.status
+      : null;
+  const bundleFilter = sp.bundle?.trim() || null;
+  const boardFilter = sp.board?.trim() || null;
+  const mediumFilter = sp.medium?.trim() || null;
+
+  const allEntries = enumerateAllLessons();
   const [jobs, audioCoverage] = await Promise.all([
     loadJobsByKey(),
     loadAudioCoverage(),
   ]);
 
+  // Bundle / board / medium narrowing — this defines "the set the
+  // tiles count over", BEFORE the status filter is applied.
+  const narrowed = allEntries.filter((e) => {
+    if (bundleFilter && e.bundleSlug !== bundleFilter) return false;
+    if (boardFilter && !e.bundleBoards.includes(boardFilter)) return false;
+    if (mediumFilter && !e.bundleMediums.includes(mediumFilter)) return false;
+    return true;
+  });
+
+  // Bundle / board / medium options for the filter dropdowns — derived
+  // from the actual catalog so authors can only pick values that have
+  // any matching content.
+  const bundleTitles = new Map<string, string>();
+  const boardSet = new Set<string>();
+  const mediumSet = new Set<string>();
+  for (const e of allEntries) {
+    if (!bundleTitles.has(e.bundleSlug)) bundleTitles.set(e.bundleSlug, e.bundleSlug);
+    for (const b of e.bundleBoards) boardSet.add(b);
+    for (const m of e.bundleMediums) mediumSet.add(m);
+  }
+  const bundleOptions = [...bundleTitles.entries()]
+    .map(([slug]) => ({ value: slug, label: slug }))
+    .sort((a, b) => a.label.localeCompare(b.label));
+  const boardOptions = [...boardSet].sort();
+  const mediumOptions = [...mediumSet].sort();
+
+  // Counts reflect bundle/board/medium filters but NOT the status
+  // filter — so each tile shows how many lessons would land in that
+  // status bucket within the narrowed set.
+  const enCounts: Record<Status, number> = { done: 0, running: 0, failed: 0, pending: 0 };
+  for (const e of narrowed) enCounts[statusOfLang(e, "en", jobs)]++;
+  const total = narrowed.length;
+
+  // Final visible set: also apply status filter (if any).
+  const visible = statusFilter
+    ? narrowed.filter((e) => statusOfLang(e, "en", jobs) === statusFilter)
+    : narrowed;
+
+  // Group by course (only courses with at least one visible lesson).
   const byCourse = new Map<string, LessonEntry[]>();
-  for (const e of entries) {
+  for (const e of visible) {
     const arr = byCourse.get(e.courseSlug) ?? [];
     arr.push(e);
     byCourse.set(e.courseSlug, arr);
   }
 
-  // Tiles still EN-track (the primary content axis). Translations roll
-  // up in a smaller summary line under the tiles.
-  const enCounts: Record<Status, number> = { done: 0, running: 0, failed: 0, pending: 0 };
-  for (const e of entries) enCounts[statusOfLang(e, "en", jobs)]++;
-  const total = entries.length;
-
-  // Translations summary across all non-EN languages: "done" total +
-  // "started" total (anything not pending).
+  // Translations summary across all non-EN languages, computed on the
+  // narrowed set so the line agrees with the EN tiles when filters are
+  // active.
   let trDone = 0;
   let trStarted = 0;
-  const trUniverse = entries.length * NON_EN_LANGS.length;
-  for (const e of entries) {
+  const trUniverse = narrowed.length * NON_EN_LANGS.length;
+  for (const e of narrowed) {
     for (const l of NON_EN_LANGS) {
       const s = statusOfLang(e, l.code, jobs);
       if (s !== "pending") trStarted++;
       if (s === "done") trDone++;
     }
   }
+
+  // Helper: build a /yaml-status URL preserving the other active
+  // filters but flipping just `status`. Used by the clickable tiles.
+  const statusHref = (s: Status | null) => {
+    const params = new URLSearchParams();
+    if (s) params.set("status", s);
+    if (bundleFilter) params.set("bundle", bundleFilter);
+    if (boardFilter) params.set("board", boardFilter);
+    if (mediumFilter) params.set("medium", mediumFilter);
+    const qs = params.toString();
+    return qs ? `/yaml-status?${qs}` : "/yaml-status";
+  };
 
   return (
     <main style={{ minHeight: "100dvh", background: "#FAFAFA", padding: "32px 16px 80px" }}>
@@ -204,11 +281,19 @@ export default async function YamlStatusPage() {
           <p style={{ marginTop: 6, fontSize: 14, color: "#475569", lineHeight: 1.5 }}>
             EN tiles are the canonical track. Each row also shows a translations bar
             for the {NON_EN_LANGS.length} other languages; click a chip to view the
-            generated YAML. Auto-refreshes every 8s.
+            generated YAML. Click a tile to filter. Auto-refreshes every 8s.
           </p>
         </header>
 
-        {/* EN tiles */}
+        <Filters
+          bundles={bundleOptions}
+          boards={boardOptions}
+          mediums={mediumOptions}
+        />
+
+        {/* EN tiles — each is a clickable filter link. Active status
+            tile is highlighted; clicking it again (or "EN total")
+            clears the status filter. */}
         <section
           style={{
             display: "grid",
@@ -217,11 +302,11 @@ export default async function YamlStatusPage() {
             marginBottom: 8,
           }}
         >
-          <Tile label="EN total"   value={total}             tone="neutral" />
-          <Tile label="EN done"    value={enCounts.done}     tone="done" />
-          <Tile label="EN running" value={enCounts.running}  tone="running" />
-          <Tile label="EN failed"  value={enCounts.failed}   tone="failed" />
-          <Tile label="EN pending" value={enCounts.pending}  tone="pending" />
+          <Tile label="EN total"   value={total}             tone="neutral" href={statusHref(null)}       active={statusFilter === null} />
+          <Tile label="EN done"    value={enCounts.done}     tone="done"    href={statusHref("done")}     active={statusFilter === "done"} />
+          <Tile label="EN running" value={enCounts.running}  tone="running" href={statusHref("running")}  active={statusFilter === "running"} />
+          <Tile label="EN failed"  value={enCounts.failed}   tone="failed"  href={statusHref("failed")}   active={statusFilter === "failed"} />
+          <Tile label="EN pending" value={enCounts.pending}  tone="pending" href={statusHref("pending")}  active={statusFilter === "pending"} />
         </section>
 
         {/* Translations summary line */}
@@ -239,6 +324,28 @@ export default async function YamlStatusPage() {
           {trUniverse - trStarted} pending
           ({NON_EN_LANGS.map((l) => l.code).join(", ")})
         </p>
+
+        {byCourse.size === 0 && (
+          <div
+            style={{
+              marginTop: 18,
+              padding: "32px 16px",
+              background: "#fff",
+              border: "1px dashed #CBD5E1",
+              borderRadius: 12,
+              textAlign: "center",
+              color: "#64748B",
+              fontSize: 14,
+              lineHeight: 1.5,
+            }}
+          >
+            No lessons match these filters.{" "}
+            <a href="/yaml-status" style={{ color: "#4F46BA", fontWeight: 600 }}>
+              Clear filters
+            </a>
+            .
+          </div>
+        )}
 
         {[...byCourse.entries()].map(([courseSlug, lessons]) => {
           const courseTitle = lessons[0]!.courseTitle;
@@ -490,10 +597,17 @@ function Tile({
   label,
   value,
   tone,
+  href,
+  active,
 }: {
   label: string;
   value: number;
   tone: "neutral" | "done" | "running" | "failed" | "pending";
+  /** When provided the tile renders as an anchor — clicking it sets
+   *  (or clears) the ?status= filter. */
+  href?: string;
+  /** Highlight the currently-selected status filter tile. */
+  active?: boolean;
 }) {
   const fg =
     tone === "done"    ? "#166534" :
@@ -507,15 +621,8 @@ function Tile({
     tone === "failed"  ? "#FEE2E2" :
     tone === "pending" ? "#F1F5F9" :
     "#fff";
-  return (
-    <div
-      style={{
-        background: bg,
-        border: "1px solid #E2E8F0",
-        borderRadius: 12,
-        padding: 14,
-      }}
-    >
+  const content = (
+    <>
       <div
         style={{
           fontSize: 28,
@@ -539,6 +646,23 @@ function Tile({
       >
         {label}
       </div>
-    </div>
+    </>
   );
+  const baseStyle: React.CSSProperties = {
+    background: bg,
+    border: active ? `2px solid ${fg}` : "1px solid #E2E8F0",
+    borderRadius: 12,
+    padding: active ? 13 : 14,
+    display: "block",
+    textDecoration: "none",
+    transition: "transform 120ms ease",
+  };
+  if (href) {
+    return (
+      <a href={href} style={{ ...baseStyle, cursor: "pointer" }}>
+        {content}
+      </a>
+    );
+  }
+  return <div style={baseStyle}>{content}</div>;
 }
