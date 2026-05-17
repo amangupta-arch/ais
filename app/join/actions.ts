@@ -1,55 +1,37 @@
 "use server";
 
-// /join submit handler.
+// Server actions for the /join funnel.
 //
-// Public — no auth required to call. The action does the entire
-// magic that turns ad-traffic into a signed-in, paying user:
+// Two entry points:
 //
-//   1. Validate the form input.
-//   2. Look up or create the auth.users row by email (admin SDK,
-//      so we don't need the user to have signed in first).
-//   3. Upsert the profile with the quiz answers.
-//   4. Generate a Supabase magic link with redirectTo set to either
-//      our checkout starter or our contact-us page. Throwing
-//      redirect() at this URL means the user's browser hits
-//      Supabase → our /auth/callback → sets cookies → lands on
-//      the right next page. They never see a "check your email"
-//      screen — auth happens behind the curtains.
-//   5. Magic link email still goes out for next-time sign-in.
+//   createUserWithEmailAction(formData)
+//     — invoked from the sign-in step's email form.
+//     — Creates the auth.users row if missing.
+//     — Generates a Supabase magic link with redirectTo =
+//       /auth/callback?next=<form's `next` value>.
+//     — Redirects the browser to the magic link so the user
+//       lands signed-in on the next route (defaults to
+//       /join/finalize).
 //
-// Errors bounce the user back to /join?error=... with a friendly
-// banner. Anything unexpected logs but still surfaces a generic
-// "try again" so we never get stuck on a blank page.
+//   applyPendingQuiz(quizData)
+//     — invoked from the /join/finalize client page AFTER the
+//       user is signed in (Google or email magic link).
+//     — Writes the quiz fields onto profiles for the current
+//       user. Returns the routing decision (checkout for class
+//       6–10, otherwise contact-us).
+//
+// We DON'T save the quiz data in createUserWithEmailAction —
+// that runs without the user's session yet, and we'd rather
+// have all the profile-write logic live in one place
+// (applyPendingQuiz) than risk drift between two writers.
 
 import { redirect } from "next/navigation";
-import { createClient as createSsrClient } from "@supabase/supabase-js";
+import { createClient as createAdminClient } from "@supabase/supabase-js";
+
+import { createClient } from "@/lib/supabase/server";
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://myaisetu.com";
 const SCHOOL_6_TO_10 = new Set(["6", "7", "8", "9", "10"]);
-
-function backToJoin(message: string): never {
-  redirect(`/join?error=${encodeURIComponent(message)}`);
-}
-
-function isValidEmail(s: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
-}
-
-function pickString(formData: FormData, key: string, maxLen = 200): string | null {
-  const v = formData.get(key);
-  if (typeof v !== "string") return null;
-  const trimmed = v.trim();
-  if (trimmed.length === 0) return null;
-  return trimmed.slice(0, maxLen);
-}
-
-function pickAll(formData: FormData, key: string): string[] {
-  return formData
-    .getAll(key)
-    .filter((v): v is string => typeof v === "string")
-    .map((v) => v.trim())
-    .filter((v) => v.length > 0);
-}
 
 function admin() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -57,100 +39,133 @@ function admin() {
   if (!url || !key) {
     throw new Error("Supabase not configured (URL or SERVICE_ROLE_KEY missing).");
   }
-  return createSsrClient(url, key, { auth: { autoRefreshToken: false, persistSession: false } });
+  return createAdminClient(url, key, {
+    auth: { autoRefreshToken: false, persistSession: false },
+  });
 }
 
-export async function submitQuizAction(formData: FormData) {
-  const firstName = pickString(formData, "first_name", 60);
-  const email = pickString(formData, "email", 200)?.toLowerCase();
-  const city = pickString(formData, "city", 80);
-  const schoolClass = pickString(formData, "school_class", 40);
-  const educationBoard = pickString(formData, "education_board", 40);
-  const boardLanguage = pickString(formData, "board_language", 10);
-  const preferredLanguage = pickString(formData, "preferred_language", 10);
-  const struggleSubjects = pickAll(formData, "struggle_subjects");
+function isValidEmail(s: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
+}
 
-  // Validate first — anything missing means the form was tampered
-  // with, since required="" gates it on the browser.
-  if (
-    !firstName || !email || !city || !schoolClass || !educationBoard ||
-    !boardLanguage || !preferredLanguage
-  ) {
-    backToJoin("Looks like a field went missing. Please try again.");
-  }
-  if (!isValidEmail(email!)) {
+function backToJoin(message: string): never {
+  redirect(`/join?error=${encodeURIComponent(message)}`);
+}
+
+// ─── 1) Email sign-in (creates auth user, redirects to magic link) ──
+
+export async function createUserWithEmailAction(formData: FormData) {
+  const emailRaw = formData.get("email");
+  const nextRaw = formData.get("next");
+  const email =
+    typeof emailRaw === "string" ? emailRaw.trim().toLowerCase() : "";
+  const next =
+    typeof nextRaw === "string" && nextRaw.startsWith("/")
+      ? nextRaw
+      : "/join/finalize";
+
+  if (!email || !isValidEmail(email)) {
     backToJoin("That email doesn't look right. Try again.");
   }
 
-  // 1 + 2: ensure auth.users row exists for this email.
-  // Look up via the profiles table first (the on_auth_user trigger
-  // populates profiles.email). If no match, create the auth user;
-  // the trigger then inserts the profile row in the same txn.
   const supabase = admin();
-  let userId: string;
 
-  {
-    const { data: existing } = await supabase
-      .from("profiles")
-      .select("id")
-      .eq("email", email!)
-      .maybeSingle();
+  // Look up via profiles (populated by the auth.users insert trigger).
+  const { data: existing } = await supabase
+    .from("profiles")
+    .select("id")
+    .eq("email", email)
+    .maybeSingle();
 
-    if (existing?.id) {
-      userId = existing.id as string;
-    } else {
-      const { data: created, error: createErr } = await supabase.auth.admin.createUser({
-        email: email!,
-        email_confirm: true, // they're proving they own this email via the magic-link redirect
-      });
-      if (createErr || !created.user) {
-        console.error("createUser error", createErr);
-        backToJoin("We couldn't create your account. Please try again.");
-      }
-      userId = created!.user!.id;
+  if (!existing) {
+    const { error: createErr } = await supabase.auth.admin.createUser({
+      email,
+      email_confirm: true,
+    });
+    if (createErr) {
+      console.error("createUser error", createErr);
+      backToJoin("We couldn't create your account. Please try again.");
     }
   }
-
-  // 3: upsert profile. The trigger on auth.users.insert already
-  // populates a base profile row, so this is always an UPDATE.
-  {
-    const { error: upErr } = await supabase
-      .from("profiles")
-      .update({
-        first_name: firstName,
-        display_name: firstName,
-        email,
-        city,
-        school_class: schoolClass,
-        education_board: educationBoard,
-        native_language: boardLanguage,
-        preferred_language: preferredLanguage,
-        struggle_subjects: struggleSubjects,
-      })
-      .eq("id", userId);
-    if (upErr) {
-      console.error("profile update error", upErr);
-      backToJoin("We couldn't save your answers. Please try again.");
-    }
-  }
-
-  // 4: pick where to land after auth completes.
-  const isSchool6to10 = SCHOOL_6_TO_10.has(schoolClass!);
-  const next = isSchool6to10
-    ? `/api/checkout/start?plan=school-6-10-all`
-    : `/join/contact-us`;
-  const redirectTo = `${APP_URL}/auth/callback?next=${encodeURIComponent(next)}`;
 
   const { data: linkData, error: linkErr } = await supabase.auth.admin.generateLink({
     type: "magiclink",
-    email: email!,
-    options: { redirectTo },
+    email,
+    options: {
+      redirectTo: `${APP_URL}/auth/callback?next=${encodeURIComponent(next)}`,
+    },
   });
   if (linkErr || !linkData?.properties?.action_link) {
     console.error("generateLink error", linkErr);
     backToJoin("We couldn't start the sign-in process. Please try again.");
   }
 
-  // 5: redirect into Supabase's verify URL → /auth/callback → next.
   redirect(linkData!.properties!.action_link);
+}
+
+// ─── 2) Apply pending quiz to the signed-in user's profile ─────────
+
+export type PendingQuiz = {
+  firstName?: string;
+  city?: string;
+  schoolClass?: string;
+  educationBoard?: string;
+  boardLanguage?: string;
+  preferredLanguage?: string;
+  struggleSubjects?: string[];
+};
+
+export type ApplyResult =
+  | { ok: true; redirectTo: string }
+  | { ok: false; error: string };
+
+export async function applyPendingQuiz(quiz: PendingQuiz): Promise<ApplyResult> {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return { ok: false, error: "not-signed-in" };
+
+  const patch: Record<string, unknown> = {};
+  const firstName = quiz.firstName?.trim().slice(0, 60);
+  if (firstName) {
+    patch.first_name = firstName;
+    patch.display_name = firstName;
+  }
+  if (quiz.city) patch.city = quiz.city.trim().slice(0, 80);
+  if (quiz.schoolClass) patch.school_class = quiz.schoolClass;
+  if (quiz.educationBoard) patch.education_board = quiz.educationBoard;
+  if (quiz.boardLanguage) patch.native_language = quiz.boardLanguage;
+  if (quiz.preferredLanguage) patch.preferred_language = quiz.preferredLanguage;
+  if (Array.isArray(quiz.struggleSubjects)) {
+    patch.struggle_subjects = quiz.struggleSubjects.filter(
+      (s): s is string => typeof s === "string",
+    );
+  }
+
+  if (Object.keys(patch).length > 0) {
+    const { error } = await supabase.from("profiles").update(patch).eq("id", user.id);
+    if (error) {
+      console.error("applyPendingQuiz update error", error);
+      return { ok: false, error: "save-failed" };
+    }
+  }
+
+  // Prefer the quiz value (it's what the user just answered) but
+  // fall back to whatever's already on profile in case the quiz
+  // data was lost in transit.
+  let cls = quiz.schoolClass;
+  if (!cls) {
+    const { data: p } = await supabase
+      .from("profiles")
+      .select("school_class")
+      .eq("id", user.id)
+      .maybeSingle();
+    cls = p?.school_class ?? undefined;
+  }
+
+  const redirectTo =
+    cls && SCHOOL_6_TO_10.has(cls)
+      ? `/api/checkout/start?plan=school-6-10-all`
+      : `/join/contact-us`;
+
+  return { ok: true, redirectTo };
 }
