@@ -20,13 +20,21 @@ import type { StudentPlan } from "@/lib/student-plans";
 
 type CashfreeMode = "sandbox" | "production";
 
+// checkout() returns a Promise. For redirectTarget '_self' a happy
+// payment navigates the tab and the promise never settles in this
+// document; an SDK-side failure (invalid / expired paymentSessionId,
+// network drop mid-redirect) rejects or resolves with { error: … }
+// which we need to surface so the visitor isn't stuck on a disabled
+// button.
+type CashfreeCheckoutResult = { error?: { message?: string } } | void;
+
 declare global {
   interface Window {
     Cashfree?: (opts: { mode: CashfreeMode }) => {
       checkout: (opts: {
         paymentSessionId: string;
         redirectTarget: "_self" | "_blank" | "_top" | "_modal";
-      }) => void;
+      }) => Promise<CashfreeCheckoutResult>;
     };
   }
 }
@@ -65,13 +73,28 @@ export default function CheckoutCard({
       const cashfree = window.Cashfree({
         mode: result.env === "PRODUCTION" ? "production" : "sandbox",
       });
-      cashfree.checkout({
+      // Await so SDK rejections / { error } resolutions hit our catch
+      // block instead of becoming unhandled and stranding the visitor
+      // on a stuck-disabled button.
+      const sdkResult = await cashfree.checkout({
         paymentSessionId: result.paymentSessionId,
         redirectTarget: "_self",
       });
-      // SDK navigates the tab; nothing else to do.
+      if (sdkResult && sdkResult.error) {
+        setError(
+          sdkResult.error.message ??
+            "Couldn't start the payment. Please try again.",
+        );
+        setBusy(false);
+      }
+      // Happy path: the tab has already navigated to Cashfree; the
+      // code below never runs in that case.
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Something went wrong.");
+      setError(
+        e instanceof Error
+          ? e.message
+          : "Couldn't start the payment. Please try again.",
+      );
       setBusy(false);
     }
   }
