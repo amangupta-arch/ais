@@ -6,7 +6,7 @@
 // POST it to the server to save onto the profile, then redirect
 // by class:
 //
-//   class 6–10  → /api/checkout/start?plan=school-6-10-all
+//   class 6–10  → /students-plan  (offer page → Cashfree.js SDK)
 //   anything else → /join/contact-us
 //
 // If localStorage is empty (different browser, cleared cache),

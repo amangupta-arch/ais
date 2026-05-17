@@ -30,12 +30,6 @@ export function cashfreeApiBase(): string {
     : "https://sandbox.cashfree.com/pg";
 }
 
-export function cashfreeCheckoutBase(): string {
-  return cashfreeEnv() === "PRODUCTION"
-    ? "https://payments.cashfree.com/pay"
-    : "https://payments-test.cashfree.com/pay";
-}
-
 export function cashfreeConfigured(): boolean {
   return Boolean(
     process.env.CASHFREE_APP_ID && process.env.CASHFREE_SECRET_KEY,
@@ -81,8 +75,12 @@ export type CreateOrderArgs = {
 
 export type CreateOrderResult = {
   orderId: string;
+  /** Pass this to Cashfree.js v3 in the browser:
+   *    cashfree.checkout({ paymentSessionId, redirectTarget: '_self' })
+   *  We don't build a hosted-checkout URL here — Cashfree's direct
+   *  /pay/{session_id} URL is an internal endpoint, not a public
+   *  integration surface. The JS SDK is the supported path. */
   paymentSessionId: string;
-  hostedCheckoutUrl: string;
 };
 
 export async function createOrder(args: CreateOrderArgs): Promise<CreateOrderResult> {
@@ -129,7 +127,6 @@ export async function createOrder(args: CreateOrderArgs): Promise<CreateOrderRes
   return {
     orderId: body.order_id,
     paymentSessionId: body.payment_session_id,
-    hostedCheckoutUrl: `${cashfreeCheckoutBase()}/${body.payment_session_id}`,
   };
 }
 
