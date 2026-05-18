@@ -71,6 +71,15 @@ export type CreateOrderArgs = {
   /** Round-tripped via order_meta so /payment-success knows which
    *  internal plan slug this order was for. */
   internalPlanId: string;
+  /** Meta browser-side identifiers captured at checkout-start. Travel
+   *  via order_tags so the webhook can attribute the Purchase even
+   *  when the user's browser never lands on /payment-success.
+   *  Cashfree caps order_tags values at 255 chars; fbp/fbc are
+   *  comfortably under that. */
+  metaTags?: {
+    fbp?: string;
+    fbc?: string;
+  };
 };
 
 export type CreateOrderResult = {
@@ -106,6 +115,8 @@ export async function createOrder(args: CreateOrderArgs): Promise<CreateOrderRes
       },
       order_tags: {
         plan_id: args.internalPlanId,
+        ...(args.metaTags?.fbp ? { fb_fbp: args.metaTags.fbp } : {}),
+        ...(args.metaTags?.fbc ? { fb_fbc: args.metaTags.fbc } : {}),
       },
     }),
   });
@@ -137,7 +148,15 @@ export type OrderStatus = {
   amountInr: number;
   customerId: string;
   customerEmail: string;
+  customerPhone: string;
   internalPlanId: string | null;
+  /** Meta browser-side identifiers as stashed at order-create time.
+   *  Empty when the visitor had no Pixel cookies (ad blocker, first
+   *  visit, etc.) — CAPI matches on email + external_id in that case. */
+  metaTags: {
+    fbp: string | null;
+    fbc: string | null;
+  };
 };
 
 export async function fetchOrder(orderId: string): Promise<OrderStatus> {
@@ -157,7 +176,12 @@ export async function fetchOrder(orderId: string): Promise<OrderStatus> {
     amountInr: Number(body.order_amount ?? 0),
     customerId: body.customer_details?.customer_id ?? "",
     customerEmail: body.customer_details?.customer_email ?? "",
+    customerPhone: body.customer_details?.customer_phone ?? "",
     internalPlanId: body.order_tags?.plan_id ?? null,
+    metaTags: {
+      fbp: body.order_tags?.fb_fbp ?? null,
+      fbc: body.order_tags?.fb_fbc ?? null,
+    },
   };
 }
 

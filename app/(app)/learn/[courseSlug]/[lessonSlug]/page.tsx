@@ -4,6 +4,7 @@ import { notFound, redirect } from "next/navigation";
 import { Display } from "@/components/ui/Display";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { LessonPlayer } from "./LessonPlayer";
+import ViewContentBeacon from "@/lib/meta/ViewContentBeacon";
 
 import { getLessonAudioManifest, getLessonByCourseAndSlug, getMe } from "@/lib/supabase/queries";
 import type { Persona } from "@/lib/types";
@@ -91,20 +92,27 @@ export default async function LessonPage({
   const audioByTurn = await getLessonAudioManifest(lesson.id, audioLang);
 
   return (
-    <LessonPlayer
-      courseSlug={courseSlug}
-      lessonSlug={lessonSlug}
-      lessonTitle={lessonTitle(lesson, preferredLang)}
-      lessonSubtitle={lessonSubtitle(lesson, preferredLang)}
-      lessonXpReward={lesson.xp_reward}
-      courseId={course.id}
-      lessonId={lesson.id}
-      turns={displayTurns}
-      personaId={(profile?.preferred_tutor_persona as Persona["id"]) ?? "nova"}
-      initialTurnIndex={safeInitialTurnIndex}
-      alreadyCompleted={progress?.status === "completed"}
-      language={preferredLang}
-      audioByTurn={audioByTurn}
-    />
+    <>
+      <ViewContentBeacon
+        contentId={lessonSlug}
+        contentName={lessonTitle(lesson, preferredLang)}
+        contentCategory={courseSlug}
+      />
+      <LessonPlayer
+        courseSlug={courseSlug}
+        lessonSlug={lessonSlug}
+        lessonTitle={lessonTitle(lesson, preferredLang)}
+        lessonSubtitle={lessonSubtitle(lesson, preferredLang)}
+        lessonXpReward={lesson.xp_reward}
+        courseId={course.id}
+        lessonId={lesson.id}
+        turns={displayTurns}
+        personaId={(profile?.preferred_tutor_persona as Persona["id"]) ?? "nova"}
+        initialTurnIndex={safeInitialTurnIndex}
+        alreadyCompleted={progress?.status === "completed"}
+        language={preferredLang}
+        audioByTurn={audioByTurn}
+      />
+    </>
   );
 }

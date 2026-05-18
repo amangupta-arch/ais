@@ -15,6 +15,10 @@ import { createClient as createAdminClient } from "@supabase/supabase-js";
 
 import { findStudentPlan } from "@/lib/student-plans";
 import { verifyWebhookSignature, fetchOrder } from "@/lib/cashfree";
+import { sendCapiEvent } from "@/lib/meta/capi";
+import { hashEmail, hashPhone } from "@/lib/meta/hash";
+
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://myaisetu.com";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -125,5 +129,40 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: false, error: "db_insert" }, { status: 500 });
   }
 
+  // Meta CAPI Purchase. The /payment-success page may also fire a
+  // browser-side Pixel Purchase with the same event_id ⇒ Meta dedupes
+  // within 48h. If the user closed the tab between Cashfree → return,
+  // this server-side event is the only signal that lands.
+  void sendCapiEvent({
+    eventName: "Purchase",
+    eventId: order.orderId,
+    eventSourceUrl: `${APP_URL}/payment-success?order_id=${encodeURIComponent(order.orderId)}`,
+    userData: {
+      em: hashEmail(order.customerEmail) ? [hashEmail(order.customerEmail)!] : undefined,
+      ph: hashPhone(order.customerPhone) ? [hashPhone(order.customerPhone)!] : undefined,
+      external_id: [userId],
+      client_ip_address: clientIp(request),
+      client_user_agent: request.headers.get("user-agent") ?? undefined,
+      fbp: order.metaTags.fbp ?? undefined,
+      fbc: order.metaTags.fbc ?? undefined,
+    },
+    customData: {
+      value: order.amountInr,
+      currency: "INR",
+      content_ids: [internalPlanId],
+      content_type: "product",
+    },
+  });
+
   return NextResponse.json({ ok: true, action: "granted" });
+}
+
+function clientIp(req: NextRequest): string | undefined {
+  // Cashfree's POST comes from their IPs, not the original user — so
+  // the IP here only helps match quality if the same browser session
+  // also fires the client-side Purchase. Pass it anyway; Meta will
+  // weight email + fbp + external_id more.
+  const xff = req.headers.get("x-forwarded-for");
+  if (xff) return xff.split(",")[0]!.trim();
+  return req.headers.get("x-real-ip") ?? undefined;
 }

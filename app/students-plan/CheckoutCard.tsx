@@ -12,10 +12,11 @@
 //      redirectTarget: '_self' }) — SDK navigates the tab to the
 //      hosted payment page with the right method list rendered.
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Script from "next/script";
 
 import { createCheckoutSession } from "./actions";
+import { track } from "@/lib/meta/track";
 import type { StudentPlan } from "@/lib/student-plans";
 
 type CashfreeMode = "sandbox" | "production";
@@ -53,16 +54,51 @@ export default function CheckoutCard({
 
   const phoneValid = /^[6-9]\d{9}$/.test(phone);
 
+  // InitiateCheckout fires once on mount — the visitor arriving on
+  // /students-plan is the "looking at the offer" signal. Client-only
+  // (no CAPI partner); volume is high enough that server-side dedup
+  // wouldn't improve match quality meaningfully.
+  const initiated = useRef(false);
+  useEffect(() => {
+    if (initiated.current) return;
+    initiated.current = true;
+    track("InitiateCheckout", {
+      value: plan.priceInr,
+      currency: "INR",
+      content_ids: [plan.id],
+      content_type: "product",
+    });
+  }, [plan.priceInr, plan.id]);
+
   async function onPay() {
     setBusy(true);
     setError(null);
     try {
-      const result = await createCheckoutSession({ planId: plan.id, phone });
+      // Forward the original landing URL's fbclid so the server can
+      // reconstruct _fbc when the Pixel SDK hasn't (rare, but happens
+      // when the SDK loads after the user navigated past the ad-land
+      // page).
+      const fbclid = new URLSearchParams(window.location.search).get("fbclid");
+      const result = await createCheckoutSession({ planId: plan.id, phone, fbclid });
       if (!result.ok) {
         setError(result.error);
         setBusy(false);
         return;
       }
+
+      // Pixel partner of the CAPI AddPaymentInfo the server action
+      // just fired. Same event_id ⇒ Meta dedupes.
+      track(
+        "AddPaymentInfo",
+        {
+          value: plan.priceInr,
+          currency: "INR",
+          content_ids: [plan.id],
+          content_type: "product",
+        },
+        { eventID: `${result.orderId}:api` },
+      );
+
       if (!window.Cashfree) {
         setError(
           "Payment library didn't load. Refresh the page and try again.",

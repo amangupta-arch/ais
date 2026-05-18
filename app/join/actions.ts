@@ -25,10 +25,13 @@
 // have all the profile-write logic live in one place
 // (applyPendingQuiz) than risk drift between two writers.
 
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { createClient as createAdminClient } from "@supabase/supabase-js";
 
 import { createClient } from "@/lib/supabase/server";
+import { sendCapiEvent } from "@/lib/meta/capi";
+import { hashEmail } from "@/lib/meta/hash";
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://myaisetu.com";
 const SCHOOL_6_TO_10 = new Set(["6", "7", "8", "9", "10"]);
@@ -116,7 +119,14 @@ export type PendingQuiz = {
 };
 
 export type ApplyResult =
-  | { ok: true; redirectTo: string }
+  | {
+      ok: true;
+      redirectTo: string;
+      // Returned so the client can fire the Pixel Lead + CompleteRegistration
+      // partners with matching event_ids → Meta dedupes browser vs server.
+      leadEventId: string;
+      registrationEventId: string;
+    }
   | { ok: false; error: string };
 
 export async function applyPendingQuiz(quiz: PendingQuiz): Promise<ApplyResult> {
@@ -184,5 +194,38 @@ export async function applyPendingQuiz(quiz: PendingQuiz): Promise<ApplyResult> 
       ? `/students-plan`
       : `/join/contact-us`;
 
-  return { ok: true, redirectTo };
+  // Meta CAPI Lead + CompleteRegistration. event_ids are derived from
+  // user_id so re-running applyPendingQuiz (e.g., the user reloads
+  // /join/finalize) doesn't double-count.
+  const leadEventId = `lead-${user.id}`;
+  const registrationEventId = `reg-${user.id}`;
+  const h = await headers();
+  const userData = {
+    em: user.email && hashEmail(user.email) ? [hashEmail(user.email)!] : undefined,
+    external_id: [user.id],
+    client_ip_address: clientIp(h),
+    client_user_agent: h.get("user-agent") ?? undefined,
+  };
+  void sendCapiEvent({
+    eventName: "Lead",
+    eventId: leadEventId,
+    eventSourceUrl: `${APP_URL}/join/finalize`,
+    userData,
+    customData: { content_category: cls ?? undefined },
+  });
+  void sendCapiEvent({
+    eventName: "CompleteRegistration",
+    eventId: registrationEventId,
+    eventSourceUrl: `${APP_URL}/join/finalize`,
+    userData,
+    customData: { content_name: "ais-signup" },
+  });
+
+  return { ok: true, redirectTo, leadEventId, registrationEventId };
+}
+
+function clientIp(h: Headers): string | undefined {
+  const xff = h.get("x-forwarded-for");
+  if (xff) return xff.split(",")[0]!.trim();
+  return h.get("x-real-ip") ?? undefined;
 }

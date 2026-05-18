@@ -12,8 +12,13 @@
 // is racing it — they often land here BEFORE Cashfree's POST
 // completes. So this page does the same insert-if-missing
 // pattern.
+//
+// We previously server-redirected to /student immediately. Now we
+// render a tiny client confirmation island first so the browser
+// Pixel Purchase can fire (with the same event_id the webhook's
+// CAPI Purchase uses → Meta dedupes within the 48h window). The
+// island then navigates the tab to /student.
 
-import { redirect } from "next/navigation";
 import { createClient as createAdminClient } from "@supabase/supabase-js";
 import Link from "next/link";
 
@@ -21,6 +26,8 @@ import "@/app/landing.css";
 import { fetchOrder } from "@/lib/cashfree";
 import { findStudentPlan } from "@/lib/student-plans";
 import { createClient } from "@/lib/supabase/server";
+
+import PaymentSuccessClient from "./PaymentSuccessClient";
 
 export const dynamic = "force-dynamic";
 
@@ -86,23 +93,24 @@ export default async function PaymentSuccessPage({
     }
   }
 
-  // If they're signed in (the happy path), bounce them straight to
-  // /student — the K-12 dashboard that filters bundles by their
-  // class. /home would re-route them to /onboarding because the
-  // join-funnel doesn't run the legacy /onboarding flow.
-  if (user) {
-    redirect("/student");
-  }
-
-  // Otherwise show a success card with a sign-in CTA.
-  return <Layout status="paid-needs-signin" />;
+  // Happy path: render the confirmation island that fires the Pixel
+  // Purchase, then navigates to /student (if signed in) or /login
+  // (if cookies dropped between Cashfree's redirect and us).
+  return (
+    <PaymentSuccessClient
+      orderId={order.orderId}
+      amountInr={order.amountInr}
+      planId={order.internalPlanId}
+      nextHref={user ? "/student" : "/login"}
+    />
+  );
 }
 
 function Layout({
   status,
   subtext,
 }: {
-  status: "missing" | "error" | "not-paid" | "paid-needs-signin";
+  status: "missing" | "error" | "not-paid";
   subtext?: string;
 }) {
   const config = {
@@ -124,13 +132,6 @@ function Layout({
         "We didn't see a successful payment. If you abandoned the Cashfree page, try once more. If you paid and this still shows, drop us a note at hello@myaisetu.com.",
       cta: "Try again",
       href: "/join",
-    },
-    "paid-needs-signin": {
-      title: "Payment confirmed.",
-      body:
-        "You're all set. Sign in with the email you used and you'll land on your dashboard.",
-      cta: "Sign in",
-      href: "/login",
     },
   }[status];
 

@@ -14,6 +14,8 @@
 // payment method list correctly. Hence this two-step (server creates
 // the order, client invokes the SDK).
 
+import { cookies, headers } from "next/headers";
+
 import { createClient } from "@/lib/supabase/server";
 import {
   cashfreeConfigured,
@@ -22,6 +24,8 @@ import {
   type CashfreeEnv,
 } from "@/lib/cashfree";
 import { findStudentPlan } from "@/lib/student-plans";
+import { sendCapiEvent } from "@/lib/meta/capi";
+import { hashEmail, hashPhone } from "@/lib/meta/hash";
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://myaisetu.com";
 
@@ -37,9 +41,15 @@ export type CheckoutSessionResult =
 export async function createCheckoutSession({
   planId,
   phone,
+  fbclid,
 }: {
   planId: string;
   phone: string;
+  /** Forwarded from the client because server actions can't read the
+   *  original window.location.search. Only used when the Pixel SDK
+   *  hasn't already built _fbc itself (which it does automatically on
+   *  any landing URL with ?fbclid=…). */
+  fbclid?: string | null;
 }): Promise<CheckoutSessionResult> {
   // Indian mobile: 10 digits, must start 6-9. Cashfree technically
   // accepts the dummy "9999999999" at order-creation time, but UPI
@@ -75,6 +85,18 @@ export async function createCheckoutSession({
 
   const orderId = `ais-${user.id.replace(/-/g, "").slice(0, 16)}-${Date.now()}`;
 
+  // Snapshot Meta browser-side IDs before they get lost. The Pixel
+  // SDK refreshes _fbp on every page-load timestamp; we lock in the
+  // value that was current at checkout-start so the eventual Purchase
+  // attributes back to the same browsing session.
+  const cookieStore = await cookies();
+  const fbp = cookieStore.get("_fbp")?.value;
+  let fbc = cookieStore.get("_fbc")?.value;
+  if (!fbc && fbclid) {
+    // Reconstruct in Meta's canonical format if the SDK hasn't (yet).
+    fbc = `fb.1.${Date.now()}.${fbclid}`;
+  }
+
   try {
     const order = await createOrder({
       orderId,
@@ -87,7 +109,34 @@ export async function createCheckoutSession({
       notifyUrl: `${APP_URL}/api/webhooks/cashfree`,
       note: `${plan.label} (${plan.id})`,
       internalPlanId: plan.id,
+      metaTags: { fbp, fbc },
     });
+
+    // CAPI AddPaymentInfo — server-side partner of the Pixel event
+    // CheckoutCard fires after this action resolves. Same event_id so
+    // Meta dedupes within the 48h window.
+    const h = await headers();
+    void sendCapiEvent({
+      eventName: "AddPaymentInfo",
+      eventId: `${order.orderId}:api`,
+      eventSourceUrl: `${APP_URL}/students-plan`,
+      userData: {
+        em: hashEmail(user.email) ? [hashEmail(user.email)!] : undefined,
+        ph: hashPhone(phoneClean) ? [hashPhone(phoneClean)!] : undefined,
+        external_id: [user.id],
+        client_ip_address: clientIp(h),
+        client_user_agent: h.get("user-agent") ?? undefined,
+        fbp,
+        fbc,
+      },
+      customData: {
+        value: plan.priceInr,
+        currency: "INR",
+        content_ids: [plan.id],
+        content_type: "product",
+      },
+    });
+
     return {
       ok: true,
       paymentSessionId: order.paymentSessionId,
@@ -106,4 +155,10 @@ export async function createCheckoutSession({
         "We couldn't reach the payment gateway. Try again in a minute, or email hello@myaisetu.com.",
     };
   }
+}
+
+function clientIp(h: Headers): string | undefined {
+  const xff = h.get("x-forwarded-for");
+  if (xff) return xff.split(",")[0]!.trim();
+  return h.get("x-real-ip") ?? undefined;
 }

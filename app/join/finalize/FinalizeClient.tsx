@@ -11,6 +11,7 @@
 import { useEffect, useState } from "react";
 
 import { applyPendingQuiz, type PendingQuiz } from "../actions";
+import { track } from "@/lib/meta/track";
 
 const LS_KEY = "ais.pending-quiz";
 
@@ -54,6 +55,16 @@ export default function FinalizeClient() {
       } catch {
         /* ignore */
       }
+
+      // Pixel partners of the CAPI Lead + CompleteRegistration the
+      // server action just fired. Matching event_ids ⇒ Meta dedupes
+      // within the 48h window.
+      track("Lead", { content_name: "ais-signup" }, { eventID: result.leadEventId });
+      track(
+        "CompleteRegistration",
+        { content_name: "ais-signup" },
+        { eventID: result.registrationEventId },
+      );
 
       setState({ kind: "redirecting", to: result.redirectTo });
       window.location.href = result.redirectTo;

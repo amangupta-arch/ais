@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { DM_Sans, Fraunces, JetBrains_Mono, Geist, Geist_Mono } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
+import { MetaPixel } from "@/lib/meta/client";
 import "./globals.css";
 import "./lumen.css";
 
@@ -106,6 +107,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Tailwind styling (which doesn't reference Lumen tokens). */}
       <body className="lm">
         {children}
+        <MetaPixel />
         <SpeedInsights />
         <Analytics />
       </body>
