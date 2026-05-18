@@ -8,6 +8,11 @@
 // Kept as a tiny client island so the rest of the page stays server-
 // rendered (the data load is heavy enough that we don't want a full
 // client component).
+//
+// Option lists are computed server-side via faceted narrowing — each
+// dropdown only shows values that exist when the OTHER 3 filters are
+// applied. The cascading is the server's job; this component just
+// renders what it's given.
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTransition } from "react";
@@ -18,22 +23,30 @@ type Option = { value: string; label: string };
 
 export default function Filters({
   bundles,
+  courses,
   boards,
   mediums,
 }: {
-  /** Bundles that actually appear in the catalog — { slug, title }. */
+  /** Bundles available under the current (course, board, medium) filters — { slug, title }. */
   bundles: Option[];
-  /** Boards that actually appear in tagged bundles — slugs like "cbse". */
+  /** Courses available under the current (bundle, board, medium) filters — { slug, title }. */
+  courses: Option[];
+  /** Boards present in entries under the current (bundle, course, medium) filters. */
   boards: string[];
-  /** Mediums that actually appear in tagged bundles — codes like "en". */
+  /** Mediums present in entries under the current (bundle, course, board) filters. */
   mediums: string[];
 }) {
   const router = useRouter();
   const sp = useSearchParams();
-  const [pending, startTransition] = useTransition();
+  // useTransition keeps the dropdowns responsive during navigation —
+  // React renders the new state immediately and applies the URL change
+  // in a non-blocking transition. We intentionally do NOT disable the
+  // selects while pending, so rapid filter changes feel snappy.
+  const [, startTransition] = useTransition();
 
   const current = {
     bundle: sp.get("bundle") ?? "",
+    course: sp.get("course") ?? "",
     board: sp.get("board") ?? "",
     medium: sp.get("medium") ?? "",
     status: sp.get("status") ?? "",
@@ -43,6 +56,12 @@ export default function Filters({
     const next = new URLSearchParams(sp);
     if (value) next.set(key, value);
     else next.delete(key);
+    // Course is bundle-scoped — when the bundle changes, an old
+    // course selection can't survive (it belongs to a different
+    // bundle). Drop it so the visitor doesn't see "Course = Y" in
+    // the dropdown with zero results. Board/medium are peer filters
+    // (a bundle can be tagged for multiple), so they stay.
+    if (key === "bundle") next.delete("course");
     const qs = next.toString();
     startTransition(() => {
       router.push(qs ? `/yaml-status?${qs}` : "/yaml-status");
@@ -50,7 +69,11 @@ export default function Filters({
   }
 
   const anyActive =
-    !!current.bundle || !!current.board || !!current.medium || !!current.status;
+    !!current.bundle ||
+    !!current.course ||
+    !!current.board ||
+    !!current.medium ||
+    !!current.status;
 
   return (
     <div
@@ -73,10 +96,19 @@ export default function Filters({
         onChange={(v) => setParam("bundle", v)}
         options={[
           { value: "", label: "All bundles" },
-          ...bundles.map((b) => ({ value: b.value, label: b.label })),
+          ...bundles,
         ]}
-        disabled={pending}
         ariaLabel="Bundle"
+      />
+
+      <FilterSelect
+        value={current.course}
+        onChange={(v) => setParam("course", v)}
+        options={[
+          { value: "", label: "All courses" },
+          ...courses,
+        ]}
+        ariaLabel="Course"
       />
 
       <FilterSelect
@@ -86,7 +118,6 @@ export default function Filters({
           { value: "", label: "All boards" },
           ...boards.map((b) => ({ value: b, label: b.toUpperCase() })),
         ]}
-        disabled={pending}
         ariaLabel="Board"
       />
 
@@ -100,7 +131,6 @@ export default function Filters({
             label: MEDIUM_LABELS[m] ?? m,
           })),
         ]}
-        disabled={pending}
         ariaLabel="Medium"
       />
 
@@ -145,21 +175,26 @@ function FilterSelect({
   value,
   onChange,
   options,
-  disabled,
   ariaLabel,
 }: {
   value: string;
   onChange: (v: string) => void;
   options: Option[];
-  disabled: boolean;
   ariaLabel: string;
 }) {
+  // If the URL has a value not in our options (e.g. server validated it
+  // away after a sibling filter changed), the <select> shows it as a
+  // ghost option so the form remains controlled. We add the orphan
+  // value to options invisibly to avoid React's "controlled select must
+  // have matching option" warning, but the server already treats it as
+  // null for filtering.
+  const hasValue = value === "" || options.some((o) => o.value === value);
+  const ghostOptions = hasValue ? options : [{ value, label: value }, ...options];
   return (
     <select
       aria-label={ariaLabel}
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      disabled={disabled}
       style={{
         padding: "6px 10px",
         borderRadius: 8,
@@ -168,10 +203,11 @@ function FilterSelect({
         background: "#fff",
         color: "#0F172A",
         fontFamily: "inherit",
-        cursor: disabled ? "wait" : "pointer",
+        cursor: "pointer",
+        maxWidth: 280,
       }}
     >
-      {options.map((o) => (
+      {ghostOptions.map((o) => (
         <option key={o.value} value={o.value}>
           {o.label}
         </option>

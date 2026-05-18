@@ -14,6 +14,7 @@ import type { LessonTurn } from "@/lib/turns";
 import type { Persona } from "@/lib/types";
 import { personaById } from "@/lib/types";
 import Typewriter from "./Typewriter";
+import { RichText } from "@/lib/lesson/RichText";
 import { cn } from "@/lib/utils";
 
 import { advanceTurn, completeLesson } from "./actions";
@@ -605,17 +606,16 @@ function TutorMessage({
                   maxWidth: "92%",
                 }}
               >
-                <p
+                <div
                   className="lm-serif"
                   style={{
                     fontSize: 16,
                     lineHeight: 1.5,
                     color: "var(--text)",
-                    whiteSpace: "pre-line",
                   }}
                 >
-                  <Typewriter text={turn.content.text} />
-                </p>
+                  <Typewriter text={turn.content.text} block />
+                </div>
               </div>
               {isActive ? (
                 <div className="flex justify-end" style={{ marginTop: 16 }}>
@@ -705,7 +705,7 @@ function McqBlock({
         className="lm-serif"
         style={{ fontSize: 24, lineHeight: 1.2, color: "var(--text)" }}
       >
-        {turn.content.question}
+        <RichText>{turn.content.question}</RichText>
       </h2>
       <ul className="flex flex-col" style={{ gap: 10, marginTop: 20 }}>
         {turn.content.options.map((o) => {
@@ -726,7 +726,9 @@ function McqBlock({
               >
                 <span className="lm-option__index">{o.id.toUpperCase()}</span>
                 <span style={{ flex: 1 }}>
-                  <span style={{ display: "block", color: "inherit" }}>{o.text}</span>
+                  <span style={{ display: "block", color: "inherit" }}>
+                    <RichText>{o.text}</RichText>
+                  </span>
                   {isSelected && o.rationale ? (
                     <motion.span
                       initial={{ opacity: 0, y: 3 }}
@@ -740,7 +742,7 @@ function McqBlock({
                         color: "var(--moss-deep)",
                       }}
                     >
-                      {o.rationale}
+                      <RichText>{o.rationale}</RichText>
                     </motion.span>
                   ) : isWrong && o.rationale ? (
                     <motion.span
@@ -754,7 +756,7 @@ function McqBlock({
                         color: "var(--coral-deep)",
                       }}
                     >
-                      {o.rationale}
+                      <RichText>{o.rationale}</RichText>
                     </motion.span>
                   ) : null}
                 </span>
@@ -818,7 +820,7 @@ function TextInputBlock({
         className="lm-serif"
         style={{ fontSize: 24, lineHeight: 1.2, color: "var(--text)" }}
       >
-        {turn.content.prompt}
+        <RichText>{turn.content.prompt}</RichText>
       </h2>
       <textarea
         className="lm-textarea"
@@ -901,7 +903,7 @@ function ExternalExerciseBlock({
           whiteSpace: "pre-line",
         }}
       >
-        {turn.content.instruction}
+        <RichText>{turn.content.instruction}</RichText>
       </h2>
       <textarea
         className="lm-textarea"
@@ -1012,7 +1014,7 @@ function PracticeChat({
             whiteSpace: "pre-line",
           }}
         >
-          {turn.content.instruction}
+          <RichText>{turn.content.instruction}</RichText>
         </p>
 
         {messages.length > 0 || pending ? (
@@ -1162,7 +1164,7 @@ function AiConversationBlock({
       </p>
 
       <p style={{ marginTop: 8, fontSize: 12, color: "var(--text-3)" }}>
-        Goal: {turn.content.goal}
+        Goal: <RichText>{turn.content.goal}</RichText>
       </p>
 
       <div className="flex flex-col" style={{ gap: 8, marginTop: 16 }}>
@@ -1270,7 +1272,9 @@ function Bubble({
             whiteSpace: "pre-line",
           }}
         >
-          {animate ? <Typewriter text={content} /> : content}
+          {animate
+            ? <Typewriter text={content} block />
+            : <RichText block>{content}</RichText>}
         </div>
       </div>
     );
@@ -1330,7 +1334,7 @@ function MediaBlock({
             color: "var(--text-3)",
           }}
         >
-          {turn.content.caption}
+          <RichText>{turn.content.caption}</RichText>
         </p>
       ) : null}
       {isActive ? (
@@ -1395,7 +1399,7 @@ function VisualFigure({
             color: "var(--text-3)",
           }}
         >
-          {caption}
+          <RichText>{caption}</RichText>
         </p>
       ) : null}
     </figure>
@@ -1499,19 +1503,18 @@ function CheckpointBlock({
           color: "var(--indigo-deep)",
         }}
       >
-        {turn.content.title}
+        <RichText>{turn.content.title}</RichText>
       </p>
-      <p
+      <div
         style={{
           marginTop: 12,
           fontSize: 15,
           lineHeight: 1.6,
           color: "var(--text-2)",
-          whiteSpace: "pre-line",
         }}
       >
-        <Typewriter text={turn.content.summary} />
-      </p>
+        <Typewriter text={turn.content.summary} block />
+      </div>
     </div>
   );
 }

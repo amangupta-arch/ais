@@ -74,6 +74,22 @@ async function loadJobsByKey(): Promise<Map<string, JobRow>> {
   return map;
 }
 
+/** slug → display title for every bundle in the DB. Mirrors the loader
+ *  in app/yaml-generate/page.tsx so the bundle filter dropdown shows
+ *  human titles instead of raw slugs. */
+async function loadBundleTitleMap(): Promise<Map<string, string>> {
+  const admin = adminClient();
+  if (!admin) return new Map();
+  const { data } = await admin.from("bundles").select("slug, translations");
+  const map = new Map<string, string>();
+  for (const b of data ?? []) {
+    const t =
+      (b.translations as Record<string, { title?: string }> | null) ?? {};
+    map.set(b.slug as string, t.en?.title ?? (b.slug as string));
+  }
+  return map;
+}
+
 /** Returns map: `${courseSlug}::${lessonSlug}::${language}` → chunk count
  *  in lesson_audio_manifest. Used to render the audio coverage chip per
  *  language on each row. Three small queries; manageable for now. */
@@ -165,6 +181,7 @@ export default async function YamlStatusPage({
   searchParams: Promise<{
     status?: string;
     bundle?: string;
+    course?: string;
     board?: string;
     medium?: string;
   }>;
@@ -174,45 +191,83 @@ export default async function YamlStatusPage({
     sp.status === "done" || sp.status === "running" || sp.status === "failed" || sp.status === "pending"
       ? sp.status
       : null;
-  const bundleFilter = sp.bundle?.trim() || null;
-  const boardFilter = sp.board?.trim() || null;
-  const mediumFilter = sp.medium?.trim() || null;
 
   const allEntries = enumerateAllLessons();
-  const [jobs, audioCoverage] = await Promise.all([
+  const [jobs, audioCoverage, bundleTitleMap] = await Promise.all([
     loadJobsByKey(),
     loadAudioCoverage(),
+    loadBundleTitleMap(),
   ]);
 
-  // Bundle / board / medium narrowing — this defines "the set the
-  // tiles count over", BEFORE the status filter is applied.
+  // ── Filter validation ─────────────────────────────────────────────
+  // Drop URL params that don't reference anything in the catalog —
+  // they're either typos, stale, or orphaned from a parent filter
+  // change. The dropdown will quietly snap to "All …" for that
+  // dimension instead of showing a stuck-on-an-empty-result state.
+  const rawBundle = sp.bundle?.trim() || null;
+  const rawCourse = sp.course?.trim() || null;
+  const rawBoard = sp.board?.trim() || null;
+  const rawMedium = sp.medium?.trim() || null;
+
+  const bundleFilter = rawBundle && allEntries.some((e) => e.bundleSlug === rawBundle) ? rawBundle : null;
+  const courseFilter = rawCourse && allEntries.some((e) => e.courseSlug === rawCourse) ? rawCourse : null;
+  const boardFilter = rawBoard && allEntries.some((e) => e.bundleBoards.includes(rawBoard)) ? rawBoard : null;
+  const mediumFilter = rawMedium && allEntries.some((e) => e.bundleMediums.includes(rawMedium)) ? rawMedium : null;
+
+  // ── Cascading option lists (faceted filtering) ────────────────────
+  // For each dimension, compute the available options by narrowing the
+  // catalog with all OTHER active filters. This is what "nested logic"
+  // means in practice: picking Bundle=X collapses Course/Board/Medium
+  // to only the values that exist *within* X.
+  const narrowExcept = (
+    skip: "bundle" | "course" | "board" | "medium",
+  ): LessonEntry[] =>
+    allEntries.filter((e) => {
+      if (skip !== "bundle" && bundleFilter && e.bundleSlug !== bundleFilter) return false;
+      if (skip !== "course" && courseFilter && e.courseSlug !== courseFilter) return false;
+      if (skip !== "board"  && boardFilter  && !e.bundleBoards.includes(boardFilter)) return false;
+      if (skip !== "medium" && mediumFilter && !e.bundleMediums.includes(mediumFilter)) return false;
+      return true;
+    });
+
+  const bundleOptionMap = new Map<string, string>();
+  for (const e of narrowExcept("bundle")) {
+    if (!bundleOptionMap.has(e.bundleSlug)) {
+      bundleOptionMap.set(e.bundleSlug, bundleTitleMap.get(e.bundleSlug) ?? e.bundleSlug);
+    }
+  }
+  const bundleOptions = [...bundleOptionMap.entries()]
+    .map(([value, label]) => ({ value, label }))
+    .sort((a, b) => a.label.localeCompare(b.label));
+
+  const courseOptionMap = new Map<string, string>();
+  for (const e of narrowExcept("course")) {
+    if (!courseOptionMap.has(e.courseSlug)) courseOptionMap.set(e.courseSlug, e.courseTitle);
+  }
+  const courseOptions = [...courseOptionMap.entries()]
+    .map(([value, label]) => ({ value, label }))
+    .sort((a, b) => a.label.localeCompare(b.label));
+
+  const boardSet = new Set<string>();
+  for (const e of narrowExcept("board")) for (const b of e.bundleBoards) boardSet.add(b);
+  const boardOptions = [...boardSet].sort();
+
+  const mediumSet = new Set<string>();
+  for (const e of narrowExcept("medium")) for (const m of e.bundleMediums) mediumSet.add(m);
+  const mediumOptions = [...mediumSet].sort();
+
+  // ── Final narrowing (all 4 filters applied) ──────────────────────
   const narrowed = allEntries.filter((e) => {
     if (bundleFilter && e.bundleSlug !== bundleFilter) return false;
+    if (courseFilter && e.courseSlug !== courseFilter) return false;
     if (boardFilter && !e.bundleBoards.includes(boardFilter)) return false;
     if (mediumFilter && !e.bundleMediums.includes(mediumFilter)) return false;
     return true;
   });
 
-  // Bundle / board / medium options for the filter dropdowns — derived
-  // from the actual catalog so authors can only pick values that have
-  // any matching content.
-  const bundleTitles = new Map<string, string>();
-  const boardSet = new Set<string>();
-  const mediumSet = new Set<string>();
-  for (const e of allEntries) {
-    if (!bundleTitles.has(e.bundleSlug)) bundleTitles.set(e.bundleSlug, e.bundleSlug);
-    for (const b of e.bundleBoards) boardSet.add(b);
-    for (const m of e.bundleMediums) mediumSet.add(m);
-  }
-  const bundleOptions = [...bundleTitles.entries()]
-    .map(([slug]) => ({ value: slug, label: slug }))
-    .sort((a, b) => a.label.localeCompare(b.label));
-  const boardOptions = [...boardSet].sort();
-  const mediumOptions = [...mediumSet].sort();
-
-  // Counts reflect bundle/board/medium filters but NOT the status
-  // filter — so each tile shows how many lessons would land in that
-  // status bucket within the narrowed set.
+  // Counts reflect bundle/course/board/medium filters but NOT the
+  // status filter — so each tile shows how many lessons would land in
+  // that status bucket within the narrowed set.
   const enCounts: Record<Status, number> = { done: 0, running: 0, failed: 0, pending: 0 };
   for (const e of narrowed) enCounts[statusOfLang(e, "en", jobs)]++;
   const total = narrowed.length;
@@ -250,6 +305,7 @@ export default async function YamlStatusPage({
     const params = new URLSearchParams();
     if (s) params.set("status", s);
     if (bundleFilter) params.set("bundle", bundleFilter);
+    if (courseFilter) params.set("course", courseFilter);
     if (boardFilter) params.set("board", boardFilter);
     if (mediumFilter) params.set("medium", mediumFilter);
     const qs = params.toString();
@@ -287,6 +343,7 @@ export default async function YamlStatusPage({
 
         <Filters
           bundles={bundleOptions}
+          courses={courseOptions}
           boards={boardOptions}
           mediums={mediumOptions}
         />

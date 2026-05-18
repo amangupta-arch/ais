@@ -43,7 +43,8 @@ Each turn object has a `type` discriminator. Below: every type, every field, eve
   typing_ms: 800                # optional int >0 — typing-dot delay before text
   reveal_style: fade            # optional: fade | typewriter
   text: |
-    The line(s) the tutor speaks. Markdown-lite: *italic*, **bold**, lists.
+    The line(s) the tutor speaks. See §3.5 for the formatting palette
+    (bold, italic, lists, colours, highlights).
     Use \n\n for paragraph breaks (in `|` block, just blank lines).
   xp: 0                         # optional, usually omitted
 ```
@@ -271,7 +272,7 @@ Aim for **12–20 turns total**. Under 8 feels thin; over 25 is exhausting on mo
 - **Talk TO the user, not AT them.** "You" not "the learner." "Try this" not "Users should try."
 - **Concrete > abstract.** Always include a real example, never just principles.
 - **Show the bad version first.** Then the good version. The contrast does the teaching.
-- **Italics for emphasis** (sparingly), `**bold**` for keywords on first appearance.
+- **Italics for emphasis** (sparingly), `**bold**` for keywords on first appearance. See §3.5 for the full formatting palette.
 - **No emojis** (unless the lesson is explicitly playful and the user's brand allows it).
 - **Numbers in figures** when possible: "5× faster" beats "much faster."
 
@@ -290,6 +291,53 @@ Lesson `xp_reward` typically 60–120 for a normal lesson, up to 200 for a meaty
 
 ---
 
+### 3.5 Formatting palette (works in every text field)
+
+Any user-visible text field — `tutor_message.text`, `mcq.question`,
+`mcq.options[].text`, `mcq.options[].rationale`, `free_text.prompt`,
+`reflection.prompt`, `exercise.instruction`, `ai_conversation.goal`
+and `starter_text`, `media.caption`, `svg_graphic` /
+`html_animation.caption`, `checkpoint.title`, `checkpoint.summary` —
+runs through a sanitised markdown + directive renderer. You have:
+
+| Effect | Syntax | When to use |
+|---|---|---|
+| Bold | `**word**` | Keywords on first appearance; the one thing the learner must hold onto in that sentence. Default emphasis. |
+| Italic | `*word*` | Voice / quoted phrasing; *"this is fine"*. Sparingly. |
+| Strikethrough | `~~word~~` | Before/after contrasts: `~~old way~~ → new way`. |
+| Bulleted list | `- item` per line | Three or more parallel items. |
+| Numbered list | `1. item` per line | Ordered steps. |
+| Paragraph break | blank line in a `\|` block | Whenever you change beat. |
+| Yellow highlight | `:hl[the answer]` | The single thing the eye should land on first. |
+| Multi-colour highlight | `:hl-yellow[…]`, `:hl-green[…]`, `:hl-red[…]`, `:hl-blue[…]` | Semantic highlight: green = correct/safe, red = caution/wrong, blue = neutral note, yellow = "look here". |
+| Text colour | `:red[…]`, `:green[…]`, `:blue[…]`, `:yellow[…]`, `:purple[…]`, `:indigo[…]`, `:gray[…]` | Inline semantic colour. Red for wrong/caution, green for correct/affirmative, gray for asides. |
+
+**Examples:**
+
+```yaml
+text: |
+  The :hl-yellow[answer is 42] — and here's why it matters.
+
+  - **Prime factorisation** breaks a number into its building blocks.
+  - :red[Never divide by zero.] :green[Always check for it first.]
+
+  *"How does that help me?"* you ask. Watch.
+```
+
+**Rules of restraint** — formatting is signal, not decoration:
+
+- **Default to plain text.** Bold one or two phrases per paragraph at most.
+- **Colour is semantic.** `:green[…]` ≈ "right / safe", `:red[…]` ≈ "wrong / caution", `:gray[…]` ≈ aside or de-emphasis. Don't paint a rainbow.
+- **One highlight per paragraph** at most. Highlight competes for attention with itself.
+- **Never use colour as the only signal** — pair colour with a word ("`:red[wrong]`") so colour-blind learners and screen readers still get the message.
+- **Lists for 3+ parallel items.** Two items? Use prose.
+- **No HTML tags.** No `<span>`, no `<strong>`, no `<a href>`. They're stripped silently by the renderer.
+- **No links, images, headings, tables, or code blocks** inside text fields. Use the dedicated `media`, `svg_graphic`, `html_animation` turn types when you need a visual.
+
+Anything outside this allow-list (unknown directives, raw HTML, `<script>`) is dropped on render, so don't bother trying.
+
+---
+
 ## 4. Translation hand-off
 
 If the user asks for the same lesson in another language (Hindi, Hinglish, Marathi, Punjabi, Telugu, Tamil, Bengali, French, Spanish):
@@ -299,6 +347,7 @@ If the user asks for the same lesson in another language (Hindi, Hinglish, Marat
 - **Translate `title`, `subtitle`, all `text`, all `prompt`, all `question`, all option `text`, all `rationale`, all `caption`, all `summary`, all `goal`, all `success_criteria`, all `starter_text`, all `system_prompt`, all `instruction`, all `label`.**
 - **Do NOT translate:** `id` values (they're join keys), `tool` names, persona names (`nova`, `arjun` etc.), URLs, SVG/HTML markup contents (translate only visible text labels inside).
 - **Do NOT translate:** technical terms that are universally English in that locale (e.g. "ChatGPT", "Python", "Excel"). Hinglish especially leans on English nouns.
+- **Preserve all formatting markers verbatim.** Markdown (`**bold**`, `*italic*`, `~~strike~~`, lists) and directives (`:red[…]`, `:hl-yellow[…]`, `:hl-green[…]`, `:green[…]`, etc.) survive the translation — only the words *inside* the brackets get translated. `:red[wrong]` becomes `:red[ग़लत]` in Hindi, never `red[ग़लत]` or `गलत-coloured-red`.
 
 ---
 
