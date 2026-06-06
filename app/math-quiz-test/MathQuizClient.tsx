@@ -287,7 +287,7 @@ export default function MathQuizClient({ questions }: { questions: QuizQuestion[
           onClick={submitForGrading}
         >
           {phase === "analyzing" ? (
-            <span>Maya is reading your work…</span>
+            <span>Setu is reading your work…</span>
           ) : (
             <>
               <Check size={18} aria-hidden /> Check my answer
@@ -471,7 +471,7 @@ function SnapCard({
         Snap your paper
       </div>
       <p style={{ fontSize: 14, color: "var(--text-2)", margin: "0 auto 16px", maxWidth: 320, lineHeight: 1.4 }}>
-        Make sure the page is in focus and your steps are visible. Maya will read your handwriting.
+        Make sure the page is in focus and your steps are visible. Setu will read your handwriting.
       </p>
       <div style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap" }}>
         <button type="button" className="lm-btn lm-btn--secondary" onClick={onClickCamera}>
@@ -584,7 +584,7 @@ function Footer({ langLabel, elapsedMs }: { langLabel: string; elapsedMs: number
       }}
     >
       <span>
-        feedback in <span className="lm-mono">{langLabel}</span> · powered by Maya
+        feedback in <span className="lm-mono">{langLabel}</span> · powered by Setu
       </span>
       <span className="lm-mono lm-tabular">{fmtClock(elapsedMs)}</span>
     </div>
@@ -749,7 +749,7 @@ function SummaryScreen({
           textAlign: "center",
         }}
       >
-        feedback in <span className="lm-mono">{langLabel}</span> · powered by Maya
+        feedback in <span className="lm-mono">{langLabel}</span> · powered by Setu
       </div>
     </div>
   );

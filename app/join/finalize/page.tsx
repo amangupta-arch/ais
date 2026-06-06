@@ -1,7 +1,7 @@
 // /join/finalize
 //
-// Where the user lands after Google OAuth or email magic-link
-// auth completes. They're signed in by now. We read the pending
+// Where the user lands after sign-in completes (Google OAuth,
+// email + password, or phone + OTP). We read the pending
 // quiz from localStorage (where JoinQuiz.tsx stashed it),
 // POST it to the server to save onto the profile, then redirect
 // by class:

@@ -6,7 +6,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 import { OptionCard } from "@/components/ui/OptionCard";
-import { createClient } from "@/lib/supabase/browser";
 import {
   CURRENT_LEVEL_OPTIONS,
   DAILY_GOAL_OPTIONS,
@@ -14,7 +13,6 @@ import {
   INTEREST_OPTIONS,
   LANGUAGE_OPTIONS,
   OnboardingAnswers,
-  PENDING_KEY,
   PRIMARY_GOAL_OPTIONS,
   REVEAL_LINES_BY_GOAL,
   ROLE_OPTIONS,
@@ -47,9 +45,6 @@ const stepVariants = {
 export default function OnboardingPage() {
   const [step, setStep] = useState<StepId>("welcome");
   const [answers, setAnswers] = useState<OnboardingAnswers>({});
-  const [email, setEmail] = useState("");
-  const [emailState, setEmailState] = useState<"idle" | "sending" | "sent" | "error">("idle");
-  const [emailError, setEmailError] = useState<string | null>(null);
 
   useEffect(() => {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -95,27 +90,6 @@ export default function OnboardingPage() {
     }
     return Math.round(((i + 1) / quizSteps.length) * 100);
   }, [step]);
-
-  const handleSendMagicLink = async () => {
-    setEmailState("sending");
-    setEmailError(null);
-    try {
-      const supabase = createClient();
-      localStorage.setItem(PENDING_KEY, JSON.stringify(answers));
-      const { error } = await supabase.auth.signInWithOtp({
-        email: email.trim(),
-        options: {
-          emailRedirectTo: `${window.location.origin}/auth/callback?next=/onboarding/complete`,
-          shouldCreateUser: true,
-        },
-      });
-      if (error) throw error;
-      setEmailState("sent");
-    } catch (err) {
-      setEmailState("error");
-      setEmailError(err instanceof Error ? err.message : "Something went wrong. Try again.");
-    }
-  };
 
   return (
     <main className="lm-page flex flex-col">
@@ -264,16 +238,7 @@ export default function OnboardingPage() {
 
               {step === "generating" && <StepGenerating onDone={() => goTo("reveal")} />}
 
-              {step === "reveal" && (
-                <StepReveal
-                  answers={answers}
-                  email={email}
-                  emailState={emailState}
-                  emailError={emailError}
-                  onEmailChange={setEmail}
-                  onSubmit={handleSendMagicLink}
-                />
-              )}
+              {step === "reveal" && <StepReveal answers={answers} />}
             </motion.div>
           </AnimatePresence>
         </div>
@@ -520,73 +485,13 @@ function StepGenerating({ onDone }: { onDone: () => void }) {
   );
 }
 
-function StepReveal({
-  answers, email, emailState, emailError, onEmailChange, onSubmit,
-}: {
-  answers: OnboardingAnswers;
-  email: string;
-  emailState: "idle" | "sending" | "sent" | "error";
-  emailError: string | null;
-  onEmailChange: (v: string) => void;
-  onSubmit: () => void;
-}) {
+function StepReveal({ answers }: { answers: OnboardingAnswers }) {
   const goalLine = answers.primaryGoal
     ? REVEAL_LINES_BY_GOAL[answers.primaryGoal]
     : REVEAL_LINES_BY_GOAL.curiosity;
   const streakGoal = 9;
   const firstCourseTitle = "ChatGPT Basics";
   const firstCourseSubtitle = "Your first real conversation";
-
-  if (emailState === "sent") {
-    return (
-      <div>
-        <p className="lm-eyebrow">
-          <span className="lm-tabular" style={{ marginRight: 8 }}>09</span>
-          check your inbox
-        </p>
-        <h1
-          className="lm-serif"
-          style={{ marginTop: 8, fontSize: 36, lineHeight: 1.1, color: "var(--text)" }}
-        >
-          Magic link sent to{" "}
-          <em
-            style={{
-              fontStyle: "italic",
-              color: "var(--indigo)",
-              wordBreak: "break-all",
-            }}
-          >
-            {email}
-          </em>
-          .
-        </h1>
-        <p
-          style={{ marginTop: 20, fontSize: 15, lineHeight: 1.65, color: "var(--text-2)" }}
-        >
-          Tap the link to finish setup. It opens this page, and we&apos;ll pick up right where we left off.
-        </p>
-        <p style={{ marginTop: 40, fontSize: 13, color: "var(--text-3)" }}>
-          Didn&apos;t arrive? Check spam, or{" "}
-          <button
-            type="button"
-            onClick={onSubmit}
-            style={{
-              background: "transparent",
-              border: 0,
-              color: "var(--indigo)",
-              cursor: "pointer",
-              textDecoration: "underline",
-              font: "inherit",
-              padding: 0,
-            }}
-          >
-            send again
-          </button>
-          .
-        </p>
-      </div>
-    );
-  }
 
   return (
     <div>
@@ -647,47 +552,18 @@ function StepReveal({
         </p>
       </div>
 
-      <form style={{ marginTop: 32 }} onSubmit={(e) => { e.preventDefault(); onSubmit(); }}>
-        <label className="lm-eyebrow">where should we send it</label>
-        <div
-          className="flex flex-col sm:flex-row"
-          style={{ gap: 10, marginTop: 8 }}
-        >
-          <input
-            type="email"
-            required
-            placeholder="you@example.com"
-            value={email}
-            onChange={(e) => onEmailChange(e.target.value)}
-            className="lm-input"
-            style={{ flex: 1 }}
-          />
-          <button
-            type="submit"
-            className="lm-btn lm-btn--accent"
-            disabled={emailState === "sending" || email.trim().length < 4}
-          >
-            {emailState === "sending" ? "Sending…" : "Send magic link"}
-          </button>
-        </div>
-        {emailError ? (
-          <p style={{ marginTop: 12, fontSize: 13, color: "var(--coral-deep)" }}>
-            {emailError}
-          </p>
-        ) : null}
-        <p style={{ marginTop: 12, fontSize: 12, color: "var(--text-3)" }}>
-          We&apos;ll email you a single-use link. No password, no spam.
-        </p>
-      </form>
-
-      <div style={{ marginTop: 24, fontSize: 12, color: "var(--text-3)" }}>
-        Prefer Google?{" "}
+      <div style={{ marginTop: 32 }}>
+        <p className="lm-eyebrow">save your plan</p>
         <Link
-          href="/login"
-          style={{ color: "var(--indigo)", textDecoration: "underline" }}
+          href="/login?next=/onboarding/complete"
+          className="lm-btn lm-btn--accent lm-btn--lg lm-btn--full"
+          style={{ marginTop: 12 }}
         >
-          sign in there
+          Sign in to continue
         </Link>
+        <p style={{ marginTop: 12, fontSize: 12, color: "var(--text-3)" }}>
+          Google, email + password, or mobile + OTP.
+        </p>
       </div>
     </div>
   );

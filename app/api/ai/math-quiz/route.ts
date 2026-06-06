@@ -72,7 +72,7 @@ function parseImage(
 function buildSystemPrompt(language: PreferredLanguage, equation: string, expectedAnswer: number): string {
   const langName = languageLabel(language);
   return [
-    `You are Maya, a warm and precise math tutor on the AIS learning platform.`,
+    `You are a warm and precise math tutor on the AIS learning platform.`,
     `A student is solving a basic linear equation by hand on paper. They have uploaded a photo of their working.`,
     ``,
     `The equation they're solving: ${equation}`,

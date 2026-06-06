@@ -89,7 +89,7 @@ export function LessonPlayer(props: Props) {
   const activeTurnRef = useRef<HTMLDivElement | null>(null);
 
   // Follow-tail scroll: keep the active turn's growth pinned to the
-  // viewport bottom (chat-app style — Maya types, the page glides
+  // viewport bottom (chat-app style — the tutor types, the page glides
   // down to the latest word). The earlier behaviour kept the bottom
   // glued unconditionally; the only thing that changes here is that
   // we PAUSE the follow as soon as the user scrolls upward to read

@@ -1,52 +1,146 @@
 "use client";
 
-import { useState, Suspense } from "react";
+// /login — returning-user sign-in. Three methods:
+//   - Google OAuth
+//   - Email + password (single field, signs in if registered, signs
+//     up otherwise — same pattern as /join)
+//   - Mobile + OTP (requires Supabase phone auth + SMS provider
+//     configured in the dashboard)
+//
+// Magic-link sign-in was removed.
+
+import { useMemo, useState, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
 import { createClient } from "@/lib/supabase/browser";
 
+type Mode = "choose" | "email" | "phone" | "otp";
+
 function LoginInner() {
   const params = useSearchParams();
   const next = params.get("next") ?? "/home";
 
-  const [email, setEmail] = useState("");
-  const [state, setState] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const supabase = useMemo(() => createClient(), []);
+  const [mode, setMode] = useState<Mode>("choose");
+  const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const sendMagicLink = async () => {
-    setState("sending");
-    setError(null);
-    try {
-      const supabase = createClient();
-      const { error } = await supabase.auth.signInWithOtp({
-        email: email.trim(),
-        options: {
-          emailRedirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}`,
-          shouldCreateUser: true,
-        },
-      });
-      if (error) throw error;
-      setState("sent");
-    } catch (e) {
-      setState("error");
-      setError(e instanceof Error ? e.message : "Something went wrong. Try again.");
-    }
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
+  const [otp, setOtp] = useState("");
+  const [pendingEmailConfirm, setPendingEmailConfirm] = useState(false);
+
+  const finishWithSession = () => {
+    window.location.href = next;
   };
 
   const signInWithGoogle = async () => {
-    setState("sending");
+    setBusy(true);
     setError(null);
     try {
-      const supabase = createClient();
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
-        options: { redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}` },
+        options: {
+          redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}`,
+        },
       });
       if (error) throw error;
     } catch (e) {
-      setState("error");
-      setError(e instanceof Error ? e.message : "Google sign-in failed. Try email instead.");
+      setBusy(false);
+      setError(e instanceof Error ? e.message : "Google sign-in failed.");
+    }
+  };
+
+  const continueWithEmail = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setBusy(true);
+    setError(null);
+    try {
+      const cleanEmail = email.trim().toLowerCase();
+      const signIn = await supabase.auth.signInWithPassword({
+        email: cleanEmail,
+        password,
+      });
+      if (signIn.data.session) {
+        finishWithSession();
+        return;
+      }
+      const signUp = await supabase.auth.signUp({
+        email: cleanEmail,
+        password,
+      });
+      if (signUp.error) {
+        const msg = signUp.error.message.toLowerCase();
+        if (msg.includes("already")) {
+          throw new Error("That email is registered — check the password and try again.");
+        }
+        throw signUp.error;
+      }
+      if (signUp.data.session) {
+        finishWithSession();
+        return;
+      }
+      // No session ⇒ Supabase has email confirmations on.
+      setPendingEmailConfirm(true);
+      setBusy(false);
+    } catch (err) {
+      setBusy(false);
+      setError(err instanceof Error ? err.message : "Couldn't sign you in. Try again.");
+    }
+  };
+
+  const sendOtp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setBusy(true);
+    setError(null);
+    try {
+      const digits = phone.replace(/\D/g, "");
+      if (!/^[6-9]\d{9}$/.test(digits)) {
+        throw new Error("Enter a 10-digit Indian mobile number.");
+      }
+      const { error } = await supabase.auth.signInWithOtp({
+        phone: `+91${digits}`,
+      });
+      if (error) {
+        const msg = error.message.toLowerCase();
+        if (msg.includes("phone") && msg.includes("not")) {
+          throw new Error("Mobile sign-in isn't enabled yet — please use Google or email.");
+        }
+        throw error;
+      }
+      setMode("otp");
+      setBusy(false);
+    } catch (err) {
+      setBusy(false);
+      setError(err instanceof Error ? err.message : "Couldn't send the code. Try again.");
+    }
+  };
+
+  const verifyOtp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setBusy(true);
+    setError(null);
+    try {
+      const digits = phone.replace(/\D/g, "");
+      const token = otp.replace(/\D/g, "");
+      if (token.length !== 6) {
+        throw new Error("Enter the 6-digit code we sent you.");
+      }
+      const { data, error } = await supabase.auth.verifyOtp({
+        phone: `+91${digits}`,
+        token,
+        type: "sms",
+      });
+      if (error) throw error;
+      if (!data.session) {
+        throw new Error("Couldn't complete sign-in. Try requesting a new code.");
+      }
+      finishWithSession();
+    } catch (err) {
+      setBusy(false);
+      setError(err instanceof Error ? err.message : "Couldn't verify the code. Try again.");
     }
   };
 
@@ -73,7 +167,7 @@ function LoginInner() {
         </header>
 
         <div className="flex-1 flex flex-col justify-center" style={{ padding: "40px 0" }}>
-          {state === "sent" ? (
+          {pendingEmailConfirm ? (
             <div>
               <p className="lm-eyebrow">check your inbox</p>
               <h1
@@ -85,16 +179,7 @@ function LoginInner() {
                   color: "var(--text)",
                 }}
               >
-                Magic link sent to{" "}
-                <em
-                  style={{
-                    fontStyle: "italic",
-                    color: "var(--indigo)",
-                    wordBreak: "break-all",
-                  }}
-                >
-                  {email}
-                </em>
+                Confirm <em style={{ fontStyle: "italic", color: "var(--indigo)" }}>{email}</em>
                 .
               </h1>
               <p
@@ -105,26 +190,7 @@ function LoginInner() {
                   color: "var(--text-2)",
                 }}
               >
-                Tap the link to continue. It&apos;ll bring you back here, signed in.
-              </p>
-              <p style={{ marginTop: 32, fontSize: 13, color: "var(--text-3)" }}>
-                Didn&apos;t arrive?{" "}
-                <button
-                  type="button"
-                  onClick={sendMagicLink}
-                  style={{
-                    background: "transparent",
-                    border: 0,
-                    padding: 0,
-                    color: "var(--indigo)",
-                    cursor: "pointer",
-                    textDecoration: "underline",
-                    font: "inherit",
-                  }}
-                >
-                  send again
-                </button>
-                .
+                We sent a confirmation link. Tap it to finish signing in.
               </p>
             </div>
           ) : (
@@ -149,56 +215,219 @@ function LoginInner() {
                   color: "var(--text-2)",
                 }}
               >
-                No password. A link or Google.
+                Google, email, or mobile.
               </p>
 
-              <form
-                className="flex flex-col"
-                style={{ gap: 12, marginTop: 32 }}
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  sendMagicLink();
-                }}
-              >
-                <input
-                  type="email"
-                  required
-                  placeholder="you@example.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="lm-input"
-                />
-                <button
-                  type="submit"
-                  className="lm-btn lm-btn--accent lm-btn--lg lm-btn--full"
-                  disabled={state === "sending" || email.trim().length < 4}
+              {mode === "choose" && (
+                <div className="flex flex-col" style={{ gap: 12, marginTop: 28 }}>
+                  <button
+                    type="button"
+                    className="lm-btn lm-btn--accent lm-btn--lg lm-btn--full"
+                    onClick={signInWithGoogle}
+                    disabled={busy}
+                  >
+                    Continue with Google
+                  </button>
+                  <button
+                    type="button"
+                    className="lm-btn lm-btn--secondary lm-btn--lg lm-btn--full"
+                    onClick={() => {
+                      setError(null);
+                      setMode("email");
+                    }}
+                    disabled={busy}
+                  >
+                    Continue with email
+                  </button>
+                  <button
+                    type="button"
+                    className="lm-btn lm-btn--secondary lm-btn--lg lm-btn--full"
+                    onClick={() => {
+                      setError(null);
+                      setMode("phone");
+                    }}
+                    disabled={busy}
+                  >
+                    Continue with mobile
+                  </button>
+                </div>
+              )}
+
+              {mode === "email" && (
+                <form
+                  className="flex flex-col"
+                  style={{ gap: 12, marginTop: 28 }}
+                  onSubmit={continueWithEmail}
                 >
-                  {state === "sending" ? "Sending…" : "Send magic link"}
-                </button>
-              </form>
+                  <input
+                    type="email"
+                    required
+                    autoComplete="email"
+                    placeholder="you@example.com"
+                    className="lm-input"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <input
+                    type="password"
+                    required
+                    autoComplete="current-password"
+                    minLength={8}
+                    placeholder="Password (min 8 characters)"
+                    className="lm-input"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <button
+                    type="submit"
+                    className="lm-btn lm-btn--accent lm-btn--lg lm-btn--full"
+                    disabled={busy || password.length < 8}
+                  >
+                    {busy ? "Signing you in…" : "Continue"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setMode("choose")}
+                    disabled={busy}
+                    style={{
+                      background: "transparent",
+                      border: 0,
+                      color: "var(--indigo)",
+                      cursor: "pointer",
+                      textDecoration: "underline",
+                      font: "inherit",
+                      marginTop: 4,
+                    }}
+                  >
+                    ← other sign-in options
+                  </button>
+                </form>
+              )}
 
-              <div
-                className="flex items-center"
-                style={{
-                  gap: 12,
-                  margin: "24px 0",
-                  fontSize: 12,
-                  color: "var(--text-3)",
-                }}
-              >
-                <div style={{ flex: 1, height: 1, background: "var(--border)" }} />
-                or
-                <div style={{ flex: 1, height: 1, background: "var(--border)" }} />
-              </div>
+              {mode === "phone" && (
+                <form
+                  className="flex flex-col"
+                  style={{ gap: 12, marginTop: 28 }}
+                  onSubmit={sendOtp}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "stretch",
+                      border: "1px solid var(--border)",
+                      borderRadius: "var(--r-3)",
+                      background: "var(--paper-pure)",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <span
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        padding: "0 14px",
+                        fontFamily: "var(--font-mono)",
+                        fontSize: 15,
+                        color: "var(--text-2)",
+                        background: "var(--bg-soft)",
+                        borderRight: "1px solid var(--border)",
+                      }}
+                    >
+                      +91
+                    </span>
+                    <input
+                      type="tel"
+                      inputMode="numeric"
+                      autoComplete="tel-national"
+                      maxLength={10}
+                      required
+                      placeholder="10-digit mobile"
+                      className="lm-input"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value.replace(/\D/g, ""))}
+                      style={{
+                        border: 0,
+                        borderRadius: 0,
+                        flex: 1,
+                        boxShadow: "none",
+                        background: "transparent",
+                      }}
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="lm-btn lm-btn--accent lm-btn--lg lm-btn--full"
+                    disabled={busy || !/^[6-9]\d{9}$/.test(phone)}
+                  >
+                    {busy ? "Sending code…" : "Send code"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setMode("choose")}
+                    disabled={busy}
+                    style={{
+                      background: "transparent",
+                      border: 0,
+                      color: "var(--indigo)",
+                      cursor: "pointer",
+                      textDecoration: "underline",
+                      font: "inherit",
+                      marginTop: 4,
+                    }}
+                  >
+                    ← other sign-in options
+                  </button>
+                </form>
+              )}
 
-              <button
-                type="button"
-                className="lm-btn lm-btn--secondary lm-btn--lg lm-btn--full"
-                onClick={signInWithGoogle}
-                disabled={state === "sending"}
-              >
-                Continue with Google
-              </button>
+              {mode === "otp" && (
+                <form
+                  className="flex flex-col"
+                  style={{ gap: 12, marginTop: 28 }}
+                  onSubmit={verifyOtp}
+                >
+                  <p style={{ fontSize: 14, color: "var(--text-2)", margin: 0 }}>
+                    Enter the 6-digit code we sent to <strong>+91 {phone}</strong>.
+                  </p>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    autoComplete="one-time-code"
+                    maxLength={6}
+                    required
+                    placeholder="6-digit code"
+                    className="lm-input"
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value.replace(/\D/g, ""))}
+                    style={{ letterSpacing: "0.4em", textAlign: "center", fontSize: 22 }}
+                  />
+                  <button
+                    type="submit"
+                    className="lm-btn lm-btn--accent lm-btn--lg lm-btn--full"
+                    disabled={busy || otp.length !== 6}
+                  >
+                    {busy ? "Verifying…" : "Verify and continue"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setOtp("");
+                      setMode("phone");
+                    }}
+                    disabled={busy}
+                    style={{
+                      background: "transparent",
+                      border: 0,
+                      color: "var(--indigo)",
+                      cursor: "pointer",
+                      textDecoration: "underline",
+                      font: "inherit",
+                      marginTop: 4,
+                    }}
+                  >
+                    ← change number
+                  </button>
+                </form>
+              )}
 
               {error ? (
                 <p
@@ -215,7 +444,7 @@ function LoginInner() {
               <p style={{ marginTop: 32, fontSize: 13, color: "var(--text-3)" }}>
                 New here?{" "}
                 <Link
-                  href="/onboarding"
+                  href="/join"
                   style={{
                     color: "var(--indigo)",
                     textDecoration: "underline",

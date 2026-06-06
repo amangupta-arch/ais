@@ -88,7 +88,7 @@ export default async function StudentsPlanPage({
           Hi {firstName} · Your plan
         </div>
         <h1 className="plan-detail__title" style={{ marginBottom: 12 }}>
-          Your Maya is ready. <em>One last step.</em>
+          Your plan is ready. <em>One last step.</em>
         </h1>
         <p className="plan-detail__intro" style={{ marginBottom: 28 }}>
           Class 6–10, all subjects, all 12 languages. Cancel any time. Payments handled

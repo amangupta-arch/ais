@@ -13,7 +13,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "College Student · Bachelors plans",
   description:
-    "Programme-aware modules, Maya the voice tutor, and paper-photo grading for Bachelor's students. From ₹199/month.",
+    "Programme-aware modules, a voice tutor, and paper-photo grading for Bachelor's students. From ₹199/month.",
 };
 
 export default function StudentPlanBachPage() {

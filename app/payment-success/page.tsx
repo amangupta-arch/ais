@@ -53,7 +53,7 @@ export default async function PaymentSuccessPage({
   // sending them to Cashfree). Read who they are first; if they're
   // not signed in (cookies dropped, returned in a different
   // browser), we still verify the order and tell them what
-  // happened — they'll need to sign in via magic-link manually.
+  // happened — they'll need to sign in manually.
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 

@@ -13,7 +13,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "School Student · Class 11 – 12 plans",
   description:
-    "Boards plus entrance prep, wired together. Maya the voice tutor and paper-photo grading for Class 11 and 12. From ₹199/month.",
+    "Boards plus entrance prep, wired together. Voice tutor and paper-photo grading for Class 11 and 12. From ₹199/month.",
 };
 
 export default function StudentPlanEatPage() {

@@ -67,7 +67,7 @@ export const STUDENT_COHORTS: Record<StudentCohort["shortKey"], StudentCohort> =
       "The middle and senior school years are when curiosity either takes root or quietly gets killed. Setu shows up every day, in your language, with a tutor who never sighs.",
     hue: "indigo",
     whatsAlsoIncluded: [
-      "Maya the voice tutor — patient, warm, in 12 Indian languages",
+      "Voice tutor — patient, warm, in 12 Indian languages",
       "Paper-photo grading — solve on paper, snap, get step-by-step feedback",
       "Curriculum-aligned chapters (CBSE / ICSE / state boards)",
       "Daily streak + XP that actually feel earned, not gamified",
@@ -81,7 +81,7 @@ export const STUDENT_COHORTS: Record<StudentCohort["shortKey"], StudentCohort> =
         priceInr: 59,
         features: [
           "Full curriculum for one subject of your choice",
-          "Maya tutor + paper grading on that subject",
+          "Voice tutor + paper grading on that subject",
           "All 12 languages",
           "Cancel any time",
         ],
@@ -94,7 +94,7 @@ export const STUDENT_COHORTS: Record<StudentCohort["shortKey"], StudentCohort> =
         recommended: true,
         features: [
           "Every subject in your class",
-          "Unlimited Maya + unlimited paper grading",
+          "Unlimited tutor + unlimited paper grading",
           "Adaptive practice across subjects",
           "Offline lesson packs",
           "Weekly parent digest",
@@ -113,7 +113,7 @@ export const STUDENT_COHORTS: Record<StudentCohort["shortKey"], StudentCohort> =
     hue: "saffron",
     whatsAlsoIncluded: [
       "Boards + entrance prep wired together — no double-study",
-      "Maya the voice tutor for board topics and competitive prep",
+      "Voice tutor for board topics and competitive prep",
       "Paper-photo grading with stepwise marking",
       "Adaptive PYQ drills with weekly post-mortem",
       "All 12 Indian languages",
@@ -127,7 +127,7 @@ export const STUDENT_COHORTS: Record<StudentCohort["shortKey"], StudentCohort> =
         features: [
           "Full Class 11 / 12 syllabus for one subject",
           "Adaptive entrance-style drills (JEE / NEET / CUET pool)",
-          "Maya tutor + paper grading",
+          "Voice tutor + paper grading",
           "All 12 languages",
         ],
       },
@@ -139,7 +139,7 @@ export const STUDENT_COHORTS: Record<StudentCohort["shortKey"], StudentCohort> =
         recommended: true,
         features: [
           "All Class 11 / 12 subjects, board + entrance",
-          "Unlimited Maya, with subject-level memory",
+          "Unlimited tutor, with subject-level memory",
           "Unlimited paper grading + step-by-step feedback",
           "Weekly post-mortem of your wrongs across subjects",
           "Offline lesson packs",
@@ -158,7 +158,7 @@ export const STUDENT_COHORTS: Record<StudentCohort["shortKey"], StudentCohort> =
     hue: "moss",
     whatsAlsoIncluded: [
       "Programme-aware modules (B.Com, B.A., B.Sc, B.Tech …)",
-      "Maya tutor that quizzes you on the way to college",
+      "Voice tutor that quizzes you on the way to college",
       "Paper-photo grading for problem sets",
       "Concept maps + weekly review on the topics you actually struggled with",
       "All 12 Indian languages",
@@ -171,7 +171,7 @@ export const STUDENT_COHORTS: Record<StudentCohort["shortKey"], StudentCohort> =
         priceInr: 199,
         features: [
           "Full module coverage for one subject",
-          "Maya tutor + paper grading on that subject",
+          "Voice tutor + paper grading on that subject",
           "Past-paper drills, weekly review",
           "All 12 languages",
         ],
@@ -184,7 +184,7 @@ export const STUDENT_COHORTS: Record<StudentCohort["shortKey"], StudentCohort> =
         recommended: true,
         features: [
           "All subjects in your programme + semester",
-          "Unlimited Maya, with course-level memory",
+          "Unlimited tutor, with course-level memory",
           "Unlimited paper grading + step-by-step",
           "Weekly review across the whole semester",
           "Offline lesson packs",

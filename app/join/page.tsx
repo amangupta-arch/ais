@@ -1,7 +1,8 @@
 // /join — the multi-step quiz funnel.
 //
 // Lands ad traffic directly. No auth wall at entry; sign-in
-// happens at the final step (Google OAuth or email magic link).
+// happens at the final step — Google OAuth, email + password, or
+// mobile + OTP.
 // Quiz answers accumulate in localStorage as the visitor moves
 // through the steps; /join/finalize reads them after auth and
 // writes to the profile, then routes by class.
@@ -22,9 +23,9 @@ import JoinQuiz from "./JoinQuiz";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Join AI Setu — a Maya plan curated for you",
+  title: "Join AI Setu — a plan curated for you",
   description:
-    "A two-minute quiz. Then a Maya-powered plan crafted around your class, board, and language.",
+    "A two-minute quiz. Then a plan crafted around your class, board, and language.",
 };
 
 export default async function JoinPage({

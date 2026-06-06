@@ -18,7 +18,7 @@
 //     translation streaming in) starts fresh.
 //   - The text node grows in height every word, which the
 //     LessonPlayer's ResizeObserver-driven follow-tail scroll picks
-//     up naturally: as Maya "types", the viewport stays glued to
+//     up naturally: as the tutor "types", the viewport stays glued to
 //     the latest word.
 
 import { useEffect, useMemo, useRef, useState } from "react";

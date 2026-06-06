@@ -1,34 +1,19 @@
 "use server";
 
-// Server actions for the /join funnel.
+// Server action for the /join funnel.
 //
-// Two entry points:
+// applyPendingQuiz(quizData)
+//   — invoked from the /join/finalize client page AFTER the user
+//     is signed in (Google / email+password / phone+OTP).
+//   — Writes the quiz fields onto profiles for the current user.
+//   — Returns the routing decision (checkout for class 6–10,
+//     otherwise contact-us).
 //
-//   createUserWithEmailAction(formData)
-//     — invoked from the sign-in step's email form.
-//     — Creates the auth.users row if missing.
-//     — Generates a Supabase magic link with redirectTo =
-//       /auth/callback?next=<form's `next` value>.
-//     — Redirects the browser to the magic link so the user
-//       lands signed-in on the next route (defaults to
-//       /join/finalize).
-//
-//   applyPendingQuiz(quizData)
-//     — invoked from the /join/finalize client page AFTER the
-//       user is signed in (Google or email magic link).
-//     — Writes the quiz fields onto profiles for the current
-//       user. Returns the routing decision (checkout for class
-//       6–10, otherwise contact-us).
-//
-// We DON'T save the quiz data in createUserWithEmailAction —
-// that runs without the user's session yet, and we'd rather
-// have all the profile-write logic live in one place
-// (applyPendingQuiz) than risk drift between two writers.
+// Magic-link sign-in was removed. /join now uses Google OAuth,
+// email + password, and phone + OTP. All three deposit the user
+// at /join/finalize, which calls this action.
 
 import { headers } from "next/headers";
-import { redirect } from "next/navigation";
-import { createClient as createAdminClient } from "@supabase/supabase-js";
-
 import { createClient } from "@/lib/supabase/server";
 import { sendCapiEvent } from "@/lib/meta/capi";
 import { hashEmail } from "@/lib/meta/hash";
@@ -36,83 +21,12 @@ import { hashEmail } from "@/lib/meta/hash";
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "https://myaisetu.com";
 const SCHOOL_6_TO_10 = new Set(["6", "7", "8", "9", "10"]);
 
-function admin() {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  if (!url || !key) {
-    throw new Error("Supabase not configured (URL or SERVICE_ROLE_KEY missing).");
-  }
-  return createAdminClient(url, key, {
-    auth: { autoRefreshToken: false, persistSession: false },
-  });
-}
-
-function isValidEmail(s: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
-}
-
-function backToJoin(message: string): never {
-  redirect(`/join?error=${encodeURIComponent(message)}`);
-}
-
-// ─── 1) Email sign-in (creates auth user, redirects to magic link) ──
-
-export async function createUserWithEmailAction(formData: FormData) {
-  const emailRaw = formData.get("email");
-  const nextRaw = formData.get("next");
-  const email =
-    typeof emailRaw === "string" ? emailRaw.trim().toLowerCase() : "";
-  const next =
-    typeof nextRaw === "string" && nextRaw.startsWith("/")
-      ? nextRaw
-      : "/join/finalize";
-
-  if (!email || !isValidEmail(email)) {
-    backToJoin("That email doesn't look right. Try again.");
-  }
-
-  const supabase = admin();
-
-  // Look up via profiles (populated by the auth.users insert trigger).
-  const { data: existing } = await supabase
-    .from("profiles")
-    .select("id")
-    .eq("email", email)
-    .maybeSingle();
-
-  if (!existing) {
-    const { error: createErr } = await supabase.auth.admin.createUser({
-      email,
-      email_confirm: true,
-    });
-    if (createErr) {
-      console.error("createUser error", createErr);
-      backToJoin("We couldn't create your account. Please try again.");
-    }
-  }
-
-  const { data: linkData, error: linkErr } = await supabase.auth.admin.generateLink({
-    type: "magiclink",
-    email,
-    options: {
-      redirectTo: `${APP_URL}/auth/callback?next=${encodeURIComponent(next)}`,
-    },
-  });
-  if (linkErr || !linkData?.properties?.action_link) {
-    console.error("generateLink error", linkErr);
-    backToJoin("We couldn't start the sign-in process. Please try again.");
-  }
-
-  redirect(linkData!.properties!.action_link);
-}
-
-// ─── 2) Apply pending quiz to the signed-in user's profile ─────────
-
 export type PendingQuiz = {
   firstName?: string;
   city?: string;
   schoolClass?: string;
   educationBoard?: string;
+  stateBoard?: string;
   boardLanguage?: string;
   preferredLanguage?: string;
   struggleSubjects?: string[];
@@ -142,7 +56,14 @@ export async function applyPendingQuiz(quiz: PendingQuiz): Promise<ApplyResult> 
   }
   if (quiz.city) patch.city = quiz.city.trim().slice(0, 80);
   if (quiz.schoolClass) patch.school_class = quiz.schoolClass;
-  if (quiz.educationBoard) patch.education_board = quiz.educationBoard;
+  if (quiz.educationBoard) {
+    patch.education_board = quiz.educationBoard;
+    // state_board is only meaningful when board === 'state'; clear
+    // it otherwise so a re-pick from CBSE → ICSE doesn't leave a
+    // stale "maharashtra" on the row.
+    patch.state_board =
+      quiz.educationBoard === "state" && quiz.stateBoard ? quiz.stateBoard : null;
+  }
   if (quiz.boardLanguage) patch.native_language = quiz.boardLanguage;
   if (quiz.preferredLanguage) patch.preferred_language = quiz.preferredLanguage;
   if (Array.isArray(quiz.struggleSubjects)) {

@@ -163,7 +163,7 @@ export default async function LandingPage() {
           >
             <div className="feat__visual">
               <div className="feat__num">01</div>
-              <div className="v-maya">
+              <div className="v-tutor">
                 <div className="wave"><i /><i /><i /><i /><i /></div>
               </div>
             </div>
@@ -171,7 +171,7 @@ export default async function LandingPage() {
               We refused <em>silent</em> learning.
             </h3>
             <p className="feat__p">
-              Maya is a voice tutor, not a chatbot. She asks, listens, and walks you through ideas
+              Setu is a voice tutor, not a chatbot. It asks, listens, and walks you through ideas
               like a patient elder cousin — in the same tongue you think in.
             </p>
             <div className="feat__tags">
@@ -267,7 +267,7 @@ export default async function LandingPage() {
           </h2>
           <p className="journey__sub">
             The shape of a course should fit the shape of the learner. So Setu isn&rsquo;t one
-            ladder — it&rsquo;s five, with the same Maya at the top of each.
+            ladder — it&rsquo;s five, with the same tutor at the top of each.
           </p>
         </div>
         <div className="paths">
@@ -359,7 +359,7 @@ export default async function LandingPage() {
             sub="For trying it on. No card needed."
             features={[
               "Lesson 1 of every course",
-              "Maya voice tutor — 15 min/day",
+              "Voice tutor — 15 min/day",
               "Paper-photo grading — 5/day",
               "All 12 languages",
             ]}
@@ -375,7 +375,7 @@ export default async function LandingPage() {
             sub="Everything you need to actually finish a course."
             features={[
               "Unlimited lessons across all paths",
-              "Maya — unlimited, with memory",
+              "Voice tutor — unlimited, with memory",
               "Unlimited paper grading + step-by-step",
               "Adaptive drills, weekly post-mortem",
               "Offline lesson packs",
@@ -412,7 +412,7 @@ export default async function LandingPage() {
             if you <em>walk on it.</em>
           </h2>
           <p className="endcta__sub">
-            Five minutes today. In your language. With Maya. We&rsquo;ll meet you on the other side.
+            Five minutes today. In your language. With Setu. We&rsquo;ll meet you on the other side.
           </p>
           <div className="endcta__row">
             <Link className="btn btn--primary" href="/onboarding">
@@ -439,7 +439,7 @@ export default async function LandingPage() {
             </p>
           </div>
           <FooterCol title="Learners" items={["School (Class 6–12)", "College", "Competitive exams", "Professionals", "Curious minds"]} />
-          <FooterCol title="Product" items={["Maya, the tutor", "Paper grading", "Languages", "Mobile app", "Changelog"]} />
+          <FooterCol title="Product" items={["The voice tutor", "Paper grading", "Languages", "Mobile app", "Changelog"]} />
           <FooterCol title="Institutions" items={["For schools", "For coaching centres", "For colleges", "Case studies"]} />
           <FooterCol title="Company" items={["About", "Careers", "Press", "Privacy", "Terms"]} />
         </div>
@@ -611,7 +611,7 @@ const AUDIENCE = [
     num: "05", tag: "CURIOUS", hue: "plum",
     title: "The curious one",
     sub: "Whoever just wanted to understand something today.",
-    chain: ["Ask Maya", "›", "Custom path"],
+    chain: ["Ask Setu", "›", "Custom path"],
   },
 ];
 
@@ -629,7 +629,7 @@ const PATHS = [
     name: "Rohit, 20",
     persona: "Second-year B.Com. Wants to actually understand, not just pass.",
     crumbs: ["B.Com", "›", "Sem 4", "›", "Cost Accounting", "›", "Marginal costing"],
-    example: '"Maya quizzes me on the way to college and corrects my reasoning, not just my answer."',
+    example: '"Setu quizzes me on the way to college and corrects my reasoning, not just my answer."',
     cta: "For college",
   },
   {
@@ -637,7 +637,7 @@ const PATHS = [
     name: "Priya, 22",
     persona: "UPSC CSE 2027 aspirant, Lucknow. Day 142 of 700.",
     crumbs: ["UPSC CSE", "›", "Prelims", "›", "Polity", "›", "DPSP · drill 24"],
-    example: '"Daily 30-min drills with adaptive PYQs and a Maya post-mortem on every wrong one."',
+    example: '"Daily 30-min drills with adaptive PYQs and a Setu post-mortem on every wrong one."',
     cta: "For aspirants",
   },
   {
@@ -645,14 +645,14 @@ const PATHS = [
     name: "Sameer, 34",
     persona: "Marketing manager, Pune. Has 20 minutes between meetings.",
     crumbs: ["Goal: Use AI at work", "›", "Prompt Craft", "›", "Briefing GPTs · L2"],
-    example: '"Drives home listening to Maya. Voice-only mode, no screen needed."',
+    example: '"Drives home listening to Setu. Voice-only mode, no screen needed."',
     cta: "For professionals",
   },
   {
     num: "05", hue: "plum",
     name: "Lata, 58",
     persona: "Schoolteacher and grandmother. Wanted to know how AI works.",
-    crumbs: ["Ask Maya", "›", '"What is an LLM?"', "›", "Custom 5-min path"],
+    crumbs: ["Ask Setu", "›", '"What is an LLM?"', "›", "Custom 5-min path"],
     example: '"No course, no commitment — just an answer that respected her time."',
     cta: "For everyone",
   },
@@ -660,7 +660,7 @@ const PATHS = [
 
 const QUOTES = [
   {
-    body: "सेतु पर मैंने पहली बार समझा कि equations सिर्फ रटने की चीज़ नहीं हैं। माया दीदी जैसे समझाती है, घर पर कोई नहीं समझाता।",
+    body: "सेतु पर मैंने पहली बार समझा कि equations सिर्फ रटने की चीज़ नहीं हैं। जैसे एक patient दीदी समझाती है, वैसे ही — घर पर कोई नहीं समझाता।",
     script: "devanagari",
     initials: "AK", hue: "indigo",
     name: "Ananya K.",
@@ -673,7 +673,7 @@ const QUOTES = [
     role: "JEE ASPIRANT · KOTA",
   },
   {
-    body: "என் அப்பாவுக்கு tech என்றால் பயம். Setu-வில் தமிழில் பேசினார், மாயா பதிலளித்தாள். அவ்வளவு தான்.",
+    body: "என் அப்பாவுக்கு tech என்றால் பயம். Setu-வில் தமிழில் பேசினார், Setu பதிலளித்தது. அவ்வளவு தான்.",
     script: "tamil",
     initials: "DM", hue: "plum",
     name: "Divya M.",
@@ -693,7 +693,7 @@ const QUOTES = [
     role: "DESIGNER · KOLKATA",
   },
   {
-    body: "For 700-day prep, the post-mortem on every wrong answer is what compounds. I see my own bias — and Maya remembers it for me.",
+    body: "For 700-day prep, the post-mortem on every wrong answer is what compounds. I see my own bias — and Setu remembers it for me.",
     initials: "KN", hue: "saffron",
     name: "Kabir N.",
     role: "UPSC ASPIRANT · DELHI",

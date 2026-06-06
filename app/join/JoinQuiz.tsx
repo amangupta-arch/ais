@@ -7,17 +7,16 @@
 // refresh, and the post-auth /join/finalize page picks them back
 // up after sign-in.
 //
-// No email field in the quiz body — sign-in happens on the last
-// step (Google OAuth or email magic link). No price shown anywhere
-// inside the funnel; ₹199/month is only visible on the Cashfree
-// hosted checkout page.
+// Sign-in happens on the last step via Google, email + password, or
+// mobile + OTP. (Magic-link sign-in was retired.) No price shown
+// anywhere inside the funnel; ₹199/month is only visible on the
+// Cashfree hosted checkout page.
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 
 import { createClient } from "@/lib/supabase/browser";
-import { createUserWithEmailAction } from "./actions";
 
 const LS_KEY = "ais.pending-quiz";
 
@@ -26,6 +25,7 @@ type QuizData = {
   city?: string;
   schoolClass?: string;
   educationBoard?: string;
+  stateBoard?: string;
   boardLanguage?: string;
   preferredLanguage?: string;
   struggleSubjects?: string[];
@@ -52,6 +52,35 @@ const BOARD_OPTIONS: Option[] = [
   { value: "ib", label: "IB" },
   { value: "cambridge", label: "Cambridge (IGCSE)" },
   { value: "other", label: "Other" },
+];
+
+// Major Indian state boards. Slug-shaped values so they pass the
+// profiles.state_board check constraint. "Other" is a catch-all for
+// the smaller / UT boards we haven't enumerated.
+const STATE_BOARD_OPTIONS: Option[] = [
+  { value: "maharashtra", label: "Maharashtra (MSBSHSE)" },
+  { value: "up", label: "Uttar Pradesh (UPMSP)" },
+  { value: "bihar", label: "Bihar (BSEB)" },
+  { value: "west-bengal", label: "West Bengal (WBBSE)" },
+  { value: "tamil-nadu", label: "Tamil Nadu" },
+  { value: "andhra-pradesh", label: "Andhra Pradesh (BSEAP)" },
+  { value: "telangana", label: "Telangana" },
+  { value: "karnataka", label: "Karnataka (KSEEB)" },
+  { value: "kerala", label: "Kerala (SCERT)" },
+  { value: "rajasthan", label: "Rajasthan (RBSE)" },
+  { value: "madhya-pradesh", label: "Madhya Pradesh (MPBSE)" },
+  { value: "gujarat", label: "Gujarat (GSEB)" },
+  { value: "punjab", label: "Punjab (PSEB)" },
+  { value: "haryana", label: "Haryana (BSEH)" },
+  { value: "odisha", label: "Odisha (BSE)" },
+  { value: "chhattisgarh", label: "Chhattisgarh (CGBSE)" },
+  { value: "jharkhand", label: "Jharkhand (JAC)" },
+  { value: "assam", label: "Assam (SEBA)" },
+  { value: "uttarakhand", label: "Uttarakhand (UBSE)" },
+  { value: "himachal-pradesh", label: "Himachal Pradesh (HPBOSE)" },
+  { value: "jammu-kashmir", label: "J&K (JKBOSE)" },
+  { value: "goa", label: "Goa (GBSHSE)" },
+  { value: "other", label: "Other state board" },
 ];
 
 const BOARD_LANGUAGE_OPTIONS: Option[] = [
@@ -94,7 +123,9 @@ const SUBJECT_OPTIONS: Option[] = [
 
 // 7 questions, then a curating screen, then a sign-in screen.
 // Progress bar shows questions only — curating + sign-in are
-// treated as flow steps, not survey steps.
+// treated as flow steps, not survey steps. The state-board
+// sub-picker on step 3 doesn't move the step counter; it's a
+// sub-screen of the same question.
 const TOTAL_QUESTIONS = 7;
 
 export default function JoinQuiz({
@@ -137,7 +168,16 @@ export default function JoinQuiz({
     setData((prev) => ({ ...prev, [key]: value }));
   };
 
-  const goBack = () => setStep((s) => Math.max(0, s - 1));
+  // On step 3 with educationBoard === 'state' and stateBoard unset,
+  // "back" should clear the board choice and drop us back to the
+  // CBSE/ICSE/State picker, not jump back to the city question.
+  const goBack = () => {
+    if (step === 3 && data.educationBoard === "state" && !data.stateBoard) {
+      setData((prev) => ({ ...prev, educationBoard: undefined }));
+      return;
+    }
+    setStep((s) => Math.max(0, s - 1));
+  };
   const goNext = () => setStep((s) => s + 1);
 
   return (
@@ -181,7 +221,7 @@ export default function JoinQuiz({
             <Step key={0}>
               <TextQuestion
                 title="What's your first name?"
-                helper="So Maya can call you by name."
+                helper="So we can address you properly."
                 placeholder="e.g. Aanya"
                 value={data.firstName ?? ""}
                 onChange={(v) => updateField("firstName", v)}
@@ -214,14 +254,32 @@ export default function JoinQuiz({
               />
             </Step>
           )}
-          {step === 3 && (
-            <Step key={3}>
+          {step === 3 && data.educationBoard !== "state" && (
+            <Step key="board-main">
               <OptionsQuestion
                 title="Which board does your school follow?"
                 options={BOARD_OPTIONS}
                 value={data.educationBoard}
                 onChange={(v) => {
                   updateField("educationBoard", v);
+                  // For "state" we stay on this step and render the
+                  // state board sub-picker on the next render. Every
+                  // other board advances immediately.
+                  if (v !== "state") setTimeout(goNext, 220);
+                }}
+              />
+            </Step>
+          )}
+          {step === 3 && data.educationBoard === "state" && (
+            <Step key="board-state">
+              <OptionsQuestion
+                title="Which state board?"
+                helper="Pick the board your school follows."
+                options={STATE_BOARD_OPTIONS}
+                value={data.stateBoard}
+                gridCols={2}
+                onChange={(v) => {
+                  updateField("stateBoard", v);
                   setTimeout(goNext, 220);
                 }}
               />
@@ -245,7 +303,7 @@ export default function JoinQuiz({
           {step === 5 && (
             <Step key={5}>
               <OptionsQuestion
-                title="Which language should Maya speak to you in?"
+                title="Which language should your tutor use?"
                 helper="You can switch later from your profile."
                 options={PREFERRED_LANGUAGE_OPTIONS}
                 value={data.preferredLanguage}
@@ -521,7 +579,7 @@ function Curating({ onDone, firstName }: { onDone: () => void; firstName: string
         <span />
         <span />
       </div>
-      <h2 className="join-curating__title">Crafting your Maya</h2>
+      <h2 className="join-curating__title">Crafting your plan</h2>
       <AnimatePresence mode="wait">
         <motion.p
           key={lineIdx}
@@ -540,10 +598,32 @@ function Curating({ onDone, firstName }: { onDone: () => void; firstName: string
 
 // ─── sign-in step ────────────────────────────────────────────────────
 
+type SignInMode = "choose" | "email" | "phone" | "otp";
+
 function SignIn({ firstName }: { firstName: string }) {
-  const [email, setEmail] = useState("");
+  const [mode, setMode] = useState<SignInMode>("choose");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Email + password (single field, signs in if user exists; signs
+  // up otherwise).
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  // Phone OTP — phone holds the raw 10-digit number, we always send
+  // with the +91 prefix to Supabase.
+  const [phone, setPhone] = useState("");
+  const [otp, setOtp] = useState("");
+  // After verifyOtp / signUp succeeds with a session we route to
+  // /join/finalize. If signUp returns no session (Supabase has email
+  // confirmations on), we surface a "check your email" screen.
+  const [pendingEmailConfirm, setPendingEmailConfirm] = useState(false);
+
+  const supabase = useMemo(() => createClient(), []);
+
+  const NEXT = "/join/finalize";
+  const finishWithSession = () => {
+    window.location.href = NEXT;
+  };
 
   // Google: Supabase OAuth. The redirectTo lands on /auth/callback →
   // /join/finalize, which reads the localStorage quiz and writes
@@ -552,11 +632,10 @@ function SignIn({ firstName }: { firstName: string }) {
     setBusy(true);
     setError(null);
     try {
-      const supabase = createClient();
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: `${window.location.origin}/auth/callback?next=/join/finalize`,
+          redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(NEXT)}`,
         },
       });
       if (error) throw error;
@@ -565,6 +644,138 @@ function SignIn({ firstName }: { firstName: string }) {
       setError(e instanceof Error ? e.message : "Google sign-in failed.");
     }
   };
+
+  // Single screen for email + password. Try signing in first; if
+  // the user doesn't exist (or password is wrong on a brand-new
+  // address), fall back to signUp. This collapses the sign-in /
+  // sign-up split into one continue button.
+  const continueWithEmail = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setBusy(true);
+    setError(null);
+    try {
+      const cleanEmail = email.trim().toLowerCase();
+      const signIn = await supabase.auth.signInWithPassword({
+        email: cleanEmail,
+        password,
+      });
+      if (signIn.data.session) {
+        finishWithSession();
+        return;
+      }
+      // signIn failed — try signUp. If the user genuinely had the
+      // wrong password we'll catch the duplicate-email error here.
+      const signUp = await supabase.auth.signUp({
+        email: cleanEmail,
+        password,
+      });
+      if (signUp.error) {
+        // "User already registered" → the address exists, the
+        // password was just wrong. Tell them that, not "signup
+        // failed".
+        const msg = signUp.error.message.toLowerCase();
+        if (msg.includes("already")) {
+          throw new Error("That email is registered — check the password and try again.");
+        }
+        throw signUp.error;
+      }
+      if (signUp.data.session) {
+        finishWithSession();
+        return;
+      }
+      // No session means Supabase is set to require email
+      // confirmation. Show the inbox screen.
+      setPendingEmailConfirm(true);
+      setBusy(false);
+    } catch (err) {
+      setBusy(false);
+      setError(err instanceof Error ? err.message : "Couldn't sign you in. Try again.");
+    }
+  };
+
+  // Phone + OTP. signInWithOtp({phone}) provisions a user if
+  // they're new and texts them a code. verifyOtp({phone, token,
+  // type: 'sms'}) completes the session.
+  const sendOtp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setBusy(true);
+    setError(null);
+    try {
+      const digits = phone.replace(/\D/g, "");
+      if (!/^[6-9]\d{9}$/.test(digits)) {
+        throw new Error("Enter a 10-digit Indian mobile number.");
+      }
+      const { error } = await supabase.auth.signInWithOtp({
+        phone: `+91${digits}`,
+      });
+      if (error) {
+        // Most likely cause in production: SMS provider isn't
+        // wired up in the Supabase dashboard yet. Surface a
+        // gentler fallback message.
+        const msg = error.message.toLowerCase();
+        if (msg.includes("phone") && msg.includes("not")) {
+          throw new Error("Mobile sign-in isn't enabled yet — please use Google or email.");
+        }
+        throw error;
+      }
+      setMode("otp");
+      setBusy(false);
+    } catch (err) {
+      setBusy(false);
+      setError(err instanceof Error ? err.message : "Couldn't send the code. Try again.");
+    }
+  };
+
+  const verifyOtp = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setBusy(true);
+    setError(null);
+    try {
+      const digits = phone.replace(/\D/g, "");
+      const token = otp.replace(/\D/g, "");
+      if (token.length !== 6) {
+        throw new Error("Enter the 6-digit code we sent you.");
+      }
+      const { data, error } = await supabase.auth.verifyOtp({
+        phone: `+91${digits}`,
+        token,
+        type: "sms",
+      });
+      if (error) throw error;
+      if (!data.session) {
+        throw new Error("Couldn't complete sign-in. Try requesting a new code.");
+      }
+      finishWithSession();
+    } catch (err) {
+      setBusy(false);
+      setError(err instanceof Error ? err.message : "Couldn't verify the code. Try again.");
+    }
+  };
+
+  // ─── render ────────────────────────────────────────────────────
+
+  if (pendingEmailConfirm) {
+    return (
+      <div className="join-signin">
+        <h1 className="join-question__title">
+          Check your <em style={{ color: "var(--indigo)" }}>inbox</em>.
+        </h1>
+        <p className="join-question__helper">
+          We sent a confirmation link to <strong>{email}</strong>. Tap it to
+          finish signing in.
+        </p>
+      </div>
+    );
+  }
+
+  const helperText =
+    mode === "email"
+      ? "We'll sign you in if your email is already registered, or create your account if it's new."
+      : mode === "phone"
+      ? "We'll text you a 6-digit code to sign in."
+      : mode === "otp"
+      ? `Enter the 6-digit code we sent to +91 ${phone}.`
+      : "Pick a method to save your quiz answers and unlock your dashboard.";
 
   return (
     <div className="join-signin">
@@ -575,47 +786,170 @@ function SignIn({ firstName }: { firstName: string }) {
           Save your plan.
         </span>
       </h1>
-      <p className="join-question__helper">
-        Sign in so we can remember your answers and unlock your dashboard. No
-        password — just Google or a magic link.
-      </p>
+      <p className="join-question__helper">{helperText}</p>
 
-      <button
-        type="button"
-        onClick={signInWithGoogle}
-        disabled={busy}
-        className="join-btn join-btn--google"
-      >
-        <GoogleIcon />
-        {busy ? "Opening Google…" : "Continue with Google"}
-      </button>
+      {mode === "choose" && (
+        <>
+          <button
+            type="button"
+            onClick={signInWithGoogle}
+            disabled={busy}
+            className="join-btn join-btn--google"
+          >
+            <GoogleIcon />
+            {busy ? "Opening Google…" : "Continue with Google"}
+          </button>
 
-      <div className="join-divider">
-        <span />
-        or
-        <span />
-      </div>
+          <div className="join-divider">
+            <span />
+            or
+            <span />
+          </div>
 
-      <form
-        action={createUserWithEmailAction}
-        className="join-email"
-        onSubmit={() => setBusy(true)}
-      >
-        <input type="hidden" name="next" value="/join/finalize" />
-        <input
-          type="email"
-          name="email"
-          required
-          placeholder="you@example.com"
-          autoComplete="email"
-          className="join-input"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <button type="submit" disabled={busy} className="join-btn join-btn--secondary">
-          {busy ? "Sending…" : "Email me a sign-in link"}
-        </button>
-      </form>
+          <button
+            type="button"
+            onClick={() => {
+              setError(null);
+              setMode("email");
+            }}
+            disabled={busy}
+            className="join-btn join-btn--secondary"
+          >
+            Continue with email
+          </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              setError(null);
+              setMode("phone");
+            }}
+            disabled={busy}
+            className="join-btn join-btn--secondary"
+            style={{ marginTop: 10 }}
+          >
+            Continue with mobile
+          </button>
+        </>
+      )}
+
+      {mode === "email" && (
+        <form onSubmit={continueWithEmail} className="join-email">
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="you@example.com"
+            autoComplete="email"
+            className="join-input"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            name="password"
+            required
+            minLength={8}
+            placeholder="Password (min 8 characters)"
+            autoComplete="current-password"
+            className="join-input"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            style={{ marginTop: 10 }}
+          />
+          <button
+            type="submit"
+            disabled={busy || password.length < 8}
+            className="join-btn"
+            style={{ marginTop: 12 }}
+          >
+            {busy ? "Signing you in…" : "Continue"}
+          </button>
+          <button
+            type="button"
+            onClick={() => setMode("choose")}
+            disabled={busy}
+            className="join-link"
+          >
+            ← other sign-in options
+          </button>
+        </form>
+      )}
+
+      {mode === "phone" && (
+        <form onSubmit={sendOtp} className="join-email">
+          <div className="join-phone">
+            <span className="join-phone__prefix">+91</span>
+            <input
+              type="tel"
+              inputMode="numeric"
+              autoComplete="tel-national"
+              maxLength={10}
+              required
+              placeholder="10-digit mobile"
+              className="join-input join-phone__input"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value.replace(/\D/g, ""))}
+            />
+          </div>
+          <button
+            type="submit"
+            disabled={busy || !/^[6-9]\d{9}$/.test(phone)}
+            className="join-btn"
+            style={{ marginTop: 12 }}
+          >
+            {busy ? "Sending code…" : "Send code"}
+          </button>
+          <button
+            type="button"
+            onClick={() => setMode("choose")}
+            disabled={busy}
+            className="join-link"
+          >
+            ← other sign-in options
+          </button>
+        </form>
+      )}
+
+      {mode === "otp" && (
+        <form onSubmit={verifyOtp} className="join-email">
+          <input
+            type="text"
+            inputMode="numeric"
+            autoComplete="one-time-code"
+            maxLength={6}
+            required
+            placeholder="6-digit code"
+            className="join-input"
+            value={otp}
+            onChange={(e) => setOtp(e.target.value.replace(/\D/g, ""))}
+            style={{
+              letterSpacing: "0.4em",
+              textAlign: "center",
+              fontSize: 22,
+            }}
+          />
+          <button
+            type="submit"
+            disabled={busy || otp.length !== 6}
+            className="join-btn"
+            style={{ marginTop: 12 }}
+          >
+            {busy ? "Verifying…" : "Verify and continue"}
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              setOtp("");
+              setMode("phone");
+            }}
+            disabled={busy}
+            className="join-link"
+          >
+            ← change number
+          </button>
+        </form>
+      )}
 
       {error && <p className="join-error">{error}</p>}
 

@@ -120,7 +120,7 @@ export default function StudentPlanPage({ cohort }: { cohort: StudentCohort }) {
             What every plan includes
           </div>
           <h2 className="plan-detail__h2">
-            Same Maya. Same paper. <em>Same warmth.</em>
+            Same tutor. Same paper. <em>Same warmth.</em>
           </h2>
           <ul className="plan-detail__bullets">
             {cohort.whatsAlsoIncluded.map((b) => (

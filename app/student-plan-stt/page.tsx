@@ -14,7 +14,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "School Student · Class 6 – 10 plans",
   description:
-    "Curriculum-aligned chapters, paper-photo grading, and Maya the voice tutor — for Class 6 to 10. From ₹59/month.",
+    "Curriculum-aligned chapters, paper-photo grading, and a voice tutor — for Class 6 to 10. From ₹59/month.",
 };
 
 export default function StudentPlanSttPage() {
