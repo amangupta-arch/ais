@@ -1,7 +1,10 @@
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join, resolve, sep } from "node:path";
 
+import { redirect } from "next/navigation";
+
 import { createClient } from "@/lib/supabase/server";
+import { isAdminEmail } from "@/lib/admin";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Database schema — AIS" };
@@ -213,6 +216,12 @@ export default async function DatabaseSchemaPage({
 }: {
   searchParams: Promise<SearchParams>;
 }) {
+  // Admin-only: leaks schema + row counts.
+  const sb = await createClient();
+  const { data: { user } } = await sb.auth.getUser();
+  if (!user) redirect("/login?next=/database-schema");
+  if (!isAdminEmail(user.email)) redirect("/student");
+
   const sp = await searchParams;
   const { bundles, courses, lessons, turns } = await loadAll();
   const yamlTree = readYamlTree();

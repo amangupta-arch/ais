@@ -20,8 +20,12 @@
  *  not 47 across the entire catalog.
  */
 
+import { redirect } from "next/navigation";
+
 import { createClient as createServiceClient } from "@supabase/supabase-js";
 
+import { createClient } from "@/lib/supabase/server";
+import { isAdminEmail } from "@/lib/admin";
 import { LANGUAGE_OPTIONS } from "@/app/update-yaml/constants";
 import {
   enumerateAllLessons,
@@ -186,6 +190,12 @@ export default async function YamlStatusPage({
     medium?: string;
   }>;
 }) {
+  // Admin-only: leaks catalogue + authoring state.
+  const sb = await createClient();
+  const { data: { user } } = await sb.auth.getUser();
+  if (!user) redirect("/login?next=/yaml-status");
+  if (!isAdminEmail(user.email)) redirect("/student");
+
   const sp = await searchParams;
   const statusFilter: Status | null =
     sp.status === "done" || sp.status === "running" || sp.status === "failed" || sp.status === "pending"

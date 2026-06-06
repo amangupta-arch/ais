@@ -5,8 +5,12 @@
  *  failed / queued / not started" per row.
  */
 
+import { redirect } from "next/navigation";
+
 import { createClient as createServiceClient } from "@supabase/supabase-js";
 
+import { createClient } from "@/lib/supabase/server";
+import { isAdminEmail } from "@/lib/admin";
 import {
   enumerateAllLessons,
   lessonYamlExists,
@@ -49,6 +53,12 @@ async function loadJobRows(): Promise<JobRow[]> {
 }
 
 export default async function YamlGeneratePage() {
+  // Admin-only: this kicks off Claude API calls billable to us.
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) redirect("/login?next=/yaml-generate");
+  if (!isAdminEmail(user.email)) redirect("/student");
+
   const entries = enumerateAllLessons();
   const [bundleTitles, jobs] = await Promise.all([
     loadBundleTitleMap(),

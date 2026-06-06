@@ -223,7 +223,7 @@ export default function StudentDashboard({
         </section>
 
         <div className="flex justify-center" style={{ marginTop: 40 }}>
-          <Link href="/home" className="lm-btn lm-btn--ghost lm-btn--sm">
+          <Link href="/learn" className="lm-btn lm-btn--ghost lm-btn--sm">
             Browse the full library
           </Link>
         </div>

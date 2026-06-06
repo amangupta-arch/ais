@@ -29,6 +29,12 @@ export default async function HomePage() {
   const { user, profile, streak, xp, planIds } = await getMe();
   if (!user) redirect("/login");
   if (profile && !profile.onboarding_completed_at) redirect("/onboarding");
+  // Students get the focused /student dashboard, not the
+  // browse-everything /home. /home stays accessible as a library
+  // page via the "Browse the full library" link at the bottom of
+  // /student — that link skips the bounce by carrying users in
+  // explicitly rather than letting them land on /home cold.
+  if (planIds.includes("student")) redirect("/student");
 
   const [courses, bundles, progress] = await Promise.all([
     getAllCourses(),

@@ -23,6 +23,7 @@ import { createClient as createServiceClient } from "@supabase/supabase-js";
 import { submitLessonYaml } from "@/app/update-yaml/actions";
 import { LANGUAGE_OPTIONS } from "@/app/update-yaml/constants";
 import { runAudioPipeline, type PipelineProgress } from "@/lib/audio/pipeline";
+import { isAdminEmail } from "@/lib/admin";
 import { createClient } from "@/lib/supabase/server";
 import { enumerateAllLessons } from "@/lib/yaml-generation/catalog";
 import { loadEnYamlText } from "@/lib/yaml-generation/en-source";
@@ -70,6 +71,9 @@ export async function POST(req: Request) {
   const { data: { user } } = await auth.auth.getUser();
   if (!user) {
     return NextResponse.json({ ok: false, message: "Not signed in." }, { status: 401 });
+  }
+  if (!isAdminEmail(user.email)) {
+    return NextResponse.json({ ok: false, message: "Forbidden." }, { status: 403 });
   }
 
   let body: Body;

@@ -6,13 +6,15 @@
  *       (covers lessons authored before this pipeline, e.g. chatgpt-basics)
  *
  *  Used by the "view yaml" links on /yaml-status and /yaml-generate.
- *  Public — same trust model as /yaml-status.
+ *  Admin-only — same allowlist as those pages.
  */
 
 import { readFileSync } from "node:fs";
 
 import { createClient as createServiceClient } from "@supabase/supabase-js";
 
+import { isAdminEmail } from "@/lib/admin";
+import { createClient } from "@/lib/supabase/server";
 import {
   enumerateAllLessons,
   lessonYamlExists,
@@ -22,6 +24,11 @@ import {
 export const dynamic = "force-dynamic";
 
 export async function GET(req: Request) {
+  const sb = await createClient();
+  const { data: { user } } = await sb.auth.getUser();
+  if (!user) return new Response("not signed in", { status: 401 });
+  if (!isAdminEmail(user.email)) return new Response("forbidden", { status: 403 });
+
   const url = new URL(req.url);
   const courseSlug = url.searchParams.get("course");
   const lessonSlug = url.searchParams.get("lesson");
