@@ -4,8 +4,8 @@
 //
 // One action — setSchoolPathAction — sets institute + school_class
 // together because they're meaningful only as a pair:
-//   - K-12 path: institute = null, school_class = '10'
-//   - NMIMS BBA: institute = 'nmims', school_class = 'bba-sem-01'
+//   - K-12 path:    institute = null,  school_class = '10'
+//   - Institute X:  institute = '<slug>', school_class = '<program>'
 // The picker UI submits both fields per choice (one form per option).
 
 import { revalidatePath } from "next/cache";

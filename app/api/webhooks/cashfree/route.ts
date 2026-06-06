@@ -125,6 +125,13 @@ export async function POST(request: NextRequest) {
     .from("subscriptions")
     .insert({ user_id: userId, plan_id: subPlanId, status: "active", started_at: new Date().toISOString() });
   if (insertErr) {
+    // 23505 = unique_violation. Hit when Cashfree fires the webhook
+    // twice and the lookup above raced — the partial unique index
+    // (subscriptions_one_active_per_user_plan) made the loser fail.
+    // That's the success case: a subscription exists, we're done.
+    if (insertErr.code === "23505") {
+      return NextResponse.json({ ok: true, action: "already_active_race" });
+    }
     console.error("[cashfree-webhook] subscription insert error", insertErr);
     return NextResponse.json({ ok: false, error: "db_insert" }, { status: 500 });
   }

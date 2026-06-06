@@ -97,15 +97,15 @@ export type Profile = {
   daily_goal_minutes: DailyGoalMinutes;
   daily_reminder_time: string;
   preferred_tutor_persona: Persona["id"];
-  /** Optional institute (e.g. 'nmims') for higher-ed cohorts. Null for
-   *  K-12 / public-school learners. Pairs with school_class to scope
-   *  the /student dashboard to one institute's curriculum at a time. */
+  /** Optional institute slug for higher-ed cohorts. Null for K-12 /
+   *  public-school learners. Pairs with school_class to scope the
+   *  /student dashboard to one institute's curriculum at a time. */
   institute: string | null;
-  /** K-12 grade ('10') or college program code ('bba-sem-01'). Free
-   *  text — slug-shaped (lowercase, hyphens) so it can be embedded
-   *  directly in a `class:<value>` bundle tag. Null for users who
-   *  haven't picked a class yet; the /student dashboard shows an
-   *  inline picker in that case. */
+  /** K-12 grade ('10') or college program code. Free text —
+   *  slug-shaped (lowercase, hyphens) so it can be embedded directly
+   *  in a `class:<value>` bundle tag. Null for users who haven't
+   *  picked a class yet; the /student dashboard shows an inline
+   *  picker in that case. */
   school_class: string | null;
   /** Quiz funnel fields — captured at /join. All nullable so existing
    *  profiles (created before the funnel shipped) don't need backfill. */
