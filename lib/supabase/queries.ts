@@ -276,6 +276,139 @@ export async function getMyLessonProgress(courseId: string): Promise<UserLessonP
   return (data ?? []) as UserLessonProgress[];
 }
 
+/** One "up next" suggestion per in-progress course, scored by how
+ *  recently the user touched the course. Used by the /student
+ *  dashboard's "Up next" rail.
+ *
+ *  Resolution per course:
+ *    1. If `last_lesson_id` is set AND that lesson isn't completed,
+ *       use it (resume where they left off).
+ *    2. Otherwise pick the first lesson in the course whose user
+ *       progress row is missing or not 'completed'.
+ *    3. Skip the course entirely if every lesson is completed. */
+export type UpNextLesson = {
+  course: Course;
+  lesson: Lesson;
+  /** 0-100 progress of the SPECIFIC lesson, for the small bar on the
+   *  card. Null when the user hasn't started this lesson yet. */
+  lessonStatus: UserLessonProgress["status"] | null;
+};
+export async function getMyUpNextLessons(limit: number): Promise<UpNextLesson[]> {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return [];
+
+  // In-progress courses, most-recently-touched first.
+  const { data: courseProg } = await supabase
+    .from("user_course_progress")
+    .select("course_id,last_lesson_id,status,updated_at")
+    .eq("user_id", user.id)
+    .eq("status", "in_progress")
+    .order("updated_at", { ascending: false })
+    .limit(limit);
+
+  if (!courseProg || courseProg.length === 0) return [];
+
+  const courseIds = courseProg.map((p) => p.course_id);
+  const [coursesRes, lessonsRes, lessonProgRes] = await Promise.all([
+    supabase.from("courses").select("*").in("id", courseIds).eq("is_published", true),
+    supabase
+      .from("lessons")
+      .select("*")
+      .in("course_id", courseIds)
+      .eq("is_published", true)
+      .order("order_index", { ascending: true }),
+    supabase
+      .from("user_lesson_progress")
+      .select("lesson_id,status")
+      .eq("user_id", user.id)
+      .in("course_id", courseIds),
+  ]);
+
+  const coursesById = new Map<string, Course>(
+    ((coursesRes.data ?? []) as Course[]).map((c) => [c.id, c]),
+  );
+  const lessonsByCourse = new Map<string, Lesson[]>();
+  for (const l of (lessonsRes.data ?? []) as Lesson[]) {
+    const arr = lessonsByCourse.get(l.course_id) ?? [];
+    arr.push(l);
+    lessonsByCourse.set(l.course_id, arr);
+  }
+  const progByLesson = new Map<string, UserLessonProgress["status"]>(
+    ((lessonProgRes.data ?? []) as Array<{ lesson_id: string; status: UserLessonProgress["status"] }>).map(
+      (row) => [row.lesson_id, row.status],
+    ),
+  );
+
+  const out: UpNextLesson[] = [];
+  for (const cp of courseProg) {
+    const course = coursesById.get(cp.course_id);
+    if (!course) continue;
+    const lessons = lessonsByCourse.get(cp.course_id) ?? [];
+    if (lessons.length === 0) continue;
+
+    // Resume the lesson they were last on, if it isn't done.
+    let chosen: Lesson | null = null;
+    if (cp.last_lesson_id) {
+      const last = lessons.find((l) => l.id === cp.last_lesson_id);
+      if (last && progByLesson.get(last.id) !== "completed") {
+        chosen = last;
+      }
+    }
+    // Otherwise the first lesson they haven't finished.
+    if (!chosen) {
+      chosen = lessons.find((l) => progByLesson.get(l.id) !== "completed") ?? null;
+    }
+    if (!chosen) continue;
+
+    out.push({
+      course,
+      lesson: chosen,
+      lessonStatus: progByLesson.get(chosen.id) ?? null,
+    });
+  }
+  return out;
+}
+
+/** Per-day activity for the current ISO week (Mon → Sun). Each entry
+ *  is true if the user logged ANY XP that day. Used by the dashboard's
+ *  weekly streak strip.
+ *
+ *  Operates in UTC for simplicity. India-only audience means the
+ *  midnight boundary skew vs IST is < 6h, which only matters if a
+ *  user is studying between 00:00–05:30 IST — rare enough to defer
+ *  proper timezone handling. */
+export async function getMyWeeklyActivity(): Promise<boolean[]> {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return [false, false, false, false, false, false, false];
+
+  const now = new Date();
+  // ISO week: Monday = 0. JS getDay(): Sun=0 .. Sat=6.
+  const dayOfWeek = (now.getUTCDay() + 6) % 7;
+  const monday = new Date(now);
+  monday.setUTCHours(0, 0, 0, 0);
+  monday.setUTCDate(monday.getUTCDate() - dayOfWeek);
+  const nextMonday = new Date(monday);
+  nextMonday.setUTCDate(nextMonday.getUTCDate() + 7);
+
+  const { data } = await supabase
+    .from("xp_events")
+    .select("created_at")
+    .eq("user_id", user.id)
+    .gte("created_at", monday.toISOString())
+    .lt("created_at", nextMonday.toISOString());
+
+  const active = [false, false, false, false, false, false, false];
+  for (const row of (data ?? []) as Array<{ created_at: string }>) {
+    const d = new Date(row.created_at);
+    const idx = (d.getUTCDay() + 6) % 7;
+    active[idx] = true;
+  }
+  return active;
+}
+
+
 export async function getLessonByCourseAndSlug(
   courseSlug: string,
   lessonSlug: string,

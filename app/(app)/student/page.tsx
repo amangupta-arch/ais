@@ -1,23 +1,25 @@
-// Student dashboard. Shows the curriculum bundles for the signed-in
-// learner's (institute, class, board, medium) tuple, grouped by
-// subject.
+// Student dashboard. The post-login + post-payment landing page.
 //
-//   - Auth-required (under (app)). Anonymous → /login.
-//   - If profile.school_class is null, render an inline picker;
-//     setting it via the server action rerenders this same page.
-//   - Else fetch bundles tagged for the matching curriculum +
-//     class:<class> + (optionally) institute:<inst> + board:<x> +
-//     medium:<y>, render one section per subject.
-//   - board / medium come from profile.education_board and
-//     profile.native_language (set by the join quiz). Legacy users
-//     with null fields bypass those filters so their dashboard isn't
-//     blank.
+//   - Auth-required (under (app)). Anonymous → /login?next=/student.
+//   - profile.school_class === null → render the inline ClassPicker
+//     so the user can self-serve their class without bouncing to
+//     /onboarding.
+//   - Otherwise render the dashboard: greeting, today's hero, stats,
+//     weekly strip, up-next lessons, and the curriculum subject grid.
+//
+// Replaces /home as the default post-auth destination. /home is kept
+// as a "browse everything" library page reachable via "See more".
 
 import { redirect } from "next/navigation";
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
 
-import { getMe, getStudentBundles } from "@/lib/supabase/queries";
+import {
+  getAllCourses,
+  getMe,
+  getMyCourseProgress,
+  getMyUpNextLessons,
+  getMyWeeklyActivity,
+  getStudentBundles,
+} from "@/lib/supabase/queries";
 
 import ClassPicker from "./ClassPicker";
 import StudentDashboard from "./StudentDashboard";
@@ -25,68 +27,55 @@ import StudentDashboard from "./StudentDashboard";
 export const dynamic = "force-dynamic";
 
 export default async function StudentPage() {
-  const { user, profile } = await getMe();
+  const { user, profile, streak, xp } = await getMe();
   if (!user) redirect("/login?next=/student");
 
   const lang = profile?.preferred_language ?? "en";
   const schoolClass = profile?.school_class ?? null;
   const institute = profile?.institute ?? null;
   const board = profile?.education_board ?? null;
-  // native_language is NOT NULL DEFAULT 'en' in supabase/migrations/0001_init.sql,
-  // so it's *always* set — using it directly would make the medium filter
-  // always-on and hide every bundle that lacks a medium:* tag from legacy
-  // users. Gate it on `board` instead: education_board is truly nullable
-  // and only gets populated by the join quiz, the same step where the user
-  // told us their medium. If they didn't go through the quiz, neither filter
-  // applies and they see the broader class-only set.
+  // native_language is NOT NULL DEFAULT 'en' in 0001_init.sql, so
+  // using it directly would make the medium filter always-on and
+  // hide every bundle that lacks a medium:* tag from legacy users.
+  // Gate it on `board` instead: education_board is truly nullable
+  // and only gets populated by the join quiz, the same step where
+  // the user told us their medium.
   const medium = board ? (profile?.native_language ?? null) : null;
 
-  return (
-    <main className="lm-page">
-      <div style={{ maxWidth: 720, margin: "0 auto", padding: "20px 20px 64px" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 20 }}>
-          <Link href="/home" aria-label="Home" className="lm-btn lm-btn--icon">
-            <ArrowLeft size={18} />
-          </Link>
-          <div className="lm-eyebrow">Student</div>
-        </div>
-
-        {schoolClass === null ? (
+  if (schoolClass === null) {
+    return (
+      <main className="lm-page">
+        <div style={{ maxWidth: 560, margin: "0 auto", padding: "56px 20px 64px" }}>
           <ClassPicker />
-        ) : (
-          <StudentDashboardWithData
-            schoolClass={schoolClass}
-            institute={institute}
-            board={board}
-            medium={medium}
-            lang={lang}
-          />
-        )}
-      </div>
-    </main>
-  );
-}
+        </div>
+      </main>
+    );
+  }
 
-async function StudentDashboardWithData({
-  schoolClass,
-  institute,
-  board,
-  medium,
-  lang,
-}: {
-  schoolClass: string;
-  institute: string | null;
-  board: string | null;
-  medium: string | null;
-  lang: string;
-}) {
-  const subjects = await getStudentBundles(schoolClass, institute, board, medium);
+  // Fetch everything the dashboard needs in parallel.
+  const [subjects, courseProgress, upNext, weekly, courses] = await Promise.all([
+    getStudentBundles(schoolClass, institute, board, medium),
+    getMyCourseProgress(),
+    getMyUpNextLessons(3),
+    getMyWeeklyActivity(),
+    getAllCourses(),
+  ]);
+
+  const completedLessons = courseProgress.filter((p) => p.status === "completed").length;
+
   return (
     <StudentDashboard
+      firstName={profile?.first_name ?? profile?.display_name ?? user.email ?? ""}
       schoolClass={schoolClass}
       institute={institute}
-      subjects={subjects}
       lang={lang}
+      streakDays={streak?.current_streak ?? 0}
+      totalXp={xp?.total_xp ?? 0}
+      completedLessons={completedLessons}
+      weekly={weekly}
+      upNext={upNext}
+      subjects={subjects}
+      allCourses={courses}
     />
   );
 }

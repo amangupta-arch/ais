@@ -19,7 +19,7 @@ type Mode = "choose" | "email" | "phone" | "otp";
 
 function LoginInner() {
   const params = useSearchParams();
-  const next = params.get("next") ?? "/home";
+  const next = params.get("next") ?? "/student";
 
   const supabase = useMemo(() => createClient(), []);
   const [mode, setMode] = useState<Mode>("choose");

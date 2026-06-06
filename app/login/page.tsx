@@ -13,7 +13,7 @@ export default async function LoginPage({
   const { data: { user } } = await supabase.auth.getUser();
   if (user) {
     const sp = await searchParams;
-    redirect(sp.next ?? "/home");
+    redirect(sp.next ?? "/student");
   }
   return <LoginForm />;
 }
