@@ -114,6 +114,10 @@ export type Profile = {
   /** Slug-shaped education board: 'cbse', 'icse', 'state', 'ib', etc.
    *  CHECK constraint in migration 0017. */
   education_board: string | null;
+  /** Specific state board slug when education_board === 'state'
+   *  (e.g. 'maharashtra', 'tamil-nadu'). Null otherwise. Migration
+   *  0018 added this column + slug-format check. */
+  state_board: string | null;
   /** Subject slugs the learner self-reports struggling with. Used to
    *  prioritise content surfacing in /student / /home. */
   struggle_subjects: string[];

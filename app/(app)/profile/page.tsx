@@ -6,7 +6,6 @@ import { LANGUAGES, PERSONAS } from "@/lib/types";
 import { signOutAction } from "./actions";
 import { formatTier } from "@/lib/utils";
 import type { Persona, PlanTier, PreferredLanguage } from "@/lib/types";
-import { SCHOOL_PATH_OPTIONS } from "../student/paths";
 
 export const dynamic = "force-dynamic";
 
@@ -209,40 +208,34 @@ export default async function ProfilePage() {
             school path
           </p>
           <p style={{ marginTop: 6, fontSize: 13, color: "var(--text-3)" }}>
-            Drives the <Link href="/student" style={{ color: "var(--indigo)" }}>/student</Link>{" "}
-            dashboard — you&rsquo;ll see chapters tagged for this institute and class only.
+            What you told us during sign-up. Drives the{" "}
+            <Link href="/student" style={{ color: "var(--indigo)" }}>/student</Link>{" "}
+            dashboard. To change anything,{" "}
+            <a href="mailto:hello@myaisetu.com" style={{ color: "var(--indigo)" }}>
+              email us
+            </a>
+            .
           </p>
-          {SCHOOL_PATH_OPTIONS.length > 0 ? (
-            <div className="flex flex-wrap" style={{ gap: 8, marginTop: 12 }}>
-              {SCHOOL_PATH_OPTIONS.map((opt) => {
-                const active =
-                  (profile?.institute ?? null) === opt.institute &&
-                  profile?.school_class === opt.schoolClass;
-                return (
-                  <form
-                    key={`${opt.institute ?? "school"}::${opt.schoolClass}`}
-                    action={updateSchoolPathAction}
-                  >
-                    <input type="hidden" name="institute" value={opt.institute ?? ""} />
-                    <input type="hidden" name="school_class" value={opt.schoolClass} />
-                    <button
-                      type="submit"
-                      className={`lm-btn ${active ? "lm-btn--accent" : "lm-btn--secondary"} lm-btn--sm`}
-                      style={{ flexDirection: "column", alignItems: "flex-start", gap: 0, padding: "8px 12px" }}
-                      aria-pressed={active}
-                    >
-                      <span style={{ fontWeight: 600 }}>{opt.label}</span>
-                      {opt.subtitle ? (
-                        <span style={{ fontSize: 11, opacity: 0.7, fontWeight: 400 }}>
-                          {opt.subtitle}
-                        </span>
-                      ) : null}
-                    </button>
-                  </form>
-                );
-              })}
-            </div>
-          ) : null}
+          <div
+            className="lm-card"
+            style={{
+              marginTop: 14,
+              padding: 16,
+              display: "grid",
+              gridTemplateColumns: "1fr",
+              gap: 10,
+            }}
+          >
+            <ReadonlyRow label="Class" value={classLabel(profile?.school_class)} />
+            <ReadonlyRow label="Board" value={boardLabel(profile?.education_board)} />
+            {profile?.education_board === "state" && (
+              <ReadonlyRow label="State board" value={stateBoardLabel(profile?.state_board)} />
+            )}
+            <ReadonlyRow
+              label="Medium of instruction"
+              value={mediumLabel(profile?.native_language)}
+            />
+          </div>
         </section>
 
         <section
@@ -318,8 +311,98 @@ async function updateLanguageAction(formData: FormData) {
   await updateProfile({ preferred_language: language });
 }
 
-async function updateSchoolPathAction(formData: FormData) {
-  "use server";
-  const { setSchoolPathAction } = await import("../student/actions");
-  await setSchoolPathAction(formData);
+function ReadonlyRow({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex items-baseline justify-between" style={{ gap: 12 }}>
+      <span
+        className="lm-mono"
+        style={{
+          fontSize: 11,
+          letterSpacing: "0.08em",
+          textTransform: "uppercase",
+          color: "var(--text-3)",
+        }}
+      >
+        {label}
+      </span>
+      <span
+        className="lm-serif"
+        style={{ fontSize: 15, color: "var(--text)", fontWeight: 500, textAlign: "right" }}
+      >
+        {value}
+      </span>
+    </div>
+  );
+}
+
+// ─── label maps (mirror /join quiz options) ──────────────────────
+
+function classLabel(slug: string | null | undefined): string {
+  if (!slug) return "—";
+  if (slug === "college") return "College";
+  if (slug === "other") return "Something else";
+  // K-12 grades are numeric strings.
+  if (/^\d{1,2}$/.test(slug)) return `Class ${slug}`;
+  return slug;
+}
+
+function boardLabel(slug: string | null | undefined): string {
+  if (!slug) return "—";
+  const map: Record<string, string> = {
+    cbse: "CBSE",
+    icse: "ICSE",
+    state: "State Board",
+    ib: "IB",
+    cambridge: "Cambridge (IGCSE)",
+    other: "Other",
+  };
+  return map[slug] ?? slug;
+}
+
+function stateBoardLabel(slug: string | null | undefined): string {
+  if (!slug) return "—";
+  const map: Record<string, string> = {
+    maharashtra: "Maharashtra (MSBSHSE)",
+    up: "Uttar Pradesh (UPMSP)",
+    bihar: "Bihar (BSEB)",
+    "west-bengal": "West Bengal (WBBSE)",
+    "tamil-nadu": "Tamil Nadu",
+    "andhra-pradesh": "Andhra Pradesh (BSEAP)",
+    telangana: "Telangana",
+    karnataka: "Karnataka (KSEEB)",
+    kerala: "Kerala (SCERT)",
+    rajasthan: "Rajasthan (RBSE)",
+    "madhya-pradesh": "Madhya Pradesh (MPBSE)",
+    gujarat: "Gujarat (GSEB)",
+    punjab: "Punjab (PSEB)",
+    haryana: "Haryana (BSEH)",
+    odisha: "Odisha (BSE)",
+    chhattisgarh: "Chhattisgarh (CGBSE)",
+    jharkhand: "Jharkhand (JAC)",
+    assam: "Assam (SEBA)",
+    uttarakhand: "Uttarakhand (UBSE)",
+    "himachal-pradesh": "Himachal Pradesh (HPBOSE)",
+    "jammu-kashmir": "J&K (JKBOSE)",
+    goa: "Goa (GBSHSE)",
+    other: "Other state board",
+  };
+  return map[slug] ?? slug;
+}
+
+function mediumLabel(slug: string | null | undefined): string {
+  if (!slug) return "—";
+  const map: Record<string, string> = {
+    en: "English",
+    hi: "हिन्दी",
+    mr: "मराठी",
+    ta: "தமிழ்",
+    te: "తెలుగు",
+    bn: "বাংলা",
+    pa: "ਪੰਜਾਬੀ",
+    gu: "ગુજરાતી",
+    kn: "ಕನ್ನಡ",
+    ml: "മലയാളം",
+    ur: "اردو",
+  };
+  return map[slug] ?? slug;
 }
