@@ -952,12 +952,6 @@ function SignIn({ firstName }: { firstName: string }) {
       )}
 
       {error && <p className="join-error">{error}</p>}
-
-      <p className="join-fine-print">
-        We&rsquo;ll save your quiz answers and personalise your plan. Class 6–10
-        learners go to a Cashfree payment page. Other classes — we&rsquo;ll
-        email you when we go live.
-      </p>
     </div>
   );
 }
