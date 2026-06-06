@@ -7,7 +7,6 @@ import { LessonPlayer } from "./LessonPlayer";
 import ViewContentBeacon from "@/lib/meta/ViewContentBeacon";
 
 import { getLessonAudioManifest, getLessonByCourseAndSlug, getMe } from "@/lib/supabase/queries";
-import type { Persona } from "@/lib/types";
 import { lessonTitle, lessonSubtitle } from "@/lib/types";
 import { localizeTurn, type LessonTurn } from "@/lib/turns";
 
@@ -107,7 +106,11 @@ export default async function LessonPage({
         courseId={course.id}
         lessonId={lesson.id}
         turns={displayTurns}
-        personaId={(profile?.preferred_tutor_persona as Persona["id"]) ?? "nova"}
+        // Persona is no longer user-configurable — every authored YAML
+        // pins persona: nova on each tutor_message turn, and the
+        // /profile picker has been retired. This default only kicks
+        // in for turns that omit the field (none, today).
+        personaId="nova"
         initialTurnIndex={safeInitialTurnIndex}
         alreadyCompleted={progress?.status === "completed"}
         language={preferredLang}

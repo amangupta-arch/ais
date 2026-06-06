@@ -2,10 +2,10 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 
 import { getMe, getPlans } from "@/lib/supabase/queries";
-import { LANGUAGES, PERSONAS } from "@/lib/types";
+import { LANGUAGES } from "@/lib/types";
 import { signOutAction } from "./actions";
 import { formatTier } from "@/lib/utils";
-import type { Persona, PlanTier, PreferredLanguage } from "@/lib/types";
+import type { PlanTier, PreferredLanguage } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
@@ -22,7 +22,6 @@ export default async function ProfilePage() {
     .filter((p): p is NonNullable<typeof p> => Boolean(p))
     .sort((a, b) => (a.id === "free" ? 1 : b.id === "free" ? -1 : (a.sort_order ?? 0) - (b.sort_order ?? 0)));
   const primaryPlan = activePlans[0];
-  const currentPersona: Persona["id"] = (profile?.preferred_tutor_persona as Persona["id"]) ?? "nova";
   const currentLanguage: PreferredLanguage = (profile?.preferred_language as PreferredLanguage) ?? "en";
 
   return (
@@ -99,67 +98,42 @@ export default async function ProfilePage() {
         <section style={{ marginTop: 40 }}>
           <p className="lm-eyebrow">
             <span className="lm-tabular" style={{ marginRight: 8 }}>01</span>
-            your tutor
-          </p>
-          <p
-            style={{ marginTop: 6, fontSize: 13, color: "var(--text-3)" }}
-          >
-            Pick the voice that&apos;ll push you best.
-          </p>
-          <div
-            className="grid grid-cols-1 sm:grid-cols-2"
-            style={{ gap: 10, marginTop: 16 }}
-          >
-            {PERSONAS.map((p) => (
-              <form key={p.id} action={updateTutorAction}>
-                <input type="hidden" name="persona" value={p.id} />
-                <button
-                  type="submit"
-                  className={`lm-option${currentPersona === p.id ? " lm-option--correct" : ""}`}
-                  style={{ padding: 16 }}
-                >
-                  <PersonaAvatar personaId={p.id} />
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <p
-                      className="lm-serif"
-                      style={{ fontSize: 16, lineHeight: 1.25, color: "inherit" }}
-                    >
-                      {p.name} —{" "}
-                      <em style={{ fontStyle: "italic", color: "var(--text-3)" }}>
-                        {p.tagline}
-                      </em>
-                    </p>
-                    <p style={{ marginTop: 4, fontSize: 13, color: "var(--text-3)" }}>
-                      {p.blurb}
-                    </p>
-                  </div>
-                </button>
-              </form>
-            ))}
-          </div>
-        </section>
-
-        <section style={{ marginTop: 40 }}>
-          <p className="lm-eyebrow">
-            <span className="lm-tabular" style={{ marginRight: 8 }}>02</span>
             language
           </p>
           <p style={{ marginTop: 6, fontSize: 13, color: "var(--text-3)" }}>
             Bundles, courses, and lessons render in this language when a translation exists.
           </p>
           <div
-            className="flex flex-wrap"
-            style={{ gap: 8, marginTop: 12 }}
+            style={{
+              display: "grid",
+              // auto-fill keeps every tile the same width on every
+              // viewport; minmax(120px,1fr) gives 2 columns on the
+              // smallest screens and as many as 5 on desktop. The
+              // surrounding form removes width: 100% so the column
+              // sizing dominates the button width.
+              gridTemplateColumns: "repeat(auto-fill, minmax(120px, 1fr))",
+              gap: 8,
+              marginTop: 12,
+            }}
           >
             {LANGUAGES.map((l) => {
               const active = currentLanguage === l.code;
               return (
-                <form key={l.code} action={updateLanguageAction}>
+                <form key={l.code} action={updateLanguageAction} style={{ display: "contents" }}>
                   <input type="hidden" name="language" value={l.code} />
                   <button
                     type="submit"
                     className={`lm-btn ${active ? "lm-btn--accent" : "lm-btn--secondary"} lm-btn--sm`}
-                    style={{ flexDirection: "column", alignItems: "flex-start", gap: 0, padding: "8px 12px" }}
+                    style={{
+                      width: "100%",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      textAlign: "center",
+                      gap: 2,
+                      padding: "10px 8px",
+                      minHeight: 56,
+                    }}
                     aria-pressed={active}
                   >
                     <span style={{ fontWeight: 600 }}>{l.native}</span>
@@ -177,7 +151,7 @@ export default async function ProfilePage() {
 
         <section style={{ marginTop: 40 }}>
           <p className="lm-eyebrow">
-            <span className="lm-tabular" style={{ marginRight: 8 }}>03</span>
+            <span className="lm-tabular" style={{ marginRight: 8 }}>02</span>
             daily protected time
           </p>
           <form
@@ -204,7 +178,7 @@ export default async function ProfilePage() {
 
         <section style={{ marginTop: 40 }}>
           <p className="lm-eyebrow">
-            <span className="lm-tabular" style={{ marginRight: 8 }}>04</span>
+            <span className="lm-tabular" style={{ marginRight: 8 }}>03</span>
             school path
           </p>
           <p style={{ marginTop: 6, fontSize: 13, color: "var(--text-3)" }}>
@@ -267,30 +241,6 @@ export default async function ProfilePage() {
       </div>
     </main>
   );
-}
-
-function PersonaAvatar({ personaId }: { personaId: Persona["id"] }) {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
-    ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/tutor-avatars/${personaId}.png`
-    : null;
-  return (
-    <span className="lm-avatar lm-avatar--md" aria-label={`${personaId} avatar`}>
-      {url ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={url} alt="" />
-      ) : (
-        <span aria-hidden>{personaId.charAt(0).toUpperCase()}</span>
-      )}
-    </span>
-  );
-}
-
-async function updateTutorAction(formData: FormData) {
-  "use server";
-  const { updateProfile } = await import("./actions");
-  const persona = formData.get("persona");
-  if (typeof persona !== "string") return;
-  await updateProfile({ preferred_tutor_persona: persona });
 }
 
 async function updateDailyGoalAction(formData: FormData) {

@@ -7,7 +7,7 @@ import {
 } from "@/lib/supabase/queries";
 import { firstName } from "@/lib/utils";
 import { bundleDescription, bundleTitle, courseSubtitle, courseTitle, tierCanAccess } from "@/lib/types";
-import type { Bundle, Course, PlanTier, Persona } from "@/lib/types";
+import type { Bundle, Course, PlanTier } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
@@ -58,8 +58,6 @@ export default async function HomePage() {
   const cgptForUser = courses.find((c) => c.slug === "chatgpt-basics");
   const todaysLessonCourse = inProgress[0] ?? cgptForUser ?? freeCourses[0] ?? courses[0];
 
-  const personaId = (profile?.preferred_tutor_persona as Persona["id"]) ?? "nova";
-
   return (
     <main className="lm-page">
       <div className="mx-auto" style={{ maxWidth: 640, padding: "24px 20px 40px" }}>
@@ -87,7 +85,6 @@ export default async function HomePage() {
               .
             </h1>
           </div>
-          <NovaAvatar personaId={personaId} />
         </header>
 
         <section
@@ -235,22 +232,6 @@ function StatTile({
       <div className="lm-stat__value lm-tabular">{value}</div>
       <div className="lm-stat__label">{label}</div>
     </div>
-  );
-}
-
-function NovaAvatar({ personaId }: { personaId: Persona["id"] }) {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
-    ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/tutor-avatars/${personaId}.png`
-    : null;
-  return (
-    <span className="lm-avatar lm-avatar--md" aria-label="Your tutor">
-      {url ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={url} alt="" />
-      ) : (
-        <span aria-hidden>{personaId.charAt(0).toUpperCase()}</span>
-      )}
-    </span>
   );
 }
 
