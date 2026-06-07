@@ -1,0 +1,53 @@
+# Loads every lesson YAML under supabase/content/ into Supabase whenever
+# main moves. Runs scripts/load-content.ts with the service role key in
+# env. Idempotent at the DB layer — re-running with no YAML changes is a
+# no-op. Re-running after a lesson's content changes upserts the lesson
+# row and replaces its lesson_turns.
+#
+# Triggers:
+#   - push to main that touches lesson YAML, the bundle/courses YAML, the
+#     loader script itself, or the schema. We don't run on every push
+#     (most main commits don't touch content), but the path filter is
+#     generous so we don't miss a load.
+#   - workflow_dispatch — run manually from the Actions tab to force a
+#     full re-load (e.g. after disabling a course or backfilling).
+#
+# Required repository secrets (Settings → Secrets and variables → Actions):
+#   - NEXT_PUBLIC_SUPABASE_URL
+#   - SUPABASE_SERVICE_ROLE_KEY
+
+name: Load lesson content to Supabase
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "supabase/content/**/*.yaml"
+      - "supabase/content/**/*.yml"
+      - "scripts/load-content.ts"
+      - "lib/content/schema.ts"
+      - ".github/workflows/load-content-to-supabase.yml"
+
+concurrency:
+  group: load-content-to-supabase
+  cancel-in-progress: false
+
+jobs:
+  load:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - run: npm ci --no-audit --no-fund
+
+      - name: Load content
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: npx tsx scripts/load-content.ts
