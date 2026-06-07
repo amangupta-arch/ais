@@ -1,0 +1,45 @@
+# Class 10 Geography — Chapter 1: Resources and Development (NCERT,
+# Contemporary India II). Second school-curriculum bundle on AIS, after
+# Class 10 Math (10-class10-math.yaml). Lives on the 'student' plan tier
+# (added in migration 0014); bundle row seeded in migration 0020.
+#
+# Loader: scripts/load-bundle-courses.ts — course/lesson slugs are derived
+# from titles via slugify(). Titles avoid colons/dashes so the slugs stay
+# clean (resources-and-resource-planning, land-as-a-resource,
+# soil-as-a-resource).
+#
+# board + medium below are synced into bundles.tags as 'board:<slug>' +
+# 'medium:<lang>' so /student filters by them. medium is [en, hinglish]
+# because this bundle ships Hinglish from day one.
+#
+# NOTE: Courses 2 and 3 are declared here so the catalogue knows the full
+# chapter shape, but only Course 1's lesson YAMLs are authored so far
+# (pilot). The loader creates lesson stubs for all three; unauthored
+# lessons simply have no turns until their YAML lands.
+
+bundles:
+  - bundle_slug: b-class-10-geography-ch01-resources-and-development
+    board: cbse
+    medium: [en, hinglish]
+    courses:
+      - title: "Resources and Resource Planning"
+        outcome: "Student can define what makes something a resource, classify any resource by origin, exhaustibility, ownership and development, and explain why planning and conservation matter"
+        lessons:
+          - "What Counts as a Resource"
+          - "Four Ways to Classify a Resource"
+          - "Sustainable Development and Conservation"
+          - "Resource Planning in India"
+
+      - title: "Land as a Resource"
+        outcome: "Student can describe India's relief features, read the land-use pattern, and explain the causes of land degradation and how to reverse them"
+        lessons:
+          - "Land and Relief Features"
+          - "How India Uses Its Land"
+          - "Land Degradation and Conservation"
+
+      - title: "Soil as a Resource"
+        outcome: "Student can explain how soil forms, identify India's major soil types and where they occur, and choose the right conservation method for a given terrain"
+        lessons:
+          - "How Soil Forms"
+          - "The Soils of India"
+          - "Soil Erosion and Conservation"
