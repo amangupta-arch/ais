@@ -1,0 +1,30 @@
+# Class 10 Geography — Chapter 3: Water Resources (NCERT, Contemporary
+# India II). Fourth school-curriculum bundle on AIS. 'student' tier;
+# bundle row seeded in migration 0022. medium [en, hinglish].
+# All 3 courses (9 lessons) authored in full, EN + Hinglish.
+
+bundles:
+  - bundle_slug: b-class-10-geography-ch03-water-resources
+    board: cbse
+    medium: [en, hinglish]
+    courses:
+      - title: "The Water Scarcity Puzzle"
+        outcome: "Student can explain why water is renewable yet scarce, name the causes of scarcity, and describe quality-based scarcity and the missions tackling it"
+        lessons:
+          - "Renewable, Yet Running Out"
+          - "Why a Wet Country Runs Dry"
+          - "When Water Isn't Safe to Drink"
+
+      - title: "Multi-Purpose River Projects"
+        outcome: "Student can explain what multi-purpose dams do, weigh their benefits against their costs, and discuss sharing river water fairly"
+        lessons:
+          - "Dams and Their Many Uses"
+          - "When Dams Do Harm"
+          - "Sharing Water Wisely"
+
+      - title: "Harvesting the Rain"
+        outcome: "Student can describe India's traditional and modern rainwater-harvesting methods and where they are used"
+        lessons:
+          - "Catching Water Before It's Lost"
+          - "The Tankas of the Thar"
+          - "Old Wisdom Working Today"
