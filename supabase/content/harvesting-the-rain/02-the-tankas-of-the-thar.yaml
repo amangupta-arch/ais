@@ -1,0 +1,174 @@
+title: "The Tankas of the Thar"
+subtitle: "A room-sized hole in the ground, full of rain — a desert family's most precious thing"
+estimated_minutes: 12
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      In the Thar desert, the most precious thing in a house often wasn't gold or land.
+
+      It was a room-sized hole in the ground — kept full of rain. They called it a **tanka**.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Across Rajasthan — in Bikaner, Phalodi, Barmer — almost *every* house traditionally had an underground tank, a **tanka**, for storing drinking water.
+
+      Some were enormous. One in Phalodi was **6.1 metres deep, 4.27 metres long, and 2.44 metres wide** — a small room, filled with water.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The tanka was part of a clever **rooftop rainwater harvesting** system.
+
+      Built inside the main house or the courtyard, it was connected to the **sloping roof** by a pipe. Rain hits the roof, runs down the pipe, and fills the tanka underground. Simple, and brilliant.
+
+  - type: svg_graphic
+    xp: 0
+    title: "ROOFTOP TO TANKA"
+    caption: "Rain on the sloping roof runs down a pipe into a room-sized underground tank."
+    svg: |
+      <svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <line x1="40" y1="20" x2="60" y2="20" stroke="#2563eb" stroke-width="3"/>
+        <line x1="90" y1="16" x2="110" y2="16" stroke="#2563eb" stroke-width="3"/>
+        <polygon points="40,60 180,30 180,60" fill="#fca5a5" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="110" y="52" text-anchor="middle" font-size="8" fill="#7f1d1d">sloping roof</text>
+        <rect x="40" y="60" width="140" height="48" fill="#fef3c7" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="110" y="88" text-anchor="middle" font-size="8" fill="#92400e">house</text>
+        <line x1="178" y1="34" x2="178" y2="120" stroke="#475569" stroke-width="4"/>
+        <text x="196" y="80" font-size="8" fill="#475569">pipe</text>
+        <rect x="150" y="120" width="120" height="48" rx="4" fill="#7dd3fc" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="210" y="142" text-anchor="middle" font-size="10" font-weight="bold" fill="#075985">TANKA</text>
+        <text x="210" y="156" text-anchor="middle" font-size="8" fill="#0c4a6e">underground store</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      One detail shows how careful they were.
+
+      The **first spell of rain** was *not* collected. It was allowed to wash all the dust off the roofs and pipes first. Only the *later* showers — now clean — were stored in the tanka.
+
+      A built-in filter, made of patience.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Why go to all this trouble? Because the tanka held that water until the **next rainfall** — a reliable source of drinking water through the brutal summers, when every other source dried up.
+
+      They even had a name for this rainwater: **palar pani** — *the purest form of natural water*.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      There was a bonus, too.
+
+      Many houses built an underground room *right beside* the tanka. The cool stored water kept that room cool — a natural air-conditioner against the desert heat. One structure, two gifts.
+
+  - type: html_animation
+    xp: 0
+    title: "THE TANKA FILLS"
+    caption: "Rain on the roof, down the pipe, into the tanka — a year's drinking water, stored."
+    html: |
+      <div style="background:#f0f9ff;padding:18px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoTankaRain { 0%{transform:translateY(-20px);opacity:0} 25%{opacity:1} 70%{transform:translateY(70px);opacity:1} 80%,100%{opacity:0} }
+          @keyframes geoTankaFill { 0%,30%{height:3px} 80%,100%{height:34px} }
+          .geo-tr{animation:geoTankaRain 3s linear infinite} .geo-tr2{animation:geoTankaRain 3s linear infinite;animation-delay:1.2s}
+          .geo-tf{animation:geoTankaFill 3s ease-in infinite}
+        </style>
+        <svg viewBox="0 0 240 130" style="max-width:240px;width:100%" font-family="sans-serif">
+          <polygon points="30,40 130,20 130,40" fill="#fca5a5" stroke="#0f172a" stroke-width="1.5"/>
+          <line class="geo-tr" x1="70" y1="6" x2="70" y2="18" stroke="#2563eb" stroke-width="3"/>
+          <line class="geo-tr2" x1="100" y1="6" x2="100" y2="18" stroke="#2563eb" stroke-width="3"/>
+          <line x1="128" y1="24" x2="128" y2="80" stroke="#475569" stroke-width="4"/>
+          <rect x="100" y="80" width="90" height="40" rx="4" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+          <rect class="geo-tf" x="103" y="86" width="84" height="34" fill="#38bdf8"/>
+          <text x="145" y="128" text-anchor="middle" font-size="8" fill="#0369a1">tanka filling underground</text>
+        </svg>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Sadly, in western Rajasthan this tradition is fading.
+
+      The perennial **Indira Gandhi Canal** now brings plenty of water, so fewer people bother to maintain their tankas. Though some still do — because they prefer the taste of *palar pani* to the taste of tap water.
+
+  - type: mcq
+    xp: 10
+    question: "Why was the first spell of rain deliberately NOT collected in the tanka?"
+    options:
+      - id: a
+        text: "Because the first rain is poisonous."
+        is_correct: false
+        rationale: "It isn't poisonous — it's just dirty. It was used to rinse, not because it's toxic."
+      - id: b
+        text: "To let it wash the dust off the roofs and pipes first, so only clean water is stored."
+        is_correct: true
+        rationale: "Exactly — the first rain cleans the roof and pipe; the later, cleaner showers are then stored."
+      - id: c
+        text: "Because the tanka is always already full."
+        is_correct: false
+        rationale: "The tanka empties over the dry months — the whole point of harvesting is to refill it."
+      - id: d
+        text: "Because the first rain evaporates instantly."
+        is_correct: false
+        rationale: "It doesn't evaporate instantly — it's diverted on purpose to clean the system."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Match each term to what it means."
+    left:
+      - { id: l1, label: "Tanka" }
+      - { id: l2, label: "Palar pani" }
+      - { id: l3, label: "The first spell of rain" }
+      - { id: l4, label: "Indira Gandhi Canal" }
+    right:
+      - { id: r1, label: "An underground tank for storing drinking water" }
+      - { id: r2, label: "Rainwater — the purest natural water" }
+      - { id: r3, label: "Washes the roof; not stored" }
+      - { id: r4, label: "Why rooftop harvesting is now declining" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Sketch a simple rooftop-to-tank system for *your* home: where the rain lands, where the pipe goes, where the tank sits.
+
+      On paper, note one problem you'd have to solve (dust? overflow? space?). Type your biggest design challenge below.
+    placeholder: "To harvest rain at my home, the hardest part would be..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the desert system."
+    template: |
+      Rooftop rain runs down a pipe into an underground tank called a {{blank-1}}; this rainwater, the purest natural water, is called {{blank-2}} pani.
+    answers:
+      - id: blank-1
+        accepted: ["tanka", "Tanka", "tank"]
+      - id: blank-2
+        accepted: ["palar", "Palar"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      When the canal arrived, people stopped maintaining a system that had served them for centuries. Is it always progress to replace the old, self-reliant way with a piped supply from far away? What's gained — and what's lost?
+
+      No right answer.
+    placeholder: "Trading the tanka for the canal, we gained ___ but lost..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can explain how the Thar's rooftop-and-tanka system worked."
+    summary: |
+      Across Rajasthan, sloping roofs fed rain down pipes into room-sized underground tankas — storing palar pani, the purest water, through the dry summers, even cooling an adjoining room. The first rain was sacrificed to clean the system. Only the canal has made people forget it.
+
+      But this old idea isn't dead. Across India today, villages and even whole states are reviving rainwater harvesting — and proving it still works, beautifully. That's the final lesson, and the close of this chapter.

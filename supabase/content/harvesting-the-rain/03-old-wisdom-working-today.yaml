@@ -1,0 +1,169 @@
+title: "Old Wisdom Working Today"
+subtitle: "A village 'rich in rainwater', a state that made harvesting the law"
+estimated_minutes: 12
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      A village so good at catching rain that it's officially called *"rich in rainwater."* A state that made harvesting the rain the **law**. Bamboo pipes still watering crops after 200 years.
+
+      The old wisdom isn't a museum piece. It's back — and working.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Across India today, traditional rainwater harvesting is being revived in homes, villages, and whole states — proving it can still meet real needs.
+
+      Let's meet four places where it's thriving.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      First, **Gendathur**, a remote village in Mysuru, Karnataka.
+
+      Nearly **200 households** installed rooftop rainwater harvesting. It worked so well that the village earned a rare title: it became known as *rich in rainwater*.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The numbers explain why.
+
+      Gendathur gets about **1,000 mm** of rain a year. With good rooftops and around ten fillings a year, each house can collect roughly **50,000 litres** — just from the rain landing on its own roof.
+
+  - type: svg_graphic
+    xp: 0
+    title: "GENDATHUR'S RAINWATER MATH"
+    caption: "1,000 mm of rain a year, caught from one rooftop, becomes about 50,000 litres per house."
+    svg: |
+      <svg viewBox="0 0 360 160" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <line x1="40" y1="16" x2="56" y2="16" stroke="#2563eb" stroke-width="3"/>
+        <line x1="80" y1="12" x2="96" y2="12" stroke="#2563eb" stroke-width="3"/>
+        <line x1="120" y1="16" x2="136" y2="16" stroke="#2563eb" stroke-width="3"/>
+        <text x="88" y="40" text-anchor="middle" font-size="11" font-weight="bold" fill="#0369a1">1,000 mm rain / year</text>
+        <polygon points="40,76 150,52 150,76" fill="#fca5a5" stroke="#0f172a" stroke-width="1.5"/>
+        <rect x="40" y="76" width="110" height="36" fill="#fef3c7" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="95" y="98" text-anchor="middle" font-size="8" fill="#92400e">one rooftop</text>
+        <text x="200" y="90" font-size="18" fill="#475569">→</text>
+        <rect x="230" y="58" width="110" height="70" rx="6" fill="#7dd3fc" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="285" y="92" text-anchor="middle" font-size="13" font-weight="bold" fill="#075985">~50,000 L</text>
+        <text x="285" y="108" text-anchor="middle" font-size="8" fill="#0c4a6e">per house, per year</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Now an irony you won't forget. In **Shillong, Meghalaya**, rooftop harvesting is the most common practice — even though nearby **Cherrapunji** and **Mawsynram** get the **highest rainfall in the world**.
+
+      Yet Shillong itself faces an acute water shortage. So nearly every household harvests rain, drawing **15–25%** of its water from the rooftop. The wettest corner of Earth, still catching every drop.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Some places made it official. **Tamil Nadu** became the **first Indian state to make rooftop rainwater harvesting compulsory** for *every* house — with legal punishment for those who don't comply.
+
+      Harvesting the rain, written into law.
+
+  - type: html_animation
+    xp: 0
+    title: "THE REVIVAL"
+    caption: "From a Karnataka village to a Meghalaya capital to a state law — old wisdom, spreading again."
+    html: |
+      <div style="background:#f0f9ff;padding:18px 14px;border-radius:12px;">
+        <style>
+          @keyframes geoRev1 { 0%,5%{opacity:0;transform:translateY(8px)} 24%,100%{opacity:1;transform:none} }
+          @keyframes geoRev2 { 0%,30%{opacity:0;transform:translateY(8px)} 49%,100%{opacity:1;transform:none} }
+          @keyframes geoRev3 { 0%,55%{opacity:0;transform:translateY(8px)} 74%,100%{opacity:1;transform:none} }
+          .geo-rv{display:block;margin:5px 0;font:bold 11px sans-serif;color:#075985;background:#bae6fd;border-radius:6px;padding:6px 10px}
+          .grv1{animation:geoRev1 5s infinite} .grv2{animation:geoRev2 5s infinite} .grv3{animation:geoRev3 5s infinite}
+        </style>
+        <div class="geo-rv grv1">Gendathur, Karnataka — "rich in rainwater"</div>
+        <div class="geo-rv grv2">Shillong, Meghalaya — harvest despite the rain</div>
+        <div class="geo-rv grv3">Tamil Nadu — harvesting made compulsory</div>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      And one beautiful old technique still runs in **Meghalaya**: **bamboo drip irrigation**, a **200-year-old** system.
+
+      Bamboo pipes tap stream and spring water. About **18–20 litres** enters the system, travels *hundreds of metres*, and arrives as just **20–80 drops per minute** — delivered right to the roots of each plant. Ancient engineering, with the efficiency of modern drip irrigation.
+
+  - type: mcq
+    xp: 10
+    question: "Which was the first Indian state to make rooftop rainwater harvesting compulsory for all houses?"
+    options:
+      - id: a
+        text: "Rajasthan"
+        is_correct: false
+        rationale: "Rajasthan has the deepest tradition of tankas, but it wasn't the first to make harvesting compulsory by law."
+      - id: b
+        text: "Tamil Nadu"
+        is_correct: true
+        rationale: "Correct — Tamil Nadu was the first state to make rooftop rainwater harvesting compulsory, with penalties for defaulters."
+      - id: c
+        text: "Meghalaya"
+        is_correct: false
+        rationale: "Meghalaya has Shillong's rooftop harvesting and bamboo drip irrigation, but didn't make harvesting compulsory statewide first."
+      - id: d
+        text: "Karnataka"
+        is_correct: false
+        rationale: "Karnataka has Gendathur, the 'rich in rainwater' village — but Tamil Nadu was first to legislate harvesting."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Match each place or system to its claim to fame."
+    left:
+      - { id: l1, label: "Gendathur (Karnataka)" }
+      - { id: l2, label: "Shillong (Meghalaya)" }
+      - { id: l3, label: "Tamil Nadu" }
+      - { id: l4, label: "Bamboo drip irrigation" }
+    right:
+      - { id: r1, label: "Village known as 'rich in rainwater'" }
+      - { id: r2, label: "Harvests rain despite the world's highest rainfall nearby" }
+      - { id: r3, label: "First state to make harvesting compulsory" }
+      - { id: r4, label: "200-year-old bamboo-pipe system in Meghalaya" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Find one more rainwater-harvesting system that exists in or around your locality — or design a simple one for your school or home.
+
+      On paper, describe how the water gets caught, stored, and used. Type your one-line idea below.
+    placeholder: "A harvesting system for my school/home would..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the modern revival."
+    template: |
+      {{blank-1}} was the first Indian state to make rooftop rainwater harvesting compulsory; in Meghalaya, {{blank-2}} pipes carry spring water in a 200-year-old drip system.
+    answers:
+      - id: blank-1
+        accepted: ["Tamil Nadu", "tamil nadu", "TamilNadu"]
+      - id: blank-2
+        accepted: ["bamboo", "Bamboo"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Across this whole chapter — scarcity, dams, and harvesting — what's the one idea about water you'll actually carry with you? Name it, and why it stuck.
+
+      No right answer. This is your takeaway.
+    placeholder: "The idea I'm keeping is..."
+
+  - type: checkpoint
+    xp: 0
+    title: "The whole chapter is yours: scarcity, dams, and harvesting the rain."
+    summary: |
+      From Gendathur's rain-rich rooftops to Shillong's necessity, from Tamil Nadu's law to Meghalaya's 200-year-old bamboo pipes — India is proving that old water wisdom still works. And that closes the chapter.
+
+      You learned that water is renewable yet scarce — drained by demand, not just drought, and sometimes ruined by pollution; you can weigh the promise of multi-purpose dams against their heavy costs and the disputes they spark; and you've seen the oldest, smallest, smartest answer of all — catching the rain where it falls.
+
+      Next time it rains, you'll see it differently: not as weather, but as a resource running past, asking to be caught.

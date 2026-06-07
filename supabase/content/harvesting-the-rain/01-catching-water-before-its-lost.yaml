@@ -1,0 +1,169 @@
+title: "Catching Water Before It's Lost"
+subtitle: "India's thousand-year-old answer to scarcity: catch the rain where it falls"
+estimated_minutes: 11
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      What if, instead of building a giant dam to drag water across a whole state, you simply *caught the rain right where it fell*?
+
+      India has been doing exactly that — brilliantly — for thousands of years.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ancient India had an *extraordinary* tradition of **water harvesting**.
+
+      People knew their local **rainfall patterns** and **soil types** in deep detail, and built clever techniques to catch rainwater, groundwater, river water — even flood water — each one tuned to the local ecology.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      In the **hills and mountains**, people dug diversion channels — the **guls** and **kuls** of the Western Himalayas — to carry stream water down to their fields for farming.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      In the **flood plains of Bengal**, they built **inundation channels** to let the floods themselves irrigate their fields.
+
+      And across many regions, **rooftop rainwater harvesting** caught and stored drinking water — especially in Rajasthan.
+
+  - type: svg_graphic
+    xp: 0
+    title: "DIFFERENT LANDS, DIFFERENT METHODS"
+    caption: "Every region invented a water-harvesting method to fit its own rainfall and soil."
+    svg: |
+      <svg viewBox="0 0 360 176" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="10" y="8" width="166" height="76" rx="6" fill="#eff6ff" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="93" y="28" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3a8a">Western Himalayas</text>
+        <text x="93" y="50" text-anchor="middle" font-size="9" fill="#475569">guls and kuls —</text>
+        <text x="93" y="64" text-anchor="middle" font-size="9" fill="#475569">diversion channels</text>
+        <rect x="184" y="8" width="166" height="76" rx="6" fill="#ecfeff" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="267" y="28" text-anchor="middle" font-size="10" font-weight="bold" fill="#0e7490">Bengal flood plains</text>
+        <text x="267" y="50" text-anchor="middle" font-size="9" fill="#475569">inundation channels —</text>
+        <text x="267" y="64" text-anchor="middle" font-size="9" fill="#475569">floods irrigate fields</text>
+        <rect x="10" y="92" width="166" height="76" rx="6" fill="#fffbeb" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="93" y="112" text-anchor="middle" font-size="10" font-weight="bold" fill="#92400e">Jaisalmer (arid)</text>
+        <text x="93" y="134" text-anchor="middle" font-size="9" fill="#475569">khadins — fields turned</text>
+        <text x="93" y="148" text-anchor="middle" font-size="9" fill="#475569">into rain-fed stores</text>
+        <rect x="184" y="92" width="166" height="76" rx="6" fill="#fff7ed" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="267" y="112" text-anchor="middle" font-size="10" font-weight="bold" fill="#9a3412">Rajasthan</text>
+        <text x="267" y="134" text-anchor="middle" font-size="9" fill="#475569">johads + rooftop</text>
+        <text x="267" y="148" text-anchor="middle" font-size="9" fill="#475569">harvesting</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      In the **arid and semi-arid** regions, whole agricultural fields were turned into rain-fed storage — letting water *stand* and soak into the soil to moisten it.
+
+      The **khadins** of Jaisalmer and the **johads** in other parts of Rajasthan do exactly this: trap the rare rain, and make the land hold it.
+
+  - type: html_animation
+    xp: 0
+    title: "CATCH IT WHERE IT FALLS"
+    caption: "Instead of letting the rain run away, a small local structure catches and keeps it."
+    html: |
+      <div style="background:#f0f9ff;padding:18px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoRain { 0%{transform:translateY(-30px);opacity:0} 20%{opacity:1} 70%{transform:translateY(40px);opacity:1} 75%,100%{opacity:0} }
+          @keyframes geoStore { 0%,40%{height:2px} 75%,100%{height:26px} }
+          .geo-rd { animation: geoRain 3s linear infinite; }
+          .geo-rd2 { animation: geoRain 3s linear infinite; animation-delay:1s; }
+          .geo-store { animation: geoStore 3s ease-in infinite; }
+        </style>
+        <svg viewBox="0 0 240 120" style="max-width:240px;width:100%" font-family="sans-serif">
+          <line class="geo-rd" x1="100" y1="20" x2="100" y2="34" stroke="#2563eb" stroke-width="3"/>
+          <line class="geo-rd2" x1="140" y1="20" x2="140" y2="34" stroke="#2563eb" stroke-width="3"/>
+          <path d="M70,92 Q120,70 170,92 L170,100 L70,100 Z" fill="none" stroke="#92400e" stroke-width="2"/>
+          <rect class="geo-store" x="72" y="72" width="96" height="26" fill="#38bdf8"/>
+          <text x="120" y="114" text-anchor="middle" font-size="8" fill="#0369a1">the rain is caught and held</text>
+        </svg>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Notice the whole philosophy here.
+
+      No giant dam. No fight with a neighbouring state. Just *local* knowledge, catching *local* rain, for *local* needs.
+
+      Small, smart, and very, very old.
+
+  - type: mcq
+    xp: 10
+    question: "What are the 'guls' and 'kuls' of the Western Himalayas?"
+    options:
+      - id: a
+        text: "Large multi-purpose dams for electricity."
+        is_correct: false
+        rationale: "They're small traditional channels, not big dams — the opposite scale."
+      - id: b
+        text: "Diversion channels that carry stream water to fields for farming."
+        is_correct: true
+        rationale: "Right — guls and kuls are hill diversion channels, a local water-harvesting method."
+      - id: c
+        text: "Underground tanks for storing drinking water."
+        is_correct: false
+        rationale: "That describes Rajasthan's tankas, not the Himalayan guls and kuls."
+      - id: d
+        text: "Rooftop pipes for collecting rain."
+        is_correct: false
+        rationale: "That's rooftop harvesting. Guls and kuls are diversion channels for stream water."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Match each harvesting method to its region."
+    left:
+      - { id: l1, label: "Guls and kuls" }
+      - { id: l2, label: "Inundation channels" }
+      - { id: l3, label: "Khadins" }
+      - { id: l4, label: "Johads" }
+    right:
+      - { id: r1, label: "Western Himalayas" }
+      - { id: r2, label: "Flood plains of Bengal" }
+      - { id: r3, label: "Jaisalmer" }
+      - { id: r4, label: "Other parts of Rajasthan" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Look around your own locality. Is there any way rainwater is caught and stored — a tank, a pond, a rooftop collection pipe, a check dam, a stepwell?
+
+      On paper, note what you find (or what *could* be built). Type one rainwater-harvesting structure near you below.
+    placeholder: "Near me, rainwater is (or could be) caught by..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in two traditional methods."
+    template: |
+      In the Western Himalayas, diversion channels called {{blank-1}} or kuls carry water to fields; in Jaisalmer, fields are turned into rain-fed stores called {{blank-2}}.
+    answers:
+      - id: blank-1
+        accepted: ["guls", "gul", "Guls"]
+      - id: blank-2
+        accepted: ["khadins", "khadin", "Khadins"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      For centuries, communities solved their own water problems with local knowledge — no engineers, no big budgets. Why do you think so much of that wisdom was forgotten? Should we bring it back?
+
+      No right answer.
+    placeholder: "That local wisdom faded because..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can name India's traditional rain-catching methods by region."
+    summary: |
+      Long before big dams, India caught its rain locally: guls and kuls in the Himalayas, inundation channels in Bengal, khadins in Jaisalmer, johads in Rajasthan — each tuned to its own land and rainfall.
+
+      One of these methods became so refined it could hold a year's drinking water in a single underground room. In the deserts of the Thar, the rooftop and the *tanka* turned rare rain into a lifeline. That's the next lesson.
