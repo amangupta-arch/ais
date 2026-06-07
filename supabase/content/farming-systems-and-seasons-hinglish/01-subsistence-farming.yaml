@@ -1,0 +1,210 @@
+title: "Subsistence Farming"
+subtitle: "Woh do tareeke jinse ek family farming karti hai jab maqsad sirf khaana ho"
+estimated_minutes: 11
+xp_reward: 90
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ek sawaal jo geography class mein koi nahi poochta.
+
+      Socho ek farmer khaana ugaaye — *na* bechne ke liye, na lambe time tak store karne ke liye — bas itna ki is saal family ka pet bhar jaaye. Aur phir, jab soil thak jaaye, woh us field ko chhod kar kahin aur naya field shuru kar de?
+
+      Sunne mein laparwah lagta hai. Par yeh actually insaan ke sabse purane aur sabse smart farming tareekon mein se ek hai. Chalo dekhte hain kyun.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Is poore chapter mein hum dekhenge ki Indian farming teen "gears" mein chalti hai — sirf *khaane* ke liye farming, *bechne* ke liye farming, aur *factory* ki tarah farming.
+
+      Aaj gear one: **subsistence farming** — khaana mainly apni family ka pet bharne ke liye ugaana, market ke liye kuch khaas bachaaye bina.
+
+      Aur twist yeh hai: apni hi land pe survive karne ke *do* bilkul alag tareeke hain. Ek kehta hai **move karo**. Doosra kehta hai **squeeze karo**.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Pehle "move" waala type: **primitive subsistence farming**. Yeh aaj bhi India ke kuch chhote pockets mein hoti hai.
+
+      Imagine karo: land ke chhote patches, *simple tools* — ek hoe, ek **dao** (local chopper), digging sticks — aur labour family ya community se. Na tractor, na chemical fertiliser.
+
+      Isiliye yeh poori tarah **nature** pe depend karti hai: paani ke liye monsoon, soil ki apni natural fertility, aur jo bhi local climate suit kare. Productivity *low* hoti hai — par yeh farmer ki susti nahi hai. Yeh land ke saath ek deal hai.
+
+  - type: svg_graphic
+    xp: 0
+    title: "KAATO, JALAO, AAGE BADHO"
+    caption: "Ek patch clear karo, jalao taaki ash mile, kuch saal crop lo, phir move karo — aur purana patch dheere-dheere theek ho jaata hai."
+    svg: |
+      <svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="20" y="20" width="140" height="46" rx="8" fill="#dcfce7" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="90" y="40" text-anchor="middle" font-size="12" font-weight="bold" fill="#166534">1. CLEAR</text>
+        <text x="90" y="57" text-anchor="middle" font-size="10" fill="#374151">cut a fresh patch</text>
+
+        <rect x="200" y="20" width="140" height="46" rx="8" fill="#fee2e2" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="270" y="40" text-anchor="middle" font-size="12" font-weight="bold" fill="#991b1b">2. BURN</text>
+        <text x="270" y="57" text-anchor="middle" font-size="10" fill="#374151">ash feeds the soil</text>
+
+        <rect x="200" y="150" width="140" height="46" rx="8" fill="#fef3c7" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="270" y="170" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400e">3. GROW</text>
+        <text x="270" y="187" text-anchor="middle" font-size="10" fill="#374151">crops for a few years</text>
+
+        <rect x="20" y="150" width="140" height="46" rx="8" fill="#e0e7ff" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="90" y="170" text-anchor="middle" font-size="12" font-weight="bold" fill="#3730a3">4. MOVE ON</text>
+        <text x="90" y="187" text-anchor="middle" font-size="10" fill="#374151">soil tired, shift away</text>
+
+        <line x1="160" y1="43" x2="196" y2="43" stroke="#64748b" stroke-width="1.5" marker-end="url(#ar)"/>
+        <line x1="270" y1="66" x2="270" y2="146" stroke="#64748b" stroke-width="1.5" marker-end="url(#ar)"/>
+        <line x1="200" y1="173" x2="164" y2="173" stroke="#64748b" stroke-width="1.5" marker-end="url(#ar)"/>
+        <line x1="90" y1="150" x2="90" y2="70" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arg)"/>
+        <text x="104" y="112" font-size="9" fill="#166534">nature heals it</text>
+
+        <defs>
+          <marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker>
+          <marker id="arg" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22c55e"/></marker>
+        </defs>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Us loop ka ek famous naam hai: **'slash and burn' agriculture**. Farmers ek patch clear karte hain, family ke liye cereals aur food crops ugaate hain, aur jab soil ki fertility gir jaati hai, toh woh *shift* kar ke naya patch clear karte hain. Chhodi hui land ko **nature wapas zinda** kar deti hai — natural processes se, kuch saalon mein.
+
+      Toh yeh "chhod kar chale jaana" laparwahi nahi hai. Yeh *bahut bade scale pe crop rotation* hai — land ko chemicals dene ke bajaye use rest dena.
+
+      Ek catch hai, aur wahi sab kuch hai: yeh tabhi chalta hai jab land *zyaada* ho aur log *kam*. Land pe bheed badhao, aur shift karne ke liye koi fresh jagah hi nahi bachti.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Yahi idea ek dozen local naamon se jaana jaata hai. India mein yeh North-east mein **jhumming** hai, Madhya Pradesh mein **Bewar** ya **Dahiya**, Andhra Pradesh mein **Podu** ya **Penda**, Western Ghats mein **Kumari**, Himalayas mein **Khil**, Jharkhand mein **Kuruwa**. Aur duniya mein: Mexico mein *Milpa*, Brazil mein *Roca*, Indonesia mein *Ladang*.
+
+      Isse ek chehra do. Assam mein Diphu ke paas ek village mein, Rinjha naam ki ek ladki apni family ko ek patch slash aur burn karte, bamboo canal se spring ka paani laate, aur jo woh khaayenge wahi ugaate dekhti hai. Jo woh abhi nahi dekhti: soil thak rahi hai, aur next season family phir se naye patch ki talaash mein hogi.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ab poori picture palto. Kya hota hai jahan land *kam* ho aur log *zyaada*?
+
+      Tum move nahi kar sakte — jaane ke liye jagah hi nahi. Toh tum ulta karte ho: tum **wahin rehte ho aur squeeze karte ho**. Yeh hai **intensive subsistence farming**, jo wahan hoti hai jahan land pe high population pressure hota hai.
+
+      Yeh *labour-intensive* hai: chhote plot pe bahut saare haath, high doses of biochemical inputs (fertilisers, better seeds) aur **irrigation**, taaki har square metre se zyaada output nikle. Goal wahi — family ka pet bharna — par method bilkul ulta.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Aur isme ek trap built-in hai. **Right of inheritance** ka matlab land bachchon mein bat-ti jaati hai, generation dar generation. Plots itne chhote ho jaate hain ki woh *uneconomical* ban jaate hain — itne chhote ki kuch khaas kamaai nahi hoti.
+
+      Toh farmer unhe farm kyun karta rehta hai? Kyunki aksar *koi alternative livelihood hi nahi hota*. Farmer us simat-te patch se phir bhi maximum output squeeze karta hai — jo land pe **bahut zyaada pressure** daalta hai.
+
+      Ek *subtle baat* pakdo: dono subsistence farming hain, dono khaane ke liye ugaate hain. Par primitive farming **move kar ke** survive karti hai; intensive farming **squeeze kar ke**.
+
+  - type: svg_graphic
+    xp: 0
+    title: "MOVE YA SQUEEZE"
+    caption: "Survive karne ke do tareeke — yeh decide hota hai ki kitni land hai, aur kitne pet."
+    svg: |
+      <svg viewBox="0 0 360 210" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="14" y="14" width="160" height="182" rx="10" fill="#dcfce7" stroke="#0f172a" stroke-width="1.5"/>
+        <rect x="186" y="14" width="160" height="182" rx="10" fill="#e0e7ff" stroke="#0f172a" stroke-width="1.5"/>
+
+        <text x="94" y="40" text-anchor="middle" font-size="13" font-weight="bold" fill="#166534">PRIMITIVE</text>
+        <text x="94" y="56" text-anchor="middle" font-size="10" fill="#374151">survives by MOVING</text>
+        <text x="266" y="40" text-anchor="middle" font-size="13" font-weight="bold" fill="#3730a3">INTENSIVE</text>
+        <text x="266" y="56" text-anchor="middle" font-size="10" fill="#374151">survives by SQUEEZING</text>
+
+        <text x="30" y="86" font-size="11" fill="#0f172a">• small patch, hand tools</text>
+        <text x="30" y="108" font-size="11" fill="#0f172a">• monsoon + natural soil</text>
+        <text x="30" y="130" font-size="11" fill="#0f172a">• shifts when soil tires</text>
+        <text x="30" y="152" font-size="11" fill="#0f172a">• land plenty, people few</text>
+        <text x="30" y="174" font-size="11" fill="#166534">• low input, low output</text>
+
+        <text x="202" y="86" font-size="11" fill="#0f172a">• tiny plot, many hands</text>
+        <text x="202" y="108" font-size="11" fill="#0f172a">• irrigation + biochemicals</text>
+        <text x="202" y="130" font-size="11" fill="#0f172a">• stays, works it harder</text>
+        <text x="202" y="152" font-size="11" fill="#0f172a">• land scarce, people many</text>
+        <text x="202" y="174" font-size="11" fill="#3730a3">• high input, high pressure</text>
+      </svg>
+
+  - type: mcq
+    xp: 15
+    question: "Primitive aur intensive — dono subsistence farmers khaana mainly apni family ke liye ugaate hain. Toh inme key difference kya hai?"
+    options:
+      - id: a
+        text: "Primitive farming HYV seeds aur tractors use karti hai; intensive farming sirf hand tools."
+        is_correct: false
+        rationale: "Ulta hai. Primitive farming simple hand tools use karti hai; intensive farming irrigation aur biochemical inputs pe chalti hai."
+      - id: b
+        text: "Jab soil thak jaati hai, primitive farmers fresh patch pe shift kar jaate hain; intensive farmers wahin rehte hain aur usi land ko labour, irrigation aur inputs se zyaada squeeze karte hain."
+        is_correct: true
+        rationale: "Bilkul sahi. Goal wahi — family ka pet — par primitive *move* kar ke survive karti hai, intensive *squeeze* kar ke."
+      - id: c
+        text: "Primitive farming irrigation pe depend karti hai; intensive farming sirf monsoon pe."
+        is_correct: false
+        rationale: "Reversed. Primitive farming monsoon aur natural fertility pe depend karti hai; intensive farming output badhane ke liye irrigation use karti hai."
+      - id: d
+        text: "Intensive farming market ke liye ugaati hai; primitive family ke liye."
+        is_correct: false
+        rationale: "Dono *subsistence* hain — family ka pet bharne ke liye. Market ke liye farming commercial farming hai, jo agli lesson hai."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Primitive subsistence farming ke kai local naam hain. Har naam ko match karo ki woh kahan use hota hai."
+    left:
+      - { id: l1, label: "Jhumming" }
+      - { id: l2, label: "Bewar" }
+      - { id: l3, label: "Podu" }
+      - { id: l4, label: "Kuruwa" }
+    right:
+      - { id: r1, label: "North-east India" }
+      - { id: r2, label: "Madhya Pradesh" }
+      - { id: r3, label: "Andhra Pradesh" }
+      - { id: r4, label: "Jharkhand" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      Kisi bhi farm ke baare mein socho jo tumne dekha ya suna ho — apne ghar ke paas, village mein, kisi trip pe, ya kisi film mein bhi.
+
+      Paper pe decide karo: kya woh **subsistence** ke zyaada kareeb hai (family jo ugaati hai wahi mostly khaati hai) ya nahi? Agar woh subsistence *hai*, toh woh **primitive** type hai (chhota patch, simple tools, land shift karti hai) ya **intensive** type (chhota plot, bahut saara irrigation aur inputs, kabhi move nahi karti)?
+
+      Apne choice ke liye ek line evidence likho. Phir neeche apna verdict type karo.
+    placeholder: "Main jis farm ke baare mein soch raha hoon woh ... hai kyunki ..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Do key ideas ko lock karo."
+    template: |
+      Primitive subsistence farming ko {{blank-1}} and burn agriculture bhi kehte hain. Jab land right of {{blank-2}} se aage pass hoti hai, toh holdings har generation mein chhoti aur chhoti hoti jaati hain.
+    answers:
+      - id: blank-1
+        accepted: ["slash", "Slash"]
+      - id: blank-2
+        accepted: ["inheritance", "Inheritance"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Primitive farming land ko move kar ke rest deti hai; intensive farming usi land ko zyaada aur zyaada push karti hai.
+
+      Tumhe kaunsi zyaada *sustainable* lagti hai — aur kaunsi India ki aaj ki asli farming ke zyaada kareeb hai? Koi sahi jawaab nahi. Bas soch ke dekho.
+    placeholder: "Mujhe lagta hai..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Ab tum survival farming ke dono chehre pehchaan sakte ho."
+    summary: |
+      Subsistence farming matlab khaana apni family ka pet bharne ke liye ugaana. Iske do
+      ulte styles hain: *primitive* (chhote patches, simple tools, slash-and-burn, phir
+      shift — sirf wahan possible jahan land zyaada ho) aur *intensive* (high population
+      pressure, chhote inherited plots ko irrigation aur biochemical inputs se squeeze karna).
+
+      Par India jo actually ugaata hai uska zyaadatar ghar pe khaane ke liye nahi hota — woh
+      *bechne* ke liye hota hai. Toh kya badalta hai jab farmer crop family ke bajaye market
+      ke liye lagaata hai, aur "plantation" asal mein hota kya hai? Yahi agli lesson hai.
