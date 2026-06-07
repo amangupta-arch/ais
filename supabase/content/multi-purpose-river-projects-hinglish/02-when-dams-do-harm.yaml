@@ -1,0 +1,171 @@
+title: "Jab Dam Nuksaan Karte Hain"
+subtitle: "Jo dhaanche baadh rokne ko bane, unhone kabhi-kabhi baadh laayi"
+estimated_minutes: 12
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Yeh raha is lesson ka bedardi vyang: baadh *rokne* ko bane dams ne kabhi-kabhi baadh *laayi* hai.
+
+      Temple apne pujaariyon pe palat gaya. Dekhte hain ki itna useful dhaancha itna nuksaan kaise kar sakta hai.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Yeh ek baat se shuru hota hai: ek nadi ko damming karke, tum uska **natural flow** badal dete ho. Aur yeh ek badlaav ek poori shrinkhala chhed deta hai.
+
+      Shuru karo nadi jo le jaati hai us se — sediment.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ek free-behti nadi **sediment** (silt) neeche le jaati hai. Use dam karo, aur woh silt reservoir ke neeche baith jaati hai — **excessive sedimentation** — jabki dam ke *neeche* ki nadi sediment-starved behti hai.
+
+      Neeche nateeja: **rockier streambeds** aur nadi ke aquatic jeevan ke liye poorer habitats.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Dams nadiyon ko **fragment** bhi karte hain — woh deewarein hain. Machhli aur doosre aquatic fauna inke aar-paar migrate nahi kar sakte, jo tab jaanleva hai jab unhe **spawn** karne upstream jaana ho.
+
+      Aur reservoir floodplain ko doobota hai, **submerging** vegetation aur soil jo phir dheere-dheere paani ke neeche sad jaate hain.
+
+  - type: svg_graphic
+    xp: 0
+    title: "FREE NADI vs DAMMED NADI"
+    caption: "Ek free nadi silt failaati aur machhli ko migrate karne deti hai; ek dam silt ko phasaata aur machhli ko rokta hai."
+    svg: |
+      <svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <text x="10" y="22" font-size="9" font-weight="bold" fill="#166534">Free river</text>
+        <rect x="10" y="28" width="340" height="22" fill="#7dd3fc"/>
+        <circle cx="60" cy="39" r="3" fill="#a16207"/><circle cx="120" cy="39" r="3" fill="#a16207"/><circle cx="200" cy="39" r="3" fill="#a16207"/><circle cx="290" cy="39" r="3" fill="#a16207"/>
+        <text x="300" y="64" text-anchor="middle" font-size="7" fill="#166534">silt + fish move freely →</text>
+        <text x="10" y="100" font-size="9" font-weight="bold" fill="#991b1b">Dammed river</text>
+        <rect x="10" y="106" width="150" height="22" fill="#38bdf8"/>
+        <circle cx="40" cy="117" r="3" fill="#a16207"/><circle cx="80" cy="117" r="3" fill="#a16207"/><circle cx="130" cy="117" r="3" fill="#a16207"/>
+        <polygon points="160,98 178,98 172,150 160,150" fill="#94a3b8" stroke="#0f172a" stroke-width="1.5"/>
+        <rect x="178" y="116" width="172" height="12" fill="#7dd3fc"/>
+        <text x="85" y="144" text-anchor="middle" font-size="7" fill="#991b1b">silt trapped, fish blocked</text>
+        <text x="264" y="144" text-anchor="middle" font-size="7" fill="#991b1b">rocky, starved streambed</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Aur bigadta hai.
+
+      Reservoirs **earthquakes induce** kar sakte hain, **water-borne diseases** aur pests paida kar sakte hain, aur over-use se pollution. Aur bedardi se, baadh *control* karne ko bane dams ne kabhi-kabhi *baadh laayi* hai — sedimentation reservoir bhar deti hai, aur bhaari baarish mein bade dams aksar baadh ko bilkul rok hi nahi paate.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ek farming ka dank bhi hai.
+
+      Neeche ki floodplains apni saalana **silt** ki parat khoti hain — ek muft natural fertiliser — jo land degradation badhata hai. Aur irrigation kisaanon ko **water-intensive, commercial crops** ki taraf dhakelti hai, jo samay ke saath soil ko **salinise** kar deti hain (namak jam ke use zehreela kar deta hai).
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Aur sabse bhaari keemat insaani hai.
+
+      Bade dams poore gaon aur khet doobote hain, **large-scale displacement aur loss of livelihood** karte hue. Narmada pe **Sardar Sarovar** dam is sangharsh ka prateek ban gaya.
+
+      (Baadh-prone **Damodar** ko bahut samay tak *"river of sorrow"* kaha gaya.)
+
+  - type: html_animation
+    xp: 0
+    title: "CHHUPI KEEMATEIN"
+    caption: "Phasi silt, ruki machhli, namkeen soil, visthaapit ghar — woh bill jo ek bada dam chadhaata hai."
+    html: |
+      <div style="background:#fff7ed;padding:18px 14px;border-radius:12px;">
+        <style>
+          @keyframes geoCost1 { 0%,5%{opacity:0;transform:translateX(-10px)} 24%,100%{opacity:1;transform:none} }
+          @keyframes geoCost2 { 0%,28%{opacity:0;transform:translateX(-10px)} 47%,100%{opacity:1;transform:none} }
+          @keyframes geoCost3 { 0%,51%{opacity:0;transform:translateX(-10px)} 70%,100%{opacity:1;transform:none} }
+          @keyframes geoCost4 { 0%,74%{opacity:0;transform:translateX(-10px)} 92%,100%{opacity:1;transform:none} }
+          .geo-c{display:block;margin:5px 0;font:bold 11px sans-serif;color:#7c2d12;background:#fed7aa;border-radius:6px;padding:6px 10px}
+          .gc1{animation:geoCost1 5s infinite} .gc2{animation:geoCost2 5s infinite} .gc3{animation:geoCost3 5s infinite} .gc4{animation:geoCost4 5s infinite}
+        </style>
+        <div class="geo-c gc1">Silt trapped → poorer soil & aquatic life</div>
+        <div class="geo-c gc2">Rivers fragmented → fish can't migrate</div>
+        <div class="geo-c gc3">Soil salinised by water-intensive crops</div>
+        <div class="geo-c gc4">Villages submerged → people displaced</div>
+      </div>
+
+  - type: mcq
+    xp: 10
+    question: "Inme se kaunsa multi-purpose river projects ke *paksh* mein ek tark NAHI hai?"
+    options:
+      - id: a
+        text: "Woh un ilaaqon mein paani laate hain jo water scarcity jhelte hain."
+        is_correct: false
+        rationale: "Yeh unke paksh mein hai — scarce ilaaqon ko paani dena ek key benefit hai."
+      - id: b
+        text: "Water flow regulate karke, woh baadh control mein madad karte hain."
+        is_correct: false
+        rationale: "Yeh ek benefit hai (theory mein) — flood control unke stated purposes mein se ek hai."
+      - id: c
+        text: "Woh large-scale displacement aur loss of livelihood karte hain."
+        is_correct: true
+        rationale: "Sahi — yeh ek *cost* hai, bade dams ke *khilaaf* ek tark, paksh mein nahi."
+      - id: d
+        text: "Woh humare industries aur ghar ke liye bijli banate hain."
+        is_correct: false
+        rationale: "Yeh ek benefit hai — hydel power dams banane ki ek mukhya wajah hai."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Har nuksaan ko us se match karo jo use karta hai."
+    left:
+      - { id: l1, label: "Excessive sedimentation" }
+      - { id: l2, label: "Machhli spawn karne migrate nahi kar sakti" }
+      - { id: l3, label: "Soil salinisation" }
+      - { id: l4, label: "Logon ka displacement" }
+    right:
+      - { id: r1, label: "Silt aage behne ke bajaaye reservoir mein baith jaati hai" }
+      - { id: r2, label: "Dam ek deewar se nadi ko fragment karta hai" }
+      - { id: r3, label: "Water-intensive commercial crops ki taraf shift" }
+      - { id: r4, label: "Reservoir gaon aur khet doobota hai" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Kisi dam ya reservoir ke baare mein socho jiske baare mein tumne suna ho (Sardar Sarovar, Bhakra-Nangal, ya koi local).
+
+      Paper pe uska ek saaf *benefit* aur ek saaf *cost* likho. Neeche dam ka naam aur uski sabse badi cost type karo.
+    placeholder: "___ dam — iski sabse badi cost hai..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Do badi costs ko lock karo."
+    template: |
+      Ek nadi ko damming karne se {{blank-1}} reservoir mein phas jaati hai aage behne ke bajaaye, aur gaon doobne se logon ko {{blank-2}} mein dhakela jaata hai.
+    answers:
+      - id: blank-1
+        accepted: ["silt", "sediment", "Silt"]
+      - id: blank-2
+        accepted: ["displacement", "Displacement", "visthaapan"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Ek dam das lakh ghar jagaa sakta hai — aur kuch hazaar gaon waalon ke ghar dubo sakta hai. Ek desh ko kaiyon ke fayde ko kuch logon ki bhaari keemat ke saamne kaise tolna chahiye? Imaandaar raho ki yeh kitna mushkil hai.
+
+      Koi sahi jawaab nahi.
+    placeholder: "Kaiyon ko kuch ke saamne tolte hue, mujhe lagta hai..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Tum bade dams ki asli costs ko unke benefits ke saamne tol sakte ho."
+    summary: |
+      Ek nadi ko damming silt ko phasaata hai, habitats ko starve aur fragment karta hai, soil ko salinise karta hai, quakes induce aur baadh tak bigaad sakta hai — aur sabse mushkil, poore samudaayon ko visthaapit karta hai, jaisa Narmada sangharsh ne dikhaya.
+
+      Aur bade projects ek aur takraav paida karte hain: jab ek hi nadi kayi rajyon se behti hai, *paani kise mile?* Hum ek nadi fairly kaise baantein? Yahi agli lesson hai.

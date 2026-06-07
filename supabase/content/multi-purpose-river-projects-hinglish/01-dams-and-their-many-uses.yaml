@@ -1,0 +1,170 @@
+title: "Dam aur Unke Anek Upyog"
+subtitle: "Ek nadi ke aar-paar ek deewar jo sheher jagaati, registan seenchti, aur baadh rokti"
+estimated_minutes: 12
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ek nadi ke aar-paar ek deewar banao, aur tum ek sheher jagaa sakte ho, ek registan seench sakte ho, ek baadh rok sakte ho, aur machhli paal sakte ho — sab ek hi saath.
+
+      Jaadu lagta hai. Yeh ek **dam** hai. Dekhte hain yeh ek saath itne kaam kaise karta hai.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      India yeh *hazaaron saal* se kar raha hai.
+
+      Sringaverapura ke paas **1st century BC** mein flood-water harvesting system tha. Chandragupta Maurya ke daur mein dams aur lakes bane. 11vi sadi ka **Bhopal Lake** aur Delhi ka **Hauz Khas** tank uske baad. Modern India ne bas ek puraani parampara jaari rakhi — concrete ke saath.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Toh dam hai *kya*, theek-theek?
+
+      Behte paani ke aar-paar ek **barrier** jo flow ko rokta, mod-ta, ya dheema karta hai — aam taur pe ek **reservoir** banata hai, uske peeche jama paani ki ek jheel. Zyaadatar dams mein ek **spillway** hota hai jo extra paani ko surakshit roop se bah jaane deta hai, taaki dam phoote na.
+
+  - type: svg_graphic
+    xp: 0
+    title: "DAM KI BANAAWAT"
+    caption: "Ek barrier reservoir rokta hai; spillway extra paani chhodta hai; nadi neeche aage behti hai."
+    svg: |
+      <svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="0" y="60" width="180" height="100" fill="#7dd3fc"/>
+        <text x="80" y="100" text-anchor="middle" font-size="10" font-weight="bold" fill="#075985">RESERVOIR</text>
+        <text x="80" y="114" text-anchor="middle" font-size="8" fill="#0c4a6e">stored water</text>
+        <polygon points="180,60 220,60 210,160 180,160" fill="#94a3b8" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="200" y="120" text-anchor="middle" font-size="9" font-weight="bold" fill="#1e293b" transform="rotate(90 200 120)">DAM</text>
+        <path d="M180,62 Q200,58 220,68 L222,82 Q200,72 184,80 Z" fill="#38bdf8"/>
+        <text x="240" y="58" font-size="8" fill="#0369a1">spillway</text>
+        <line x1="225" y1="70" x2="232" y2="58" stroke="#0369a1" stroke-width="1"/>
+        <rect x="210" y="140" width="150" height="20" fill="#7dd3fc"/>
+        <text x="290" y="154" text-anchor="middle" font-size="8" fill="#075985">river continues</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Dams pehle sirf *ek* kaam ke liye bante the: irrigation — baad mein kheton ko seenchne ke liye rainwater store karna.
+
+      Aaj woh **multi-purpose** hain — ek dam, kayi kaam ek saath:
+
+      - irrigation
+      - bijli (**hydel power**)
+      - ghar aur industry ke liye water supply
+      - flood control
+      - recreation, inland navigation, aur fish breeding
+
+      Nadiyon ka Swiss Army knife.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Do mashhoor examples idea dikhaate hain.
+
+      **Bhakra-Nangal**, Sutlej-Beas pe, *dono* hydel power *aur* irrigation ke liye use hota hai. **Hirakud**, Mahanadi pe, water *conservation* ko *flood control* ke saath jodta hai.
+
+      Har ek mein, jama paani ke kayi uses ek-doosre se gunde hain — yahi "integrated" ka matlab hai.
+
+  - type: html_animation
+    xp: 0
+    title: "EK DAM, KAYI KAAM"
+    caption: "Power, crops, peene ka paani, machhli, flood control — sab ek hi project se."
+    html: |
+      <div style="background:#f0f9ff;padding:18px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoJob1 { 0%,5%{opacity:.15} 20%,100%{opacity:1} }
+          @keyframes geoJob2 { 0%,25%{opacity:.15} 40%,100%{opacity:1} }
+          @keyframes geoJob3 { 0%,45%{opacity:.15} 60%,100%{opacity:1} }
+          @keyframes geoJob4 { 0%,65%{opacity:.15} 80%,100%{opacity:1} }
+          .geo-j { display:inline-block; margin:4px; padding:6px 12px; border-radius:999px; font:bold 11px sans-serif; color:#fff; }
+          .gj1{background:#ca8a04;animation:geoJob1 5s infinite} .gj2{background:#16a34a;animation:geoJob2 5s infinite}
+          .gj3{background:#0891b2;animation:geoJob3 5s infinite} .gj4{background:#7c3aed;animation:geoJob4 5s infinite}
+        </style>
+        <div style="font:bold 20px sans-serif;color:#075985;margin-bottom:8px">one dam</div>
+        <span class="geo-j gj1">electricity</span><span class="geo-j gj2">irrigation</span><span class="geo-j gj3">water supply</span><span class="geo-j gj4">flood control</span>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Jawaharlal Nehru ne garv se dams ko **"temples of modern India"** kaha.
+
+      Kyun *temples*? Kyunki unhone inhe kheti aur village economy ko tezi se industrialisation aur urban growth ke saath bunte dekha — ek naye azaad desh ko uske colonial past se uthaane ka engine.
+
+  - type: mcq
+    xp: 10
+    question: "Ek dam ko 'multi-purpose' project kya banata hai?"
+    options:
+      - id: a
+        text: "Yeh ek aam dam se oonchaa hai."
+        is_correct: false
+        rationale: "Oonchaai dams ko classify karti hai, par 'multi-purpose' *uses* ke baare mein hai, size ke nahi."
+      - id: b
+        text: "Iska jama paani ek saath kayi integrated uses serve karta hai — irrigation, power, supply, flood control, aur zyaada."
+        is_correct: true
+        rationale: "Bilkul. Ek multi-purpose dam ek hi impounded paani ke kayi uses ko ek saath bunta hai."
+      - id: c
+        text: "Yeh kayi alag rajya milke banate hain."
+        is_correct: false
+        rationale: "Kaun banata hai woh point nahi — 'multi-purpose' un kaiyon ko bataata hai jo dam *karta* hai."
+      - id: d
+        text: "Yeh sirf bijli banane ke liye use hota hai."
+        is_correct: false
+        rationale: "Woh single-purpose hota. Multi-purpose ka matlab kayi uses milaa ke."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Har term ko us se match karo jo woh hai."
+    left:
+      - { id: l1, label: "Bhakra-Nangal" }
+      - { id: l2, label: "Hirakud" }
+      - { id: l3, label: "Spillway" }
+      - { id: l4, label: "Reservoir" }
+    right:
+      - { id: r1, label: "Hydel power plus irrigation (Sutlej-Beas)" }
+      - { id: r2, label: "Water conservation plus flood control (Mahanadi)" }
+      - { id: r3, label: "Extra paani ko surakshit bah jaane deta hai" }
+      - { id: r4, label: "Dam ke peeche jama paani ki jheel" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Apne region ke baare mein socho. Agar ek multi-purpose dam use serve karta, toh uske kaunse uses sabse zyaada maayne rakhte — bijli, irrigation, peene ka paani, ya flood control?
+
+      Paper pe apne top do rank karo aur batao kyun. Neeche apna number-one use type karo.
+    placeholder: "Mere region ke liye, sabse zaroori use hoga..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Basics ko lock karo."
+    template: |
+      Ek dam jama paani ki ek jheel rokta hai jise {{blank-1}} kehte hain, aur Nehru ne dams ko temples of modern {{blank-2}} kaha.
+    answers:
+      - id: blank-1
+        accepted: ["reservoir", "Reservoir"]
+      - id: blank-2
+        accepted: ["India", "india"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Nehru ne dams ko *temples* kaha — pragati ke lagbhag pavitra prateek. Tumhe kya lagta hai ek naye desh ko aise symbols ki zaroorat kyun thi, sirf useful structures ki nahi?
+
+      Koi sahi jawaab nahi.
+    placeholder: "Ek naye desh ko symbols isliye chahiye the kyunki..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Tum samjha sakte ho ki multi-purpose dam kya hai aur use kyun manaya gaya."
+    summary: |
+      Dam ek barrier hai jo paani ko reservoir mein store karta hai; ek multi-purpose project irrigation, power, water supply, flood control, aur zyaada ko ek saath bunta hai — jaise Bhakra-Nangal aur Hirakud. Nehru ne inhe temples of modern India bataya.
+
+      Par har temple ki ek keemat hoti hai. Samay ke saath, in vishaal projects pe teekhi aalochna aayi — woh nadiyon, zameen, aur logon ke saath jo karte hain uske liye. Ek bade dam ki chhupi keemat kya hai? Yahi agli lesson hai.
