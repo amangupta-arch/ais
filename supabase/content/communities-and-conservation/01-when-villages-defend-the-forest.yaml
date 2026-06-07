@@ -1,0 +1,165 @@
+title: "When Villages Defend the Forest"
+subtitle: "Sometimes the forest's best guard is the village next door"
+estimated_minutes: 11
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      When a mining company came for the Sariska forest in Rajasthan, it wasn't the police who turned them back.
+
+      It was the **villagers** — armed with nothing but a law and their own resolve. And they won.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Conservation isn't a new government idea in India. Forests have *always* been **home** to traditional communities.
+
+      And across the country, those communities are fighting to protect their forests — because they understand that their own *long-term livelihood* depends on it.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Take **Sariska Tiger Reserve, Rajasthan.** Villagers fought off **mining** by citing the **Wildlife Protection Act** — turning the law from the last course into their own weapon.
+
+      In many places, villagers protect habitats *themselves* — sometimes even rejecting government involvement entirely.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Then there's the **Bhairodev Dakav 'Sonchuri'.**
+
+      In Alwar district, Rajasthan, the people of **five villages** declared **1,200 hectares** of forest their *own* sanctuary — with their *own* rules: no hunting, and no outside encroachment. A people's protected area, run entirely by the people.
+
+  - type: svg_graphic
+    xp: 0
+    title: "THE FOREST'S NEIGHBOURS"
+    caption: "Across India, the communities living beside a forest became its guardians."
+    svg: |
+      <svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <line x1="180" y1="92" x2="80" y2="40" stroke="#cbd5e1" stroke-width="1.5"/>
+        <line x1="180" y1="92" x2="290" y2="40" stroke="#cbd5e1" stroke-width="1.5"/>
+        <line x1="180" y1="92" x2="180" y2="150" stroke="#cbd5e1" stroke-width="1.5"/>
+        <circle cx="155" cy="92" r="16" fill="#16a34a"/><rect x="152" y="100" width="6" height="12" fill="#92400e"/>
+        <circle cx="185" cy="86" r="20" fill="#15803d"/><rect x="182" y="98" width="7" height="14" fill="#92400e"/>
+        <circle cx="210" cy="94" r="15" fill="#16a34a"/><rect x="207" y="101" width="6" height="11" fill="#92400e"/>
+        <rect x="14" y="22" width="132" height="34" rx="5" fill="#fef9c3" stroke="#0f172a" stroke-width="1"/>
+        <text x="80" y="38" text-anchor="middle" font-size="9" font-weight="bold" fill="#854d0e">Sariska</text>
+        <text x="80" y="50" text-anchor="middle" font-size="8" fill="#475569">villagers fought mining</text>
+        <rect x="220" y="22" width="132" height="34" rx="5" fill="#fef9c3" stroke="#0f172a" stroke-width="1"/>
+        <text x="286" y="38" text-anchor="middle" font-size="9" font-weight="bold" fill="#854d0e">Bhairodev Sonchuri</text>
+        <text x="286" y="50" text-anchor="middle" font-size="8" fill="#475569">5 villages, 1,200 hectares</text>
+        <rect x="114" y="154" width="132" height="22" rx="5" fill="#fef9c3" stroke="#0f172a" stroke-width="1"/>
+        <text x="180" y="168" text-anchor="middle" font-size="9" font-weight="bold" fill="#854d0e">Chipko — hugged the trees</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      And the most famous of all — the **Chipko movement** in the Himalayas.
+
+      Villagers literally *clung to the trees* to stop them being cut (*chipko* means "to hug" or "to cling"). It didn't just halt deforestation in many areas — it *proved* that **community afforestation with indigenous species** can succeed on a huge scale.
+
+  - type: html_animation
+    xp: 0
+    title: "CHIPKO — CLING TO THE TREE"
+    caption: "When villagers wrapped their arms around the trees, the axe had to stop."
+    html: |
+      <div style="background:#f8fafc;padding:18px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoAxe { 0%,40%{transform:translateX(0);opacity:1} 60%,100%{transform:translateX(-26px);opacity:0.25} }
+          @keyframes geoArm { 0%,20%{opacity:0} 45%,100%{opacity:1} }
+          .geo-axe{animation:geoAxe 4s ease-in-out infinite alternate}
+          .geo-arm{animation:geoArm 4s infinite alternate}
+        </style>
+        <svg viewBox="0 0 300 130" style="max-width:300px;width:100%" font-family="sans-serif">
+          <rect x="146" y="40" width="10" height="70" fill="#92400e"/>
+          <circle cx="151" cy="36" r="22" fill="#16a34a"/>
+          <path class="geo-arm" d="M120,80 Q151,66 182,80" stroke="#0f172a" stroke-width="4" fill="none"/>
+          <circle class="geo-arm" cx="116" cy="82" r="7" fill="#fcd34d" stroke="#0f172a" stroke-width="1"/>
+          <circle class="geo-arm" cx="186" cy="82" r="7" fill="#fcd34d" stroke="#0f172a" stroke-width="1"/>
+          <g class="geo-axe"><rect x="232" y="60" width="28" height="5" fill="#475569"/><polygon points="232,54 232,72 220,63" fill="#94a3b8"/></g>
+          <text x="150" y="124" text-anchor="middle" font-size="8" fill="#166534">arms around the trunk — the axe retreats</text>
+        </svg>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Notice the pattern in every story.
+
+      It was the people who *live beside* the forest — not a distant rule — who saved it. The forest's best guardians turn out to be its **neighbours**.
+
+  - type: mcq
+    xp: 10
+    question: "How did the villagers at Sariska stop mining inside the tiger reserve?"
+    options:
+      - id: a
+        text: "By paying the mining company to leave."
+        is_correct: false
+        rationale: "There was no payment. They used a legal route, not money."
+      - id: b
+        text: "By citing the Wildlife Protection Act to challenge the mining."
+        is_correct: true
+        rationale: "Exactly — the villagers turned the 1972 law into their tool to defend the reserve."
+      - id: c
+        text: "By waiting for the central government to send the army."
+        is_correct: false
+        rationale: "The point of the story is that the *community* acted, not a distant authority."
+      - id: d
+        text: "By clearing the forest themselves first."
+        is_correct: false
+        rationale: "That's the opposite of conservation — they were protecting the forest, not clearing it."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Match each community action to what it was."
+    left:
+      - { id: l1, label: "Sariska, Rajasthan" }
+      - { id: l2, label: "Bhairodev Dakav 'Sonchuri'" }
+      - { id: l3, label: "Chipko movement" }
+    right:
+      - { id: r1, label: "Villagers fought mining using the Wildlife Protection Act" }
+      - { id: r2, label: "Five villages declared 1,200 hectares their own sanctuary" }
+      - { id: r3, label: "People clung to trees to stop deforestation in the Himalayas" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Think of one way *people you know* — a village, a family, a temple, a school — protect a tree, an animal, a pond, or a patch of green near them.
+
+      On paper, describe it in two lines. Then type what is protected and who protects it below.
+    placeholder: "Near me, ___ protect the ___."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in two community actions."
+    template: |
+      At Sariska, villagers stopped mining by citing the ___ Act; in the Chipko movement, people ___ the trees to save them.
+    answers:
+      - id: blank-1
+        accepted: ["Wildlife Protection", "wildlife protection", "Wildlife (Protection)"]
+      - id: blank-2
+        accepted: ["hugged", "clung to", "hugged", "embraced"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      The villagers at Sariska and Chipko protected forests they didn't legally "own". What do you think made them fight so hard for something that wasn't theirs on paper?
+
+      No right answer.
+    placeholder: "I think they fought because..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can show how communities themselves defend India's forests."
+    summary: |
+      From Sariska's fight against mining, to a people's sanctuary at Bhairodev, to the tree-hugging Chipko movement — again and again, the forest's neighbours became its guardians.
+
+      But defending a forest is only half of it. The other half is *living* off it without destroying it. How do communities farm and harvest in partnership with nature? That's the next lesson.

@@ -1,0 +1,172 @@
+title: "Farming with Nature"
+subtitle: "How a village and a forest can both come out ahead"
+estimated_minutes: 11
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here's a strange-sounding idea: the way to *save* a forest might be to let the people nearby make a living from it — without destroying it.
+
+      Two Indian movements proved it actually works.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Beej Bachao Andolan** (in Tehri) and **Navdanya** are farmers' and citizens' groups. They proved something powerful:
+
+      you can grow *diverse* crops, *without* synthetic chemicals, and still make it **economically viable**.
+
+      (*Beej Bachao* means "save the seeds" — protecting traditional seed diversity.) Farming *with* nature, not against it.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Then there's **Joint Forest Management (JFM)** — a formal partnership between the Forest Department and local villages.
+
+      It's been in formal existence since **1988**, when **Odisha** passed the very first resolution for it.
+
+  - type: svg_graphic
+    xp: 0
+    title: "THE JFM DEAL"
+    caption: "Villages protect and restore degraded forest; in return, the forest provides for them."
+    svg: |
+      <svg viewBox="0 0 360 156" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="20" y="48" width="110" height="60" rx="6" fill="#dbeafe" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="75" y="74" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3a8a">VILLAGE</text>
+        <text x="75" y="90" text-anchor="middle" font-size="8" fill="#475569">local institution</text>
+        <rect x="230" y="48" width="110" height="60" rx="6" fill="#dcfce7" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="285" y="72" text-anchor="middle" font-size="11" font-weight="bold" fill="#166534">DEGRADED</text>
+        <text x="285" y="86" text-anchor="middle" font-size="11" font-weight="bold" fill="#166534">FOREST</text>
+        <line x1="130" y1="64" x2="226" y2="64" stroke="#16a34a" stroke-width="2.5"/>
+        <polygon points="226,64 214,59 214,69" fill="#16a34a"/>
+        <text x="178" y="56" text-anchor="middle" font-size="8" fill="#166534">protect + restore</text>
+        <line x1="230" y1="94" x2="134" y2="94" stroke="#ca8a04" stroke-width="2.5"/>
+        <polygon points="134,94 146,89 146,99" fill="#ca8a04"/>
+        <text x="182" y="112" text-anchor="middle" font-size="8" fill="#854d0e">produce + timber share</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here's the deal, exactly.
+
+      Local **village institutions** take on protecting **degraded forest land** (still managed by the forest department). In return, they earn real **benefits**: *non-timber forest produce*, plus a *share of the timber* harvested through their own "successful protection."
+
+      Protect the forest, and the forest pays you back. Both sides win.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The clear lesson from India's whole story — of *destruction* and of *repair* — is this:
+
+      local communities **everywhere** have to be involved in managing natural resources. There's no lasting conservation that leaves out the people who live with the forest.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      But a caution comes with it. We're still a long way from communities being at the *centre* of decisions.
+
+      So here's the test for *any* development or economic activity — it must be all three at once:
+
+      - **people-centric**
+      - **environment-friendly**
+      - **economically rewarding**
+
+  - type: html_animation
+    xp: 0
+    title: "A TWO-WAY PARTNERSHIP"
+    caption: "Protection flows one way, benefits flow back — that's what makes JFM last."
+    html: |
+      <div style="background:#f8fafc;padding:18px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoGive { 0%,100%{opacity:.25} 30%,45%{opacity:1} }
+          @keyframes geoGet { 0%,100%{opacity:.25} 65%,80%{opacity:1} }
+          .geo-give{animation:geoGive 4s infinite} .geo-get{animation:geoGet 4s infinite}
+        </style>
+        <svg viewBox="0 0 300 110" style="max-width:320px;width:100%" font-family="sans-serif">
+          <circle cx="50" cy="55" r="26" fill="#bfdbfe" stroke="#0f172a" stroke-width="1.5"/>
+          <text x="50" y="59" text-anchor="middle" font-size="9" font-weight="bold" fill="#1e3a8a">village</text>
+          <circle cx="250" cy="55" r="26" fill="#bbf7d0" stroke="#0f172a" stroke-width="1.5"/>
+          <text x="250" y="59" text-anchor="middle" font-size="9" font-weight="bold" fill="#166534">forest</text>
+          <g class="geo-give"><line x1="80" y1="42" x2="218" y2="42" stroke="#16a34a" stroke-width="3"/><polygon points="218,42 206,37 206,47" fill="#16a34a"/></g>
+          <g class="geo-get"><line x1="220" y1="70" x2="82" y2="70" stroke="#ca8a04" stroke-width="3"/><polygon points="82,70 94,65 94,75" fill="#ca8a04"/></g>
+        </svg>
+      </div>
+
+  - type: mcq
+    xp: 10
+    question: "Which of these conservation strategies does NOT directly involve community participation?"
+    options:
+      - id: a
+        text: "Joint Forest Management"
+        is_correct: false
+        rationale: "JFM is built entirely on village institutions protecting and restoring forest — community participation is its core."
+      - id: b
+        text: "Beej Bachao Andolan"
+        is_correct: false
+        rationale: "Beej Bachao Andolan is a farmers' movement — community participation through and through."
+      - id: c
+        text: "Chipko Movement"
+        is_correct: false
+        rationale: "Chipko was villagers physically protecting trees — about as community-driven as it gets."
+      - id: d
+        text: "Demarcation of wildlife sanctuaries"
+        is_correct: true
+        rationale: "Correct. Demarcating sanctuaries is a government/administrative act — it doesn't directly depend on community participation the way the others do."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Match each effort to what it is."
+    left:
+      - { id: l1, label: "Beej Bachao Andolan" }
+      - { id: l2, label: "Navdanya" }
+      - { id: l3, label: "Joint Forest Management" }
+      - { id: l4, label: "1988, Odisha" }
+    right:
+      - { id: r1, label: "Saving traditional seeds, in Tehri" }
+      - { id: r2, label: "Diverse crops without synthetic chemicals" }
+      - { id: r3, label: "Villages restore degraded forest for a share of produce" }
+      - { id: r4, label: "When and where JFM formally began" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Think of one small "farming with nature" step you (or your family) could actually take — composting kitchen waste, growing a chemical-free pot of herbs, saving seeds, planting a native tree.
+
+      On paper, write your idea and one benefit it brings. Type it below.
+    placeholder: "I could ___ , which would..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in where JFM began."
+    template: |
+      Joint Forest Management formally began in ___, when ___ passed the first resolution.
+    answers:
+      - id: blank-1
+        accepted: ["1988"]
+      - id: blank-2
+        accepted: ["Odisha", "odisha"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      The three-part test was: people-centric, environment-friendly, *and* economically rewarding. Why do you think a project usually fails if it's missing just one of the three?
+
+      No right answer.
+    placeholder: "If a project skips ___, then..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can explain how communities farm and restore in partnership with nature."
+    summary: |
+      Beej Bachao Andolan and Navdanya showed chemical-free, diverse farming is viable; Joint Forest Management (since 1988, Odisha) turned villages into forest restorers who share in the rewards. The rule that holds it together: development must be people-centric, environment-friendly, and economically rewarding — all three.
+
+      But the oldest form of community conservation in India needed no law and no contract at all. It runs on something deeper: reverence. Meet the sacred groves — and the close of this chapter.

@@ -1,0 +1,172 @@
+title: "Sacred Groves"
+subtitle: "The forests India protected with faith, long before any law"
+estimated_minutes: 12
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Long before any Wildlife Act, some forests in India were already untouchable.
+
+      Not because of a law. Because of *faith*. Cut a tree there and you weren't breaking a rule — you were committing a sin.
+
+      Welcome to the **sacred groves**.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Across India, **nature worship** — an age-old tribal belief that *all creations of nature must be protected* — preserved entire forests in their **virgin, pristine form**.
+
+      These are the **Sacred Groves**: the forests of gods and goddesses.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The rule is simple and absolute: these patches are left **untouched**, and *any* interference is banned.
+
+      Faith did what fences and rangers often couldn't — it kept whole forests intact for centuries.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      It reaches down to single trees, too. Communities have revered particular species from time immemorial:
+
+      - the **Mundas and Santhal** of Chota Nagpur worship the **mahua** and **kadamba** trees.
+      - tribals of **Odisha and Bihar** worship the **tamarind** and **mango** at weddings.
+      - the **peepal** and **banyan** are sacred to many across India.
+
+  - type: svg_graphic
+    xp: 0
+    title: "A SACRED GROVE"
+    caption: "Protected by reverence, not fences — peepal, banyan, mahua, kadamba, tamarind, mango."
+    svg: |
+      <svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <ellipse cx="180" cy="84" rx="130" ry="66" fill="#fffbeb" stroke="#ca8a04" stroke-width="2.5" stroke-dasharray="6 4"/>
+        <circle cx="148" cy="82" r="20" fill="#15803d"/><rect x="145" y="92" width="6" height="16" fill="#92400e"/>
+        <circle cx="186" cy="72" r="25" fill="#16a34a"/><rect x="182" y="85" width="7" height="18" fill="#92400e"/>
+        <circle cx="220" cy="86" r="18" fill="#15803d"/><rect x="217" y="95" width="6" height="14" fill="#92400e"/>
+        <text x="180" y="138" text-anchor="middle" font-size="11" font-weight="bold" fill="#854d0e">SACRED GROVE</text>
+        <text x="180" y="154" text-anchor="middle" font-size="8" fill="#475569">untouched · interference banned</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Animals are protected this way too.
+
+      Troops of **macaques and langurs** live around many temples — fed daily, treated as part of the temple's devotees. And in and around the **Bishnoi villages** of Rajasthan, herds of **blackbuck (chinkara), nilgai, and peacocks** are simply part of the community — and *nobody harms them*.
+
+  - type: html_animation
+    xp: 0
+    title: "PROTECTED BY REVERENCE"
+    caption: "Within the sacred grove, the trees and animals rest safe — guarded by belief."
+    html: |
+      <div style="background:#f8fafc;padding:18px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoHalo { 0%,100%{opacity:.25;r:64} 50%{opacity:.7;r:70} }
+          .geo-halo{animation:geoHalo 4s ease-in-out infinite}
+        </style>
+        <svg viewBox="0 0 240 140" style="max-width:260px;width:100%" font-family="sans-serif">
+          <circle class="geo-halo" cx="120" cy="70" r="64" fill="none" stroke="#f59e0b" stroke-width="3"/>
+          <circle cx="100" cy="64" r="18" fill="#16a34a"/><rect x="97" y="74" width="6" height="14" fill="#92400e"/>
+          <circle cx="140" cy="60" r="20" fill="#15803d"/><rect x="137" y="72" width="6" height="14" fill="#92400e"/>
+          <circle cx="110" cy="100" r="7" fill="#a16207"/>
+          <circle cx="135" cy="102" r="7" fill="#a16207"/>
+          <text x="120" y="132" text-anchor="middle" font-size="8" fill="#854d0e">trees and animals, safe inside</text>
+        </svg>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The Buddha, in 487 B.C., caught the whole spirit of it:
+
+      *"The tree is a peculiar organism of unlimited kindness and benevolence... It affords protection to all beings, offering shade even to the axemen who destroy it."*
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      And that's the thread running through this entire chapter.
+
+      From the Wildlife Act, to Project Tiger, to joint forest management, to the sacred groves — *forests and wildlife survive best when the people who live with them are at the centre of protecting them.*
+
+      Law helps. Faith helps. But **community** is the heart of it.
+
+  - type: mcq
+    xp: 10
+    question: "What keeps a sacred grove protected?"
+    options:
+      - id: a
+        text: "Paid forest guards posted at its edges."
+        is_correct: false
+        rationale: "Sacred groves aren't kept by paid guards — they're kept by belief."
+      - id: b
+        text: "A community's religious belief that the forest is sacred and must not be touched."
+        is_correct: true
+        rationale: "Exactly. Nature worship treats these forests as the homes of gods — interference is banned by faith, not by fences."
+      - id: c
+        text: "A central government law passed in 1972."
+        is_correct: false
+        rationale: "Sacred groves are far older than any modern law — they're protected by tradition, not legislation."
+      - id: d
+        text: "A fence and a ticket gate."
+        is_correct: false
+        rationale: "No fence required. The boundary is one of reverence, respected by the whole community."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Match each tradition to what it protects."
+    left:
+      - { id: l1, label: "Mundas and Santhal" }
+      - { id: l2, label: "Bishnoi villages, Rajasthan" }
+      - { id: l3, label: "Sacred groves" }
+      - { id: l4, label: "Around many temples" }
+    right:
+      - { id: r1, label: "The mahua and kadamba trees" }
+      - { id: r2, label: "Blackbuck, nilgai, and peacocks" }
+      - { id: r3, label: "Virgin forests of gods and goddesses" }
+      - { id: r4, label: "Macaques and langurs" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Write a short note (4–5 lines) on any practice — at home, in your community, or one you'd like to start — that conserves and protects the environment around you.
+
+      Then type one practice you wrote about below.
+    placeholder: "One practice that protects nature around me is..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the closing terms."
+    template: |
+      Virgin forests preserved through nature worship are called ___ groves, and the ___ of Rajasthan protect the blackbuck as part of their community.
+    answers:
+      - id: blank-1
+        accepted: ["sacred", "Sacred"]
+      - id: blank-2
+        accepted: ["Bishnoi", "bishnoi", "Bishnois"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Across this whole chapter — the web of life, the laws, Project Tiger, the communities, the sacred groves — what's the one idea you'll carry with you about protecting nature? Name it, and why it stuck.
+
+      No right answer. This is your takeaway.
+    placeholder: "The idea I'm keeping is..."
+
+  - type: checkpoint
+    xp: 0
+    title: "The whole chapter is yours: biodiversity, protection, and community."
+    summary: |
+      Sacred groves and the Bishnoi show the oldest conservation of all — protection by reverence, needing no law at all. And that completes the chapter.
+
+      You learned that we are one strand in a web of life we depend on for air, water, and soil; you can say why conservation is self-preservation, not charity; you know how India defends its wildlife through the 1972 Act, Project Tiger, and the three classes of forest; and you've seen that the deepest protection of all comes from communities — from Chipko and joint forest management to the sacred groves.
+
+      The clear lesson, as the Buddha knew: care for the tree, and it shelters everyone — even, in time, the rest of us.
