@@ -1,0 +1,2507 @@
+{
+  "bundle": "b-class-10-geography-ch03-water-resources",
+  "generated": "2026-06-07",
+  "totals": {
+    "lessons": 18,
+    "chunks": 294,
+    "chars": 56426
+  },
+  "lessons": [
+    {
+      "file": "supabase/content/the-water-scarcity-puzzle/01-renewable-yet-running-out.yaml",
+      "language": "en",
+      "chunk_count": 16,
+      "total_chars": 2825,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "text": "Three-quarters of the planet is covered in water. And it recycles itself — forever.\n\nSo here's a puzzle that should stop you: how can we possibly run out?\n\nBy the end of this lesson, the puzzle will bother you more, not less. Good.",
+          "chars": 231,
+          "hash": "a9ccdb13ff194ecd16c4b4b5ede2ce5737e6af339fdb4e78c3fa41f232937e78",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a9ccdb13ff194ecd16c4b4b5ede2ce5737e6af339fdb4e78c3fa41f232937e78.mp3"
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "text": "Start with the numbers. Yes, three-fourths of Earth's surface is water — but only a tiny slice of it is freshwater we can actually use.\n\nThat usable freshwater comes from two places: surface run-off (rivers, streams) and groundwater (water stored under the ground).",
+          "chars": 265,
+          "hash": "ba17e19d4f0bf446019cd5da8616d677a6d67970ed7b2f2dcf95aa5c7d61fe26",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ba17e19d4f0bf446019cd5da8616d677a6d67970ed7b2f2dcf95aa5c7d61fe26.mp3"
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "text": "And it is genuinely renewable. The hydrological cycle — the water cycle — constantly renews and recharges it.\n\nWater evaporates, forms clouds, falls as rain, flows across the land and soaks into the ground, then evaporates again. The machine never stops turning.",
+          "chars": 262,
+          "hash": "96ed80cd058ccf04fd1db45f40df8eb81c06e38257d0af2d8946e18a18e88514",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/96ed80cd058ccf04fd1db45f40df8eb81c06e38257d0af2d8946e18a18e88514.mp3"
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "text": "Evaporation, rain, run-off, and recharge — the cycle that makes water a renewable resource.",
+          "chars": 91,
+          "hash": "2363d9d6405d7cc01a3b9d0d82a8e4d2becdf5a2ba9b2520396a2fd3ebef7af0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/2363d9d6405d7cc01a3b9d0d82a8e4d2becdf5a2ba9b2520396a2fd3ebef7af0.mp3"
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "text": "So here's the puzzle in full.\n\nIf water is everywhere and renews itself, why do regions all over the world suffer water scarcity? Why is it predicted that by 2025, nearly two billion people will live in absolute water scarcity?",
+          "chars": 227,
+          "hash": "e477ae32c33e8be41bc4b942deb7b8826eba6c5fa01307475aeced263a65f859",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e477ae32c33e8be41bc4b942deb7b8826eba6c5fa01307475aeced263a65f859.mp3"
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "text": "Your gut probably jumps to deserts — low-rainfall Rajasthan, women walking miles balancing matkas of water.\n\nAnd it's partly true: water availability does vary over space and time, mostly because rainfall varies by season and year. But hold on — that's not the main reason for scarcity.",
+          "chars": 286,
+          "hash": "c02aa0d239d71500603074cbc8c1ea522b25db105744887030a7dde68baf75cf",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c02aa0d239d71500603074cbc8c1ea522b25db105744887030a7dde68baf75cf.mp3"
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "text": "Here's the twist that runs through this whole chapter.\n\nScarcity is mostly caused not by too little rain, but by us: over-exploitation, excessive use, and unequal access. A region can be soaked in water and still be scarce.\n\nWhat would break if rainfall alone explained scarcity? Then no rainy city would ever run dry. Many do.",
+          "chars": 327,
+          "hash": "d2ac50ae66c210b1f0acaf9069440f0c89737ef25d023a203c84c5cca2b66249",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d2ac50ae66c210b1f0acaf9069440f0c89737ef25d023a203c84c5cca2b66249.mp3"
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "text": "One drop, going round and round — renewable in theory, if we don't drain it faster than it returns.",
+          "chars": 99,
+          "hash": "582412d804c3b0f09c5239be84169f298d60e7451f2d4694e9a20fef45f07e75",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/582412d804c3b0f09c5239be84169f298d60e7451f2d4694e9a20fef45f07e75.mp3"
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "text": "What makes water a renewable resource?",
+          "chars": 38,
+          "hash": "bfd3cccdb4bb74871d53a2b6559085c073f6a30fb635c086f5e30f25105d6cca",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/bfd3cccdb4bb74871d53a2b6559085c073f6a30fb635c086f5e30f25105d6cca.mp3"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "text": "Put the stages of the water cycle in order, starting from the sea.",
+          "chars": 66,
+          "hash": "706a808e29e073a04dabee0066ece31f91765a31c2aca35ec5c714581a393b26",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/706a808e29e073a04dabee0066ece31f91765a31c2aca35ec5c714581a393b26.mp3"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "text": "Where does the water in your tap actually come from — a river, a reservoir, a borewell (groundwater), rainwater?\n\nOn paper, trace it back one step at a time to the rain that started it. Type your water's source below.",
+          "chars": 217,
+          "hash": "952f8ddd6b46efcc2bdec25e96ec6103b21b9b04ad02e60228a9e929d673caf3",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/952f8ddd6b46efcc2bdec25e96ec6103b21b9b04ad02e60228a9e929d673caf3.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "text": "Lock in the paradox.",
+          "chars": 20,
+          "hash": "617d53d5a4b0c47e9258de85d8e6baa12177dec85d472b653e7ba1c7e351feed",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/617d53d5a4b0c47e9258de85d8e6baa12177dec85d472b653e7ba1c7e351feed.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "text": "Water is renewable because the {{blank-1}} cycle constantly renews it — yet by the year {{blank-2}}, nearly two billion people may face absolute scarcity.",
+          "chars": 154,
+          "hash": "d2980c3a3a375531ad2751929881a581f0a0eb2bb8002a86d2fa528c97d5bae0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d2980c3a3a375531ad2751929881a581f0a0eb2bb8002a86d2fa528c97d5bae0.mp3"
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "text": "You probably treat tap water as endless — turn it on, it's there. After this lesson, does \"renewable\" feel like a comfort or a warning? Why?\n\nNo right answer.",
+          "chars": 158,
+          "hash": "f581a63d297595c6496a1ce35104eafe40c0e5eda12bf0189f35175167261281",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f581a63d297595c6496a1ce35104eafe40c0e5eda12bf0189f35175167261281.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "text": "You can explain why water is renewable — and still scarce.",
+          "chars": 58,
+          "hash": "344f92e212b515524e0fad418812f1ae25e09d069f7feb028e528a11bde63243",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/344f92e212b515524e0fad418812f1ae25e09d069f7feb028e528a11bde63243.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "text": "Water covers most of the planet and the hydrological cycle renews it endlessly, yet two billion people may face absolute scarcity by 2025. The reason isn't only rainfall — it's how we use and share what we have.\n\nSo let's name the real culprits. Why does even a well-watered country end up running dry? That's the next lesson.",
+          "chars": 326,
+          "hash": "50d13d0929b36409fc035c61c16ea6a3bae76640228aa3b7f28404fec91c0183",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/50d13d0929b36409fc035c61c16ea6a3bae76640228aa3b7f28404fec91c0183.mp3"
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/the-water-scarcity-puzzle/02-why-a-wet-country-runs-dry.yaml",
+      "language": "en",
+      "chunk_count": 16,
+      "total_chars": 2938,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "text": "Here's something that shouldn't be possible: a city sitting right beside a river, and still short of water.\n\nYet many of our cities are exactly that. If rain isn't the problem, what is?",
+          "chars": 185,
+          "hash": "78b91ded8b2abdc7c3acc8d8063d09fcb2d797437c7cae4b4165b07d926cc5a3",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/78b91ded8b2abdc7c3acc8d8063d09fcb2d797437c7cae4b4165b07d926cc5a3.mp3"
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "text": "Water scarcity has three root causes — and notice that none of them is \"not enough rain\":\n\n- over-exploitation\n- excessive use\n- unequal access\n\nLet's see how each one drains a country that's actually quite wet.",
+          "chars": 211,
+          "hash": "b45ba7a2140ea9e586811d3cc932a4e342b30234231ccfaf5f2d091550ab778a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b45ba7a2140ea9e586811d3cc932a4e342b30234231ccfaf5f2d091550ab778a.mp3"
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "text": "Cause 1 — a growing population.\n\nMore people need more water — not just to drink, but to grow more food. To boost food-grain production, we over-exploit water to expand irrigation for dry-season farming.\n\nAnd irrigated agriculture is the single largest consumer of water in India. The crowd at the well keeps getting bigger.",
+          "chars": 324,
+          "hash": "93c46f7c626bb73c3127fb42aaa0a38fc03347a46760c323ed8bc404fe3b42d4",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/93c46f7c626bb73c3127fb42aaa0a38fc03347a46760c323ed8bc404fe3b42d4.mp3"
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "text": "From one finite freshwater supply — agriculture takes the largest share, by far.",
+          "chars": 80,
+          "hash": "75270693cae76f998c04e01070bcdf01041c9b01c6a7425590e0868f36a7054e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/75270693cae76f998c04e01070bcdf01041c9b01c6a7425590e0868f36a7054e.mp3"
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "text": "Cause 2 — the groundwater trap.\n\nFarmers dig their own wells and tube-wells to irrigate more land. It sounds smart — until you realise everyone is doing it.\n\nPump too much, and groundwater levels fall. That hurts water availability and food security down the line. A short-term win that becomes a long-term loss.",
+          "chars": 312,
+          "hash": "3430ffc8315e4ecbaa886f9e9324d07f67217cb8d333c0af996bcbf377ec7c85",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/3430ffc8315e4ecbaa886f9e9324d07f67217cb8d333c0af996bcbf377ec7c85.mp3"
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "text": "Cause 3 — industries and cities.\n\nAfter Independence, rapid industrialisation and urbanisation. Industries are heavy water users — and they need power, much of it hydroelectric, so even electricity quietly costs water.\n\nDense cities and urban lifestyles pile on demand. Housing societies sink their own borewells. The result: fragile water resources over-exploited until they're depleted.",
+          "chars": 388,
+          "hash": "65bf1ee98e282874f0b5f2a579c515ebc205edfc2417bd8ca81f049109dbc2cc",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/65bf1ee98e282874f0b5f2a579c515ebc205edfc2417bd8ca81f049109dbc2cc.mp3"
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "text": "More people, more farms, more factories — all drinking from the same shrinking supply.",
+          "chars": 86,
+          "hash": "89de7d9df205d42b9d973895989840bb493b21f07795d524195cd9d08864e133",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/89de7d9df205d42b9d973895989840bb493b21f07795d524195cd9d08864e133.mp3"
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "text": "Look back at all three causes. Not one of them is about rainfall.\n\nIt's demand outrunning the renewable supply — plus unequal access, where some get plenty and others get almost none. That's how a wet country runs dry.",
+          "chars": 218,
+          "hash": "98d09819c00184e16f1775a9958ebec38636a07345c7ede15bf812c6b6a58f02",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/98d09819c00184e16f1775a9958ebec38636a07345c7ede15bf812c6b6a58f02.mp3"
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "text": "What is the single largest consumer of water in India?",
+          "chars": 54,
+          "hash": "1257a64f83f077653740cad8eb009e07b201ba5cbb6a46657ab5dc8cc1ee9c90",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/1257a64f83f077653740cad8eb009e07b201ba5cbb6a46657ab5dc8cc1ee9c90.mp3"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "text": "Match each cause of scarcity to what it leads to.",
+          "chars": 49,
+          "hash": "b3f7f0edd8a4e89085ed980b0bbbce2fc5da4bfc7f180740edeecabc7613d5a6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b3f7f0edd8a4e89085ed980b0bbbce2fc5da4bfc7f180740edeecabc7613d5a6.mp3"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "text": "List every way your household used water today — drinking, cooking, bathing, washing, the garden, flushing.\n\nOn paper, mark which one used the most. Then type your single biggest household water use below.",
+          "chars": 205,
+          "hash": "65c3b17d9e5d3815012d6bafafce5a010e6b35c2efe0bb6d3a628df4f22987f7",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/65c3b17d9e5d3815012d6bafafce5a010e6b35c2efe0bb6d3a628df4f22987f7.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "text": "Lock in the two big drains.",
+          "chars": 27,
+          "hash": "2f9478978506e53ce0386c9a2de3580a2eb07a0c41eb87e58bd179aa156cdc32",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/2f9478978506e53ce0386c9a2de3580a2eb07a0c41eb87e58bd179aa156cdc32.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "text": "Irrigated {{blank-1}} is the largest consumer of water, and over-pumping wells makes {{blank-2}} levels fall.",
+          "chars": 109,
+          "hash": "ba4a5311728e76a05803b216105e4dc2b83e4f50697bb98d47f45d0a2d828954",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ba4a5311728e76a05803b216105e4dc2b83e4f50697bb98d47f45d0a2d828954.mp3"
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "text": "Every farmer digging a deeper well is acting sensibly for themselves — but together they drain the shared groundwater. Where else in life do many sensible individual choices add up to a shared problem?\n\nNo right answer.",
+          "chars": 219,
+          "hash": "1cdfbbb82b607ca82bb5a43504f73e7f82a6c104aa6309d67f58ccd3ada2a0f6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/1cdfbbb82b607ca82bb5a43504f73e7f82a6c104aa6309d67f58ccd3ada2a0f6.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "text": "You can name why demand, not rain, drives water scarcity.",
+          "chars": 57,
+          "hash": "4c1671167ad82361b9360238ae1b65c73ffb27b0537b7e07549b6ebb6963ee83",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/4c1671167ad82361b9360238ae1b65c73ffb27b0537b7e07549b6ebb6963ee83.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "text": "Over-exploitation for irrigation (the biggest user), falling groundwater from too many wells, and the thirst of industries and cities — demand outruns the renewable supply, and access stays unequal. Rainfall is barely the point.\n\nBut there's one more kind of scarcity, and it's sneaky: water that's right there but unsafe to drink. What happens when the problem isn't quantity, but quality? That's the next lesson.",
+          "chars": 414,
+          "hash": "c18ef839d762e4e28c7111a275cf77ab0712cb2323c09333d3dcb0b810a3d935",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c18ef839d762e4e28c7111a275cf77ab0712cb2323c09333d3dcb0b810a3d935.mp3"
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/the-water-scarcity-puzzle/03-when-water-isnt-safe-to-drink.yaml",
+      "language": "en",
+      "chunk_count": 16,
+      "total_chars": 3000,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "text": "Picture a glass of water, full to the very brim. Now imagine you can't drink a single drop of it.\n\nThat's the third kind of water scarcity — and it has nothing to do with how much water there is.",
+          "chars": 195,
+          "hash": "45adb7a01874246b82d198abfc201ff809fe0a2b08470fcb5213f4681c8a2d12",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/45adb7a01874246b82d198abfc201ff809fe0a2b08470fcb5213f4681c8a2d12.mp3"
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "text": "So far we've counted quantity scarcity — not enough water.\n\nBut a region can have plenty of water and still suffer scarcity, for a different reason: the water is bad quality. Enough to fill every glass, but unsafe to use.",
+          "chars": 221,
+          "hash": "787409f13ce0ffcf352b7c48902479efd658e10bd893fb7aefa9a2eca95ed1a1",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/787409f13ce0ffcf352b7c48902479efd658e10bd893fb7aefa9a2eca95ed1a1.mp3"
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "text": "What poisons it?\n\nDomestic and industrial wastes, and the chemicals, pesticides, and fertilisers that wash off our farms. They make otherwise-ample water hazardous for human use.\n\nLots of water. None you'd want to drink.",
+          "chars": 220,
+          "hash": "0cc44324404f0f0b67ab2bc988e0b6e3dee7d18dace6fafb565c7f548bdbafd5",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/0cc44324404f0f0b67ab2bc988e0b6e3dee7d18dace6fafb565c7f548bdbafd5.mp3"
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "text": "Quantity scarcity (no water) — and quality scarcity (plenty of water, but unsafe).",
+          "chars": 82,
+          "hash": "009532ae7d51c55a4034f0ff785e2f54c4c02e9ae7becdcaa08ccfa93201fb36",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/009532ae7d51c55a4034f0ff785e2f54c4c02e9ae7becdcaa08ccfa93201fb36.mp3"
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "text": "So what is India doing about it?\n\nFirst, the Jal Jeevan Mission (JJM). Its goal: give every rural household assured, potable piped water — 55 litres per person per day, reliably, for the long term.",
+          "chars": 197,
+          "hash": "9382712782a568ee05b8ca4527de05a3c54fd51e3c513efb6669f0c25d2c13c0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9382712782a568ee05b8ca4527de05a3c54fd51e3c513efb6669f0c25d2c13c0.mp3"
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "text": "Second, Atal Bhujal Yojana (Atal Jal) — aimed at groundwater, running across 8,220 water-stressed Gram Panchayats.\n\nIts key idea isn't only pipes and pumps. It's behavioural change — shifting whole communities from an attitude of consumption to one of conservation.",
+          "chars": 265,
+          "hash": "b9c0e8c2c34071ea8dc48602d34be8db114c5a0547fd5dd18bb1f0067abd2859",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b9c0e8c2c34071ea8dc48602d34be8db114c5a0547fd5dd18bb1f0067abd2859.mp3"
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "text": "The glass fills right up — and then the pollution creeps in. Quantity is only half the battle.",
+          "chars": 94,
+          "hash": "a5baf5d82b457b006625cb944399e5177bf01eab16ed72ef899415ff736a97ea",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a5baf5d82b457b006625cb944399e5177bf01eab16ed72ef899415ff736a97ea.mp3"
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "text": "Why does all of this matter so much?\n\nConserving and managing water protects our health, our food security, our livelihoods, and our ecosystems. Over-exploit and mismanage it, and you trigger an ecological crisis that hits every one of those at once.\n\nWater isn't just a resource. It's the thread all of them hang from.",
+          "chars": 319,
+          "hash": "d69a491c4591067b49f988330e2a606a03bbc1d4065a137db504c5cbd35020b1",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d69a491c4591067b49f988330e2a606a03bbc1d4065a137db504c5cbd35020b1.mp3"
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "text": "A region gets high annual rainfall, but its water is heavily polluted. Is it suffering from water scarcity?",
+          "chars": 107,
+          "hash": "bd597217094533be719fbd3765473f11be8c388da8842af46010f00f0d75bb4d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/bd597217094533be719fbd3765473f11be8c388da8842af46010f00f0d75bb4d.mp3"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "text": "Match each term to what it means.",
+          "chars": 33,
+          "hash": "a67e20d98231913ebc2978a9f1955c101a4d9196b482d98d4641d2318128946d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a67e20d98231913ebc2978a9f1955c101a4d9196b482d98d4641d2318128946d.mp3"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "text": "Write a short proposal (4–5 lines) on how you could conserve water in your daily life — at the tap, in the bathroom, in the kitchen, in the garden.\n\nPick the one change that would save the most, and type it below.",
+          "chars": 213,
+          "hash": "76ba6173014088e7aacc5f652b38b5699767cc90ce46debcf1d844b0a8a89d11",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/76ba6173014088e7aacc5f652b38b5699767cc90ce46debcf1d844b0a8a89d11.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "text": "Lock in quality scarcity and the mission.",
+          "chars": 41,
+          "hash": "ff7d33cf9e798dd9accf3a1d3c4e825706a3391abd8c65ee026eb24a9dd90b3c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ff7d33cf9e798dd9accf3a1d3c4e825706a3391abd8c65ee026eb24a9dd90b3c.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "text": "Scarcity can come from bad water {{blank-1}} when wastes and chemicals pollute it; the {{blank-2}} Jeevan Mission delivers piped potable water to rural homes.",
+          "chars": 158,
+          "hash": "b2cf0739daa54206aeb8145da20a694f2931fb20107c5a65db12b4eabb8d0589",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b2cf0739daa54206aeb8145da20a694f2931fb20107c5a65db12b4eabb8d0589.mp3"
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "text": "Atal Jal bets that the real fix is behaviour — getting people to value conservation, not just building more infrastructure. Do you think changing habits is harder or easier than building dams and pipes? Why?\n\nNo right answer.",
+          "chars": 225,
+          "hash": "205295fff3cf10f932032ac9b747f4445d2019298632cc977f3e2560cd65df9e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/205295fff3cf10f932032ac9b747f4445d2019298632cc977f3e2560cd65df9e.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "text": "You understand scarcity of quantity AND quality — and how India is fighting both.",
+          "chars": 81,
+          "hash": "25751a7b2b0a8274bf707960f648c9ef9f11377071c60816a499cd2e2769c97a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/25751a7b2b0a8274bf707960f648c9ef9f11377071c60816a499cd2e2769c97a.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "text": "Water can be scarce not only when there's too little, but when what's there is too polluted to use. Jal Jeevan Mission brings piped potable water to rural homes; Atal Jal tackles groundwater by shifting communities from consumption to conservation. The stakes: health, food, livelihoods, ecosystems.\n\nBut all of this raises one practical question we've dodged so far: how do we actually store and manage water at scale? For most of the last century, India's big answer was a single, towering structure — the dam. That's where the next course begins.",
+          "chars": 549,
+          "hash": "5538a37dda2bfd15d4d828b4b05e69b3c92d9ce33ef80129f0a9e3c1064d55b4",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/5538a37dda2bfd15d4d828b4b05e69b3c92d9ce33ef80129f0a9e3c1064d55b4.mp3"
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/the-water-scarcity-puzzle-hinglish/01-renewable-yet-running-out.yaml",
+      "language": "hinglish",
+      "chunk_count": 16,
+      "total_chars": 3035,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "text": "Planet ka teen-chauthaai hissa paani se dhaka hai. Aur woh khud ko recycle karta hai — hamesha.\n\nToh ek paheli jo tumhe rok deni chahiye: hum bhala khatam kaise kar sakte hain?\n\nIs lesson ke ant tak, paheli zyaada pareshaan karegi, kam nahi. Achhi baat hai.",
+          "chars": 257,
+          "hash": "fd9b71c8fc5fdb2c1f61b9295ed5003798de34440a5270b2c98f53400f74d61a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/fd9b71c8fc5fdb2c1f61b9295ed5003798de34440a5270b2c98f53400f74d61a.mp3"
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "text": "Numbers se shuru karo. Haan, Earth ki surface ka teen-chauthaai paani hai — par uska sirf ek bahut chhota hissa freshwater hai jise hum actually use kar sakte hain.\n\nYeh usable freshwater do jagahon se aata hai: surface run-off (nadiyaan, jharne) aur groundwater (zameen ke neeche jama paani).",
+          "chars": 293,
+          "hash": "20ee03b52f5429d9250f748ec2c9c1b873b5cb1c8f4360714abc054f0f8a0a05",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/20ee03b52f5429d9250f748ec2c9c1b873b5cb1c8f4360714abc054f0f8a0a05.mp3"
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "text": "Aur yeh sach mein renewable hai. Hydrological cycle — water cycle — ise lagataar renew aur recharge karta hai.\n\nPaani vaashpit hota hai, badal banta hai, baarish ban ke girta hai, zameen pe behta aur soakta hai, phir vaashpit hota hai. Machine kabhi rukti nahi.",
+          "chars": 261,
+          "hash": "b5182409ccdd04fcaa1817646d111f9ab11193b40e6412cddfb131da66d89943",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b5182409ccdd04fcaa1817646d111f9ab11193b40e6412cddfb131da66d89943.mp3"
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "text": "Vaashpan, baarish, run-off, aur recharge — woh cycle jo paani ko renewable resource banata hai.",
+          "chars": 95,
+          "hash": "0391af491a153bc53deba1380cc0f3de959b9e5fb167c78f026c61444c085980",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/0391af491a153bc53deba1380cc0f3de959b9e5fb167c78f026c61444c085980.mp3"
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "text": "Toh yahi poori paheli hai.\n\nAgar paani har jagah hai aur khud ko renew karta hai, toh duniya bhar ke ilaaqe water scarcity se kyun jhujhte hain? Yeh kyun predict kiya jaata hai ki 2025 tak, lagbhag do billion log absolute water scarcity mein jeeyenge?",
+          "chars": 251,
+          "hash": "2dc2b4132cc40ca393bd52d47e5e68cc22880970c5e021731e64e662ee691f71",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/2dc2b4132cc40ca393bd52d47e5e68cc22880970c5e021731e64e662ee691f71.mp3"
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "text": "Tumhara gut shayad seedhe registan pe jaata hai — kam-baarish waala Rajasthan, auratein meelon chalti matkas sambhaalti hui.\n\nAur yeh thoda sach hai: paani ki availability space aur time pe badalti hai, zyaadatar isliye ki baarish season aur saal se badalti hai. Par ruko — yeh scarcity ki mukhya wajah nahi hai.",
+          "chars": 312,
+          "hash": "662b02896d545f78b29bf129d52a7c3ddb4e98f2675a1d1fd3ec382f75baa459",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/662b02896d545f78b29bf129d52a7c3ddb4e98f2675a1d1fd3ec382f75baa459.mp3"
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "text": "Yeh woh twist hai jo poore chapter mein chalta hai.\n\nScarcity zyaadatar kam baarish se nahi, hum se hoti hai: over-exploitation, excessive use, aur unequal access. Ek ilaaqa paani mein doob sakta hai aur phir bhi scarce ho sakta hai.\n\nAgar sirf baarish scarcity samjhaati toh kya tootta? Toh koi baarish-bhara sheher kabhi sookhta nahi. Kai sookhte hain.",
+          "chars": 354,
+          "hash": "9f0ef56e277c41527473f51a03bbbb415592a0d9b59372d05a2781a1eecb3a28",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9f0ef56e277c41527473f51a03bbbb415592a0d9b59372d05a2781a1eecb3a28.mp3"
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "text": "Ek boond, ghoomti hui — theory mein renewable, agar hum use lautne se tezi se na nikaalein.",
+          "chars": 91,
+          "hash": "1b0ff6e9126322f78cb48ca5d09887f7738de23eafbe54378cd379d74936f58c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/1b0ff6e9126322f78cb48ca5d09887f7738de23eafbe54378cd379d74936f58c.mp3"
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "text": "Paani ko renewable resource kya banata hai?",
+          "chars": 43,
+          "hash": "c0e248177111eb76c9785db0ea68925d4d57904b53995c6074b7abf05fc7af2b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c0e248177111eb76c9785db0ea68925d4d57904b53995c6074b7abf05fc7af2b.mp3"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "text": "Water cycle ke stages ko order mein lagao, samundar se shuru karte hue.",
+          "chars": 71,
+          "hash": "3eec8fc26348465e56f9ff0b7b8766bc5ced8412960ba24ba8f2f049ca82878d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/3eec8fc26348465e56f9ff0b7b8766bc5ced8412960ba24ba8f2f049ca82878d.mp3"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "text": "Tumhare nal ka paani asal mein kahan se aata hai — ek nadi, reservoir, borewell (groundwater), ya rainwater?\n\nPaper pe use ek-ek kadam peeche us baarish tak trace karo jisse woh shuru hua. Neeche apne paani ka source type karo.",
+          "chars": 227,
+          "hash": "e2cf3f4e4a4c5d10d6a5445a9187e6ba4695233d3ada9df14e6baea1f405fc2b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e2cf3f4e4a4c5d10d6a5445a9187e6ba4695233d3ada9df14e6baea1f405fc2b.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "text": "Paheli ko lock karo.",
+          "chars": 20,
+          "hash": "0379de3d0b63c02500df001958a3bc8353d172000e03c1f5d0e1969c63be9c2c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/0379de3d0b63c02500df001958a3bc8353d172000e03c1f5d0e1969c63be9c2c.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "text": "Paani renewable hai kyunki {{blank-1}} cycle ise lagataar renew karta hai — phir bhi saal {{blank-2}} tak, lagbhag do billion log absolute scarcity mein ho sakte hain.",
+          "chars": 167,
+          "hash": "485e4334bce3302520e0c23acbaa43ad2bba164c96bd8c42e1a9aa80e8694068",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/485e4334bce3302520e0c23acbaa43ad2bba164c96bd8c42e1a9aa80e8694068.mp3"
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "text": "Tum shayad nal ke paani ko endless maante ho — kholo, woh hai. Is lesson ke baad, kya \"renewable\" ek tasalli lagta hai ya ek chetaavni? Kyun?\n\nKoi sahi jawaab nahi.",
+          "chars": 164,
+          "hash": "076332385bef218e8ae3de3fb3f06b9d15e224f0615cd29687198f128385b95c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/076332385bef218e8ae3de3fb3f06b9d15e224f0615cd29687198f128385b95c.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "text": "Tum samjha sakte ho ki paani renewable hai — aur phir bhi scarce.",
+          "chars": 65,
+          "hash": "0ab9485ec862d6292986a06a75d68f0752cc0d8cc05354ff99d1bf648d5145a3",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/0ab9485ec862d6292986a06a75d68f0752cc0d8cc05354ff99d1bf648d5145a3.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "text": "Paani planet ke zyaadatar hisse ko dhakta hai aur hydrological cycle ise endless renew karta hai, phir bhi 2025 tak do billion log absolute scarcity mein ho sakte hain. Wajah sirf baarish nahi — yeh hai ki hum jo hai use kaise use aur share karte hain.\n\nToh asli mujrimon ko naam dete hain. Ek achhe-paani waala desh bhi sookh kyun jaata hai? Yahi agli lesson hai.",
+          "chars": 364,
+          "hash": "97f40f1a199b955f3f40bdff3296c07479645ddaae4ec019f9ccee9eb6ed7722",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/97f40f1a199b955f3f40bdff3296c07479645ddaae4ec019f9ccee9eb6ed7722.mp3"
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/the-water-scarcity-puzzle-hinglish/02-why-a-wet-country-runs-dry.yaml",
+      "language": "hinglish",
+      "chunk_count": 16,
+      "total_chars": 3281,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "text": "Yeh aisi cheez hai jo mumkin nahi honi chahiye: ek sheher ek nadi ke bilkul paas baitha, aur phir bhi paani ki kami mein.\n\nPhir bhi humare kayi sheher theek aise hi hain. Agar baarish problem nahi, toh kya hai?",
+          "chars": 210,
+          "hash": "6935644f9376692a35d26f47f5ab7b28d5c67c5bfb8c69ce0fa18e14164099fe",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6935644f9376692a35d26f47f5ab7b28d5c67c5bfb8c69ce0fa18e14164099fe.mp3"
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "text": "Water scarcity ki teen jad-wajahein hain — aur gaur karo ki inme se koi \"kam baarish\" nahi hai:\n\n- over-exploitation\n- excessive use\n- unequal access\n\nDekhte hain har ek ek aise desh ko kaise sukhaa deti hai jo asal mein kaafi bheega hai.",
+          "chars": 238,
+          "hash": "41c31bd426f64f18c2ac78e34d4c7ce9185e490c9b5e15939b77e233e60d6914",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/41c31bd426f64f18c2ac78e34d4c7ce9185e490c9b5e15939b77e233e60d6914.mp3"
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "text": "Wajah 1 — badhti population.\n\nZyaada log zyaada paani maangte hain — sirf peene ko nahi, balki zyaada khaana ugaane ko. Food-grain badhaane ke liye, hum dry-season farming ke liye irrigation badhaane ko paani over-exploit karte hain.\n\nAur irrigated agriculture India mein paani ka sabse bada akela consumer hai. Kuein pe bheed badhti hi jaati hai.",
+          "chars": 347,
+          "hash": "210caa5ce7c7e8249df2a84d6125c7b801845acd40c9c5c72a030249fe23eaad",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/210caa5ce7c7e8249df2a84d6125c7b801845acd40c9c5c72a030249fe23eaad.mp3"
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "text": "Ek finite freshwater supply se — agriculture sabse bada hissa leti hai, kaafi aage se.",
+          "chars": 86,
+          "hash": "cef694d7f2f5123ea6d201c431f56ee0e08df49eae0ef85ef082cb2b7c7fc5b7",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/cef694d7f2f5123ea6d201c431f56ee0e08df49eae0ef85ef082cb2b7c7fc5b7.mp3"
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "text": "Wajah 2 — groundwater ka jaal.\n\nKisaan zyaada zameen seenchne ko apne kuein aur tube-wells khodte hain. Samajhdaar lagta hai — jab tak tum samajh na lo ki sab yahi kar rahe hain.\n\nBahut zyaada pump karo, aur groundwater levels girte hain. Yeh paani ki availability aur aage chal ke food security ko nuksaan pahunchaata hai. Ek short-term jeet jo long-term haar ban jaati hai.",
+          "chars": 375,
+          "hash": "9948ae5cd4bf6862d81d33d04e7d6e6e821f8319420d23fede7aed4ee96efd2f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9948ae5cd4bf6862d81d33d04e7d6e6e821f8319420d23fede7aed4ee96efd2f.mp3"
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "text": "Wajah 3 — industries aur sheher.\n\nIndependence ke baad, tezi se industrialisation aur urbanisation. Industries paani ki bhaari consumers hain — aur unhe power chahiye, jiska zyaadatar hydroelectric hai, toh bijli bhi chupchaap paani kharch karti hai.\n\nGhani aabaadi waale sheher aur urban lifestyles demand badhate hain. Housing societies apne borewells gaadte hain. Nateeja: naazuk water resources tab tak over-exploit jab tak woh khatam na ho jaayein.",
+          "chars": 453,
+          "hash": "adcdfcb839d1b01723a3774ee90062576ab5597f5329ff10f60ac4084d693a20",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/adcdfcb839d1b01723a3774ee90062576ab5597f5329ff10f60ac4084d693a20.mp3"
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "text": "Zyaada log, zyaada khet, zyaada factories — sab ek hi simatte supply se peete hue.",
+          "chars": 82,
+          "hash": "dec7f73cb8f157672346fbc10ae7e31662de9de50243b01e86c7e934c59f6fe9",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/dec7f73cb8f157672346fbc10ae7e31662de9de50243b01e86c7e934c59f6fe9.mp3"
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "text": "Teeno wajahon ko dobaara dekho. Inme se ek bhi baarish ke baare mein nahi.\n\nYeh demand ka renewable supply se aage nikalna hai — plus unequal access, jahan kuch ko bharpoor milta hai aur kuch ko lagbhag kuch nahi. Aise ek bheega desh sookh jaata hai.",
+          "chars": 250,
+          "hash": "4e56f40071dccc8bc8f2cfaff92029f0a9e7fa16bef4fc4f6b25276980ed646f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/4e56f40071dccc8bc8f2cfaff92029f0a9e7fa16bef4fc4f6b25276980ed646f.mp3"
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "text": "India mein paani ka sabse bada akela consumer kya hai?",
+          "chars": 54,
+          "hash": "92d7375e70f3be434aacd561b4bd585260f243aff118dc898e2cee88683f04f8",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/92d7375e70f3be434aacd561b4bd585260f243aff118dc898e2cee88683f04f8.mp3"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "text": "Scarcity ki har wajah ko us se match karo jisko woh le jaati hai.",
+          "chars": 65,
+          "hash": "3d6606373d654f789bc3777967a5bc47936e34ee9ad05b0c0e3e4ea55d5db0e1",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/3d6606373d654f789bc3777967a5bc47936e34ee9ad05b0c0e3e4ea55d5db0e1.mp3"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "text": "Aaj tumhare ghar ne paani jin-jin tareekon se use kiya woh sab likho — peena, khaana banana, nahaana, dhona, garden, flush.\n\nPaper pe nishaan lagao kaunsa sabse zyaada use hua. Phir neeche apne ghar ka sabse bada akela paani use type karo.",
+          "chars": 239,
+          "hash": "a6be268bee8b93bb1598230a6722ae8b541f16e3cb05fbd8137b376fa41a748b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a6be268bee8b93bb1598230a6722ae8b541f16e3cb05fbd8137b376fa41a748b.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "text": "Do bade drains ko lock karo.",
+          "chars": 28,
+          "hash": "79ffca1827cfef950ba2ce48d95aedba193aba86318df8f3d597e8ded93f849a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/79ffca1827cfef950ba2ce48d95aedba193aba86318df8f3d597e8ded93f849a.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "text": "Irrigated {{blank-1}} paani ki sabse badi consumer hai, aur kuein over-pump karne se {{blank-2}} levels girte hain.",
+          "chars": 115,
+          "hash": "79c20737e8fddfba092ae6e0764a7c64195e04edfe44c51e49658538439ec351",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/79c20737e8fddfba092ae6e0764a7c64195e04edfe44c51e49658538439ec351.mp3"
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "text": "Har kisaan jo gehra kuaan khodta hai woh apne liye samajhdaari kar raha hai — par milke woh shared groundwater khaali kar dete hain. Zindagi mein aur kahan kai samajhdaar individual choices milke ek shared problem ban jaati hain?\n\nKoi sahi jawaab nahi.",
+          "chars": 252,
+          "hash": "2aab39588921487414b1ab23fb8c8782ced4e2e4a2b5d5c62b6c6fdf0e102793",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/2aab39588921487414b1ab23fb8c8782ced4e2e4a2b5d5c62b6c6fdf0e102793.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "text": "Tum bata sakte ho ki demand, na ki baarish, water scarcity chalati hai.",
+          "chars": 71,
+          "hash": "a1870c3ac7db1d1081f98e2e3b908784b44474d56aa380e6b546d74fe018696c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a1870c3ac7db1d1081f98e2e3b908784b44474d56aa380e6b546d74fe018696c.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "text": "Irrigation ke liye over-exploitation (sabse bada user), bahut zyaada kuon se girta groundwater, aur industries aur sheheron ki pyaas — demand renewable supply se aage nikal jaati hai, aur access unequal rehti hai. Baarish mushkil se point hai.\n\nPar ek aur kism ki scarcity hai, aur woh chalaak hai: paani jo wahin hai par peene laayak nahi. Jab problem maatra nahi, quality ho toh kya hota hai? Yahi agli lesson hai.",
+          "chars": 416,
+          "hash": "dbb28e3b0471a3849489a7c26f4054c867b0017611f699e544d60afd14bc0214",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/dbb28e3b0471a3849489a7c26f4054c867b0017611f699e544d60afd14bc0214.mp3"
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/the-water-scarcity-puzzle-hinglish/03-when-water-isnt-safe-to-drink.yaml",
+      "language": "hinglish",
+      "chunk_count": 16,
+      "total_chars": 3193,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "text": "Ek glass paani ki kalpana karo, bilkul kinaare tak bhara. Ab socho ki tum uski ek boond bhi nahi pee sakte.\n\nYeh water scarcity ki teesri kism hai — aur iska is se koi lena-dena nahi ki paani kitna hai.",
+          "chars": 202,
+          "hash": "fab9d50b739bc3a723f079cae50bc7574d5f6613496c9db292d14bbdcf63ea1a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/fab9d50b739bc3a723f079cae50bc7574d5f6613496c9db292d14bbdcf63ea1a.mp3"
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "text": "Ab tak humne quantity scarcity gini — kaafi paani na hona.\n\nPar ek ilaaqa bharpoor paani rakh sakta hai aur phir bhi scarcity jhel sakta hai, ek alag wajah se: paani bad quality ka hai. Har glass bharne ko kaafi, par use karne ke liye unsafe.",
+          "chars": 242,
+          "hash": "30448e046e39875cad4173d51754cfc0eb6804f0c9642458a02f24527cfa72b6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/30448e046e39875cad4173d51754cfc0eb6804f0c9642458a02f24527cfa72b6.mp3"
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "text": "Use zehreela kya banata hai?\n\nDomestic aur industrial wastes, aur woh chemicals, pesticides, aur fertilisers jo humare kheton se beh ke aate hain. Yeh warna-bharpoor paani ko hazardous bana dete hain.\n\nBahut paani. Peene laayak ek boond nahi.",
+          "chars": 242,
+          "hash": "e25333278604dfcfc09fbed83dbbd0b0bb46a735ba05473b48e35f3f4c2fcce6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e25333278604dfcfc09fbed83dbbd0b0bb46a735ba05473b48e35f3f4c2fcce6.mp3"
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "text": "Quantity scarcity (paani nahi) — aur quality scarcity (bharpoor paani, par unsafe).",
+          "chars": 83,
+          "hash": "f69b572e5c6885e98dc185c87dc8faa16dc7fe7b3e0237541030fcb545af623d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f69b572e5c6885e98dc185c87dc8faa16dc7fe7b3e0237541030fcb545af623d.mp3"
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "text": "Toh India iske baare mein kya kar raha hai?\n\nPehla, Jal Jeevan Mission (JJM). Iska goal: har rural household ko assured, potable piped water dena — 55 litre per person per day, bharosemand, long-term ke liye.",
+          "chars": 208,
+          "hash": "fa90fc638f3e64c44bfd74b0afed67ed9e9c31461e21bb6225a071c91f2b962f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/fa90fc638f3e64c44bfd74b0afed67ed9e9c31461e21bb6225a071c91f2b962f.mp3"
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "text": "Doosra, Atal Bhujal Yojana (Atal Jal) — groundwater pe focus, 8,220 water-stressed Gram Panchayats mein chalti hui.\n\nIska key idea sirf pipe aur pump nahi. Yeh behavioural change hai — poori communities ko consumption ke attitude se conservation ke attitude tak shift karna.",
+          "chars": 274,
+          "hash": "a111a0f78b4f93b661c288dffc204417b5aebaf9be495650cb9b29a4abb9a548",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a111a0f78b4f93b661c288dffc204417b5aebaf9be495650cb9b29a4abb9a548.mp3"
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "text": "Glass poora bharta hai — aur phir pollution ghus aata hai. Quantity sirf aadhi ladai hai.",
+          "chars": 89,
+          "hash": "a87cb1c77d17fa82cf07b2e831d70b2d3e832bf7917af88be62077891c6345aa",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a87cb1c77d17fa82cf07b2e831d70b2d3e832bf7917af88be62077891c6345aa.mp3"
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "text": "Yeh sab itna maayne kyun rakhta hai?\n\nPaani ko conserve aur manage karna humari health, food security, livelihoods, aur ecosystems ko bachata hai. Use over-exploit aur mismanage karo, aur tum ek ecological crisis chhed dete ho jo in sabko ek saath maarti hai.\n\nPaani sirf ek resource nahi. Yeh woh dhaaga hai jis pe yeh sab latke hain.",
+          "chars": 335,
+          "hash": "5be6af6066ea76e3dd0f6aadcd12330007e1aa58439b0ea8e6d255348dd95fd8",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/5be6af6066ea76e3dd0f6aadcd12330007e1aa58439b0ea8e6d255348dd95fd8.mp3"
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "text": "Ek ilaaqe ko high annual rainfall milti hai, par uska paani bhaari pollute hai. Kya woh water scarcity jhel raha hai?",
+          "chars": 117,
+          "hash": "9ddce15f9e4e0e6dd49bced21d61f7ffd092ab030cfe286944df382f7a13faac",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9ddce15f9e4e0e6dd49bced21d61f7ffd092ab030cfe286944df382f7a13faac.mp3"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "text": "Har term ko uske matlab se match karo.",
+          "chars": 38,
+          "hash": "f2a5c9a79e474c0b88f2f20c8b1a700f502dc6a83df5110a9c4b858619a2261c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f2a5c9a79e474c0b88f2f20c8b1a700f502dc6a83df5110a9c4b858619a2261c.mp3"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "text": "Ek chhota proposal (4–5 line) likho ki tum apni rozmarra zindagi mein paani kaise conserve kar sakte ho — nal pe, bathroom mein, kitchen mein, garden mein.\n\nWoh ek change chuno jo sabse zyaada bachaaye, aur neeche type karo.",
+          "chars": 224,
+          "hash": "a75040a675562c62b441a2f5d71a1990838b2ed95329046300e7bbb415133335",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a75040a675562c62b441a2f5d71a1990838b2ed95329046300e7bbb415133335.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "text": "Quality scarcity aur mission ko lock karo.",
+          "chars": 42,
+          "hash": "f27b29dc7064f581ce746cb18e2f186e16ff96cbc63643a36d569bbc0825b38e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f27b29dc7064f581ce746cb18e2f186e16ff96cbc63643a36d569bbc0825b38e.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "text": "Scarcity bad water {{blank-1}} se aa sakti hai jab wastes aur chemicals use pollute karte hain; {{blank-2}} Jeevan Mission rural ghar ko piped potable paani pahunchaata hai.",
+          "chars": 173,
+          "hash": "a93db59199fef88f875e657357b7f52410158b57f368a6ed3b3c9986ebaa4b5b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a93db59199fef88f875e657357b7f52410158b57f368a6ed3b3c9986ebaa4b5b.mp3"
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "text": "Atal Jal yeh shart lagaata hai ki asli fix behaviour hai — logon ko conservation ko value karna sikhana, sirf zyaada infrastructure banana nahi. Tumhe lagta hai aadtein badalna dams aur pipes banane se mushkil hai ya aasaan? Kyun?\n\nKoi sahi jawaab nahi.",
+          "chars": 253,
+          "hash": "96990738158b6b1c9d109bed35e14360052a68fd852e56d1a8a5143fc39d70fc",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/96990738158b6b1c9d109bed35e14360052a68fd852e56d1a8a5143fc39d70fc.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "text": "Tum maatra AUR quality dono ki scarcity samajhte ho — aur India dono se kaise lad raha hai.",
+          "chars": 91,
+          "hash": "a569e9f58114f30f3e0aff53ac5abf0e01e632b01e730a6c651be3686f0b5efe",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a569e9f58114f30f3e0aff53ac5abf0e01e632b01e730a6c651be3686f0b5efe.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "text": "Paani sirf tab scarce nahi jab bahut kam ho, balki jab jo hai woh use karne ke liye bahut polluted ho. Jal Jeevan Mission rural ghar ko piped potable paani laata hai; Atal Jal groundwater ko sambhaalta hai communities ko consumption se conservation tak shift karke. Daanv pe: health, khaana, livelihoods, ecosystems.\n\nPar yeh sab ek practical sawaal khada karta hai jise hum ab tak taalte rahe: hum bade paimaane pe paani store aur manage kaise karte hain? Pichli sadi ke zyaadatar samay, India ka bada jawaab ek hi vishaal dhaancha tha — dam. Yahin se agla course shuru hota hai.",
+          "chars": 580,
+          "hash": "5bcbf9fe804f7679718e64984fcb1a8473edc8f7b33c7629e44087e7277c96c1",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/5bcbf9fe804f7679718e64984fcb1a8473edc8f7b33c7629e44087e7277c96c1.mp3"
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/multi-purpose-river-projects/01-dams-and-their-many-uses.yaml",
+      "language": "en",
+      "chunk_count": 16,
+      "total_chars": 2940,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "text": "Build one wall across a river, and you can light a city, water a desert, hold back a flood, and breed fish — all at the same time.\n\nIt sounds like magic. It's a dam. Let's see how it pulls off so many jobs at once.",
+          "chars": 214,
+          "hash": "160c7b4733114e7fa7bd30c0e08a87c46166258c7c9d89579c1f240c43462a5a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/160c7b4733114e7fa7bd30c0e08a87c46166258c7c9d89579c1f240c43462a5a.mp3"
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "text": "India has been doing this for millennia.\n\nSringaverapura had a flood-water harvesting system in the 1st century BC. Chandragupta Maurya's era built dams and lakes. The 11th-century Bhopal Lake and Delhi's Hauz Khas tank followed. Modern India just kept an ancient tradition going — with concrete.",
+          "chars": 296,
+          "hash": "047ec95bfa80457199374d1aa9b6da150d3a9f4b14abd8a30577928f6528c1e6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/047ec95bfa80457199374d1aa9b6da150d3a9f4b14abd8a30577928f6528c1e6.mp3"
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "text": "So what is a dam, exactly?\n\nA barrier across flowing water that obstructs, directs, or slows the flow — usually creating a reservoir, a lake of stored water behind it. Most dams have a spillway that lets excess water flow over safely, so the dam doesn't burst.",
+          "chars": 260,
+          "hash": "6b8b3d8de213870ed4b688186693383ba9400c5bf1a21141d65828613df4a15f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6b8b3d8de213870ed4b688186693383ba9400c5bf1a21141d65828613df4a15f.mp3"
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "text": "A barrier holds back a reservoir; a spillway releases the excess; the river continues below.",
+          "chars": 92,
+          "hash": "fa282ad15245af5dbf14021c7ceabed3eec1440a154114cc480647ac5adeca69",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/fa282ad15245af5dbf14021c7ceabed3eec1440a154114cc480647ac5adeca69.mp3"
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "text": "Dams used to be built for just one job: irrigation — storing rainwater to water fields later.\n\nToday they're multi-purpose — one dam, many jobs at once:\n\n- irrigation\n- electricity (hydel power)\n- water supply for homes and industry\n- flood control\n- recreation, inland navigation, and fish breeding\n\nThe Swiss Army knife of rivers.",
+          "chars": 332,
+          "hash": "e8ffcc6a1eb08b75e27d2336e7db5997f50c05f752e9a4cac6388972c8169a63",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e8ffcc6a1eb08b75e27d2336e7db5997f50c05f752e9a4cac6388972c8169a63.mp3"
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "text": "Two famous examples show the idea.\n\nBhakra-Nangal, on the Sutlej-Beas, is used for both hydel power and irrigation. Hirakud, on the Mahanadi, integrates water conservation with flood control.\n\nIn each, the many uses of the stored water are woven together — that's what \"integrated\" means.",
+          "chars": 288,
+          "hash": "c6712e98bbe782ba97197cf1dbc82728e5bb05babe9a0f305758c965b1610dfb",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c6712e98bbe782ba97197cf1dbc82728e5bb05babe9a0f305758c965b1610dfb.mp3"
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "text": "Power, crops, drinking water, fish, flood control — all from a single project.",
+          "chars": 78,
+          "hash": "71d114b9271a262b189c1532be3fd2e6264c471e8ed654171831274bf79f9232",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/71d114b9271a262b189c1532be3fd2e6264c471e8ed654171831274bf79f9232.mp3"
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "text": "Jawaharlal Nehru proudly called dams the \"temples of modern India.\"\n\nWhy temples? Because he saw them weaving together farming and the village economy with rapid industrialisation and urban growth — the engine to lift a newly independent nation out of its colonial past.",
+          "chars": 270,
+          "hash": "6c36392e664fa8b0a687e31d8ae4bf5cd8a368af18ff9a19e7b146a2604a1084",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6c36392e664fa8b0a687e31d8ae4bf5cd8a368af18ff9a19e7b146a2604a1084.mp3"
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "text": "What makes a dam a 'multi-purpose' project?",
+          "chars": 43,
+          "hash": "a2160dee5c6f29308a87157e418c1901238c34909a44a91c2e90859985ee9d01",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a2160dee5c6f29308a87157e418c1901238c34909a44a91c2e90859985ee9d01.mp3"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "text": "Match each term to what it is.",
+          "chars": 30,
+          "hash": "aca4db1dab894590a41c521720dbd2067c1413816be4a40f5dd6d6f8c0487a66",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/aca4db1dab894590a41c521720dbd2067c1413816be4a40f5dd6d6f8c0487a66.mp3"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "text": "Think about your own region. If a multi-purpose dam served it, which of its uses would matter most — electricity, irrigation, drinking water, or flood control?\n\nOn paper, rank your top two and say why. Type your number-one use below.",
+          "chars": 233,
+          "hash": "68e3348330bab45d734640a813e19a1d791b8fd8357ac4407be3ca99a7fdff4f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/68e3348330bab45d734640a813e19a1d791b8fd8357ac4407be3ca99a7fdff4f.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "text": "Lock in the basics.",
+          "chars": 19,
+          "hash": "453570617a28159138a81cde741534fbf8641e8a05455654da5e718bbe1755af",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/453570617a28159138a81cde741534fbf8641e8a05455654da5e718bbe1755af.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "text": "A dam holds back a lake of stored water called a {{blank-1}}, and Nehru called dams the temples of modern {{blank-2}}.",
+          "chars": 118,
+          "hash": "649ef66040a9af2903ec8df1b0062cd317ce0654fb3b4aa8dc4768344057f2c1",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/649ef66040a9af2903ec8df1b0062cd317ce0654fb3b4aa8dc4768344057f2c1.mp3"
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "text": "Nehru called dams temples — almost sacred symbols of progress. Why do you think a new nation needed symbols like that, not just useful structures?\n\nNo right answer.",
+          "chars": 164,
+          "hash": "d69cffdbcf08175181180fb294ea12ad69bc8b81d8958528edb79a9fae36ec78",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d69cffdbcf08175181180fb294ea12ad69bc8b81d8958528edb79a9fae36ec78.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "text": "You can explain what a multi-purpose dam is and why it was celebrated.",
+          "chars": 70,
+          "hash": "70fe086faf3f650120f85f5d2726686b0b2280e69c76fadf28a4f14bbbcd7854",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/70fe086faf3f650120f85f5d2726686b0b2280e69c76fadf28a4f14bbbcd7854.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "text": "A dam is a barrier that stores water in a reservoir; a multi-purpose project weaves together irrigation, power, water supply, flood control, and more — like Bhakra-Nangal and Hirakud. Nehru hailed them as the temples of modern India.\n\nBut every temple has a price. Over time, these giant projects came under fierce criticism — for what they do to rivers, land, and people. What's the hidden cost of a big dam? That's the next lesson.",
+          "chars": 433,
+          "hash": "0e8eb39eceb526631de9b71ee3ca4bb618ef327f7514e7f61a5a5d207ed24811",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/0e8eb39eceb526631de9b71ee3ca4bb618ef327f7514e7f61a5a5d207ed24811.mp3"
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/multi-purpose-river-projects/02-when-dams-do-harm.yaml",
+      "language": "en",
+      "chunk_count": 17,
+      "total_chars": 3098,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "text": "Here's the cruel irony at the heart of this lesson: dams built to stop floods have sometimes triggered them.\n\nThe temple turned on its worshippers. Let's see how a structure so useful can do so much harm.",
+          "chars": 204,
+          "hash": "1f1745dfd05f6c9a30e46b2e94bb88ed79942f669019b50f884369c449d31fb7",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/1f1745dfd05f6c9a30e46b2e94bb88ed79942f669019b50f884369c449d31fb7.mp3"
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "text": "It starts with one fact: by damming a river, you change its natural flow. And that one change sets off a whole chain of damage.\n\nBegin with what the river carries — sediment.",
+          "chars": 174,
+          "hash": "eb51ebf70d3fabce8fee064a84519ff06407c7f6610f106bd1d2598212c02b96",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/eb51ebf70d3fabce8fee064a84519ff06407c7f6610f106bd1d2598212c02b96.mp3"
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "text": "A free-flowing river carries sediment (silt) downstream. Dam it, and that silt settles at the bottom of the reservoir — excessive sedimentation — while the river below the dam runs sediment-starved.\n\nThe result downstream: rockier streambeds and poorer habitats for the river's aquatic life.",
+          "chars": 291,
+          "hash": "81de4b397d60fbd5e6639a6076c8190ca4fad4d190ca737ace51c90962e916de",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/81de4b397d60fbd5e6639a6076c8190ca4fad4d190ca737ace51c90962e916de.mp3"
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "text": "Dams also fragment rivers — they're walls. Fish and other aquatic fauna can no longer migrate past them, which is deadly when they need to travel upstream to spawn.\n\nAnd the reservoir floods the floodplain, submerging vegetation and soil that then slowly rot underwater.",
+          "chars": 270,
+          "hash": "f02f1b88bc7c1198c070183018d55b0b602f870ab74f8073497d5d715da0d3bc",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f02f1b88bc7c1198c070183018d55b0b602f870ab74f8073497d5d715da0d3bc.mp3"
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "text": "A free river spreads silt and lets fish migrate; a dam traps the silt and blocks the fish.",
+          "chars": 90,
+          "hash": "86a8e4248803e1539c8c1fcf8f22431e920133797ea9c969f08d76453b737f0b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/86a8e4248803e1539c8c1fcf8f22431e920133797ea9c969f08d76453b737f0b.mp3"
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "text": "It gets worse.\n\nReservoirs can induce earthquakes, breed water-borne diseases and pests, and cause pollution from over-use. And cruelly, dams built to control floods have sometimes caused them — sedimentation fills the reservoir, and in heavy rain the big dams often fail to hold a flood back at all.",
+          "chars": 300,
+          "hash": "1b5923096b50e19b151cdca19bd849414b45235b71e26fa43a062967b407d300",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/1b5923096b50e19b151cdca19bd849414b45235b71e26fa43a062967b407d300.mp3"
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "text": "There's a farming sting too.\n\nThe floodplains below lose their yearly coat of silt — a free natural fertiliser — which adds to land degradation. And irrigation pushes farmers toward water-intensive, commercial crops, which over time salinise the soil (salt builds up and poisons it).",
+          "chars": 283,
+          "hash": "4f17ba883888350f9adec7e94cfa1da2eab8c9fc1593789e5e29e04467f4cb87",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/4f17ba883888350f9adec7e94cfa1da2eab8c9fc1593789e5e29e04467f4cb87.mp3"
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "text": "And the heaviest cost is human.\n\nBig dams submerge whole villages and fields, causing large-scale displacement and loss of livelihood. The Sardar Sarovar dam on the Narmada became the symbol of this struggle.\n\n(The flood-prone Damodar was long called the \"river of sorrow.\")",
+          "chars": 274,
+          "hash": "cc6afc3de2a03851a123773d45e3fd38d6503b0eedcb86407f52086cb824e06e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/cc6afc3de2a03851a123773d45e3fd38d6503b0eedcb86407f52086cb824e06e.mp3"
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "text": "Trapped silt, blocked fish, salted soil, displaced homes — the bill a big dam runs up.",
+          "chars": 86,
+          "hash": "1c18071bbba300f77e6f8c72a1f28472497b834ccc0caf1128048fd66813336a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/1c18071bbba300f77e6f8c72a1f28472497b834ccc0caf1128048fd66813336a.mp3"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "text": "Which of these is NOT an argument in favour of multi-purpose river projects?",
+          "chars": 76,
+          "hash": "cdd20d1e20f147a0d3ac02464ee3f434f4ecdb4a3f08c37f86d8722c65aca0bc",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/cdd20d1e20f147a0d3ac02464ee3f434f4ecdb4a3f08c37f86d8722c65aca0bc.mp3"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "text": "Match each harm to what causes it.",
+          "chars": 34,
+          "hash": "51dc4fd85668539bb7dd02899b0e4772446749ecbf5b20eb0afe8cf11e76b8e8",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/51dc4fd85668539bb7dd02899b0e4772446749ecbf5b20eb0afe8cf11e76b8e8.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "text": "Think of a dam or reservoir you've heard of (Sardar Sarovar, Bhakra-Nangal, or a local one).\n\nOn paper, list one clear benefit and one clear cost it brings. Type the dam's name and its biggest cost below.",
+          "chars": 204,
+          "hash": "cc0ca69f2b4d5943be8fe90cc6a84d5dbb58e30fddaa20db9ec9d57ccfb37431",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/cc0ca69f2b4d5943be8fe90cc6a84d5dbb58e30fddaa20db9ec9d57ccfb37431.mp3"
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "text": "Lock in two big costs.",
+          "chars": 22,
+          "hash": "6b2876e6dc0088be9e35cff82a2c2a02d410f695d07f6757a70aba60bd034d06",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6b2876e6dc0088be9e35cff82a2c2a02d410f695d07f6757a70aba60bd034d06.mp3"
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 1,
+          "text": "Damming a river traps {{blank-1}} in the reservoir instead of letting it flow on, and submerging villages forces people into {{blank-2}}.",
+          "chars": 137,
+          "hash": "96e9c334ff9711c18cd0e0b45d102ea400c2a276e08cfde90a6fbe105b380828",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/96e9c334ff9711c18cd0e0b45d102ea400c2a276e08cfde90a6fbe105b380828.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "text": "A dam can power a million homes — and drown the homes of a few thousand villagers. How should a country weigh a benefit for many against a heavy cost for a few? Be honest about how hard this is.\n\nNo right answer.",
+          "chars": 212,
+          "hash": "3441e69921e89bb8b5a7426fb47176c34c1f0889a7526362a218325f32b027a3",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/3441e69921e89bb8b5a7426fb47176c34c1f0889a7526362a218325f32b027a3.mp3"
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 0,
+          "text": "You can weigh the real costs of big dams against their benefits.",
+          "chars": 64,
+          "hash": "3eb590507a10584c66b22a75dd1b95aefdfef0efc7c6d98a25a3dbfb8bf7a1a6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/3eb590507a10584c66b22a75dd1b95aefdfef0efc7c6d98a25a3dbfb8bf7a1a6.mp3"
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 1,
+          "text": "Damming a river traps silt, starves and fragments habitats, salinises soil, can induce quakes and even worsen floods — and, hardest of all, displaces whole communities, as the Narmada struggle showed.\n\nAnd there's one more conflict big projects create: when a single river runs through several states, who gets the water? How do we share a river fairly? That's the next lesson.",
+          "chars": 377,
+          "hash": "69360eb77387f551a7e9e812f0aa7023fa6c923af4ab33d23b8556bcdb992fa0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/69360eb77387f551a7e9e812f0aa7023fa6c923af4ab33d23b8556bcdb992fa0.mp3"
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/multi-purpose-river-projects/03-sharing-water-wisely.yaml",
+      "language": "en",
+      "chunk_count": 16,
+      "total_chars": 2863,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "text": "A river doesn't care about state borders. It just flows.\n\nSo when one river runs through five states, here's the awkward question nobody can avoid: who owns the water?",
+          "chars": 167,
+          "hash": "a5157f205affdf9e7c0e2c59c0c707fd939cac08c67721c643693096aae23c75",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a5157f205affdf9e7c0e2c59c0c707fd939cac08c67721c643693096aae23c75.mp3"
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "text": "A single river often passes through many states, and each one wants its share. The catch: when an upstream state takes more, every state downstream gets less.\n\nThat tension has a name — inter-state water disputes.",
+          "chars": 213,
+          "hash": "be6bba6c337c3fd2c2baf689e686988028e62f4274a40bd6a1ee54cb7c2a9ea0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/be6bba6c337c3fd2c2baf689e686988028e62f4274a40bd6a1ee54cb7c2a9ea0.mp3"
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "text": "Take the Krishna-Godavari dispute.\n\nMaharashtra wanted to divert more water at Koyna for a multi-purpose project. But that would cut the downstream flow into Karnataka and Andhra Pradesh — harming their agriculture and industry. So those two states objected.\n\nOne river, three governments, one fight.",
+          "chars": 300,
+          "hash": "c5d916671319bc9b88ff9fc0c32f560d22492ca6f26660007ca7423b122ba64e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c5d916671319bc9b88ff9fc0c32f560d22492ca6f26660007ca7423b122ba64e.mp3"
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "text": "Take more water upstream, and less reaches the states downstream — the root of the dispute.",
+          "chars": 91,
+          "hash": "c9e4ca4740242d24b2e53bfbf6172f63ca50d7f8f8f10b7d4dc5e075e8798fbe",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c9e4ca4740242d24b2e53bfbf6172f63ca50d7f8f8f10b7d4dc5e075e8798fbe.mp3"
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "text": "Disputes like this are exactly why we need integrated water resources management — planning a river's whole basin together, rather than state by state.\n\nManage the basin as one system, and the many uses and many users can be balanced instead of fighting over every drop.",
+          "chars": 270,
+          "hash": "11760fb6e5ee3fe462f34e07fbdb5662420c4d02c7890256b3c873509bc7bdaa",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/11760fb6e5ee3fe462f34e07fbdb5662420c4d02c7890256b3c873509bc7bdaa.mp3"
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "text": "On the farming side, the Pradhan Mantri Krishi Sinchayee Yojana (PMKSY) aims to bring protective irrigation to every farm. Two slogans capture it:\n\n- \"har khet ko pani\" — water to every field\n- \"per drop more crop\" — grow more harvest from less water",
+          "chars": 250,
+          "hash": "93cd14bf26fead518cb6388c902c67a503aa3047f918775a2cf35639cfae99c0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/93cd14bf26fead518cb6388c902c67a503aa3047f918775a2cf35639cfae99c0.mp3"
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "text": "PMKSY's goals follow from those slogans: expand the area under assured irrigation, improve on-farm water-use efficiency to cut waste, and build in sustainable conservation practices.\n\nUse less, grow more, share fairly. That's the whole philosophy in one line.",
+          "chars": 259,
+          "hash": "ee0bef24ae2a16b3ff3027e7fa046198b8443650115a3d6caf08f891342969d1",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ee0bef24ae2a16b3ff3027e7fa046198b8443650115a3d6caf08f891342969d1.mp3"
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "text": "When the upstream bucket fills first, the downstream buckets run low.",
+          "chars": 69,
+          "hash": "f249caf2af7be4752dfb500152c729bcafeedbcb03b26e5b5245a4a3445b547d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f249caf2af7be4752dfb500152c729bcafeedbcb03b26e5b5245a4a3445b547d.mp3"
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "text": "Why do inter-state water disputes like the Krishna-Godavari dispute arise?",
+          "chars": 74,
+          "hash": "43956603a08e3e845faeee1e82a0f9d049c1bdc1ea8f9e45e241049bbac59f5b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/43956603a08e3e845faeee1e82a0f9d049c1bdc1ea8f9e45e241049bbac59f5b.mp3"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "text": "Match each term to what it means.",
+          "chars": 33,
+          "hash": "a67e20d98231913ebc2978a9f1955c101a4d9196b482d98d4641d2318128946d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a67e20d98231913ebc2978a9f1955c101a4d9196b482d98d4641d2318128946d.mp3"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "text": "Inter-state water disputes are common in India. Try to name one (the Krishna-Godavari is one; the Cauvery is another famous one).\n\nOn paper, write which states are involved and what they're arguing over. Type the dispute and the states below.",
+          "chars": 242,
+          "hash": "66f03373c2359914ceb07fc626ff525a6dca660cd0505feeaee18366e274a9d2",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/66f03373c2359914ceb07fc626ff525a6dca660cd0505feeaee18366e274a9d2.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "text": "Lock in the sharing problem and the fix.",
+          "chars": 40,
+          "hash": "96fdc86f0700fb7eea30c544ad5419e5c026bc0f1c30b4c17a92d3eec2ba02f1",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/96fdc86f0700fb7eea30c544ad5419e5c026bc0f1c30b4c17a92d3eec2ba02f1.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "text": "When a river crosses states, taking more water upstream cuts the {{blank-1}} flow; PMKSY's slogan 'per drop more {{blank-2}}' pushes water-use efficiency.",
+          "chars": 154,
+          "hash": "6a871c3cc49ad58373ec2086a7d950a18ae28e29a46b61f2892131bf5658b4be",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6a871c3cc49ad58373ec2086a7d950a18ae28e29a46b61f2892131bf5658b4be.mp3"
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "text": "No state owns a river that flows through many — yet each acts as if its stretch is its own. What would it take for states to truly treat a shared river as shared?\n\nNo right answer.",
+          "chars": 180,
+          "hash": "6ca7de526795d7bd669b257c5d36609e0dab5266c77977c3b66c3165ab9ea20c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6ca7de526795d7bd669b257c5d36609e0dab5266c77977c3b66c3165ab9ea20c.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "text": "You can explain why rivers cause disputes — and how to share them.",
+          "chars": 66,
+          "hash": "30d2a377e7ec7e61efa5142f5387ac040f8327ea2b1e8eedeb6e13b5dbd82b51",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/30d2a377e7ec7e61efa5142f5387ac040f8327ea2b1e8eedeb6e13b5dbd82b51.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "text": "A river crossing many states sparks disputes, because upstream use cuts downstream flow — like Krishna-Godavari. The answers: integrated basin-wide management, and on the farm, PMKSY's \"har khet ko pani\" and \"per drop more crop\".\n\nBut big dams and shared rivers aren't the only way to secure water. There's a far older, far smaller idea — one that doesn't dam a river or fight a neighbour. It just catches the rain where it falls. That's the final course.",
+          "chars": 455,
+          "hash": "0a8b9939e58e14d996f298dbaf7a6603d1090eca17d253eab40f402e7014ecf8",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/0a8b9939e58e14d996f298dbaf7a6603d1090eca17d253eab40f402e7014ecf8.mp3"
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/multi-purpose-river-projects-hinglish/01-dams-and-their-many-uses.yaml",
+      "language": "hinglish",
+      "chunk_count": 16,
+      "total_chars": 3184,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "text": "Ek nadi ke aar-paar ek deewar banao, aur tum ek sheher jagaa sakte ho, ek registan seench sakte ho, ek baadh rok sakte ho, aur machhli paal sakte ho — sab ek hi saath.\n\nJaadu lagta hai. Yeh ek dam hai. Dekhte hain yeh ek saath itne kaam kaise karta hai.",
+          "chars": 253,
+          "hash": "d81117b8fe448ba904ec251b0b7ce54157b7dbdcc2d2d3520f85d2092927bd51",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d81117b8fe448ba904ec251b0b7ce54157b7dbdcc2d2d3520f85d2092927bd51.mp3"
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "text": "India yeh hazaaron saal se kar raha hai.\n\nSringaverapura ke paas 1st century BC mein flood-water harvesting system tha. Chandragupta Maurya ke daur mein dams aur lakes bane. 11vi sadi ka Bhopal Lake aur Delhi ka Hauz Khas tank uske baad. Modern India ne bas ek puraani parampara jaari rakhi — concrete ke saath.",
+          "chars": 311,
+          "hash": "f5570f97a85023ba1c8c506a017f8290d4490d388e7be818a0b1266d6421c433",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f5570f97a85023ba1c8c506a017f8290d4490d388e7be818a0b1266d6421c433.mp3"
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "text": "Toh dam hai kya, theek-theek?\n\nBehte paani ke aar-paar ek barrier jo flow ko rokta, mod-ta, ya dheema karta hai — aam taur pe ek reservoir banata hai, uske peeche jama paani ki ek jheel. Zyaadatar dams mein ek spillway hota hai jo extra paani ko surakshit roop se bah jaane deta hai, taaki dam phoote na.",
+          "chars": 304,
+          "hash": "c710f9bfe57d1c8f6512a5b7a7b1825ca6830d3b8da641152308532cdf7398a8",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c710f9bfe57d1c8f6512a5b7a7b1825ca6830d3b8da641152308532cdf7398a8.mp3"
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "text": "Ek barrier reservoir rokta hai; spillway extra paani chhodta hai; nadi neeche aage behti hai.",
+          "chars": 93,
+          "hash": "fa33f87cab6dc9cfccd06852aff43f7bda2732636ed1a3ef1fb08e010c5d9b06",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/fa33f87cab6dc9cfccd06852aff43f7bda2732636ed1a3ef1fb08e010c5d9b06.mp3"
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "text": "Dams pehle sirf ek kaam ke liye bante the: irrigation — baad mein kheton ko seenchne ke liye rainwater store karna.\n\nAaj woh multi-purpose hain — ek dam, kayi kaam ek saath:\n\n- irrigation\n- bijli (hydel power)\n- ghar aur industry ke liye water supply\n- flood control\n- recreation, inland navigation, aur fish breeding\n\nNadiyon ka Swiss Army knife.",
+          "chars": 347,
+          "hash": "830ae5d055ff4c819f8b577077f1a6c3cc4604e8f7ff8ed0da2a5dfc69698a91",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/830ae5d055ff4c819f8b577077f1a6c3cc4604e8f7ff8ed0da2a5dfc69698a91.mp3"
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "text": "Do mashhoor examples idea dikhaate hain.\n\nBhakra-Nangal, Sutlej-Beas pe, dono hydel power aur irrigation ke liye use hota hai. Hirakud, Mahanadi pe, water conservation ko flood control ke saath jodta hai.\n\nHar ek mein, jama paani ke kayi uses ek-doosre se gunde hain — yahi \"integrated\" ka matlab hai.",
+          "chars": 301,
+          "hash": "48eaa3671ec512d5d2812d9724d4f26acc00460580c7309fe4af2c0d8a4c1934",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/48eaa3671ec512d5d2812d9724d4f26acc00460580c7309fe4af2c0d8a4c1934.mp3"
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "text": "Power, crops, peene ka paani, machhli, flood control — sab ek hi project se.",
+          "chars": 76,
+          "hash": "38c39becfc0d8cd6be02731353dea5adcc3464b1809fdd4721f233f25debe46d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/38c39becfc0d8cd6be02731353dea5adcc3464b1809fdd4721f233f25debe46d.mp3"
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "text": "Jawaharlal Nehru ne garv se dams ko \"temples of modern India\" kaha.\n\nKyun temples? Kyunki unhone inhe kheti aur village economy ko tezi se industrialisation aur urban growth ke saath bunte dekha — ek naye azaad desh ko uske colonial past se uthaane ka engine.",
+          "chars": 259,
+          "hash": "56b762b4dccfaaddf0bfef4452fccfdcc5498a32cd695a637316886959b4d65f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/56b762b4dccfaaddf0bfef4452fccfdcc5498a32cd695a637316886959b4d65f.mp3"
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "text": "Ek dam ko 'multi-purpose' project kya banata hai?",
+          "chars": 49,
+          "hash": "381b9e0e4fb03c3aac990cc6d3faa5b22ebb4407484a04a746977ba64115f01e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/381b9e0e4fb03c3aac990cc6d3faa5b22ebb4407484a04a746977ba64115f01e.mp3"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "text": "Har term ko us se match karo jo woh hai.",
+          "chars": 40,
+          "hash": "d601695bceee2dc481affe84fbd79d6054f891bb5ea0a1098e41867cb6ed918c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d601695bceee2dc481affe84fbd79d6054f891bb5ea0a1098e41867cb6ed918c.mp3"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "text": "Apne region ke baare mein socho. Agar ek multi-purpose dam use serve karta, toh uske kaunse uses sabse zyaada maayne rakhte — bijli, irrigation, peene ka paani, ya flood control?\n\nPaper pe apne top do rank karo aur batao kyun. Neeche apna number-one use type karo.",
+          "chars": 264,
+          "hash": "88bbdd8665516cb230907bd0f057d5bbc3c1f67d285be6b9fb77d2636f3dcd82",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/88bbdd8665516cb230907bd0f057d5bbc3c1f67d285be6b9fb77d2636f3dcd82.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "text": "Basics ko lock karo.",
+          "chars": 20,
+          "hash": "707304b0a18006ffb9844957797d20056d31845e34cf6cde53b9fcd638db9398",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/707304b0a18006ffb9844957797d20056d31845e34cf6cde53b9fcd638db9398.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "text": "Ek dam jama paani ki ek jheel rokta hai jise {{blank-1}} kehte hain, aur Nehru ne dams ko temples of modern {{blank-2}} kaha.",
+          "chars": 125,
+          "hash": "ce484bfdeae1fd6d898e76fcc0006ecfd7679c79825dda3f9de717d3efc48387",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ce484bfdeae1fd6d898e76fcc0006ecfd7679c79825dda3f9de717d3efc48387.mp3"
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "text": "Nehru ne dams ko temples kaha — pragati ke lagbhag pavitra prateek. Tumhe kya lagta hai ek naye desh ko aise symbols ki zaroorat kyun thi, sirf useful structures ki nahi?\n\nKoi sahi jawaab nahi.",
+          "chars": 193,
+          "hash": "2ce8df648da3e0437f1277bef88acfc2eca47ae8ad5e343b190470b6da98983f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/2ce8df648da3e0437f1277bef88acfc2eca47ae8ad5e343b190470b6da98983f.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "text": "Tum samjha sakte ho ki multi-purpose dam kya hai aur use kyun manaya gaya.",
+          "chars": 74,
+          "hash": "6d1af564b06c0d2efd35769f5505038322e3dc83a1f74295689f03b4069221bb",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6d1af564b06c0d2efd35769f5505038322e3dc83a1f74295689f03b4069221bb.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "text": "Dam ek barrier hai jo paani ko reservoir mein store karta hai; ek multi-purpose project irrigation, power, water supply, flood control, aur zyaada ko ek saath bunta hai — jaise Bhakra-Nangal aur Hirakud. Nehru ne inhe temples of modern India bataya.\n\nPar har temple ki ek keemat hoti hai. Samay ke saath, in vishaal projects pe teekhi aalochna aayi — woh nadiyon, zameen, aur logon ke saath jo karte hain uske liye. Ek bade dam ki chhupi keemat kya hai? Yahi agli lesson hai.",
+          "chars": 475,
+          "hash": "1376bb7b6fc86fa4e046374c933d0bf31c26e8b2ebb2fa54768a095b921906f8",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/1376bb7b6fc86fa4e046374c933d0bf31c26e8b2ebb2fa54768a095b921906f8.mp3"
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/multi-purpose-river-projects-hinglish/02-when-dams-do-harm.yaml",
+      "language": "hinglish",
+      "chunk_count": 17,
+      "total_chars": 3431,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "text": "Yeh raha is lesson ka bedardi vyang: baadh rokne ko bane dams ne kabhi-kabhi baadh laayi hai.\n\nTemple apne pujaariyon pe palat gaya. Dekhte hain ki itna useful dhaancha itna nuksaan kaise kar sakta hai.",
+          "chars": 202,
+          "hash": "49806c934dd5fa3b27637b3a50ce9623cfb822db8bc48c94ab0ab580dd9a5112",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/49806c934dd5fa3b27637b3a50ce9623cfb822db8bc48c94ab0ab580dd9a5112.mp3"
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "text": "Yeh ek baat se shuru hota hai: ek nadi ko damming karke, tum uska natural flow badal dete ho. Aur yeh ek badlaav ek poori shrinkhala chhed deta hai.\n\nShuru karo nadi jo le jaati hai us se — sediment.",
+          "chars": 199,
+          "hash": "4cd8e61ffe8ac344f513db5eccf85a6b863f15947ccd35f4e2cbdc6318abc7b4",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/4cd8e61ffe8ac344f513db5eccf85a6b863f15947ccd35f4e2cbdc6318abc7b4.mp3"
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "text": "Ek free-behti nadi sediment (silt) neeche le jaati hai. Use dam karo, aur woh silt reservoir ke neeche baith jaati hai — excessive sedimentation — jabki dam ke neeche ki nadi sediment-starved behti hai.\n\nNeeche nateeja: rockier streambeds aur nadi ke aquatic jeevan ke liye poorer habitats.",
+          "chars": 290,
+          "hash": "6b971c2d2b8f31710e23e426448b24cf907f86bfd67311cb43af0099e8a4f6ef",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6b971c2d2b8f31710e23e426448b24cf907f86bfd67311cb43af0099e8a4f6ef.mp3"
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "text": "Dams nadiyon ko fragment bhi karte hain — woh deewarein hain. Machhli aur doosre aquatic fauna inke aar-paar migrate nahi kar sakte, jo tab jaanleva hai jab unhe spawn karne upstream jaana ho.\n\nAur reservoir floodplain ko doobota hai, submerging vegetation aur soil jo phir dheere-dheere paani ke neeche sad jaate hain.",
+          "chars": 319,
+          "hash": "16c1a2aa28dc7dd41a27e8fd60872e4347e28af0d5746c589211a5fc52375d49",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/16c1a2aa28dc7dd41a27e8fd60872e4347e28af0d5746c589211a5fc52375d49.mp3"
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "text": "Ek free nadi silt failaati aur machhli ko migrate karne deti hai; ek dam silt ko phasaata aur machhli ko rokta hai.",
+          "chars": 115,
+          "hash": "a117915b66f370c01c6e3ba41144b2b398e7559972b06c7c1344e7a74f4e7743",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a117915b66f370c01c6e3ba41144b2b398e7559972b06c7c1344e7a74f4e7743.mp3"
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "text": "Aur bigadta hai.\n\nReservoirs earthquakes induce kar sakte hain, water-borne diseases aur pests paida kar sakte hain, aur over-use se pollution. Aur bedardi se, baadh control karne ko bane dams ne kabhi-kabhi baadh laayi hai — sedimentation reservoir bhar deti hai, aur bhaari baarish mein bade dams aksar baadh ko bilkul rok hi nahi paate.",
+          "chars": 339,
+          "hash": "791e89273b53a965a558f9395fe99291047cf919756da36ed9b97d2e7b4af963",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/791e89273b53a965a558f9395fe99291047cf919756da36ed9b97d2e7b4af963.mp3"
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "text": "Ek farming ka dank bhi hai.\n\nNeeche ki floodplains apni saalana silt ki parat khoti hain — ek muft natural fertiliser — jo land degradation badhata hai. Aur irrigation kisaanon ko water-intensive, commercial crops ki taraf dhakelti hai, jo samay ke saath soil ko salinise kar deti hain (namak jam ke use zehreela kar deta hai).",
+          "chars": 327,
+          "hash": "29897b26b3cedb053baebdfa79a1599d826ff39553bf9ce68797a3df167ecce4",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/29897b26b3cedb053baebdfa79a1599d826ff39553bf9ce68797a3df167ecce4.mp3"
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "text": "Aur sabse bhaari keemat insaani hai.\n\nBade dams poore gaon aur khet doobote hain, large-scale displacement aur loss of livelihood karte hue. Narmada pe Sardar Sarovar dam is sangharsh ka prateek ban gaya.\n\n(Baadh-prone Damodar ko bahut samay tak \"river of sorrow\" kaha gaya.)",
+          "chars": 275,
+          "hash": "4cf54549b8e88b5ea9964e44e42362bab7f6e39184ffca0ebb3ce5481b20642d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/4cf54549b8e88b5ea9964e44e42362bab7f6e39184ffca0ebb3ce5481b20642d.mp3"
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "text": "Phasi silt, ruki machhli, namkeen soil, visthaapit ghar — woh bill jo ek bada dam chadhaata hai.",
+          "chars": 96,
+          "hash": "947cb820725aaed068177ad30e8e4bdb19a2e7ec4eace103b5bdd17fbeeeef1d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/947cb820725aaed068177ad30e8e4bdb19a2e7ec4eace103b5bdd17fbeeeef1d.mp3"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "text": "Inme se kaunsa multi-purpose river projects ke paksh mein ek tark NAHI hai?",
+          "chars": 75,
+          "hash": "8e264bc21e39211a7f05ee27d3949626f21c60158ef9604067ab8ed7548aa088",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/8e264bc21e39211a7f05ee27d3949626f21c60158ef9604067ab8ed7548aa088.mp3"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "text": "Har nuksaan ko us se match karo jo use karta hai.",
+          "chars": 49,
+          "hash": "836662e89aa4a78909d37756b88a9e7f582444981a4d12e3e1931d1854d26748",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/836662e89aa4a78909d37756b88a9e7f582444981a4d12e3e1931d1854d26748.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "text": "Kisi dam ya reservoir ke baare mein socho jiske baare mein tumne suna ho (Sardar Sarovar, Bhakra-Nangal, ya koi local).\n\nPaper pe uska ek saaf benefit aur ek saaf cost likho. Neeche dam ka naam aur uski sabse badi cost type karo.",
+          "chars": 229,
+          "hash": "fd8cbf8e3e87df7544fc17064af6a347e174a8dfeb0d1689902f6209da873ced",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/fd8cbf8e3e87df7544fc17064af6a347e174a8dfeb0d1689902f6209da873ced.mp3"
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "text": "Do badi costs ko lock karo.",
+          "chars": 27,
+          "hash": "676c756ce59c500a9e462c8ed50409b271e5b3c42afd55117eb4849de8bfd7e8",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/676c756ce59c500a9e462c8ed50409b271e5b3c42afd55117eb4849de8bfd7e8.mp3"
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 1,
+          "text": "Ek nadi ko damming karne se {{blank-1}} reservoir mein phas jaati hai aage behne ke bajaaye, aur gaon doobne se logon ko {{blank-2}} mein dhakela jaata hai.",
+          "chars": 156,
+          "hash": "de3a370787430bf12a8eef583cdc76e810c56f53454405d1cd8c32cc58223a3c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/de3a370787430bf12a8eef583cdc76e810c56f53454405d1cd8c32cc58223a3c.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "text": "Ek dam das lakh ghar jagaa sakta hai — aur kuch hazaar gaon waalon ke ghar dubo sakta hai. Ek desh ko kaiyon ke fayde ko kuch logon ki bhaari keemat ke saamne kaise tolna chahiye? Imaandaar raho ki yeh kitna mushkil hai.\n\nKoi sahi jawaab nahi.",
+          "chars": 243,
+          "hash": "fff8a26df3b46a7dbdd040d6123a336a9feb89d01d754878406919c2fc8a778d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/fff8a26df3b46a7dbdd040d6123a336a9feb89d01d754878406919c2fc8a778d.mp3"
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 0,
+          "text": "Tum bade dams ki asli costs ko unke benefits ke saamne tol sakte ho.",
+          "chars": 68,
+          "hash": "750d53241dd35670ef1fd630df2409c2be5e418d024784923106354a55fb4404",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/750d53241dd35670ef1fd630df2409c2be5e418d024784923106354a55fb4404.mp3"
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 1,
+          "text": "Ek nadi ko damming silt ko phasaata hai, habitats ko starve aur fragment karta hai, soil ko salinise karta hai, quakes induce aur baadh tak bigaad sakta hai — aur sabse mushkil, poore samudaayon ko visthaapit karta hai, jaisa Narmada sangharsh ne dikhaya.\n\nAur bade projects ek aur takraav paida karte hain: jab ek hi nadi kayi rajyon se behti hai, paani kise mile? Hum ek nadi fairly kaise baantein? Yahi agli lesson hai.",
+          "chars": 422,
+          "hash": "6bb5aa41fd220f7c584e9e9c08d2525e1e7c520c8f1f869ad643457f6a73f1d6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6bb5aa41fd220f7c584e9e9c08d2525e1e7c520c8f1f869ad643457f6a73f1d6.mp3"
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/multi-purpose-river-projects-hinglish/03-sharing-water-wisely.yaml",
+      "language": "hinglish",
+      "chunk_count": 16,
+      "total_chars": 3031,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "text": "Ek nadi ko rajya ki seemaon ki parwah nahi. Woh bas behti hai.\n\nToh jab ek nadi paanch rajyon se behti hai, yeh awkward sawaal koi taal nahi sakta: paani kiska?",
+          "chars": 160,
+          "hash": "6cd8da6cf30cb2e721dd2c0adf1a1b3a50defaad795b67c5e9523bfce249b0ee",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6cd8da6cf30cb2e721dd2c0adf1a1b3a50defaad795b67c5e9523bfce249b0ee.mp3"
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "text": "Ek hi nadi aksar kayi rajyon se guzarti hai, aur har ek apna hissa chahta hai. Pench: jab ek upstream rajya zyaada leta hai, har downstream rajya ko kam milta hai.\n\nUs tanaav ka ek naam hai — inter-state water disputes.",
+          "chars": 219,
+          "hash": "0a946c923227eef87edc07cafde923f47a5b7a040b31aad3004fcf2953f6c67a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/0a946c923227eef87edc07cafde923f47a5b7a040b31aad3004fcf2953f6c67a.mp3"
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "text": "Krishna-Godavari dispute lo.\n\nMaharashtra Koyna pe ek multi-purpose project ke liye zyaada paani divert karna chahta tha. Par usse Karnataka aur Andhra Pradesh mein downstream flow ghat jaata — unki agriculture aur industry ko nuksaan. Toh in do rajyon ne aapatti jatayi.\n\nEk nadi, teen sarkaarein, ek jhagda.",
+          "chars": 309,
+          "hash": "973a7f608086bff4923f548e7cb78502f184ea46887e314cd89ffc6a57c6d62c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/973a7f608086bff4923f548e7cb78502f184ea46887e314cd89ffc6a57c6d62c.mp3"
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "text": "Upstream zyaada paani lo, aur downstream rajyon tak kam pahunchta hai — dispute ki jad.",
+          "chars": 87,
+          "hash": "c7eb13bd213d052faf72976a0c679b9b222efa257a226e038c9e796136893215",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c7eb13bd213d052faf72976a0c679b9b222efa257a226e038c9e796136893215.mp3"
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "text": "Aise disputes hi wajah hain ki humein integrated water resources management chahiye — ek nadi ke poore basin ko ek saath plan karna, rajya-dar-rajya nahi.\n\nBasin ko ek system ki tarah manage karo, aur kayi uses aur kayi users balance ho sakte hain, har boond pe ladne ke bajaaye.",
+          "chars": 279,
+          "hash": "a3eac7b3d1b93db7878a6b046807a932453d7657e1f102b6ea4b09188ca5a1fa",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a3eac7b3d1b93db7878a6b046807a932453d7657e1f102b6ea4b09188ca5a1fa.mp3"
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "text": "Farming ki taraf, Pradhan Mantri Krishi Sinchayee Yojana (PMKSY) har khet ko protective irrigation dena chahti hai. Do slogans ise pakadte hain:\n\n- \"har khet ko pani\" — har khet ko paani\n- \"per drop more crop\" — kam paani se zyaada fasal",
+          "chars": 237,
+          "hash": "8dedf5e570076ba9cb490f14686402a6502a53bda77ff378efbf3bb44ae332fe",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/8dedf5e570076ba9cb490f14686402a6502a53bda77ff378efbf3bb44ae332fe.mp3"
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "text": "PMKSY ke goals in slogans se nikalte hain: assured irrigation ke neeche area badhaao, on-farm paani-use efficiency sudhaaro taaki barbaadi ghate, aur sustainable conservation practices banaao.\n\nKam use karo, zyaada ugaao, fairly baanto. Yahi poora philosophy ek line mein.",
+          "chars": 272,
+          "hash": "f0666988682c2cf1b80b129f8cb8db65f5aafc76c20a557ee0527ae768b4428f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f0666988682c2cf1b80b129f8cb8db65f5aafc76c20a557ee0527ae768b4428f.mp3"
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "text": "Jab upstream bucket pehle bharta hai, downstream buckets neeche reh jaate hain.",
+          "chars": 79,
+          "hash": "57cf5bcb0adf54d537ee029ae0f36978ecd73b9969389e2143fbd87590dcb08b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/57cf5bcb0adf54d537ee029ae0f36978ecd73b9969389e2143fbd87590dcb08b.mp3"
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "text": "Krishna-Godavari dispute jaise inter-state water disputes kyun uthte hain?",
+          "chars": 74,
+          "hash": "320ad4119725e64c5bb01fd7ff2b1a3644ed4e30a93e543d5b62e7c2f163ab02",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/320ad4119725e64c5bb01fd7ff2b1a3644ed4e30a93e543d5b62e7c2f163ab02.mp3"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "text": "Har term ko uske matlab se match karo.",
+          "chars": 38,
+          "hash": "f2a5c9a79e474c0b88f2f20c8b1a700f502dc6a83df5110a9c4b858619a2261c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f2a5c9a79e474c0b88f2f20c8b1a700f502dc6a83df5110a9c4b858619a2261c.mp3"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "text": "India mein inter-state water disputes aam hain. Ek naam batane ki koshish karo (Krishna-Godavari ek hai; Cauvery ek aur mashhoor hai).\n\nPaper pe likho kaunse rajya shaamil hain aur woh kis cheez pe jhagad rahe hain. Neeche dispute aur rajya type karo.",
+          "chars": 251,
+          "hash": "e3ffb9e2404b96ac3ccc9fe72d42a548ecefed7c0cee6c0ba5c6cfd4505826ac",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e3ffb9e2404b96ac3ccc9fe72d42a548ecefed7c0cee6c0ba5c6cfd4505826ac.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "text": "Sharing problem aur fix ko lock karo.",
+          "chars": 37,
+          "hash": "39aae3bb9671b449ebd2f60c30a9530e1348d629323f9cdf48178606581964b0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/39aae3bb9671b449ebd2f60c30a9530e1348d629323f9cdf48178606581964b0.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "text": "Jab ek nadi rajyon se guzarti hai, upstream zyaada paani lena {{blank-1}} flow ghataata hai; PMKSY ka slogan 'per drop more {{blank-2}}' paani-use efficiency pe zor deta hai.",
+          "chars": 174,
+          "hash": "0196a444a68ed11f9af8961b696dae5218751cbaedfe4014b3efc423559a4eae",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/0196a444a68ed11f9af8961b696dae5218751cbaedfe4014b3efc423559a4eae.mp3"
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "text": "Koi rajya us nadi ko own nahi karta jo kaiyon se behti hai — phir bhi har ek aise act karta hai jaise uska hissa uska apna ho. Rajyon ko ek shared nadi ko sach mein shared maanne ke liye kya lagega?\n\nKoi sahi jawaab nahi.",
+          "chars": 221,
+          "hash": "00cd05a4d0eef7958b6bbc679de67cdeb48764b0303e885dc64ff3f8945d0b67",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/00cd05a4d0eef7958b6bbc679de67cdeb48764b0303e885dc64ff3f8945d0b67.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "text": "Tum samjha sakte ho ki nadiyaan disputes kyun chhedti hain — aur unhe kaise baantna hai.",
+          "chars": 88,
+          "hash": "ac2a3a2956d5d5270ea087181b2ad0e6c04cbc9c817a4ffe3ee84599a2aebcd0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ac2a3a2956d5d5270ea087181b2ad0e6c04cbc9c817a4ffe3ee84599a2aebcd0.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "text": "Ek nadi jo kayi rajyon se behti hai disputes chhedti hai, kyunki upstream use downstream flow ghataata hai — jaise Krishna-Godavari. Jawaab: integrated basin-wide management, aur khet pe, PMKSY ka \"har khet ko pani\" aur \"per drop more crop\".\n\nPar bade dams aur shared nadiyaan paani secure karne ka ekmatra tareeka nahi. Ek bahut puraana, bahut chhota idea hai — jo na ek nadi damming karta hai na ek padosi se ladta hai. Woh bas baarish ko wahin pakad leta hai jahan woh girti hai. Yahi aakhri course hai.",
+          "chars": 506,
+          "hash": "eed63507a3cd834d96d3b884aeb442735f787334f7f827d59b788fcdce8aa081",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/eed63507a3cd834d96d3b884aeb442735f787334f7f827d59b788fcdce8aa081.mp3"
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/harvesting-the-rain/01-catching-water-before-its-lost.yaml",
+      "language": "en",
+      "chunk_count": 16,
+      "total_chars": 2739,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "text": "What if, instead of building a giant dam to drag water across a whole state, you simply caught the rain right where it fell?\n\nIndia has been doing exactly that — brilliantly — for thousands of years.",
+          "chars": 199,
+          "hash": "f636e22f7bfba7ecb0aaea2921e153cef168e8504cae304462c8e4e9bab5d94b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f636e22f7bfba7ecb0aaea2921e153cef168e8504cae304462c8e4e9bab5d94b.mp3"
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "text": "Ancient India had an extraordinary tradition of water harvesting.\n\nPeople knew their local rainfall patterns and soil types in deep detail, and built clever techniques to catch rainwater, groundwater, river water — even flood water — each one tuned to the local ecology.",
+          "chars": 270,
+          "hash": "f3e146b67b30ce3f8aa2b1f9549fa2dfb95fcba4701572a78117a3861393cbb4",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f3e146b67b30ce3f8aa2b1f9549fa2dfb95fcba4701572a78117a3861393cbb4.mp3"
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "text": "In the hills and mountains, people dug diversion channels — the guls and kuls of the Western Himalayas — to carry stream water down to their fields for farming.",
+          "chars": 160,
+          "hash": "9f1563ff7ee66803354c9f54760e2f79820b7ee7a349eb0ab72b693899186bbe",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9f1563ff7ee66803354c9f54760e2f79820b7ee7a349eb0ab72b693899186bbe.mp3"
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "text": "In the flood plains of Bengal, they built inundation channels to let the floods themselves irrigate their fields.\n\nAnd across many regions, rooftop rainwater harvesting caught and stored drinking water — especially in Rajasthan.",
+          "chars": 228,
+          "hash": "09020dca5bc3ee4c77c3c82b473f6ab4542fc92c3f4e07fdbc4bad39a8a2cd6d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/09020dca5bc3ee4c77c3c82b473f6ab4542fc92c3f4e07fdbc4bad39a8a2cd6d.mp3"
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "text": "Every region invented a water-harvesting method to fit its own rainfall and soil.",
+          "chars": 81,
+          "hash": "8c5cb44081c7be3e0173b608c24c833859d192e709181fc666962727f0d18dc7",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/8c5cb44081c7be3e0173b608c24c833859d192e709181fc666962727f0d18dc7.mp3"
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "text": "In the arid and semi-arid regions, whole agricultural fields were turned into rain-fed storage — letting water stand and soak into the soil to moisten it.\n\nThe khadins of Jaisalmer and the johads in other parts of Rajasthan do exactly this: trap the rare rain, and make the land hold it.",
+          "chars": 287,
+          "hash": "07659ac9bfe46e45ef86d9fb9b5a8c98919109768f1831de23616198a00be672",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/07659ac9bfe46e45ef86d9fb9b5a8c98919109768f1831de23616198a00be672.mp3"
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "text": "Instead of letting the rain run away, a small local structure catches and keeps it.",
+          "chars": 83,
+          "hash": "eb9fa5e7b54b5397fa08ae959162f1b8592c06ff56d6cb10d01c61820092de88",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/eb9fa5e7b54b5397fa08ae959162f1b8592c06ff56d6cb10d01c61820092de88.mp3"
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "text": "Notice the whole philosophy here.\n\nNo giant dam. No fight with a neighbouring state. Just local knowledge, catching local rain, for local needs.\n\nSmall, smart, and very, very old.",
+          "chars": 179,
+          "hash": "ec2c57e0b84ce958759bfe5435dab1395c2fac032c37ebb9d3c0157218a03ba4",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ec2c57e0b84ce958759bfe5435dab1395c2fac032c37ebb9d3c0157218a03ba4.mp3"
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "text": "What are the 'guls' and 'kuls' of the Western Himalayas?",
+          "chars": 56,
+          "hash": "43b4226ae18a1a8af5f6f3e45f06a517c71fab29d16225f215fc75a309cc102f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/43b4226ae18a1a8af5f6f3e45f06a517c71fab29d16225f215fc75a309cc102f.mp3"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "text": "Match each harvesting method to its region.",
+          "chars": 43,
+          "hash": "c8886f8f57f52307cefb21dc9fcb0aa4a0142aad499df07a9417d5cf6afb0f90",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c8886f8f57f52307cefb21dc9fcb0aa4a0142aad499df07a9417d5cf6afb0f90.mp3"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "text": "Look around your own locality. Is there any way rainwater is caught and stored — a tank, a pond, a rooftop collection pipe, a check dam, a stepwell?\n\nOn paper, note what you find (or what could be built). Type one rainwater-harvesting structure near you below.",
+          "chars": 260,
+          "hash": "e50761f45bbc9b79fd692fbc1b3e78d7e4955f9698e3b65423161e9d48eb776b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e50761f45bbc9b79fd692fbc1b3e78d7e4955f9698e3b65423161e9d48eb776b.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "text": "Lock in two traditional methods.",
+          "chars": 32,
+          "hash": "6223254bedbeeb413f4f77783d399517ef436e5bc3c79bb3dfedfaf299e9434b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6223254bedbeeb413f4f77783d399517ef436e5bc3c79bb3dfedfaf299e9434b.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "text": "In the Western Himalayas, diversion channels called {{blank-1}} or kuls carry water to fields; in Jaisalmer, fields are turned into rain-fed stores called {{blank-2}}.",
+          "chars": 167,
+          "hash": "a1a0363f580298dfec2662611206a572177007ba10372d7dae6ed7222fbbdab5",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a1a0363f580298dfec2662611206a572177007ba10372d7dae6ed7222fbbdab5.mp3"
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "text": "For centuries, communities solved their own water problems with local knowledge — no engineers, no big budgets. Why do you think so much of that wisdom was forgotten? Should we bring it back?\n\nNo right answer.",
+          "chars": 209,
+          "hash": "7886d9ac604b04207d71cefe0ece0490fc22c1d16eb60741bf751abf0e7b0c7f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7886d9ac604b04207d71cefe0ece0490fc22c1d16eb60741bf751abf0e7b0c7f.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "text": "You can name India's traditional rain-catching methods by region.",
+          "chars": 65,
+          "hash": "f0b72ac3744c15db899665dee7664f90cd88fc659a4ad1ba5a9a0bf7262dc68c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f0b72ac3744c15db899665dee7664f90cd88fc659a4ad1ba5a9a0bf7262dc68c.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "text": "Long before big dams, India caught its rain locally: guls and kuls in the Himalayas, inundation channels in Bengal, khadins in Jaisalmer, johads in Rajasthan — each tuned to its own land and rainfall.\n\nOne of these methods became so refined it could hold a year's drinking water in a single underground room. In the deserts of the Thar, the rooftop and the tanka turned rare rain into a lifeline. That's the next lesson.",
+          "chars": 420,
+          "hash": "19fe89dae20b3184a848a5e403d4cb2958229894a15fcd2be37934f99c5d3d94",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/19fe89dae20b3184a848a5e403d4cb2958229894a15fcd2be37934f99c5d3d94.mp3"
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/harvesting-the-rain/02-the-tankas-of-the-thar.yaml",
+      "language": "en",
+      "chunk_count": 17,
+      "total_chars": 3152,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "text": "In the Thar desert, the most precious thing in a house often wasn't gold or land.\n\nIt was a room-sized hole in the ground — kept full of rain. They called it a tanka.",
+          "chars": 166,
+          "hash": "02d57f5e1b9dd405c0ade5103584b2e99550216c6a7dae5ea7f15826f3194080",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/02d57f5e1b9dd405c0ade5103584b2e99550216c6a7dae5ea7f15826f3194080.mp3"
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "text": "Across Rajasthan — in Bikaner, Phalodi, Barmer — almost every house traditionally had an underground tank, a tanka, for storing drinking water.\n\nSome were enormous. One in Phalodi was 6.1 metres deep, 4.27 metres long, and 2.44 metres wide — a small room, filled with water.",
+          "chars": 274,
+          "hash": "caa7965c7e9174b308594569712ada128608deb5fde4f0ee62c5a8fdd735b937",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/caa7965c7e9174b308594569712ada128608deb5fde4f0ee62c5a8fdd735b937.mp3"
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "text": "The tanka was part of a clever rooftop rainwater harvesting system.\n\nBuilt inside the main house or the courtyard, it was connected to the sloping roof by a pipe. Rain hits the roof, runs down the pipe, and fills the tanka underground. Simple, and brilliant.",
+          "chars": 258,
+          "hash": "a6f3a70280bc570db6bf358d37c682fa79f169d7eacea249d96f9d6128dcaf4b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a6f3a70280bc570db6bf358d37c682fa79f169d7eacea249d96f9d6128dcaf4b.mp3"
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "text": "Rain on the sloping roof runs down a pipe into a room-sized underground tank.",
+          "chars": 77,
+          "hash": "f31d5cc46038bc36331ba39548bf6b53d9b86eaeeb8570fdf09207005eae055f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f31d5cc46038bc36331ba39548bf6b53d9b86eaeeb8570fdf09207005eae055f.mp3"
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "text": "One detail shows how careful they were.\n\nThe first spell of rain was not collected. It was allowed to wash all the dust off the roofs and pipes first. Only the later showers — now clean — were stored in the tanka.\n\nA built-in filter, made of patience.",
+          "chars": 251,
+          "hash": "388815d7b9b7cd331f2c2a7afb0eb16cb82d8be13a8ccc9ef0d8a38c899e0c45",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/388815d7b9b7cd331f2c2a7afb0eb16cb82d8be13a8ccc9ef0d8a38c899e0c45.mp3"
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "text": "Why go to all this trouble? Because the tanka held that water until the next rainfall — a reliable source of drinking water through the brutal summers, when every other source dried up.\n\nThey even had a name for this rainwater: palar pani — the purest form of natural water.",
+          "chars": 274,
+          "hash": "7ce399f51daed196e76bc15c47f80e7526eac4808e0559649b93908f2e3c2331",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7ce399f51daed196e76bc15c47f80e7526eac4808e0559649b93908f2e3c2331.mp3"
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "text": "There was a bonus, too.\n\nMany houses built an underground room right beside the tanka. The cool stored water kept that room cool — a natural air-conditioner against the desert heat. One structure, two gifts.",
+          "chars": 207,
+          "hash": "de4297ce50a9346d1e3c383378a5692c79f77b66fa30566380c8ace6839efd3d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/de4297ce50a9346d1e3c383378a5692c79f77b66fa30566380c8ace6839efd3d.mp3"
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "text": "Rain on the roof, down the pipe, into the tanka — a year's drinking water, stored.",
+          "chars": 82,
+          "hash": "37293a97a68cf3cf57d4ecb328c07e75636e58a39157f880ab8a96874e72c66f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/37293a97a68cf3cf57d4ecb328c07e75636e58a39157f880ab8a96874e72c66f.mp3"
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "text": "Sadly, in western Rajasthan this tradition is fading.\n\nThe perennial Indira Gandhi Canal now brings plenty of water, so fewer people bother to maintain their tankas. Though some still do — because they prefer the taste of palar pani to the taste of tap water.",
+          "chars": 259,
+          "hash": "8d459561a97e421f152bb642ad6a5d1e3eeec64d105acfd805901912470682c4",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/8d459561a97e421f152bb642ad6a5d1e3eeec64d105acfd805901912470682c4.mp3"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "text": "Why was the first spell of rain deliberately NOT collected in the tanka?",
+          "chars": 72,
+          "hash": "dcd68d3f742cc17ecc502c978ceae19d098c3aa968f8ec171fde83ff2858fd8e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/dcd68d3f742cc17ecc502c978ceae19d098c3aa968f8ec171fde83ff2858fd8e.mp3"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "text": "Match each term to what it means.",
+          "chars": 33,
+          "hash": "a67e20d98231913ebc2978a9f1955c101a4d9196b482d98d4641d2318128946d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a67e20d98231913ebc2978a9f1955c101a4d9196b482d98d4641d2318128946d.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "text": "Sketch a simple rooftop-to-tank system for your home: where the rain lands, where the pipe goes, where the tank sits.\n\nOn paper, note one problem you'd have to solve (dust? overflow? space?). Type your biggest design challenge below.",
+          "chars": 233,
+          "hash": "37aea88a54c07f278fa1a70352599679d8db35ff4937560830b206583db17b59",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/37aea88a54c07f278fa1a70352599679d8db35ff4937560830b206583db17b59.mp3"
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "text": "Lock in the desert system.",
+          "chars": 26,
+          "hash": "a758730a1058930924e15b7d3fd229033ab02ae10019e2dfc1f0f9f8c3b852b9",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a758730a1058930924e15b7d3fd229033ab02ae10019e2dfc1f0f9f8c3b852b9.mp3"
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 1,
+          "text": "Rooftop rain runs down a pipe into an underground tank called a {{blank-1}}; this rainwater, the purest natural water, is called {{blank-2}} pani.",
+          "chars": 146,
+          "hash": "a3f6714a15a4c4aba189f8ef9f5b0d5c4741352f2b4f62e8940c0e5e7fb7dc22",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a3f6714a15a4c4aba189f8ef9f5b0d5c4741352f2b4f62e8940c0e5e7fb7dc22.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "text": "When the canal arrived, people stopped maintaining a system that had served them for centuries. Is it always progress to replace the old, self-reliant way with a piped supply from far away? What's gained — and what's lost?\n\nNo right answer.",
+          "chars": 240,
+          "hash": "3abc583e6edea5085a4ed7d884e9c250c950d094e5c44b7b733153e387471587",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/3abc583e6edea5085a4ed7d884e9c250c950d094e5c44b7b733153e387471587.mp3"
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 0,
+          "text": "You can explain how the Thar's rooftop-and-tanka system worked.",
+          "chars": 63,
+          "hash": "6769ddc19f7b6f2663fb0b5850c5c884b50a637730dcacebd9fba958d6527d49",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6769ddc19f7b6f2663fb0b5850c5c884b50a637730dcacebd9fba958d6527d49.mp3"
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 1,
+          "text": "Across Rajasthan, sloping roofs fed rain down pipes into room-sized underground tankas — storing palar pani, the purest water, through the dry summers, even cooling an adjoining room. The first rain was sacrificed to clean the system. Only the canal has made people forget it.\n\nBut this old idea isn't dead. Across India today, villages and even whole states are reviving rainwater harvesting — and proving it still works, beautifully. That's the final lesson, and the close of this chapter.",
+          "chars": 491,
+          "hash": "5c277cc35a177333ac8411bc59d5d755c2b6535e12b3cf399ee3f2574a2ea5f6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/5c277cc35a177333ac8411bc59d5d755c2b6535e12b3cf399ee3f2574a2ea5f6.mp3"
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/harvesting-the-rain/03-old-wisdom-working-today.yaml",
+      "language": "en",
+      "chunk_count": 17,
+      "total_chars": 3490,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "text": "A village so good at catching rain that it's officially called \"rich in rainwater.\" A state that made harvesting the rain the law. Bamboo pipes still watering crops after 200 years.\n\nThe old wisdom isn't a museum piece. It's back — and working.",
+          "chars": 244,
+          "hash": "e27f9ec236be7098c6b5fe825fa8489a2ee5e53b5def4af575232360efa5c940",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e27f9ec236be7098c6b5fe825fa8489a2ee5e53b5def4af575232360efa5c940.mp3"
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "text": "Across India today, traditional rainwater harvesting is being revived in homes, villages, and whole states — proving it can still meet real needs.\n\nLet's meet four places where it's thriving.",
+          "chars": 191,
+          "hash": "ef79045f160467bfa633178209092fc6acb002e8042d53440c526bdc7b848f82",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ef79045f160467bfa633178209092fc6acb002e8042d53440c526bdc7b848f82.mp3"
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "text": "First, Gendathur, a remote village in Mysuru, Karnataka.\n\nNearly 200 households installed rooftop rainwater harvesting. It worked so well that the village earned a rare title: it became known as rich in rainwater.",
+          "chars": 213,
+          "hash": "e2f1ef1f0ffbfa5e25bb30421698afca6d1edac1dee66afd4ba905becd4bb42b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e2f1ef1f0ffbfa5e25bb30421698afca6d1edac1dee66afd4ba905becd4bb42b.mp3"
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "text": "The numbers explain why.\n\nGendathur gets about 1,000 mm of rain a year. With good rooftops and around ten fillings a year, each house can collect roughly 50,000 litres — just from the rain landing on its own roof.",
+          "chars": 213,
+          "hash": "a1ba7b60badad3d6d30ad0425f3f56e8b97fde2779ea62db7c60fec00cf84154",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a1ba7b60badad3d6d30ad0425f3f56e8b97fde2779ea62db7c60fec00cf84154.mp3"
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "text": "1,000 mm of rain a year, caught from one rooftop, becomes about 50,000 litres per house.",
+          "chars": 88,
+          "hash": "9d1c2b141212c25df7c6d6bb0ed75b062ac09b5e8edd0b59e9aa172790c4d326",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9d1c2b141212c25df7c6d6bb0ed75b062ac09b5e8edd0b59e9aa172790c4d326.mp3"
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "text": "Now an irony you won't forget. In Shillong, Meghalaya, rooftop harvesting is the most common practice — even though nearby Cherrapunji and Mawsynram get the highest rainfall in the world.\n\nYet Shillong itself faces an acute water shortage. So nearly every household harvests rain, drawing 15–25% of its water from the rooftop. The wettest corner of Earth, still catching every drop.",
+          "chars": 382,
+          "hash": "d7040c0c1461cd0ac65641dff62ba6ce68fc34450ebbb739084b3d27015836b8",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d7040c0c1461cd0ac65641dff62ba6ce68fc34450ebbb739084b3d27015836b8.mp3"
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "text": "Some places made it official. Tamil Nadu became the first Indian state to make rooftop rainwater harvesting compulsory for every house — with legal punishment for those who don't comply.\n\nHarvesting the rain, written into law.",
+          "chars": 226,
+          "hash": "1364818d1d2ba81a218d9b328fef7d13e06df9e9d4d0411e0d6b73e5a1406384",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/1364818d1d2ba81a218d9b328fef7d13e06df9e9d4d0411e0d6b73e5a1406384.mp3"
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "text": "From a Karnataka village to a Meghalaya capital to a state law — old wisdom, spreading again.",
+          "chars": 93,
+          "hash": "b237d7c36043d82680dc53cfb9bc65d61830cf6769eab3174220146bfa5e5315",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b237d7c36043d82680dc53cfb9bc65d61830cf6769eab3174220146bfa5e5315.mp3"
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "text": "And one beautiful old technique still runs in Meghalaya: bamboo drip irrigation, a 200-year-old system.\n\nBamboo pipes tap stream and spring water. About 18–20 litres enters the system, travels hundreds of metres, and arrives as just 20–80 drops per minute — delivered right to the roots of each plant. Ancient engineering, with the efficiency of modern drip irrigation.",
+          "chars": 369,
+          "hash": "08226080374cd884e237e6244f22f97777f45dfc5e782f04f2fe0ef89b02c255",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/08226080374cd884e237e6244f22f97777f45dfc5e782f04f2fe0ef89b02c255.mp3"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "text": "Which was the first Indian state to make rooftop rainwater harvesting compulsory for all houses?",
+          "chars": 96,
+          "hash": "412f82da96ea145acd62da57550268698cbafe6a708cf62e902b508db7e20f33",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/412f82da96ea145acd62da57550268698cbafe6a708cf62e902b508db7e20f33.mp3"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "text": "Match each place or system to its claim to fame.",
+          "chars": 48,
+          "hash": "bd581ed3d4cf1ae8c8fde2f800f70d034b500e672bead7f94dab9079a91e502d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/bd581ed3d4cf1ae8c8fde2f800f70d034b500e672bead7f94dab9079a91e502d.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "text": "Find one more rainwater-harvesting system that exists in or around your locality — or design a simple one for your school or home.\n\nOn paper, describe how the water gets caught, stored, and used. Type your one-line idea below.",
+          "chars": 226,
+          "hash": "04add8233d5af8a73cb23ce1f7c86fb6413e89f89eb799d9ff2e73ac6d1efd15",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/04add8233d5af8a73cb23ce1f7c86fb6413e89f89eb799d9ff2e73ac6d1efd15.mp3"
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "text": "Lock in the modern revival.",
+          "chars": 27,
+          "hash": "42bd2391680e164e53a77721cdc8f36f22527b8e59943bc9e7ac554e02c2c299",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/42bd2391680e164e53a77721cdc8f36f22527b8e59943bc9e7ac554e02c2c299.mp3"
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 1,
+          "text": "{{blank-1}} was the first Indian state to make rooftop rainwater harvesting compulsory; in Meghalaya, {{blank-2}} pipes carry spring water in a 200-year-old drip system.",
+          "chars": 169,
+          "hash": "2c217f97d56298c888eb9916082896df53c56c0e9f259df7842fd88f4af9e909",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/2c217f97d56298c888eb9916082896df53c56c0e9f259df7842fd88f4af9e909.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "text": "Across this whole chapter — scarcity, dams, and harvesting — what's the one idea about water you'll actually carry with you? Name it, and why it stuck.\n\nNo right answer. This is your takeaway.",
+          "chars": 192,
+          "hash": "b14567b4368b35decc2638fda9e36375fe08d8fdda3baeef9d6e4d02ec135a62",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b14567b4368b35decc2638fda9e36375fe08d8fdda3baeef9d6e4d02ec135a62.mp3"
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 0,
+          "text": "The whole chapter is yours: scarcity, dams, and harvesting the rain.",
+          "chars": 68,
+          "hash": "a610c1288b8b9d65b93a39fb19738fdb06812a4835e3ffe310a0ebd6fde824f0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a610c1288b8b9d65b93a39fb19738fdb06812a4835e3ffe310a0ebd6fde824f0.mp3"
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 1,
+          "text": "From Gendathur's rain-rich rooftops to Shillong's necessity, from Tamil Nadu's law to Meghalaya's 200-year-old bamboo pipes — India is proving that old water wisdom still works. And that closes the chapter.\n\nYou learned that water is renewable yet scarce — drained by demand, not just drought, and sometimes ruined by pollution; you can weigh the promise of multi-purpose dams against their heavy costs and the disputes they spark; and you've seen the oldest, smallest, smartest answer of all — catching the rain where it falls.\n\nNext time it rains, you'll see it differently: not as weather, but as a resource running past, asking to be caught.",
+          "chars": 645,
+          "hash": "6c71d86b9f564f51f49975acb989166fe4595d0c7ae33ee3bf0b4ff7e502563c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6c71d86b9f564f51f49975acb989166fe4595d0c7ae33ee3bf0b4ff7e502563c.mp3"
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/harvesting-the-rain-hinglish/01-catching-water-before-its-lost.yaml",
+      "language": "hinglish",
+      "chunk_count": 16,
+      "total_chars": 2914,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "text": "Kya ho agar, ek poore rajya mein paani ghaseetne ke liye ek vishaal dam banane ke bajaaye, tum bas baarish ko wahin pakad lo jahan woh girti hai?\n\nIndia yahi kar raha hai — shaandaar tarike se — hazaaron saalon se.",
+          "chars": 214,
+          "hash": "3c2daa461589e60d6d255f9120437ecd32590d2a201a4fac912bb17b0af07c10",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/3c2daa461589e60d6d255f9120437ecd32590d2a201a4fac912bb17b0af07c10.mp3"
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "text": "Ancient India mein water harvesting ki ek anokhi parampara thi.\n\nLog apne local rainfall patterns aur soil types ko gehrai se jaante the, aur rainwater, groundwater, river water — flood water tak — pakadne ke clever techniques bante, har ek local ecology ke hisaab se.",
+          "chars": 268,
+          "hash": "7de095abd42c077ed470c7e3465287499a906e1cf09b5a2702d8caf24dcf1b4d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7de095abd42c077ed470c7e3465287499a906e1cf09b5a2702d8caf24dcf1b4d.mp3"
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "text": "Pahaadon aur parvaton mein, log diversion channels khodte the — Western Himalayas ke guls aur kuls — stream water ko apne kheton tak laane ke liye, farming ke liye.",
+          "chars": 164,
+          "hash": "df0b5122bab79c1645a1cf31170a35577fca2bd253ce9ba08cf2cc5b10b0b664",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/df0b5122bab79c1645a1cf31170a35577fca2bd253ce9ba08cf2cc5b10b0b664.mp3"
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "text": "Bengal ke flood plains mein, unhone inundation channels banaye taaki baadh khud unke kheton ko seenche.\n\nAur kai regions mein, rooftop rainwater harvesting peene ka paani pakadta aur store karta tha — khaaskar Rajasthan mein.",
+          "chars": 225,
+          "hash": "3b460053b45fcc78e0f29e8a860181a39183d293f921b843d2ae84c3e7411f72",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/3b460053b45fcc78e0f29e8a860181a39183d293f921b843d2ae84c3e7411f72.mp3"
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "text": "Har region ne apni baarish aur soil ke hisaab se ek water-harvesting method banaya.",
+          "chars": 83,
+          "hash": "b2e98fd29e267c8f59e1ee990c47a98cf7536230c555a79946e95843cfacc4ba",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b2e98fd29e267c8f59e1ee990c47a98cf7536230c555a79946e95843cfacc4ba.mp3"
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "text": "Arid aur semi-arid regions mein, poore khet rain-fed storage mein badle gaye — paani ko khada rehne aur soil mein soakne dete hue use moist karne ko.\n\nJaisalmer ke khadins aur Rajasthan ke baaki hisson ke johads theek yahi karte hain: durlabh baarish ko pakdo, aur zameen se use rok do.",
+          "chars": 286,
+          "hash": "9cf7a4feb3c5358cfceb9e2c6c796f0b0ab7140a6b6fac73df155dfd36302b10",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9cf7a4feb3c5358cfceb9e2c6c796f0b0ab7140a6b6fac73df155dfd36302b10.mp3"
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "text": "Baarish ko bah jaane dene ke bajaaye, ek chhota local structure use pakadta aur rakhta hai.",
+          "chars": 91,
+          "hash": "355c88a31d3c5af9f7fd7a0a951612ebc249cd8693da0a19ae7a147c1d668da1",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/355c88a31d3c5af9f7fd7a0a951612ebc249cd8693da0a19ae7a147c1d668da1.mp3"
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "text": "Yahan poora philosophy gaur karo.\n\nKoi vishaal dam nahi. Kisi padosi rajya se koi jhagda nahi. Bas local knowledge, local baarish pakadna, local needs ke liye.\n\nChhota, samajhdaar, aur bahut-bahut puraana.",
+          "chars": 205,
+          "hash": "452eb7ae7275faa8f344595e0aedaea7af603e0098f3aaead780f34273c21802",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/452eb7ae7275faa8f344595e0aedaea7af603e0098f3aaead780f34273c21802.mp3"
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "text": "Western Himalayas ke 'guls' aur 'kuls' kya hain?",
+          "chars": 48,
+          "hash": "62e45d5d1fa66c8ee179b38c8f58910c2b5c74dc590a10d10418c198152e3719",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/62e45d5d1fa66c8ee179b38c8f58910c2b5c74dc590a10d10418c198152e3719.mp3"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "text": "Har harvesting method ko uske region se match karo.",
+          "chars": 51,
+          "hash": "f73eba90265dae5682c788c263544340fa65db62bfff65ae6b64a930784caddc",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f73eba90265dae5682c788c263544340fa65db62bfff65ae6b64a930784caddc.mp3"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "text": "Apni locality ke aas-paas dekho. Kya kisi tareeke se rainwater pakda aur store hota hai — ek tank, talaab, rooftop collection pipe, check dam, ya baoli (stepwell)?\n\nPaper pe jo mile woh likho (ya jo banaaya ja sake). Neeche apne paas ek rainwater-harvesting structure type karo.",
+          "chars": 278,
+          "hash": "55105375f6a325ef2821510da6e42405645651d8786800de6d25862e6c22d34c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/55105375f6a325ef2821510da6e42405645651d8786800de6d25862e6c22d34c.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "text": "Do traditional methods ko lock karo.",
+          "chars": 36,
+          "hash": "73596212f1a66e94c9946f3c6ab23221e1aa3fe4415376a3322b7d159ecbb953",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/73596212f1a66e94c9946f3c6ab23221e1aa3fe4415376a3322b7d159ecbb953.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "text": "Western Himalayas mein, diversion channels jinhe {{blank-1}} ya kuls kehte hain paani ko kheton tak laate hain; Jaisalmer mein, khet rain-fed stores mein badle jaate hain jinhe {{blank-2}} kehte hain.",
+          "chars": 200,
+          "hash": "1a904bd97c4187ed25f8193392839a992759dc2a9cb360556efdccd04285cf76",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/1a904bd97c4187ed25f8193392839a992759dc2a9cb360556efdccd04285cf76.mp3"
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "text": "Sadiyon tak, communities ne apni paani ki problems local knowledge se solve ki — koi engineers nahi, koi bade budgets nahi. Tumhe kya lagta hai itni wisdom kyun bhula di gayi? Kya humein use wapas laana chahiye?\n\nKoi sahi jawaab nahi.",
+          "chars": 234,
+          "hash": "9f12254620b305ebe13cdcc48daa0a6d0531b1317d1fce3e48015cf2ca4b658f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9f12254620b305ebe13cdcc48daa0a6d0531b1317d1fce3e48015cf2ca4b658f.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "text": "Tum India ke traditional baarish-pakadne ke tareekon ko region se naam de sakte ho.",
+          "chars": 83,
+          "hash": "7fe3d4d2b1215cfb3c0535fa1fa0dfbae8745aaf39ded2fff044e0cd7a07277c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7fe3d4d2b1215cfb3c0535fa1fa0dfbae8745aaf39ded2fff044e0cd7a07277c.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "text": "Bade dams se bahut pehle, India apni baarish locally pakadta tha: Himalayas mein guls aur kuls, Bengal mein inundation channels, Jaisalmer mein khadins, Rajasthan mein johads — har ek apni zameen aur baarish ke hisaab se.\n\nInme se ek method itna refined ho gaya ki ek hi underground room mein ek saal ka peene ka paani rakh sakta tha. Thar ke registan mein, rooftop aur tanka ne durlabh baarish ko ek lifeline mein badal diya. Yahi agli lesson hai.",
+          "chars": 448,
+          "hash": "5a731620727cd9adfa52c51cc97e0349ca70ac64a53b3e788dcfad9bf99f10f1",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/5a731620727cd9adfa52c51cc97e0349ca70ac64a53b3e788dcfad9bf99f10f1.mp3"
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/harvesting-the-rain-hinglish/02-the-tankas-of-the-thar.yaml",
+      "language": "hinglish",
+      "chunk_count": 17,
+      "total_chars": 3370,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "text": "Thar registan mein, ghar ki sabse keemti cheez aksar sona ya zameen nahi hoti thi.\n\nWoh zameen mein ek kamre jitna gaddha hoti thi — baarish se bhara rakha. Use tanka kehte the.",
+          "chars": 177,
+          "hash": "dd5637b66db0a2af3d9924ba5f185f1c51c489d039a905841327ad19253c48e9",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/dd5637b66db0a2af3d9924ba5f185f1c51c489d039a905841327ad19253c48e9.mp3"
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "text": "Rajasthan bhar mein — Bikaner, Phalodi, Barmer mein — lagbhag har ghar mein parmpara se ek underground tank, ek tanka, peene ka paani store karne ko hota tha.\n\nKuch toh vishaal the. Phalodi mein ek 6.1 metre gehra, 4.27 metre lamba, aur 2.44 metre chauda tha — ek chhota kamra, paani se bhara.",
+          "chars": 293,
+          "hash": "e60eea02f1c87e14f9e437d5e5dae8c505671c7d04cfbb6a62baa427f4ffddae",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e60eea02f1c87e14f9e437d5e5dae8c505671c7d04cfbb6a62baa427f4ffddae.mp3"
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "text": "Tanka ek clever rooftop rainwater harvesting system ka hissa tha.\n\nMain ghar ya aangan ke andar bana, woh sloping roof se ek pipe se juda hota tha. Baarish chhat pe girti hai, pipe se neeche behti hai, aur tanka ko underground bharti hai. Saral, aur shaandaar.",
+          "chars": 260,
+          "hash": "84ddd9721eba0f6992b165766174e6797373298f06232c34badd9254a6355d35",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/84ddd9721eba0f6992b165766174e6797373298f06232c34badd9254a6355d35.mp3"
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "text": "Sloping roof pe baarish ek pipe se neeche ek kamre jitne underground tank mein behti hai.",
+          "chars": 89,
+          "hash": "62e9a3b29cbbd92d3de89160d56a802fc88c659a5788a9338c6f28747e4d3e46",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/62e9a3b29cbbd92d3de89160d56a802fc88c659a5788a9338c6f28747e4d3e46.mp3"
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "text": "Ek detail dikhaata hai woh kitne careful the.\n\nBaarish ka pehla daur nahi collect hota tha. Use chhaton aur pipes ki saari dhool dho dene diya jaata tha pehle. Sirf baad ke showers — ab saaf — tanka mein store hote.\n\nSabr se bana ek built-in filter.",
+          "chars": 249,
+          "hash": "66552df8af3d2fb312c87f9459f5e083157c9dda54bf66212dfade0fcc0b4aa8",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/66552df8af3d2fb312c87f9459f5e083157c9dda54bf66212dfade0fcc0b4aa8.mp3"
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "text": "Itni mehnat kyun? Kyunki tanka us paani ko agli baarish tak rakhta tha — peene ke paani ka ek bharosemand source un bedardi garmiyon mein, jab har doosra source sookh jaata.\n\nIs rainwater ka unke paas ek naam tha: palar pani — natural paani ka sabse shudh roop.",
+          "chars": 261,
+          "hash": "660065f3ef3eeacbfab3ec5adfe0f18d9245d48ab0143767cf0a1c68ae095b50",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/660065f3ef3eeacbfab3ec5adfe0f18d9245d48ab0143767cf0a1c68ae095b50.mp3"
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "text": "Ek bonus bhi tha.\n\nKai gharon ne tanka ke bilkul paas ek underground room banaya. Thanda jama paani us room ko thanda rakhta — registan ki garmi ke khilaaf ek natural air-conditioner. Ek dhaancha, do tohfe.",
+          "chars": 206,
+          "hash": "592d8be4a16c1b563912ffb9cde126d5e3324abf7a2c65c983d2ee55e3f55f9f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/592d8be4a16c1b563912ffb9cde126d5e3324abf7a2c65c983d2ee55e3f55f9f.mp3"
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "text": "Chhat pe baarish, pipe se neeche, tanka mein — ek saal ka peene ka paani, store.",
+          "chars": 80,
+          "hash": "787850a9f5ede20be4f9cbf42bef9afe8544e4f642459b5992714f64b8f52146",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/787850a9f5ede20be4f9cbf42bef9afe8544e4f642459b5992714f64b8f52146.mp3"
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "text": "Afsos, western Rajasthan mein yeh parampara fika pad rahi hai.\n\nPerennial Indira Gandhi Canal ab bharpoor paani laati hai, toh kam log apne tankas sambhaalte hain. Halaanki kuch abhi bhi karte hain — kyunki unhe nal ke paani ke swaad se palar pani ka swaad zyaada pasand hai.",
+          "chars": 275,
+          "hash": "484397b618966b6e7e0208d46ef98187760f6eca770cce407a50fe3ad3ddd59c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/484397b618966b6e7e0208d46ef98187760f6eca770cce407a50fe3ad3ddd59c.mp3"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "text": "Baarish ka pehla daur jaan-boojh kar tanka mein collect kyun NAHI kiya jaata tha?",
+          "chars": 81,
+          "hash": "a0c09372bd480ee04b7ce8fe06d17d47375e01f5d2eea1f526413859073a61eb",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a0c09372bd480ee04b7ce8fe06d17d47375e01f5d2eea1f526413859073a61eb.mp3"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "text": "Har term ko uske matlab se match karo.",
+          "chars": 38,
+          "hash": "f2a5c9a79e474c0b88f2f20c8b1a700f502dc6a83df5110a9c4b858619a2261c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f2a5c9a79e474c0b88f2f20c8b1a700f502dc6a83df5110a9c4b858619a2261c.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "text": "Apne ghar ke liye ek saral rooftop-to-tank system sketch karo: baarish kahan girti hai, pipe kahan jaata hai, tank kahan baithta hai.\n\nPaper pe ek problem note karo jise tumhe solve karna padega (dhool? overflow? jagah?). Neeche apna sabse bada design challenge type karo.",
+          "chars": 272,
+          "hash": "21a76114ab7954ef6a5addadeb33073f10f5f891ddb98f3e0f250cf3c5bcefe7",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/21a76114ab7954ef6a5addadeb33073f10f5f891ddb98f3e0f250cf3c5bcefe7.mp3"
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "text": "Registan ke system ko lock karo.",
+          "chars": 32,
+          "hash": "34e82cb009d177a3ae82f61f686f131a55830e8aecec90a901e24af61408f9ea",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/34e82cb009d177a3ae82f61f686f131a55830e8aecec90a901e24af61408f9ea.mp3"
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 1,
+          "text": "Rooftop ki baarish ek pipe se ek underground tank mein behti hai jise {{blank-1}} kehte hain; yeh rainwater, sabse shudh natural paani, {{blank-2}} pani kehlaata hai.",
+          "chars": 166,
+          "hash": "39a1aade9e9ebf0b42af45e856580d937a0ea1fb26a93ab78ad513fe48151023",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/39a1aade9e9ebf0b42af45e856580d937a0ea1fb26a93ab78ad513fe48151023.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "text": "Jab canal aayi, logon ne ek aisa system sambhaalna chhod diya jo sadiyon se unki seva kar raha tha. Kya hamesha purane, self-reliant tareeke ko door se aane waale piped supply se badalna progress hai? Kya milta hai — aur kya khota hai?\n\nKoi sahi jawaab nahi.",
+          "chars": 258,
+          "hash": "0fa95c0d46ed3febee0200f054dcd9e6afdc5124be8ac7243348c6e7e38b6f42",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/0fa95c0d46ed3febee0200f054dcd9e6afdc5124be8ac7243348c6e7e38b6f42.mp3"
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 0,
+          "text": "Tum samjha sakte ho ki Thar ka rooftop-aur-tanka system kaise kaam karta tha.",
+          "chars": 77,
+          "hash": "f1c787339e32d4341d947b0422d716a4adcd98ad55e039bba74c79364bdfd052",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f1c787339e32d4341d947b0422d716a4adcd98ad55e039bba74c79364bdfd052.mp3"
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 1,
+          "text": "Rajasthan bhar mein, sloping roofs baarish ko pipes se kamre jitne underground tankas mein bhejte the — palar pani, sabse shudh paani, ko sookhi garmiyon bhar store karte hue, ek lagey room ko thanda tak rakhte hue. Pehli baarish system saaf karne ko qurbaan hoti thi. Sirf canal ne logon ko ise bhulaaya hai.\n\nPar yeh puraana idea mara nahi hai. Aaj India bhar mein, gaon aur poore rajya rainwater harvesting ko phir se zinda kar rahe hain — aur saabit kar rahe hain ki yeh abhi bhi shaandaar kaam karta hai. Yahi aakhri lesson hai, aur is chapter ka ant.",
+          "chars": 556,
+          "hash": "1d714eb8582e821919a1b427d0b71a0e2cece40f2b12189fe391c72eaa8d4689",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/1d714eb8582e821919a1b427d0b71a0e2cece40f2b12189fe391c72eaa8d4689.mp3"
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/harvesting-the-rain-hinglish/03-old-wisdom-working-today.yaml",
+      "language": "hinglish",
+      "chunk_count": 17,
+      "total_chars": 3942,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "text": "Ek gaon baarish pakadne mein itna achha ki use officially \"rich in rainwater\" kaha jaata hai. Ek rajya jisne baarish harvest karna kaanoon bana diya. Bamboo pipes 200 saal baad bhi fasal seench rahe.\n\nPurani wisdom koi museum ki cheez nahi. Yeh wapas hai — aur kaam kar rahi hai.",
+          "chars": 279,
+          "hash": "ee2b9dde72409e26c7935c91c66d2c661757f3d87046fb235ee492fa731843d3",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ee2b9dde72409e26c7935c91c66d2c661757f3d87046fb235ee492fa731843d3.mp3"
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "text": "Aaj India bhar mein, traditional rainwater harvesting gharon, gaon, aur poore rajyon mein phir se zinda ho rahi hai — saabit karte hue ki yeh abhi bhi asli zaroortein poori kar sakti hai.\n\nChaar jagahein milte hain jahan yeh phal-phool rahi hai.",
+          "chars": 245,
+          "hash": "77d4d4c88e14ebdd00bd5b22348c296dedef2f544a30ea8b22d3d76eba2c69e1",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/77d4d4c88e14ebdd00bd5b22348c296dedef2f544a30ea8b22d3d76eba2c69e1.mp3"
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "text": "Pehle, Gendathur, Mysuru, Karnataka ka ek door-daraaz gaon.\n\nLagbhag 200 households ne rooftop rainwater harvesting lagaayi. Itna achha chala ki gaon ne ek durlabh khitaab kamaaya: woh rainwater mein rich ke roop mein jaana gaya.",
+          "chars": 229,
+          "hash": "378a0ee0a47c953821d4f2421d95ba0878f0e1466e24f65d02e88a15680a9851",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/378a0ee0a47c953821d4f2421d95ba0878f0e1466e24f65d02e88a15680a9851.mp3"
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "text": "Numbers yeh samjhaate hain.\n\nGendathur ko saal mein lagbhag 1,000 mm baarish milti hai. Achhi rooftops aur saal mein lagbhag das fillings ke saath, har ghar lagbhag 50,000 litre ikattha kar sakta hai — sirf apni chhat pe girne waali baarish se.",
+          "chars": 244,
+          "hash": "a8d090e5ffbe216df5b28a63861a1253a19b946ca332d0824fce1bdc655fa797",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a8d090e5ffbe216df5b28a63861a1253a19b946ca332d0824fce1bdc655fa797.mp3"
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "text": "Saal mein 1,000 mm baarish, ek rooftop se pakdi, lagbhag 50,000 litre per house ban jaati hai.",
+          "chars": 94,
+          "hash": "831e3067639f4c4c95a335f21b8247fb16081a5fcfafaba6e7b8b3b1ecdaa172",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/831e3067639f4c4c95a335f21b8247fb16081a5fcfafaba6e7b8b3b1ecdaa172.mp3"
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "text": "Ab ek aisa vyang jo tum nahi bhuloge. Shillong, Meghalaya mein, rooftop harvesting sabse aam practice hai — halaanki paas ke Cherrapunji aur Mawsynram ko duniya ki sabse zyaada baarish milti hai.\n\nPhir bhi Shillong khud paani ki tez kami jhelta hai. Toh lagbhag har ghar baarish harvest karta hai, apne paani ka 15–25% rooftop se leta hua. Earth ka sabse geela kona, phir bhi har boond pakadta hua.",
+          "chars": 398,
+          "hash": "e7551f88ad0c485e2a7c8ae6062f0a99902abcc708a3db043c4236622caa0cc4",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e7551f88ad0c485e2a7c8ae6062f0a99902abcc708a3db043c4236622caa0cc4.mp3"
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "text": "Kuch jagahon ne ise official bana diya. Tamil Nadu rooftop rainwater harvesting ko har ghar ke liye compulsory banane waala pehla Indian rajya ban gaya — jo na maane unke liye legal punishment ke saath.\n\nBaarish harvest karna, kaanoon mein likh diya gaya.",
+          "chars": 255,
+          "hash": "ce4a2dd286dad7c427259c0e4c62310945634e8c577f5cf75d71a40ee46652f0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ce4a2dd286dad7c427259c0e4c62310945634e8c577f5cf75d71a40ee46652f0.mp3"
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "text": "Ek Karnataka gaon se ek Meghalaya capital tak ek rajya ke kaanoon tak — purani wisdom, phir se failti hui.",
+          "chars": 106,
+          "hash": "721519c439018d5179979eb33626cab6c386ee884aea676fce9e87622fb88678",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/721519c439018d5179979eb33626cab6c386ee884aea676fce9e87622fb88678.mp3"
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "text": "Aur ek khoobsurat puraani technique abhi bhi Meghalaya mein chalti hai: bamboo drip irrigation, ek 200 saal puraana system.\n\nBamboo pipes stream aur spring water tap karte hain. Lagbhag 18–20 litre system mein ghusta hai, sau metre tak chalta hai, aur sirf 20–80 boondein per minute ban ke pahunchta hai — har paudhe ki jadon tak seedhe. Ancient engineering, modern drip irrigation ki efficiency ke saath.",
+          "chars": 405,
+          "hash": "200da8964a18b321d9a13b8c3f1bf3e401ee22daf8783649fc5072786718676b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/200da8964a18b321d9a13b8c3f1bf3e401ee22daf8783649fc5072786718676b.mp3"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "text": "Kaunsa pehla Indian rajya tha jisne rooftop rainwater harvesting ko sab gharon ke liye compulsory banaya?",
+          "chars": 105,
+          "hash": "ad503c2270096b0cb165fe72ad90e506cf809cf92d5694c01f399ab34ff53c0b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ad503c2270096b0cb165fe72ad90e506cf809cf92d5694c01f399ab34ff53c0b.mp3"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "text": "Har jagah ya system ko uski pehchaan se match karo.",
+          "chars": 51,
+          "hash": "9090b7f415ba792e55b69d9a34208a0fdaa0ad2c9a6a72195431adf7684f5a65",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9090b7f415ba792e55b69d9a34208a0fdaa0ad2c9a6a72195431adf7684f5a65.mp3"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "text": "Apni locality mein ya aas-paas ek aur rainwater-harvesting system dhundo — ya apne school ya ghar ke liye ek saral banaao.\n\nPaper pe batao paani kaise pakda, store, aur use hota hai. Neeche apna ek-line idea type karo.",
+          "chars": 218,
+          "hash": "11fa728dc04de211ec6d0aa540782dd21fab635a4cc35b162a7136b2f75703c8",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/11fa728dc04de211ec6d0aa540782dd21fab635a4cc35b162a7136b2f75703c8.mp3"
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "text": "Modern revival ko lock karo.",
+          "chars": 28,
+          "hash": "edd7862afe10a95227c6650f3af17fc1bf718117d93085de135fa2c28dd0875e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/edd7862afe10a95227c6650f3af17fc1bf718117d93085de135fa2c28dd0875e.mp3"
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 1,
+          "text": "{{blank-1}} rooftop rainwater harvesting ko compulsory banane waala pehla Indian rajya tha; Meghalaya mein, {{blank-2}} pipes ek 200 saal puraane drip system mein spring water le jaate hain.",
+          "chars": 190,
+          "hash": "6c0167b2226b09f7037c1336df0b3c4334e7440a9534f3fd5b35f891bd6a93bc",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6c0167b2226b09f7037c1336df0b3c4334e7440a9534f3fd5b35f891bd6a93bc.mp3"
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "text": "Is poore chapter mein — scarcity, dams, aur harvesting — paani ke baare mein woh ek idea kaunsa hai jo tum sach mein apne saath le jaaoge? Use naam do, aur batao kyun woh atak gaya.\n\nKoi sahi jawaab nahi. Yeh tumhara takeaway hai.",
+          "chars": 230,
+          "hash": "92477e31d5eaec4a6c00465a6ea3b5ad014ae97f81b1e6fb17cfa442df51d985",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/92477e31d5eaec4a6c00465a6ea3b5ad014ae97f81b1e6fb17cfa442df51d985.mp3"
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 0,
+          "text": "Poora chapter ab tumhara hai: scarcity, dams, aur baarish ka harvesting.",
+          "chars": 72,
+          "hash": "e7df251cd9a063d6e4c28c13cdb266799ca81160fb577ac949ae99f37e8fd988",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e7df251cd9a063d6e4c28c13cdb266799ca81160fb577ac949ae99f37e8fd988.mp3"
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 1,
+          "text": "Gendathur ki rainwater-rich rooftops se Shillong ki zaroorat tak, Tamil Nadu ke kaanoon se Meghalaya ke 200 saal puraane bamboo pipes tak — India saabit kar raha hai ki purani paani wisdom abhi bhi kaam karti hai. Aur yahi chapter ko poora karta hai.\n\nTumne seekha ki paani renewable hai phir bhi scarce — demand se khaali hota, sirf sookhe se nahi, aur kabhi pollution se barbaad; tum multi-purpose dams (temples of modern India) ke vaade ko unki bhaari costs aur woh disputes jo woh chhedte hain ke saamne tol sakte ho; aur tumne sabse puraana, sabse chhota, sabse samajhdaar jawaab dekha — baarish ko wahin pakadna jahan woh girti hai.\n\nAgli baar jab baarish hogi, tum use alag dekhoge: mausam ki tarah nahi, balki ek resource ki tarah jo bhaag raha hai, pakde jaane ki guzaarish karta hua.",
+          "chars": 793,
+          "hash": "d80d7f72acfab661895fe28c1c69dbbc23c127c6ed4d3c0bb3d3d1d52ebcd57b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d80d7f72acfab661895fe28c1c69dbbc23c127c6ed4d3c0bb3d3d1d52ebcd57b.mp3"
+        }
+      ]
+    }
+  ]
+}
