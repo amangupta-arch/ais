@@ -1,0 +1,43 @@
+# Class 10 Geography — Chapter 4: Agriculture (NCERT, Contemporary India
+# II, Reprint 2026-27). Fourth Class-10 Geography bundle on AIS, after
+# Ch.1 Resources (13-), Ch.2 Forest & Wildlife (14-), Ch.3 Water (15-).
+# Lives on the 'student' plan tier (added in migration 0014); bundle row
+# seeded in migration 0023.
+#
+# Loader: scripts/load-bundle-courses.ts — course/lesson slugs are derived
+# from titles via slugify(). Titles avoid colons/dashes so slugs stay clean
+# (farming-systems-and-seasons, the-crops-of-india, reforms-and-the-way-forward).
+#
+# board + medium below sync into bundles.tags as 'board:<slug>' +
+# 'medium:<lang>' so /student filters by them. medium is [en, hinglish];
+# the Hinglish ships in the BEHAVIOURAL register (see the bundle brief).
+#
+# Scope: Reprint 2026-27 ends at Technological & Institutional Reforms +
+# the Bhoodan-Gramdan box — no globalisation/food-security section. The 9
+# lessons cover exactly what the source carries, nothing more.
+
+bundles:
+  - bundle_slug: b-class-10-geography-ch04-agriculture
+    board: cbse
+    medium: [en, hinglish]
+    courses:
+      - title: "Farming Systems and Seasons"
+        outcome: "Student can tell India's farming systems apart (subsistence, commercial, plantation) and place crops in the Rabi, Kharif and Zaid seasons"
+        lessons:
+          - "Subsistence Farming"
+          - "Commercial and Plantation Farming"
+          - "The Cropping Calendar"
+
+      - title: "The Crops of India"
+        outcome: "Student can name India's major crops, the geographical conditions each needs, and where in India each is grown"
+        lessons:
+          - "Rice and Wheat"
+          - "Millets, Maize and Pulses"
+          - "Cash Crops and Beverages"
+          - "Fibres and Rubber"
+
+      - title: "Reforms and the Way Forward"
+        outcome: "Student can explain the technological and institutional reforms that reshaped Indian agriculture, and retell the Bhoodan-Gramdan movement"
+        lessons:
+          - "Technological and Institutional Reforms"
+          - "The Bhoodan Gramdan Movement"
