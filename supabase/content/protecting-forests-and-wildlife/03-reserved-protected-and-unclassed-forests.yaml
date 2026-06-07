@@ -1,0 +1,167 @@
+title: "Reserved, Protected, and Unclassed Forests"
+subtitle: "Three tiers of guardianship — which forest is guarded how tightly"
+estimated_minutes: 11
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Not every forest in India is guarded the same way.
+
+      Some are the country's crown jewels, strictly protected. Some are watched but a step looser. And some are left largely to the villages that live in them.
+
+      Three tiers — and the difference is *how tightly each is guarded*.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      India's forests are vast, and hard to manage, control, and regulate. Much of the forest and wildlife is owned or managed by the **government**, through the Forest Department.
+
+      To handle it, the forest is sorted into **three categories**.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **1. Reserved Forests.** More than **half** of all forest land. These are the most strictly guarded — and regarded as the *most valuable* for conserving forest and wildlife. The crown jewels.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **2. Protected Forests.** About **one-third** of forest area, declared by the Forest Department, and protected from *any further depletion*.
+
+      Guarded — but a notch below reserved.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **3. Unclassed Forests.** Everything else: other forests and wastelands belonging to *both government and private individuals and communities*.
+
+      The loosest tier on paper — and, as we'll see, often cared for by the local communities who live there.
+
+  - type: svg_graphic
+    xp: 0
+    title: "THREE TIERS OF FOREST"
+    caption: "Reserved (over half, strictest) · Protected (about a third) · Unclassed (the rest)."
+    svg: |
+      <svg viewBox="0 0 360 150" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="20" y="34" width="166" height="40" fill="#15803d" stroke="#0f172a" stroke-width="1.2"/>
+        <rect x="186" y="34" width="106" height="40" fill="#65a30d" stroke="#0f172a" stroke-width="1.2"/>
+        <rect x="292" y="34" width="48" height="40" fill="#cbd5e1" stroke="#0f172a" stroke-width="1.2"/>
+        <text x="103" y="59" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">Reserved</text>
+        <text x="239" y="59" text-anchor="middle" font-size="10" font-weight="bold" fill="#ffffff">Protected</text>
+        <text x="316" y="55" text-anchor="middle" font-size="8" font-weight="bold" fill="#0f172a">Unclas-</text>
+        <text x="316" y="65" text-anchor="middle" font-size="8" font-weight="bold" fill="#0f172a">sed</text>
+        <text x="103" y="92" text-anchor="middle" font-size="8" fill="#475569">&gt; half · most valuable</text>
+        <text x="239" y="92" text-anchor="middle" font-size="8" fill="#475569">~ one-third</text>
+        <text x="316" y="92" text-anchor="middle" font-size="8" fill="#475569">the rest</text>
+        <text x="20" y="120" font-size="8" fill="#166534">◄ strictly guarded</text>
+        <text x="340" y="120" text-anchor="end" font-size="8" fill="#64748b">loosely guarded ►</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Reserved and protected forests together are called **permanent forest estates** — kept permanently for producing **timber** and for **protection**.
+
+      **Madhya Pradesh** has the largest area under permanent forests: a remarkable **75%** of its total forest.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The pattern shifts across India:
+
+      - Large *reserved* forests: Jammu & Kashmir, Andhra Pradesh, Uttarakhand, Kerala, Tamil Nadu, West Bengal, Maharashtra.
+      - Mostly *protected*: Bihar, Haryana, Punjab, Himachal Pradesh, Odisha, Rajasthan.
+      - Very high *unclassed* (managed by local communities): all the North-eastern states and parts of Gujarat.
+
+  - type: html_animation
+    xp: 0
+    title: "GUARDED, TIER BY TIER"
+    caption: "From the strictly reserved down to the community-held unclassed forests."
+    html: |
+      <div style="background:#f8fafc;padding:18px 14px;border-radius:12px;">
+        <style>
+          @keyframes geoTier1 { 0%,5%{opacity:0;transform:translateX(-12px)} 25%,100%{opacity:1;transform:none} }
+          @keyframes geoTier2 { 0%,30%{opacity:0;transform:translateX(-12px)} 50%,100%{opacity:1;transform:none} }
+          @keyframes geoTier3 { 0%,55%{opacity:0;transform:translateX(-12px)} 75%,100%{opacity:1;transform:none} }
+          .gt1{animation:geoTier1 5s infinite} .gt2{animation:geoTier2 5s infinite} .gt3{animation:geoTier3 5s infinite}
+          .geo-row{display:flex;align-items:center;margin:6px 0;font:bold 11px sans-serif;color:#fff;border-radius:6px;padding:7px 12px}
+        </style>
+        <div class="geo-row gt1" style="background:#15803d">Reserved — strictest, most valuable</div>
+        <div class="geo-row gt2" style="background:#65a30d">Protected — no further depletion</div>
+        <div class="geo-row gt3" style="background:#94a3b8">Unclassed — govt, private, communities</div>
+      </div>
+
+  - type: mcq
+    xp: 10
+    question: "Which forest category makes up over half the forest land and is regarded as the most valuable for conservation?"
+    options:
+      - id: a
+        text: "Protected forests"
+        is_correct: false
+        rationale: "Protected forests are about a third of forest area and a notch below reserved in protection."
+      - id: b
+        text: "Reserved forests"
+        is_correct: true
+        rationale: "Right — over half of forest land, the most strictly guarded, and the most valuable for conserving forest and wildlife."
+      - id: c
+        text: "Unclassed forests"
+        is_correct: false
+        rationale: "Unclassed forests are the rest — other forests and wastelands held by government, private owners, and communities."
+      - id: d
+        text: "Permanent forest estates"
+        is_correct: false
+        rationale: "That's the combined name for reserved + protected forests, not a separate, larger category."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Match each forest category to its description."
+    left:
+      - { id: l1, label: "Reserved forests" }
+      - { id: l2, label: "Protected forests" }
+      - { id: l3, label: "Unclassed forests" }
+    right:
+      - { id: r1, label: "Most valuable for conserving forest and wildlife" }
+      - { id: r2, label: "Protected from any further depletion" }
+      - { id: r3, label: "Other forests and wastelands of govt, private owners, and communities" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Think about your own state. Based on this lesson, which category do you think most of its forest falls under — reserved, protected, or largely unclassed (community-managed)?
+
+      On paper, make your guess and give one reason. Type your state and your guess below.
+    placeholder: "In ___ , most forest is probably ___ because..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the structure."
+    template: |
+      Reserved forests make up over ___ of forest land, and reserved plus protected forests together form ___ forest estates.
+    answers:
+      - id: blank-1
+        accepted: ["half", "Half", "50%"]
+      - id: blank-2
+        accepted: ["permanent", "Permanent"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      The "loosest" tier — unclassed forest — is often the one local communities care for directly. Do you think a forest is safer guarded by a distant government rule, or by the people who live right beside it?
+
+      No right answer.
+    placeholder: "I think a forest is safer when..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can classify India's forests into three tiers of protection."
+    summary: |
+      Reserved (over half, strictest, most valuable), protected (about a third, no further depletion), and unclassed (the rest, held by government, private owners, and communities) — with reserved and protected together forming the permanent forest estates.
+
+      Notice that last tier kept pointing at *communities*. And that's the quiet truth this whole chapter has been building toward: some of India's best conservation never came from a government at all — it came from villagers. That's the final course.

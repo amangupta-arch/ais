@@ -1,0 +1,175 @@
+title: "Project Tiger"
+subtitle: "Why saving one big cat meant saving an entire forest"
+estimated_minutes: 12
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Around the year 1900, India had roughly **55,000 tigers**.
+
+      By 1973, when someone finally counted, just **1,827** were left.
+
+      That's not a decline. That's a collapse. What happened — and why did saving the tiger end up saving the whole forest?
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The tiger is a **key species** in the faunal web — a predator at the very top.
+
+      When the authorities took stock in 1973, the scale of the crash was undeniable: from about **55,000** at the turn of the century down to **1,827**.
+
+  - type: svg_graphic
+    xp: 0
+    title: "THE TIGER COLLAPSE"
+    caption: "From about 55,000 tigers in 1900 to just 1,827 by 1973."
+    svg: |
+      <svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <line x1="40" y1="150" x2="330" y2="150" stroke="#0f172a" stroke-width="1.5"/>
+        <rect x="70" y="32" width="70" height="118" fill="#f59e0b" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="105" y="26" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400e">55,000</text>
+        <text x="105" y="165" text-anchor="middle" font-size="9" fill="#475569">~1900</text>
+        <rect x="230" y="142" width="70" height="8" fill="#f59e0b" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="265" y="134" text-anchor="middle" font-size="12" font-weight="bold" fill="#b91c1c">1,827</text>
+        <text x="265" y="165" text-anchor="middle" font-size="9" fill="#475569">1973</text>
+        <path d="M150,40 Q200,30 224,132" stroke="#b91c1c" stroke-width="2" fill="none" stroke-dasharray="5 3"/>
+        <polygon points="224,132 219,120 230,124" fill="#b91c1c"/>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      What drove the crash? Four forces, all at once:
+
+      - **Poaching** for trade
+      - **Shrinking habitat** as forests were cleared
+      - **Depletion of prey** — fewer deer and boar to hunt
+      - a **growing human population** pressing into tiger country
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The deadliest pull was *trade*.
+
+      Tiger **skins**, and **bones** used in traditional medicines — especially across many Asian countries — made a tiger worth more dead than alive. And because India and Nepal shelter about **two-thirds** of the world's surviving tigers, they became the prime targets for poachers and illegal traders.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      So in **1973**, India launched **Project Tiger** — one of the most publicised wildlife campaigns the world has seen.
+
+      But here's the clever idea at its heart.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      A tiger needs an enormous, healthy forest — full of prey, water, and cover. Protect *that*, and you automatically protect *everything* living in it.
+
+      The tiger is an **umbrella**: spread protection over the big cat, and its shade shelters the deer, the birds, the insects, the trees — the whole web beneath it.
+
+  - type: html_animation
+    xp: 0
+    title: "THE TIGER UMBRELLA"
+    caption: "Protect the tiger's forest, and every species under it is sheltered too."
+    html: |
+      <div style="background:#f8fafc;padding:18px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoOpen { 0%,10%{transform:scale(0.2);opacity:0} 55%,100%{transform:scale(1);opacity:1} }
+          @keyframes geoUnder { 0%,45%{opacity:0} 70%,100%{opacity:1} }
+          .geo-canopy { transform-origin:center bottom; animation: geoOpen 4.5s ease-out infinite alternate; }
+          .geo-under { animation: geoUnder 4.5s infinite alternate; }
+        </style>
+        <svg viewBox="0 0 300 130" style="max-width:320px;width:100%" font-family="sans-serif">
+          <path class="geo-canopy" d="M40,70 A110,70 0 0 1 260,70 Z" fill="#f59e0b" stroke="#0f172a" stroke-width="1.5"/>
+          <text x="150" y="58" text-anchor="middle" font-size="11" font-weight="bold" fill="#7c2d12" class="geo-canopy">TIGER</text>
+          <g class="geo-under" fill="#16a34a">
+            <circle cx="90" cy="100" r="11"/><circle cx="130" cy="104" r="9"/>
+            <circle cx="170" cy="104" r="9"/><circle cx="210" cy="100" r="11"/>
+          </g>
+          <text x="150" y="126" text-anchor="middle" font-size="8" fill="#475569" class="geo-under">deer, birds, insects, trees — all sheltered</text>
+        </svg>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Project Tiger spread across India in famous reserves: **Corbett** in Uttarakhand, **Sunderbans** in West Bengal, **Bandhavgarh** in Madhya Pradesh, **Sariska** in Rajasthan, **Manas** in Assam, and **Periyar** in Kerala.
+
+      And conservation kept growing up. It now guards *whole biodiversity*, not a few stars — even **insects**. Notifications under the Wildlife Act (1980, 1986) added butterflies, moths, beetles, even a dragonfly; in **1991**, plants made the protected list for the first time.
+
+  - type: mcq
+    xp: 10
+    question: "Why is protecting the tiger described as protecting the whole forest?"
+    options:
+      - id: a
+        text: "Because tigers plant new trees as they roam."
+        is_correct: false
+        rationale: "Tigers don't plant trees. The reason is about *habitat*, not gardening."
+      - id: b
+        text: "A tiger needs a large, healthy forest full of prey — so safeguarding its home safeguards every species in it."
+        is_correct: true
+        rationale: "Exactly. The tiger is an 'umbrella' species: protect its habitat and you shelter the whole web beneath it."
+      - id: c
+        text: "Because the law only protects forests that contain tigers."
+        is_correct: false
+        rationale: "Protection isn't limited to tiger forests. The point is ecological — the tiger's needs cover everyone else's."
+      - id: d
+        text: "Because tigers eat the animals that damage forests."
+        is_correct: false
+        rationale: "Tempting, but the chapter's logic is about habitat size and health, not pest control."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Match each tiger reserve to its state."
+    left:
+      - { id: l1, label: "Corbett" }
+      - { id: l2, label: "Sunderbans" }
+      - { id: l3, label: "Bandhavgarh" }
+      - { id: l4, label: "Periyar" }
+    right:
+      - { id: r1, label: "Uttarakhand" }
+      - { id: r2, label: "West Bengal" }
+      - { id: r3, label: "Madhya Pradesh" }
+      - { id: r4, label: "Kerala" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Pick one tiger reserve or national park from this lesson (or one you know).
+
+      On a map or on paper, locate it and note its state. Then write one threat from this lesson that Project Tiger had to fight. Type the reserve and the threat below.
+    placeholder: "___ is in ___ ; one threat to tigers is ___."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the key facts."
+    template: |
+      Project Tiger was launched in ___, and India and Nepal together shelter about ___ of the world's surviving tigers.
+    answers:
+      - id: blank-1
+        accepted: ["1973"]
+      - id: blank-2
+        accepted: ["two-thirds", "two thirds", "2/3", "twothirds"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      A single famous animal pulled an entire forest's worth of life under protection. Is it fair that the unglamorous species got saved only because they happened to live near a tiger? What does that say about how we choose what to protect?
+
+      No right answer.
+    placeholder: "I think choosing a flagship species..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can tell the story of Project Tiger — and the umbrella idea behind it."
+    summary: |
+      From 55,000 to 1,827, the tiger nearly vanished to poaching, lost habitat, lost prey, and human pressure. Project Tiger (1973) fought back — and by protecting the tiger's forest, it sheltered the whole web, widening over time to cover even insects and plants.
+
+      But forests themselves are sorted and guarded in different ways. Some are India's most strictly protected; some are left to local communities. How exactly are India's forests classified? That's the next lesson.

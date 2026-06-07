@@ -1,0 +1,159 @@
+title: "The Wildlife Protection Act"
+subtitle: "The year killing a tiger went from trophy to crime"
+estimated_minutes: 11
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      For most of history, killing a tiger was a *trophy*. Something to be photographed with, not punished for.
+
+      One year changed that across India. The year was **1972**. Here's what happened.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      By the 1960s and 70s, wildlife was vanishing fast. Conservationists pushed hard for a *national* wildlife protection programme.
+
+      The result was the **Indian Wildlife (Protection) Act, 1972** — and it gave India, for the first time, real legal teeth to defend its wild creatures.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Think of the Act as a **shield** with three edges:
+
+      - **Ban hunting** of endangered species.
+      - **Protect their habitats** in law.
+      - **Restrict the trade** in wildlife.
+
+      It also published an all-India **list of protected species** — naming exactly who the shield covered.
+
+  - type: svg_graphic
+    xp: 0
+    title: "WILDLIFE PROTECTION ACT, 1972"
+    caption: "One law, three protections: ban hunting, protect habitats, restrict trade."
+    svg: |
+      <svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <path d="M180,14 L312,50 L312,104 C312,150 250,168 180,176 C110,168 48,150 48,104 L48,50 Z" fill="#dcfce7" stroke="#166534" stroke-width="2.5"/>
+        <text x="180" y="44" text-anchor="middle" font-size="10" font-weight="bold" fill="#166534">THE 1972 SHIELD</text>
+        <line x1="74" y1="56" x2="286" y2="56" stroke="#86efac" stroke-width="1.5"/>
+        <text x="180" y="78" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a">Ban hunting</text>
+        <line x1="90" y1="90" x2="270" y2="90" stroke="#86efac" stroke-width="1"/>
+        <text x="180" y="110" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a">Protect habitats</text>
+        <line x1="90" y1="122" x2="270" y2="122" stroke="#86efac" stroke-width="1"/>
+        <text x="180" y="142" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a">Restrict trade</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      With the Act in place, central and state governments set up **national parks** and **wildlife sanctuaries** — protected zones where the shield is strongest, and where wild populations could recover.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The government also launched **projects for specific animals** on the very brink:
+
+      the **tiger**, the **one-horned rhinoceros**, the **Kashmir stag** (hangul), three crocodiles — freshwater, saltwater, and the **gharial** — and the **Asiatic lion**.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      More recently, the shield widened to cover the **Indian elephant**, the **black buck** (chinkara), the **great Indian bustard** (godawan), and the **snow leopard** — full or partial legal protection against hunting and trade right across India.
+
+  - type: html_animation
+    xp: 0
+    title: "WHO THE SHIELD COVERS"
+    caption: "One by one, India's most threatened animals were brought under legal protection."
+    html: |
+      <div style="background:#f8fafc;padding:20px 14px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoName { 0%,5%{opacity:0} 22%,100%{opacity:1} }
+          @keyframes geoName2 { 0%,28%{opacity:0} 45%,100%{opacity:1} }
+          @keyframes geoName3 { 0%,51%{opacity:0} 68%,100%{opacity:1} }
+          @keyframes geoName4 { 0%,74%{opacity:0} 90%,100%{opacity:1} }
+          .gn { display:inline-block; margin:4px 6px; padding:5px 11px; border-radius:8px; background:#dcfce7; color:#166534; font:bold 11px sans-serif; }
+          .gn1{animation:geoName 5s infinite} .gn2{animation:geoName2 5s infinite} .gn3{animation:geoName3 5s infinite} .gn4{animation:geoName4 5s infinite}
+        </style>
+        <div style="font:bold 11px sans-serif;color:#0f172a;margin-bottom:8px">PROTECTED UNDER LAW</div>
+        <span class="gn gn1">Tiger</span><span class="gn gn2">One-horned rhino</span><span class="gn gn3">Asiatic lion</span><span class="gn gn4">Snow leopard</span>
+      </div>
+
+  - type: mcq
+    xp: 10
+    question: "What were the three main thrusts of the Wildlife (Protection) Act, 1972?"
+    options:
+      - id: a
+        text: "Build zoos, charge entry fees, and fund research."
+        is_correct: false
+        rationale: "None of these is the Act's thrust. It was about banning, protecting, and restricting — not zoos or fees."
+      - id: b
+        text: "Ban hunting of endangered species, give legal protection to their habitats, and restrict trade in wildlife."
+        is_correct: true
+        rationale: "Exactly — those three, plus an all-India list of protected species, were the heart of the 1972 Act."
+      - id: c
+        text: "Allow regulated hunting, open trade, and clear forests for farming."
+        is_correct: false
+        rationale: "That's the opposite of the Act, which *banned* hunting and *restricted* trade."
+      - id: d
+        text: "Hand all forests to private owners."
+        is_correct: false
+        rationale: "The Act strengthened public/legal protection of wildlife and habitats, not private ownership."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Match each protected animal to its other name."
+    left:
+      - { id: l1, label: "Kashmir stag" }
+      - { id: l2, label: "Black buck" }
+      - { id: l3, label: "Great Indian bustard" }
+      - { id: l4, label: "A type of crocodile" }
+    right:
+      - { id: r1, label: "Hangul" }
+      - { id: r2, label: "Chinkara" }
+      - { id: r3, label: "Godawan" }
+      - { id: r4, label: "Gharial" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Find one **national park or wildlife sanctuary** in your state (or the nearest one).
+
+      On paper, note its name and one animal it protects. Then type the park's name and its state below.
+    placeholder: "___ in the state of ___ protects the ___."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the three thrusts of the 1972 Act."
+    template: |
+      The 1972 Act protected wildlife by banning ___, giving legal protection to their ___, and restricting ___ in wildlife.
+    answers:
+      - id: blank-1
+        accepted: ["hunting", "Hunting"]
+      - id: blank-2
+        accepted: ["habitats", "Habitats", "habitat"]
+      - id: blank-3
+        accepted: ["trade", "Trade"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      A law can ban hunting on paper — but a tiger lives far from any courtroom. What do you think it actually takes to make a wildlife law *work* on the ground?
+
+      No right answer.
+    placeholder: "For the law to really work, you'd need..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You know how India first put a legal shield around its wildlife."
+    summary: |
+      The 1972 Wildlife (Protection) Act banned hunting, protected habitats, restricted trade, and named the species to be saved — backed by national parks, sanctuaries, and projects for animals like the rhino and the lion.
+
+      But one of those projects became the most famous wildlife campaign in the world — because one animal had crashed from 55,000 to under 2,000. Next: the story of Project Tiger.
