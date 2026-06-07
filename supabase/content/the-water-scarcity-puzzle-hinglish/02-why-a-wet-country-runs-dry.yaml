@@ -1,0 +1,178 @@
+title: "Ek Bheega Desh Sookh Kyun Jaata Hai"
+subtitle: "Ek sheher ek nadi ke bilkul paas baith ke bhi pyaasa reh sakta hai"
+estimated_minutes: 12
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Yeh aisi cheez hai jo mumkin nahi honi chahiye: ek sheher ek nadi ke bilkul paas baitha, aur *phir bhi* paani ki kami mein.
+
+      Phir bhi humare kayi sheher theek aise hi hain. Agar baarish problem nahi, toh kya hai?
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Water scarcity ki teen jad-wajahein hain — aur gaur karo ki inme se *koi* "kam baarish" nahi hai:
+
+      - **over-exploitation**
+      - **excessive use**
+      - **unequal access**
+
+      Dekhte hain har ek ek aise desh ko kaise sukhaa deti hai jo asal mein kaafi bheega hai.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Wajah 1 — badhti population.**
+
+      Zyaada log zyaada paani maangte hain — sirf peene ko nahi, balki zyaada *khaana* ugaane ko. Food-grain badhaane ke liye, hum dry-season farming ke liye irrigation badhaane ko paani over-exploit karte hain.
+
+      Aur **irrigated agriculture India mein paani ka sabse bada akela consumer hai**. Kuein pe bheed badhti hi jaati hai.
+
+  - type: svg_graphic
+    xp: 0
+    title: "PAANI KAUN USE KARTA HAI"
+    caption: "Ek finite freshwater supply se — agriculture sabse bada hissa leti hai, kaafi aage se."
+    svg: |
+      <svg viewBox="0 0 360 170" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="120" y="8" width="120" height="26" rx="5" fill="#0ea5e9" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="180" y="25" text-anchor="middle" font-size="10" font-weight="bold" fill="#ffffff">FRESHWATER</text>
+        <line x1="180" y1="34" x2="70" y2="64" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="180" y1="34" x2="180" y2="64" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="180" y1="34" x2="290" y2="64" stroke="#94a3b8" stroke-width="1.5"/>
+        <rect x="26" y="64" width="88" height="92" rx="5" fill="#bbf7d0" stroke="#0f172a" stroke-width="1.2"/>
+        <text x="70" y="84" text-anchor="middle" font-size="9" font-weight="bold" fill="#166534">Agriculture</text>
+        <text x="70" y="100" text-anchor="middle" font-size="8" fill="#475569">largest</text>
+        <text x="70" y="111" text-anchor="middle" font-size="8" fill="#475569">consumer</text>
+        <rect x="136" y="96" width="88" height="60" rx="5" fill="#fde68a" stroke="#0f172a" stroke-width="1.2"/>
+        <text x="180" y="120" text-anchor="middle" font-size="9" font-weight="bold" fill="#92400e">Industry</text>
+        <rect x="246" y="104" width="88" height="52" rx="5" fill="#e9d5ff" stroke="#0f172a" stroke-width="1.2"/>
+        <text x="290" y="128" text-anchor="middle" font-size="9" font-weight="bold" fill="#6b21a8">Homes</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Wajah 2 — groundwater ka jaal.**
+
+      Kisaan zyaada zameen seenchne ko apne kuein aur tube-wells khodte hain. Samajhdaar lagta hai — jab tak tum samajh na lo ki sab yahi kar rahe hain.
+
+      Bahut zyaada pump karo, aur **groundwater levels girte hain**. Yeh paani ki availability *aur* aage chal ke food security ko nuksaan pahunchaata hai. Ek short-term jeet jo long-term haar ban jaati hai.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Wajah 3 — industries aur sheher.**
+
+      Independence ke baad, tezi se industrialisation aur urbanisation. Industries paani ki bhaari consumers hain — *aur* unhe power chahiye, jiska zyaadatar **hydroelectric** hai, toh bijli bhi chupchaap paani kharch karti hai.
+
+      Ghani aabaadi waale sheher aur urban lifestyles demand badhate hain. Housing societies apne borewells gaadte hain. Nateeja: naazuk water resources tab tak over-exploit jab tak woh khatam na ho jaayein.
+
+  - type: html_animation
+    xp: 0
+    title: "KUEIN PE BADI BHEED"
+    caption: "Zyaada log, zyaada khet, zyaada factories — sab ek hi simatte supply se peete hue."
+    html: |
+      <div style="background:#f0f9ff;padding:18px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoDrop { 0%,15%{height:60px;fill:#0ea5e9} 85%,100%{height:18px;fill:#7dd3fc} }
+          @keyframes geoFade1 { 0%,10%{opacity:0} 30%,100%{opacity:1} }
+          @keyframes geoFade2 { 0%,35%{opacity:0} 55%,100%{opacity:1} }
+          @keyframes geoFade3 { 0%,60%{opacity:0} 80%,100%{opacity:1} }
+          .geo-w { animation: geoDrop 5s ease-in-out infinite alternate; }
+          .gf1{animation:geoFade1 5s infinite} .gf2{animation:geoFade2 5s infinite} .gf3{animation:geoFade3 5s infinite}
+        </style>
+        <svg viewBox="0 0 300 120" style="max-width:320px;width:100%" font-family="sans-serif">
+          <rect x="130" y="40" width="40" height="60" fill="#0ea5e9" class="geo-w"/>
+          <rect x="124" y="34" width="52" height="8" rx="3" fill="#475569"/>
+          <circle class="gf1" cx="60" cy="60" r="12" fill="#16a34a"/>
+          <circle class="gf2" cx="60" cy="92" r="12" fill="#ca8a04"/>
+          <circle class="gf3" cx="240" cy="76" r="12" fill="#7c3aed"/>
+          <text x="150" y="115" text-anchor="middle" font-size="8" fill="#0369a1">the well drops as the crowd grows</text>
+        </svg>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Teeno wajahon ko dobaara dekho. Inme se ek bhi *baarish* ke baare mein nahi.
+
+      Yeh **demand** ka renewable supply se aage nikalna hai — plus **unequal access**, jahan kuch ko bharpoor milta hai aur kuch ko lagbhag kuch nahi. Aise ek bheega desh sookh jaata hai.
+
+  - type: mcq
+    xp: 10
+    question: "India mein paani ka sabse bada akela consumer kya hai?"
+    options:
+      - id: a
+        text: "Ghar / domestic use."
+        is_correct: false
+        rationale: "Ghar paani use karte hain, par unka hissa sabse bade consumer se kahin chhota hai."
+      - id: b
+        text: "Irrigated agriculture."
+        is_correct: true
+        rationale: "Sahi — irrigated agriculture kaafi aage sabse bada consumer hai, isiliye irrigation badhaana paani over-exploit karta hai."
+      - id: c
+        text: "Hydroelectric power stations."
+        is_correct: false
+        rationale: "Industry aur power bahut paani use karte hain, par kul milaa ke irrigated agriculture sabse bada consumer hai."
+      - id: d
+        text: "Maweshiyon ke liye peene ka paani."
+        is_correct: false
+        rationale: "Ek asli use, par irrigated agriculture ke saamne bahut chhota."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Scarcity ki har wajah ko us se match karo jisko woh le jaati hai."
+    left:
+      - { id: l1, label: "Badhti population" }
+      - { id: l2, label: "Kisaan kuein over-pump karte" }
+      - { id: l3, label: "Zyaada industries" }
+      - { id: l4, label: "Ghane sheher apne borewells ke saath" }
+    right:
+      - { id: r1, label: "Zyaada khaana chahiye → zyaada irrigation" }
+      - { id: r2, label: "Girte groundwater levels" }
+      - { id: r3, label: "Bhaari paani use plus hydel power ki demand" }
+      - { id: r4, label: "Over-exploited, depleted local paani" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Aaj tumhare ghar ne paani jin-jin tareekon se use kiya woh sab likho — peena, khaana banana, nahaana, dhona, garden, flush.
+
+      Paper pe nishaan lagao kaunsa sabse zyaada use hua. Phir neeche apne ghar ka sabse bada akela paani use type karo.
+    placeholder: "Mere ghar ka sabse bada paani use hai..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Do bade drains ko lock karo."
+    template: |
+      Irrigated {{blank-1}} paani ki sabse badi consumer hai, aur kuein over-pump karne se {{blank-2}} levels girte hain.
+    answers:
+      - id: blank-1
+        accepted: ["agriculture", "Agriculture", "farming", "kheti"]
+      - id: blank-2
+        accepted: ["groundwater", "ground water", "Groundwater"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Har kisaan jo gehra kuaan khodta hai woh *apne liye* samajhdaari kar raha hai — par milke woh shared groundwater khaali kar dete hain. Zindagi mein aur kahan kai samajhdaar individual choices milke ek shared problem ban jaati hain?
+
+      Koi sahi jawaab nahi.
+    placeholder: "Kai chhoti choices milke ek badi problem — jaise..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Tum bata sakte ho ki demand, na ki baarish, water scarcity chalati hai."
+    summary: |
+      Irrigation ke liye over-exploitation (sabse bada user), bahut zyaada kuon se girta groundwater, aur industries aur sheheron ki pyaas — demand renewable supply se aage nikal jaati hai, aur access unequal rehti hai. Baarish mushkil se point hai.
+
+      Par ek aur kism ki scarcity hai, aur woh chalaak hai: paani jo *wahin* hai par peene laayak nahi. Jab problem maatra nahi, quality ho toh kya hota hai? Yahi agli lesson hai.

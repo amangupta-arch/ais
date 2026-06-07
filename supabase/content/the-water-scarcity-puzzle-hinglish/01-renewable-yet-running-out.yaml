@@ -1,0 +1,159 @@
+title: "Renewable, Phir Bhi Khatam Hota Hua"
+subtitle: "Agar paani khud ko hamesha recycle karta hai, toh hum kam kaise pad sakte hain?"
+estimated_minutes: 11
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Planet ka teen-chauthaai hissa paani se dhaka hai. Aur woh khud ko recycle karta hai — *hamesha*.
+
+      Toh ek paheli jo tumhe rok deni chahiye: hum bhala **khatam** kaise kar sakte hain?
+
+      Is lesson ke ant tak, paheli zyaada pareshaan karegi, kam nahi. Achhi baat hai.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Numbers se shuru karo. Haan, Earth ki surface ka teen-chauthaai paani hai — par uska sirf ek *bahut chhota* hissa **freshwater** hai jise hum actually use kar sakte hain.
+
+      Yeh usable freshwater do jagahon se aata hai: **surface run-off** (nadiyaan, jharne) aur **groundwater** (zameen ke neeche jama paani).
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Aur yeh sach mein **renewable** hai. **Hydrological cycle** — water cycle — ise lagataar renew aur recharge karta hai.
+
+      Paani vaashpit hota hai, badal banta hai, baarish ban ke girta hai, zameen pe behta aur soakta hai, phir vaashpit hota hai. Machine kabhi rukti nahi.
+
+  - type: svg_graphic
+    xp: 0
+    title: "HYDROLOGICAL CYCLE"
+    caption: "Vaashpan, baarish, run-off, aur recharge — woh cycle jo paani ko renewable resource banata hai."
+    svg: |
+      <svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="0" y="160" width="360" height="40" fill="#bae6fd"/>
+        <circle cx="40" cy="36" r="20" fill="#fde68a" stroke="#0f172a" stroke-width="1.5"/>
+        <ellipse cx="180" cy="44" rx="46" ry="22" fill="#e2e8f0" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="180" y="48" text-anchor="middle" font-size="9" fill="#475569">cloud</text>
+        <path d="M70,158 C90,110 110,80 138,56" stroke="#0ea5e9" stroke-width="2" fill="none"/>
+        <polygon points="138,56 132,66 144,66" fill="#0ea5e9"/>
+        <text x="88" y="120" font-size="8" fill="#0369a1">evaporation</text>
+        <line x1="200" y1="66" x2="205" y2="150" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <line x1="220" y1="66" x2="228" y2="150" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <line x1="240" y1="66" x2="251" y2="150" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <text x="262" y="110" font-size="8" fill="#1e3a8a">precipitation</text>
+        <polygon points="300,160 360,160 360,120" fill="#bbf7d0" stroke="#0f172a" stroke-width="1"/>
+        <path d="M330,128 C320,140 318,150 300,160" stroke="#0ea5e9" stroke-width="2" fill="none"/>
+        <text x="300" y="150" font-size="8" fill="#166534">run-off</text>
+        <text x="40" y="186" font-size="8" fill="#0c4a6e">surface water + groundwater</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Toh yahi poori paheli hai.
+
+      Agar paani har jagah hai *aur* khud ko renew karta hai, toh duniya bhar ke ilaaqe **water scarcity** se kyun jhujhte hain? Yeh kyun predict kiya jaata hai ki **2025** tak, lagbhag **do billion** log *absolute* water scarcity mein jeeyenge?
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Tumhara gut shayad seedhe registan pe jaata hai — kam-baarish waala Rajasthan, auratein meelon chalti *matkas* sambhaalti hui.
+
+      Aur yeh *thoda* sach hai: paani ki availability space aur time pe badalti hai, zyaadatar isliye ki baarish season aur saal se badalti hai. Par ruko — yeh scarcity ki **mukhya** wajah *nahi* hai.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Yeh woh twist hai jo poore chapter mein chalta hai.
+
+      Scarcity zyaadatar *kam baarish* se nahi, **hum** se hoti hai: over-exploitation, excessive use, aur unequal access. Ek ilaaqa paani mein *doob* sakta hai aur *phir bhi* scarce ho sakta hai.
+
+      *Agar sirf baarish scarcity samjhaati toh kya tootta?* Toh koi baarish-bhara sheher kabhi sookhta nahi. Kai sookhte hain.
+
+  - type: html_animation
+    xp: 0
+    title: "CYCLE KABHI NAHI RUKTI"
+    caption: "Ek boond, ghoomti hui — theory mein renewable, agar hum use lautne se tezi se na nikaalein."
+    html: |
+      <div style="background:#f0f9ff;padding:18px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoLoop { 0%{offset-distance:0%} 100%{offset-distance:100%} }
+          .geo-drop { offset-path: path('M 40,110 C 60,40 150,30 175,55 C 200,80 210,100 250,110'); animation: geoLoop 4s linear infinite; }
+        </style>
+        <svg viewBox="0 0 300 130" style="max-width:320px;width:100%" font-family="sans-serif">
+          <rect x="0" y="108" width="300" height="22" fill="#bae6fd"/>
+          <ellipse cx="160" cy="40" rx="36" ry="16" fill="#e2e8f0" stroke="#0f172a" stroke-width="1"/>
+          <path d="M 40,110 C 60,40 150,30 175,55 C 200,80 210,100 250,110" stroke="#cbd5e1" stroke-width="1.5" fill="none" stroke-dasharray="3 3"/>
+          <circle r="6" fill="#2563eb" class="geo-drop"/>
+        </svg>
+      </div>
+
+  - type: mcq
+    xp: 10
+    question: "Paani ko renewable resource kya banata hai?"
+    options:
+      - id: a
+        text: "Bas itna zyaada hai ki yeh kabhi khatam ho hi nahi sakta."
+        is_correct: false
+        rationale: "Earth ka zyaadatar paani usable freshwater nahi hai — aur hum *kam pad sakte* hain. Sirf maatra 'renewable' ka matlab nahi."
+      - id: b
+        text: "Hydrological cycle lagataar surface water aur groundwater ko renew aur recharge karta hai."
+        is_correct: true
+        rationale: "Sahi. Vaashpan, baarish, run-off, aur recharge paani ko humare paas wapas laate rehte hain — yahi use renewable banata hai."
+      - id: c
+        text: "Factories khoye hue paani ko replace karne ke liye fresh paani banaati hain."
+        is_correct: false
+        rationale: "Fresh paani bade scale pe banaaya nahi jaata. Use nature ka water cycle renew karta hai."
+      - id: d
+        text: "Kyunki yeh kabhi vaashpit nahi hota, toh kuch kabhi khota nahi."
+        is_correct: false
+        rationale: "Iska ulta — vaashpan cycle ka ek *mukhya step* hai jo paani ko renew karta hai."
+
+  - type: drag_to_reorder
+    xp: 10
+    prompt: "Water cycle ke stages ko order mein lagao, samundar se shuru karte hue."
+    items:
+      - { id: s1, label: "Vaashpan (evaporation) — paani samundar se uthta hai" }
+      - { id: s2, label: "Condensation — badal bante hain" }
+      - { id: s3, label: "Precipitation — baarish girti hai" }
+      - { id: s4, label: "Run-off aur recharge — paani wapas behta aur soakta hai" }
+    correct_order: [s1, s2, s3, s4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Tumhare nal ka paani asal mein kahan se aata hai — ek nadi, reservoir, borewell (groundwater), ya rainwater?
+
+      Paper pe use ek-ek kadam peeche us baarish tak trace karo jisse woh shuru hua. Neeche apne paani ka source type karo.
+    placeholder: "Mera paani ___ se aata hai, jo..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Paheli ko lock karo."
+    template: |
+      Paani renewable hai kyunki {{blank-1}} cycle ise lagataar renew karta hai — phir bhi saal {{blank-2}} tak, lagbhag do billion log absolute scarcity mein ho sakte hain.
+    answers:
+      - id: blank-1
+        accepted: ["hydrological", "water", "Hydrological"]
+      - id: blank-2
+        accepted: ["2025"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Tum shayad nal ke paani ko endless maante ho — kholo, woh hai. Is lesson ke baad, kya "renewable" ek tasalli lagta hai ya ek chetaavni? Kyun?
+
+      Koi sahi jawaab nahi.
+    placeholder: "'Renewable' ab lagta hai..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Tum samjha sakte ho ki paani renewable hai — aur phir bhi scarce."
+    summary: |
+      Paani planet ke zyaadatar hisse ko dhakta hai aur hydrological cycle ise endless renew karta hai, phir bhi 2025 tak do billion log absolute scarcity mein ho sakte hain. Wajah sirf baarish nahi — yeh hai ki hum jo hai use kaise use aur share karte hain.
+
+      Toh asli mujrimon ko naam dete hain. Ek achhe-paani waala desh bhi sookh kyun jaata hai? Yahi agli lesson hai.

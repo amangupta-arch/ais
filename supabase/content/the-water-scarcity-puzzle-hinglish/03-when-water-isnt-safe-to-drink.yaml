@@ -1,0 +1,162 @@
+title: "Jab Paani Peene Laayak Na Ho"
+subtitle: "Ek glass labalab bhara — aur ek boond bhi peene laayak nahi"
+estimated_minutes: 11
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ek glass paani ki kalpana karo, bilkul kinaare tak bhara. Ab socho ki tum uski ek boond bhi nahi pee sakte.
+
+      Yeh water scarcity ki *teesri* kism hai — aur iska is se koi lena-dena nahi ki paani kitna hai.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ab tak humne *quantity* scarcity gini — kaafi paani na hona.
+
+      Par ek ilaaqa **bharpoor** paani rakh sakta hai aur *phir bhi* scarcity jhel sakta hai, ek alag wajah se: paani **bad quality** ka hai. Har glass bharne ko kaafi, par use karne ke liye unsafe.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Use zehreela kya banata hai?
+
+      **Domestic aur industrial wastes**, aur woh **chemicals, pesticides, aur fertilisers** jo humare kheton se beh ke aate hain. Yeh warna-bharpoor paani ko *hazardous* bana dete hain.
+
+      Bahut paani. Peene laayak ek boond nahi.
+
+  - type: svg_graphic
+    xp: 0
+    title: "DO KISM KI SCARCITY"
+    caption: "Quantity scarcity (paani nahi) — aur quality scarcity (bharpoor paani, par unsafe)."
+    svg: |
+      <svg viewBox="0 0 360 170" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="20" y="14" width="150" height="142" rx="8" fill="#f8fafc" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="95" y="34" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f172a">Quantity</text>
+        <rect x="72" y="70" width="46" height="64" rx="4" fill="#f1f5f9" stroke="#475569" stroke-width="2"/>
+        <text x="95" y="150" text-anchor="middle" font-size="8" fill="#991b1b">empty — too little water</text>
+        <rect x="190" y="14" width="150" height="142" rx="8" fill="#f8fafc" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="265" y="34" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f172a">Quality</text>
+        <rect x="242" y="70" width="46" height="64" rx="4" fill="#84cc16" stroke="#475569" stroke-width="2" opacity="0.55"/>
+        <circle cx="255" cy="92" r="3" fill="#3f6212"/><circle cx="276" cy="104" r="3" fill="#3f6212"/><circle cx="263" cy="118" r="3" fill="#3f6212"/>
+        <text x="265" y="150" text-anchor="middle" font-size="8" fill="#854d0e">full — but polluted</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Toh India iske baare mein kya kar raha hai?
+
+      Pehla, **Jal Jeevan Mission (JJM)**. Iska goal: *har rural household* ko assured, potable **piped water** dena — 55 litre per person per day, bharosemand, long-term ke liye.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Doosra, **Atal Bhujal Yojana (Atal Jal)** — *groundwater* pe focus, 8,220 *water-stressed* Gram Panchayats mein chalti hui.
+
+      Iska key idea sirf pipe aur pump nahi. Yeh **behavioural change** hai — poori communities ko *consumption* ke attitude se *conservation* ke attitude tak shift karna.
+
+  - type: html_animation
+    xp: 0
+    title: "BHARA, PAR PEENE LAAYAK NAHI"
+    caption: "Glass poora bharta hai — aur phir pollution ghus aata hai. Quantity sirf aadhi ladai hai."
+    html: |
+      <div style="background:#f0f9ff;padding:18px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoFillUp { 0%,10%{height:0} 45%,100%{height:70px} }
+          @keyframes geoPollute { 0%,50%{fill:#38bdf8} 90%,100%{fill:#84cc16} }
+          .geo-fill { animation: geoFillUp 5s ease-in-out infinite alternate, geoPollute 5s ease-in-out infinite alternate; }
+        </style>
+        <svg viewBox="0 0 200 120" style="max-width:200px;width:100%" font-family="sans-serif">
+          <rect x="78" y="22" width="44" height="76" rx="4" fill="none" stroke="#475569" stroke-width="2.5"/>
+          <rect x="80" y="28" width="40" height="70" class="geo-fill" />
+          <text x="100" y="114" text-anchor="middle" font-size="8" fill="#0369a1">full glass, unsafe water</text>
+        </svg>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Yeh sab itna maayne kyun rakhta hai?
+
+      Paani ko conserve aur manage karna humari **health**, **food security**, **livelihoods**, aur **ecosystems** ko bachata hai. Use over-exploit aur mismanage karo, aur tum ek *ecological crisis* chhed dete ho jo in sabko ek saath maarti hai.
+
+      Paani sirf ek resource nahi. Yeh woh dhaaga hai jis pe yeh sab latke hain.
+
+  - type: mcq
+    xp: 10
+    question: "Ek ilaaqe ko high annual rainfall milti hai, par uska paani bhaari pollute hai. Kya woh water scarcity jhel raha hai?"
+    options:
+      - id: a
+        text: "Nahi — high rainfall ka matlab kaafi paani, toh koi scarcity nahi."
+        is_correct: false
+        rationale: "Sirf quantity hi maayne nahi rakhti. Polluted paani use ke liye unsafe hai, toh ilaaqa scarce HAI."
+      - id: b
+        text: "Haan — paani jise tum safely use nahi kar sakte woh ek kism ki scarcity hai (quality scarcity)."
+        is_correct: true
+        rationale: "Sahi. Bharpoor par polluted paani phir bhi logon ko usable paani se vanchit chhodta hai — yeh *quality* ki scarcity hai."
+      - id: c
+        text: "Sirf tab agar rainfall baad mein ghat jaaye."
+        is_correct: false
+        rationale: "Ilaaqa abhi *isi waqt* scarce hai — maujood paani unusable hai, chahe future rainfall kuch bhi ho."
+      - id: d
+        text: "Nahi — pollution ek alag problem hai, scarcity nahi."
+        is_correct: false
+        rationale: "Pollution seedhe scarcity paida karta hai available paani ko unsafe bana ke."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Har term ko uske matlab se match karo."
+    left:
+      - { id: l1, label: "Jal Jeevan Mission" }
+      - { id: l2, label: "Atal Bhujal Yojana" }
+      - { id: l3, label: "Quality scarcity" }
+      - { id: l4, label: "Mukhya water pollutants" }
+    right:
+      - { id: r1, label: "Har rural ghar ko 55 litre piped potable paani" }
+      - { id: r2, label: "Groundwater — consumption se conservation tak shift" }
+      - { id: r3, label: "Kaafi paani, par use karne ke liye bahut polluted" }
+      - { id: r4, label: "Wastes, chemicals, pesticides, aur fertilisers" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Ek chhota proposal (4–5 line) likho ki *tum* apni rozmarra zindagi mein paani kaise conserve kar sakte ho — nal pe, bathroom mein, kitchen mein, garden mein.
+
+      Woh ek change chuno jo sabse zyaada bachaaye, aur neeche type karo.
+    placeholder: "Mera sabse bada paani-bachaane waala change hoga..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Quality scarcity aur mission ko lock karo."
+    template: |
+      Scarcity bad water {{blank-1}} se aa sakti hai jab wastes aur chemicals use pollute karte hain; {{blank-2}} Jeevan Mission rural ghar ko piped potable paani pahunchaata hai.
+    answers:
+      - id: blank-1
+        accepted: ["quality", "Quality"]
+      - id: blank-2
+        accepted: ["Jal", "jal"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Atal Jal yeh shart lagaata hai ki asli fix *behaviour* hai — logon ko conservation ko value karna sikhana, sirf zyaada infrastructure banana nahi. Tumhe lagta hai aadtein badalna dams aur pipes banane se mushkil hai ya aasaan? Kyun?
+
+      Koi sahi jawaab nahi.
+    placeholder: "Aadtein badalna versus cheezein banana — mujhe lagta hai..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Tum maatra AUR quality dono ki scarcity samajhte ho — aur India dono se kaise lad raha hai."
+    summary: |
+      Paani sirf tab scarce nahi jab bahut kam ho, balki jab jo hai woh use karne ke liye bahut polluted ho. Jal Jeevan Mission rural ghar ko piped potable paani laata hai; Atal Jal groundwater ko sambhaalta hai communities ko consumption se conservation tak shift karke. Daanv pe: health, khaana, livelihoods, ecosystems.
+
+      Par yeh sab ek practical sawaal khada karta hai jise hum ab tak taalte rahe: hum bade paimaane pe paani *store* aur manage *kaise* karte hain? Pichli sadi ke zyaadatar samay, India ka bada jawaab ek hi vishaal dhaancha tha — dam. Yahin se agla course shuru hota hai.
