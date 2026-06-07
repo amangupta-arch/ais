@@ -44,8 +44,14 @@ const ONESHOT_TOKEN =
   "32649ac3bf52ef8535a939bb21abb4958bfbf0eadaaa7aadfc4ac6f7a9652557";
 
 const BUNDLE_SLUG = "b-class-10-geography-ch01-resources-and-development";
-const COURSE_SLUG = "resources-and-resource-planning";
-const HINGLISH_FOLDER = "resources-and-resource-planning-hinglish";
+/** All three courses in the bundle. Each one's lesson YAMLs live at
+ *  `supabase/content/<course>/NN-*.yaml` plus the Hinglish overlay at
+ *  `supabase/content/<course>-hinglish/`. */
+const COURSE_SLUGS = [
+  "resources-and-resource-planning",
+  "land-as-a-resource",
+  "soil-as-a-resource",
+] as const;
 const STORAGE_BUCKET = "lesson-images";
 
 /** Drive file id → target filename. Seven PNGs from
@@ -192,50 +198,52 @@ function readGeoLessons(): {
   const translations: LessonFile[] = [];
   const re = /^(\d{2,})-([a-z0-9][a-z0-9-]*)\.ya?ml$/;
 
-  for (const [folder, lang] of [
-    [COURSE_SLUG, undefined],
-    [HINGLISH_FOLDER, "hinglish"],
-  ] as const) {
-    const dir = join(CONTENT_ROOT, folder);
-    let files: string[];
-    try {
-      files = readdirSync(dir).filter(
-        (f) => (f.endsWith(".yaml") || f.endsWith(".yml")) && !f.startsWith("_"),
-      ).sort();
-    } catch {
-      errors.push(`${folder}/: not readable`);
-      continue;
-    }
-    for (const file of files) {
-      const match = file.match(re);
-      if (!match) {
-        errors.push(`${folder}/${file}: filename must match NN-<slug>.yaml`);
-        continue;
-      }
-      const rel = `${folder}/${file}`;
-      const raw = readFileSync(join(dir, file), "utf8");
-      let parsed: unknown;
+  for (const courseSlug of COURSE_SLUGS) {
+    for (const [folder, lang] of [
+      [courseSlug, undefined],
+      [`${courseSlug}-hinglish`, "hinglish"],
+    ] as const) {
+      const dir = join(CONTENT_ROOT, folder);
+      let files: string[];
       try {
-        parsed = yaml.load(raw);
-      } catch (e) {
-        errors.push(`${rel}: YAML parse — ${(e as Error).message}`);
+        files = readdirSync(dir).filter(
+          (f) => (f.endsWith(".yaml") || f.endsWith(".yml")) && !f.startsWith("_"),
+        ).sort();
+      } catch {
+        errors.push(`${folder}/: not readable`);
         continue;
       }
-      const v = lessonSchema.safeParse(parsed);
-      if (!v.success) {
-        errors.push(`${rel}: ${v.error.issues[0]?.message ?? "schema invalid"}`);
-        continue;
+      for (const file of files) {
+        const match = file.match(re);
+        if (!match) {
+          errors.push(`${folder}/${file}: filename must match NN-<slug>.yaml`);
+          continue;
+        }
+        const rel = `${folder}/${file}`;
+        const raw = readFileSync(join(dir, file), "utf8");
+        let parsed: unknown;
+        try {
+          parsed = yaml.load(raw);
+        } catch (e) {
+          errors.push(`${rel}: YAML parse — ${(e as Error).message}`);
+          continue;
+        }
+        const v = lessonSchema.safeParse(parsed);
+        if (!v.success) {
+          errors.push(`${rel}: ${v.error.issues[0]?.message ?? "schema invalid"}`);
+          continue;
+        }
+        const entry: LessonFile = {
+          path: rel,
+          courseSlug,
+          lessonSlug: match[2]!,
+          orderIndex: parseInt(match[1]!, 10),
+          doc: v.data,
+          ...(lang ? { lang } : {}),
+        };
+        if (lang) translations.push(entry);
+        else canonical.push(entry);
       }
-      const entry: LessonFile = {
-        path: rel,
-        courseSlug: COURSE_SLUG,
-        lessonSlug: match[2]!,
-        orderIndex: parseInt(match[1]!, 10),
-        doc: v.data,
-        ...(lang ? { lang } : {}),
-      };
-      if (lang) translations.push(entry);
-      else canonical.push(entry);
     }
   }
   return { canonical, translations, errors };
@@ -253,21 +261,31 @@ async function loadContent() {
   let turnsLoaded = 0;
   let translationsLoaded = 0;
 
-  // Resolve the course id once.
-  const { data: course, error: courseErr } = await sb
-    .from("courses")
-    .select("id")
-    .eq("slug", COURSE_SLUG)
-    .maybeSingle();
-  if (courseErr || !course)
-    return { ok: false, stage: "course-lookup", error: courseErr?.message ?? "course not found" };
-  const courseId = course.id as string;
+  // Resolve every course id up front.
+  const courseIdBySlug = new Map<string, string>();
+  for (const slug of COURSE_SLUGS) {
+    const { data, error } = await sb
+      .from("courses")
+      .select("id")
+      .eq("slug", slug)
+      .maybeSingle();
+    if (error || !data) {
+      return {
+        ok: false,
+        stage: "course-lookup",
+        error: `course ${slug} not found: ${error?.message ?? "missing"}`,
+      };
+    }
+    courseIdBySlug.set(slug, data.id as string);
+  }
 
-  const lessonIdBySlug = new Map<string, string>();
+  // (course/lessonSlug) → lesson id
+  const lessonIdByKey = new Map<string, string>();
 
   // ── canonical pass ──
   for (const lesson of canonical) {
     try {
+      const courseId = courseIdBySlug.get(lesson.courseSlug)!;
       const { data: existing } = await sb
         .from("lessons")
         .select("translations")
@@ -304,7 +322,10 @@ async function loadContent() {
         .single();
       if (upErr || !lessonRow) throw new Error(`upsert: ${upErr?.message}`);
 
-      lessonIdBySlug.set(lesson.lessonSlug, lessonRow.id as string);
+      lessonIdByKey.set(
+        `${lesson.courseSlug}/${lesson.lessonSlug}`,
+        lessonRow.id as string,
+      );
 
       const { error: delErr } = await sb
         .from("lesson_turns")
@@ -334,7 +355,9 @@ async function loadContent() {
   for (const t of translations) {
     if (!t.lang) continue;
     try {
-      let lessonId = lessonIdBySlug.get(t.lessonSlug);
+      const courseId = courseIdBySlug.get(t.courseSlug)!;
+      const key = `${t.courseSlug}/${t.lessonSlug}`;
+      let lessonId = lessonIdByKey.get(key);
       if (!lessonId) {
         const { data, error } = await sb
           .from("lessons")
