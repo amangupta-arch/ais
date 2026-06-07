@@ -1,0 +1,167 @@
+title: "Reserved, Protected, aur Unclassed Forests"
+subtitle: "Rakhwaali ke teen tier — kaunsa forest kitni saxti se guarded"
+estimated_minutes: 11
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      India ka har forest ek jaisi rakhwaali mein nahi hai.
+
+      Kuch desh ke crown jewels hain, strictly protected. Kuch dekhe jaate hain par ek step dheele. Aur kuch zyaadatar un gaon ke bharose chhode jaate hain jo unme rehte hain.
+
+      Teen tier — aur fark hai ki *har ek kitni saxti se guarded hai*.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      India ke forests vishaal hain, aur manage, control, aur regulate karna mushkil. Forest aur wildlife ka zyaadatar hissa **government** ke paas hai, Forest Department ke through.
+
+      Use sambhaalne ke liye, forest **teen categories** mein sort kiya jaata hai.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **1. Reserved Forests.** Saare forest land ka **aadhe se zyaada**. Yeh sabse saxti se guarded hain — aur forest aur wildlife bachane ke liye *sabse valuable* maane jaate hain. Crown jewels.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **2. Protected Forests.** Forest area ka lagbhag **ek-tihaai**, Forest Department dwara declared, aur *kisi bhi aur depletion se* surakshit.
+
+      Guarded — par reserved se ek paayedaan neeche.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **3. Unclassed Forests.** Baaki sab: doosre forests aur wastelands jo *government aur private individuals aur communities dono* ke hain.
+
+      Kaagaz pe sabse dheela tier — aur, jaisa hum dekhenge, aksar wahan rehne waali local communities dwara sambhaala jaata hai.
+
+  - type: svg_graphic
+    xp: 0
+    title: "FOREST KE TEEN TIER"
+    caption: "Reserved (aadhe se zyaada, sabse sakht) · Protected (lagbhag ek-tihaai) · Unclassed (baaki)."
+    svg: |
+      <svg viewBox="0 0 360 150" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="20" y="34" width="166" height="40" fill="#15803d" stroke="#0f172a" stroke-width="1.2"/>
+        <rect x="186" y="34" width="106" height="40" fill="#65a30d" stroke="#0f172a" stroke-width="1.2"/>
+        <rect x="292" y="34" width="48" height="40" fill="#cbd5e1" stroke="#0f172a" stroke-width="1.2"/>
+        <text x="103" y="59" text-anchor="middle" font-size="11" font-weight="bold" fill="#ffffff">Reserved</text>
+        <text x="239" y="59" text-anchor="middle" font-size="10" font-weight="bold" fill="#ffffff">Protected</text>
+        <text x="316" y="55" text-anchor="middle" font-size="8" font-weight="bold" fill="#0f172a">Unclas-</text>
+        <text x="316" y="65" text-anchor="middle" font-size="8" font-weight="bold" fill="#0f172a">sed</text>
+        <text x="103" y="92" text-anchor="middle" font-size="8" fill="#475569">&gt; half · most valuable</text>
+        <text x="239" y="92" text-anchor="middle" font-size="8" fill="#475569">~ one-third</text>
+        <text x="316" y="92" text-anchor="middle" font-size="8" fill="#475569">the rest</text>
+        <text x="20" y="120" font-size="8" fill="#166534">◄ strictly guarded</text>
+        <text x="340" y="120" text-anchor="end" font-size="8" fill="#64748b">loosely guarded ►</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Reserved aur protected forests milke **permanent forest estates** kehlaate hain — **timber** aur **protection** ke liye permanently rakhe gaye.
+
+      **Madhya Pradesh** ke paas sabse zyaada permanent forests hain: uske kul forest ka ek shaandaar **75%**.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Pattern rajya-dar-rajya badalta hai:
+
+      - Bade *reserved* forests: Jammu & Kashmir, Andhra Pradesh, Uttarakhand, Kerala, Tamil Nadu, West Bengal, Maharashtra.
+      - Zyaadatar *protected*: Bihar, Haryana, Punjab, Himachal Pradesh, Odisha, Rajasthan.
+      - Bahut zyaada *unclassed* (local communities dwara managed): saare North-eastern states aur Gujarat ke kuch hisse.
+
+  - type: html_animation
+    xp: 0
+    title: "GUARDED, TIER DAR TIER"
+    caption: "Strictly reserved se lekar community-held unclassed forests tak."
+    html: |
+      <div style="background:#f8fafc;padding:18px 14px;border-radius:12px;">
+        <style>
+          @keyframes geoTier1 { 0%,5%{opacity:0;transform:translateX(-12px)} 25%,100%{opacity:1;transform:none} }
+          @keyframes geoTier2 { 0%,30%{opacity:0;transform:translateX(-12px)} 50%,100%{opacity:1;transform:none} }
+          @keyframes geoTier3 { 0%,55%{opacity:0;transform:translateX(-12px)} 75%,100%{opacity:1;transform:none} }
+          .gt1{animation:geoTier1 5s infinite} .gt2{animation:geoTier2 5s infinite} .gt3{animation:geoTier3 5s infinite}
+          .geo-row{display:flex;align-items:center;margin:6px 0;font:bold 11px sans-serif;color:#fff;border-radius:6px;padding:7px 12px}
+        </style>
+        <div class="geo-row gt1" style="background:#15803d">Reserved — strictest, most valuable</div>
+        <div class="geo-row gt2" style="background:#65a30d">Protected — no further depletion</div>
+        <div class="geo-row gt3" style="background:#94a3b8">Unclassed — govt, private, communities</div>
+      </div>
+
+  - type: mcq
+    xp: 10
+    question: "Kaunsi forest category aadhe se zyaada forest land banati hai aur conservation ke liye sabse valuable maani jaati hai?"
+    options:
+      - id: a
+        text: "Protected forests"
+        is_correct: false
+        rationale: "Protected forests lagbhag ek-tihaai forest area hain aur protection mein reserved se ek paayedaan neeche."
+      - id: b
+        text: "Reserved forests"
+        is_correct: true
+        rationale: "Sahi — forest land ka aadhe se zyaada, sabse saxti se guarded, aur forest aur wildlife bachane ke liye sabse valuable."
+      - id: c
+        text: "Unclassed forests"
+        is_correct: false
+        rationale: "Unclassed forests baaki hain — doosre forests aur wastelands jo government, private owners, aur communities ke hain."
+      - id: d
+        text: "Permanent forest estates"
+        is_correct: false
+        rationale: "Yeh reserved + protected forests ka combined naam hai, ek alag, badi category nahi."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Har forest category ko uske description se match karo."
+    left:
+      - { id: l1, label: "Reserved forests" }
+      - { id: l2, label: "Protected forests" }
+      - { id: l3, label: "Unclassed forests" }
+    right:
+      - { id: r1, label: "Forest aur wildlife bachane ke liye sabse valuable" }
+      - { id: r2, label: "Kisi bhi aur depletion se surakshit" }
+      - { id: r3, label: "Doosre forests aur wastelands — govt, private owners, aur communities ke" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Apne rajya ke baare mein socho. Is lesson ke aadhaar pe, tumhe lagta hai uska zyaadatar forest kaunsi category mein aata hai — reserved, protected, ya zyaadatar unclassed (community-managed)?
+
+      Paper pe apna guess lagao aur ek wajah do. Neeche apna rajya aur apna guess type karo.
+    placeholder: "___ mein, zyaadatar forest shayad ___ hai kyunki..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Structure yaad kar lo."
+    template: |
+      Reserved forests forest land ka ___ se zyaada banate hain, aur reserved plus protected forests milke ___ forest estates kehlaate hain.
+    answers:
+      - id: blank-1
+        accepted: ["half", "Half", "50%", "aadhe", "aadha"]
+      - id: blank-2
+        accepted: ["permanent", "Permanent"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      "Sabse dheela" tier — unclassed forest — aksar wahi hai jise local communities seedhe sambhaalti hain. Tumhe lagta hai ek forest ek door ki government rule dwara zyaada surakshit hai, ya un logon dwara jo uske bilkul paas rehte hain?
+
+      Koi sahi jawaab nahi.
+    placeholder: "Mujhe lagta hai ek forest tab zyaada surakshit hai jab..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Tum India ke forests ko protection ke teen tiers mein classify kar sakte ho."
+    summary: |
+      Reserved (aadhe se zyaada, sabse sakht, sabse valuable), protected (lagbhag ek-tihaai, koi aur depletion nahi), aur unclassed (baaki, government, private owners, aur communities ke) — reserved aur protected milke permanent forest estates banate hain.
+
+      Gaur karo ki woh aakhri tier baar-baar *communities* ki taraf ishaara karta raha. Aur yahi woh khaamosh sach hai jiski taraf yeh poora chapter badh raha tha: India ki kuch sabse achhi conservation kabhi government se aayi hi nahi — woh gaon waalon se aayi. Yahi aakhri course hai.

@@ -1,0 +1,159 @@
+title: "Wildlife Protection Act"
+subtitle: "Woh saal jab tiger maarna trophy se crime ban gaya"
+estimated_minutes: 11
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Zyaadatar history mein, tiger maarna ek *trophy* tha. Jiske saath photo khinchwaate the, jiske liye saza nahi milti thi.
+
+      Ek saal ne India bhar mein yeh badal diya. Saal tha **1972**. Yeh hua kya.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      1960s aur 70s tak, wildlife tezi se gayab ho rahi thi. Conservationists ne ek *national* wildlife protection programme ke liye zor lagaya.
+
+      Nateeja tha **Indian Wildlife (Protection) Act, 1972** — aur isne India ko, pehli baar, apne jangli jeevon ko bachane ke asli legal daant diye.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Act ko ek **shield** (dhaal) ki tarah socho jiske teen kinaare hain:
+
+      - endangered species ka **shikaar band** karo.
+      - unke **habitats ko kaanoon se bachao**.
+      - wildlife ke **vyaapaar (trade) pe rok** lagao.
+
+      Isne ek all-India **protected species ki list** bhi nikaali — theek-theek batate hue ki dhaal kis-kis ko dhakti hai.
+
+  - type: svg_graphic
+    xp: 0
+    title: "WILDLIFE PROTECTION ACT, 1972"
+    caption: "Ek kaanoon, teen protections: shikaar band, habitats ki suraksha, trade pe rok."
+    svg: |
+      <svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <path d="M180,14 L312,50 L312,104 C312,150 250,168 180,176 C110,168 48,150 48,104 L48,50 Z" fill="#dcfce7" stroke="#166534" stroke-width="2.5"/>
+        <text x="180" y="44" text-anchor="middle" font-size="10" font-weight="bold" fill="#166534">THE 1972 SHIELD</text>
+        <line x1="74" y1="56" x2="286" y2="56" stroke="#86efac" stroke-width="1.5"/>
+        <text x="180" y="78" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a">Ban hunting</text>
+        <line x1="90" y1="90" x2="270" y2="90" stroke="#86efac" stroke-width="1"/>
+        <text x="180" y="110" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a">Protect habitats</text>
+        <line x1="90" y1="122" x2="270" y2="122" stroke="#86efac" stroke-width="1"/>
+        <text x="180" y="142" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a">Restrict trade</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Act ke aane ke baad, central aur state governments ne **national parks** aur **wildlife sanctuaries** banaye — surakshit zones jahan dhaal sabse mazboot hai, aur jahan jangli populations sambhal sakti thi.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Government ne kagaar pe khade khaas jaanwaron ke liye **projects** bhi launch kiye:
+
+      **tiger**, **one-horned rhinoceros**, **Kashmir stag** (hangul), teen crocodiles — freshwater, saltwater, aur **gharial** — aur **Asiatic lion**.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Haal hi mein, dhaal **Indian elephant**, **black buck** (chinkara), **great Indian bustard** (godawan), aur **snow leopard** tak failii — poore India mein shikaar aur trade ke khilaaf poori ya aanshik legal protection.
+
+  - type: html_animation
+    xp: 0
+    title: "DHAAL KIN-KIN KO DHAKTI HAI"
+    caption: "Ek-ek karke, India ke sabse khatre mein pade jaanwar legal protection ke neeche aaye."
+    html: |
+      <div style="background:#f8fafc;padding:20px 14px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoName { 0%,5%{opacity:0} 22%,100%{opacity:1} }
+          @keyframes geoName2 { 0%,28%{opacity:0} 45%,100%{opacity:1} }
+          @keyframes geoName3 { 0%,51%{opacity:0} 68%,100%{opacity:1} }
+          @keyframes geoName4 { 0%,74%{opacity:0} 90%,100%{opacity:1} }
+          .gn { display:inline-block; margin:4px 6px; padding:5px 11px; border-radius:8px; background:#dcfce7; color:#166534; font:bold 11px sans-serif; }
+          .gn1{animation:geoName 5s infinite} .gn2{animation:geoName2 5s infinite} .gn3{animation:geoName3 5s infinite} .gn4{animation:geoName4 5s infinite}
+        </style>
+        <div style="font:bold 11px sans-serif;color:#0f172a;margin-bottom:8px">PROTECTED UNDER LAW</div>
+        <span class="gn gn1">Tiger</span><span class="gn gn2">One-horned rhino</span><span class="gn gn3">Asiatic lion</span><span class="gn gn4">Snow leopard</span>
+      </div>
+
+  - type: mcq
+    xp: 10
+    question: "Wildlife (Protection) Act, 1972 ke teen mukhya thrust kya the?"
+    options:
+      - id: a
+        text: "Zoos banao, entry fees lo, aur research fund karo."
+        is_correct: false
+        rationale: "Inme se koi Act ka thrust nahi. Yeh banning, protecting, aur restricting ke baare mein tha — zoos ya fees ke nahi."
+      - id: b
+        text: "Endangered species ka shikaar band karo, unke habitats ko legal protection do, aur wildlife ke trade pe rok lagao."
+        is_correct: true
+        rationale: "Bilkul — yeh teen, plus ek all-India protected species list, 1972 Act ka dil the."
+      - id: c
+        text: "Regulated hunting allow karo, trade kholo, aur kheti ke liye forests saaf karo."
+        is_correct: false
+        rationale: "Yeh Act ka ulta hai, jisne shikaar *band* kiya aur trade *restrict* ki."
+      - id: d
+        text: "Saare forests private owners ko de do."
+        is_correct: false
+        rationale: "Act ne wildlife aur habitats ki public/legal protection mazboot ki, private ownership nahi."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Har protected jaanwar ko uske doosre naam se match karo."
+    left:
+      - { id: l1, label: "Kashmir stag" }
+      - { id: l2, label: "Black buck" }
+      - { id: l3, label: "Great Indian bustard" }
+      - { id: l4, label: "Ek tarah ka crocodile" }
+    right:
+      - { id: r1, label: "Hangul" }
+      - { id: r2, label: "Chinkara" }
+      - { id: r3, label: "Godawan" }
+      - { id: r4, label: "Gharial" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Apne rajya mein (ya sabse paas) ek **national park ya wildlife sanctuary** dhundo.
+
+      Paper pe uska naam aur ek jaanwar likho jise woh bachata hai. Phir neeche park ka naam aur uska rajya type karo.
+    placeholder: "___ , ___ rajya mein, ___ ko bachata hai."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "1972 Act ke teen thrust yaad kar lo."
+    template: |
+      1972 Act ne ___ ko ban kiya, jaanwaron ke ___ ko legal protection di, aur wildlife ke ___ ko restrict kiya.
+    answers:
+      - id: blank-1
+        accepted: ["hunting", "Hunting", "shikaar"]
+      - id: blank-2
+        accepted: ["habitats", "habitat", "Habitats"]
+      - id: blank-3
+        accepted: ["trade", "Trade", "vyaapaar"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Ek kaanoon kaagaz pe shikaar band kar sakta hai — par ek tiger kisi courtroom se bahut door rehta hai. Tumhe kya lagta hai ek wildlife law ko zameen pe *kaam* karne ke liye asal mein kya chahiye?
+
+      Koi sahi jawaab nahi.
+    placeholder: "Kaanoon ko sach mein kaam karne ke liye, chahiye..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Tum jaante ho India ne pehli baar apni wildlife ke charon taraf legal dhaal kaise lagayi."
+    summary: |
+      1972 Wildlife (Protection) Act ne shikaar band kiya, habitats bachaye, trade restrict ki, aur bachayi jaane waali species ko naam diya — national parks, sanctuaries, aur rhino aur lion jaise jaanwaron ke projects ke saath.
+
+      Par in projects mein se ek duniya ka sabse mashhoor wildlife campaign ban gaya — kyunki ek jaanwar 55,000 se ghat ke 2,000 se neeche aa gaya tha. Aage: Project Tiger ki kahani.

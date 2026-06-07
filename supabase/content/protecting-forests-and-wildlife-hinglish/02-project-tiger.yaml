@@ -1,0 +1,175 @@
+title: "Project Tiger"
+subtitle: "Ek badi billi ko bachana ek poore forest ko bachana kyun bana"
+estimated_minutes: 12
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Lagbhag 1900 ke aas-paas, India mein lagbhag **55,000 tigers** the.
+
+      1973 tak, jab kisi ne aakhir ginti ki, sirf **1,827** bache the.
+
+      Yeh giraavat nahi. Yeh collapse hai. Hua kya — aur tiger bachana poore forest ko bachana kaise ban gaya?
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Tiger faunal web ki ek **key species** hai — bilkul top pe ek shikaari.
+
+      Jab authorities ne 1973 mein jaayza liya, crash ka paimaana saaf tha: lagbhag **55,000** se ghat ke **1,827**.
+
+  - type: svg_graphic
+    xp: 0
+    title: "TIGER KA COLLAPSE"
+    caption: "1900 mein lagbhag 55,000 tigers se ghat ke 1973 tak sirf 1,827."
+    svg: |
+      <svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <line x1="40" y1="150" x2="330" y2="150" stroke="#0f172a" stroke-width="1.5"/>
+        <rect x="70" y="32" width="70" height="118" fill="#f59e0b" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="105" y="26" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400e">55,000</text>
+        <text x="105" y="165" text-anchor="middle" font-size="9" fill="#475569">~1900</text>
+        <rect x="230" y="142" width="70" height="8" fill="#f59e0b" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="265" y="134" text-anchor="middle" font-size="12" font-weight="bold" fill="#b91c1c">1,827</text>
+        <text x="265" y="165" text-anchor="middle" font-size="9" fill="#475569">1973</text>
+        <path d="M150,40 Q200,30 224,132" stroke="#b91c1c" stroke-width="2" fill="none" stroke-dasharray="5 3"/>
+        <polygon points="224,132 219,120 230,124" fill="#b91c1c"/>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Crash kisne laaya? Chaar forces, ek saath:
+
+      - vyaapaar ke liye **poaching** (avaidh shikaar)
+      - forests katne se **shrinking habitat**
+      - **prey ki kami** — kam hiran aur suar shikaar ke liye
+      - tiger ke ilaaqe mein ghuste **badhti human population**
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Sabse khatarnaak khinchaav tha *trade*.
+
+      Tiger ki **khaal**, aur **haddiyaan** jo traditional medicines mein use hoti thi — khaaskar kai Asian deshon mein — tiger ko zinda se zyaada mara hua keemti bana deti thi. Aur kyunki India aur Nepal duniya ke bache tigers ka lagbhag **do-tihaai** rakhte hain, woh poachers aur avaidh traders ke prime targets ban gaye.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Toh **1973** mein, India ne **Project Tiger** launch kiya — duniya ke sabse zyaada publicised wildlife campaigns mein se ek.
+
+      Par iske dil mein ek chalaak idea hai.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ek tiger ko ek vishaal, swasth forest chahiye — prey, paani, aur cover se bhara. *Use* bachao, aur tum apne aap usme rehne waali *har* cheez ko bacha lete ho.
+
+      Tiger ek **umbrella** hai: badi billi pe protection failao, aur uski chhaaya hiran, parindon, keedon, pedon — poore web ko dhakti hai.
+
+  - type: html_animation
+    xp: 0
+    title: "TIGER KA UMBRELLA"
+    caption: "Tiger ke forest ko bachao, aur uske neeche ki har species bhi surakshit ho jaati hai."
+    html: |
+      <div style="background:#f8fafc;padding:18px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoOpen { 0%,10%{transform:scale(0.2);opacity:0} 55%,100%{transform:scale(1);opacity:1} }
+          @keyframes geoUnder { 0%,45%{opacity:0} 70%,100%{opacity:1} }
+          .geo-canopy { transform-origin:center bottom; animation: geoOpen 4.5s ease-out infinite alternate; }
+          .geo-under { animation: geoUnder 4.5s infinite alternate; }
+        </style>
+        <svg viewBox="0 0 300 130" style="max-width:320px;width:100%" font-family="sans-serif">
+          <path class="geo-canopy" d="M40,70 A110,70 0 0 1 260,70 Z" fill="#f59e0b" stroke="#0f172a" stroke-width="1.5"/>
+          <text x="150" y="58" text-anchor="middle" font-size="11" font-weight="bold" fill="#7c2d12" class="geo-canopy">TIGER</text>
+          <g class="geo-under" fill="#16a34a">
+            <circle cx="90" cy="100" r="11"/><circle cx="130" cy="104" r="9"/>
+            <circle cx="170" cy="104" r="9"/><circle cx="210" cy="100" r="11"/>
+          </g>
+          <text x="150" y="126" text-anchor="middle" font-size="8" fill="#475569" class="geo-under">deer, birds, insects, trees — all sheltered</text>
+        </svg>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Project Tiger India bhar mein mashhoor reserves mein faila: **Corbett** Uttarakhand mein, **Sunderbans** West Bengal mein, **Bandhavgarh** Madhya Pradesh mein, **Sariska** Rajasthan mein, **Manas** Assam mein, aur **Periyar** Kerala mein.
+
+      Aur conservation badi hoti gayi. Ab yeh *poori biodiversity* ki rakhwaali karti hai, sirf kuch stars ki nahi — yahan tak ki **insects** ki. Wildlife Act ke notifications (1980, 1986) ne butterflies, moths, beetles, ek dragonfly tak jode; **1991** mein, pehli baar plants protected list mein aaye.
+
+  - type: mcq
+    xp: 10
+    question: "Tiger ko bachane ko poore forest ko bachana kyun kaha jaata hai?"
+    options:
+      - id: a
+        text: "Kyunki tigers ghoomte hue naye ped lagaate hain."
+        is_correct: false
+        rationale: "Tigers ped nahi lagaate. Wajah *habitat* ke baare mein hai, baagwaani ke nahi."
+      - id: b
+        text: "Ek tiger ko ek bada, swasth forest chahiye jo prey se bhara ho — toh uske ghar ko bachana usme rehne waali har species ko bachata hai."
+        is_correct: true
+        rationale: "Bilkul. Tiger ek 'umbrella' species hai: uske habitat ko bachao aur uske neeche poora web surakshit ho jaata hai."
+      - id: c
+        text: "Kyunki kaanoon sirf un forests ko bachata hai jisme tigers hain."
+        is_correct: false
+        rationale: "Protection sirf tiger forests tak seemit nahi. Point ecological hai — tiger ki zaroortein baaki sabki dhakti hain."
+      - id: d
+        text: "Kyunki tigers un jaanwaron ko khaate hain jo forests ko nuksaan pahunchaate hain."
+        is_correct: false
+        rationale: "Tempting, par chapter ka logic habitat ke size aur health ke baare mein hai, pest control ka nahi."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Har tiger reserve ko uske rajya se match karo."
+    left:
+      - { id: l1, label: "Corbett" }
+      - { id: l2, label: "Sunderbans" }
+      - { id: l3, label: "Bandhavgarh" }
+      - { id: l4, label: "Periyar" }
+    right:
+      - { id: r1, label: "Uttarakhand" }
+      - { id: r2, label: "West Bengal" }
+      - { id: r3, label: "Madhya Pradesh" }
+      - { id: r4, label: "Kerala" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Is lesson se koi ek tiger reserve ya national park chuno (ya koi jise tum jaante ho).
+
+      Map pe ya paper pe use locate karo aur uska rajya likho. Phir is lesson se ek threat likho jisse Project Tiger ko ladna pada. Neeche reserve aur threat type karo.
+    placeholder: "___ ___ mein hai; tigers ko ek threat hai ___."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Key facts yaad kar lo."
+    template: |
+      Project Tiger ___ mein launch hua, aur India aur Nepal milke duniya ke bache tigers ka lagbhag ___ rakhte hain.
+    answers:
+      - id: blank-1
+        accepted: ["1973"]
+      - id: blank-2
+        accepted: ["two-thirds", "two thirds", "2/3", "do-tihaai", "do tihaai"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Ek hi mashhoor jaanwar ne ek poore forest bhar ke jeevan ko protection ke neeche kheench liya. Kya yeh sahi hai ki unglamorous species sirf isliye bach gayi kyunki woh ek tiger ke paas rehti thi? Yeh humare protect karne ke chunaav ke baare mein kya kehta hai?
+
+      Koi sahi jawaab nahi.
+    placeholder: "Mujhe lagta hai ek flagship species chunna..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Tum Project Tiger ki kahani — aur uske peeche umbrella idea — bata sakte ho."
+    summary: |
+      55,000 se 1,827, tiger lagbhag gayab ho gaya — poaching, khoye habitat, khoye prey, aur human pressure se. Project Tiger (1973) ne palatwaar kiya — aur tiger ke forest ko bachakar, usne poore web ko dhaka, samay ke saath insects aur plants tak failta gaya.
+
+      Par forests khud alag-alag tareekon se sorted aur guarded hote hain. Kuch India ke sabse strictly protected hain; kuch local communities ke bharose chhode. India ke forests classify kaise hote hain? Yahi agli lesson hai.
