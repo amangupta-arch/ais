@@ -1,0 +1,178 @@
+title: "Why a Wet Country Runs Dry"
+subtitle: "A city can sit right beside a river and still go thirsty"
+estimated_minutes: 12
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here's something that shouldn't be possible: a city sitting right beside a river, and *still* short of water.
+
+      Yet many of our cities are exactly that. If rain isn't the problem, what is?
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Water scarcity has three root causes — and notice that *none* of them is "not enough rain":
+
+      - **over-exploitation**
+      - **excessive use**
+      - **unequal access**
+
+      Let's see how each one drains a country that's actually quite wet.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Cause 1 — a growing population.**
+
+      More people need more water — not just to drink, but to grow more *food*. To boost food-grain production, we over-exploit water to expand irrigation for dry-season farming.
+
+      And **irrigated agriculture is the single largest consumer of water** in India. The crowd at the well keeps getting bigger.
+
+  - type: svg_graphic
+    xp: 0
+    title: "WHO USES THE WATER"
+    caption: "From one finite freshwater supply — agriculture takes the largest share, by far."
+    svg: |
+      <svg viewBox="0 0 360 170" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="120" y="8" width="120" height="26" rx="5" fill="#0ea5e9" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="180" y="25" text-anchor="middle" font-size="10" font-weight="bold" fill="#ffffff">FRESHWATER</text>
+        <line x1="180" y1="34" x2="70" y2="64" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="180" y1="34" x2="180" y2="64" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="180" y1="34" x2="290" y2="64" stroke="#94a3b8" stroke-width="1.5"/>
+        <rect x="26" y="64" width="88" height="92" rx="5" fill="#bbf7d0" stroke="#0f172a" stroke-width="1.2"/>
+        <text x="70" y="84" text-anchor="middle" font-size="9" font-weight="bold" fill="#166534">Agriculture</text>
+        <text x="70" y="100" text-anchor="middle" font-size="8" fill="#475569">largest</text>
+        <text x="70" y="111" text-anchor="middle" font-size="8" fill="#475569">consumer</text>
+        <rect x="136" y="96" width="88" height="60" rx="5" fill="#fde68a" stroke="#0f172a" stroke-width="1.2"/>
+        <text x="180" y="120" text-anchor="middle" font-size="9" font-weight="bold" fill="#92400e">Industry</text>
+        <rect x="246" y="104" width="88" height="52" rx="5" fill="#e9d5ff" stroke="#0f172a" stroke-width="1.2"/>
+        <text x="290" y="128" text-anchor="middle" font-size="9" font-weight="bold" fill="#6b21a8">Homes</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Cause 2 — the groundwater trap.**
+
+      Farmers dig their own wells and tube-wells to irrigate more land. It sounds smart — until you realise everyone is doing it.
+
+      Pump too much, and **groundwater levels fall**. That hurts water availability *and* food security down the line. A short-term win that becomes a long-term loss.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Cause 3 — industries and cities.**
+
+      After Independence, rapid industrialisation and urbanisation. Industries are heavy water users — *and* they need power, much of it **hydroelectric**, so even electricity quietly costs water.
+
+      Dense cities and urban lifestyles pile on demand. Housing societies sink their own borewells. The result: fragile water resources over-exploited until they're depleted.
+
+  - type: html_animation
+    xp: 0
+    title: "A BIGGER CROWD AT THE WELL"
+    caption: "More people, more farms, more factories — all drinking from the same shrinking supply."
+    html: |
+      <div style="background:#f0f9ff;padding:18px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoDrop { 0%,15%{height:60px;fill:#0ea5e9} 85%,100%{height:18px;fill:#7dd3fc} }
+          @keyframes geoFade1 { 0%,10%{opacity:0} 30%,100%{opacity:1} }
+          @keyframes geoFade2 { 0%,35%{opacity:0} 55%,100%{opacity:1} }
+          @keyframes geoFade3 { 0%,60%{opacity:0} 80%,100%{opacity:1} }
+          .geo-w { animation: geoDrop 5s ease-in-out infinite alternate; }
+          .gf1{animation:geoFade1 5s infinite} .gf2{animation:geoFade2 5s infinite} .gf3{animation:geoFade3 5s infinite}
+        </style>
+        <svg viewBox="0 0 300 120" style="max-width:320px;width:100%" font-family="sans-serif">
+          <rect x="130" y="40" width="40" height="60" fill="#0ea5e9" class="geo-w"/>
+          <rect x="124" y="34" width="52" height="8" rx="3" fill="#475569"/>
+          <circle class="gf1" cx="60" cy="60" r="12" fill="#16a34a"/>
+          <circle class="gf2" cx="60" cy="92" r="12" fill="#ca8a04"/>
+          <circle class="gf3" cx="240" cy="76" r="12" fill="#7c3aed"/>
+          <text x="150" y="115" text-anchor="middle" font-size="8" fill="#0369a1">the well drops as the crowd grows</text>
+        </svg>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Look back at all three causes. Not one of them is about *rainfall*.
+
+      It's **demand** outrunning the renewable supply — plus **unequal access**, where some get plenty and others get almost none. That's how a wet country runs dry.
+
+  - type: mcq
+    xp: 10
+    question: "What is the single largest consumer of water in India?"
+    options:
+      - id: a
+        text: "Household / domestic use."
+        is_correct: false
+        rationale: "Homes use water, but their share is far smaller than the biggest consumer."
+      - id: b
+        text: "Irrigated agriculture."
+        is_correct: true
+        rationale: "Correct — irrigated agriculture is by far the largest consumer, which is why expanding irrigation over-exploits water."
+      - id: c
+        text: "Hydroelectric power stations."
+        is_correct: false
+        rationale: "Industry and power do use a lot of water, but irrigated agriculture is the largest consumer overall."
+      - id: d
+        text: "Drinking water for cattle."
+        is_correct: false
+        rationale: "A real use, but tiny compared with irrigated agriculture."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Match each cause of scarcity to what it leads to."
+    left:
+      - { id: l1, label: "A growing population" }
+      - { id: l2, label: "Farmers over-pumping wells" }
+      - { id: l3, label: "More industries" }
+      - { id: l4, label: "Dense cities with their own borewells" }
+    right:
+      - { id: r1, label: "More food needed → more irrigation" }
+      - { id: r2, label: "Falling groundwater levels" }
+      - { id: r3, label: "Heavy water use plus demand for hydel power" }
+      - { id: r4, label: "Over-exploited, depleted local water" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      List every way your household used water *today* — drinking, cooking, bathing, washing, the garden, flushing.
+
+      On paper, mark which one used the most. Then type your single biggest household water use below.
+    placeholder: "My household's biggest water use is..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the two big drains."
+    template: |
+      Irrigated {{blank-1}} is the largest consumer of water, and over-pumping wells makes {{blank-2}} levels fall.
+    answers:
+      - id: blank-1
+        accepted: ["agriculture", "Agriculture", "farming"]
+      - id: blank-2
+        accepted: ["groundwater", "ground water", "Groundwater"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Every farmer digging a deeper well is acting sensibly for *themselves* — but together they drain the shared groundwater. Where else in life do many sensible individual choices add up to a shared problem?
+
+      No right answer.
+    placeholder: "Many small choices adding up to a big problem — like..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can name why demand, not rain, drives water scarcity."
+    summary: |
+      Over-exploitation for irrigation (the biggest user), falling groundwater from too many wells, and the thirst of industries and cities — demand outruns the renewable supply, and access stays unequal. Rainfall is barely the point.
+
+      But there's one more kind of scarcity, and it's sneaky: water that's *right there* but unsafe to drink. What happens when the problem isn't quantity, but quality? That's the next lesson.

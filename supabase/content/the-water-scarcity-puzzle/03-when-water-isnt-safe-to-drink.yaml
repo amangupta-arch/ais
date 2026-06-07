@@ -1,0 +1,162 @@
+title: "When Water Isn't Safe to Drink"
+subtitle: "A glass full to the brim — and not a drop fit to drink"
+estimated_minutes: 11
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Picture a glass of water, full to the very brim. Now imagine you can't drink a single drop of it.
+
+      That's the *third* kind of water scarcity — and it has nothing to do with how much water there is.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      So far we've counted *quantity* scarcity — not enough water.
+
+      But a region can have **plenty** of water and *still* suffer scarcity, for a different reason: the water is **bad quality**. Enough to fill every glass, but unsafe to use.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      What poisons it?
+
+      **Domestic and industrial wastes**, and the **chemicals, pesticides, and fertilisers** that wash off our farms. They make otherwise-ample water *hazardous* for human use.
+
+      Lots of water. None you'd want to drink.
+
+  - type: svg_graphic
+    xp: 0
+    title: "TWO KINDS OF SCARCITY"
+    caption: "Quantity scarcity (no water) — and quality scarcity (plenty of water, but unsafe)."
+    svg: |
+      <svg viewBox="0 0 360 170" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="20" y="14" width="150" height="142" rx="8" fill="#f8fafc" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="95" y="34" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f172a">Quantity</text>
+        <rect x="72" y="70" width="46" height="64" rx="4" fill="#f1f5f9" stroke="#475569" stroke-width="2"/>
+        <text x="95" y="150" text-anchor="middle" font-size="8" fill="#991b1b">empty — too little water</text>
+        <rect x="190" y="14" width="150" height="142" rx="8" fill="#f8fafc" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="265" y="34" text-anchor="middle" font-size="10" font-weight="bold" fill="#0f172a">Quality</text>
+        <rect x="242" y="70" width="46" height="64" rx="4" fill="#84cc16" stroke="#475569" stroke-width="2" opacity="0.55"/>
+        <circle cx="255" cy="92" r="3" fill="#3f6212"/><circle cx="276" cy="104" r="3" fill="#3f6212"/><circle cx="263" cy="118" r="3" fill="#3f6212"/>
+        <text x="265" y="150" text-anchor="middle" font-size="8" fill="#854d0e">full — but polluted</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      So what is India doing about it?
+
+      First, the **Jal Jeevan Mission (JJM)**. Its goal: give *every rural household* assured, potable **piped water** — 55 litres per person per day, reliably, for the long term.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Second, **Atal Bhujal Yojana (Atal Jal)** — aimed at *groundwater*, running across 8,220 *water-stressed* Gram Panchayats.
+
+      Its key idea isn't only pipes and pumps. It's **behavioural change** — shifting whole communities from an attitude of *consumption* to one of *conservation*.
+
+  - type: html_animation
+    xp: 0
+    title: "FULL, BUT NOT FIT TO DRINK"
+    caption: "The glass fills right up — and then the pollution creeps in. Quantity is only half the battle."
+    html: |
+      <div style="background:#f0f9ff;padding:18px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoFillUp { 0%,10%{height:0} 45%,100%{height:70px} }
+          @keyframes geoPollute { 0%,50%{fill:#38bdf8} 90%,100%{fill:#84cc16} }
+          .geo-fill { animation: geoFillUp 5s ease-in-out infinite alternate, geoPollute 5s ease-in-out infinite alternate; }
+        </style>
+        <svg viewBox="0 0 200 120" style="max-width:200px;width:100%" font-family="sans-serif">
+          <rect x="78" y="22" width="44" height="76" rx="4" fill="none" stroke="#475569" stroke-width="2.5"/>
+          <rect x="80" y="28" width="40" height="70" class="geo-fill" />
+          <text x="100" y="114" text-anchor="middle" font-size="8" fill="#0369a1">full glass, unsafe water</text>
+        </svg>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Why does all of this matter so much?
+
+      Conserving and managing water protects our **health**, our **food security**, our **livelihoods**, and our **ecosystems**. Over-exploit and mismanage it, and you trigger an *ecological crisis* that hits every one of those at once.
+
+      Water isn't just a resource. It's the thread all of them hang from.
+
+  - type: mcq
+    xp: 10
+    question: "A region gets high annual rainfall, but its water is heavily polluted. Is it suffering from water scarcity?"
+    options:
+      - id: a
+        text: "No — high rainfall means there's plenty of water, so no scarcity."
+        is_correct: false
+        rationale: "Quantity isn't the only thing that matters. Polluted water is unsafe to use, so the region IS scarce."
+      - id: b
+        text: "Yes — water you can't safely use is a form of scarcity (quality scarcity)."
+        is_correct: true
+        rationale: "Right. Ample but polluted water still leaves people without usable water — that's scarcity of *quality*."
+      - id: c
+        text: "Only if the rainfall later decreases."
+        is_correct: false
+        rationale: "The region is already scarce *now* — the water present is unusable, regardless of future rainfall."
+      - id: d
+        text: "No — pollution is a separate problem, not scarcity."
+        is_correct: false
+        rationale: "Pollution directly causes scarcity by making available water unsafe to use."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Match each term to what it means."
+    left:
+      - { id: l1, label: "Jal Jeevan Mission" }
+      - { id: l2, label: "Atal Bhujal Yojana" }
+      - { id: l3, label: "Quality scarcity" }
+      - { id: l4, label: "Main water pollutants" }
+    right:
+      - { id: r1, label: "55 litres of piped potable water to every rural home" }
+      - { id: r2, label: "Groundwater — shifting from consumption to conservation" }
+      - { id: r3, label: "Enough water, but too polluted to use safely" }
+      - { id: r4, label: "Wastes, chemicals, pesticides, and fertilisers" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Write a short proposal (4–5 lines) on how *you* could conserve water in your daily life — at the tap, in the bathroom, in the kitchen, in the garden.
+
+      Pick the one change that would save the most, and type it below.
+    placeholder: "My biggest water-saving change would be..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in quality scarcity and the mission."
+    template: |
+      Scarcity can come from bad water {{blank-1}} when wastes and chemicals pollute it; the {{blank-2}} Jeevan Mission delivers piped potable water to rural homes.
+    answers:
+      - id: blank-1
+        accepted: ["quality", "Quality"]
+      - id: blank-2
+        accepted: ["Jal", "jal"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Atal Jal bets that the real fix is *behaviour* — getting people to value conservation, not just building more infrastructure. Do you think changing habits is harder or easier than building dams and pipes? Why?
+
+      No right answer.
+    placeholder: "Changing habits versus building things — I think..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You understand scarcity of quantity AND quality — and how India is fighting both."
+    summary: |
+      Water can be scarce not only when there's too little, but when what's there is too polluted to use. Jal Jeevan Mission brings piped potable water to rural homes; Atal Jal tackles groundwater by shifting communities from consumption to conservation. The stakes: health, food, livelihoods, ecosystems.
+
+      But all of this raises one practical question we've dodged so far: *how* do we actually store and manage water at scale? For most of the last century, India's big answer was a single, towering structure — the dam. That's where the next course begins.

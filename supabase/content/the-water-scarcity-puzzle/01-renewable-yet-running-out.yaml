@@ -1,0 +1,159 @@
+title: "Renewable, Yet Running Out"
+subtitle: "If water recycles itself forever, how can we possibly run short?"
+estimated_minutes: 11
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Three-quarters of the planet is covered in water. And it recycles itself — *forever*.
+
+      So here's a puzzle that should stop you: how can we possibly **run out**?
+
+      By the end of this lesson, the puzzle will bother you more, not less. Good.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Start with the numbers. Yes, three-fourths of Earth's surface is water — but only a *tiny* slice of it is **freshwater** we can actually use.
+
+      That usable freshwater comes from two places: **surface run-off** (rivers, streams) and **groundwater** (water stored under the ground).
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      And it is genuinely **renewable**. The **hydrological cycle** — the water cycle — constantly renews and recharges it.
+
+      Water evaporates, forms clouds, falls as rain, flows across the land and soaks into the ground, then evaporates again. The machine never stops turning.
+
+  - type: svg_graphic
+    xp: 0
+    title: "THE HYDROLOGICAL CYCLE"
+    caption: "Evaporation, rain, run-off, and recharge — the cycle that makes water a renewable resource."
+    svg: |
+      <svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="0" y="160" width="360" height="40" fill="#bae6fd"/>
+        <circle cx="40" cy="36" r="20" fill="#fde68a" stroke="#0f172a" stroke-width="1.5"/>
+        <ellipse cx="180" cy="44" rx="46" ry="22" fill="#e2e8f0" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="180" y="48" text-anchor="middle" font-size="9" fill="#475569">cloud</text>
+        <path d="M70,158 C90,110 110,80 138,56" stroke="#0ea5e9" stroke-width="2" fill="none"/>
+        <polygon points="138,56 132,66 144,66" fill="#0ea5e9"/>
+        <text x="88" y="120" font-size="8" fill="#0369a1">evaporation</text>
+        <line x1="200" y1="66" x2="205" y2="150" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <line x1="220" y1="66" x2="228" y2="150" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <line x1="240" y1="66" x2="251" y2="150" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <text x="262" y="110" font-size="8" fill="#1e3a8a">precipitation</text>
+        <polygon points="300,160 360,160 360,120" fill="#bbf7d0" stroke="#0f172a" stroke-width="1"/>
+        <path d="M330,128 C320,140 318,150 300,160" stroke="#0ea5e9" stroke-width="2" fill="none"/>
+        <text x="300" y="150" font-size="8" fill="#166534">run-off</text>
+        <text x="40" y="186" font-size="8" fill="#0c4a6e">surface water + groundwater</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      So here's the puzzle in full.
+
+      If water is everywhere *and* renews itself, why do regions all over the world suffer **water scarcity**? Why is it predicted that by **2025**, nearly **two billion** people will live in *absolute* water scarcity?
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Your gut probably jumps to deserts — low-rainfall Rajasthan, women walking miles balancing *matkas* of water.
+
+      And it's *partly* true: water availability does vary over space and time, mostly because rainfall varies by season and year. But hold on — that's **not** the main reason for scarcity.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here's the twist that runs through this whole chapter.
+
+      Scarcity is mostly caused not by *too little rain*, but by **us**: over-exploitation, excessive use, and unequal access. A region can be *soaked* in water and *still* be scarce.
+
+      *What would break if rainfall alone explained scarcity?* Then no rainy city would ever run dry. Many do.
+
+  - type: html_animation
+    xp: 0
+    title: "THE CYCLE NEVER STOPS"
+    caption: "One drop, going round and round — renewable in theory, if we don't drain it faster than it returns."
+    html: |
+      <div style="background:#f0f9ff;padding:18px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoLoop { 0%{offset-distance:0%} 100%{offset-distance:100%} }
+          .geo-drop { offset-path: path('M 40,110 C 60,40 150,30 175,55 C 200,80 210,100 250,110'); animation: geoLoop 4s linear infinite; }
+        </style>
+        <svg viewBox="0 0 300 130" style="max-width:320px;width:100%" font-family="sans-serif">
+          <rect x="0" y="108" width="300" height="22" fill="#bae6fd"/>
+          <ellipse cx="160" cy="40" rx="36" ry="16" fill="#e2e8f0" stroke="#0f172a" stroke-width="1"/>
+          <path d="M 40,110 C 60,40 150,30 175,55 C 200,80 210,100 250,110" stroke="#cbd5e1" stroke-width="1.5" fill="none" stroke-dasharray="3 3"/>
+          <circle r="6" fill="#2563eb" class="geo-drop"/>
+        </svg>
+      </div>
+
+  - type: mcq
+    xp: 10
+    question: "What makes water a renewable resource?"
+    options:
+      - id: a
+        text: "There is simply so much of it that it can never run out."
+        is_correct: false
+        rationale: "Most of Earth's water isn't usable freshwater — and we *can* run short. Sheer quantity isn't what 'renewable' means here."
+      - id: b
+        text: "The hydrological cycle constantly renews and recharges surface water and groundwater."
+        is_correct: true
+        rationale: "Right. Evaporation, rain, run-off, and recharge keep cycling water back to us — that's what makes it renewable."
+      - id: c
+        text: "Factories manufacture fresh water to replace what we use."
+        is_correct: false
+        rationale: "Fresh water isn't manufactured at scale. It's renewed by nature's water cycle."
+      - id: d
+        text: "Because it never evaporates, so none is ever lost."
+        is_correct: false
+        rationale: "The opposite — evaporation is a *key step* of the cycle that renews water."
+
+  - type: drag_to_reorder
+    xp: 10
+    prompt: "Put the stages of the water cycle in order, starting from the sea."
+    items:
+      - { id: s1, label: "Evaporation — water rises from the sea" }
+      - { id: s2, label: "Condensation — clouds form" }
+      - { id: s3, label: "Precipitation — rain falls" }
+      - { id: s4, label: "Run-off and recharge — water flows back and soaks in" }
+    correct_order: [s1, s2, s3, s4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Where does the water in your tap actually come from — a river, a reservoir, a borewell (groundwater), rainwater?
+
+      On paper, trace it back one step at a time to the rain that started it. Type your water's source below.
+    placeholder: "My water comes from ___, which is fed by..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the paradox."
+    template: |
+      Water is renewable because the {{blank-1}} cycle constantly renews it — yet by the year {{blank-2}}, nearly two billion people may face absolute scarcity.
+    answers:
+      - id: blank-1
+        accepted: ["hydrological", "water", "Hydrological"]
+      - id: blank-2
+        accepted: ["2025"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      You probably treat tap water as endless — turn it on, it's there. After this lesson, does "renewable" feel like a comfort or a warning? Why?
+
+      No right answer.
+    placeholder: "'Renewable' now feels like..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can explain why water is renewable — and still scarce."
+    summary: |
+      Water covers most of the planet and the hydrological cycle renews it endlessly, yet two billion people may face absolute scarcity by 2025. The reason isn't only rainfall — it's how we use and share what we have.
+
+      So let's name the real culprits. Why does even a well-watered country end up running dry? That's the next lesson.
