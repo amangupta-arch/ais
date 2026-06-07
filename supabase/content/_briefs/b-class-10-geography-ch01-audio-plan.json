@@ -1,13 +1,13 @@
 {
   "bundle": "b-class-10-geography-ch01-resources-and-development",
   "generated": "2026-06-07",
-  "note": "Deterministic narration build plan — exactly what extract.ts + runAudioPipeline would feed ElevenLabs. Per chunk: the sanitised text to synthesise, the voice + model, and the sha256(voice|model|text) hash + storage_path the pipeline uses. NO audio was synthesised here (no TTS tool / no ELEVENLABS_API_KEY in the authoring session). To produce playable audio, synthesise each chunk's text → upload bytes to lesson-audio/<storage_path> → write lesson_audio_assets + lesson_audio_manifest (needs a real lesson_id, i.e. after the content is loaded).",
+  "note": "Deterministic narration build plan for the full chapter (all 20 lessons). Per chunk: sanitised text, voice, model, sha256(voice|model|text) hash + storage_path. No audio synthesised here. To produce playable audio: synthesise each chunk -> upload to lesson-audio/<storage_path> -> write lesson_audio_assets + lesson_audio_manifest (needs a loaded lesson_id).",
   "totals": {
-    "lessons": 8,
-    "chunks": 136,
-    "chars": 36255,
-    "en_chars": 17345,
-    "hinglish_chars": 18910
+    "lessons": 20,
+    "chunks": 344,
+    "chars": 77002,
+    "en_chars": 36719,
+    "hinglish_chars": 40283
   },
   "lessons": [
     {
@@ -16,8 +16,8 @@
       "lesson_slug": "what-counts-as-a-resource",
       "voiceId": "gHu9GtaHOXcSqFTK06ux",
       "model": "eleven_flash_v2_5",
-      "chunk_count": 17,
-      "total_chars": 4337,
+      "chunk_count": 19,
+      "total_chars": 4520,
       "chunks": [
         {
           "turn_index": 1,
@@ -30,13 +30,21 @@
         {
           "turn_index": 2,
           "chunk_index": 0,
+          "chars": 98,
+          "hash": "68065293ebf151c0404708c296a05c04cf8133b4463ffb7b16f017410cf239ba",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/68065293ebf151c0404708c296a05c04cf8133b4463ffb7b16f017410cf239ba.mp3",
+          "text": "Sunlight, wind, coal, ore ,  but which of these is actually a resource? It depends on three gates."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
           "chars": 276,
           "hash": "f3c62d04a0db840ed286866c1c5eac3dcc0a09a0671a30dbe580b88312cfb38f",
           "storage_path": "gHu9GtaHOXcSqFTK06ux/f3c62d04a0db840ed286866c1c5eac3dcc0a09a0671a30dbe580b88312cfb38f.mp3",
           "text": "For most of history, people believed resources were free gifts of nature ,  just lying around, waiting to be picked up. Trees, rivers, minerals, all there for the taking.\n\nIt's a comfortable idea. It's also wrong ,  and seeing exactly why is the whole point of today's lesson."
         },
         {
-          "turn_index": 3,
+          "turn_index": 4,
           "chunk_index": 0,
           "chars": 365,
           "hash": "1f6c15366dd7310451a2ae5dc62ce0ba19fc9bf5b765cb6bff20b0d5e2918e77",
@@ -44,7 +52,7 @@
           "text": "So what actually counts as a resource? Here's the careful version:\n\nAnything in our environment that can be used to satisfy our needs ,  provided it is technologically accessible, economically feasible, and culturally acceptable ,  is a resource.\n\nNotice that small word provided. It's doing heavy lifting. A thing has to clear three gates before it earns the name."
         },
         {
-          "turn_index": 4,
+          "turn_index": 5,
           "chunk_index": 0,
           "chars": 67,
           "hash": "26da94d0951b2cd2829ea2ee8bc141c65fb7efc1331526f2e270e3ab98d99a4b",
@@ -52,7 +60,7 @@
           "text": "Raw matter only becomes a resource after it clears all three gates."
         },
         {
-          "turn_index": 5,
+          "turn_index": 6,
           "chunk_index": 0,
           "chars": 400,
           "hash": "baf623b9846c14f89880eb46920c9dbc87678ba22f014a53d3af0b4d42016d09",
@@ -60,7 +68,7 @@
           "text": "Gate 1 ,  technically accessible. Can we actually reach it and use it with the tools we have?\n\nUranium sat in the ground through all of history as a plain, heavy rock. It became one of the most valuable resources on Earth only after we learned to build nuclear reactors. Same rock. New technology. Now it's a resource.\n\nDeep-sea oil is the same story ,  useless until we could build rigs to reach it."
         },
         {
-          "turn_index": 6,
+          "turn_index": 7,
           "chunk_index": 0,
           "chars": 447,
           "hash": "830d55d423e1f87bb4339732fdfb9d96c7dcb47d244e39bae22a4acf69599490",
@@ -68,7 +76,7 @@
           "text": "Gate 2 ,  economically feasible. Even if we can reach it, is it worth the cost?\n\nThere is real gold dissolved in seawater right now. But pulling out ₹1 of gold would cost far more than ₹1. So it stays a curiosity, not a resource ,  until the economics change.\n\nGate 3 ,  culturally acceptable. A community might refuse to mine a hill it holds sacred, or treat certain land or animals as not-for-use. Culture decides what we allow ourselves to use."
         },
         {
-          "turn_index": 7,
+          "turn_index": 8,
           "chunk_index": 0,
           "chars": 515,
           "hash": "2c70336597dfaf52a333827947dbd0a48a67821f372df1e08ef5a3706347285f",
@@ -76,7 +84,15 @@
           "text": "Put it together and the comfortable idea collapses. Resources are :red[not] free gifts of nature. They are a function of human activity ,  we transform material in our environment into resources.\n\nWhat would break if this weren't true? If resources were simply lying around for the taking, then every land with oil beneath it would be rich, and every bare desert would be worthless. That's not the world we live in ,  and the gap is exactly what makes geography worth studying. (Much more on that in a few lessons.)"
         },
         {
-          "turn_index": 8,
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 85,
+          "hash": "3bf3c1fbcdc187c6797a5d007d902b3afa8ef39fb633164bc50e5b8fdb926a7e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/3bf3c1fbcdc187c6797a5d007d902b3afa8ef39fb633164bc50e5b8fdb926a7e.mp3",
+          "text": "Resources are made, not found ,  human hands turn raw material into something useful."
+        },
+        {
+          "turn_index": 10,
           "chunk_index": 0,
           "chars": 374,
           "hash": "4428f7c735cffdec003c8be48c7770c4b417f168465c00e7f5b4d2de710bd685",
@@ -84,7 +100,7 @@
           "text": "There's one more piece. Humans don't transform nature alone. We do it through technology, and we build institutions ,  governments, laws, markets, schools ,  to organise and speed it up.\n\nSo three things lock into a loop: nature gives the raw material, technology lets us use it, institutions direct and accelerate the whole process. Pull out any one and development stalls."
         },
         {
-          "turn_index": 9,
+          "turn_index": 11,
           "chunk_index": 0,
           "chars": 109,
           "hash": "3ce06e0098814fbf932b4569987f938be3cd87dc2394c855ad33f53666dcd68f",
@@ -92,7 +108,7 @@
           "text": "Nature feeds technology, technology feeds institutions, institutions shape how we use nature. Watch it cycle."
         },
         {
-          "turn_index": 10,
+          "turn_index": 12,
           "chunk_index": 0,
           "chars": 132,
           "hash": "7a626d9306f636fb6c1c6b6416f4dbac004c0275dd2d00f1adc94ca6590fb61d",
@@ -100,7 +116,7 @@
           "text": "A friend says: 'Resources are just free gifts of nature ,  they're lying around waiting to be used.' What's the sharpest correction?"
         },
         {
-          "turn_index": 11,
+          "turn_index": 13,
           "chunk_index": 0,
           "chars": 65,
           "hash": "fffbc4e5ca60e7e0d30c85538db202d58fe9e03f4cb7dda97d8c04a74204af8e",
@@ -108,7 +124,7 @@
           "text": "Each item is stuck at ,  or clears ,  a different gate. Match it."
         },
         {
-          "turn_index": 12,
+          "turn_index": 14,
           "chunk_index": 0,
           "chars": 399,
           "hash": "504b81d4b165efa2196ba1bacec0b341ded235464324bab037a50de12832a000",
@@ -116,7 +132,7 @@
           "text": "Look around the room and pick one ordinary object ,  a pencil, your phone, a steel tumbler.\n\nOn paper, trace it backwards: what raw material in nature did it start as? Then run it through the three gates ,  what technology made that material usable, roughly what makes it affordable, and why is it culturally fine to use?\n\nWrite 2, 3 lines. Then type your object and its starting raw material below."
         },
         {
-          "turn_index": 13,
+          "turn_index": 15,
           "chunk_index": 0,
           "chars": 49,
           "hash": "f4d87dad1dd04d18c4ccdff1cdc0923574e1dada6cac4deeb5d019e8d41eb8ab",
@@ -124,7 +140,7 @@
           "text": "Lock in the three tests every resource must pass."
         },
         {
-          "turn_index": 13,
+          "turn_index": 15,
           "chunk_index": 1,
           "chars": 83,
           "hash": "63cc80edf52a427d378b4849508c6e0a6bc06e0ec3691b6e5b75d04573876b9f",
@@ -132,7 +148,7 @@
           "text": "A resource must be technologically blank, economically blank, and culturally blank."
         },
         {
-          "turn_index": 14,
+          "turn_index": 16,
           "chunk_index": 0,
           "chars": 233,
           "hash": "139be5af7d5c4dee015e166dee649f2e3fa08eeb51c2644f802bd5d06496d469",
@@ -140,7 +156,7 @@
           "text": "Before today, did you picture resources as 'free gifts of nature'? Name one thing ,  a material, a place, an everyday object ,  that you now see a little differently.\n\nThere's no right answer. Just note the thing that made you pause."
         },
         {
-          "turn_index": 15,
+          "turn_index": 17,
           "chunk_index": 0,
           "chars": 44,
           "hash": "c88cd9a0312d892fea038fff4104fdca15f487b87e080f003fddeff2f3043ed0",
@@ -148,7 +164,7 @@
           "text": "You can now tell raw matter from a resource."
         },
         {
-          "turn_index": 15,
+          "turn_index": 17,
           "chunk_index": 1,
           "chars": 503,
           "hash": "ca095e0c32f48c72a2c7dbddecdb598492a4f9096ac913d000f53c9aac7aa690",
@@ -163,8 +179,8 @@
       "lesson_slug": "four-ways-to-classify-a-resource",
       "voiceId": "gHu9GtaHOXcSqFTK06ux",
       "model": "eleven_flash_v2_5",
-      "chunk_count": 17,
-      "total_chars": 4282,
+      "chunk_count": 18,
+      "total_chars": 4358,
       "chunks": [
         {
           "turn_index": 1,
@@ -209,13 +225,21 @@
         {
           "turn_index": 6,
           "chunk_index": 0,
+          "chars": 76,
+          "hash": "311f4095eda7718261213abba4b9e57e7440504f40a6c40bdc236b7dd55e2989",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/311f4095eda7718261213abba4b9e57e7440504f40a6c40bdc236b7dd55e2989.mp3",
+          "text": "Renewable on the left, non-renewable on the right ,  the difference is time."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
           "chars": 484,
           "hash": "1f81a13479fa42abf1b6b635eca2d8db2f2be36390887de404e84f28c5f40c55",
           "storage_path": "gHu9GtaHOXcSqFTK06ux/1f81a13479fa42abf1b6b635eca2d8db2f2be36390887de404e84f28c5f40c55.mp3",
           "text": "Lens 3 ,  Ownership. Who does it belong to?\n\n- Individual ,  a private well, a family's farmland.\n- Community ,  the village grazing common, the public pond.\n- National ,  everything within a country's borders: its minerals, forests, rivers, and the sea up to 12 nautical miles from shore.\n- International ,  the open ocean beyond 200 km from any coast. No single country owns it; global institutions govern it.\n\nMost of India's forests are managed by the nation. National. Third tag."
         },
         {
-          "turn_index": 7,
+          "turn_index": 8,
           "chunk_index": 0,
           "chars": 616,
           "hash": "c80d81b08f71404be0715e0039e8cda71cb7b0943a1c625c1838da92a27d6dff",
@@ -223,7 +247,7 @@
           "text": "Lens 4 ,  Status of development. This is the one students mix up, so slow down here.\n\n- Potential ,  it exists in a region but we haven't tapped it yet (Rajasthan's solar and wind).\n- Developed ,  surveyed, measured, and actively in use.\n- Stock ,  the material is right there, but we don't yet have the technology to use it. Water is hydrogen and oxygen ,  an enormous fuel ,  but we can't unlock it at scale. So it's stock.\n- Reserve ,  the slice of stock we can use with today's technology but haven't started ,  like a standing forest kept for the future.\n\nThe forest we're saving for later? Reserve. Fourth tag."
         },
         {
-          "turn_index": 8,
+          "turn_index": 9,
           "chunk_index": 0,
           "chars": 91,
           "hash": "04c60b1059951f854da424534309eb2fd4bf53edb3867c5e61d8bc54dc255df0",
@@ -231,7 +255,7 @@
           "text": "The same forest is biotic, renewable, national, AND a reserve ,  four lenses, one resource."
         },
         {
-          "turn_index": 9,
+          "turn_index": 10,
           "chunk_index": 0,
           "chars": 238,
           "hash": "6558c65f81a9bdeb8a950b9c732ccd93d73bf5203dc5b66d0ee3a707bbec98dd",
@@ -239,7 +263,7 @@
           "text": "See what just happened? We never had to choose one box. The forest is biotic and renewable and national and a reserve ,  all true at once.\n\nThat's the whole skill: don't ask \"which kind is it?\" Ask \"what does each of the four lenses say?\""
         },
         {
-          "turn_index": 10,
+          "turn_index": 11,
           "chunk_index": 0,
           "chars": 170,
           "hash": "b0ca9fbd8385a660281f4a7bf8263bbc23f96ef10a390ab7e144f862f7535ee8",
@@ -247,7 +271,7 @@
           "text": "Water can be split into hydrogen and oxygen ,  a massive energy source ,  but we don't yet have the technology to do it at scale. In development terms, that energy is a…?"
         },
         {
-          "turn_index": 11,
+          "turn_index": 12,
           "chunk_index": 0,
           "chars": 46,
           "hash": "fbc8f12c4b13e1a437d914f5d9c0e320ce33642f36d341d71c5a67731a35b8af",
@@ -255,7 +279,7 @@
           "text": "Match each resource to its ownership category."
         },
         {
-          "turn_index": 12,
+          "turn_index": 13,
           "chunk_index": 0,
           "chars": 414,
           "hash": "bb25783791a15baed500deef3046b995b2e0eeca4caecfcb6008f27cf9bbde46",
@@ -263,7 +287,7 @@
           "text": "Pick one resource from your own daily life ,  the cooking gas at home, the water you drink, the paper in your notebook.\n\nOn paper, run it through all four lenses:\n1. Origin ,  biotic or abiotic?\n2. Exhaustibility ,  renewable or non-renewable?\n3. Ownership ,  individual, community, national, or international?\n4. Development ,  potential, developed, stock, or reserve?\n\nType your resource and its four tags below."
         },
         {
-          "turn_index": 13,
+          "turn_index": 14,
           "chunk_index": 0,
           "chars": 25,
           "hash": "68f03f525ab1d6437dcb5ce850f14ec83dca4190b3efeca508594f9b579f1697",
@@ -271,7 +295,7 @@
           "text": "Lock in the origin terms."
         },
         {
-          "turn_index": 13,
+          "turn_index": 14,
           "chunk_index": 1,
           "chars": 141,
           "hash": "0e4c4e47e27008cd47b0ab19b4cd8d62dc8e8df5f1eac2835aa398f86035d7d0",
@@ -279,7 +303,7 @@
           "text": "Resources from the biosphere that have life ,  like forests and fisheries ,  are blank. Non-living resources like rocks and metals are blank."
         },
         {
-          "turn_index": 14,
+          "turn_index": 15,
           "chunk_index": 0,
           "chars": 150,
           "hash": "a3b17926de99458adbd174246f8250e366d6b44ad8d3c07647bdb01ed5f29e43",
@@ -287,7 +311,7 @@
           "text": "Of the four lenses, which was hardest to wrap your head around ,  and what finally made it click?\n\nNo right answer. Just name the one that fought you."
         },
         {
-          "turn_index": 15,
+          "turn_index": 16,
           "chunk_index": 0,
           "chars": 44,
           "hash": "4cd4f125b75bfb55d4477c12aeaf0379caeb38505c32a74190acd6a30a94a558",
@@ -295,7 +319,7 @@
           "text": "You can sort any resource four ways at once."
         },
         {
-          "turn_index": 15,
+          "turn_index": 16,
           "chunk_index": 1,
           "chars": 440,
           "hash": "54c5e330219ed0d06a61ca2f9ab15886d4ecfb51a86e63bad83934260d122ab0",
@@ -310,8 +334,8 @@
       "lesson_slug": "sustainable-development-and-conservation",
       "voiceId": "gHu9GtaHOXcSqFTK06ux",
       "model": "eleven_flash_v2_5",
-      "chunk_count": 17,
-      "total_chars": 4323,
+      "chunk_count": 19,
+      "total_chars": 4415,
       "chunks": [
         {
           "turn_index": 1,
@@ -364,13 +388,21 @@
         {
           "turn_index": 7,
           "chunk_index": 0,
+          "chars": 39,
+          "hash": "c9a66052b77ffa8f744f9dbcc9beea2c81703f12dc72f28183bfaee5bb0145e0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c9a66052b77ffa8f744f9dbcc9beea2c81703f12dc72f28183bfaee5bb0145e0.mp3",
+          "text": "Agenda 21: think globally, act locally."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
           "chars": 407,
           "hash": "00d4afe31e76700797eccbd52ea3cf483d2c4a43db9c4309b6feabc7f9b36e9d",
           "storage_path": "gHu9GtaHOXcSqFTK06ux/00d4afe31e76700797eccbd52ea3cf483d2c4a43db9c4309b6feabc7f9b36e9d.mp3",
           "text": "Rio didn't come from nowhere. A handful of thinkers saw it coming for decades:\n\n- 1968 ,  the Club of Rome made the first systematic call to conserve resources.\n- 1974 ,  Schumacher's book Small is Beautiful carried Gandhi's thinking to the world.\n- 1987 ,  the Brundtland Report (Our Common Future) actually coined the term sustainable development.\n\nThen, in 1992, Rio turned the idea into a global agenda."
         },
         {
-          "turn_index": 8,
+          "turn_index": 9,
           "chunk_index": 0,
           "chars": 69,
           "hash": "c6c3a8851ba81ff2c8516e31fe9505a3480b6615d21c7f57b95796dfe80c933e",
@@ -378,7 +410,7 @@
           "text": "Four milestones, building toward the idea of sustainable development."
         },
         {
-          "turn_index": 9,
+          "turn_index": 10,
           "chunk_index": 0,
           "chars": 348,
           "hash": "5ce4f6f0a9fa45bdc5245fa26396fcee55643d8d2aeff47170545dbb562b2fc7",
@@ -386,7 +418,15 @@
           "text": "Now the line I promised you at the start. Gandhi said:\n\n\"There is enough for everybody's need, but not for anybody's greed.\"\n\nHe pointed at two culprits for resource depletion: greedy, selfish individuals, and an exploitative model of mass production. His alternative wasn't mass production ,  it was production by the masses. Small, local, enough."
         },
         {
-          "turn_index": 10,
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 53,
+          "hash": "da3e021a987f790b966b0078712c18b21bcf8d2ca02cf6d87339d30b00dc2934",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/da3e021a987f790b966b0078712c18b21bcf8d2ca02cf6d87339d30b00dc2934.mp3",
+          "text": "Enough for everybody's need, not for anybody's greed."
+        },
+        {
+          "turn_index": 12,
           "chunk_index": 0,
           "chars": 119,
           "hash": "d9e2119730b25c1e7fc1afda3fa8fb6182a5ab5a8e77fd034f4121e79a22608f",
@@ -394,7 +434,7 @@
           "text": "A classmate says: 'Sustainable development just means stop using resources and stop all growth.' What's the correction?"
         },
         {
-          "turn_index": 11,
+          "turn_index": 13,
           "chunk_index": 0,
           "chars": 59,
           "hash": "9f5f6e74f3bdc448f13913bb87f8d413615b7c2585b10b33c6eaac6fdf3dd065",
@@ -402,7 +442,7 @@
           "text": "Put the conservation milestones in the order they happened."
         },
         {
-          "turn_index": 12,
+          "turn_index": 14,
           "chunk_index": 0,
           "chars": 286,
           "hash": "a4217d056d140a489e5cd6b5ca2e60398e8e55da0fd61434d5b60d47be0ed65e",
@@ -410,7 +450,7 @@
           "text": "Pick three resources you used today ,  water, electricity, paper, fuel, food, anything.\n\nFor each, write one specific way you could use less without losing what you actually need. Use Gandhi's test: separate the need from the greed.\n\nType your three resources and one action each below."
         },
         {
-          "turn_index": 13,
+          "turn_index": 15,
           "chunk_index": 0,
           "chars": 55,
           "hash": "273e337317fc825f553c3ee319a1d070f1197ab37ef239fd60fc50b2b3f77b60",
@@ -418,7 +458,7 @@
           "text": "Complete the definition that Brundtland gave the world."
         },
         {
-          "turn_index": 13,
+          "turn_index": 15,
           "chunk_index": 1,
           "chars": 105,
           "hash": "ea623c57cb67c182184b51445a7d87cb48020cf0b785bb433f2b0d214ce50493",
@@ -426,7 +466,7 @@
           "text": "Sustainable development meets the needs of the blank without compromising the needs of blank generations."
         },
         {
-          "turn_index": 14,
+          "turn_index": 16,
           "chunk_index": 0,
           "chars": 181,
           "hash": "1bcc8a756e64c8a8e73c7f2cac3b9a891c37b5c0ced763454147ea2c679bd45f",
@@ -434,7 +474,7 @@
           "text": "\"Enough for everybody's need, not for anybody's greed.\"\n\nWhere in your own life is the line between need and greed genuinely hard to draw? There's no right answer ,  just be honest."
         },
         {
-          "turn_index": 15,
+          "turn_index": 17,
           "chunk_index": 0,
           "chars": 58,
           "hash": "9f048930cc2fddd4ab006558882c0a3df500a3fb38383686a7a69255b8ef38d2",
@@ -442,7 +482,7 @@
           "text": "You know what sustainable development actually asks of us."
         },
         {
-          "turn_index": 15,
+          "turn_index": 17,
           "chunk_index": 1,
           "chars": 589,
           "hash": "26af996e9d51022b9043e17d7f285f484edb07cfcb5868f675336c293b52550e",
@@ -457,8 +497,8 @@
       "lesson_slug": "resource-planning-in-india",
       "voiceId": "gHu9GtaHOXcSqFTK06ux",
       "model": "eleven_flash_v2_5",
-      "chunk_count": 17,
-      "total_chars": 4403,
+      "chunk_count": 19,
+      "total_chars": 4567,
       "chunks": [
         {
           "turn_index": 1,
@@ -479,13 +519,21 @@
         {
           "turn_index": 3,
           "chunk_index": 0,
+          "chars": 74,
+          "hash": "4640101dbcea2fc81761d55f9e0abdd58664bdb1146014cc1054e641f0603bbc",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/4640101dbcea2fc81761d55f9e0abdd58664bdb1146014cc1054e641f0603bbc.mp3",
+          "text": "One country, wildly uneven ,  strong in some resources, starved of others."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
           "chars": 89,
           "hash": "b454d44e05417c33da075322ea6ab575e05841db8ea12475ebe5cdbd4afa7130",
           "storage_path": "gHu9GtaHOXcSqFTK06ux/b454d44e05417c33da075322ea6ab575e05841db8ea12475ebe5cdbd4afa7130.mp3",
           "text": "India's resources are wildly uneven ,  every region is strong in some, starved of others."
         },
         {
-          "turn_index": 4,
+          "turn_index": 5,
           "chunk_index": 0,
           "chars": 368,
           "hash": "a5383f81c4e02cd1bb8f72c701c3a623c92354f8bdb30f3ca58e643fc0900139",
@@ -493,7 +541,7 @@
           "text": "When a country is this uneven, you can't just hope resources end up where they're needed. You plan.\n\nResource planning is the widely accepted strategy for using resources judiciously ,  not wastefully, not blindly. India has taken it seriously since the very first Five Year Plan after Independence, and it happens at every level: national, state, regional, and local."
         },
         {
-          "turn_index": 5,
+          "turn_index": 6,
           "chunk_index": 0,
           "chars": 432,
           "hash": "1334f4d4a3f1361f6596b275a9e4c1563260d002854f65b763a467f84827054b",
@@ -501,7 +549,7 @@
           "text": "Resource planning in India works in three steps:\n\n1. Identify and inventory ,  survey, map, and measure what resources exist, where, and in what quantity and quality.\n2. Build the planning structure ,  assemble the technology, skills, and institutions needed to actually carry out development.\n3. Match to national plans ,  line up each resource plan with the country's overall development goals.\n\nSkip any step and the plan stalls."
         },
         {
-          "turn_index": 6,
+          "turn_index": 7,
           "chunk_index": 0,
           "chars": 88,
           "hash": "19539ddad7d40c734ccb1b6f439938f379f458973c311551947273245eb3f822",
@@ -509,7 +557,7 @@
           "text": "Identify what you have, build the structure to develop it, align it with national goals."
         },
         {
-          "turn_index": 7,
+          "turn_index": 8,
           "chunk_index": 0,
           "chars": 359,
           "hash": "963759486cfddf8af73459b4715e4c348921dc40174607cb2b18bd0fa3f6ed8b",
@@ -517,7 +565,15 @@
           "text": "Now the idea that ties this whole course together.\n\nHaving a resource is like having ingredients in your kitchen. Ingredients alone are not a meal. You still need the recipe ,  that's technology ,  and a working kitchen ,  that's institutions (laws, markets, skilled people, government).\n\nThe availability of resources is :hl[necessary, but never sufficient.]"
         },
         {
-          "turn_index": 8,
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 90,
+          "hash": "8aeec8c70a8ba4372ce65890d2904c5e33a03afbd5fd98e7442a0f87bbd9b728",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/8aeec8c70a8ba4372ce65890d2904c5e33a03afbd5fd98e7442a0f87bbd9b728.mp3",
+          "text": "Resources are the ingredients. Technology and institutions are the recipe and the kitchen."
+        },
+        {
+          "turn_index": 10,
           "chunk_index": 0,
           "chars": 316,
           "hash": "6d076f48d3a8c7ecf3120e96f37c5c1065a672645d953ed52ccc7c68abeaaff7",
@@ -525,7 +581,7 @@
           "text": "What would break if resources alone made you rich? Then Jharkhand, sitting on all that coal, would be among India's wealthiest states. It isn't.\n\nThe ingredients are there. What's often missing is the recipe and the kitchen ,  the technology and institutions to turn buried coal into roads, schools, jobs, and power."
         },
         {
-          "turn_index": 9,
+          "turn_index": 11,
           "chunk_index": 0,
           "chars": 420,
           "hash": "98185214c74aaaccaee468c1236f8d3337a193d943f065d72cb06926096afb51",
@@ -533,7 +589,7 @@
           "text": "History makes the point brutally. When colonisers came, they were drawn by the rich resources of the lands they invaded. But it was their superior technology and institutions that let them actually extract those resources ,  and dominate.\n\nIndia lived through this across long phases of colonisation. The lesson it left: resources build a nation only when matched with technological development and institutional change."
         },
         {
-          "turn_index": 10,
+          "turn_index": 12,
           "chunk_index": 0,
           "chars": 105,
           "hash": "cef1dd62d6fe4824a11db4d22111cc7c6576cc5b115e03c9a530769e1312b8e2",
@@ -541,7 +597,7 @@
           "text": "Jharkhand is rich in coal and minerals yet remains one of India's poorer states. What best explains this?"
         },
         {
-          "turn_index": 11,
+          "turn_index": 13,
           "chunk_index": 0,
           "chars": 41,
           "hash": "282e3bb7bffe7f4bcae4bd8dd949486590865a030295355afb4f5a184601f08d",
@@ -549,7 +605,7 @@
           "text": "Match each region to what it's known for."
         },
         {
-          "turn_index": 12,
+          "turn_index": 14,
           "chunk_index": 0,
           "chars": 284,
           "hash": "d7e8bff9c5cb12d17882faad7a1816d1f964906d4c3e648a1eaeb1d4641b025b",
@@ -557,7 +613,7 @@
           "text": "Bring it home to your own state (or district).\n\nOn paper, list two resources it's genuinely rich in, and one important resource it lacks. Then write a single sentence: what technology or institution would help it use its strengths better?\n\nType your state and its two strengths below."
         },
         {
-          "turn_index": 13,
+          "turn_index": 15,
           "chunk_index": 0,
           "chars": 42,
           "hash": "cc346272aa606d81484b9745f5e235041a9389a9fc80cfa43913762087bb20b6",
@@ -565,7 +621,7 @@
           "text": "Lock in the core idea of the whole course."
         },
         {
-          "turn_index": 13,
+          "turn_index": 15,
           "chunk_index": 1,
           "chars": 132,
           "hash": "18be0212fd46de04e23d67c203c6aad6b390042ae1cb2f1b249a6eeec0b62d93",
@@ -573,7 +629,7 @@
           "text": "The availability of resources is blank for a region's development ,  but it is not blank. Technology and institutions must come too."
         },
         {
-          "turn_index": 14,
+          "turn_index": 16,
           "chunk_index": 0,
           "chars": 222,
           "hash": "52dab949b50d9c532b192b974695bb3f1684571da7b0f195c206f49d1e7b5ab6",
@@ -581,7 +637,7 @@
           "text": "Resource-rich but poor; resource-poor but rich. Think of anything ,  a person, a team, a company, a country ,  where simply having a lot wasn't enough without the right system around it.\n\nWhat was missing? No right answer."
         },
         {
-          "turn_index": 15,
+          "turn_index": 17,
           "chunk_index": 0,
           "chars": 51,
           "hash": "1ed8862e30a589ee278ba095c004c5322f793b971d19028f8ba9e40b4fb3cc52",
@@ -589,7 +645,7 @@
           "text": "You can explain why riches don't equal development."
         },
         {
-          "turn_index": 15,
+          "turn_index": 17,
           "chunk_index": 1,
           "chars": 666,
           "hash": "93ff95d4d635633ef20389f405e57fbb75f28a7696a441db3d85cf5417941c0d",
@@ -604,8 +660,8 @@
       "lesson_slug": "what-counts-as-a-resource",
       "voiceId": "gHu9GtaHOXcSqFTK06ux",
       "model": "eleven_multilingual_v2",
-      "chunk_count": 17,
-      "total_chars": 4858,
+      "chunk_count": 19,
+      "total_chars": 5067,
       "chunks": [
         {
           "turn_index": 1,
@@ -618,13 +674,21 @@
         {
           "turn_index": 2,
           "chunk_index": 0,
+          "chars": 107,
+          "hash": "17d8831357f6797b1da63a31a27b8949ed0c7336fd11803862372cdf625ffc03",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/17d8831357f6797b1da63a31a27b8949ed0c7336fd11803862372cdf625ffc03.mp3",
+          "text": "Sunlight, wind, coal, ore ,  par inme se asal mein resource kaunsa hai? Yeh teen gates pe depend karta hai."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
           "chars": 300,
           "hash": "b95230ed1660b5415f4c8b33283f2208f6295c59d40de6f81cae8a9aead10bd5",
           "storage_path": "gHu9GtaHOXcSqFTK06ux/b95230ed1660b5415f4c8b33283f2208f6295c59d40de6f81cae8a9aead10bd5.mp3",
           "text": "History mein zyaadatar logon ne maana ki resources nature ke free gifts hote hain ,  bas idhar-udhar pade hue, use hone ka wait karte hue. Ped, nadiyaan, minerals ,  sab le lo jitna chahiye.\n\nComfortable idea hai. Par galat bhi hai ,  aur exactly kyun galat hai, yahi aaj ki lesson ka asli point hai."
         },
         {
-          "turn_index": 3,
+          "turn_index": 4,
           "chunk_index": 0,
           "chars": 423,
           "hash": "29b82ddebce13822763f77c60078bba8585728ffea1e56923da9423bd7e405b2",
@@ -632,7 +696,7 @@
           "text": "Toh actually resource kya hota hai? Yeh raha careful version:\n\nHamare environment ki koi bhi cheez jo hamari needs poori kar sakti hai ,  provided woh technologically accessible, economically feasible, aur culturally acceptable ho ,  usse resource kehte hain.\n\nUs chhote se word provided pe dhyaan do. Woh sabse zyaada kaam kar raha hai. Kisi cheez ko 'resource' ka naam milne se pehle use teen gates paar karne padte hain."
         },
         {
-          "turn_index": 4,
+          "turn_index": 5,
           "chunk_index": 0,
           "chars": 75,
           "hash": "17249dbaeb3b4513beeaee3f1c1f7ffc4cc1f78de4d44aff9aea6d2fbb5dfca6",
@@ -640,7 +704,7 @@
           "text": "Kaccha maal tabhi resource banta hai jab woh teeno gates paar kar leta hai."
         },
         {
-          "turn_index": 5,
+          "turn_index": 6,
           "chunk_index": 0,
           "chars": 412,
           "hash": "070e38d16d28b52193875b1edadad5132cce55dce1174f2e95f90bab12ed36d8",
@@ -648,7 +712,7 @@
           "text": "Gate 1 ,  technically accessible. Kya hum use apne current tools se actually reach aur use kar sakte hain?\n\nUranium poori history mein ek plain, bhaari rock ki tarah zameen mein pada raha. Woh Earth ka sabse valuable resource tab bana jab humne nuclear reactors banana seekha. Wahi rock. Nayi technology. Ab woh resource hai.\n\nDeep-sea oil ki bhi yahi kahani ,  jab tak rigs nahi bana sakte the, tab tak useless."
         },
         {
-          "turn_index": 6,
+          "turn_index": 7,
           "chunk_index": 0,
           "chars": 548,
           "hash": "cae975e514639dd3d6264ce59a9ebc1f81c10255263509a5e8f25a6d869a1096",
@@ -656,7 +720,7 @@
           "text": "Gate 2 ,  economically feasible. Maan lo reach kar bhi sakte hain ,  par kya woh cost ke laayak hai?\n\nAbhi is waqt samundar ke paani mein gold ghula hua hai. Par ₹1 ka gold nikaalne mein ₹1 se kahin zyaada kharch ho jaayega. Toh woh ek curiosity hai, resource nahi ,  jab tak economics nahi badalti.\n\nGate 3 ,  culturally acceptable. Koi community ek pahaadi ko mine karne se mana kar sakti hai jise woh pavitra maanti hai, ya kuch land ya jaanwaron ko not-for-use maan sakti hai. Culture decide karta hai ki hum kya use karne ki ijaazat dete hain."
         },
         {
-          "turn_index": 7,
+          "turn_index": 8,
           "chunk_index": 0,
           "chars": 498,
           "hash": "11cd4e0c54a5f2d0d77847940239fb1255ba13a56409f27c321939a105715d46",
@@ -664,7 +728,15 @@
           "text": "Sab jod ke dekho toh comfortable idea toot jaata hai. Resources nature ke :red[free gifts nahi] hain. Woh human activity ka function hain ,  hum apne environment ke material ko resource mein transform karte hain.\n\nAgar yeh sach na hota toh kya tootta? Agar resources bas pade-pade mil jaate, toh har woh zameen jiske neeche oil hai ameer hoti, aur har banjar registan bekaar. Par duniya aisi nahi hai ,  aur yahi gap geography ko padhne laayak banata hai. (Ispe kuch lessons baad aur baat karenge.)"
         },
         {
-          "turn_index": 8,
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 102,
+          "hash": "e14a9af0bf165b5e2f0b3761e762b82ea270e5a9189a1046ac7b43ad39a88f78",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e14a9af0bf165b5e2f0b3761e762b82ea270e5a9189a1046ac7b43ad39a88f78.mp3",
+          "text": "Resources banaye jaate hain, mile nahi ,  insaan ke haath kacche maal ko kaam ki cheez bana dete hain."
+        },
+        {
+          "turn_index": 10,
           "chunk_index": 0,
           "chars": 444,
           "hash": "68bbbc82f4cbdce7e712556a351357f8cd96394bccec2a89df0a72547e832cec",
@@ -672,7 +744,7 @@
           "text": "Ek aur piece hai. Insaan nature ko akele transform nahi karte. Hum yeh kaam technology ke through karte hain, aur institutions banate hain ,  governments, laws, markets, schools ,  taaki sab organise ho aur tezi se ho.\n\nToh teen cheezein ek loop mein bandh jaati hain: nature kaccha maal deti hai, technology use karne deti hai, institutions poore process ko direction aur speed deti hain. Inme se ek bhi nikaal do ,  development ruk jaati hai."
         },
         {
-          "turn_index": 9,
+          "turn_index": 11,
           "chunk_index": 0,
           "chars": 146,
           "hash": "a58c2132f1963c72f45f7ab08efada89a0b32940ffc2169f23c80df6744aed0e",
@@ -680,7 +752,7 @@
           "text": "Nature technology ko feed karti hai, technology institutions ko, institutions decide karti hain hum nature ko kaise use karein. Loop chalte dekho."
         },
         {
-          "turn_index": 10,
+          "turn_index": 12,
           "chunk_index": 0,
           "chars": 143,
           "hash": "e9ef216f67e92e94f0dba566fbce113bc4b348d3f773303f82d434a76cd4162a",
@@ -688,7 +760,7 @@
           "text": "Ek dost kehta hai: 'Resources toh bas nature ke free gifts hain ,  pade rehte hain, use hone ka wait karte hue.' Sabse sahi correction kya hai?"
         },
         {
-          "turn_index": 11,
+          "turn_index": 13,
           "chunk_index": 0,
           "chars": 74,
           "hash": "530e87c98b5d28b77a33a189fcca8723daeaf30cb325bbe17ec71c1d8d2b67ca",
@@ -696,7 +768,7 @@
           "text": "Har item kisi alag gate pe atka hai ,  ya teeno paar kar gaya. Match karo."
         },
         {
-          "turn_index": 12,
+          "turn_index": 14,
           "chunk_index": 0,
           "chars": 424,
           "hash": "9e32ca5b2636b146a768b8323a4d47b9bd3b7ae675677590b315ab6b16673cfd",
@@ -704,7 +776,7 @@
           "text": "Apne kamre mein dekho aur koi ek aam cheez uthao ,  pencil, phone, ya steel ka tumbler.\n\nPaper pe use ulta trace karo: nature mein woh kis kacche maal se shuru hui thi? Phir use teeno gates se guzaaro ,  kis technology ne us material ko usable banaya, lagbhag kis cheez ne use affordable banaya, aur use use karna culturally theek kyun hai?\n\n2, 3 lines likho. Phir neeche apni cheez aur uska shuruaati kaccha maal type karo."
         },
         {
-          "turn_index": 13,
+          "turn_index": 15,
           "chunk_index": 0,
           "chars": 62,
           "hash": "2fc59beb7b99dbb097460b0ef1af8b8911a2ba8e167191b61d40a75bf78c8af0",
@@ -712,7 +784,7 @@
           "text": "Har resource ko paar karne padne waale teen tests yaad kar lo."
         },
         {
-          "turn_index": 13,
+          "turn_index": 15,
           "chunk_index": 1,
           "chars": 92,
           "hash": "9f72b5b5fe55365567657dee4705aea79eaecf6969df87ff04161135d01b2a22",
@@ -720,7 +792,7 @@
           "text": "Ek resource ko technologically blank, economically blank, aur culturally blank hona chahiye."
         },
         {
-          "turn_index": 14,
+          "turn_index": 16,
           "chunk_index": 0,
           "chars": 267,
           "hash": "90a1762c7610766537b05a8e82c8adfbf94dd4dd205865bdd038502b1abcd2fc",
@@ -728,7 +800,7 @@
           "text": "Aaj se pehle, kya tum resources ko 'nature ke free gifts' samajhte the? Koi ek cheez batao ,  koi material, jagah, ya rozmarra ki cheez ,  jise ab tum thoda alag tarah se dekhte ho.\n\nKoi sahi jawaab nahi hai. Bas woh cheez note karo jisne tumhe rukne pe majboor kiya."
         },
         {
-          "turn_index": 15,
+          "turn_index": 17,
           "chunk_index": 0,
           "chars": 58,
           "hash": "a6ef291ce0f6d6622bfd5fa6ca675f1d8c9a19b9c94ec61eeb85cf9c8668bf16",
@@ -736,7 +808,7 @@
           "text": "Ab tum kacche maal aur ek resource mein fark kar sakte ho."
         },
         {
-          "turn_index": 15,
+          "turn_index": 17,
           "chunk_index": 1,
           "chars": 562,
           "hash": "ddf7e9e5f13b9acb0007b07ff9815e9075b84a8e6b33066ecb0293cc260e41d7",
@@ -751,8 +823,8 @@
       "lesson_slug": "four-ways-to-classify-a-resource",
       "voiceId": "gHu9GtaHOXcSqFTK06ux",
       "model": "eleven_multilingual_v2",
-      "chunk_count": 17,
-      "total_chars": 4642,
+      "chunk_count": 18,
+      "total_chars": 4708,
       "chunks": [
         {
           "turn_index": 1,
@@ -797,13 +869,21 @@
         {
           "turn_index": 6,
           "chunk_index": 0,
+          "chars": 66,
+          "hash": "b1fa5fb592ba064e7e2f112ae7d6e95aca300287e531a1b8f81058af7764e3b2",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b1fa5fb592ba064e7e2f112ae7d6e95aca300287e531a1b8f81058af7764e3b2.mp3",
+          "text": "Baayein renewable, daayein non-renewable ,  fark sirf time ka hai."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
           "chars": 498,
           "hash": "35e80530477de3e564d3f9ebc89a43889751ff315b447e244548deb0f12751bb",
           "storage_path": "gHu9GtaHOXcSqFTK06ux/35e80530477de3e564d3f9ebc89a43889751ff315b447e244548deb0f12751bb.mp3",
           "text": "Lens 3 ,  Ownership. Yeh kiska hai?\n\n- Individual ,  ek private well, ek family ki farmland.\n- Community ,  gaon ki grazing common, public talaab.\n- National ,  desh ki seemaon ke andar sab kuch: uske minerals, forests, rivers, aur kinaare se 12 nautical miles tak ka samundar.\n- International ,  kisi bhi coast se 200 km ke aage ka khula samundar. Use koi ek desh own nahi karta; global institutions use govern karti hain.\n\nIndia ke zyaadatar forests nation manage karti hai. National. Teesra tag."
         },
         {
-          "turn_index": 7,
+          "turn_index": 8,
           "chunk_index": 0,
           "chars": 719,
           "hash": "2ce53c60ec68b99eba0ace33dd44fe91500ad7cf617ef7bac7749750405ff84c",
@@ -811,7 +891,7 @@
           "text": "Lens 4 ,  Status of development. Yahi woh hai jise students gadbada dete hain, toh thoda dheere chalo.\n\n- Potential ,  kisi region mein maujood hai par humne abhi use nahi kiya (Rajasthan ki solar aur wind).\n- Developed ,  survey ho chuka, maapa ja chuka, aur active use mein hai.\n- Stock ,  material bilkul wahin hai, par hamare paas use use karne ki technology hi nahi. Water hydrogen aur oxygen hai ,  ek bahut bada fuel ,  par hum use bade scale pe unlock nahi kar sakte. Toh woh stock hai.\n- Reserve ,  stock ka woh hissa jise hum aaj ki technology se use kar sakte hain par abhi shuru nahi kiya ,  jaise future ke liye bachaaya gaya khada forest.\n\nJo forest hum baad ke liye bacha rahe hain? Reserve. Chautha tag."
         },
         {
-          "turn_index": 8,
+          "turn_index": 9,
           "chunk_index": 0,
           "chars": 89,
           "hash": "891766965b12ea43ceae3ea1ea9da6b20ff9d68daa2016509d1b0ffcb5f6820e",
@@ -819,7 +899,7 @@
           "text": "Wahi forest biotic, renewable, national, AUR ek reserve hai ,  chaar lenses, ek resource."
         },
         {
-          "turn_index": 9,
+          "turn_index": 10,
           "chunk_index": 0,
           "chars": 238,
           "hash": "0ed4e27350f586ec8d07a2b844b891f4d14fff7cf751347e8871fa428659dda4",
@@ -827,7 +907,7 @@
           "text": "Dekha kya hua? Humein kabhi ek box chunna hi nahi pada. Forest biotic aur renewable aur national aur ek reserve hai ,  sab ek saath sach.\n\nYahi poora skill hai: yeh mat poocho \"yeh kaunsi kism hai?\" Poocho \"chaaron lenses kya kehti hain?\""
         },
         {
-          "turn_index": 10,
+          "turn_index": 11,
           "chunk_index": 0,
           "chars": 200,
           "hash": "dadc317189f0f685c0598155d124d5d1790c3a37f325f4c29b0036d54a2f5a1d",
@@ -835,7 +915,7 @@
           "text": "Water ko hydrogen aur oxygen mein toda ja sakta hai ,  ek bahut bada energy source ,  par hamare paas use bade scale pe karne ki technology abhi nahi hai. Development ke terms mein woh energy kya hai?"
         },
         {
-          "turn_index": 11,
+          "turn_index": 12,
           "chunk_index": 0,
           "chars": 54,
           "hash": "d60f77f34c1d8017677b017270402f06bc179d3983dca0ff7d27b8c1d0f38b0e",
@@ -843,7 +923,7 @@
           "text": "Har resource ko uski ownership category se match karo."
         },
         {
-          "turn_index": 12,
+          "turn_index": 13,
           "chunk_index": 0,
           "chars": 416,
           "hash": "d94dd071f49ab7b4d8edb1d364856893f12f52561e130c10951b8d975b1fa2db",
@@ -851,7 +931,7 @@
           "text": "Apni rozmarra ki zindagi se koi ek resource lo ,  ghar ki cooking gas, jo paani tum peete ho, ya notebook ka paper.\n\nPaper pe use chaaron lenses se guzaaro:\n1. Origin ,  biotic ya abiotic?\n2. Exhaustibility ,  renewable ya non-renewable?\n3. Ownership ,  individual, community, national, ya international?\n4. Development ,  potential, developed, stock, ya reserve?\n\nNeeche apna resource aur uske chaar tags type karo."
         },
         {
-          "turn_index": 13,
+          "turn_index": 14,
           "chunk_index": 0,
           "chars": 28,
           "hash": "dbe017ad9c763254b990e46a28f5a55d6a2faf10759697889cfe6f29cc056125",
@@ -859,7 +939,7 @@
           "text": "Origin ke terms yaad kar lo."
         },
         {
-          "turn_index": 13,
+          "turn_index": 14,
           "chunk_index": 1,
           "chars": 165,
           "hash": "e9de0f3e2e84d2b204a88adcd18dde168cfb444b1b53dd8756f96ae0cee5ddfd",
@@ -867,7 +947,7 @@
           "text": "Biosphere se aane waale, life waale resources ,  jaise forests aur fisheries ,  blank kehlaate hain. Rocks aur metals jaise non-living resources blank kehlaate hain."
         },
         {
-          "turn_index": 14,
+          "turn_index": 15,
           "chunk_index": 0,
           "chars": 184,
           "hash": "2151d90ce6d8403986053a704e14c389d6cc69836d4efddf08a302f98fb59355",
@@ -875,7 +955,7 @@
           "text": "Chaaron lenses mein se kaunsi sabse mushkil lagi samajhne mein ,  aur aakhir mein kis cheez se woh click hui?\n\nKoi sahi jawaab nahi. Bas woh ek batao jisne tumhe sabse zyaada uljhaaya."
         },
         {
-          "turn_index": 15,
+          "turn_index": 16,
           "chunk_index": 0,
           "chars": 72,
           "hash": "2606f55d654104ac91c73cfdc44db4682258523eb4748ab817df2e39940389c5",
@@ -883,7 +963,7 @@
           "text": "Ab tum kisi bhi resource ko ek saath chaar tareeke se sort kar sakte ho."
         },
         {
-          "turn_index": 15,
+          "turn_index": 16,
           "chunk_index": 1,
           "chars": 441,
           "hash": "b9c3db78efa6a35645d103c82e5fae02c449647c2e9bc9e8e8edb29c359c1c12",
@@ -898,8 +978,8 @@
       "lesson_slug": "sustainable-development-and-conservation",
       "voiceId": "gHu9GtaHOXcSqFTK06ux",
       "model": "eleven_multilingual_v2",
-      "chunk_count": 17,
-      "total_chars": 4713,
+      "chunk_count": 19,
+      "total_chars": 4818,
       "chunks": [
         {
           "turn_index": 1,
@@ -952,13 +1032,21 @@
         {
           "turn_index": 7,
           "chunk_index": 0,
+          "chars": 40,
+          "hash": "8866f6d0a72e27175bae6ddcd03c8739ce2204aab6b38da67cef240c2f602eeb",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/8866f6d0a72e27175bae6ddcd03c8739ce2204aab6b38da67cef240c2f602eeb.mp3",
+          "text": "Agenda 21: globally socho, locally karo."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
           "chars": 422,
           "hash": "a8d9e54afbd0483d254120ee8b56cd2586cafb6db674bcec94fad8a2987d7fb0",
           "storage_path": "gHu9GtaHOXcSqFTK06ux/a8d9e54afbd0483d254120ee8b56cd2586cafb6db674bcec94fad8a2987d7fb0.mp3",
           "text": "Rio kahin se achaanak nahi aaya. Kuch thinkers ise dashakon pehle aata dekh rahe the:\n\n- 1968 ,  Club of Rome ne resources bachaane ki pehli systematic awaaz uthaayi.\n- 1974 ,  Schumacher ki kitaab Small is Beautiful ne Gandhi ki soch ko duniya tak pahunchaaya.\n- 1987 ,  Brundtland Report (Our Common Future) ne asal mein sustainable development term gadha.\n\nPhir, 1992 mein, Rio ne is idea ko ek global agenda bana diya."
         },
         {
-          "turn_index": 8,
+          "turn_index": 9,
           "chunk_index": 0,
           "chars": 70,
           "hash": "b363fcb5fb6c95dd19a1c4cfe3711760ba89809a37bc0c64676f81d5d0e2ae5d",
@@ -966,7 +1054,7 @@
           "text": "Chaar milestones, sustainable development ke idea ki taraf badhte hue."
         },
         {
-          "turn_index": 9,
+          "turn_index": 10,
           "chunk_index": 0,
           "chars": 366,
           "hash": "8a032fb09508256b119de923ef5885f8e19db9187d1c9372938a292682dcc339",
@@ -974,7 +1062,15 @@
           "text": "Ab woh line jiska maine shuru mein wada kiya tha. Gandhi ne kaha:\n\n\"Yahan har kisi ki zaroorat ke liye kaafi hai, par kisi ek ke laalach ke liye nahi.\"\n\nUnhone resource depletion ke do mujrim bataye: laalchi, swaarthi log, aur mass production ka exploitative model. Unka alternative mass production nahi tha ,  woh tha production by the masses. Chhota, local, kaafi."
         },
         {
-          "turn_index": 10,
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 65,
+          "hash": "15ea3d454892419a4350208b5d4cba4053eccd8618f5c30868aa1e17589f4a6b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/15ea3d454892419a4350208b5d4cba4053eccd8618f5c30868aa1e17589f4a6b.mp3",
+          "text": "Har kisi ki zaroorat ke liye kaafi, kisi ke laalach ke liye nahi."
+        },
+        {
+          "turn_index": 12,
           "chunk_index": 0,
           "chars": 138,
           "hash": "e8542e67ea942ba14166270d9afca6cd4efb720eba0456e848bb98b5f9db2088",
@@ -982,7 +1078,7 @@
           "text": "Ek classmate kehta hai: 'Sustainable development ka matlab bas resources use karna band karo aur saari growth rok do.' Correction kya hai?"
         },
         {
-          "turn_index": 11,
+          "turn_index": 13,
           "chunk_index": 0,
           "chars": 60,
           "hash": "ec6640000ebe4b77bb2993b23f48b6b88dbc8dd8a6343e94a7130cd8ecd29b3c",
@@ -990,7 +1086,7 @@
           "text": "Conservation ke milestones ko unke hone ke order mein lagao."
         },
         {
-          "turn_index": 12,
+          "turn_index": 14,
           "chunk_index": 0,
           "chars": 359,
           "hash": "9bc2b6c64df0ac204a98a49853c25f8572c9ad66e788dec01573bd0abce5d876",
@@ -998,7 +1094,7 @@
           "text": "Aaj tumne jo teen resources use kiye ,  water, electricity, paper, fuel, food, kuch bhi ,  un teeno ko chuno.\n\nHar ek ke liye ek specific tareeka likho jisse tum kam use kar sako bina us cheez ko khoye jiski tumhe sach mein zaroorat hai. Gandhi ka test use karo: zaroorat ko laalach se alag karo.\n\nNeeche apne teen resources aur har ek pe ek action type karo."
         },
         {
-          "turn_index": 13,
+          "turn_index": 15,
           "chunk_index": 0,
           "chars": 56,
           "hash": "996778abd06ae73f3957b71b301d2ef0ffae198b153667aaa9232c4205a226d6",
@@ -1006,7 +1102,7 @@
           "text": "Woh definition poori karo jo Brundtland ne duniya ko di."
         },
         {
-          "turn_index": 13,
+          "turn_index": 15,
           "chunk_index": 1,
           "chars": 105,
           "hash": "9f582d34fb6fc5020f191fab8169fba453dc9833e50766e16832c21d2b8ae172",
@@ -1014,7 +1110,7 @@
           "text": "Sustainable development blank ki needs poori karta hai bina blank generations ki needs se samjhauta kiye."
         },
         {
-          "turn_index": 14,
+          "turn_index": 16,
           "chunk_index": 0,
           "chars": 232,
           "hash": "ec66ca7c8c5679f57bb3f8d83437d5883095a72f313dae2244588970f24ef67e",
@@ -1022,7 +1118,7 @@
           "text": "\"Har kisi ki zaroorat ke liye kaafi, kisi ke laalach ke liye nahi.\"\n\nTumhari apni zindagi mein woh jagah kahan hai jahan zaroorat aur laalach ke beech line kheenchna sach mein mushkil hai? Koi sahi jawaab nahi ,  bas imaandaar raho."
         },
         {
-          "turn_index": 15,
+          "turn_index": 17,
           "chunk_index": 0,
           "chars": 77,
           "hash": "1341f66aea173debfd38626c96798e521189942aaed93156c314665ca1aa0a31",
@@ -1030,7 +1126,7 @@
           "text": "Ab tum jaante ho ki sustainable development hum se asal mein kya maangti hai."
         },
         {
-          "turn_index": 15,
+          "turn_index": 17,
           "chunk_index": 1,
           "chars": 632,
           "hash": "17af615908c574d49735591553efe2061a9f3fa752c7895de3ba3f8c6e77e63e",
@@ -1045,8 +1141,8 @@
       "lesson_slug": "resource-planning-in-india",
       "voiceId": "gHu9GtaHOXcSqFTK06ux",
       "model": "eleven_multilingual_v2",
-      "chunk_count": 17,
-      "total_chars": 4697,
+      "chunk_count": 19,
+      "total_chars": 4847,
       "chunks": [
         {
           "turn_index": 1,
@@ -1067,13 +1163,21 @@
         {
           "turn_index": 3,
           "chunk_index": 0,
+          "chars": 70,
+          "hash": "a125ecb2db709732d9fd796fc8cfe99a4774454bb098c2b80608705a7fd4b35c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a125ecb2db709732d9fd796fc8cfe99a4774454bb098c2b80608705a7fd4b35c.mp3",
+          "text": "Ek desh, bahut uneven ,  kuch resources mein strong, kuch mein khaali."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
           "chars": 86,
           "hash": "32d87575fab2ef0af477931b50474bcd1f155c8c53eca3d1d2e2c42631e60b48",
           "storage_path": "gHu9GtaHOXcSqFTK06ux/32d87575fab2ef0af477931b50474bcd1f155c8c53eca3d1d2e2c42631e60b48.mp3",
           "text": "India ke resources bahut uneven hain ,  har region kuch mein strong, kuch mein khaali."
         },
         {
-          "turn_index": 4,
+          "turn_index": 5,
           "chunk_index": 0,
           "chars": 415,
           "hash": "d1c083e82a75ee98f18d6d40daa0ecc709d45b29390d2a67c422b3e407451973",
@@ -1081,7 +1185,7 @@
           "text": "Jab koi desh itna uneven ho, toh tum sirf umeed nahi kar sakte ki resources wahan pahunch jaayenge jahan zaroorat hai. Tum plan karte ho.\n\nResource planning resources ko samajhdaari se use karne ki widely accepted strategy hai ,  na barbaad, na aankh band karke. India ise Independence ke baad ke pehle hi Five Year Plan se seriously le raha hai, aur yeh har level pe hoti hai: national, state, regional, aur local."
         },
         {
-          "turn_index": 5,
+          "turn_index": 6,
           "chunk_index": 0,
           "chars": 452,
           "hash": "aedfe9888ef51ffb33ad20ccc7e56ffd05ad8f7160fe2cad50de40f44b31c43a",
@@ -1089,7 +1193,7 @@
           "text": "India mein resource planning teen steps mein chalti hai:\n\n1. Identify aur inventory ,  survey, map, aur maapo ki kaunse resources kahan hain, aur kitni quantity aur quality mein.\n2. Planning structure banao ,  woh technology, skills, aur institutions jamao jo development ko actually anjaam dein.\n3. National plans se match karo ,  har resource plan ko desh ke overall development goals se line up karo.\n\nKoi bhi step chhoot gaya ,  plan ruk jaata hai."
         },
         {
-          "turn_index": 6,
+          "turn_index": 7,
           "chunk_index": 0,
           "chars": 93,
           "hash": "25e7a8cc24e5be045e7d4cf030d2f2e418ac0f16d3437137d868ff334f526088",
@@ -1097,7 +1201,7 @@
           "text": "Jo hai use identify karo, use develop karne ka structure banao, national goals se align karo."
         },
         {
-          "turn_index": 7,
+          "turn_index": 8,
           "chunk_index": 0,
           "chars": 354,
           "hash": "30279d45cc18d14705e37c0a1569b317be8fa3afeb7fbf9035079806efb0f079",
@@ -1105,7 +1209,15 @@
           "text": "Ab woh idea jo is poore course ko bandh deta hai.\n\nResource hona aise hai jaise kitchen mein ingredients hona. Sirf ingredients koi meal nahi hote. Tumhe abhi bhi recipe chahiye ,  woh hai technology ,  aur ek chalti hui kitchen ,  woh hain institutions (laws, markets, skilled log, government).\n\nResources ka hona :hl[zaroori hai, par kaafi kabhi nahi.]"
         },
         {
-          "turn_index": 8,
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 80,
+          "hash": "35230e5be3644a392a69b4ff2b64448e3684adc8bcafbe4bee59e4fd17a13198",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/35230e5be3644a392a69b4ff2b64448e3684adc8bcafbe4bee59e4fd17a13198.mp3",
+          "text": "Resources ingredients hain. Technology aur institutions recipe aur kitchen hain."
+        },
+        {
+          "turn_index": 10,
           "chunk_index": 0,
           "chars": 326,
           "hash": "d9bd4934163893cace29940bfcc33e5e5fb82d22e827b4fcfe06233ca0e216cb",
@@ -1113,7 +1225,7 @@
           "text": "Agar sirf resources hi tumhe ameer banaate toh kya tootta? Toh Jharkhand, us saare coal pe baitha, India ke sabse ameer rajyon mein hota. Hai nahi.\n\nIngredients toh wahan hain. Jo aksar nahi hota woh hai recipe aur kitchen ,  woh technology aur institutions jo dabe hue coal ko roads, schools, jobs, aur power mein badal dein."
         },
         {
-          "turn_index": 9,
+          "turn_index": 11,
           "chunk_index": 0,
           "chars": 437,
           "hash": "aed3c9d07913f73c1c5ad5b2aa0757ffcfacfd18abf9d9e175c4135511a4798a",
@@ -1121,7 +1233,7 @@
           "text": "History is baat ko bedardi se saabit karti hai. Jab colonisers aaye, woh un zameenon ke rich resources se aakarshit the jinhe unhone invade kiya. Par yeh unki behtar technology aur institutions thi jisne unhe woh resources nikaalne ,  aur raj karne ,  diya.\n\nIndia ne yeh colonisation ke lambe phases mein jhela. Jo sabak mila: resources ek desh ko tabhi banaate hain jab unke saath technological development aur institutional change ho."
         },
         {
-          "turn_index": 10,
+          "turn_index": 12,
           "chunk_index": 0,
           "chars": 125,
           "hash": "3941cb6e029423ae6b57df28b51b22eefce1fde75a5b406aa0febfb982170f74",
@@ -1129,7 +1241,7 @@
           "text": "Jharkhand coal aur minerals mein rich hai, phir bhi India ke gareeb rajyon mein se ek hai. Iski sabse achhi vyaakhya kya hai?"
         },
         {
-          "turn_index": 11,
+          "turn_index": 13,
           "chunk_index": 0,
           "chars": 61,
           "hash": "a0f7f75812d52a4c8947462cc63773964e52e28e20f575e6b1f4ebc373c25551",
@@ -1137,7 +1249,7 @@
           "text": "Har region ko usse match karo jiske liye woh jaana jaata hai."
         },
         {
-          "turn_index": 12,
+          "turn_index": 14,
           "chunk_index": 0,
           "chars": 304,
           "hash": "6e2b00907fb624a4f7019ce20eae60cd4e947a052e7924bc08e80271ae7e47f0",
@@ -1145,7 +1257,7 @@
           "text": "Ise apne rajya (ya district) tak le aao.\n\nPaper pe do resources likho jinme woh sach mein rich hai, aur ek zaroori resource jiski usme kami hai. Phir ek line likho: kaunsi technology ya institution use apni strengths behtar use karne mein madad karegi?\n\nNeeche apna rajya aur uski do strengths type karo."
         },
         {
-          "turn_index": 13,
+          "turn_index": 15,
           "chunk_index": 0,
           "chars": 38,
           "hash": "a42d40edd3c575ef5e66606c3fccd2c81afc8ba5b42fca5302d624127ee11688",
@@ -1153,7 +1265,7 @@
           "text": "Poore course ka core idea yaad kar lo."
         },
         {
-          "turn_index": 13,
+          "turn_index": 15,
           "chunk_index": 1,
           "chars": 129,
           "hash": "c96fbe7188a4693b418d7f90938f3e301935682197ceb56af4749a1244ab1ee6",
@@ -1161,7 +1273,7 @@
           "text": "Resources ka hona ek region ki development ke liye blank hai ,  par yeh blank nahi. Technology aur institutions bhi aane chahiye."
         },
         {
-          "turn_index": 14,
+          "turn_index": 16,
           "chunk_index": 0,
           "chars": 259,
           "hash": "095b5a847eae0084b26b65121b48a13ba9b02a8bb9074b83a92bb171313c872a",
@@ -1169,7 +1281,7 @@
           "text": "Resources mein rich par gareeb; resources mein poor par ameer. Kisi bhi cheez ke baare mein socho ,  koi insaan, team, company, ya desh ,  jahan sirf bahut kuch hona kaafi nahi tha, jab tak uske aas-paas sahi system na ho.\n\nKya kami thi? Koi sahi jawaab nahi."
         },
         {
-          "turn_index": 15,
+          "turn_index": 17,
           "chunk_index": 0,
           "chars": 71,
           "hash": "30b4076c0ca4180c0cc5d73062fdb8ea8866dc01f1a3f47ef872a31a5c9ca11c",
@@ -1177,12 +1289,1696 @@
           "text": "Ab tum samjha sakte ho ki daulat development ke barabar kyun nahi hoti."
         },
         {
-          "turn_index": 15,
+          "turn_index": 17,
           "chunk_index": 1,
           "chars": 717,
           "hash": "a23a36461d94267390833e50e67e08341a9da2bbeda3d19b2e3462368b595496",
           "storage_path": "gHu9GtaHOXcSqFTK06ux/a23a36461d94267390833e50e67e08341a9da2bbeda3d19b2e3462368b595496.mp3",
           "text": "India bahut uneven hai ,  yahan coal, wahan paani, registan jo solar energy mein jhulaste hain par baarish ko taraste. Resource planning woh tareeka hai jisse ek desh apne paas jo hai use samajhdaari se use karta hai: identify aur inventory, use develop karne ka structure banao, aur use national goals se match karo. Aur gehra sabak ,  resources sirf zaroori hain, kabhi kaafi nahi. Technology aur institutions hi ingredients ko meal mein badalte hain.\n\nYeh resources ke abstract tour ko poora karta hai. Par sabse zaroori resource woh hai jo literally tumhare pairon ke neeche hai: land. 1.4 billion logon ka desh apni land kaise use karta hai ,  aur woh khatam kyun ho rahi hai? Yahi se agla course shuru hota hai."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/land-as-a-resource/01-land-and-relief-features.yaml",
+      "language": "en",
+      "lesson_slug": "land-and-relief-features",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_flash_v2_5",
+      "chunk_count": 16,
+      "total_chars": 2814,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 231,
+          "hash": "8b5f85007b6971c90ffd1efbd19182480e1be3e9cbed37714f3e0a8e2237f739",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/8b5f85007b6971c90ffd1efbd19182480e1be3e9cbed37714f3e0a8e2237f739.mp3",
+          "text": "A question you've never been asked.\n\nRight now, you are standing ,  or sitting ,  on a resource. You've never not been on it. So when did you last actually think about land?\n\nThat ordinariness is exactly why we take it for granted."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 332,
+          "hash": "358b3139f85e033dc2d395f329fc9f3b1269cf22602bc53f7bbc3c82d32efc9d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/358b3139f85e033dc2d395f329fc9f3b1269cf22602bc53f7bbc3c82d32efc9d.mp3",
+          "text": "Look at what land quietly carries. It holds up our natural vegetation and wildlife, our homes and farms, our factories, roads, and railways. Nearly every human activity happens on it.\n\nAnd here's the catch that makes it precious: land is an asset of finite magnitude. We can't make more of it. Every patch we use up is a patch gone."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 241,
+          "hash": "0f4afe67ff380f39b7006ea6fc08aaf77d6c04a2d17047caeaec7b4720a33373",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/0f4afe67ff380f39b7006ea6fc08aaf77d6c04a2d17047caeaec7b4720a33373.mp3",
+          "text": "Think of land as the stage every activity has to perform on.\n\nBut India's stage isn't flat and uniform. It comes in three great forms ,  mountains, plateaus, and plains (plus its islands) ,  and each one is suited to a different kind of act."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 80,
+          "hash": "d188b4747858b8d04ec74d7ddf2fc9ca35239a3c919429f8411ddd3ef7e0ecbc",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d188b4747858b8d04ec74d7ddf2fc9ca35239a3c919429f8411ddd3ef7e0ecbc.mp3",
+          "text": "About 43% plains, 30% mountains, 27% plateau ,  each offers something different."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 153,
+          "hash": "171f605ed1af10f89acdc4755d01ba1a0ad731eff601133da064757057a564a2",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/171f605ed1af10f89acdc4755d01ba1a0ad731eff601133da064757057a564a2.mp3",
+          "text": "Plains ,  about 43%. Flat, fertile, easy to build and farm on. This is where most of our agriculture and industry sits. The plains are India's workbench."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 246,
+          "hash": "e3ca5e39b884d5e2a87741a1211b1e1e5e056eff8799d51ebe58d12a9ddf5481",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e3ca5e39b884d5e2a87741a1211b1e1e5e056eff8799d51ebe58d12a9ddf5481.mp3",
+          "text": "Mountains ,  about 30%. They look like they just sit there. They don't. Their snow feeds the perennial rivers ,  the ones that flow all year. They draw tourism, and they hold up fragile ecosystems.\n\nThink of the mountains as India's water towers."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 251,
+          "hash": "4ed3c64612bb5c296558e791cc8a4439cf8f37d40fddc4142acdee7548726f0a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/4ed3c64612bb5c296558e791cc8a4439cf8f37d40fddc4142acdee7548726f0a.mp3",
+          "text": "Plateaus ,  about 27%. Old, hard, rocky ground ,  and exactly where India keeps its minerals, fossil fuels, and large stretches of forest.\n\nThe plateaus are the treasure chests. (Remember Jharkhand's coal from the last course? That's plateau country.)"
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 70,
+          "hash": "1d7203002b1215ffe42c339a885a728748452c2146f0426cbc5f35440a540662",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/1d7203002b1215ffe42c339a885a728748452c2146f0426cbc5f35440a540662.mp3",
+          "text": "Plains, mountains, plateau ,  watch each light up with what it offers."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 97,
+          "hash": "12cd8353b6a2c81955f21ea89a9a8051dbb0f29cd230278c96d74b4ad749cd2e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/12cd8353b6a2c81955f21ea89a9a8051dbb0f29cd230278c96d74b4ad749cd2e.mp3",
+          "text": "India keeps most of its minerals, fossil fuels, and forest reserves in one type of relief. Which?"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 51,
+          "hash": "7c3f9b20f5281fc3d4fc306a595ce847683ab081a390c689ba8874b58760927f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7c3f9b20f5281fc3d4fc306a595ce847683ab081a390c689ba8874b58760927f.mp3",
+          "text": "Match each landform to what it mainly offers India."
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 272,
+          "hash": "77d878c35905fdea870317aee1232bf8146b3fd74bd39f5528a9d1c5e6f06bf7",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/77d878c35905fdea870317aee1232bf8146b3fd74bd39f5528a9d1c5e6f06bf7.mp3",
+          "text": "Locate yourself. Which relief feature do you live on or nearest to ,  plain, plateau, or mountain?\n\nOn paper, write one way that landform shapes daily life around you (the crops grown, the industries, the rivers, the tourism). Then type your landform and one effect below."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 33,
+          "hash": "8ac25185ea5974aa3549c7a171d0dc79e712a243ed09c24ded500588dd9bc60a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/8ac25185ea5974aa3549c7a171d0dc79e712a243ed09c24ded500588dd9bc60a.mp3",
+          "text": "Lock in what each landform gives."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "chars": 94,
+          "hash": "8f6502e92fe98aad752a8f1012c3e0f4b78e5170af0ffb1d4ebab6880e538eb4",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/8f6502e92fe98aad752a8f1012c3e0f4b78e5170af0ffb1d4ebab6880e538eb4.mp3",
+          "text": "Mountains ensure the blank flow of many rivers, while plateaus hold India's reserves of blank."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 154,
+          "hash": "4266d022e9cc63d2452ce989cb4696b772e9334842aaf62c15299d98a5a1e3aa",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/4266d022e9cc63d2452ce989cb4696b772e9334842aaf62c15299d98a5a1e3aa.mp3",
+          "text": "Land is finite ,  we can't make more. Knowing that, is there a piece of land near you that you think is being used well, or wasted? Why?\n\nNo right answer."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 67,
+          "hash": "ee4cc3859e56b7e170f57b7e59fd14c63095453be15eb9c1e39e2edd41412739",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ee4cc3859e56b7e170f57b7e59fd14c63095453be15eb9c1e39e2edd41412739.mp3",
+          "text": "You see land as a finite, varied resource ,  not just 'the ground'."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "chars": 442,
+          "hash": "c4b06f93329c0c269f8009d14aceecdecbd690716319c99e7994bfdc6fa3ec8d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c4b06f93329c0c269f8009d14aceecdecbd690716319c99e7994bfdc6fa3ec8d.mp3",
+          "text": "Land carries almost everything we do, and there's only so much of it. India's comes in three great forms ,  plains for farming and industry, mountains for rivers and tourism, plateaus for minerals and forests.\n\nBut knowing what land we have is only half the story. The harder question is how a country of 1.4 billion people actually divides up a fixed amount of land ,  for farms, forests, cities, and everything else. That's the next lesson."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/land-as-a-resource/02-how-india-uses-its-land.yaml",
+      "language": "en",
+      "lesson_slug": "how-india-uses-its-land",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_flash_v2_5",
+      "chunk_count": 15,
+      "total_chars": 3154,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 243,
+          "hash": "3655254181e1b2f51a936950e7f8dad6b0a2fe9eae1fa97145dd464c4e19b816",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/3655254181e1b2f51a936950e7f8dad6b0a2fe9eae1fa97145dd464c4e19b816.mp3",
+          "text": "India's land is 3.28 million square kilometres ,  and not one inch more. Ever.\n\nSo here's the real problem of land use: how do you divide a pie that never grows, among farms, forests, cities, roads, and everything else 1.4 billion people need?"
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 431,
+          "hash": "c06114e8797534fbbb1ed80f7c2f2f3071921f8016425b92d10c883f2e99c8cb",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c06114e8797534fbbb1ed80f7c2f2f3071921f8016425b92d10c883f2e99c8cb.mp3",
+          "text": "To manage it, every patch of land gets filed into a category by how it's used. The main ones:\n\n- Forests\n- Not available for cultivation ,  barren/waste land, and land built over (buildings, roads, factories)\n- Other uncultivated land ,  permanent pastures, tree-crop groves, and culturable waste (left idle over 5 years)\n- Fallow land ,  rested for a season (current) or for 1, 5 years\n- Net sown area ,  the land actually cropped"
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 78,
+          "hash": "183f80b6cd9016b243d56b0ec2945911e04a27a33309674a23dd07e4dfd09380",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/183f80b6cd9016b243d56b0ec2945911e04a27a33309674a23dd07e4dfd09380.mp3",
+          "text": "Net sown area and forest take the biggest slices; the rest is split many ways."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 313,
+          "hash": "6d16333c6125a23332ade9fa0a70fd1e92858e2c9e98922848719f1910fb2bd1",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6d16333c6125a23332ade9fa0a70fd1e92858e2c9e98922848719f1910fb2bd1.mp3",
+          "text": "The slice everyone watches is the net sown area (NSA) ,  the actual land on which crops are sown and harvested.\n\nOne twist: a single field can be cropped more than once a year. Add that double-cropping back in and you get the gross cropped area. So:\n\ngross cropped area = net sown area + area sown more than once."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 398,
+          "hash": "d575606b49f844803db24ad783a644527ea14e45f5049e9c01e415f720f7c8dd",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d575606b49f844803db24ad783a644527ea14e45f5049e9c01e415f720f7c8dd.mp3",
+          "text": "And the budget is wildly uneven across India.\n\nNet sown area is over 80% in Punjab and Haryana ,  almost the whole state is farmed. But it's under 10% in Arunachal Pradesh, Mizoram, Manipur, and the Andaman & Nicobar Islands, where steep, forested terrain leaves little to plough.\n\nBoth physical factors (topography, climate, soil) and human ones (population, technology, culture) decide the split."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 335,
+          "hash": "aba8c94e8b28d51af799b6e187ad2aa81013b123adc0d56715e13ff11c02a2b3",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/aba8c94e8b28d51af799b6e187ad2aa81013b123adc0d56715e13ff11c02a2b3.mp3",
+          "text": "Two quiet alarms hide in this budget.\n\nFirst: forest cover sits near 23% ,  well below the 33% the National Forest Policy (1952) said we need for ecological balance. It has barely moved in decades.\n\nSecond: permanent pasture is shrinking ,  even as we keep one of the world's largest cattle populations. Less grazing land, more mouths."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 80,
+          "hash": "7365ec2dfe21fa4bc994b62251bbc8296866111f0e79b5a14289c08ad87ff8b4",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7365ec2dfe21fa4bc994b62251bbc8296866111f0e79b5a14289c08ad87ff8b4.mp3",
+          "text": "India's forest cover (23%) still falls short of the 33% target set back in 1952."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 75,
+          "hash": "6fc22a081491c37b30e76e2cfeeaad668439fd0ddc4e0c6a41518938d9cad7d5",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6fc22a081491c37b30e76e2cfeeaad668439fd0ddc4e0c6a41518938d9cad7d5.mp3",
+          "text": "A farmer crops the same field twice in one year. How does that field count?"
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 43,
+          "hash": "1cbce95646a88b6679d96211f45e487f4c4aca0e81cab9cc57dea6e2bae8c35d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/1cbce95646a88b6679d96211f45e487f4c4aca0e81cab9cc57dea6e2bae8c35d.mp3",
+          "text": "Match each land-use category to an example."
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 287,
+          "hash": "a3cc0e741dcd717bd113f62a960a38382bd989670e8cd8f7067ea2f70537e5f1",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a3cc0e741dcd717bd113f62a960a38382bd989670e8cd8f7067ea2f70537e5f1.mp3",
+          "text": "Look at the land within a kilometre of where you are. On paper, sort what you can see into the categories from this lesson: forest, built-over (not available for cultivation), cropped (net sown area), pasture, or fallow.\n\nWhich category takes up the most? Type it below with one example."
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 34,
+          "hash": "51ab7bc97740c5f9eaf6906a0beded3180846c870bd61629a12140759c1a9073",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/51ab7bc97740c5f9eaf6906a0beded3180846c870bd61629a12140759c1a9073.mp3",
+          "text": "Lock in two key numbers and terms."
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 1,
+          "chars": 140,
+          "hash": "5da5934ed849d827f7ea340b9816c215dc12ff60694478eaa68126489c001c23",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/5da5934ed849d827f7ea340b9816c215dc12ff60694478eaa68126489c001c23.mp3",
+          "text": "The land on which crops are sown and harvested is the blank sown area. India's forest cover (23%) is still below the desired blank per cent."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 220,
+          "hash": "ef3a760c6b6987e5e1c07b30efb779af5cf0b0051d85cbd6f2c905a6d41d5870",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ef3a760c6b6987e5e1c07b30efb779af5cf0b0051d85cbd6f2c905a6d41d5870.mp3",
+          "text": "If you could shift one per cent of India's land from one use to another ,  say, more forest, or more farmland, or more housing ,  what would you choose, and what would it cost?\n\nNo right answer. Just weigh the trade-off."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 66,
+          "hash": "733ba84bca7ca8202df655a2fd3e8fafc28fab654c0a23bca36831c3f3976270",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/733ba84bca7ca8202df655a2fd3e8fafc28fab654c0a23bca36831c3f3976270.mp3",
+          "text": "You can read India's land-use budget ,  and spot what's shrinking."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 1,
+          "chars": 411,
+          "hash": "957c728573a69f060aacc9ae9d1c907fbeb712351c356e960ee38c2f03af5df7",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/957c728573a69f060aacc9ae9d1c907fbeb712351c356e960ee38c2f03af5df7.mp3",
+          "text": "A fixed 3.28 million sq km, filed into forests, built-over land, pasture, fallow, and net sown area ,  split unevenly by both nature and people, with forest stuck below its 33% target.\n\nBut here's the danger we've been circling: when we push land too hard ,  over-farm it, over-graze it, mine it ,  it doesn't just stay the same. It degrades. What exactly goes wrong, and can we heal it? That's the next lesson."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/land-as-a-resource/03-land-degradation-and-conservation.yaml",
+      "language": "en",
+      "lesson_slug": "land-degradation-and-conservation",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_flash_v2_5",
+      "chunk_count": 16,
+      "total_chars": 3103,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 259,
+          "hash": "5da3d2d9d333d7e63853b84e0ee3eb88ec85f0a76a0903881d44c5d026b54b98",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/5da3d2d9d333d7e63853b84e0ee3eb88ec85f0a76a0903881d44c5d026b54b98.mp3",
+          "text": "Land doesn't bleed. But it scars. And scarred badly enough, it stops feeding us.\n\nThat's not a metaphor you can shrug off: about 95% of our basic needs ,  food, shelter, clothing ,  come from land. Wreck the land and you wreck the source of almost everything."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 159,
+          "hash": "9cab1df1bb6a2004296acd30aaf07f353be7b66306241b33798e85adcb5c4870",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9cab1df1bb6a2004296acd30aaf07f353be7b66306241b33798e85adcb5c4870.mp3",
+          "text": "We don't only use land. We degrade it ,  and we speed up nature's own forces of damage while we're at it.\n\nThree culprits do most of the harm. Let's name them."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 233,
+          "hash": "a0e40ae4b7f74bc911ab896d72ab4436fa5a70e99a42bdb57ec290a505bc0bfc",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a0e40ae4b7f74bc911ab896d72ab4436fa5a70e99a42bdb57ec290a505bc0bfc.mp3",
+          "text": "Culprit 1 ,  mining. When a mine is abandoned, it's left behind as deep scars and heaps of over-burden. In Jharkhand, Chhattisgarh, Madhya Pradesh, and Odisha, mining ,  and the deforestation around it ,  has chewed through the land."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 395,
+          "hash": "8852f73ea2eb9677bc6d07c7d97967aaae0832850e3abf88e5220918c40d6604",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/8852f73ea2eb9677bc6d07c7d97967aaae0832850e3abf88e5220918c40d6604.mp3",
+          "text": "Culprit 2 ,  overgrazing. Too many animals on too little grass strips the land bare, especially in Gujarat, Rajasthan, Madhya Pradesh, and Maharashtra.\n\nCulprit 3 ,  over-irrigation. In Punjab, Haryana, and western Uttar Pradesh, too much water waterlogs the soil, pulling up salts until the land turns saline and alkaline. Strange but true: too much water can ruin land as surely as too little."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 287,
+          "hash": "06c5612d818a332f7d00ee058fb2bc38f4dc2b02c6314cbf9ce2e0644e9f0774",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/06c5612d818a332f7d00ee058fb2bc38f4dc2b02c6314cbf9ce2e0644e9f0774.mp3",
+          "text": "Two quieter culprits finish the job.\n\nDust from mineral processing ,  grinding limestone for cement, calcite and soapstone for ceramics ,  settles on the land and blocks water from soaking in.\n\nAnd industrial effluents ,  untreated waste ,  poison both land and water across the country."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 81,
+          "hash": "4c0f4116adb3733e9f72baed1f9290f9e5e96c3a5958c4d0880e85318ac0f3c3",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/4c0f4116adb3733e9f72baed1f9290f9e5e96c3a5958c4d0880e85318ac0f3c3.mp3",
+          "text": "Mining, overgrazing, over-irrigation, and dust/effluents ,  each leaves its mark."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 351,
+          "hash": "ef6c79e753d14ed3480d8982afd1402c922afb396172685b2f106ff87178f3b1",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ef6c79e753d14ed3480d8982afd1402c922afb396172685b2f106ff87178f3b1.mp3",
+          "text": "Now the hopeful half. Scars can heal ,  if we act.\n\n- Afforestation ,  plant trees back.\n- Manage grazing ,  limit how many animals, and where.\n- Shelter belts ,  rows of trees that break the wind and hold the soil.\n- Stabilise sand dunes with thorny bushes.\n- Manage waste land, control mining, and treat industrial effluents before they're released."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 90,
+          "hash": "e9c1af752d6634394827ce522248185a470b0cb7dad75368820af3c42f3dd89a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e9c1af752d6634394827ce522248185a470b0cb7dad75368820af3c42f3dd89a.mp3",
+          "text": "Bare, degraded land can be brought back ,  trees and shelter belts hold it together again."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 54,
+          "hash": "dcbe0ff4df5bd5a103211630735b24a78a288fdfe39bf0b28eeac4102ccac8a7",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/dcbe0ff4df5bd5a103211630735b24a78a288fdfe39bf0b28eeac4102ccac8a7.mp3",
+          "text": "Which is the main cause of land degradation in Punjab?"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 65,
+          "hash": "f2071b758d8020508965db7143b10452931f3fdafc0a24f2d6003fdc1fb52757",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f2071b758d8020508965db7143b10452931f3fdafc0a24f2d6003fdc1fb52757.mp3",
+          "text": "Match each region to the form of land degradation it's known for."
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 287,
+          "hash": "ffc7c76baf180c5a38df33e8e0adf0637aa0384816a65cf13ed509583e954e7f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ffc7c76baf180c5a38df33e8e0adf0637aa0384816a65cf13ed509583e954e7f.mp3",
+          "text": "Find one piece of degraded or neglected land you've actually seen ,  an eroded slope, a dusty quarry, a salt-crusted field, a barren patch.\n\nOn paper, name the likely cause from this lesson, then pick one conservation method that would help heal it. Type the place and your method below."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 36,
+          "hash": "a849b58a6163b59e89372b9f57437fce5140f53cd03859805dacd58dad1d005e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a849b58a6163b59e89372b9f57437fce5140f53cd03859805dacd58dad1d005e.mp3",
+          "text": "Trace what too much irrigation does."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "chars": 87,
+          "hash": "b75d4389eca94aa24d28f03f719be19553e77290b82b2d1347f16b41ad406e13",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b75d4389eca94aa24d28f03f719be19553e77290b82b2d1347f16b41ad406e13.mp3",
+          "text": "Over-irrigation first causes blank , which then raises the soil's blank and alkalinity."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 208,
+          "hash": "24d567ee29b73a43295fe06af921e8c0ae8a8180e447a71ad628c569a876493d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/24d567ee29b73a43295fe06af921e8c0ae8a8180e447a71ad628c569a876493d.mp3",
+          "text": "Healing land ,  planting shelter belts, treating effluents ,  costs money and patience now, for a benefit years away. Where in life do you find it hardest to pay now for a payoff much later?\n\nNo right answer."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 53,
+          "hash": "2180a448cd44e9d892a048bf4750f1bebf21fa0c3b374547acd1c6cd4ba45b05",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/2180a448cd44e9d892a048bf4750f1bebf21fa0c3b374547acd1c6cd4ba45b05.mp3",
+          "text": "You can name how land degrades ,  and how we heal it."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "chars": 458,
+          "hash": "f390026d1b73357aed933f1d6ecddbfad0dd0657729e07eb04e7a8e4a3b79167",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f390026d1b73357aed933f1d6ecddbfad0dd0657729e07eb04e7a8e4a3b79167.mp3",
+          "text": "Mining scars, overgrazing, over-irrigation's salt, and the dust and effluents of industry all wound the land that meets 95% of our needs. But afforestation, shelter belts, managed grazing, and treated waste can bring it back.\n\nWe've talked about land as a whole. But its single most precious layer is the thin skin on top ,  soil ,  and it takes thousands of years to make. How does soil even form, and what's inside it? That's where the final course begins."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/land-as-a-resource-hinglish/01-land-and-relief-features.yaml",
+      "language": "hinglish",
+      "lesson_slug": "land-and-relief-features",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_multilingual_v2",
+      "chunk_count": 16,
+      "total_chars": 3046,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 276,
+          "hash": "9d6b48df221c4beedce69c4d616254cc3c7a9e9a10a62704ca38ae28d43034ea",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9d6b48df221c4beedce69c4d616254cc3c7a9e9a10a62704ca38ae28d43034ea.mp3",
+          "text": "Ek sawaal jo tumse kabhi nahi poocha gaya.\n\nAbhi is waqt tum ek resource pe khade ,  ya baithe ,  ho. Tum kabhi ispe nahi the, aisa hua hi nahi. Toh tumne aakhri baar land ke baare mein kab socha tha?\n\nYahi aam hona uski sabse badi wajah hai ki hum use granted maan lete hain."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 334,
+          "hash": "7adb6892f4af0535cc8bd697d8962b5c9d04cd916a7ec0dba0bf6778a6e9c9e4",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7adb6892f4af0535cc8bd697d8962b5c9d04cd916a7ec0dba0bf6778a6e9c9e4.mp3",
+          "text": "Dekho land chupchaap kya-kya uthaaye rakhti hai. Yeh hamari natural vegetation aur wildlife, hamare ghar aur khet, hamari factories, roads, aur railways ,  sabko sambhaalti hai. Lagbhag har human activity isi pe hoti hai.\n\nAur yahi cheez ise keemti banati hai: land finite hai. Hum aur nahi bana sakte. Jo patch use ho gaya, woh gaya."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 265,
+          "hash": "bd78215c6558d434ae1de4dcf9d087a5682fec2aae0ec17c9e9fc0d0b847e944",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/bd78215c6558d434ae1de4dcf9d087a5682fec2aae0ec17c9e9fc0d0b847e944.mp3",
+          "text": "Land ko ek stage ki tarah socho jis pe har activity ko perform karna hota hai.\n\nPar India ka stage flat aur ek jaisa nahi hai. Yeh teen badi forms mein aata hai ,  mountains, plateaus, aur plains (plus uske islands) ,  aur har ek alag tarah ke act ke liye bana hai."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 76,
+          "hash": "538f8635a3e584410e0b8ae6691de92dbeeaf220fb4c4171438a12a5ae5713f0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/538f8635a3e584410e0b8ae6691de92dbeeaf220fb4c4171438a12a5ae5713f0.mp3",
+          "text": "Lagbhag 43% plains, 30% mountains, 27% plateau ,  har ek kuch alag deta hai."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 159,
+          "hash": "f70a5a846dac07a5ea16c491b9cd1e1d049d583b4746f84318cf3d40071d1b07",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f70a5a846dac07a5ea16c491b9cd1e1d049d583b4746f84318cf3d40071d1b07.mp3",
+          "text": "Plains ,  lagbhag 43%. Flat, fertile, build aur farm karna aasaan. Yahin hamari zyaadatar agriculture aur industry baithti hai. Plains India ka workbench hain."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 258,
+          "hash": "53d335cda8287e057ccaaa285e3cd91fa90f2f4bfb59d6a7fe99fe9c78a5ede7",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/53d335cda8287e057ccaaa285e3cd91fa90f2f4bfb59d6a7fe99fe9c78a5ede7.mp3",
+          "text": "Mountains ,  lagbhag 30%. Lagta hai bas pade rehte hain. Aisa nahi. Inki barf perennial rivers ko feed karti hai ,  woh jo saal bhar behti hain. Yeh tourism kheenchte hain, aur naazuk ecosystems ko sambhaalte hain.\n\nMountains ko India ke water towers samjho."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 245,
+          "hash": "709f9a79cdcf8b6c94a6d0e12bf7895d94747d90ff66badabd89e8f3aeb80cdb",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/709f9a79cdcf8b6c94a6d0e12bf7895d94747d90ff66badabd89e8f3aeb80cdb.mp3",
+          "text": "Plateaus ,  lagbhag 27%. Puraani, sakht, chattaani zameen ,  aur theek wahin India apne minerals, fossil fuels, aur bade forests rakhta hai.\n\nPlateaus treasure chests hain. (Pichhle course ka Jharkhand ka coal yaad hai? Woh plateau country hai.)"
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 72,
+          "hash": "c34e58a195afeb1745aa2789824394652eeb584820df0a177ad7029af556f9d5",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c34e58a195afeb1745aa2789824394652eeb584820df0a177ad7029af556f9d5.mp3",
+          "text": "Plains, mountains, plateau ,  har ek ko jalte dekho ki woh kya deta hai."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 111,
+          "hash": "2d03dc038711491ffbe4a1926d866cae8fd7a0353009bfe3bb84a2774d9f325b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/2d03dc038711491ffbe4a1926d866cae8fd7a0353009bfe3bb84a2774d9f325b.mp3",
+          "text": "India apne zyaadatar minerals, fossil fuels, aur forest reserves ek hi tarah ki relief mein rakhta hai. Kaunsi?"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 72,
+          "hash": "a351fe918ecf5d30e7dd2daa37c26fa1110bab96c239e87d8fa26102ec7f2ef3",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a351fe918ecf5d30e7dd2daa37c26fa1110bab96c239e87d8fa26102ec7f2ef3.mp3",
+          "text": "Har landform ko usse match karo jo woh mukhya roop se India ko deta hai."
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 295,
+          "hash": "52c88df86f84c88ec7290622f3c2c28f755c0abb341d8bd6fd13f4fbbabbab3c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/52c88df86f84c88ec7290622f3c2c28f755c0abb341d8bd6fd13f4fbbabbab3c.mp3",
+          "text": "Apne aap ko locate karo. Tum kaunsi relief feature pe ya uske paas rehte ho ,  plain, plateau, ya mountain?\n\nPaper pe likho ki woh landform aas-paas ki rozmarra zindagi ko kaise shape karta hai (jo crops ugte hain, industries, rivers, tourism). Phir neeche apna landform aur ek effect type karo."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 39,
+          "hash": "ba900f808d56346b362db272bf997a88c5f290b535f66068437e09a371be24bc",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ba900f808d56346b362db272bf997a88c5f290b535f66068437e09a371be24bc.mp3",
+          "text": "Har landform kya deta hai, yaad kar lo."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "chars": 113,
+          "hash": "c564a72d70cc9e4e5021d495eae6a6bb040531736f6feda7e20cdd4162aabd3c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c564a72d70cc9e4e5021d495eae6a6bb040531736f6feda7e20cdd4162aabd3c.mp3",
+          "text": "Mountains kai rivers ke blank behaav ko ensure karte hain, jabki plateaus India ke blank ke reserves rakhte hain."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 193,
+          "hash": "c847a09f4472291c5bc20f980411514e1a8b875c283713a5c66e8b8ce656e235",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c847a09f4472291c5bc20f980411514e1a8b875c283713a5c66e8b8ce656e235.mp3",
+          "text": "Land finite hai ,  hum aur nahi bana sakte. Yeh jaante hue, kya tumhare aas-paas koi zameen hai jo tumhe lagti hai achhe se use ho rahi hai, ya barbaad ho rahi hai? Kyun?\n\nKoi sahi jawaab nahi."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 83,
+          "hash": "babfb05a64952ebcfde5f8bc6ff295f9910eedf66e59a7c26dce334d27a2a3be",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/babfb05a64952ebcfde5f8bc6ff295f9910eedf66e59a7c26dce334d27a2a3be.mp3",
+          "text": "Ab tum land ko ek finite, varied resource ki tarah dekhte ho ,  sirf 'zameen' nahi."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "chars": 455,
+          "hash": "41569447f60429767b3b9af213108f9fb5213104968720a83a9a2482a895ab0a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/41569447f60429767b3b9af213108f9fb5213104968720a83a9a2482a895ab0a.mp3",
+          "text": "Land hamare lagbhag har kaam ko uthaaye rakhti hai, aur uski ek hadd hai. India ki land teen badi forms mein aati hai ,  plains farming aur industry ke liye, mountains rivers aur tourism ke liye, plateaus minerals aur forests ke liye.\n\nPar hamare paas kaunsi land hai, yeh aadhi kahani hai. Mushkil sawaal yeh hai ki 1.4 billion logon ka desh ek fixed amount of land ko baant kaise hai ,  khet, forest, sheher, aur baaki sab ke liye. Yahi agli lesson hai."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/land-as-a-resource-hinglish/02-how-india-uses-its-land.yaml",
+      "language": "hinglish",
+      "lesson_slug": "how-india-uses-its-land",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_multilingual_v2",
+      "chunk_count": 15,
+      "total_chars": 3479,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 265,
+          "hash": "4efafa573516c48706e70838c023fec86b66c38cdfd29f759899fd0ac5233cc7",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/4efafa573516c48706e70838c023fec86b66c38cdfd29f759899fd0ac5233cc7.mp3",
+          "text": "India ki land 3.28 million square kilometres hai ,  aur ek inch bhi zyaada nahi. Kabhi nahi.\n\nToh land use ki asli problem yahi hai: ek aisi pie ko kaise baanto jo kabhi badhti nahi, 1.4 billion logon ki khet, forest, sheher, roads, aur baaki har zaroorat ke beech?"
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 508,
+          "hash": "42b09b28d6ed902a399d62de29db07aec07187f2673032d0fb7743e78c625442",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/42b09b28d6ed902a399d62de29db07aec07187f2673032d0fb7743e78c625442.mp3",
+          "text": "Ise manage karne ke liye, har patch of land ko ,  woh kaise use hoti hai ,  uske hisaab se ek category mein file kiya jaata hai. Mukhya categories:\n\n- Forests\n- Cultivation ke liye available nahi ,  barren/waste land, aur build ki gayi zameen (buildings, roads, factories)\n- Doosri uncultivated land ,  permanent pastures, tree-crop groves, aur culturable waste (5 saal se zyaada idle)\n- Fallow land ,  ek season rest (current) ya 1, 5 saal ke liye\n- Net sown area ,  woh land jis pe actually crops ugte hain"
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 83,
+          "hash": "cbd76dea0cbbcf3b822b93a4510e2d75599251135c1da14aea7c96bb9a0bb22d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/cbd76dea0cbbcf3b822b93a4510e2d75599251135c1da14aea7c96bb9a0bb22d.mp3",
+          "text": "Net sown area aur forest sabse bade hisse lete hain; baaki kai tarah se bat-ta hai."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 331,
+          "hash": "c01ae31afe422ffe5ffa4d29e5e7d56841d9a35f7d3a7fcdb44adf1fcdccb429",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c01ae31afe422ffe5ffa4d29e5e7d56841d9a35f7d3a7fcdb44adf1fcdccb429.mp3",
+          "text": "Sabse zyaada dekha jaane waala hissa hai net sown area (NSA) ,  woh actual land jis pe crops sown aur harvest hote hain.\n\nEk twist: ek hi field saal mein ek se zyaada baar crop ho sakti hai. Us double-cropping ko wapas jod do toh milta hai gross cropped area. Toh:\n\ngross cropped area = net sown area + ek se zyaada baar sown area."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 450,
+          "hash": "fedaac44aa2f48aba9a53bca5d489ddd585245ba97f6deec4cb7b2c930e3204f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/fedaac44aa2f48aba9a53bca5d489ddd585245ba97f6deec4cb7b2c930e3204f.mp3",
+          "text": "Aur yeh budget India bhar mein bahut uneven hai.\n\nNet sown area Punjab aur Haryana mein 80% se zyaada hai ,  lagbhag poora rajya farm hota hai. Par Arunachal Pradesh, Mizoram, Manipur, aur Andaman & Nicobar Islands mein yeh 10% se kam hai, jahan steep, forested terrain mein halka chalaane ko zameen hi kam bachti hai.\n\nYeh split physical factors (topography, climate, soil) aur human factors (population, technology, culture) dono decide karte hain."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 378,
+          "hash": "d28fdb452f886ddaa2856179c23389b18992f0caff8d4e00689784086c21f293",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d28fdb452f886ddaa2856179c23389b18992f0caff8d4e00689784086c21f293.mp3",
+          "text": "Is budget mein do khaamosh alarm chhupe hain.\n\nPehla: forest cover lagbhag 23% pe hai ,  National Forest Policy (1952) ne ecological balance ke liye jo 33% chahiye kaha tha, usse kaafi neeche. Dashakon se yeh mushkil se hila hai.\n\nDoosra: permanent pasture simat raha hai ,  jabki hum duniya ki sabse badi cattle populations mein se ek rakhte hain. Kam grazing land, zyaada pet."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 67,
+          "hash": "067cde320110b207bc67e2ff0b2b0d5dcd96a57b23f18092bdaf099909e3322a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/067cde320110b207bc67e2ff0b2b0d5dcd96a57b23f18092bdaf099909e3322a.mp3",
+          "text": "India ka forest cover (23%) abhi bhi 1952 ke 33% target se kam hai."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 90,
+          "hash": "50ea942c30c55bf8b5015e02ac372710dc94c76badcbe7ee888fe7d2d55dbc5c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/50ea942c30c55bf8b5015e02ac372710dc94c76badcbe7ee888fe7d2d55dbc5c.mp3",
+          "text": "Ek farmer ek hi field ko saal mein do baar crop karta hai. Woh field kaise count hoti hai?"
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 50,
+          "hash": "d7351f2d97a9890afa6ca4438a88dd8eb959d60f9418cdc8ea507d6d67184b62",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d7351f2d97a9890afa6ca4438a88dd8eb959d60f9418cdc8ea507d6d67184b62.mp3",
+          "text": "Har land-use category ko ek example se match karo."
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 298,
+          "hash": "595828ea0292bed62af36ffc057deb9b815effdb2387c1d2a64ade8434ebae2c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/595828ea0292bed62af36ffc057deb9b815effdb2387c1d2a64ade8434ebae2c.mp3",
+          "text": "Jahan tum ho uske ek kilometre ke andar ki land dekho. Paper pe jo dikhe use is lesson ki categories mein sort karo: forest, build-over (cultivation ke liye available nahi), cropped (net sown area), pasture, ya fallow.\n\nKaunsi category sabse zyaada jagah leti hai? Neeche ek example ke saath likho."
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 37,
+          "hash": "02b04322ed7dcbb073d53977dbfcf26c98eceffa9df3c484ea11b1f01b7f12f6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/02b04322ed7dcbb073d53977dbfcf26c98eceffa9df3c484ea11b1f01b7f12f6.mp3",
+          "text": "Do key numbers aur terms yaad kar lo."
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 1,
+          "chars": 144,
+          "hash": "f5778c28a4671090f692eddd32c1adc9bbd609f06eeb7be0f318b1583ec6d969",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f5778c28a4671090f692eddd32c1adc9bbd609f06eeb7be0f318b1583ec6d969.mp3",
+          "text": "Jis land pe crops sown aur harvest hote hain woh blank sown area hai. India ka forest cover (23%) abhi bhi chahe gaye blank per cent se kam hai."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 225,
+          "hash": "ec3840421299fe1b74c813797e48c79406d86e649182f6dfbaac13f0afac7c47",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ec3840421299fe1b74c813797e48c79406d86e649182f6dfbaac13f0afac7c47.mp3",
+          "text": "Agar tum India ki land ka ek per cent ek use se doosre mein shift kar sakte ,  jaise zyaada forest, ya zyaada farmland, ya zyaada housing ,  tum kya chunte, aur uski keemat kya hoti?\n\nKoi sahi jawaab nahi. Bas trade-off tolo."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 86,
+          "hash": "03f6043336f960d402a3c64df349cc066d96cb3f5d53e6181e941cb073db7f29",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/03f6043336f960d402a3c64df349cc066d96cb3f5d53e6181e941cb073db7f29.mp3",
+          "text": "Ab tum India ka land-use budget padh sakte ho ,  aur dekh sakte ho kya simat raha hai."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 1,
+          "chars": 467,
+          "hash": "dcbca2e16c89225b55314885729a62454002e66d86d03ad947f81600bd360f6f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/dcbca2e16c89225b55314885729a62454002e66d86d03ad947f81600bd360f6f.mp3",
+          "text": "Ek fixed 3.28 million sq km, jo forests, build-over land, pasture, fallow, aur net sown area mein file hota hai ,  nature aur logon dono dwara unevenly bata, forest apne 33% target se neeche atka.\n\nPar jis khatre ke ird-gird hum ghoom rahe the woh yeh hai: jab hum land ko zyaada push karte hain ,  over-farm, over-graze, mine ,  toh woh waisi nahi rehti. Woh degrade hoti hai. Asal mein kya galat hota hai, aur kya hum use theek kar sakte hain? Yahi agli lesson hai."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/land-as-a-resource-hinglish/03-land-degradation-and-conservation.yaml",
+      "language": "hinglish",
+      "lesson_slug": "land-degradation-and-conservation",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_multilingual_v2",
+      "chunk_count": 16,
+      "total_chars": 3620,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 323,
+          "hash": "71909b74e1209e91252e4d911b77d8e19d19dad8b51654c2c427334af59f5ddf",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/71909b74e1209e91252e4d911b77d8e19d19dad8b51654c2c427334af59f5ddf.mp3",
+          "text": "Land bleed nahi karti. Par woh scar hoti hai. Aur agar bahut buri tarah scar ho jaaye, toh woh humein khilana band kar deti hai.\n\nYeh aisa metaphor nahi jise tum jhatak do: hamari lagbhag 95% basic needs ,  khaana, ghar, kapda ,  land se aati hain. Land barbaad karo toh tum lagbhag har cheez ka source barbaad kar dete ho."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 216,
+          "hash": "779622fa21fe72fbc3ee3e336f6ae2c47b05d0150d428b015e52921956844eca",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/779622fa21fe72fbc3ee3e336f6ae2c47b05d0150d428b015e52921956844eca.mp3",
+          "text": "Hum land ko sirf use nahi karte. Hum use degrade karte hain ,  aur is dauraan nature ki apni damage karne waali forces ko bhi tez kar dete hain.\n\nTeen culprits zyaadatar nuksaan karte hain. Chalo unhe naam dete hain."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 245,
+          "hash": "b5feaf609ef86f6e1ea6155f384a1915a1170c32a692756fe918179907971da4",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b5feaf609ef86f6e1ea6155f384a1915a1170c32a692756fe918179907971da4.mp3",
+          "text": "Culprit 1 ,  mining. Jab koi mine chhod di jaati hai, toh peeche reh jaate hain deep scars aur over-burden ke dher. Jharkhand, Chhattisgarh, Madhya Pradesh, aur Odisha mein mining ,  aur uske aas-paas ki deforestation ,  ne land ko kha liya hai."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 461,
+          "hash": "046130157e0260549bc9129ffd88bdcb7c14a2dfbc877205fae94da2dc93e267",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/046130157e0260549bc9129ffd88bdcb7c14a2dfbc877205fae94da2dc93e267.mp3",
+          "text": "Culprit 2 ,  overgrazing. Bahut zyaada jaanwar bahut kam ghaas pe land ko nanga kar dete hain, khaaskar Gujarat, Rajasthan, Madhya Pradesh, aur Maharashtra mein.\n\nCulprit 3 ,  over-irrigation. Punjab, Haryana, aur western Uttar Pradesh mein bahut zyaada paani soil ko waterlog kar deta hai, aur salts ko upar kheench leta hai jab tak land saline aur alkaline na ho jaaye. Ajeeb par sach: bahut zyaada paani land ko utna hi barbaad kar sakta hai jitna bahut kam."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 327,
+          "hash": "5022bc70a53a57873fe4f77c14f3fd4467530151dbbfbc1aa53f39a7b6d79ad3",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/5022bc70a53a57873fe4f77c14f3fd4467530151dbbfbc1aa53f39a7b6d79ad3.mp3",
+          "text": "Do khaamosh culprits kaam poora kar dete hain.\n\nMineral processing se dust ,  cement ke liye limestone, ceramics ke liye calcite aur soapstone peesna ,  land pe baith jaati hai aur paani ko soakne se rok deti hai.\n\nAur industrial effluents ,  bina treat kiya waste ,  poore desh mein land aur water dono ko zehreela karte hain."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 92,
+          "hash": "370c2979831f0d8deb9911fd7c62052b3bfbe31a0da75797c7089992467a2451",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/370c2979831f0d8deb9911fd7c62052b3bfbe31a0da75797c7089992467a2451.mp3",
+          "text": "Mining, overgrazing, over-irrigation, aur dust/effluents ,  har ek apna nishaan chhodta hai."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 406,
+          "hash": "d1d83f388263d0188b6d06a841fede96c2b34edcb0e7eb81355f71ba1f69e8a3",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d1d83f388263d0188b6d06a841fede96c2b34edcb0e7eb81355f71ba1f69e8a3.mp3",
+          "text": "Ab umeed waala aadha hissa. Scars theek ho sakte hain ,  agar hum action lein.\n\n- Afforestation ,  wapas ped lagao.\n- Grazing manage karo ,  kitne jaanwar, aur kahan, limit karo.\n- Shelter belts ,  pedon ki rows jo hawa todti hain aur soil pakadti hain.\n- Sand dunes ko stabilise karo thorny bushes se.\n- Waste land manage karo, mining control karo, aur industrial effluents ko treat karo chhodne se pehle."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 107,
+          "hash": "83c986a58fa27c8bd5b7a1672743e866daf29c4a7049c39399645135c5413f01",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/83c986a58fa27c8bd5b7a1672743e866daf29c4a7049c39399645135c5413f01.mp3",
+          "text": "Bare, degraded land wapas laayi ja sakti hai ,  ped aur shelter belts use phir se ek saath pakad lete hain."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 53,
+          "hash": "c994e6fa24fa4f923f514060b6fd4c17c4ee5d8a5faab111b6c3bb280324053e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c994e6fa24fa4f923f514060b6fd4c17c4ee5d8a5faab111b6c3bb280324053e.mp3",
+          "text": "Punjab mein land degradation ki mukhya wajah kya hai?"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 79,
+          "hash": "5eb9c53bd88b42039135d30cfa9425a85d4326f6a93690cf39d8ac42d69701e8",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/5eb9c53bd88b42039135d30cfa9425a85d4326f6a93690cf39d8ac42d69701e8.mp3",
+          "text": "Har region ko us land degradation se match karo jiske liye woh jaana jaata hai."
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 310,
+          "hash": "dcb34db5168ccd9cca3e99565953db1d6f54d92cbcfbc9c5a60758bdd214f445",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/dcb34db5168ccd9cca3e99565953db1d6f54d92cbcfbc9c5a60758bdd214f445.mp3",
+          "text": "Koi ek degraded ya neglected land dhundo jo tumne sach mein dekhi ho ,  ek eroded slope, ek dhool bhari quarry, ek namak-jami field, ek banjar patch.\n\nPaper pe is lesson se uski sambhavit wajah likho, phir ek conservation method chuno jo use theek karne mein madad kare. Neeche jagah aur apna method type karo."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 52,
+          "hash": "e4b4eefadc96beedf00e096d5079e96dc2ac3eaca7297a5448481913a3df62cf",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e4b4eefadc96beedf00e096d5079e96dc2ac3eaca7297a5448481913a3df62cf.mp3",
+          "text": "Trace karo ki bahut zyaada irrigation kya karti hai."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "chars": 97,
+          "hash": "a715a70d63276d637dc3d06d7832bb19edba1655b88f82d91125dcd276052281",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a715a70d63276d637dc3d06d7832bb19edba1655b88f82d91125dcd276052281.mp3",
+          "text": "Over-irrigation pehle blank paida karti hai, jo phir soil ki blank aur alkalinity badha deti hai."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 263,
+          "hash": "66e91b70c1dcaf240a7a8073ca7fee21221e63785233c79e6eae42a72365fad5",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/66e91b70c1dcaf240a7a8073ca7fee21221e63785233c79e6eae42a72365fad5.mp3",
+          "text": "Land theek karna ,  shelter belts lagana, effluents treat karna ,  abhi paisa aur sabr maangta hai, ek fayde ke liye jo saalon door hai. Zindagi mein kahan tumhe abhi kharch karke baad mein milne waale fayde ke liye sabse mushkil lagta hai?\n\nKoi sahi jawaab nahi."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 90,
+          "hash": "dd4fd9cecda92281f9c91c18f7644695b3945510f2dd547ccd26a2be3a898eca",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/dd4fd9cecda92281f9c91c18f7644695b3945510f2dd547ccd26a2be3a898eca.mp3",
+          "text": "Ab tum bata sakte ho ki land kaise degrade hoti hai ,  aur hum use kaise theek karte hain."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "chars": 499,
+          "hash": "dfdc644d14306c1af0fca8338cfb4fadf5b04c5f92084c5a53d7a3156f51b864",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/dfdc644d14306c1af0fca8338cfb4fadf5b04c5f92084c5a53d7a3156f51b864.mp3",
+          "text": "Mining scars, overgrazing, over-irrigation ka namak, aur industry ki dust aur effluents ,  sab us land ko ghaayal karte hain jo hamari 95% needs poori karti hai. Par afforestation, shelter belts, managed grazing, aur treated waste use wapas la sakte hain.\n\nHumne land ko ek poore roop mein dekha. Par uski sabse keemti parat hai sabse upar ki patli khaal ,  soil ,  aur use banne mein hazaaron saal lagte hain. Soil banti kaise hai, aur uske andar kya hota hai? Yahi se aakhri course shuru hota hai."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/soil-as-a-resource/01-how-soil-forms.yaml",
+      "language": "en",
+      "lesson_slug": "how-soil-forms",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_flash_v2_5",
+      "chunk_count": 16,
+      "total_chars": 2999,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 239,
+          "hash": "ccd6215b183ad9e310998015897c82988842e8b64d4861417c1101cbe483dbe0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ccd6215b183ad9e310998015897c82988842e8b64d4861417c1101cbe483dbe0.mp3",
+          "text": "Start with something that should stop you.\n\nThe soil in your backyard is older than every civilisation that has ever existed. A single centimetre of it took thousands of years to form.\n\nWe walk on it without a thought. Today, we look down."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 260,
+          "hash": "571545371eaea53661168f856ed6a92b07252f68769b1d5892b20fad87cb4ffb",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/571545371eaea53661168f856ed6a92b07252f68769b1d5892b20fad87cb4ffb.mp3",
+          "text": "Soil is the most important natural resource there is. It's the medium every plant grows in, and it quietly supports countless living organisms.\n\nThat's the part people miss: soil is not dead dirt. It is a living system ,  full of life, and itself slowly alive."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 248,
+          "hash": "38f5131193e748191094517774365998a5e8f0ed8e360f041654002735b5fb5f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/38f5131193e748191094517774365998a5e8f0ed8e360f041654002735b5fb5f.mp3",
+          "text": "How does it form? Painfully slowly. Millions of years for just a few centimetres.\n\nNature grinds solid rock down into soil using temperature changes, running water, wind, glaciers, and decomposers ,  living things breaking down other living things."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 284,
+          "hash": "82df05a323723d67bf7bbc8e1f27d3dd35d2f0ca540014a7463b52eb6d5a42b2",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/82df05a323723d67bf7bbc8e1f27d3dd35d2f0ca540014a7463b52eb6d5a42b2.mp3",
+          "text": "Five things decide what kind of soil you get:\n\n- the relief (the lay of the land)\n- the parent rock beneath it\n- the climate\n- the vegetation and other life\n- and time\n\nSame five ingredients, different proportions ,  and you get wildly different soils. (That's the whole next lesson.)"
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 75,
+          "hash": "6b3d33bd5043eeaa0a25d110801549c471dbe70728a219e8eea19f74b786f063",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6b3d33bd5043eeaa0a25d110801549c471dbe70728a219e8eea19f74b786f063.mp3",
+          "text": "Soil sits in layers (horizons) ,  richest on top, solid rock at the bottom."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 366,
+          "hash": "b4faea1229de3de5d03008d538142bca9a4ecdcc891c80f2a0a0857864caba68",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b4faea1229de3de5d03008d538142bca9a4ecdcc891c80f2a0a0857864caba68.mp3",
+          "text": "Read the profile top to bottom:\n\n- Top soil ,  dark, humus-rich, where roots feed. The living layer.\n- Subsoil ,  weathered rock mixed with sand, silt, and clay.\n- Substratum ,  chunks of weathered parent rock.\n- Bedrock ,  the solid, unweathered parent rock it all came from.\n\nThroughout, organic matter (humus) and inorganic matter (minerals) are blended together."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 241,
+          "hash": "58324d348f61f8ecd8b747884b51a9ad15fd155d854e0714192b9b1b55aaf6b8",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/58324d348f61f8ecd8b747884b51a9ad15fd155d854e0714192b9b1b55aaf6b8.mp3",
+          "text": "Here's the picture to keep: soil is a cake baked over millions of years, in layers.\n\nAnd like a cake, the top layer is the richest ,  the humus-filled top soil that actually grows our food. It's also, as you'll see next, the easiest to lose."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 84,
+          "hash": "1257b12cd531c61068c95d1eb9b1ece085b3343b24104d5927deb6780c9810c9",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/1257b12cd531c61068c95d1eb9b1ece085b3343b24104d5927deb6780c9810c9.mp3",
+          "text": "Bedrock weathers, and the living top soil slowly builds up on top ,  over millennia."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 77,
+          "hash": "2e1eb32c19e7e8f58ee659ade60992fd8c61def544dc8464ebf2da77ef87269f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/2e1eb32c19e7e8f58ee659ade60992fd8c61def544dc8464ebf2da77ef87269f.mp3",
+          "text": "Why do geographers call soil a 'living system' rather than just crushed rock?"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 56,
+          "hash": "7f030bbee1c90601a67f0c642fb44b9634d2e3a12fab5fe522fb5a0dd5ed6ff7",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7f030bbee1c90601a67f0c642fb44b9634d2e3a12fab5fe522fb5a0dd5ed6ff7.mp3",
+          "text": "Put the soil layers in order, from the surface downward."
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 276,
+          "hash": "ea61cf3ecbab43ce34d1bf362da2263b1f577252ef264d6b756f9fad0302df35",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ea61cf3ecbab43ce34d1bf362da2263b1f577252ef264d6b756f9fad0302df35.mp3",
+          "text": "Find some real soil ,  a garden, a field, a plant pot, a roadside cutting. Look closely (and gently dig a little if you can).\n\nOn paper, describe the top layer: its colour, whether it's loose or packed, any roots, worms, or bits of leaf. Then type one thing you noticed below."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 25,
+          "hash": "8315d8379b84e6ba642bb7a7f17114a7d6804a3c057b7d608a7d68333bfbee72",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/8315d8379b84e6ba642bb7a7f17114a7d6804a3c057b7d608a7d68333bfbee72.mp3",
+          "text": "Lock in how soil is born."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "chars": 70,
+          "hash": "cabe145a5f0ac34d4a3f363515f0ba3c09036033ecba9f3b8db2c83db7779c73",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/cabe145a5f0ac34d4a3f363515f0ba3c09036033ecba9f3b8db2c83db7779c73.mp3",
+          "text": "Soil forms from the slow breakdown of blank rock, over blank of years."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 188,
+          "hash": "edfde75da73657276af7035fb84e3e48060da726eadbe015d45f7d1db1226c40",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/edfde75da73657276af7035fb84e3e48060da726eadbe015d45f7d1db1226c40.mp3",
+          "text": "A centimetre of soil takes thousands of years; a bad storm can strip it in a day. Does knowing how slow and irreplaceable soil is change how you feel about it? Be honest.\n\nNo right answer."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 59,
+          "hash": "698fb78941174d6bf5b430381b6cf1e967a7e8f4da3abeee31a6cb7dddf7c8f6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/698fb78941174d6bf5b430381b6cf1e967a7e8f4da3abeee31a6cb7dddf7c8f6.mp3",
+          "text": "You see soil as a slow-built, living resource ,  in layers."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "chars": 451,
+          "hash": "6ab67b35862fbe0c2861867cd2672a209d180a95cc6fe123cf1236581f7b47b1",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6ab67b35862fbe0c2861867cd2672a209d180a95cc6fe123cf1236581f7b47b1.mp3",
+          "text": "Soil is the living skin of the Earth: humus-rich top soil over subsoil, substratum, and bedrock, built over millions of years from weathered rock and life ,  shaped by relief, parent rock, climate, vegetation, and time.\n\nBut those five ingredients mix differently across a country as varied as India ,  and the result is a whole palette of soils, each a different colour, each suited to different crops. Which soils, and where? That's the next lesson."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/soil-as-a-resource/02-the-soils-of-india.yaml",
+      "language": "en",
+      "lesson_slug": "the-soils-of-india",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_flash_v2_5",
+      "chunk_count": 18,
+      "total_chars": 3638,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 241,
+          "hash": "75fe824a67adf2580dc790f044c964af666205397deed7fcbd7a70744482d359",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/75fe824a67adf2580dc790f044c964af666205397deed7fcbd7a70744482d359.mp3",
+          "text": "Pick up a handful of soil anywhere in India, and its colour alone hints at what will grow there.\n\nHow can a colour possibly know that? Because colour, texture, and age are clues ,  to the rock the soil came from and the climate that made it."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 175,
+          "hash": "c54e1b466b9a302a64eca15abd6a1372212534df31093e31100f993013ca240c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c54e1b466b9a302a64eca15abd6a1372212534df31093e31100f993013ca240c.mp3",
+          "text": "India's huge variety of rock, climate, and landform has produced a whole palette of soils.\n\nThere are six main types. We'll meet each one ,  and the crops it was born to grow."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 324,
+          "hash": "2d980d9209839de2f2d177db620b1f3e0358ed088e1f1c53d4ef6c0cd407ac31",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/2d980d9209839de2f2d177db620b1f3e0358ed088e1f1c53d4ef6c0cd407ac31.mp3",
+          "text": "1. Alluvial soil ,  the most widespread and important of all. The entire northern plains are made of it, laid down by three great rivers: the Indus, the Ganga, and the Brahmaputra.\n\nRich in potash, phosphoric acid, and lime, it grows sugarcane, paddy, and wheat ,  which is why it's also India's most densely populated soil."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 238,
+          "hash": "81a75cd0775bfebea926b47e9bc9df166d0b274ca928ba633ef4b2194a54ccdb",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/81a75cd0775bfebea926b47e9bc9df166d0b274ca928ba633ef4b2194a54ccdb.mp3",
+          "text": "Alluvial soil even has an age story:\n\n- Bangar ,  old alluvial, with more kanker (lime nodules).\n- Khadar ,  new alluvial, finer and more fertile.\n\nEvery flood lays down fresh Khadar ,  so the rivers keep re-fertilising the land for free."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 387,
+          "hash": "7e4f76c8b57a99804fa1eb2a3e5586c979c68c2e4cd1ab0678a1c956d311d138",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7e4f76c8b57a99804fa1eb2a3e5586c979c68c2e4cd1ab0678a1c956d311d138.mp3",
+          "text": "2. Black soil, also called regur. It was born from the lava of the Deccan trap (basalt rock) ,  that's why it's dark.\n\nIt's clayey, holds moisture brilliantly, and is rich in lime, magnesium, and potash (though poor in phosphorus). Its claim to fame: it is ideal for cotton, which is why it's known as black cotton soil. Found across Maharashtra, Madhya Pradesh, Gujarat, and the Deccan."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 73,
+          "hash": "6aac2fa22cff7c206fa6de27ba2ab36e996b96f3d3901aaf632f1c37bb018ad6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6aac2fa22cff7c206fa6de27ba2ab36e996b96f3d3901aaf632f1c37bb018ad6.mp3",
+          "text": "Six main soils ,  colour is the first clue to each one's story and crops."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 273,
+          "hash": "bf4f79311d19a33b4b6a19c978b8057c7229c16d90612639ddebc37b86b170de",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/bf4f79311d19a33b4b6a19c978b8057c7229c16d90612639ddebc37b86b170de.mp3",
+          "text": "3. Red and Yellow soil ,  forms on old crystalline igneous rock in the lower-rainfall parts of the eastern and southern Deccan.\n\nIt's red because of iron diffusing through the rock ,  and turns yellow when it takes on water (hydrated). The colour is literally rusting rock."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 300,
+          "hash": "d194ec6307a29a2cf953ed91f28a71d93cf2fde5139f1cf56aeebf25ddce4a06",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d194ec6307a29a2cf953ed91f28a71d93cf2fde5139f1cf56aeebf25ddce4a06.mp3",
+          "text": "4. Laterite soil ,  from the Latin later, meaning brick. It forms in tropical climates with sharp wet and dry seasons, where heavy rain leaches the nutrients out.\n\nThe result is acidic and nutrient-poor. But treat it well and it's superb for tea and coffee (Karnataka, Kerala, Tamil Nadu) and cashew."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 390,
+          "hash": "297cb3ac3ad7a66a23374ad031b95f70444009dab205ca6a34c8d7316b773300",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/297cb3ac3ad7a66a23374ad031b95f70444009dab205ca6a34c8d7316b773300.mp3",
+          "text": "5. Arid soil ,  red to brown, sandy, and salty. The dry climate and fierce evaporation leave it short on humus and moisture, with a hard kankar layer below that blocks water. After irrigation, though, it becomes cultivable ,  as in western Rajasthan.\n\n6. Forest soil ,  found in the hills. It's fertile and loamy in the valleys, but thin, coarse, and acidic on the cold, snowy upper slopes."
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 88,
+          "hash": "9c40da9d6f46ff1ec67c1a7ae7209c88452c0d532a0c9745f5d34bec50f6c994",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9c40da9d6f46ff1ec67c1a7ae7209c88452c0d532a0c9745f5d34bec50f6c994.mp3",
+          "text": "In dry heat, black soil splits into deep cracks ,  nature ploughing and aerating itself."
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 59,
+          "hash": "802b97e31ea4a1ddad4de53d325c4ea16e40ca6747f8e4f154401df0be3fec71",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/802b97e31ea4a1ddad4de53d325c4ea16e40ca6747f8e4f154401df0be3fec71.mp3",
+          "text": "In which of these states is black soil predominantly found?"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 39,
+          "hash": "fa9626650a7c2efd06eb8889390ef752865f20c59b36e0fe670dc65d84b21bf1",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/fa9626650a7c2efd06eb8889390ef752865f20c59b36e0fe670dc65d84b21bf1.mp3",
+          "text": "Match each soil to what it's known for."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 275,
+          "hash": "c3de74a914396c60292cdbbd425712fb7e7c4c04ecafc280356fb4077473a2e7",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c3de74a914396c60292cdbbd425712fb7e7c4c04ecafc280356fb4077473a2e7.mp3",
+          "text": "Look at the soil where you live ,  a field, a garden, a construction pit. Note its colour (reddish, black, pale-brown, sandy?).\n\nUsing this lesson, make your best guess at which of the six types it is, and one crop that suits it. Type your soil's colour and your guess below."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 23,
+          "hash": "18bc5cc9ed20b29fc1de8868a04489e75e70ebf6ff4ae337b6d2a368dc20d45e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/18bc5cc9ed20b29fc1de8868a04489e75e70ebf6ff4ae337b6d2a368dc20d45e.mp3",
+          "text": "Lock in the famous one."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "chars": 72,
+          "hash": "40e886abdbfa646028e17962d89934092662425a7d96be6c8033520c0c68ad15",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/40e886abdbfa646028e17962d89934092662425a7d96be6c8033520c0c68ad15.mp3",
+          "text": "Black soil is also called blank soil, and it is ideal for growing blank."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 0,
+          "chars": 172,
+          "hash": "56bf38fce122e033c4e2f70d17be9edf41afcea0cfc77d60afe97ea7e9fc851b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/56bf38fce122e033c4e2f70d17be9edf41afcea0cfc77d60afe97ea7e9fc851b.mp3",
+          "text": "A soil decides what a whole region can grow, eat, and trade. Looking at the soil near you, how do you think it has shaped the food and farming around you?\n\nNo right answer."
+        },
+        {
+          "turn_index": 16,
+          "chunk_index": 0,
+          "chars": 55,
+          "hash": "ef2c82c578e4633af122057c80d851620be493abc426839520d1f8f820cdab1c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ef2c82c578e4633af122057c80d851620be493abc426839520d1f8f820cdab1c.mp3",
+          "text": "You can read India's soils by colour, origin, and crop."
+        },
+        {
+          "turn_index": 16,
+          "chunk_index": 1,
+          "chars": 454,
+          "hash": "7296ebcb7236f0bdf316564c2188551f2be6cfa7f1d422cf600b9906da268424",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7296ebcb7236f0bdf316564c2188551f2be6cfa7f1d422cf600b9906da268424.mp3",
+          "text": "Six soils, one palette: alluvial (the rivers' gift), black regur (lava's cotton soil), red and yellow (rusting rock), laterite (leached but good for tea), arid (sandy, irrigable), and forest (hill soil). Colour is the first clue to each.\n\nBut every one of these took thousands of years to build ,  and can be stripped away in a single season. How does soil erode, and how do we hold it down? That's the final lesson ,  and the close of the whole chapter."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/soil-as-a-resource/03-soil-erosion-and-conservation.yaml",
+      "language": "en",
+      "lesson_slug": "soil-erosion-and-conservation",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_flash_v2_5",
+      "chunk_count": 16,
+      "total_chars": 3151,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 195,
+          "hash": "4c4cf91ec3857ac0e1e8ee85cb4990a08f0ca05fe7257a379ba879bdb7326e52",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/4c4cf91ec3857ac0e1e8ee85cb4990a08f0ca05fe7257a379ba879bdb7326e52.mp3",
+          "text": "Remember: a single centimetre of soil takes thousands of years to make.\n\nOne bad monsoon can wash it off a hillside and into the sea in an afternoon. That stripping-away has a name: soil erosion."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 285,
+          "hash": "6391a06f223f2db19e3d1d0233e4078e0c8026a3b5ddb70cc1de5075cb50b8a9",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6391a06f223f2db19e3d1d0233e4078e0c8026a3b5ddb70cc1de5075cb50b8a9.mp3",
+          "text": "Normally, soil forms and erodes at the same gentle pace ,  perfectly balanced. Nature keeps the books even.\n\nWe break the balance. Deforestation, overgrazing, construction, and mining loosen the soil, and then nature's wind, water, and glaciers carry it off faster than it can rebuild."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 213,
+          "hash": "a1e0ea1e2b546aea95ba08af56bdfe9a338f062c6b5a8599a9b8a94d6b295d4e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a1e0ea1e2b546aea95ba08af56bdfe9a338f062c6b5a8599a9b8a94d6b295d4e.mp3",
+          "text": "Erosion comes in a few forms.\n\nGully erosion ,  running water cuts deep channels (gullies) into clayey soil. The land becomes unfit to farm ,  bad land. In the Chambal basin, these channels are the famous ravines."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 252,
+          "hash": "1a4df58bc3b48bc442cf74141c76656622c07077114e8a1f66da4f958c6093ca",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/1a4df58bc3b48bc442cf74141c76656622c07077114e8a1f66da4f958c6093ca.mp3",
+          "text": "Sheet erosion ,  water spreads as a thin sheet across a field and peels the top soil off evenly. It's so gradual you barely notice ,  until the fertile layer is simply gone.\n\nWind erosion ,  on flat, dry land, wind lifts loose soil and carries it away."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 181,
+          "hash": "f030a865675fe068a1a69b49791670dd77649eb7f9c7bd9da4014e7afab79308",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f030a865675fe068a1a69b49791670dd77649eb7f9c7bd9da4014e7afab79308.mp3",
+          "text": "And sometimes we cause it, by farming wrong.\n\nPlough a slope up and down and you carve neat channels for water to race down ,  speeding erosion. The plough itself becomes the enemy."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 92,
+          "hash": "0aaaf62b7ffb3669e314d49677a5e47a65d4a1876e655e1740237443302b67c2",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/0aaaf62b7ffb3669e314d49677a5e47a65d4a1876e655e1740237443302b67c2.mp3",
+          "text": "Contour ploughing, terracing, strip cropping, and shelter belts each hold the soil in place."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 477,
+          "hash": "1cb7667202441854bdcb2e8fb573d79a347842c23d587628e2dea8d1b38aef37",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/1cb7667202441854bdcb2e8fb573d79a347842c23d587628e2dea8d1b38aef37.mp3",
+          "text": "Now the defences. We actually know how to hold soil down:\n\n- Contour ploughing ,  plough along the slope's contour lines, not up and down. It slows the water.\n- Terrace farming ,  cut the slope into steps, each one catching soil. (The western and central Himalayas are terraced beautifully.)\n- Strip cropping ,  leave strips of grass between crops to break the wind's force.\n- Shelter belts ,  rows of trees that block wind and have even stabilised sand dunes in western India."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 79,
+          "hash": "dc6a630d5bf4de5dfb80042cd61c8ca1e9cdc6b11139333bacb550c43d946096",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/dc6a630d5bf4de5dfb80042cd61c8ca1e9cdc6b11139333bacb550c43d946096.mp3",
+          "text": "On a bare slope, water races down and strips soil. Terraces slow it to a crawl."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 55,
+          "hash": "7f311d57700ee561b1b4299c0a69db07725a55dec4dee7e4c6b1ce8117757127",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7f311d57700ee561b1b4299c0a69db07725a55dec4dee7e4c6b1ce8117757127.mp3",
+          "text": "In which state is terrace cultivation widely practised?"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 47,
+          "hash": "6ca9ebdb00e4ca8fe292938dd27dfe3e3685cb1c4c2ff09a3f7c74fb9d6154c9",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6ca9ebdb00e4ca8fe292938dd27dfe3e3685cb1c4c2ff09a3f7c74fb9d6154c9.mp3",
+          "text": "Match each conservation method to what it does."
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 271,
+          "hash": "4fc5a3cf2167e3fb5acb8b41609f422374aca7798c1c4683f1396fe8cade9c31",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/4fc5a3cf2167e3fb5acb8b41609f422374aca7798c1c4683f1396fe8cade9c31.mp3",
+          "text": "Look for soil erosion or a conservation method near you ,  a washed-out slope or gully, a terraced hillside, a row of trees along a field, grass strips between crops.\n\nOn paper, note what you found and whether it's causing erosion or fighting it. Type what you saw below."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 32,
+          "hash": "d2960021d005ff6fb4a13920279f5784a905757bf3aec93227c7653c906e5543",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d2960021d005ff6fb4a13920279f5784a905757bf3aec93227c7653c906e5543.mp3",
+          "text": "Lock in the language of gullies."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "chars": 113,
+          "hash": "230c9707bdd7967c7860585b6e7fab5de0ae5145066d90fd6d6562d0793a5aa3",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/230c9707bdd7967c7860585b6e7fab5de0ae5145066d90fd6d6562d0793a5aa3.mp3",
+          "text": "Deep gullies cutting through clayey soil create blank land; in the Chambal basin these channels are called blank."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 173,
+          "hash": "7d2222413e6a09cc21158ce0fa3564d5ae8f7983c099dd6b9844e9b1df303167",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7d2222413e6a09cc21158ce0fa3564d5ae8f7983c099dd6b9844e9b1df303167.mp3",
+          "text": "Across this whole chapter ,  resources, land, soil ,  what's the one idea you'll actually carry with you? Name it, and why it stuck.\n\nNo right answer. This is your takeaway."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 58,
+          "hash": "c22e8d944509c94007df0ec53a806c3f172959ca054c71b0213dcb69fe054ae1",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c22e8d944509c94007df0ec53a806c3f172959ca054c71b0213dcb69fe054ae1.mp3",
+          "text": "The whole chapter is yours now: resources, land, and soil."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "chars": 628,
+          "hash": "d8b9522e3fd0b0ce9a78f45785bfc5616ebbdad21fdae29920f09a41449b5b85",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d8b9522e3fd0b0ce9a78f45785bfc5616ebbdad21fdae29920f09a41449b5b85.mp3",
+          "text": "Soil erosion can undo in one season what took millennia ,  gullies and ravines, sheet-stripping, wind. But contour ploughing, terracing, strip cropping, and shelter belts hold the ground down.\n\nAnd that closes the chapter. You learned that a resource is something we make, not just find; you can classify any resource four ways and explain why planning and sustainability matter; you saw how India uses, degrades, and heals its land; and you followed soil from the bedrock it's born from to the six soils that feed the country ,  and how to keep them.\n\nYou'll never quite look at the ground beneath your feet the same way again."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/soil-as-a-resource-hinglish/01-how-soil-forms.yaml",
+      "language": "hinglish",
+      "lesson_slug": "how-soil-forms",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_multilingual_v2",
+      "chunk_count": 16,
+      "total_chars": 3186,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 228,
+          "hash": "9fd7aae9c5064a01ec34a1993886fa3690bc0bcdb40b5e987df86fd584cfa4e4",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9fd7aae9c5064a01ec34a1993886fa3690bc0bcdb40b5e987df86fd584cfa4e4.mp3",
+          "text": "Ek aisi cheez se shuru karo jise tumhe rok dena chahiye.\n\nTumhare aangan ki soil duniya ki har sabhyata se puraani hai. Uska ek centimetre banne mein hazaaron saal lage.\n\nHum bina soche uspe chalte hain. Aaj, neeche dekhte hain."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 278,
+          "hash": "245154851de44fae0b04161ff5c82802a33aa3873c6fdd748c2ddc72645478dd",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/245154851de44fae0b04161ff5c82802a33aa3873c6fdd748c2ddc72645478dd.mp3",
+          "text": "Soil sabse zaroori natural resource hai. Yeh woh medium hai jisme har paudha ugta hai, aur chupchaap anginat living organisms ko sambhaalti hai.\n\nYahi log miss karte hain: soil bekaar mitti nahi hai. Yeh ek living system hai ,  jeev-jantu se bhari, aur khud dheere-dheere zinda."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 257,
+          "hash": "e68b4711cb9f903cf1be8e8aeb9de973f72669482fb4f3e83c08c1d6f6b2c720",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e68b4711cb9f903cf1be8e8aeb9de973f72669482fb4f3e83c08c1d6f6b2c720.mp3",
+          "text": "Yeh banti kaise hai? Dukh dene waali dheemi gati se. Sirf kuch centimetres ke liye millions of years.\n\nNature thos chattan ko soil mein peesti hai ,  temperature ke badlaav, behte paani, hawa, glaciers, aur decomposers se ,  jeev doosre jeevon ko todte hue."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 286,
+          "hash": "ce724969018cfa994437a0d8b846b6cf8aad1d3b3abf3e4f764d297be92e3f1f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ce724969018cfa994437a0d8b846b6cf8aad1d3b3abf3e4f764d297be92e3f1f.mp3",
+          "text": "Paanch cheezein decide karti hain ki tumhe kis kism ki soil milegi:\n\n- relief (zameen ka dhaal)\n- neeche ki parent rock\n- climate\n- vegetation aur baaki jeevan\n- aur time\n\nWahi paanch ingredients, alag proportions ,  aur tumhe bilkul alag soils milti hain. (Yahi poori agli lesson hai.)"
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 89,
+          "hash": "044a4206d3887f1d811b1f729ce5e1e79edfc7e4d60a9ed610ab1b1f6c042a0d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/044a4206d3887f1d811b1f729ce5e1e79edfc7e4d60a9ed610ab1b1f6c042a0d.mp3",
+          "text": "Soil parton (horizons) mein hoti hai ,  sabse upar sabse rich, sabse neeche thos chattan."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 373,
+          "hash": "663be8bb8168c88b4b2ea426a1ce05b32242756e6abce6334d27086acf65557c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/663be8bb8168c88b4b2ea426a1ce05b32242756e6abce6334d27086acf65557c.mp3",
+          "text": "Profile ko upar se neeche padho:\n\n- Top soil ,  gehri, humus-rich, jahan roots feed karti hain. Zinda parat.\n- Subsoil ,  weathered rock, sand, silt, aur clay ke saath mili.\n- Substratum ,  weathered parent rock ke tukde.\n- Bedrock ,  thos, unweathered parent rock jisse yeh sab bani.\n\nHar jagah, organic matter (humus) aur inorganic matter (minerals) saath mili hoti hain."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 280,
+          "hash": "8c76cf2941706f611a9524c7e5a67b5f280b4540bf556756ab512b47734416ce",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/8c76cf2941706f611a9524c7e5a67b5f280b4540bf556756ab512b47734416ce.mp3",
+          "text": "Yaad rakhne waali tasveer: soil ek cake hai jo millions of years mein paki, parton mein.\n\nAur cake ki tarah, sabse upar ki parat sabse rich hoti hai ,  humus-bhari top soil jo asal mein hamara khaana ugaati hai. Aur jaisa tum aage dekhoge, yahi sabse aasaani se kho bhi jaati hai."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 98,
+          "hash": "93e4d3c9c42bd16d97c89e83e6cf3bf9d5c11bb65628967aba60c033b1d75a8b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/93e4d3c9c42bd16d97c89e83e6cf3bf9d5c11bb65628967aba60c033b1d75a8b.mp3",
+          "text": "Bedrock weather hoti hai, aur zinda top soil dheere-dheere upar banti hai ,  hazaaron saalon mein."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 83,
+          "hash": "16decee0e85a5afb55b0b4a6a934c53d13d9c67e1e368430d3b1de5b6fb49071",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/16decee0e85a5afb55b0b4a6a934c53d13d9c67e1e368430d3b1de5b6fb49071.mp3",
+          "text": "Geographers soil ko 'living system' kyun kehte hain, na ki sirf kuchli hui chattan?"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 53,
+          "hash": "c6987004eee897d28f0166faa88eb71b6871c867b6fb710d68c5eb4e4c208729",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c6987004eee897d28f0166faa88eb71b6871c867b6fb710d68c5eb4e4c208729.mp3",
+          "text": "Soil ki parton ko upar se neeche ke order mein lagao."
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 299,
+          "hash": "0b1a176052e1fed22ccb24fb7842d90573e649528d9af44ba84a4eba080a9b61",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/0b1a176052e1fed22ccb24fb7842d90573e649528d9af44ba84a4eba080a9b61.mp3",
+          "text": "Koi asli soil dhundo ,  ek garden, khet, gamla, ya sadak ke kinaare ki cutting. Gaur se dekho (aur thoda khod sako toh halke se khodo).\n\nPaper pe upri parat describe karo: uska rang, dhili hai ya jami hui, koi roots, kenche (worms), ya patton ke tukde. Phir neeche ek cheez likho jo tumne notice ki."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 35,
+          "hash": "1a8c1bc9a86fd8545effc2756e5c7d971c6d032d6a89ce3691a69a39a12ed864",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/1a8c1bc9a86fd8545effc2756e5c7d971c6d032d6a89ce3691a69a39a12ed864.mp3",
+          "text": "Soil kaise janmti hai, yaad kar lo."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "chars": 72,
+          "hash": "93b6f6e52300f5fbfb93d6e2248e5cb01993ad8467eede9e8edf7b25c2547944",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/93b6f6e52300f5fbfb93d6e2248e5cb01993ad8467eede9e8edf7b25c2547944.mp3",
+          "text": "Soil blank rock ke dheere-dheere tootne se banti hai, blank saalon mein."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 240,
+          "hash": "bdeb366ef19af1e85698132a71eba0161edf854554b12edf408c94f1bfaf8756",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/bdeb366ef19af1e85698132a71eba0161edf854554b12edf408c94f1bfaf8756.mp3",
+          "text": "Ek centimetre soil hazaaron saal leti hai; ek buri storm use ek din mein chheen sakti hai. Yeh jaan kar ki soil kitni dheemi aur na-badli ja sakne waali hai ,  kya tumhare ehsaas mein kuch badalta hai? Imaandaar raho.\n\nKoi sahi jawaab nahi."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 80,
+          "hash": "191a0453bf90da15c59ce09377fb983ad8bfe3ef2e37ef501685d31b6a87c65c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/191a0453bf90da15c59ce09377fb983ad8bfe3ef2e37ef501685d31b6a87c65c.mp3",
+          "text": "Ab tum soil ko ek dheere-bani, zinda resource ki tarah dekhte ho ,  parton mein."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "chars": 435,
+          "hash": "8504151fe2b823e1e7eb37177e7e5bf9679116427dae9bbef1186b1febdaf2d5",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/8504151fe2b823e1e7eb37177e7e5bf9679116427dae9bbef1186b1febdaf2d5.mp3",
+          "text": "Soil Earth ki zinda khaal hai: humus-rich top soil, uske neeche subsoil, substratum, aur bedrock, millions of years mein weathered rock aur jeevan se bani ,  relief, parent rock, climate, vegetation, aur time se shaped.\n\nPar yeh paanch ingredients India jaise vividh desh mein alag-alag milte hain ,  aur nateeja hai soils ki ek poori palette, har ek alag rang, har ek alag crops ke liye. Kaunsi soils, aur kahan? Yahi agli lesson hai."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/soil-as-a-resource-hinglish/02-the-soils-of-india.yaml",
+      "language": "hinglish",
+      "lesson_slug": "the-soils-of-india",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_multilingual_v2",
+      "chunk_count": 18,
+      "total_chars": 3938,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 251,
+          "hash": "76327e6003c6be4258232d61ee2fbd088e5b72fc96677eb4870a0b651048e8c5",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/76327e6003c6be4258232d61ee2fbd088e5b72fc96677eb4870a0b651048e8c5.mp3",
+          "text": "India mein kahin bhi ek mutthi soil uthao, aur uska rang hi ishaara de deta hai ki wahan kya ugega.\n\nEk rang bhala yeh kaise jaan sakta hai? Kyunki rang, texture, aur age clues hain ,  us chattan ke jisse soil bani, aur us climate ke jisne use banaya."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 182,
+          "hash": "50a66b5a9a5e5ce7c65abeb87ce5515e254322b9b8b34b74ff763494de7bb1f3",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/50a66b5a9a5e5ce7c65abeb87ce5515e254322b9b8b34b74ff763494de7bb1f3.mp3",
+          "text": "India ki chattan, climate, aur landform ki gajab variety ne soils ki ek poori palette bana di.\n\nChhe mukhya types hain. Hum har ek se milenge ,  aur woh crop jiske liye woh bani hai."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 306,
+          "hash": "3192a010781eac2872d49736afc1d9079d90b779521e45920283c436c7166d11",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/3192a010781eac2872d49736afc1d9079d90b779521e45920283c436c7166d11.mp3",
+          "text": "1. Alluvial soil ,  sabki sabse widespread aur important. Poore northern plains isi se bane hain, teen badi rivers ne bichhayi: Indus, Ganga, aur Brahmaputra.\n\nPotash, phosphoric acid, aur lime se rich, yeh sugarcane, paddy, aur wheat ugaati hai ,  isliye yeh India ki sabse densely populated soil bhi hai."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 273,
+          "hash": "5e9f55540802669c399c739e4cc1ad8961126ad7e8a2fa6629c709f5ea82722f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/5e9f55540802669c399c739e4cc1ad8961126ad7e8a2fa6629c709f5ea82722f.mp3",
+          "text": "Alluvial soil ki ek umar ki kahani bhi hai:\n\n- Bangar ,  old alluvial, zyaada kanker (lime nodules) ke saath.\n- Khadar ,  new alluvial, mahin aur zyaada fertile.\n\nHar baadh nayi Khadar bichha deti hai ,  toh rivers muft mein land ko baar-baar re-fertilise karti rehti hain."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 386,
+          "hash": "679bc5173783e3fb433294dc1b235617825003250c946382a963365bc9b439e0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/679bc5173783e3fb433294dc1b235617825003250c946382a963365bc9b439e0.mp3",
+          "text": "2. Black soil, jise regur bhi kehte hain. Yeh Deccan trap (basalt rock) ke lava se bani ,  isiliye kaali hai.\n\nYeh clayey hai, nami bahut achhe se rokti hai, aur lime, magnesium, aur potash se rich hai (halaanki phosphorus mein poor). Iski pehchaan: yeh cotton ke liye ideal hai, isiliye ise black cotton soil kehte hain. Maharashtra, Madhya Pradesh, Gujarat, aur Deccan mein milti hai."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 71,
+          "hash": "113619465574d95a18ecbb55aaa26079228ee26ecbd29e9ed55d2bfd168cfcd8",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/113619465574d95a18ecbb55aaa26079228ee26ecbd29e9ed55d2bfd168cfcd8.mp3",
+          "text": "Chhe mukhya soils ,  rang har ek ki kahani aur crops ka pehla clue hai."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 286,
+          "hash": "c3a61718bbea637f4956e6c44fd7e5885f11bbf9f4103bb75053219814a69a5f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c3a61718bbea637f4956e6c44fd7e5885f11bbf9f4103bb75053219814a69a5f.mp3",
+          "text": "3. Red aur Yellow soil ,  eastern aur southern Deccan ke kam-baarish waale hisson mein puraani crystalline igneous rock pe banti hai.\n\nYeh laal hoti hai iron ke chattan mein failne se ,  aur jab paani le leti hai (hydrated) toh peeli ho jaati hai. Rang asal mein zang lagti chattan hai."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 349,
+          "hash": "fd6458d61c6dbf8557d282dd8a024b545717a1210b9ca9e63a8419c2881cabc9",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/fd6458d61c6dbf8557d282dd8a024b545717a1210b9ca9e63a8419c2881cabc9.mp3",
+          "text": "4. Laterite soil ,  Latin shabd later se, matlab eent (brick). Yeh tropical climate mein banti hai jahan tez wet aur dry seasons hote hain, jahan bhaari baarish nutrients ko leach kar deti hai.\n\nNateeja acidic aur nutrient-poor hota hai. Par achhe se sambhaalo toh yeh tea aur coffee (Karnataka, Kerala, Tamil Nadu) aur cashew ke liye shaandaar hai."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 437,
+          "hash": "80bff1e444d948b1e41560a63a8644d2a5c21aee4a663cc00e6c42e43f2eaa56",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/80bff1e444d948b1e41560a63a8644d2a5c21aee4a663cc00e6c42e43f2eaa56.mp3",
+          "text": "5. Arid soil ,  laal se bhura, retili, aur namkeen. Sookha climate aur tez evaporation ise humus aur nami mein kam chhod dete hain, neeche ek sakht kankar parat ke saath jo paani rokti hai. Par irrigation ke baad yeh cultivable ho jaati hai ,  jaise western Rajasthan mein.\n\n6. Forest soil ,  pahaadon mein milti hai. Ghaatiyon (valleys) mein yeh fertile aur loamy hoti hai, par thandi, barfeeli upri dhalon pe patli, coarse, aur acidic."
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 107,
+          "hash": "43ab150c920f1fcc8b8395e12ef27256a7beb3095107621e158150752f91d5a4",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/43ab150c920f1fcc8b8395e12ef27256a7beb3095107621e158150752f91d5a4.mp3",
+          "text": "Sookhi garmi mein black soil gehri daraaron mein chatakti hai ,  nature khud ko jot aur hawadaar karti hui."
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 63,
+          "hash": "3472d44279cb4e474040e6716fb6289afc3ce58f4fb2c44dc95e57476d5d0329",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/3472d44279cb4e474040e6716fb6289afc3ce58f4fb2c44dc95e57476d5d0329.mp3",
+          "text": "In rajyon mein se kis mein black soil mukhya roop se milti hai?"
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 59,
+          "hash": "78136294f9d898e7fec5f03d4e574485374a36f86d7ce1a0fdd67da848993264",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/78136294f9d898e7fec5f03d4e574485374a36f86d7ce1a0fdd67da848993264.mp3",
+          "text": "Har soil ko usse match karo jiske liye woh jaani jaati hai."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 298,
+          "hash": "1a95da4d303c8f21781322a999b331f438695a21cca7d8a175e3f73dc7365067",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/1a95da4d303c8f21781322a999b331f438695a21cca7d8a175e3f73dc7365067.mp3",
+          "text": "Jahan tum rehte ho wahan ki soil dekho ,  ek khet, garden, ya construction ka gaddha. Uska rang note karo (laal, kaali, halki-bhuri, retili?).\n\nIs lesson se apna best guess lagao ki yeh chhe types mein se kaunsi hai, aur ek crop jo ispe suit kare. Neeche apni soil ka rang aur apna guess type karo."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 27,
+          "hash": "a62dfeb5a3287340a095b864cec8f81443b21a6a20ac3ad732fc95eccc0e6fc8",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a62dfeb5a3287340a095b864cec8f81443b21a6a20ac3ad732fc95eccc0e6fc8.mp3",
+          "text": "Mashhoor waali yaad kar lo."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "chars": 80,
+          "hash": "f8d6b342864ce2b360001f12accedf5aab3358348627d60c09b5cba838d72ae6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f8d6b342864ce2b360001f12accedf5aab3358348627d60c09b5cba838d72ae6.mp3",
+          "text": "Black soil ko blank soil bhi kehte hain, aur yeh blank ugaane ke liye ideal hai."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 0,
+          "chars": 234,
+          "hash": "b3ee0b3515471710bb09d6a0dae55179ebd1930bc936a3007b588c583c16afa9",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b3ee0b3515471710bb09d6a0dae55179ebd1930bc936a3007b588c583c16afa9.mp3",
+          "text": "Ek soil decide karti hai ki ek poora region kya uga sakta hai, kha sakta hai, aur bech sakta hai. Apne aas-paas ki soil ko dekh kar, tumhe kya lagta hai usne aas-paas ke khaane aur kheti ko kaise shape kiya hai?\n\nKoi sahi jawaab nahi."
+        },
+        {
+          "turn_index": 16,
+          "chunk_index": 0,
+          "chars": 65,
+          "hash": "2e2a7db2e9f515386e0b0d16223c7e7e45e5453b4c7705760aab31891a787086",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/2e2a7db2e9f515386e0b0d16223c7e7e45e5453b4c7705760aab31891a787086.mp3",
+          "text": "Ab tum India ki soils ko rang, origin, aur crop se padh sakte ho."
+        },
+        {
+          "turn_index": 16,
+          "chunk_index": 1,
+          "chars": 464,
+          "hash": "7a99735adc8be256c6d74c8586971e55e623b178a5c5781c12b0a6fdecc2c717",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7a99735adc8be256c6d74c8586971e55e623b178a5c5781c12b0a6fdecc2c717.mp3",
+          "text": "Chhe soils, ek palette: alluvial (rivers ka tohfa), black regur (lava ki cotton soil), red aur yellow (zang lagti chattan), laterite (leached par tea ke liye achhi), arid (retili, irrigable), aur forest (pahaadi soil). Rang har ek ka pehla clue hai.\n\nPar inme se har ek ko banne mein hazaaron saal lage ,  aur ek hi season mein chheen sakti hai. Soil erode kaise hoti hai, aur hum use kaise pakad ke rakhte hain? Yahi aakhri lesson hai ,  aur poore chapter ka ant."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/soil-as-a-resource-hinglish/03-soil-erosion-and-conservation.yaml",
+      "language": "hinglish",
+      "lesson_slug": "soil-erosion-and-conservation",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_multilingual_v2",
+      "chunk_count": 16,
+      "total_chars": 3574,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 206,
+          "hash": "9341330f9d151f1bd9600a5b8ab1591fd8d5d12cc36c507967d13f30119bd7f5",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9341330f9d151f1bd9600a5b8ab1591fd8d5d12cc36c507967d13f30119bd7f5.mp3",
+          "text": "Yaad rakho: soil ka ek centimetre banne mein hazaaron saal lagte hain.\n\nEk buri monsoon use ek hi dopahar mein pahaadi se beha kar samundar mein le ja sakti hai. Is chhin jaane ka ek naam hai: soil erosion."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 339,
+          "hash": "a7629a85ba32d37294aeaf48194dda45a19c73e824b568e3ce4591fd9335229a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a7629a85ba32d37294aeaf48194dda45a19c73e824b568e3ce4591fd9335229a.mp3",
+          "text": "Aam taur pe, soil banti aur erode hoti hai ek hi halki gati se ,  bilkul balanced. Nature hisaab barabar rakhti hai.\n\nHum balance todte hain. Deforestation, overgrazing, construction, aur mining soil ko dheela karte hain, aur phir nature ki hawa, paani, aur glaciers use itni tezi se le jaate hain jitni tezi se woh dobaara ban nahi sakti."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 221,
+          "hash": "47e8babbc6a92cf051b377371427c9b5dc84ed2a57f3364f77b7904df0bd1a32",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/47e8babbc6a92cf051b377371427c9b5dc84ed2a57f3364f77b7904df0bd1a32.mp3",
+          "text": "Erosion kuch roopon mein aati hai.\n\nGully erosion ,  behta paani clayey soil mein gehre channels (gullies) kaat deta hai. Land kheti ke laayak nahi rehti ,  bad land. Chambal basin mein, ye channels mashhoor ravines hain."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 287,
+          "hash": "41d384b4f042be2f79d512a199a4bd78163549e0a367cb039c20b89fb2d817ed",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/41d384b4f042be2f79d512a199a4bd78163549e0a367cb039c20b89fb2d817ed.mp3",
+          "text": "Sheet erosion ,  paani ek field pe ek patli chaddar ki tarah failta hai aur top soil ko barabar se chheel deta hai. Itna dheere ki tumhe pata bhi nahi chalta ,  jab tak fertile parat bas gayab na ho jaaye.\n\nWind erosion ,  flat, sookhi land pe, hawa dheeli soil ko utha kar le jaati hai."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 203,
+          "hash": "71d3a81293766f013c109bb9d18e2f5976ef4520315f908341ba032f2d956656",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/71d3a81293766f013c109bb9d18e2f5976ef4520315f908341ba032f2d956656.mp3",
+          "text": "Aur kabhi-kabhi hum ise paida karte hain, galat kheti se.\n\nEk dhaal ko upar-neeche jot do toh tum paani ke tezi se behne ke liye saaf channels bana dete ho ,  erosion tez. Hal khud dushman ban jaata hai."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 101,
+          "hash": "d41e78f1024c06af541450aa2aa1114f67a05583b5056a097a3aae6ef80244d2",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d41e78f1024c06af541450aa2aa1114f67a05583b5056a097a3aae6ef80244d2.mp3",
+          "text": "Contour ploughing, terracing, strip cropping, aur shelter belts ,  har ek soil ko jagah pe rokti hai."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 525,
+          "hash": "83f89ecbe64e260757d71b681ffdecaf5c0c45d7ae3da4d46bb79205362388e3",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/83f89ecbe64e260757d71b681ffdecaf5c0c45d7ae3da4d46bb79205362388e3.mp3",
+          "text": "Ab defences. Hum sach mein jaante hain soil ko kaise pakad ke rakhna hai:\n\n- Contour ploughing ,  dhaal ki contour lines ke saath jot do, upar-neeche nahi. Yeh paani ko dheema karta hai.\n- Terrace farming ,  dhaal ko steps mein kaato, har step soil pakadti hai. (Western aur central Himalayas khoobsurati se terraced hain.)\n- Strip cropping ,  crops ke beech ghaas ki strips chhodo taaki hawa ka zor toote.\n- Shelter belts ,  pedon ki rows jo hawa rokti hain aur western India mein sand dunes tak ko stabilise kar chuki hain."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 103,
+          "hash": "25941b93e5638be7d915651372ce6643d93ee32e645121e9440b086dd1110024",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/25941b93e5638be7d915651372ce6643d93ee32e645121e9440b086dd1110024.mp3",
+          "text": "Nangi dhaal pe paani daudta hai aur soil chheel leta hai. Terraces use rengne pe majboor kar deti hain."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 64,
+          "hash": "7dc37d6d73abd8096f9f2232851d3fbc17e76e60e5d1dc4b01dbf50d3d3ef9cc",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7dc37d6d73abd8096f9f2232851d3fbc17e76e60e5d1dc4b01dbf50d3d3ef9cc.mp3",
+          "text": "Kis rajya mein terrace cultivation vyaapak roop se ki jaati hai?"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 60,
+          "hash": "809709ccc3b70b3fa06c7d8e21fe9f288a8bcd3577589478ba02d96089723a0c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/809709ccc3b70b3fa06c7d8e21fe9f288a8bcd3577589478ba02d96089723a0c.mp3",
+          "text": "Har conservation method ko usse match karo jo woh karti hai."
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 301,
+          "hash": "292d38f2c45da84f558f0d181b7d35fb63fdba37b99480f86caa530c657fec59",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/292d38f2c45da84f558f0d181b7d35fb63fdba37b99480f86caa530c657fec59.mp3",
+          "text": "Apne aas-paas soil erosion ya koi conservation method dhundo ,  ek dhula hua dhaal ya gully, ek terraced pahaadi, khet ke kinaare pedon ki ek row, crops ke beech ghaas ki strips.\n\nPaper pe likho ki tumne kya paaya aur woh erosion paida kar raha hai ya usse lad raha hai. Neeche jo dekha woh type karo."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 31,
+          "hash": "69940b65065d88532583bd9d24bac65f76fd4e4586b85f14dd231767f0f37ce8",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/69940b65065d88532583bd9d24bac65f76fd4e4586b85f14dd231767f0f37ce8.mp3",
+          "text": "Gullies ki bhaasha yaad kar lo."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "chars": 109,
+          "hash": "08351a833da8da712a8783557b04df89398f0722c1a6d8e7d9f91f96494c52f3",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/08351a833da8da712a8783557b04df89398f0722c1a6d8e7d9f91f96494c52f3.mp3",
+          "text": "Clayey soil mein gehri gullies blank land bana deti hain; Chambal basin mein in channels ko blank kehte hain."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 200,
+          "hash": "b94acd4d034d03c53c2be72e46fc1b8ceba9000f36a227be61c4c2ee57a364db",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b94acd4d034d03c53c2be72e46fc1b8ceba9000f36a227be61c4c2ee57a364db.mp3",
+          "text": "Poore chapter mein ,  resources, land, soil ,  woh ek idea kaunsa hai jo tum sach mein apne saath le jaaoge? Use naam do, aur batao kyun woh atak gaya.\n\nKoi sahi jawaab nahi. Yeh tumhara takeaway hai."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 56,
+          "hash": "7a2e64fe529cc4067ff7fe06a39cfcabc5bc1677aa0afbc3ae98a8c2c8d27f31",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7a2e64fe529cc4067ff7fe06a39cfcabc5bc1677aa0afbc3ae98a8c2c8d27f31.mp3",
+          "text": "Poora chapter ab tumhara hai: resources, land, aur soil."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "chars": 768,
+          "hash": "82cdb04dd0981e5eee197b9f2aeb527d30d7a503c2797663c7fd1ef5cf0dbb19",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/82cdb04dd0981e5eee197b9f2aeb527d30d7a503c2797663c7fd1ef5cf0dbb19.mp3",
+          "text": "Soil erosion ek hi season mein woh undo kar sakti hai jo banne mein hazaaron saal lage ,  gullies aur ravines, sheet-stripping, hawa. Par contour ploughing, terracing, strip cropping, aur shelter belts zameen ko pakad ke rakhte hain.\n\nAur yahi chapter ko band karta hai. Tumne seekha ki ek resource woh cheez hai jo hum banate hain, sirf paate nahi; tum kisi bhi resource ko chaar tareeke se classify kar sakte ho aur bata sakte ho ki planning aur sustainability kyun maayne rakhti hain; tumne dekha ki India apni land kaise use, degrade, aur theek karti hai; aur tumne soil ko us bedrock se jisse woh janmi, un chhe soils tak follow kiya jo desh ko khilaati hain ,  aur unhe kaise bachana hai.\n\nAb tum apne pairon ke neeche ki zameen ko phir kabhi waise nahi dekhoge."
         }
       ]
     }

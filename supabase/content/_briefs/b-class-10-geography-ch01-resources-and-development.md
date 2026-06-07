@@ -53,9 +53,9 @@ and they are ours to plan, share, and protect."*
 
 ## Courses & lessons (full bundle — 3 courses, 10 lessons)
 
-> **Pilot scope this session:** Course 1 only (4 lessons), EN + Hinglish.
-> Courses 2–3 are defined in the bundle YAML so the catalogue knows the
-> full shape; their lessons are authored in a later session.
+> **Status:** all 3 courses (10 lessons) fully authored, EN + Hinglish.
+> Course 1 images generated + wired; Course 2–3 image prompts queued in
+> Drive `cowork_images/` (media turns to be wired when those PNGs land).
 
 ### Course 1 — Resources and Resource Planning  *(slug: `resources-and-resource-planning`)*
 Outcome: student can define what makes something a resource, classify any
@@ -78,14 +78,14 @@ why planning and conservation matter.
    need technology + institutions (colonial lesson). *Metaphor:
    ingredients vs. the cooked meal.* Closes Course 1, bridges to Land.
 
-### Course 2 — Land as a Resource  *(slug: `land-as-a-resource`)*  — NOT YET AUTHORED
+### Course 2 — Land as a Resource  *(slug: `land-as-a-resource`)*  — AUTHORED (EN + Hinglish)
 Outcome: student can describe India's relief features, read the land-use
 pattern, and explain the causes of land degradation and how to reverse them.
 1. Land and Relief Features
 2. How India Uses Its Land
 3. Land Degradation and Conservation
 
-### Course 3 — Soil as a Resource  *(slug: `soil-as-a-resource`)*  — NOT YET AUTHORED
+### Course 3 — Soil as a Resource  *(slug: `soil-as-a-resource`)*  — AUTHORED (EN + Hinglish)
 Outcome: student can explain how soil forms, identify India's major soil
 types and where they occur, and choose the right conservation method for a
 given terrain.
@@ -168,13 +168,13 @@ narration for these lessons is a post-load step owned outside this bundle.
 
 ## Build status / how to apply
 
-- **Authored (pilot complete):** scaffolding + Course 1 fully authored —
-  4 EN lessons (`resources-and-resource-planning/01–04`) + 4 Hinglish
-  (`resources-and-resource-planning-hinglish/01–04`). 8 lessons × 15 turns
-  = **120 turns**, all schema-valid. **7 image prompts** queued in the
-  image-prompt manifest (4 core, 3 optional) — pending generation.
-- **Not yet authored:** Course 2 (Land, 3 lessons) and Course 3 (Soil, 3
-  lessons) — declared in the bundle YAML, load as empty stubs until written.
+- **Authored (full chapter):** all 3 courses, 10 lessons × 2 languages =
+  **20 lesson files**, all schema-valid, EN↔Hinglish parity verified, no
+  Devanagari. Course 1 (4), Course 2 (3), Course 3 (3).
+- **Images:** Course 1 — 7 generated + `media` turns wired. Course 2–3 —
+  7 prompts queued in Drive `cowork_images/` (course2.md, course3.md);
+  media turns to be wired when those PNGs are generated.
+- **Audio:** build plan covers all 20 lessons (see `…-audio-plan.json`).
 - To apply once lessons land:
   1. `psql < supabase/migrations/0020_student_plan_class10_geography.sql`
      (or apply via Supabase migration tooling).

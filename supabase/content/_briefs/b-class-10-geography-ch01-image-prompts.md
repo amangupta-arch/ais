@@ -77,4 +77,24 @@ to Course 1, Lesson 1. `placement:` says which turn it becomes.
 - prompt:
   > Stylised editorial illustration of the Indian subcontinent as a single simple silhouette, divided into a few soft regions, each region carrying ONE simple icon — a sun, a water drop, a lump of coal, a mountain — to suggest different regional resources. Clean flat editorial vector illustration, muted earthy palette (ochre, moss green, slate blue, warm off-white background), soft shadows. NO text, NO words, NO labels, NO place names. 4:3 aspect ratio.
 
+### C2 L1 — Land and Relief Features
+**`c2l1-three-landforms.png`** · 16:9 · *core* · after turn 4 · url: _(pending)_ — plains | snow mountains+river | flat-topped plateau, one wide landscape.
+
+### C2 L2 — How India Uses Its Land
+**`c2l2-land-mosaic.png`** · 16:9 · *optional* · after turn 2 · url: _(pending)_ — top-down quilt of fields, forest, town, fallow, pasture.
+
+### C2 L3 — Land Degradation and Conservation
+**`c2l3-degraded-vs-healed.png`** · 16:9 · *core* · after turn 5 · url: _(pending)_ — split: scarred/eroded/mined land vs healed terraced+forested land.
+
+### C3 L2 — The Soils of India
+**`c3l2-soil-swatches.png`** · 3:2 · *core* · after turn 2 · url: _(pending)_ — realistic photo: six soil samples in a row, each a distinct colour.
+**`c3l2-black-cotton-soil.png`** · 16:9 · *optional* · after turn 5 · url: _(pending)_ — realistic photo: cracked black cotton soil with cotton plants.
+
+### C3 L3 — Soil Erosion and Conservation
+**`c3l3-terrace-farming.png`** · 16:9 · *core* · after turn 7 · url: _(pending)_ — illustration of a green terraced Himalayan hillside.
+**`c3l3-gully-ravines.png`** · 16:9 · *optional* · after turn 3 · url: _(pending)_ — realistic photo of badland ravines (Chambal-style gullies).
+
+> Full prompt text for Course 2 & 3 lives in the Drive files
+> `cowork_images/class10-geo-ch01-course2.md` and `-course3.md`.
+
 <!-- Per-lesson prompts are appended below as each lesson is authored. -->

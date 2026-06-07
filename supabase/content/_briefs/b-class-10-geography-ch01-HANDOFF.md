@@ -65,7 +65,12 @@ fine). Upload before going live, or the player just skips the broken image.
 
 ## Scope / status
 
-- **Pilot = Course 1 only** (4 lessons), EN + Hinglish. Courses 2–3 are
-  declared in the bundle YAML (so the catalogue knows the shape) but their
-  lesson YAMLs are NOT authored yet — they load as empty stubs.
-- Every authored lesson passes `scripts/validate-lesson.ts`.
+- **Full chapter authored** — 3 courses, 10 lessons, EN + Hinglish = 20
+  lesson files. Course 1 `resources-and-resource-planning/`, Course 2
+  `land-as-a-resource/`, Course 3 `soil-as-a-resource/` (+ `-hinglish`).
+- Every lesson passes `scripts/validate-lesson.ts`; EN↔Hinglish parity
+  verified (same turn types + IDs); Hinglish is Roman-script (no Devanagari).
+- **Images:** Course 1's 7 are wired (see Images section above). Course 2–3
+  have 7 more prompts queued in the operator's Drive
+  `cowork_images/class10-geo-ch01-course2.md` + `-course3.md`; their `media`
+  turns are NOT wired yet (added once those PNGs are generated).

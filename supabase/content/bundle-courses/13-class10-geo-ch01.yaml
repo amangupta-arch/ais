@@ -12,10 +12,9 @@
 # 'medium:<lang>' so /student filters by them. medium is [en, hinglish]
 # because this bundle ships Hinglish from day one.
 #
-# NOTE: Courses 2 and 3 are declared here so the catalogue knows the full
-# chapter shape, but only Course 1's lesson YAMLs are authored so far
-# (pilot). The loader creates lesson stubs for all three; unauthored
-# lessons simply have no turns until their YAML lands.
+# NOTE: All 3 courses (10 lessons) are authored in full, EN + Hinglish.
+# Lesson YAMLs live under resources-and-resource-planning/, land-as-a-resource/,
+# soil-as-a-resource/ (and their -hinglish siblings).
 
 bundles:
   - bundle_slug: b-class-10-geography-ch01-resources-and-development
