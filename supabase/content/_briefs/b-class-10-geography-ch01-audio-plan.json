@@ -1,0 +1,1190 @@
+{
+  "bundle": "b-class-10-geography-ch01-resources-and-development",
+  "generated": "2026-06-07",
+  "note": "Deterministic narration build plan — exactly what extract.ts + runAudioPipeline would feed ElevenLabs. Per chunk: the sanitised text to synthesise, the voice + model, and the sha256(voice|model|text) hash + storage_path the pipeline uses. NO audio was synthesised here (no TTS tool / no ELEVENLABS_API_KEY in the authoring session). To produce playable audio, synthesise each chunk's text → upload bytes to lesson-audio/<storage_path> → write lesson_audio_assets + lesson_audio_manifest (needs a real lesson_id, i.e. after the content is loaded).",
+  "totals": {
+    "lessons": 8,
+    "chunks": 136,
+    "chars": 36255,
+    "en_chars": 17345,
+    "hinglish_chars": 18910
+  },
+  "lessons": [
+    {
+      "file": "supabase/content/resources-and-resource-planning/01-what-counts-as-a-resource.yaml",
+      "language": "en",
+      "lesson_slug": "what-counts-as-a-resource",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_flash_v2_5",
+      "chunk_count": 17,
+      "total_chars": 4337,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 276,
+          "hash": "9bccfad6d28ff27ea01e6374b6e66c49323d44af289aa791510477d2e6169450",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9bccfad6d28ff27ea01e6374b6e66c49323d44af289aa791510477d2e6169450.mp3",
+          "text": "Here's a question nobody asks in geography class.\n\nIs sunlight a resource? Is the wind? What about the coal still sitting a kilometre underground, in a spot nobody has ever dug?\n\nYour gut says yes, obviously. Hold onto that feeling. We're about to complicate it ,  on purpose."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 276,
+          "hash": "f3c62d04a0db840ed286866c1c5eac3dcc0a09a0671a30dbe580b88312cfb38f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f3c62d04a0db840ed286866c1c5eac3dcc0a09a0671a30dbe580b88312cfb38f.mp3",
+          "text": "For most of history, people believed resources were free gifts of nature ,  just lying around, waiting to be picked up. Trees, rivers, minerals, all there for the taking.\n\nIt's a comfortable idea. It's also wrong ,  and seeing exactly why is the whole point of today's lesson."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 365,
+          "hash": "1f6c15366dd7310451a2ae5dc62ce0ba19fc9bf5b765cb6bff20b0d5e2918e77",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/1f6c15366dd7310451a2ae5dc62ce0ba19fc9bf5b765cb6bff20b0d5e2918e77.mp3",
+          "text": "So what actually counts as a resource? Here's the careful version:\n\nAnything in our environment that can be used to satisfy our needs ,  provided it is technologically accessible, economically feasible, and culturally acceptable ,  is a resource.\n\nNotice that small word provided. It's doing heavy lifting. A thing has to clear three gates before it earns the name."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 67,
+          "hash": "26da94d0951b2cd2829ea2ee8bc141c65fb7efc1331526f2e270e3ab98d99a4b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/26da94d0951b2cd2829ea2ee8bc141c65fb7efc1331526f2e270e3ab98d99a4b.mp3",
+          "text": "Raw matter only becomes a resource after it clears all three gates."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 400,
+          "hash": "baf623b9846c14f89880eb46920c9dbc87678ba22f014a53d3af0b4d42016d09",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/baf623b9846c14f89880eb46920c9dbc87678ba22f014a53d3af0b4d42016d09.mp3",
+          "text": "Gate 1 ,  technically accessible. Can we actually reach it and use it with the tools we have?\n\nUranium sat in the ground through all of history as a plain, heavy rock. It became one of the most valuable resources on Earth only after we learned to build nuclear reactors. Same rock. New technology. Now it's a resource.\n\nDeep-sea oil is the same story ,  useless until we could build rigs to reach it."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 447,
+          "hash": "830d55d423e1f87bb4339732fdfb9d96c7dcb47d244e39bae22a4acf69599490",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/830d55d423e1f87bb4339732fdfb9d96c7dcb47d244e39bae22a4acf69599490.mp3",
+          "text": "Gate 2 ,  economically feasible. Even if we can reach it, is it worth the cost?\n\nThere is real gold dissolved in seawater right now. But pulling out ₹1 of gold would cost far more than ₹1. So it stays a curiosity, not a resource ,  until the economics change.\n\nGate 3 ,  culturally acceptable. A community might refuse to mine a hill it holds sacred, or treat certain land or animals as not-for-use. Culture decides what we allow ourselves to use."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 515,
+          "hash": "2c70336597dfaf52a333827947dbd0a48a67821f372df1e08ef5a3706347285f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/2c70336597dfaf52a333827947dbd0a48a67821f372df1e08ef5a3706347285f.mp3",
+          "text": "Put it together and the comfortable idea collapses. Resources are :red[not] free gifts of nature. They are a function of human activity ,  we transform material in our environment into resources.\n\nWhat would break if this weren't true? If resources were simply lying around for the taking, then every land with oil beneath it would be rich, and every bare desert would be worthless. That's not the world we live in ,  and the gap is exactly what makes geography worth studying. (Much more on that in a few lessons.)"
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 374,
+          "hash": "4428f7c735cffdec003c8be48c7770c4b417f168465c00e7f5b4d2de710bd685",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/4428f7c735cffdec003c8be48c7770c4b417f168465c00e7f5b4d2de710bd685.mp3",
+          "text": "There's one more piece. Humans don't transform nature alone. We do it through technology, and we build institutions ,  governments, laws, markets, schools ,  to organise and speed it up.\n\nSo three things lock into a loop: nature gives the raw material, technology lets us use it, institutions direct and accelerate the whole process. Pull out any one and development stalls."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 109,
+          "hash": "3ce06e0098814fbf932b4569987f938be3cd87dc2394c855ad33f53666dcd68f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/3ce06e0098814fbf932b4569987f938be3cd87dc2394c855ad33f53666dcd68f.mp3",
+          "text": "Nature feeds technology, technology feeds institutions, institutions shape how we use nature. Watch it cycle."
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 132,
+          "hash": "7a626d9306f636fb6c1c6b6416f4dbac004c0275dd2d00f1adc94ca6590fb61d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7a626d9306f636fb6c1c6b6416f4dbac004c0275dd2d00f1adc94ca6590fb61d.mp3",
+          "text": "A friend says: 'Resources are just free gifts of nature ,  they're lying around waiting to be used.' What's the sharpest correction?"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 65,
+          "hash": "fffbc4e5ca60e7e0d30c85538db202d58fe9e03f4cb7dda97d8c04a74204af8e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/fffbc4e5ca60e7e0d30c85538db202d58fe9e03f4cb7dda97d8c04a74204af8e.mp3",
+          "text": "Each item is stuck at ,  or clears ,  a different gate. Match it."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 399,
+          "hash": "504b81d4b165efa2196ba1bacec0b341ded235464324bab037a50de12832a000",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/504b81d4b165efa2196ba1bacec0b341ded235464324bab037a50de12832a000.mp3",
+          "text": "Look around the room and pick one ordinary object ,  a pencil, your phone, a steel tumbler.\n\nOn paper, trace it backwards: what raw material in nature did it start as? Then run it through the three gates ,  what technology made that material usable, roughly what makes it affordable, and why is it culturally fine to use?\n\nWrite 2, 3 lines. Then type your object and its starting raw material below."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 49,
+          "hash": "f4d87dad1dd04d18c4ccdff1cdc0923574e1dada6cac4deeb5d019e8d41eb8ab",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f4d87dad1dd04d18c4ccdff1cdc0923574e1dada6cac4deeb5d019e8d41eb8ab.mp3",
+          "text": "Lock in the three tests every resource must pass."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 1,
+          "chars": 83,
+          "hash": "63cc80edf52a427d378b4849508c6e0a6bc06e0ec3691b6e5b75d04573876b9f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/63cc80edf52a427d378b4849508c6e0a6bc06e0ec3691b6e5b75d04573876b9f.mp3",
+          "text": "A resource must be technologically blank, economically blank, and culturally blank."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 233,
+          "hash": "139be5af7d5c4dee015e166dee649f2e3fa08eeb51c2644f802bd5d06496d469",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/139be5af7d5c4dee015e166dee649f2e3fa08eeb51c2644f802bd5d06496d469.mp3",
+          "text": "Before today, did you picture resources as 'free gifts of nature'? Name one thing ,  a material, a place, an everyday object ,  that you now see a little differently.\n\nThere's no right answer. Just note the thing that made you pause."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 0,
+          "chars": 44,
+          "hash": "c88cd9a0312d892fea038fff4104fdca15f487b87e080f003fddeff2f3043ed0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c88cd9a0312d892fea038fff4104fdca15f487b87e080f003fddeff2f3043ed0.mp3",
+          "text": "You can now tell raw matter from a resource."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 1,
+          "chars": 503,
+          "hash": "ca095e0c32f48c72a2c7dbddecdb598492a4f9096ac913d000f53c9aac7aa690",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ca095e0c32f48c72a2c7dbddecdb598492a4f9096ac913d000f53c9aac7aa690.mp3",
+          "text": "A resource isn't just out there. It's matter that clears three gates ,  technologically accessible, economically feasible, culturally acceptable ,  and then gets transformed by human work, inside a loop of nature, technology, and institutions.\n\nBut resources come in wild variety: sunlight and coal, a private farm and the open ocean, the oil we pump today and the oil we can't reach yet. Are they all the same kind of thing? Next lesson: the four lenses geographers use to sort any resource into place."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/resources-and-resource-planning/02-four-ways-to-classify-a-resource.yaml",
+      "language": "en",
+      "lesson_slug": "four-ways-to-classify-a-resource",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_flash_v2_5",
+      "chunk_count": 17,
+      "total_chars": 4282,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 255,
+          "hash": "7dfc36c62fbbdb853afb72492d87238b0f1861a65bb65fa80bb253c508d9b491",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7dfc36c62fbbdb853afb72492d87238b0f1861a65bb65fa80bb253c508d9b491.mp3",
+          "text": "Here's a question that sounds simple and isn't.\n\nTake a single forest. What kind of resource is it?\n\nWatch what happens when you try to answer ,  you'll find it's not one kind. It's four at once, and that's not a trick. It's exactly how geographers think."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 317,
+          "hash": "f12b4fc3b6671d3d26aa844ac891efcef0e539461443198bc239b2505c661480",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f12b4fc3b6671d3d26aa844ac891efcef0e539461443198bc239b2505c661480.mp3",
+          "text": "Geographers don't keep one big box labelled \"resources\". They keep four sorting questions ,  four lenses ,  and they run every resource through all four.\n\nThink of it like a suitcase with four luggage tags. The same suitcase gets a tag for where it came from, one for how it's owned, and so on. One object, four tags."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 106,
+          "hash": "8c64b64b610ad3ced27267c09b7a058b217133a65740668bb61bd8b4162e98fd",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/8c64b64b610ad3ced27267c09b7a058b217133a65740668bb61bd8b4162e98fd.mp3",
+          "text": "Every resource gets sorted four ways at once: origin, exhaustibility, ownership, and stage of development."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 309,
+          "hash": "5521bf0432cf5cc1dc24f78bab48cff8dcbbe427730f436cb2a8ce25796cef79",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/5521bf0432cf5cc1dc24f78bab48cff8dcbbe427730f436cb2a8ce25796cef79.mp3",
+          "text": "Lens 1 ,  Origin. Where did it come from, the living world or the non-living world?\n\n- Biotic resources come from the biosphere and have life: forests, fish, livestock, people themselves.\n- Abiotic resources are made of non-living things: rocks, minerals, metals.\n\nA forest? Biotic. First tag on the suitcase."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 436,
+          "hash": "9d5e7486afdddeac3f6913f4ebd514009d78346ef6a551992656626c7206f884",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9d5e7486afdddeac3f6913f4ebd514009d78346ef6a551992656626c7206f884.mp3",
+          "text": "Lens 2 ,  Exhaustibility. Will it run out?\n\n- Renewable resources renew themselves ,  solar, wind, water, forests, wildlife. Some are continuous (the sun won't notice us); some need time to come back (a chopped forest, a drained aquifer).\n- Non-renewable resources took millions of years to form ,  minerals, fossil fuels. Use them up and they're gone on any human timescale.\n\nA forest renews itself if we let it. Renewable. Second tag."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 484,
+          "hash": "1f81a13479fa42abf1b6b635eca2d8db2f2be36390887de404e84f28c5f40c55",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/1f81a13479fa42abf1b6b635eca2d8db2f2be36390887de404e84f28c5f40c55.mp3",
+          "text": "Lens 3 ,  Ownership. Who does it belong to?\n\n- Individual ,  a private well, a family's farmland.\n- Community ,  the village grazing common, the public pond.\n- National ,  everything within a country's borders: its minerals, forests, rivers, and the sea up to 12 nautical miles from shore.\n- International ,  the open ocean beyond 200 km from any coast. No single country owns it; global institutions govern it.\n\nMost of India's forests are managed by the nation. National. Third tag."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 616,
+          "hash": "c80d81b08f71404be0715e0039e8cda71cb7b0943a1c625c1838da92a27d6dff",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c80d81b08f71404be0715e0039e8cda71cb7b0943a1c625c1838da92a27d6dff.mp3",
+          "text": "Lens 4 ,  Status of development. This is the one students mix up, so slow down here.\n\n- Potential ,  it exists in a region but we haven't tapped it yet (Rajasthan's solar and wind).\n- Developed ,  surveyed, measured, and actively in use.\n- Stock ,  the material is right there, but we don't yet have the technology to use it. Water is hydrogen and oxygen ,  an enormous fuel ,  but we can't unlock it at scale. So it's stock.\n- Reserve ,  the slice of stock we can use with today's technology but haven't started ,  like a standing forest kept for the future.\n\nThe forest we're saving for later? Reserve. Fourth tag."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 91,
+          "hash": "04c60b1059951f854da424534309eb2fd4bf53edb3867c5e61d8bc54dc255df0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/04c60b1059951f854da424534309eb2fd4bf53edb3867c5e61d8bc54dc255df0.mp3",
+          "text": "The same forest is biotic, renewable, national, AND a reserve ,  four lenses, one resource."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 238,
+          "hash": "6558c65f81a9bdeb8a950b9c732ccd93d73bf5203dc5b66d0ee3a707bbec98dd",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6558c65f81a9bdeb8a950b9c732ccd93d73bf5203dc5b66d0ee3a707bbec98dd.mp3",
+          "text": "See what just happened? We never had to choose one box. The forest is biotic and renewable and national and a reserve ,  all true at once.\n\nThat's the whole skill: don't ask \"which kind is it?\" Ask \"what does each of the four lenses say?\""
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 170,
+          "hash": "b0ca9fbd8385a660281f4a7bf8263bbc23f96ef10a390ab7e144f862f7535ee8",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b0ca9fbd8385a660281f4a7bf8263bbc23f96ef10a390ab7e144f862f7535ee8.mp3",
+          "text": "Water can be split into hydrogen and oxygen ,  a massive energy source ,  but we don't yet have the technology to do it at scale. In development terms, that energy is a…?"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 46,
+          "hash": "fbc8f12c4b13e1a437d914f5d9c0e320ce33642f36d341d71c5a67731a35b8af",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/fbc8f12c4b13e1a437d914f5d9c0e320ce33642f36d341d71c5a67731a35b8af.mp3",
+          "text": "Match each resource to its ownership category."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 414,
+          "hash": "bb25783791a15baed500deef3046b995b2e0eeca4caecfcb6008f27cf9bbde46",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/bb25783791a15baed500deef3046b995b2e0eeca4caecfcb6008f27cf9bbde46.mp3",
+          "text": "Pick one resource from your own daily life ,  the cooking gas at home, the water you drink, the paper in your notebook.\n\nOn paper, run it through all four lenses:\n1. Origin ,  biotic or abiotic?\n2. Exhaustibility ,  renewable or non-renewable?\n3. Ownership ,  individual, community, national, or international?\n4. Development ,  potential, developed, stock, or reserve?\n\nType your resource and its four tags below."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 25,
+          "hash": "68f03f525ab1d6437dcb5ce850f14ec83dca4190b3efeca508594f9b579f1697",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/68f03f525ab1d6437dcb5ce850f14ec83dca4190b3efeca508594f9b579f1697.mp3",
+          "text": "Lock in the origin terms."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 1,
+          "chars": 141,
+          "hash": "0e4c4e47e27008cd47b0ab19b4cd8d62dc8e8df5f1eac2835aa398f86035d7d0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/0e4c4e47e27008cd47b0ab19b4cd8d62dc8e8df5f1eac2835aa398f86035d7d0.mp3",
+          "text": "Resources from the biosphere that have life ,  like forests and fisheries ,  are blank. Non-living resources like rocks and metals are blank."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 150,
+          "hash": "a3b17926de99458adbd174246f8250e366d6b44ad8d3c07647bdb01ed5f29e43",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a3b17926de99458adbd174246f8250e366d6b44ad8d3c07647bdb01ed5f29e43.mp3",
+          "text": "Of the four lenses, which was hardest to wrap your head around ,  and what finally made it click?\n\nNo right answer. Just name the one that fought you."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 0,
+          "chars": 44,
+          "hash": "4cd4f125b75bfb55d4477c12aeaf0379caeb38505c32a74190acd6a30a94a558",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/4cd4f125b75bfb55d4477c12aeaf0379caeb38505c32a74190acd6a30a94a558.mp3",
+          "text": "You can sort any resource four ways at once."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 1,
+          "chars": 440,
+          "hash": "54c5e330219ed0d06a61ca2f9ab15886d4ecfb51a86e63bad83934260d122ab0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/54c5e330219ed0d06a61ca2f9ab15886d4ecfb51a86e63bad83934260d122ab0.mp3",
+          "text": "Origin, exhaustibility, ownership, development ,  four lenses, run on every resource together. No more \"which box?\"; just \"what does each lens say?\"\n\nBut notice the quiet warning hiding in lens two. Some resources don't come back ,  and even the renewable ones can be wrecked if we're careless. So what happens when humans use resources as if they were endless? And what does it actually mean to develop sustainably? That's the next lesson."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/resources-and-resource-planning/03-sustainable-development-and-conservation.yaml",
+      "language": "en",
+      "lesson_slug": "sustainable-development-and-conservation",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_flash_v2_5",
+      "chunk_count": 17,
+      "total_chars": 4323,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 259,
+          "hash": "37f6dbf4f906bda6d6432ae664bf645de2d7ef9f04bed369e4fe3be069deed63",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/37f6dbf4f906bda6d6432ae664bf645de2d7ef9f04bed369e4fe3be069deed63.mp3",
+          "text": "Here's a question worth sitting with.\n\nIf every person on Earth took only what they needed ,  not a scrap more ,  could we ever actually run out of resources?\n\nGandhi gave a one-line answer to exactly this. We'll get to it. First, look at what we did instead."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 405,
+          "hash": "4d3f1065bbc0e397678802600b4489727b1a3a1b9fb11b62a601c1b226165606",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/4d3f1065bbc0e397678802600b4489727b1a3a1b9fb11b62a601c1b226165606.mp3",
+          "text": "For a long time we used resources as if they were endless. Three things broke as a result:\n\n- Depletion ,  resources drained to feed the greed of a few.\n- Inequality ,  wealth piled up in a few hands, splitting society into haves and have-nots.\n- Ecological crisis ,  global warming, ozone-layer damage, pollution, land degradation.\n\nNone of these is an accident. They're what \"take all you can\" produces."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 68,
+          "hash": "df66ad1296ec52e9b21f886613e8eaab1c748b7d426fab980dee83b72e3f7047",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/df66ad1296ec52e9b21f886613e8eaab1c748b7d426fab980dee83b72e3f7047.mp3",
+          "text": "Treat resources as endless, and three problems follow ,  every time."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 442,
+          "hash": "c71358795757bf7dc8a0be98b8a3d5d6144075c30cc3feea4a25b8edf06ea154",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c71358795757bf7dc8a0be98b8a3d5d6144075c30cc3feea4a25b8edf06ea154.mp3",
+          "text": "So we need a different idea of \"progress\". It has a name: sustainable development.\n\nThe definition is worth memorising, almost word for word: development that takes place without damaging the environment, and that does not compromise the needs of future generations.\n\nHere's the mental image. You don't inherit the planet from your ancestors ,  you borrow it from your children. Sustainable development is just paying that loan back honestly."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 318,
+          "hash": "de0bd6264fdf78a4a439485284a66f56fedb72e1b4322c0598582209bb1353f1",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/de0bd6264fdf78a4a439485284a66f56fedb72e1b4322c0598582209bb1353f1.mp3",
+          "text": "One warning, because almost everyone gets this wrong.\n\nSustainable development does not mean stop developing or stop using resources. We keep building, keep growing, keep using minerals and fuels.\n\nIt means we do it without robbing tomorrow to pay for today. :hl[Grow ,  just don't borrow against the future to do it.]"
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 555,
+          "hash": "13a5608eaa9d7cf14a7fa3a607beac6ffa47c26ab526a4353e39006b48984d90",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/13a5608eaa9d7cf14a7fa3a607beac6ffa47c26ab526a4353e39006b48984d90.mp3",
+          "text": "The world tried to act on this together. The landmark was the Rio de Janeiro Earth Summit, 1992 ,  the first International Earth Summit, where more than 100 heads of state met to tackle environmental protection and development at the same time.\n\nThey signed declarations on climate change and biodiversity, and adopted a global action plan called Agenda 21 ,  a blueprint to fight environmental damage, poverty, and disease through cooperation. Its sharpest idea: every local government should draw up its own local Agenda 21. Think globally, act locally."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 407,
+          "hash": "00d4afe31e76700797eccbd52ea3cf483d2c4a43db9c4309b6feabc7f9b36e9d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/00d4afe31e76700797eccbd52ea3cf483d2c4a43db9c4309b6feabc7f9b36e9d.mp3",
+          "text": "Rio didn't come from nowhere. A handful of thinkers saw it coming for decades:\n\n- 1968 ,  the Club of Rome made the first systematic call to conserve resources.\n- 1974 ,  Schumacher's book Small is Beautiful carried Gandhi's thinking to the world.\n- 1987 ,  the Brundtland Report (Our Common Future) actually coined the term sustainable development.\n\nThen, in 1992, Rio turned the idea into a global agenda."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 69,
+          "hash": "c6c3a8851ba81ff2c8516e31fe9505a3480b6615d21c7f57b95796dfe80c933e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c6c3a8851ba81ff2c8516e31fe9505a3480b6615d21c7f57b95796dfe80c933e.mp3",
+          "text": "Four milestones, building toward the idea of sustainable development."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 348,
+          "hash": "5ce4f6f0a9fa45bdc5245fa26396fcee55643d8d2aeff47170545dbb562b2fc7",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/5ce4f6f0a9fa45bdc5245fa26396fcee55643d8d2aeff47170545dbb562b2fc7.mp3",
+          "text": "Now the line I promised you at the start. Gandhi said:\n\n\"There is enough for everybody's need, but not for anybody's greed.\"\n\nHe pointed at two culprits for resource depletion: greedy, selfish individuals, and an exploitative model of mass production. His alternative wasn't mass production ,  it was production by the masses. Small, local, enough."
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 119,
+          "hash": "d9e2119730b25c1e7fc1afda3fa8fb6182a5ab5a8e77fd034f4121e79a22608f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d9e2119730b25c1e7fc1afda3fa8fb6182a5ab5a8e77fd034f4121e79a22608f.mp3",
+          "text": "A classmate says: 'Sustainable development just means stop using resources and stop all growth.' What's the correction?"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 59,
+          "hash": "9f5f6e74f3bdc448f13913bb87f8d413615b7c2585b10b33c6eaac6fdf3dd065",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9f5f6e74f3bdc448f13913bb87f8d413615b7c2585b10b33c6eaac6fdf3dd065.mp3",
+          "text": "Put the conservation milestones in the order they happened."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 286,
+          "hash": "a4217d056d140a489e5cd6b5ca2e60398e8e55da0fd61434d5b60d47be0ed65e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a4217d056d140a489e5cd6b5ca2e60398e8e55da0fd61434d5b60d47be0ed65e.mp3",
+          "text": "Pick three resources you used today ,  water, electricity, paper, fuel, food, anything.\n\nFor each, write one specific way you could use less without losing what you actually need. Use Gandhi's test: separate the need from the greed.\n\nType your three resources and one action each below."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 55,
+          "hash": "273e337317fc825f553c3ee319a1d070f1197ab37ef239fd60fc50b2b3f77b60",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/273e337317fc825f553c3ee319a1d070f1197ab37ef239fd60fc50b2b3f77b60.mp3",
+          "text": "Complete the definition that Brundtland gave the world."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 1,
+          "chars": 105,
+          "hash": "ea623c57cb67c182184b51445a7d87cb48020cf0b785bb433f2b0d214ce50493",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ea623c57cb67c182184b51445a7d87cb48020cf0b785bb433f2b0d214ce50493.mp3",
+          "text": "Sustainable development meets the needs of the blank without compromising the needs of blank generations."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 181,
+          "hash": "1bcc8a756e64c8a8e73c7f2cac3b9a891c37b5c0ced763454147ea2c679bd45f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/1bcc8a756e64c8a8e73c7f2cac3b9a891c37b5c0ced763454147ea2c679bd45f.mp3",
+          "text": "\"Enough for everybody's need, not for anybody's greed.\"\n\nWhere in your own life is the line between need and greed genuinely hard to draw? There's no right answer ,  just be honest."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 0,
+          "chars": 58,
+          "hash": "9f048930cc2fddd4ab006558882c0a3df500a3fb38383686a7a69255b8ef38d2",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9f048930cc2fddd4ab006558882c0a3df500a3fb38383686a7a69255b8ef38d2.mp3",
+          "text": "You know what sustainable development actually asks of us."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 1,
+          "chars": 589,
+          "hash": "26af996e9d51022b9043e17d7f285f484edb07cfcb5868f675336c293b52550e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/26af996e9d51022b9043e17d7f285f484edb07cfcb5868f675336c293b52550e.mp3",
+          "text": "Use resources as if they're endless and you get depletion, inequality, and ecological crisis. Sustainable development is the alternative ,  meet today's needs without robbing tomorrow's ,  and the world built a scaffolding for it, from Gandhi's warning through the Club of Rome, Brundtland, and Rio's Agenda 21.\n\nBut \"use resources wisely\" stays a slogan until someone draws the map: which resources, where, and who makes the plan? India is enormous and wildly uneven ,  coal-rich here, parched there. So how does a whole country plan its resources? That's the final lesson of this course."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/resources-and-resource-planning/04-resource-planning-in-india.yaml",
+      "language": "en",
+      "lesson_slug": "resource-planning-in-india",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_flash_v2_5",
+      "chunk_count": 17,
+      "total_chars": 4403,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 307,
+          "hash": "2d9f5658ca4949b889f3b246c64aa375a9db06bbe25878f319f44ff8228c6640",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/2d9f5658ca4949b889f3b246c64aa375a9db06bbe25878f319f44ff8228c6640.mp3",
+          "text": "Here's a puzzle that should bother you.\n\nJharkhand sits on some of the richest coal and mineral deposits in India ,  and it's one of the country's poorer states. Meanwhile, some places with barely any resources are wealthy.\n\nIf resources made you rich, this would be impossible. So what's actually going on?"
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 481,
+          "hash": "eefb7570a751704940bb2d618291da5a55cdcd349f15e95e9cb351c30297d06a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/eefb7570a751704940bb2d618291da5a55cdcd349f15e95e9cb351c30297d06a.mp3",
+          "text": "Start with how uneven India is. The country isn't one even spread of resources ,  it's a patchwork:\n\n- Jharkhand, Chhattisgarh, Madhya Pradesh ,  rich in minerals and coal.\n- Arunachal Pradesh ,  overflowing with water, but short on infrastructure.\n- Rajasthan ,  soaked in solar and wind energy, but desperate for water.\n- Ladakh ,  a cold desert, rich in culture, but lacking water, infrastructure, and many minerals.\n\nRich here, poor there ,  that's the rule, not the exception."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 89,
+          "hash": "b454d44e05417c33da075322ea6ab575e05841db8ea12475ebe5cdbd4afa7130",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b454d44e05417c33da075322ea6ab575e05841db8ea12475ebe5cdbd4afa7130.mp3",
+          "text": "India's resources are wildly uneven ,  every region is strong in some, starved of others."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 368,
+          "hash": "a5383f81c4e02cd1bb8f72c701c3a623c92354f8bdb30f3ca58e643fc0900139",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a5383f81c4e02cd1bb8f72c701c3a623c92354f8bdb30f3ca58e643fc0900139.mp3",
+          "text": "When a country is this uneven, you can't just hope resources end up where they're needed. You plan.\n\nResource planning is the widely accepted strategy for using resources judiciously ,  not wastefully, not blindly. India has taken it seriously since the very first Five Year Plan after Independence, and it happens at every level: national, state, regional, and local."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 432,
+          "hash": "1334f4d4a3f1361f6596b275a9e4c1563260d002854f65b763a467f84827054b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/1334f4d4a3f1361f6596b275a9e4c1563260d002854f65b763a467f84827054b.mp3",
+          "text": "Resource planning in India works in three steps:\n\n1. Identify and inventory ,  survey, map, and measure what resources exist, where, and in what quantity and quality.\n2. Build the planning structure ,  assemble the technology, skills, and institutions needed to actually carry out development.\n3. Match to national plans ,  line up each resource plan with the country's overall development goals.\n\nSkip any step and the plan stalls."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 88,
+          "hash": "19539ddad7d40c734ccb1b6f439938f379f458973c311551947273245eb3f822",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/19539ddad7d40c734ccb1b6f439938f379f458973c311551947273245eb3f822.mp3",
+          "text": "Identify what you have, build the structure to develop it, align it with national goals."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 359,
+          "hash": "963759486cfddf8af73459b4715e4c348921dc40174607cb2b18bd0fa3f6ed8b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/963759486cfddf8af73459b4715e4c348921dc40174607cb2b18bd0fa3f6ed8b.mp3",
+          "text": "Now the idea that ties this whole course together.\n\nHaving a resource is like having ingredients in your kitchen. Ingredients alone are not a meal. You still need the recipe ,  that's technology ,  and a working kitchen ,  that's institutions (laws, markets, skilled people, government).\n\nThe availability of resources is :hl[necessary, but never sufficient.]"
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 316,
+          "hash": "6d076f48d3a8c7ecf3120e96f37c5c1065a672645d953ed52ccc7c68abeaaff7",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6d076f48d3a8c7ecf3120e96f37c5c1065a672645d953ed52ccc7c68abeaaff7.mp3",
+          "text": "What would break if resources alone made you rich? Then Jharkhand, sitting on all that coal, would be among India's wealthiest states. It isn't.\n\nThe ingredients are there. What's often missing is the recipe and the kitchen ,  the technology and institutions to turn buried coal into roads, schools, jobs, and power."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 420,
+          "hash": "98185214c74aaaccaee468c1236f8d3337a193d943f065d72cb06926096afb51",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/98185214c74aaaccaee468c1236f8d3337a193d943f065d72cb06926096afb51.mp3",
+          "text": "History makes the point brutally. When colonisers came, they were drawn by the rich resources of the lands they invaded. But it was their superior technology and institutions that let them actually extract those resources ,  and dominate.\n\nIndia lived through this across long phases of colonisation. The lesson it left: resources build a nation only when matched with technological development and institutional change."
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 105,
+          "hash": "cef1dd62d6fe4824a11db4d22111cc7c6576cc5b115e03c9a530769e1312b8e2",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/cef1dd62d6fe4824a11db4d22111cc7c6576cc5b115e03c9a530769e1312b8e2.mp3",
+          "text": "Jharkhand is rich in coal and minerals yet remains one of India's poorer states. What best explains this?"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 41,
+          "hash": "282e3bb7bffe7f4bcae4bd8dd949486590865a030295355afb4f5a184601f08d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/282e3bb7bffe7f4bcae4bd8dd949486590865a030295355afb4f5a184601f08d.mp3",
+          "text": "Match each region to what it's known for."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 284,
+          "hash": "d7e8bff9c5cb12d17882faad7a1816d1f964906d4c3e648a1eaeb1d4641b025b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d7e8bff9c5cb12d17882faad7a1816d1f964906d4c3e648a1eaeb1d4641b025b.mp3",
+          "text": "Bring it home to your own state (or district).\n\nOn paper, list two resources it's genuinely rich in, and one important resource it lacks. Then write a single sentence: what technology or institution would help it use its strengths better?\n\nType your state and its two strengths below."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 42,
+          "hash": "cc346272aa606d81484b9745f5e235041a9389a9fc80cfa43913762087bb20b6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/cc346272aa606d81484b9745f5e235041a9389a9fc80cfa43913762087bb20b6.mp3",
+          "text": "Lock in the core idea of the whole course."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 1,
+          "chars": 132,
+          "hash": "18be0212fd46de04e23d67c203c6aad6b390042ae1cb2f1b249a6eeec0b62d93",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/18be0212fd46de04e23d67c203c6aad6b390042ae1cb2f1b249a6eeec0b62d93.mp3",
+          "text": "The availability of resources is blank for a region's development ,  but it is not blank. Technology and institutions must come too."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 222,
+          "hash": "52dab949b50d9c532b192b974695bb3f1684571da7b0f195c206f49d1e7b5ab6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/52dab949b50d9c532b192b974695bb3f1684571da7b0f195c206f49d1e7b5ab6.mp3",
+          "text": "Resource-rich but poor; resource-poor but rich. Think of anything ,  a person, a team, a company, a country ,  where simply having a lot wasn't enough without the right system around it.\n\nWhat was missing? No right answer."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 0,
+          "chars": 51,
+          "hash": "1ed8862e30a589ee278ba095c004c5322f793b971d19028f8ba9e40b4fb3cc52",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/1ed8862e30a589ee278ba095c004c5322f793b971d19028f8ba9e40b4fb3cc52.mp3",
+          "text": "You can explain why riches don't equal development."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 1,
+          "chars": 666,
+          "hash": "93ff95d4d635633ef20389f405e57fbb75f28a7696a441db3d85cf5417941c0d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/93ff95d4d635633ef20389f405e57fbb75f28a7696a441db3d85cf5417941c0d.mp3",
+          "text": "India is wildly uneven ,  coal here, water there, deserts baking under solar energy yet thirsting for rain. Resource planning is how a country uses what it has judiciously: identify and inventory, build the structure to develop it, and match it to national goals. And the deep lesson ,  resources are only necessary, never sufficient. Technology and institutions are what turn ingredients into a meal.\n\nThat completes our tour of resources in the abstract. But the single most important resource is the one quite literally under your feet: land. How does a country of 1.4 billion people use its land ,  and why is it running out? That's where the next course begins."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/resources-and-resource-planning-hinglish/01-what-counts-as-a-resource.yaml",
+      "language": "hinglish",
+      "lesson_slug": "what-counts-as-a-resource",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_multilingual_v2",
+      "chunk_count": 17,
+      "total_chars": 4858,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 330,
+          "hash": "4323026a8ce75b241d2169cdf6b6abe3852f2c26b97cef067224061a9d90709d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/4323026a8ce75b241d2169cdf6b6abe3852f2c26b97cef067224061a9d90709d.mp3",
+          "text": "Ek sawaal jo geography class mein koi nahi poochta.\n\nKya sunlight ek resource hai? Kya wind (hawa)? Aur woh coal jo abhi bhi zameen ke ek kilometre neeche dabi hai, jahan aaj tak kisi ne khudai nahi ki?\n\nTumhara gut kehta hai haan, obviously. Is feeling ko pakad ke rakho. Hum ise jaan-boojh kar thoda complicate karne waale hain."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 300,
+          "hash": "b95230ed1660b5415f4c8b33283f2208f6295c59d40de6f81cae8a9aead10bd5",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b95230ed1660b5415f4c8b33283f2208f6295c59d40de6f81cae8a9aead10bd5.mp3",
+          "text": "History mein zyaadatar logon ne maana ki resources nature ke free gifts hote hain ,  bas idhar-udhar pade hue, use hone ka wait karte hue. Ped, nadiyaan, minerals ,  sab le lo jitna chahiye.\n\nComfortable idea hai. Par galat bhi hai ,  aur exactly kyun galat hai, yahi aaj ki lesson ka asli point hai."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 423,
+          "hash": "29b82ddebce13822763f77c60078bba8585728ffea1e56923da9423bd7e405b2",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/29b82ddebce13822763f77c60078bba8585728ffea1e56923da9423bd7e405b2.mp3",
+          "text": "Toh actually resource kya hota hai? Yeh raha careful version:\n\nHamare environment ki koi bhi cheez jo hamari needs poori kar sakti hai ,  provided woh technologically accessible, economically feasible, aur culturally acceptable ho ,  usse resource kehte hain.\n\nUs chhote se word provided pe dhyaan do. Woh sabse zyaada kaam kar raha hai. Kisi cheez ko 'resource' ka naam milne se pehle use teen gates paar karne padte hain."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 75,
+          "hash": "17249dbaeb3b4513beeaee3f1c1f7ffc4cc1f78de4d44aff9aea6d2fbb5dfca6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/17249dbaeb3b4513beeaee3f1c1f7ffc4cc1f78de4d44aff9aea6d2fbb5dfca6.mp3",
+          "text": "Kaccha maal tabhi resource banta hai jab woh teeno gates paar kar leta hai."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 412,
+          "hash": "070e38d16d28b52193875b1edadad5132cce55dce1174f2e95f90bab12ed36d8",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/070e38d16d28b52193875b1edadad5132cce55dce1174f2e95f90bab12ed36d8.mp3",
+          "text": "Gate 1 ,  technically accessible. Kya hum use apne current tools se actually reach aur use kar sakte hain?\n\nUranium poori history mein ek plain, bhaari rock ki tarah zameen mein pada raha. Woh Earth ka sabse valuable resource tab bana jab humne nuclear reactors banana seekha. Wahi rock. Nayi technology. Ab woh resource hai.\n\nDeep-sea oil ki bhi yahi kahani ,  jab tak rigs nahi bana sakte the, tab tak useless."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 548,
+          "hash": "cae975e514639dd3d6264ce59a9ebc1f81c10255263509a5e8f25a6d869a1096",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/cae975e514639dd3d6264ce59a9ebc1f81c10255263509a5e8f25a6d869a1096.mp3",
+          "text": "Gate 2 ,  economically feasible. Maan lo reach kar bhi sakte hain ,  par kya woh cost ke laayak hai?\n\nAbhi is waqt samundar ke paani mein gold ghula hua hai. Par ₹1 ka gold nikaalne mein ₹1 se kahin zyaada kharch ho jaayega. Toh woh ek curiosity hai, resource nahi ,  jab tak economics nahi badalti.\n\nGate 3 ,  culturally acceptable. Koi community ek pahaadi ko mine karne se mana kar sakti hai jise woh pavitra maanti hai, ya kuch land ya jaanwaron ko not-for-use maan sakti hai. Culture decide karta hai ki hum kya use karne ki ijaazat dete hain."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 498,
+          "hash": "11cd4e0c54a5f2d0d77847940239fb1255ba13a56409f27c321939a105715d46",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/11cd4e0c54a5f2d0d77847940239fb1255ba13a56409f27c321939a105715d46.mp3",
+          "text": "Sab jod ke dekho toh comfortable idea toot jaata hai. Resources nature ke :red[free gifts nahi] hain. Woh human activity ka function hain ,  hum apne environment ke material ko resource mein transform karte hain.\n\nAgar yeh sach na hota toh kya tootta? Agar resources bas pade-pade mil jaate, toh har woh zameen jiske neeche oil hai ameer hoti, aur har banjar registan bekaar. Par duniya aisi nahi hai ,  aur yahi gap geography ko padhne laayak banata hai. (Ispe kuch lessons baad aur baat karenge.)"
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 444,
+          "hash": "68bbbc82f4cbdce7e712556a351357f8cd96394bccec2a89df0a72547e832cec",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/68bbbc82f4cbdce7e712556a351357f8cd96394bccec2a89df0a72547e832cec.mp3",
+          "text": "Ek aur piece hai. Insaan nature ko akele transform nahi karte. Hum yeh kaam technology ke through karte hain, aur institutions banate hain ,  governments, laws, markets, schools ,  taaki sab organise ho aur tezi se ho.\n\nToh teen cheezein ek loop mein bandh jaati hain: nature kaccha maal deti hai, technology use karne deti hai, institutions poore process ko direction aur speed deti hain. Inme se ek bhi nikaal do ,  development ruk jaati hai."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 146,
+          "hash": "a58c2132f1963c72f45f7ab08efada89a0b32940ffc2169f23c80df6744aed0e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a58c2132f1963c72f45f7ab08efada89a0b32940ffc2169f23c80df6744aed0e.mp3",
+          "text": "Nature technology ko feed karti hai, technology institutions ko, institutions decide karti hain hum nature ko kaise use karein. Loop chalte dekho."
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 143,
+          "hash": "e9ef216f67e92e94f0dba566fbce113bc4b348d3f773303f82d434a76cd4162a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e9ef216f67e92e94f0dba566fbce113bc4b348d3f773303f82d434a76cd4162a.mp3",
+          "text": "Ek dost kehta hai: 'Resources toh bas nature ke free gifts hain ,  pade rehte hain, use hone ka wait karte hue.' Sabse sahi correction kya hai?"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 74,
+          "hash": "530e87c98b5d28b77a33a189fcca8723daeaf30cb325bbe17ec71c1d8d2b67ca",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/530e87c98b5d28b77a33a189fcca8723daeaf30cb325bbe17ec71c1d8d2b67ca.mp3",
+          "text": "Har item kisi alag gate pe atka hai ,  ya teeno paar kar gaya. Match karo."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 424,
+          "hash": "9e32ca5b2636b146a768b8323a4d47b9bd3b7ae675677590b315ab6b16673cfd",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9e32ca5b2636b146a768b8323a4d47b9bd3b7ae675677590b315ab6b16673cfd.mp3",
+          "text": "Apne kamre mein dekho aur koi ek aam cheez uthao ,  pencil, phone, ya steel ka tumbler.\n\nPaper pe use ulta trace karo: nature mein woh kis kacche maal se shuru hui thi? Phir use teeno gates se guzaaro ,  kis technology ne us material ko usable banaya, lagbhag kis cheez ne use affordable banaya, aur use use karna culturally theek kyun hai?\n\n2, 3 lines likho. Phir neeche apni cheez aur uska shuruaati kaccha maal type karo."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 62,
+          "hash": "2fc59beb7b99dbb097460b0ef1af8b8911a2ba8e167191b61d40a75bf78c8af0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/2fc59beb7b99dbb097460b0ef1af8b8911a2ba8e167191b61d40a75bf78c8af0.mp3",
+          "text": "Har resource ko paar karne padne waale teen tests yaad kar lo."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 1,
+          "chars": 92,
+          "hash": "9f72b5b5fe55365567657dee4705aea79eaecf6969df87ff04161135d01b2a22",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9f72b5b5fe55365567657dee4705aea79eaecf6969df87ff04161135d01b2a22.mp3",
+          "text": "Ek resource ko technologically blank, economically blank, aur culturally blank hona chahiye."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 267,
+          "hash": "90a1762c7610766537b05a8e82c8adfbf94dd4dd205865bdd038502b1abcd2fc",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/90a1762c7610766537b05a8e82c8adfbf94dd4dd205865bdd038502b1abcd2fc.mp3",
+          "text": "Aaj se pehle, kya tum resources ko 'nature ke free gifts' samajhte the? Koi ek cheez batao ,  koi material, jagah, ya rozmarra ki cheez ,  jise ab tum thoda alag tarah se dekhte ho.\n\nKoi sahi jawaab nahi hai. Bas woh cheez note karo jisne tumhe rukne pe majboor kiya."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 0,
+          "chars": 58,
+          "hash": "a6ef291ce0f6d6622bfd5fa6ca675f1d8c9a19b9c94ec61eeb85cf9c8668bf16",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a6ef291ce0f6d6622bfd5fa6ca675f1d8c9a19b9c94ec61eeb85cf9c8668bf16.mp3",
+          "text": "Ab tum kacche maal aur ek resource mein fark kar sakte ho."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 1,
+          "chars": 562,
+          "hash": "ddf7e9e5f13b9acb0007b07ff9815e9075b84a8e6b33066ecb0293cc260e41d7",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ddf7e9e5f13b9acb0007b07ff9815e9075b84a8e6b33066ecb0293cc260e41d7.mp3",
+          "text": "Resource bas bahar pada hua nahi hota. Yeh woh matter hai jo teen gates paar karta hai ,  technologically accessible, economically feasible, culturally acceptable ,  aur phir human kaam se transform hota hai, nature, technology, aur institutions ke ek loop ke andar.\n\nPar resources mein gajab ki variety hoti hai: sunlight aur coal, ek private khet aur khula samundar, aaj nikaalne waala oil aur woh oil jise hum abhi reach nahi kar sakte. Kya yeh sab ek hi kism ki cheez hain? Agli lesson: woh four lenses jinse geographers kisi bhi resource ko sort karte hain."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/resources-and-resource-planning-hinglish/02-four-ways-to-classify-a-resource.yaml",
+      "language": "hinglish",
+      "lesson_slug": "four-ways-to-classify-a-resource",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_multilingual_v2",
+      "chunk_count": 17,
+      "total_chars": 4642,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 263,
+          "hash": "84f5518e383e228709a7ad207961596e63b632a8173324e92f6b118f7c1c67d0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/84f5518e383e228709a7ad207961596e63b632a8173324e92f6b118f7c1c67d0.mp3",
+          "text": "Ek sawaal jo simple lagta hai par hai nahi.\n\nEk forest lo. Woh kis kism ka resource hai?\n\nJab tum jawaab dene ki koshish karoge, dekhoge ki woh ek kism ka nahi hai. Woh ek saath chaar kism ka hai ,  aur yeh koi trick nahi. Geographers exactly aise hi sochte hain."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 352,
+          "hash": "94134663175ed5a9243eec47edfacdaf2e7d5e6ad2af7abf6c1e74a343012552",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/94134663175ed5a9243eec47edfacdaf2e7d5e6ad2af7abf6c1e74a343012552.mp3",
+          "text": "Geographers ke paas \"resources\" naam ka ek bada dabba nahi hota. Unke paas chaar sorting sawaal hote hain ,  chaar lenses ,  aur woh har resource ko chaaron se guzaarte hain.\n\nIse aise socho jaise ek suitcase pe chaar luggage tags. Wahi suitcase ko ek tag milta hai kahan se aaya ke liye, ek kaise own hota hai ke liye, waghairah. Ek cheez, chaar tags."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 114,
+          "hash": "d50346fdc189de1ae1052dc795fe474d72695a7715d4696bb52158ce9066d49a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d50346fdc189de1ae1052dc795fe474d72695a7715d4696bb52158ce9066d49a.mp3",
+          "text": "Har resource ek saath chaar tareeke se sort hota hai: origin, exhaustibility, ownership, aur development ka stage."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 306,
+          "hash": "29c0f0c373b8ec59696155a1de6d4d99883ea75ad79396d5eadd0f8408de41a6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/29c0f0c373b8ec59696155a1de6d4d99883ea75ad79396d5eadd0f8408de41a6.mp3",
+          "text": "Lens 1 ,  Origin. Yeh kahan se aaya ,  living world se ya non-living world se?\n\n- Biotic resources biosphere se aate hain aur unme life hoti hai: forests, fish, livestock, khud insaan.\n- Abiotic resources non-living cheezon se bante hain: rocks, minerals, metals.\n\nEk forest? Biotic. Suitcase pe pehla tag."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 503,
+          "hash": "373ae87f982f4cdcde9ca5db0f77e4d7a2664862bbe750bd854035f71e1e7351",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/373ae87f982f4cdcde9ca5db0f77e4d7a2664862bbe750bd854035f71e1e7351.mp3",
+          "text": "Lens 2 ,  Exhaustibility. Kya yeh khatam ho jaayega?\n\n- Renewable resources khud ko renew karte hain ,  solar, wind, water, forests, wildlife. Kuch continuous hote hain (sooraj ko humse fark nahi padta); kuch ko wapas aane mein time lagta hai (kata hua forest, sookha aquifer).\n- Non-renewable resources banne mein millions of years lagte hain ,  minerals, fossil fuels. Ek baar khatam, toh kisi bhi human timescale pe gaye.\n\nForest khud ko renew kar leta hai agar hum mauka dein. Renewable. Doosra tag."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 498,
+          "hash": "35e80530477de3e564d3f9ebc89a43889751ff315b447e244548deb0f12751bb",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/35e80530477de3e564d3f9ebc89a43889751ff315b447e244548deb0f12751bb.mp3",
+          "text": "Lens 3 ,  Ownership. Yeh kiska hai?\n\n- Individual ,  ek private well, ek family ki farmland.\n- Community ,  gaon ki grazing common, public talaab.\n- National ,  desh ki seemaon ke andar sab kuch: uske minerals, forests, rivers, aur kinaare se 12 nautical miles tak ka samundar.\n- International ,  kisi bhi coast se 200 km ke aage ka khula samundar. Use koi ek desh own nahi karta; global institutions use govern karti hain.\n\nIndia ke zyaadatar forests nation manage karti hai. National. Teesra tag."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 719,
+          "hash": "2ce53c60ec68b99eba0ace33dd44fe91500ad7cf617ef7bac7749750405ff84c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/2ce53c60ec68b99eba0ace33dd44fe91500ad7cf617ef7bac7749750405ff84c.mp3",
+          "text": "Lens 4 ,  Status of development. Yahi woh hai jise students gadbada dete hain, toh thoda dheere chalo.\n\n- Potential ,  kisi region mein maujood hai par humne abhi use nahi kiya (Rajasthan ki solar aur wind).\n- Developed ,  survey ho chuka, maapa ja chuka, aur active use mein hai.\n- Stock ,  material bilkul wahin hai, par hamare paas use use karne ki technology hi nahi. Water hydrogen aur oxygen hai ,  ek bahut bada fuel ,  par hum use bade scale pe unlock nahi kar sakte. Toh woh stock hai.\n- Reserve ,  stock ka woh hissa jise hum aaj ki technology se use kar sakte hain par abhi shuru nahi kiya ,  jaise future ke liye bachaaya gaya khada forest.\n\nJo forest hum baad ke liye bacha rahe hain? Reserve. Chautha tag."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 89,
+          "hash": "891766965b12ea43ceae3ea1ea9da6b20ff9d68daa2016509d1b0ffcb5f6820e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/891766965b12ea43ceae3ea1ea9da6b20ff9d68daa2016509d1b0ffcb5f6820e.mp3",
+          "text": "Wahi forest biotic, renewable, national, AUR ek reserve hai ,  chaar lenses, ek resource."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 238,
+          "hash": "0ed4e27350f586ec8d07a2b844b891f4d14fff7cf751347e8871fa428659dda4",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/0ed4e27350f586ec8d07a2b844b891f4d14fff7cf751347e8871fa428659dda4.mp3",
+          "text": "Dekha kya hua? Humein kabhi ek box chunna hi nahi pada. Forest biotic aur renewable aur national aur ek reserve hai ,  sab ek saath sach.\n\nYahi poora skill hai: yeh mat poocho \"yeh kaunsi kism hai?\" Poocho \"chaaron lenses kya kehti hain?\""
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 200,
+          "hash": "dadc317189f0f685c0598155d124d5d1790c3a37f325f4c29b0036d54a2f5a1d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/dadc317189f0f685c0598155d124d5d1790c3a37f325f4c29b0036d54a2f5a1d.mp3",
+          "text": "Water ko hydrogen aur oxygen mein toda ja sakta hai ,  ek bahut bada energy source ,  par hamare paas use bade scale pe karne ki technology abhi nahi hai. Development ke terms mein woh energy kya hai?"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 54,
+          "hash": "d60f77f34c1d8017677b017270402f06bc179d3983dca0ff7d27b8c1d0f38b0e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d60f77f34c1d8017677b017270402f06bc179d3983dca0ff7d27b8c1d0f38b0e.mp3",
+          "text": "Har resource ko uski ownership category se match karo."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 416,
+          "hash": "d94dd071f49ab7b4d8edb1d364856893f12f52561e130c10951b8d975b1fa2db",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d94dd071f49ab7b4d8edb1d364856893f12f52561e130c10951b8d975b1fa2db.mp3",
+          "text": "Apni rozmarra ki zindagi se koi ek resource lo ,  ghar ki cooking gas, jo paani tum peete ho, ya notebook ka paper.\n\nPaper pe use chaaron lenses se guzaaro:\n1. Origin ,  biotic ya abiotic?\n2. Exhaustibility ,  renewable ya non-renewable?\n3. Ownership ,  individual, community, national, ya international?\n4. Development ,  potential, developed, stock, ya reserve?\n\nNeeche apna resource aur uske chaar tags type karo."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 28,
+          "hash": "dbe017ad9c763254b990e46a28f5a55d6a2faf10759697889cfe6f29cc056125",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/dbe017ad9c763254b990e46a28f5a55d6a2faf10759697889cfe6f29cc056125.mp3",
+          "text": "Origin ke terms yaad kar lo."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 1,
+          "chars": 165,
+          "hash": "e9de0f3e2e84d2b204a88adcd18dde168cfb444b1b53dd8756f96ae0cee5ddfd",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e9de0f3e2e84d2b204a88adcd18dde168cfb444b1b53dd8756f96ae0cee5ddfd.mp3",
+          "text": "Biosphere se aane waale, life waale resources ,  jaise forests aur fisheries ,  blank kehlaate hain. Rocks aur metals jaise non-living resources blank kehlaate hain."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 184,
+          "hash": "2151d90ce6d8403986053a704e14c389d6cc69836d4efddf08a302f98fb59355",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/2151d90ce6d8403986053a704e14c389d6cc69836d4efddf08a302f98fb59355.mp3",
+          "text": "Chaaron lenses mein se kaunsi sabse mushkil lagi samajhne mein ,  aur aakhir mein kis cheez se woh click hui?\n\nKoi sahi jawaab nahi. Bas woh ek batao jisne tumhe sabse zyaada uljhaaya."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 0,
+          "chars": 72,
+          "hash": "2606f55d654104ac91c73cfdc44db4682258523eb4748ab817df2e39940389c5",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/2606f55d654104ac91c73cfdc44db4682258523eb4748ab817df2e39940389c5.mp3",
+          "text": "Ab tum kisi bhi resource ko ek saath chaar tareeke se sort kar sakte ho."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 1,
+          "chars": 441,
+          "hash": "b9c3db78efa6a35645d103c82e5fae02c449647c2e9bc9e8e8edb29c359c1c12",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b9c3db78efa6a35645d103c82e5fae02c449647c2e9bc9e8e8edb29c359c1c12.mp3",
+          "text": "Origin, exhaustibility, ownership, development ,  chaar lenses, har resource pe ek saath. Ab \"kaunsa box?\" nahi; bas \"har lens kya kehti hai?\"\n\nPar lens do mein ek chupi hui warning hai. Kuch resources wapas nahi aate ,  aur renewable waale bhi barbaad ho sakte hain agar hum laaparwah hon. Toh kya hota hai jab insaan resources ko endless samajh ke use karte hain? Aur sustainably develop karne ka asli matlab kya hai? Yahi agli lesson hai."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/resources-and-resource-planning-hinglish/03-sustainable-development-and-conservation.yaml",
+      "language": "hinglish",
+      "lesson_slug": "sustainable-development-and-conservation",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_multilingual_v2",
+      "chunk_count": 17,
+      "total_chars": 4713,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 306,
+          "hash": "985f7678055fa321247f5f626577b71eb15a6678a4fe0d56579086f5568daab9",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/985f7678055fa321247f5f626577b71eb15a6678a4fe0d56579086f5568daab9.mp3",
+          "text": "Ek sawaal jis pe thoda sochna banta hai.\n\nAgar Earth pe har insaan sirf utna le jitni use zaroorat hai ,  ek raddi bhi zyaada nahi ,  toh kya hum kabhi sach mein resources khatam kar sakte hain?\n\nGandhi ne is sawaal ka ek line mein jawaab diya tha. Wahan pahunchenge. Pehle dekho humne uski jagah kya kiya."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 439,
+          "hash": "5655fea28ef29c67e5022ceb970d11c979c78ba5d6d98fc4f3751ae7b794abdd",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/5655fea28ef29c67e5022ceb970d11c979c78ba5d6d98fc4f3751ae7b794abdd.mp3",
+          "text": "Kaafi samay tak humne resources ko aise use kiya jaise woh endless hon. Iska nateeja ,  teen cheezein toot gayin:\n\n- Depletion ,  resources khatam, kuch logon ki greed ke liye.\n- Inequality ,  daulat kuch haathon mein jama ho gayi, samaaj haves aur have-nots mein bat gaya.\n- Ecological crisis ,  global warming, ozone layer ka nuksaan, pollution, land degradation.\n\nInme se koi accident nahi hai. Yeh \"jitna le sako le lo\" ka nateeja hai."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 69,
+          "hash": "dda22d2a76261890d377b6d5d2c91779c11ab341d7b6336e45d14deeae11f97c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/dda22d2a76261890d377b6d5d2c91779c11ab341d7b6336e45d14deeae11f97c.mp3",
+          "text": "Resources ko endless samjho, toh teen problems aati hain ,  har baar."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 462,
+          "hash": "811d8abe278bd49eb78a922317c44c8f5c3c9bb2c7fc383d7b66a546747947f2",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/811d8abe278bd49eb78a922317c44c8f5c3c9bb2c7fc383d7b66a546747947f2.mp3",
+          "text": "Toh humein \"progress\" ka ek alag idea chahiye. Uska naam hai: sustainable development.\n\nDefinition lagbhag word-by-word yaad karne laayak hai: aisi development jo environment ko nuksaan pahunchaaye bina ho, aur jo future generations ki needs se samjhauta na kare.\n\nMental image yeh hai. Tum planet apne purvajon (ancestors) se virasat mein nahi paate ,  tum use apne bachchon se udhaar lete ho. Sustainable development bas us udhaar ko imaandaari se chukana hai."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 333,
+          "hash": "036aeb02642eeaee30391d12ffc6fbd6796ef19e59c2e3ff3e985e6bd9934a8a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/036aeb02642eeaee30391d12ffc6fbd6796ef19e59c2e3ff3e985e6bd9934a8a.mp3",
+          "text": "Ek warning, kyunki yahan lagbhag sab galti karte hain.\n\nSustainable development ka matlab development band karo ya resources use karna band karo nahi hai. Hum building, growth, minerals aur fuels ,  sab jaari rakhte hain.\n\nMatlab sirf itna: aaj ke liye kal ko loot kar mat karo. :hl[Grow karo ,  bas future ke against udhaar mat lo.]"
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 587,
+          "hash": "e48881c4a64b7623c72182a11c474750d9a25e671e49a919c6d53f1f93f19db5",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e48881c4a64b7623c72182a11c474750d9a25e671e49a919c6d53f1f93f19db5.mp3",
+          "text": "Duniya ne is pe saath milke kaam karne ki koshish ki. Sabse bada moment tha Rio de Janeiro Earth Summit, 1992 ,  pehla International Earth Summit, jahan 100 se zyaada heads of state mile, environment ki suraksha aur development dono ko ek saath sambhaalne.\n\nUnhone climate change aur biodiversity pe declarations sign kiye, aur ek global action plan apnaaya jise Agenda 21 kehte hain ,  environmental damage, gareebi, aur bimaari se ladne ka blueprint, cooperation ke through. Iska sabse sharp idea: har local government apna khud ka local Agenda 21 banaaye. Think globally, act locally."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 422,
+          "hash": "a8d9e54afbd0483d254120ee8b56cd2586cafb6db674bcec94fad8a2987d7fb0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a8d9e54afbd0483d254120ee8b56cd2586cafb6db674bcec94fad8a2987d7fb0.mp3",
+          "text": "Rio kahin se achaanak nahi aaya. Kuch thinkers ise dashakon pehle aata dekh rahe the:\n\n- 1968 ,  Club of Rome ne resources bachaane ki pehli systematic awaaz uthaayi.\n- 1974 ,  Schumacher ki kitaab Small is Beautiful ne Gandhi ki soch ko duniya tak pahunchaaya.\n- 1987 ,  Brundtland Report (Our Common Future) ne asal mein sustainable development term gadha.\n\nPhir, 1992 mein, Rio ne is idea ko ek global agenda bana diya."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 70,
+          "hash": "b363fcb5fb6c95dd19a1c4cfe3711760ba89809a37bc0c64676f81d5d0e2ae5d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b363fcb5fb6c95dd19a1c4cfe3711760ba89809a37bc0c64676f81d5d0e2ae5d.mp3",
+          "text": "Chaar milestones, sustainable development ke idea ki taraf badhte hue."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 366,
+          "hash": "8a032fb09508256b119de923ef5885f8e19db9187d1c9372938a292682dcc339",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/8a032fb09508256b119de923ef5885f8e19db9187d1c9372938a292682dcc339.mp3",
+          "text": "Ab woh line jiska maine shuru mein wada kiya tha. Gandhi ne kaha:\n\n\"Yahan har kisi ki zaroorat ke liye kaafi hai, par kisi ek ke laalach ke liye nahi.\"\n\nUnhone resource depletion ke do mujrim bataye: laalchi, swaarthi log, aur mass production ka exploitative model. Unka alternative mass production nahi tha ,  woh tha production by the masses. Chhota, local, kaafi."
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 138,
+          "hash": "e8542e67ea942ba14166270d9afca6cd4efb720eba0456e848bb98b5f9db2088",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e8542e67ea942ba14166270d9afca6cd4efb720eba0456e848bb98b5f9db2088.mp3",
+          "text": "Ek classmate kehta hai: 'Sustainable development ka matlab bas resources use karna band karo aur saari growth rok do.' Correction kya hai?"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 60,
+          "hash": "ec6640000ebe4b77bb2993b23f48b6b88dbc8dd8a6343e94a7130cd8ecd29b3c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ec6640000ebe4b77bb2993b23f48b6b88dbc8dd8a6343e94a7130cd8ecd29b3c.mp3",
+          "text": "Conservation ke milestones ko unke hone ke order mein lagao."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 359,
+          "hash": "9bc2b6c64df0ac204a98a49853c25f8572c9ad66e788dec01573bd0abce5d876",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9bc2b6c64df0ac204a98a49853c25f8572c9ad66e788dec01573bd0abce5d876.mp3",
+          "text": "Aaj tumne jo teen resources use kiye ,  water, electricity, paper, fuel, food, kuch bhi ,  un teeno ko chuno.\n\nHar ek ke liye ek specific tareeka likho jisse tum kam use kar sako bina us cheez ko khoye jiski tumhe sach mein zaroorat hai. Gandhi ka test use karo: zaroorat ko laalach se alag karo.\n\nNeeche apne teen resources aur har ek pe ek action type karo."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 56,
+          "hash": "996778abd06ae73f3957b71b301d2ef0ffae198b153667aaa9232c4205a226d6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/996778abd06ae73f3957b71b301d2ef0ffae198b153667aaa9232c4205a226d6.mp3",
+          "text": "Woh definition poori karo jo Brundtland ne duniya ko di."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 1,
+          "chars": 105,
+          "hash": "9f582d34fb6fc5020f191fab8169fba453dc9833e50766e16832c21d2b8ae172",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9f582d34fb6fc5020f191fab8169fba453dc9833e50766e16832c21d2b8ae172.mp3",
+          "text": "Sustainable development blank ki needs poori karta hai bina blank generations ki needs se samjhauta kiye."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 232,
+          "hash": "ec66ca7c8c5679f57bb3f8d83437d5883095a72f313dae2244588970f24ef67e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ec66ca7c8c5679f57bb3f8d83437d5883095a72f313dae2244588970f24ef67e.mp3",
+          "text": "\"Har kisi ki zaroorat ke liye kaafi, kisi ke laalach ke liye nahi.\"\n\nTumhari apni zindagi mein woh jagah kahan hai jahan zaroorat aur laalach ke beech line kheenchna sach mein mushkil hai? Koi sahi jawaab nahi ,  bas imaandaar raho."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 0,
+          "chars": 77,
+          "hash": "1341f66aea173debfd38626c96798e521189942aaed93156c314665ca1aa0a31",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/1341f66aea173debfd38626c96798e521189942aaed93156c314665ca1aa0a31.mp3",
+          "text": "Ab tum jaante ho ki sustainable development hum se asal mein kya maangti hai."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 1,
+          "chars": 632,
+          "hash": "17af615908c574d49735591553efe2061a9f3fa752c7895de3ba3f8c6e77e63e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/17af615908c574d49735591553efe2061a9f3fa752c7895de3ba3f8c6e77e63e.mp3",
+          "text": "Resources ko endless samajh ke use karo toh milti hai depletion, inequality, aur ecological crisis. Sustainable development uska alternative hai ,  aaj ki needs poori karo bina kal ko loote ,  aur duniya ne iske liye ek dhaancha banaya, Gandhi ki warning se lekar Club of Rome, Brundtland, aur Rio ke Agenda 21 tak.\n\nPar \"resources samajhdaari se use karo\" tab tak ek slogan hai jab tak koi map na banaaye: kaunse resources, kahan, aur kaun plan banaaye? India bahut bada aur bahut uneven hai ,  yahan coal se bhara, wahan paani ko taraste. Toh ek poora desh apne resources kaise plan karta hai? Yahi is course ki aakhri lesson hai."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/resources-and-resource-planning-hinglish/04-resource-planning-in-india.yaml",
+      "language": "hinglish",
+      "lesson_slug": "resource-planning-in-india",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_multilingual_v2",
+      "chunk_count": 17,
+      "total_chars": 4697,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 334,
+          "hash": "d1d701db124bbf24326940693dec29b87aa8e4d1ed6f99e7ab061fce5341340a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d1d701db124bbf24326940693dec29b87aa8e4d1ed6f99e7ab061fce5341340a.mp3",
+          "text": "Ek paheli jo tumhe pareshaan karni chahiye.\n\nJharkhand India ke kuch sabse rich coal aur mineral deposits pe baitha hai ,  aur woh desh ke gareeb rajyon mein se ek hai. Wahin, kuch jagahein jinke paas mushkil se koi resource hai, ameer hain.\n\nAgar resources tumhe ameer banaate, toh yeh impossible hota. Toh asal mein ho kya raha hai?"
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 496,
+          "hash": "a99cd017ed733a5108a038c98dc95b5747e5195a5448b43d32d453bc5ac2c4c0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a99cd017ed733a5108a038c98dc95b5747e5195a5448b43d32d453bc5ac2c4c0.mp3",
+          "text": "Shuru karo isse ki India kitna uneven hai. Desh resources ka ek barabar phaila hua chaddar nahi ,  yeh ek patchwork hai:\n\n- Jharkhand, Chhattisgarh, Madhya Pradesh ,  minerals aur coal mein rich.\n- Arunachal Pradesh ,  paani se bhara, par infrastructure ki kami.\n- Rajasthan ,  solar aur wind energy mein doobaa, par paani ko taras raha.\n- Ladakh ,  ek cold desert, culture mein rich, par paani, infrastructure, aur kayi minerals ki kami.\n\nYahan rich, wahan poor ,  yahi rule hai, exception nahi."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 86,
+          "hash": "32d87575fab2ef0af477931b50474bcd1f155c8c53eca3d1d2e2c42631e60b48",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/32d87575fab2ef0af477931b50474bcd1f155c8c53eca3d1d2e2c42631e60b48.mp3",
+          "text": "India ke resources bahut uneven hain ,  har region kuch mein strong, kuch mein khaali."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 415,
+          "hash": "d1c083e82a75ee98f18d6d40daa0ecc709d45b29390d2a67c422b3e407451973",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d1c083e82a75ee98f18d6d40daa0ecc709d45b29390d2a67c422b3e407451973.mp3",
+          "text": "Jab koi desh itna uneven ho, toh tum sirf umeed nahi kar sakte ki resources wahan pahunch jaayenge jahan zaroorat hai. Tum plan karte ho.\n\nResource planning resources ko samajhdaari se use karne ki widely accepted strategy hai ,  na barbaad, na aankh band karke. India ise Independence ke baad ke pehle hi Five Year Plan se seriously le raha hai, aur yeh har level pe hoti hai: national, state, regional, aur local."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 452,
+          "hash": "aedfe9888ef51ffb33ad20ccc7e56ffd05ad8f7160fe2cad50de40f44b31c43a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/aedfe9888ef51ffb33ad20ccc7e56ffd05ad8f7160fe2cad50de40f44b31c43a.mp3",
+          "text": "India mein resource planning teen steps mein chalti hai:\n\n1. Identify aur inventory ,  survey, map, aur maapo ki kaunse resources kahan hain, aur kitni quantity aur quality mein.\n2. Planning structure banao ,  woh technology, skills, aur institutions jamao jo development ko actually anjaam dein.\n3. National plans se match karo ,  har resource plan ko desh ke overall development goals se line up karo.\n\nKoi bhi step chhoot gaya ,  plan ruk jaata hai."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 93,
+          "hash": "25e7a8cc24e5be045e7d4cf030d2f2e418ac0f16d3437137d868ff334f526088",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/25e7a8cc24e5be045e7d4cf030d2f2e418ac0f16d3437137d868ff334f526088.mp3",
+          "text": "Jo hai use identify karo, use develop karne ka structure banao, national goals se align karo."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 354,
+          "hash": "30279d45cc18d14705e37c0a1569b317be8fa3afeb7fbf9035079806efb0f079",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/30279d45cc18d14705e37c0a1569b317be8fa3afeb7fbf9035079806efb0f079.mp3",
+          "text": "Ab woh idea jo is poore course ko bandh deta hai.\n\nResource hona aise hai jaise kitchen mein ingredients hona. Sirf ingredients koi meal nahi hote. Tumhe abhi bhi recipe chahiye ,  woh hai technology ,  aur ek chalti hui kitchen ,  woh hain institutions (laws, markets, skilled log, government).\n\nResources ka hona :hl[zaroori hai, par kaafi kabhi nahi.]"
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 326,
+          "hash": "d9bd4934163893cace29940bfcc33e5e5fb82d22e827b4fcfe06233ca0e216cb",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d9bd4934163893cace29940bfcc33e5e5fb82d22e827b4fcfe06233ca0e216cb.mp3",
+          "text": "Agar sirf resources hi tumhe ameer banaate toh kya tootta? Toh Jharkhand, us saare coal pe baitha, India ke sabse ameer rajyon mein hota. Hai nahi.\n\nIngredients toh wahan hain. Jo aksar nahi hota woh hai recipe aur kitchen ,  woh technology aur institutions jo dabe hue coal ko roads, schools, jobs, aur power mein badal dein."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 437,
+          "hash": "aed3c9d07913f73c1c5ad5b2aa0757ffcfacfd18abf9d9e175c4135511a4798a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/aed3c9d07913f73c1c5ad5b2aa0757ffcfacfd18abf9d9e175c4135511a4798a.mp3",
+          "text": "History is baat ko bedardi se saabit karti hai. Jab colonisers aaye, woh un zameenon ke rich resources se aakarshit the jinhe unhone invade kiya. Par yeh unki behtar technology aur institutions thi jisne unhe woh resources nikaalne ,  aur raj karne ,  diya.\n\nIndia ne yeh colonisation ke lambe phases mein jhela. Jo sabak mila: resources ek desh ko tabhi banaate hain jab unke saath technological development aur institutional change ho."
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 125,
+          "hash": "3941cb6e029423ae6b57df28b51b22eefce1fde75a5b406aa0febfb982170f74",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/3941cb6e029423ae6b57df28b51b22eefce1fde75a5b406aa0febfb982170f74.mp3",
+          "text": "Jharkhand coal aur minerals mein rich hai, phir bhi India ke gareeb rajyon mein se ek hai. Iski sabse achhi vyaakhya kya hai?"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 61,
+          "hash": "a0f7f75812d52a4c8947462cc63773964e52e28e20f575e6b1f4ebc373c25551",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a0f7f75812d52a4c8947462cc63773964e52e28e20f575e6b1f4ebc373c25551.mp3",
+          "text": "Har region ko usse match karo jiske liye woh jaana jaata hai."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 304,
+          "hash": "6e2b00907fb624a4f7019ce20eae60cd4e947a052e7924bc08e80271ae7e47f0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6e2b00907fb624a4f7019ce20eae60cd4e947a052e7924bc08e80271ae7e47f0.mp3",
+          "text": "Ise apne rajya (ya district) tak le aao.\n\nPaper pe do resources likho jinme woh sach mein rich hai, aur ek zaroori resource jiski usme kami hai. Phir ek line likho: kaunsi technology ya institution use apni strengths behtar use karne mein madad karegi?\n\nNeeche apna rajya aur uski do strengths type karo."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 38,
+          "hash": "a42d40edd3c575ef5e66606c3fccd2c81afc8ba5b42fca5302d624127ee11688",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a42d40edd3c575ef5e66606c3fccd2c81afc8ba5b42fca5302d624127ee11688.mp3",
+          "text": "Poore course ka core idea yaad kar lo."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 1,
+          "chars": 129,
+          "hash": "c96fbe7188a4693b418d7f90938f3e301935682197ceb56af4749a1244ab1ee6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c96fbe7188a4693b418d7f90938f3e301935682197ceb56af4749a1244ab1ee6.mp3",
+          "text": "Resources ka hona ek region ki development ke liye blank hai ,  par yeh blank nahi. Technology aur institutions bhi aane chahiye."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 259,
+          "hash": "095b5a847eae0084b26b65121b48a13ba9b02a8bb9074b83a92bb171313c872a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/095b5a847eae0084b26b65121b48a13ba9b02a8bb9074b83a92bb171313c872a.mp3",
+          "text": "Resources mein rich par gareeb; resources mein poor par ameer. Kisi bhi cheez ke baare mein socho ,  koi insaan, team, company, ya desh ,  jahan sirf bahut kuch hona kaafi nahi tha, jab tak uske aas-paas sahi system na ho.\n\nKya kami thi? Koi sahi jawaab nahi."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 0,
+          "chars": 71,
+          "hash": "30b4076c0ca4180c0cc5d73062fdb8ea8866dc01f1a3f47ef872a31a5c9ca11c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/30b4076c0ca4180c0cc5d73062fdb8ea8866dc01f1a3f47ef872a31a5c9ca11c.mp3",
+          "text": "Ab tum samjha sakte ho ki daulat development ke barabar kyun nahi hoti."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 1,
+          "chars": 717,
+          "hash": "a23a36461d94267390833e50e67e08341a9da2bbeda3d19b2e3462368b595496",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a23a36461d94267390833e50e67e08341a9da2bbeda3d19b2e3462368b595496.mp3",
+          "text": "India bahut uneven hai ,  yahan coal, wahan paani, registan jo solar energy mein jhulaste hain par baarish ko taraste. Resource planning woh tareeka hai jisse ek desh apne paas jo hai use samajhdaari se use karta hai: identify aur inventory, use develop karne ka structure banao, aur use national goals se match karo. Aur gehra sabak ,  resources sirf zaroori hain, kabhi kaafi nahi. Technology aur institutions hi ingredients ko meal mein badalte hain.\n\nYeh resources ke abstract tour ko poora karta hai. Par sabse zaroori resource woh hai jo literally tumhare pairon ke neeche hai: land. 1.4 billion logon ka desh apni land kaise use karta hai ,  aur woh khatam kyun ho rahi hai? Yahi se agla course shuru hota hai."
+        }
+      ]
+    }
+  ]
+}
