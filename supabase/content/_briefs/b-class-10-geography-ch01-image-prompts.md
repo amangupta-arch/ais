@@ -41,4 +41,12 @@ to Course 1, Lesson 1. `placement:` says which turn it becomes.
 - prompt:
   > Editorial illustration: a pair of hands shaping wet clay on a potter's wheel, raw earth becoming a smooth finished pot — symbolising humans transforming natural material into a useful resource. Clean flat editorial vector illustration, muted earthy palette (ochre, moss green, slate blue, warm off-white background), soft shadows, simple shapes. NO text, NO words. 16:9 aspect ratio.
 
+### C1 L2 — Four Ways to Classify a Resource
+
+**`c1l2-renewable-vs-nonrenewable.png`** · 16:9 · *core* · url: _(pending)_
+- placement: `media` image, insert after **turn 5** (the exhaustibility / renewable-vs-non-renewable beat).
+- caption: "Renewable on the left, non-renewable on the right — the difference is *time*."
+- prompt:
+  > Editorial illustration split into two halves by a clean vertical line. Left half (renewable): a bright sun, a wind turbine, a flowing river, and a leafy green forest. Right half (non-renewable): a black lump of coal, an oil barrel, and a chunk of mineral ore. Clean flat editorial vector illustration, muted earthy palette (ochre, moss green, slate blue, warm off-white background), soft shadows, simple shapes. NO text, NO words, NO labels. 16:9 aspect ratio.
+
 <!-- Per-lesson prompts are appended below as each lesson is authored. -->

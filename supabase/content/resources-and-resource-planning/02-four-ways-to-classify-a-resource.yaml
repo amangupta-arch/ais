@@ -1,0 +1,214 @@
+title: "Four Ways to Classify a Resource"
+subtitle: "How one forest can be four kinds of resource at the same time"
+estimated_minutes: 12
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here's a question that sounds simple and isn't.
+
+      Take a single forest. What *kind* of resource is it?
+
+      Watch what happens when you try to answer — you'll find it's not one kind. It's *four at once*, and that's not a trick. It's exactly how geographers think.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Geographers don't keep one big box labelled "resources". They keep **four sorting questions** — four lenses — and they run *every* resource through all four.
+
+      Think of it like a suitcase with **four luggage tags**. The same suitcase gets a tag for *where it came from*, one for *how it's owned*, and so on. One object, four tags.
+
+  - type: svg_graphic
+    xp: 0
+    title: "THE FOUR LENSES"
+    caption: "Every resource gets sorted four ways at once: origin, exhaustibility, ownership, and stage of development."
+    svg: |
+      <svg viewBox="0 0 360 132" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="142" y="6" width="76" height="24" rx="6" fill="#fef3c7" stroke="#0f172a" stroke-width="2"/>
+        <text x="180" y="22" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a">RESOURCES</text>
+        <line x1="180" y1="30" x2="48" y2="60" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="180" y1="30" x2="138" y2="60" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="180" y1="30" x2="230" y2="60" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="180" y1="30" x2="317" y2="60" stroke="#94a3b8" stroke-width="1.5"/>
+        <rect x="12" y="60" width="72" height="22" rx="5" fill="#dbeafe" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="48" y="75" text-anchor="middle" font-size="9" font-weight="bold" fill="#1e3a8a">Origin</text>
+        <text x="48" y="100" text-anchor="middle" font-size="8" fill="#334155">biotic</text>
+        <text x="48" y="113" text-anchor="middle" font-size="8" fill="#334155">abiotic</text>
+        <rect x="96" y="60" width="84" height="22" rx="5" fill="#dcfce7" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="138" y="75" text-anchor="middle" font-size="8" font-weight="bold" fill="#166534">Exhaustibility</text>
+        <text x="138" y="100" text-anchor="middle" font-size="8" fill="#334155">renewable</text>
+        <text x="138" y="113" text-anchor="middle" font-size="8" fill="#334155">non-renewable</text>
+        <rect x="192" y="60" width="76" height="22" rx="5" fill="#fae8ff" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="230" y="75" text-anchor="middle" font-size="9" font-weight="bold" fill="#86198f">Ownership</text>
+        <text x="230" y="100" text-anchor="middle" font-size="7.5" fill="#334155">individual · community</text>
+        <text x="230" y="113" text-anchor="middle" font-size="7.5" fill="#334155">national · international</text>
+        <rect x="280" y="60" width="74" height="22" rx="5" fill="#ffe4e6" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="317" y="75" text-anchor="middle" font-size="8" font-weight="bold" fill="#9f1239">Development</text>
+        <text x="317" y="100" text-anchor="middle" font-size="7.5" fill="#334155">potential · stock</text>
+        <text x="317" y="113" text-anchor="middle" font-size="7.5" fill="#334155">reserve · developed</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Lens 1 — Origin.** Where did it come from, the living world or the non-living world?
+
+      - **Biotic** resources come from the *biosphere* and have life: forests, fish, livestock, people themselves.
+      - **Abiotic** resources are made of non-living things: rocks, minerals, metals.
+
+      A forest? *Biotic.* First tag on the suitcase.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Lens 2 — Exhaustibility.** Will it run out?
+
+      - **Renewable** resources renew themselves — solar, wind, water, forests, wildlife. Some are *continuous* (the sun won't notice us); some need *time* to come back (a chopped forest, a drained aquifer).
+      - **Non-renewable** resources took *millions* of years to form — minerals, fossil fuels. Use them up and they're gone on any human timescale.
+
+      A forest renews itself if we let it. *Renewable.* Second tag.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Lens 3 — Ownership.** Who does it belong to?
+
+      - **Individual** — a private well, a family's farmland.
+      - **Community** — the village grazing common, the public pond.
+      - **National** — everything within a country's borders: its minerals, forests, rivers, and the sea up to 12 nautical miles from shore.
+      - **International** — the open ocean beyond 200 km from any coast. No single country owns it; global institutions govern it.
+
+      Most of India's forests are managed by the nation. *National.* Third tag.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Lens 4 — Status of development.** This is the one students mix up, so slow down here.
+
+      - **Potential** — it exists in a region but we haven't tapped it yet (Rajasthan's solar and wind).
+      - **Developed** — surveyed, measured, and actively in use.
+      - **Stock** — the material is right there, but *we don't yet have the technology to use it.* Water is hydrogen and oxygen — an enormous fuel — but we can't unlock it at scale. So it's *stock.*
+      - **Reserve** — the slice of stock we *can* use with today's technology but *haven't started* — like a standing forest kept for the future.
+
+      The forest we're saving for later? *Reserve.* Fourth tag.
+
+  - type: html_animation
+    xp: 0
+    title: "ONE FOREST, FOUR TAGS"
+    caption: "The same forest is biotic, renewable, national, AND a reserve — four lenses, one resource."
+    html: |
+      <div style="background:#f8fafc;padding:18px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoTag1 { 0%,5%{opacity:.12;transform:translateY(6px)} 18%,100%{opacity:1;transform:none} }
+          @keyframes geoTag2 { 0%,23%{opacity:.12;transform:translateY(6px)} 36%,100%{opacity:1;transform:none} }
+          @keyframes geoTag3 { 0%,43%{opacity:.12;transform:translateY(6px)} 56%,100%{opacity:1;transform:none} }
+          @keyframes geoTag4 { 0%,63%{opacity:.12;transform:translateY(6px)} 76%,100%{opacity:1;transform:none} }
+          .geo-pill { display:inline-block; margin:4px; padding:6px 13px; border-radius:999px; font:bold 12px sans-serif; color:#fff; }
+          .geo-p1 { background:#16a34a; animation:geoTag1 5s infinite; }
+          .geo-p2 { background:#0891b2; animation:geoTag2 5s infinite; }
+          .geo-p3 { background:#7c3aed; animation:geoTag3 5s infinite; }
+          .geo-p4 { background:#db2777; animation:geoTag4 5s infinite; }
+        </style>
+        <svg width="52" height="52" viewBox="0 0 52 52" style="display:block;margin:0 auto 6px">
+          <circle cx="26" cy="19" r="16" fill="#16a34a"/>
+          <rect x="22" y="33" width="8" height="14" rx="1" fill="#92400e"/>
+        </svg>
+        <div style="font:bold 15px sans-serif;color:#0f172a;margin-bottom:8px">one forest</div>
+        <div>
+          <span class="geo-pill geo-p1">biotic</span>
+          <span class="geo-pill geo-p2">renewable</span>
+          <span class="geo-pill geo-p3">national</span>
+          <span class="geo-pill geo-p4">reserve</span>
+        </div>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      See what just happened? We never had to *choose* one box. The forest is biotic **and** renewable **and** national **and** a reserve — all true at once.
+
+      That's the whole skill: don't ask *"which kind is it?"* Ask *"what does each of the four lenses say?"*
+
+  - type: mcq
+    xp: 10
+    question: "Water can be split into hydrogen and oxygen — a massive energy source — but we don't yet have the technology to do it at scale. In development terms, that energy is a…?"
+    options:
+      - id: a
+        text: "Reserve — we could use it with today's tech, we just haven't bothered."
+        is_correct: false
+        rationale: "A *reserve* is the slice of stock usable with current technology but not yet tapped. Here the blocker is that the technology doesn't exist at scale — so it isn't a reserve yet."
+      - id: b
+        text: "Stock — the material is right there, but we lack the technology to use it."
+        is_correct: true
+        rationale: "Exactly. *Stock* = present in the environment, real potential, but beyond today's technology. The day the tech arrives, some of it becomes a reserve."
+      - id: c
+        text: "Developed — it's surveyed and already in use."
+        is_correct: false
+        rationale: "Developed resources are surveyed and actively used. This energy isn't being used at all yet."
+      - id: d
+        text: "Potential — it exists in a region but isn't fully used."
+        is_correct: false
+        rationale: "Potential is the broad 'exists but underused' idea (like Rajasthan's solar). *Stock* is sharper — it names the *technology* barrier specifically, which is the key fact here."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Match each resource to its ownership category."
+    left:
+      - { id: l1, label: "A farmer's private well" }
+      - { id: l2, label: "The village grazing common" }
+      - { id: l3, label: "Coal deposits within India's borders" }
+      - { id: l4, label: "The open ocean beyond 200 km from shore" }
+    right:
+      - { id: r1, label: "Individual" }
+      - { id: r2, label: "Community" }
+      - { id: r3, label: "National" }
+      - { id: r4, label: "International" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Pick one resource from your own daily life — the cooking gas at home, the water you drink, the paper in your notebook.
+
+      On paper, run it through all **four lenses**:
+      1. Origin — biotic or abiotic?
+      2. Exhaustibility — renewable or non-renewable?
+      3. Ownership — individual, community, national, or international?
+      4. Development — potential, developed, stock, or reserve?
+
+      Type your resource and its four tags below.
+    placeholder: "Cooking gas (LPG): abiotic, ..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the origin terms."
+    template: |
+      Resources from the biosphere that have life — like forests and fisheries — are ___. Non-living resources like rocks and metals are ___.
+    answers:
+      - id: blank-1
+        accepted: ["biotic", "Biotic"]
+      - id: blank-2
+        accepted: ["abiotic", "Abiotic"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Of the four lenses, which was hardest to wrap your head around — and what finally made it click?
+
+      No right answer. Just name the one that fought you.
+    placeholder: "The tricky one for me was..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can sort *any* resource four ways at once."
+    summary: |
+      Origin, exhaustibility, ownership, development — four lenses, run on every resource together. No more "which box?"; just "what does each lens say?"
+
+      But notice the quiet warning hiding in lens two. Some resources *don't* come back — and even the renewable ones can be wrecked if we're careless. So what happens when humans use resources as if they were endless? And what does it actually mean to develop *sustainably*? That's the next lesson.
