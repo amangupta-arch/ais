@@ -17,6 +17,12 @@ export function safeNext(
   fallback: string = "/student",
 ): string {
   if (!next || typeof next !== "string") return fallback;
+  // Reject ASCII control characters (tab, LF, CR, etc.) up front.
+  // The URL parser silently strips 0x09/0x0A/0x0D before resolving,
+  // so `?next=/%0A/evil.com` would otherwise pass the path checks
+  // below and then resolve as `//evil.com` → off-origin. DEL (0x7F)
+  // is in for symmetry; no legitimate path needs control chars.
+  if (/[\x00-\x1F\x7F]/.test(next)) return fallback;
   // Must start with a single forward slash → in-app path.
   if (!next.startsWith("/")) return fallback;
   // `//foo` is a protocol-relative URL → resolves off-origin.
