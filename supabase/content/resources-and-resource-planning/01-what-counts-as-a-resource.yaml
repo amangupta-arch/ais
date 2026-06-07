@@ -1,0 +1,203 @@
+title: "What Counts as a Resource"
+subtitle: "Why sunlight isn't always a resource — and a barren rock sometimes is"
+estimated_minutes: 11
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here's a question nobody asks in geography class.
+
+      Is *sunlight* a resource? Is the *wind*? What about the coal still sitting a kilometre underground, in a spot nobody has ever dug?
+
+      Your gut says *yes, obviously*. Hold onto that feeling. We're about to complicate it — on purpose.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      For most of history, people believed resources were **free gifts of nature** — just lying around, waiting to be picked up. Trees, rivers, minerals, all there for the taking.
+
+      It's a comfortable idea. It's also *wrong* — and seeing exactly why is the whole point of today's lesson.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      So what actually counts as a resource? Here's the careful version:
+
+      Anything in our environment that can be used to satisfy our needs — **provided** it is *technologically accessible*, *economically feasible*, and *culturally acceptable* — is a **resource**.
+
+      Notice that small word *provided*. It's doing heavy lifting. A thing has to clear **three gates** before it earns the name.
+
+  - type: svg_graphic
+    xp: 0
+    title: "THE THREE GATES"
+    caption: "Raw matter only becomes a resource after it clears all three gates."
+    svg: |
+      <svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <circle cx="32" cy="84" r="24" fill="#e7e5e4" stroke="#0f172a" stroke-width="2"/>
+        <text x="32" y="80" text-anchor="middle" font-size="10" fill="#44403c">raw</text>
+        <text x="32" y="92" text-anchor="middle" font-size="10" fill="#44403c">matter</text>
+        <line x1="58" y1="84" x2="300" y2="84" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4 4"/>
+        <rect x="92" y="48" width="44" height="72" rx="22" fill="#dbeafe" stroke="#0f172a" stroke-width="2"/>
+        <text x="114" y="89" text-anchor="middle" font-size="15" font-weight="bold" fill="#1e3a8a">1</text>
+        <text x="114" y="136" text-anchor="middle" font-size="9" fill="#334155">technically</text>
+        <text x="114" y="147" text-anchor="middle" font-size="9" fill="#334155">accessible</text>
+        <rect x="158" y="48" width="44" height="72" rx="22" fill="#dcfce7" stroke="#0f172a" stroke-width="2"/>
+        <text x="180" y="89" text-anchor="middle" font-size="15" font-weight="bold" fill="#166534">2</text>
+        <text x="180" y="136" text-anchor="middle" font-size="9" fill="#334155">economically</text>
+        <text x="180" y="147" text-anchor="middle" font-size="9" fill="#334155">feasible</text>
+        <rect x="224" y="48" width="44" height="72" rx="22" fill="#fae8ff" stroke="#0f172a" stroke-width="2"/>
+        <text x="246" y="89" text-anchor="middle" font-size="15" font-weight="bold" fill="#86198f">3</text>
+        <text x="246" y="136" text-anchor="middle" font-size="9" fill="#334155">culturally</text>
+        <text x="246" y="147" text-anchor="middle" font-size="9" fill="#334155">acceptable</text>
+        <polygon points="298,78 312,84 298,90" fill="#64748b"/>
+        <circle cx="334" cy="84" r="22" fill="#fef3c7" stroke="#0f172a" stroke-width="2"/>
+        <text x="334" y="82" text-anchor="middle" font-size="13">★</text>
+        <text x="334" y="97" text-anchor="middle" font-size="7" fill="#92400e">RESOURCE</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Gate 1 — technically accessible.** Can we actually reach it and use it with the tools we have?
+
+      Uranium sat in the ground through all of history as a plain, heavy rock. It became one of the most valuable resources on Earth only *after* we learned to build nuclear reactors. Same rock. New technology. *Now* it's a resource.
+
+      Deep-sea oil is the same story — useless until we could build rigs to reach it.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Gate 2 — economically feasible.** Even if we *can* reach it, is it worth the cost?
+
+      There is real gold dissolved in seawater right now. But pulling out ₹1 of gold would cost far more than ₹1. So it stays a curiosity, *not* a resource — until the economics change.
+
+      **Gate 3 — culturally acceptable.** A community might refuse to mine a hill it holds sacred, or treat certain land or animals as not-for-use. Culture decides what we *allow* ourselves to use.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Put it together and the comfortable idea collapses. Resources are :red[not] free gifts of nature. They are *a function of human activity* — we **transform** material in our environment into resources.
+
+      *What would break if this weren't true?* If resources were simply lying around for the taking, then every land with oil beneath it would be rich, and every bare desert would be worthless. That's *not* the world we live in — and the gap is exactly what makes geography worth studying. (Much more on that in a few lessons.)
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      There's one more piece. Humans don't transform nature alone. We do it *through* **technology**, and we build **institutions** — governments, laws, markets, schools — to organise and speed it up.
+
+      So three things lock into a loop: **nature** gives the raw material, **technology** lets us use it, **institutions** direct and accelerate the whole process. Pull out any one and development stalls.
+
+  - type: html_animation
+    xp: 0
+    title: "THE RESOURCE LOOP"
+    caption: "Nature feeds technology, technology feeds institutions, institutions shape how we use nature. Watch it cycle."
+    html: |
+      <div style="background:#f8fafc;padding:16px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoGlow1 { 0%,100%{opacity:.3} 12%,28%{opacity:1} }
+          @keyframes geoGlow2 { 0%,100%{opacity:.3} 40%,56%{opacity:1} }
+          @keyframes geoGlow3 { 0%,100%{opacity:.3} 68%,84%{opacity:1} }
+          .geo-a1 { animation: geoGlow1 4.5s infinite; }
+          .geo-a2 { animation: geoGlow2 4.5s infinite; }
+          .geo-a3 { animation: geoGlow3 4.5s infinite; }
+        </style>
+        <svg viewBox="0 0 320 230" style="max-width:330px;width:100%" font-family="sans-serif">
+          <circle cx="160" cy="38" r="33" fill="#dcfce7" stroke="#0f172a" stroke-width="2"/>
+          <text x="160" y="36" text-anchor="middle" font-size="12" font-weight="bold" fill="#166534">NATURE</text>
+          <text x="160" y="50" text-anchor="middle" font-size="8" fill="#3f6212">raw material</text>
+          <circle cx="54" cy="188" r="33" fill="#dbeafe" stroke="#0f172a" stroke-width="2"/>
+          <text x="54" y="186" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3a8a">TECH-</text>
+          <text x="54" y="198" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3a8a">NOLOGY</text>
+          <circle cx="266" cy="188" r="33" fill="#fae8ff" stroke="#0f172a" stroke-width="2"/>
+          <text x="266" y="186" text-anchor="middle" font-size="9" font-weight="bold" fill="#86198f">INSTITU-</text>
+          <text x="266" y="198" text-anchor="middle" font-size="9" font-weight="bold" fill="#86198f">TIONS</text>
+          <line class="geo-a1" x1="138" y1="62" x2="78" y2="162" stroke="#0f172a" stroke-width="3"/>
+          <polygon class="geo-a1" points="78,162 88,156 90,170" fill="#0f172a"/>
+          <line class="geo-a2" x1="90" y1="192" x2="228" y2="192" stroke="#0f172a" stroke-width="3"/>
+          <polygon class="geo-a2" points="228,192 216,186 216,198" fill="#0f172a"/>
+          <line class="geo-a3" x1="242" y1="162" x2="182" y2="62" stroke="#0f172a" stroke-width="3"/>
+          <polygon class="geo-a3" points="182,62 180,76 192,70" fill="#0f172a"/>
+        </svg>
+      </div>
+
+  - type: mcq
+    xp: 10
+    question: "A friend says: 'Resources are just free gifts of nature — they're lying around waiting to be used.' What's the sharpest correction?"
+    options:
+      - id: a
+        text: "She's right — anything found in nature is automatically a resource."
+        is_correct: false
+        rationale: "That's the comfortable myth this lesson takes apart. A thing in nature stays raw material until human ability turns it into a resource."
+      - id: b
+        text: "A thing becomes a resource only when it's technologically accessible, economically feasible, and culturally acceptable — so resources are a function of human activity, not free gifts."
+        is_correct: true
+        rationale: "Exactly. The three gates plus human effort convert matter into a resource. Nature supplies the raw material; people supply the rest."
+      - id: c
+        text: "She's wrong because nothing in nature can ever be a resource."
+        is_correct: false
+        rationale: "Too far the other way. Nature absolutely supplies the raw material — it just isn't *automatically* a resource until we can reach, afford, and accept its use."
+      - id: d
+        text: "She's right, but only renewable things count as resources."
+        is_correct: false
+        rationale: "Renewable vs non-renewable is a different question (that's next lesson). It doesn't fix the 'free gift' error."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Each item is stuck at — or clears — a different gate. Match it."
+    left:
+      - { id: l1, label: "Tidal energy, before anyone built tidal turbines" }
+      - { id: l2, label: "Gold dissolved in seawater, too costly to extract" }
+      - { id: l3, label: "A hill a community holds sacred and won't mine" }
+      - { id: l4, label: "Coal in a reachable, affordable, accepted mine" }
+    right:
+      - { id: r1, label: "Stuck at the technology gate" }
+      - { id: r2, label: "Stuck at the economic gate" }
+      - { id: r3, label: "Stuck at the cultural gate" }
+      - { id: r4, label: "Clears all three — it's a resource" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Look around the room and pick one ordinary object — a pencil, your phone, a steel tumbler.
+
+      On paper, trace it *backwards*: what **raw material** in nature did it start as? Then run it through the three gates — what **technology** made that material usable, roughly what makes it **affordable**, and why is it **culturally** fine to use?
+
+      Write 2–3 lines. Then type your object and its starting raw material below.
+    placeholder: "My object is a ___ . It started in nature as ___ ..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the three tests every resource must pass."
+    template: |
+      A resource must be technologically ___, economically ___, and culturally ___.
+    answers:
+      - id: blank-1
+        accepted: ["accessible", "Accessible"]
+      - id: blank-2
+        accepted: ["feasible", "Feasible"]
+      - id: blank-3
+        accepted: ["acceptable", "Acceptable"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Before today, did you picture resources as 'free gifts of nature'? Name one thing — a material, a place, an everyday object — that you now see a little differently.
+
+      There's no right answer. Just note the thing that made you pause.
+    placeholder: "I used to think..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can now tell raw matter from a *resource*."
+    summary: |
+      A resource isn't just *out there*. It's matter that clears three gates — technologically accessible, economically feasible, culturally acceptable — and then gets transformed by human work, inside a loop of nature, technology, and institutions.
+
+      But resources come in wild variety: sunlight and coal, a private farm and the open ocean, the oil we pump today and the oil we can't reach yet. Are they all the *same kind* of thing? Next lesson: the four lenses geographers use to sort *any* resource into place.

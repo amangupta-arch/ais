@@ -111,10 +111,15 @@ photo slots, to fill when a source exists:
 ## Audio
 
 Nothing authored. `runAudioPipeline()` (`lib/audio/pipeline.ts`) runs
-server-side after the YAML loads: extracts narratable text from turns,
-strips markdown, synthesises via ElevenLabs (EN → Flash v2.5; Hinglish →
-Hindi voice + multilingual_v2), content-addressable cache. Job ends at the
-YAML.
+server-side *after* the YAML loads: extracts narratable text from turns,
+strips markdown, synthesises via ElevenLabs, writes a content-addressable
+mp3 to bucket `lesson-audio/<voice_id>/<sha256>.mp3`, and upserts
+`lesson_audio_manifest` rows (per lesson/language/turn/chunk). EN → Flash
+v2.5; **Hinglish → the Hindi voice on `eleven_multilingual_v2`** (no
+dedicated Hinglish voice — the Hindi voice handles code-switched text).
+Job ends at the YAML. NB: there is currently **no standalone audio CLI** —
+audio only fires through the `/api/yaml-jobs/generate` path, so triggering
+narration for these lessons is a post-load step owned outside this bundle.
 
 ## Decisions log
 
@@ -128,6 +133,18 @@ YAML.
 - Migration owns `class:10 / subject:geography / curriculum`; the loader
   syncs `board:* / medium:*` from the YAML (mirrors the Math 0014 pattern,
   which kept `board` out of the migration).
+- **Image deploy = Supabase `lesson-images` public bucket** (operator
+  choice). Workflow: I emit prompts → operator generates in ChatGPT →
+  `scripts/upload-lesson-images.ts` pushes to
+  `lesson-images/<bundle-slug>/<file>` → public URLs → I add `media`
+  turns. Bucket created via 1-line `storage.buckets` insert, only on
+  operator go (touches live Supabase).
+- **Audio = ElevenLabs (operator wants the ElevenLabs Player MCP
+  connector).** That MCP is NOT wired into the authoring session (verified
+  via tool search); connected servers are Vercel/Drive/Calendar/Shopify/
+  Supabase/GitHub. Canonical deploy path remains the in-app
+  `runAudioPipeline` (ElevenLabs + manifest writes); the MCP, once added,
+  is for voice/line preview. Authoring is unaffected — no audio authored.
 - *(append after each lesson as authored)*
 
 ## Build status / how to apply
