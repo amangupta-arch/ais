@@ -1,0 +1,177 @@
+title: "India's Living Wealth"
+subtitle: "A library of life where most of the books are still unread"
+estimated_minutes: 11
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Imagine India's wildlife as a vast **library**.
+
+      Now imagine we've only *read about a third* of the books. The rest are still on the shelves — uncatalogued, some never even opened.
+
+      That's not a metaphor stretch. It's roughly the truth.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      India is one of the **richest countries on Earth** for biological diversity — a vast array of **flora** (plant life) and **fauna** (animal life).
+
+      From the Himalayas to the coasts to the deserts, few places on the planet pack in this much variety of life.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here's the astonishing part.
+
+      The species we've actually *named and studied* may be only a fraction of what's really here. Scientists think the true number could be **two or three times** higher — still waiting to be discovered.
+
+      Most of India's living library, quite literally, is *unread*.
+
+  - type: svg_graphic
+    xp: 0
+    title: "INDIA'S LIBRARY OF LIFE"
+    caption: "The species we know (left) may be just a third — the rest are still undiscovered."
+    svg: |
+      <svg viewBox="0 0 360 160" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="14" y="20" width="332" height="104" rx="4" fill="#f8fafc" stroke="#0f172a" stroke-width="1.5"/>
+        <rect x="26" y="32" width="14" height="80" fill="#16a34a"/>
+        <rect x="44" y="32" width="14" height="80" fill="#0891b2"/>
+        <rect x="62" y="32" width="14" height="80" fill="#ca8a04"/>
+        <rect x="80" y="32" width="14" height="80" fill="#9333ea"/>
+        <rect x="98" y="32" width="14" height="80" fill="#dc2626"/>
+        <line x1="120" y1="24" x2="120" y2="120" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <rect x="132" y="40" width="12" height="72" fill="#e2e8f0" stroke="#cbd5e1"/>
+        <rect x="150" y="40" width="12" height="72" fill="#e2e8f0" stroke="#cbd5e1"/>
+        <rect x="168" y="40" width="12" height="72" fill="#e2e8f0" stroke="#cbd5e1"/>
+        <rect x="186" y="40" width="12" height="72" fill="#e2e8f0" stroke="#cbd5e1"/>
+        <rect x="204" y="40" width="12" height="72" fill="#e2e8f0" stroke="#cbd5e1"/>
+        <rect x="222" y="40" width="12" height="72" fill="#e2e8f0" stroke="#cbd5e1"/>
+        <rect x="240" y="40" width="12" height="72" fill="#e2e8f0" stroke="#cbd5e1"/>
+        <rect x="258" y="40" width="12" height="72" fill="#e2e8f0" stroke="#cbd5e1"/>
+        <rect x="276" y="40" width="12" height="72" fill="#e2e8f0" stroke="#cbd5e1"/>
+        <rect x="294" y="40" width="12" height="72" fill="#e2e8f0" stroke="#cbd5e1"/>
+        <text x="300" y="80" text-anchor="middle" font-size="22" fill="#94a3b8">?</text>
+        <text x="68" y="140" text-anchor="middle" font-size="8" fill="#166534">known species (~1/3)</text>
+        <text x="225" y="140" text-anchor="middle" font-size="8" fill="#64748b">still to be discovered (~2/3)</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      And this wealth isn't off in some distant jungle. It's woven into **daily life** all around you — the food on your plate, the medicines you take, the wood in your home, the festivals, the songs.
+
+      We're so surrounded by it that we *take it for granted* — like air.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Across India, folk songs and stories celebrate a *harmonious* bond between people and nature.
+
+      A Lepcha folk song gathers its music *"from the springs, the rivers, the mountains, the forests, the insects and the animals."* Nature isn't scenery in these traditions — it's family.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      But lately, this living wealth is under **great stress**.
+
+      The main cause is uncomfortable to hear: our own *insensitivity* to the environment. We take what we want and forget the web that pays the price.
+
+      *What would break if we kept ignoring it?* The very library we've barely begun to read.
+
+  - type: html_animation
+    xp: 0
+    title: "TAKEN FOR GRANTED, UNDER STRESS"
+    caption: "The variety we ignore is quietly fading — the leaves wilt, the colours drain."
+    html: |
+      <div style="background:#f8fafc;padding:20px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoWilt { 0%,20%{fill:#16a34a;opacity:1} 80%,100%{fill:#a1887f;opacity:0.5} }
+          .geo-leaf { animation: geoWilt 4s ease-in-out infinite alternate; }
+        </style>
+        <svg viewBox="0 0 300 90" style="max-width:320px;width:100%" font-family="sans-serif">
+          <g class="geo-leaf">
+            <ellipse cx="50" cy="45" rx="13" ry="22"/>
+            <ellipse cx="110" cy="45" rx="13" ry="22"/>
+            <ellipse cx="170" cy="45" rx="13" ry="22"/>
+            <ellipse cx="230" cy="45" rx="13" ry="22"/>
+          </g>
+        </svg>
+      </div>
+
+  - type: mcq
+    xp: 10
+    question: "When scientists say India's biodiversity may be 'twice or thrice' what we know, what do they mean?"
+    options:
+      - id: a
+        text: "India's wildlife is growing two or three times bigger each year."
+        is_correct: false
+        rationale: "It's not about populations *growing*. It's about how many species exist that we haven't yet identified."
+      - id: b
+        text: "Many more species likely exist here than have been discovered and named so far."
+        is_correct: true
+        rationale: "Right — the known species may be only a fraction; the true count could be two or three times higher, still undiscovered."
+      - id: c
+        text: "Indian species are two or three times larger than species elsewhere."
+        is_correct: false
+        rationale: "Nothing to do with size. It's about the *number* of species yet to be discovered."
+      - id: d
+        text: "Two or three species go extinct every year."
+        is_correct: false
+        rationale: "That's a different (grim) idea. The 'twice or thrice' figure is about undiscovered diversity."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Match each term to what it means."
+    left:
+      - { id: l1, label: "Flora" }
+      - { id: l2, label: "Fauna" }
+      - { id: l3, label: "'Twice or thrice'" }
+      - { id: l4, label: "Insensitivity to the environment" }
+    right:
+      - { id: r1, label: "Plant life" }
+      - { id: r2, label: "Animal life" }
+      - { id: r3, label: "Species still to be discovered" }
+      - { id: r4, label: "The main reason biodiversity is under stress" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Find one **story, song, festival, or custom** from your region that shows a respectful or harmonious relationship between people and nature (a sacred tree, a protected animal, a harvest festival, a folk tale).
+
+      On paper, note it down. Then type the name of it and the plant or animal it honours below.
+    placeholder: "In my region, ___ honours the ___."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the terms."
+    template: |
+      India is among the world's richest in ___ (plant life) and ___ (animal life).
+    answers:
+      - id: blank-1
+        accepted: ["flora", "Flora"]
+      - id: blank-2
+        accepted: ["fauna", "Fauna"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Most of India's species are still undiscovered — yet many may be under threat before we ever know them. How does it feel to think a species could vanish before anyone names it?
+
+      No right answer.
+    placeholder: "The idea that..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You grasp how much living wealth India holds — and that it's at risk."
+    summary: |
+      India carries one of the planet's richest libraries of life — flora and fauna woven into our food, faith, and songs, with far more species still undiscovered than known. And it's under real stress from our own carelessness.
+
+      Which raises the blunt question this course has been building to: *why* exactly should we spend effort and money to save it? What do we actually lose if biodiversity goes? That's the next lesson.

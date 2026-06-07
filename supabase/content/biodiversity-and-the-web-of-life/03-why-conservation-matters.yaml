@@ -1,0 +1,165 @@
+title: "Why Conservation Matters"
+subtitle: "The honest, self-interested reasons to save a species you'll never meet"
+estimated_minutes: 11
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here's a fair question to ask out loud: why spend money saving a frog you'll never even see?
+
+      The honest answer turns out to be about *you*, not the frog. Conservation isn't charity for animals. Let me show you why.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      First, the urgency. Wildlife populations and forests are in **rapid decline** — which is exactly why conservation has become *essential*.
+
+      But "save nature" stays a slogan until you can say *why* in concrete terms. There are three solid reasons. None of them is about cuteness.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Reason 1 — our life-support systems.**
+
+      Conservation preserves the ecological diversity that keeps our **air**, **water**, and **soil** working. The web is the machinery that makes the planet livable. Break it, and the machine that cleans your air and water breaks too.
+
+  - type: svg_graphic
+    xp: 0
+    title: "WHAT BIODIVERSITY HOLDS UP"
+    caption: "Clean air, water, soil, and the food we grow — all rest on biodiversity as their foundation."
+    svg: |
+      <svg viewBox="0 0 360 170" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="20" y="44" width="60" height="78" rx="4" fill="#dbeafe" stroke="#0f172a" stroke-width="1.2"/>
+        <text x="50" y="88" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3a8a">AIR</text>
+        <rect x="106" y="44" width="60" height="78" rx="4" fill="#cffafe" stroke="#0f172a" stroke-width="1.2"/>
+        <text x="136" y="88" text-anchor="middle" font-size="10" font-weight="bold" fill="#0e7490">WATER</text>
+        <rect x="192" y="44" width="60" height="78" rx="4" fill="#fde68a" stroke="#0f172a" stroke-width="1.2"/>
+        <text x="222" y="88" text-anchor="middle" font-size="10" font-weight="bold" fill="#92400e">SOIL</text>
+        <rect x="278" y="44" width="62" height="78" rx="4" fill="#dcfce7" stroke="#0f172a" stroke-width="1.2"/>
+        <text x="309" y="84" text-anchor="middle" font-size="10" font-weight="bold" fill="#166534">FOOD</text>
+        <text x="309" y="98" text-anchor="middle" font-size="7" fill="#166534">+ crops</text>
+        <rect x="20" y="130" width="320" height="28" rx="4" fill="#16a34a" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="180" y="148" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">BIODIVERSITY</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Reason 2 — genetic diversity: the seed bank of the future.**
+
+      Conservation preserves the genetic variety of plants and animals — the raw material for *better growth and breeding*. Every wild relative of a crop is a spare gene we may desperately need when a new disease or a drought arrives.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Make it concrete.
+
+      In **agriculture**, we *still* depend on **traditional crop varieties** — their genes carry resilience that modern hybrids often lack. And **fisheries** depend entirely on keeping **aquatic biodiversity** alive.
+
+      Lose the variety, and you lose the harvest — on land and at sea.
+
+  - type: html_animation
+    xp: 0
+    title: "WHY VARIETY IS INSURANCE"
+    caption: "When one crop variety fails, a different one survives — that's what genetic diversity buys us."
+    html: |
+      <div style="background:#f8fafc;padding:18px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoFailSeed { 0%,30%{fill:#16a34a} 60%,100%{fill:#9ca3af} }
+          .geo-fail { animation: geoFailSeed 4s ease-in-out infinite alternate; }
+        </style>
+        <svg viewBox="0 0 300 96" style="max-width:320px;width:100%" font-family="sans-serif">
+          <circle cx="50" cy="38" r="16" class="geo-fail" stroke="#0f172a" stroke-width="1"/>
+          <circle cx="110" cy="38" r="16" fill="#16a34a" stroke="#0f172a" stroke-width="1"/>
+          <circle cx="170" cy="38" r="16" fill="#16a34a" stroke="#0f172a" stroke-width="1"/>
+          <circle cx="230" cy="38" r="16" fill="#16a34a" stroke="#0f172a" stroke-width="1"/>
+          <text x="150" y="80" text-anchor="middle" font-size="8" fill="#475569">one variety fails — the others still feed us</text>
+        </svg>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Put it together. *What would break if biodiversity went?*
+
+      Three things fail at once: the cleaners of our air, water, and soil; the gene bank our farms quietly draw on; and the fish in the sea.
+
+      So conservation isn't sentimental. It's **self-preservation** — for us.
+
+  - type: mcq
+    xp: 10
+    question: "Which best captures why conserving biodiversity matters to humans?"
+    options:
+      - id: a
+        text: "Mainly so we have beautiful animals to look at and visit."
+        is_correct: false
+        rationale: "Beauty and tourism are nice, but the chapter's reasons are far more basic — survival, not scenery."
+      - id: b
+        text: "It preserves our life-support systems (air, water, soil) and the genetic diversity our farming and fisheries depend on."
+        is_correct: true
+        rationale: "Exactly. Conservation protects ecological *and* genetic diversity — the systems and gene banks we live off."
+      - id: c
+        text: "Because the law says we must, and there's no deeper reason."
+        is_correct: false
+        rationale: "The law exists *because* of the deeper reasons — life-support systems and genetic diversity."
+      - id: d
+        text: "Only to protect a few famous animals like the tiger."
+        is_correct: false
+        rationale: "Modern conservation focuses on whole biodiversity, not just a few species — and the reasons reach far beyond any one animal."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Match what conservation preserves to why it matters to us."
+    left:
+      - { id: l1, label: "Ecological diversity" }
+      - { id: l2, label: "Genetic diversity" }
+      - { id: l3, label: "Traditional crop varieties" }
+      - { id: l4, label: "Aquatic biodiversity" }
+    right:
+      - { id: r1, label: "Keeps our air, water, and soil working" }
+      - { id: r2, label: "Backup genes for breeding better species" }
+      - { id: r3, label: "What our agriculture still relies on" }
+      - { id: r4, label: "What our fisheries depend on" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Pick one food you ate today — rice, fish, a fruit, dal.
+
+      On paper, trace it back: which living things and which *variety* or *species* made it possible? What would happen to that food if its biodiversity vanished? Type the food and your one-line answer below.
+    placeholder: "My ___ depends on ___; without it..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the two reasons."
+    template: |
+      Conservation protects our life-support systems (air, water, soil) and the ___ diversity we need to breed better crops; our ___ depend on aquatic biodiversity.
+    answers:
+      - id: blank-1
+        accepted: ["genetic", "Genetic"]
+      - id: blank-2
+        accepted: ["fisheries", "Fisheries", "fishery"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Conservation is "self-preservation, not charity." Does framing it that way make you take it more seriously — or does something feel lost when we only value nature for what it does *for us*?
+
+      No right answer.
+    placeholder: "Framed as self-preservation, I..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can give concrete reasons biodiversity is worth saving."
+    summary: |
+      Conservation guards our life-support systems — air, water, soil — and the genetic diversity our farms and fisheries quietly depend on. It's not charity for animals; it's protection for us.
+
+      So we know *why*. Now the harder question: *how* does an entire country actually protect its forests and wildlife? It began, in 1972, with a single powerful law. That's where the next course starts.

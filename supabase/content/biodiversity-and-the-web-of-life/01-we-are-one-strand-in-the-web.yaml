@@ -1,0 +1,201 @@
+title: "We Are One Strand in the Web"
+subtitle: "Why your every breath is a favour from other living things"
+estimated_minutes: 11
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Try this: name one thing you did today that didn't depend on another living thing.
+
+      The air you breathed? Plants made it. The water you drank? A whole web of organisms cleaned it. Your breakfast? Soil, microbes, and sunlight, working together.
+
+      We never notice. Today, we notice.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      We share this planet with *millions* of other living beings — from **micro-organisms** and **bacteria**, to **lichens**, to **banyan trees**, **elephants**, and **blue whales**.
+
+      All of it together makes up the planet's immense **biodiversity** — its sheer variety of life.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Now the humbling part.
+
+      We humans, along with *every* other living thing, form a single **web** — a complex *ecological system*. We are not perched above it, looking down.
+
+      We are **one strand** in it. And like any strand, we depend on the whole web to survive.
+
+  - type: svg_graphic
+    xp: 0
+    title: "THE WEB OF LIFE"
+    caption: "Sun, forests, microbes, animals, humans — all knotted together. You are one node, not the top."
+    svg: |
+      <svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <line x1="180" y1="30" x2="70" y2="92" stroke="#cbd5e1" stroke-width="1.5"/>
+        <line x1="180" y1="30" x2="290" y2="92" stroke="#cbd5e1" stroke-width="1.5"/>
+        <line x1="70" y1="96" x2="290" y2="96" stroke="#cbd5e1" stroke-width="1.5"/>
+        <line x1="70" y1="96" x2="120" y2="166" stroke="#cbd5e1" stroke-width="1.5"/>
+        <line x1="70" y1="96" x2="250" y2="166" stroke="#cbd5e1" stroke-width="1.5"/>
+        <line x1="290" y1="96" x2="120" y2="166" stroke="#cbd5e1" stroke-width="1.5"/>
+        <line x1="290" y1="96" x2="250" y2="166" stroke="#cbd5e1" stroke-width="1.5"/>
+        <line x1="120" y1="166" x2="250" y2="166" stroke="#cbd5e1" stroke-width="1.5"/>
+        <circle cx="180" cy="28" r="17" fill="#fde68a" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="180" y="32" text-anchor="middle" font-size="8" fill="#92400e">sun</text>
+        <circle cx="70" cy="96" r="24" fill="#bbf7d0" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="70" y="93" text-anchor="middle" font-size="8" fill="#166534">forests,</text>
+        <text x="70" y="103" text-anchor="middle" font-size="8" fill="#166534">plants</text>
+        <circle cx="290" cy="96" r="24" fill="#99f6e4" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="290" y="93" text-anchor="middle" font-size="8" fill="#115e59">microbes,</text>
+        <text x="290" y="103" text-anchor="middle" font-size="8" fill="#115e59">bacteria</text>
+        <circle cx="120" cy="168" r="22" fill="#fed7aa" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="120" y="171" text-anchor="middle" font-size="8" fill="#9a3412">animals</text>
+        <circle cx="250" cy="168" r="22" fill="#bfdbfe" stroke="#0f172a" stroke-width="2.5"/>
+        <text x="250" y="165" text-anchor="middle" font-size="8" font-weight="bold" fill="#1e3a8a">humans</text>
+        <text x="250" y="176" text-anchor="middle" font-size="7" fill="#1e3a8a">(you)</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      How *literally* do we depend on the web? Completely.
+
+      Plants, animals, and micro-organisms **re-create** the very things we can't live without:
+
+      - the **air** we breathe
+      - the **water** we drink
+      - the **soil** that grows our food
+
+      Remove them, and we don't last long.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      And at the *base* of the whole web sit the **forests**.
+
+      They are the **primary producers** — the living things that turn sunlight into food. Everything else eats that food, directly or indirectly. The forest quietly feeds the entire web.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      So what is **biodiversity**, exactly?
+
+      It's the immense richness of wildlife and cultivated species — *diverse in form and function, but closely integrated through a network of interdependencies.*
+
+      Hold onto that last word: **interdependencies**. In a web, nothing stands alone.
+
+  - type: html_animation
+    xp: 0
+    title: "PULL ONE STRAND"
+    caption: "Tug a single strand of the web and the whole thing trembles — all the way up to us."
+    html: |
+      <div style="background:#f8fafc;padding:18px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoShake { 0%,100%{transform:translate(0,0)} 25%{transform:translate(-3px,2px)} 50%{transform:translate(3px,-2px)} 75%{transform:translate(-2px,-2px)} }
+          @keyframes geoPulse { 0%,100%{fill:#fca5a5} 50%{fill:#dc2626} }
+          .geo-web { animation: geoShake 1.6s ease-in-out infinite; transform-origin:center; }
+          .geo-pulled { animation: geoPulse 1.6s ease-in-out infinite; }
+        </style>
+        <svg viewBox="0 0 300 150" style="max-width:320px;width:100%" font-family="sans-serif">
+          <g class="geo-web">
+            <line x1="150" y1="30" x2="60" y2="90" stroke="#94a3b8" stroke-width="1.5"/>
+            <line x1="150" y1="30" x2="240" y2="90" stroke="#94a3b8" stroke-width="1.5"/>
+            <line x1="60" y1="90" x2="240" y2="90" stroke="#94a3b8" stroke-width="1.5"/>
+            <line x1="60" y1="90" x2="150" y2="125" stroke="#94a3b8" stroke-width="1.5"/>
+            <line x1="240" y1="90" x2="150" y2="125" stroke="#94a3b8" stroke-width="1.5"/>
+            <circle cx="150" cy="30" r="10" fill="#86efac" stroke="#0f172a" stroke-width="1"/>
+            <circle cx="60" cy="90" r="10" fill="#93c5fd" stroke="#0f172a" stroke-width="1"/>
+            <circle cx="240" cy="90" r="10" fill="#fdba74" stroke="#0f172a" stroke-width="1"/>
+            <circle cx="150" cy="125" r="11" class="geo-pulled" stroke="#0f172a" stroke-width="1.5"/>
+          </g>
+          <text x="150" y="147" text-anchor="middle" font-size="8" fill="#991b1b">one strand pulled — the whole web shakes</text>
+        </svg>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      *What would break if one strand snapped?*
+
+      Pull out the bees, or the soil bacteria, or a single forest, and the tremor runs *through* the web — up the strands, all the way to us.
+
+      That's why no extinction is ever really "small". The web feels every loss.
+
+  - type: mcq
+    xp: 10
+    question: "Why does the chapter call forests the 'primary producers' of the ecological system?"
+    options:
+      - id: a
+        text: "Because they produce the most timber for human use."
+        is_correct: false
+        rationale: "Timber is a human *use* of forests, not why they're called primary producers in ecology."
+      - id: b
+        text: "Because they turn sunlight into food that every other living thing depends on, directly or indirectly."
+        is_correct: true
+        rationale: "Exactly. Primary producers make the food at the base of the web — everything else feeds on it down the line."
+      - id: c
+        text: "Because humans planted most of them first."
+        is_correct: false
+        rationale: "Forests are not primarily human-made, and that's unrelated to the meaning of 'primary producer'."
+      - id: d
+        text: "Because they are the oldest living things on Earth."
+        is_correct: false
+        rationale: "Age isn't the point. 'Primary producer' is about making food from sunlight at the base of the food web."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Match each part of the web to its role."
+    left:
+      - { id: l1, label: "Forests and plants" }
+      - { id: l2, label: "Micro-organisms and bacteria" }
+      - { id: l3, label: "The whole web together" }
+      - { id: l4, label: "Humans" }
+    right:
+      - { id: r1, label: "Primary producers — turn sunlight into food" }
+      - { id: r2, label: "Help re-create clean soil, air, and water" }
+      - { id: r3, label: "Biodiversity — variety held by interdependencies" }
+      - { id: r4, label: "One dependent strand, not the top" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Pick three things you used in the last hour — food, water, paper, a wooden object, the air in your room.
+
+      On paper, trace each one back to a *living* part of the web that made it possible. Then type one of them and its living source below.
+    placeholder: "The ___ I used came from ___ in the web."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the two key ideas."
+    template: |
+      Forests are the ___ producers of the ecological system, and biodiversity is held together by a network of ___.
+    answers:
+      - id: blank-1
+        accepted: ["primary", "Primary"]
+      - id: blank-2
+        accepted: ["interdependencies", "interdependence", "Interdependencies"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      "We are one strand in the web, not the top." Does that change how you picture your place in nature — or does it feel uncomfortable? Be honest.
+
+      No right answer.
+    placeholder: "Thinking of myself as one strand..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You see yourself inside the web of life, not above it."
+    summary: |
+      The planet runs on biodiversity — a web of millions of species, tied together by interdependencies, with forests as the primary producers feeding it all. We're one strand, utterly dependent on the rest.
+
+      And here's the thing: India holds one of the *richest* sections of that web on Earth. Just how much living wealth does this one country carry — and why is it under threat? That's the next lesson.
