@@ -70,6 +70,13 @@ turns:
 
       Forest khud ko renew kar leta hai agar hum mauka dein. *Renewable.* Doosra tag.
 
+  - type: media
+    kind: image
+    url: "https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch01-resources-and-development/c1l2-renewable-vs-nonrenewable.png"
+    caption: "Baayein renewable, daayein non-renewable — fark sirf *time* ka hai."
+    aspect_ratio: 1.7778
+    xp: 0
+
   - type: tutor_message
     persona: nova
     text: |

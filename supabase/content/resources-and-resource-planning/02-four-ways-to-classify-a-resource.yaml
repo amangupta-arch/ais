@@ -70,6 +70,13 @@ turns:
 
       A forest renews itself if we let it. *Renewable.* Second tag.
 
+  - type: media
+    kind: image
+    url: "https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch01-resources-and-development/c1l2-renewable-vs-nonrenewable.png"
+    caption: "Renewable on the left, non-renewable on the right — the difference is *time*."
+    aspect_ratio: 1.7778
+    xp: 0
+
   - type: tutor_message
     persona: nova
     text: |

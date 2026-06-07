@@ -13,6 +13,13 @@ turns:
 
       Your gut says *yes, obviously*. Hold onto that feeling. We're about to complicate it — on purpose.
 
+  - type: media
+    kind: image
+    url: "https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch01-resources-and-development/c1l1-three-resources.png"
+    caption: "Sunlight, wind, coal, ore — but which of these is actually a *resource*? It depends on three gates."
+    aspect_ratio: 1.7778
+    xp: 0
+
   - type: tutor_message
     persona: nova
     text: |
@@ -81,6 +88,13 @@ turns:
       Put it together and the comfortable idea collapses. Resources are :red[not] free gifts of nature. They are *a function of human activity* — we **transform** material in our environment into resources.
 
       *What would break if this weren't true?* If resources were simply lying around for the taking, then every land with oil beneath it would be rich, and every bare desert would be worthless. That's *not* the world we live in — and the gap is exactly what makes geography worth studying. (Much more on that in a few lessons.)
+
+  - type: media
+    kind: image
+    url: "https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch01-resources-and-development/c1l1-human-transforms.png"
+    caption: "Resources are made, not found — human hands turn raw material into something useful."
+    aspect_ratio: 1.7778
+    xp: 0
 
   - type: tutor_message
     persona: nova

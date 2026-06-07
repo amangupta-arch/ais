@@ -78,6 +78,13 @@ turns:
 
       Unhone climate change aur biodiversity pe declarations sign kiye, aur ek global action plan apnaaya jise **Agenda 21** kehte hain — environmental damage, gareebi, aur bimaari se ladne ka blueprint, cooperation ke through. Iska sabse sharp idea: *har local government apna khud ka local Agenda 21 banaaye.* Think globally, act locally.
 
+  - type: media
+    kind: image
+    url: "https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch01-resources-and-development/c1l3-think-global-act-local.png"
+    caption: "Agenda 21: globally socho, locally karo."
+    aspect_ratio: 1.7778
+    xp: 0
+
   - type: tutor_message
     persona: nova
     text: |
@@ -141,6 +148,13 @@ turns:
       *"Yahan har kisi ki zaroorat ke liye kaafi hai, par kisi ek ke laalach ke liye nahi."*
 
       Unhone resource depletion ke do mujrim bataye: *laalchi, swaarthi log*, aur *mass production ka exploitative model*. Unka alternative mass production nahi tha — woh tha **production by the masses**. Chhota, local, kaafi.
+
+  - type: media
+    kind: image
+    url: "https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch01-resources-and-development/c1l3-need-not-greed.png"
+    caption: "Har kisi ki *zaroorat* ke liye kaafi, kisi ke *laalach* ke liye nahi."
+    aspect_ratio: 1.7778
+    xp: 0
 
   - type: mcq
     xp: 10

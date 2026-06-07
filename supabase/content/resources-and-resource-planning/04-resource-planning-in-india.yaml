@@ -25,6 +25,13 @@ turns:
 
       Rich here, poor there — that's the rule, not the exception.
 
+  - type: media
+    kind: image
+    url: "https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch01-resources-and-development/c1l4-uneven-india.png"
+    caption: "One country, wildly uneven — strong in some resources, starved of others."
+    aspect_ratio: 1.3333
+    xp: 0
+
   - type: svg_graphic
     xp: 0
     title: "RICH HERE, POOR THERE"
@@ -113,6 +120,13 @@ turns:
       Having a resource is like having **ingredients** in your kitchen. Ingredients alone are not a meal. You still need the *recipe* — that's **technology** — and a working *kitchen* — that's **institutions** (laws, markets, skilled people, government).
 
       The availability of resources is :hl[necessary, but never sufficient.]
+
+  - type: media
+    kind: image
+    url: "https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch01-resources-and-development/c1l4-ingredients-to-meal.png"
+    caption: "Resources are the ingredients. Technology and institutions are the recipe and the kitchen."
+    aspect_ratio: 1.7778
+    xp: 0
 
   - type: tutor_message
     persona: nova

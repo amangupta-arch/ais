@@ -13,6 +13,13 @@ turns:
 
       Tumhara gut kehta hai *haan, obviously*. Is feeling ko pakad ke rakho. Hum ise jaan-boojh kar thoda complicate karne waale hain.
 
+  - type: media
+    kind: image
+    url: "https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch01-resources-and-development/c1l1-three-resources.png"
+    caption: "Sunlight, wind, coal, ore — par inme se asal mein *resource* kaunsa hai? Yeh teen gates pe depend karta hai."
+    aspect_ratio: 1.7778
+    xp: 0
+
   - type: tutor_message
     persona: nova
     text: |
@@ -81,6 +88,13 @@ turns:
       Sab jod ke dekho toh comfortable idea toot jaata hai. Resources nature ke :red[free gifts nahi] hain. Woh *human activity ka function* hain — hum apne environment ke material ko resource mein **transform** karte hain.
 
       *Agar yeh sach na hota toh kya tootta?* Agar resources bas pade-pade mil jaate, toh har woh zameen jiske neeche oil hai ameer hoti, aur har banjar registan bekaar. Par duniya aisi nahi hai — aur yahi gap geography ko padhne laayak banata hai. (Ispe kuch lessons baad aur baat karenge.)
+
+  - type: media
+    kind: image
+    url: "https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch01-resources-and-development/c1l1-human-transforms.png"
+    caption: "Resources banaye jaate hain, mile nahi — insaan ke haath kacche maal ko kaam ki cheez bana dete hain."
+    aspect_ratio: 1.7778
+    xp: 0
 
   - type: tutor_message
     persona: nova

@@ -25,6 +25,13 @@ turns:
 
       Yahan rich, wahan poor — yahi rule hai, exception nahi.
 
+  - type: media
+    kind: image
+    url: "https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch01-resources-and-development/c1l4-uneven-india.png"
+    caption: "Ek desh, bahut uneven — kuch resources mein strong, kuch mein khaali."
+    aspect_ratio: 1.3333
+    xp: 0
+
   - type: svg_graphic
     xp: 0
     title: "YAHAN RICH, WAHAN POOR"
@@ -113,6 +120,13 @@ turns:
       Resource hona aise hai jaise kitchen mein **ingredients** hona. Sirf ingredients koi meal nahi hote. Tumhe abhi bhi *recipe* chahiye — woh hai **technology** — aur ek chalti hui *kitchen* — woh hain **institutions** (laws, markets, skilled log, government).
 
       Resources ka hona :hl[zaroori hai, par kaafi kabhi nahi.]
+
+  - type: media
+    kind: image
+    url: "https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch01-resources-and-development/c1l4-ingredients-to-meal.png"
+    caption: "Resources ingredients hain. Technology aur institutions recipe aur kitchen hain."
+    aspect_ratio: 1.7778
+    xp: 0
 
   - type: tutor_message
     persona: nova

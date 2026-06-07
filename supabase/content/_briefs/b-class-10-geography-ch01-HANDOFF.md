@@ -37,21 +37,31 @@ is staged as files on this branch for you to deploy.
    `SUPABASE_SERVICE_ROLE_KEY`. EN → flash_v2_5; Hinglish → Hindi voice on
    multilingual_v2.
 5. **Frontend:** bundle surfaces on `/student` + `/learn` once the rows
-   exist (order_index 410, plan tier `student`, emoji 🌍, gradient moss).
+   exist (order_index 500, plan tier `student`, emoji 🌍, gradient moss).
 
-## Images (pending an asset source)
+## Images (generated + wired — deploy must upload the files)
 
-No image-gen connector is wired. The manifest lists every prompt +
-**target filename** + **placement**. Workflow agreed with operator:
-1. Operator generates each prompt in ChatGPT, saves under the exact filename.
-2. Upload to a **public Supabase `lesson-images` bucket** at
-   `lesson-images/b-class-10-geography-ch01-.../<file>`
-   (create bucket: `insert into storage.buckets (id,name,public) values
-   ('lesson-images','lesson-images',true) on conflict do nothing;`).
-3. Fill the `url:` fields in the manifest, then add `media` turns at the
-   noted placements in the lesson YAMLs. Re-run the content loader.
-Until then, every lesson is complete and valid on inline SVG +
-html_animation alone — no broken media turns ship.
+The 7 Course-1 images are generated and the `media` turns are **already
+wired** into all 8 lessons, pointing at deterministic public URLs:
+`…/storage/v1/object/public/lesson-images/b-class-10-geography-ch01-resources-and-development/<file>`.
+So the only remaining step is getting the actual PNGs into that bucket:
+
+1. Create the public bucket (one-time):
+   `insert into storage.buckets (id,name,public) values ('lesson-images','lesson-images',true) on conflict do nothing;`
+2. Upload the 7 PNGs to
+   `lesson-images/b-class-10-geography-ch01-resources-and-development/<file>`
+   using the **exact filenames** the media turns reference (the `url:`s in
+   the lesson YAMLs are the source of truth). The files currently live in
+   the operator's Google Drive folder `cowork_images/class10-geo-ch01-course1/`.
+
+Filenames: `c1l1-three-resources.png`, `c1l1-human-transforms.png`,
+`c1l2-renewable-vs-nonrenewable.png`, `c1l3-need-not-greed.png`,
+`c1l3-think-global-act-local.png`, `c1l4-ingredients-to-meal.png`,
+`c1l4-uneven-india.png`.
+
+⚠ Until the files are uploaded, those `media` turns will 404 at runtime
+(the rest of each lesson — SVG + html_animation + all turns — renders
+fine). Upload before going live, or the player just skips the broken image.
 
 ## Scope / status
 

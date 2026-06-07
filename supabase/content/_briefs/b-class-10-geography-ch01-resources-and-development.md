@@ -10,7 +10,7 @@ Resources and Development** (Reprint 2026-27). Operator-supplied PDF.
 | Bundle-courses file | `supabase/content/bundle-courses/13-class10-geo-ch01.yaml` |
 | Migration | `supabase/migrations/0020_student_plan_class10_geography.sql` |
 | Emoji / gradient | 🌍 / `moss` |
-| order_index | 410 (immediately after Class 10 Math at 400) |
+| order_index | 500 (Geography lane, per the per-subject 500s convention) |
 | Plan tier | `student` |
 | Tags | `class:10`, `subject:geography`, `board:cbse`, `medium:en`, `medium:hinglish`, `curriculum` |
 | Boards / mediums (YAML) | `board: cbse` · `medium: [en, hinglish]` |

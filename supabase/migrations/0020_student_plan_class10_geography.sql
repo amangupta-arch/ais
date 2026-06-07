@@ -23,7 +23,7 @@ values (
   'student',
   '🌍',
   'moss',
-  410,
+  500,
   '{class:10,subject:geography,curriculum}',
   '{"en":{"title":"Class 10 Geography · Ch.1 Resources and Development","description":"What turns nature''s raw material into a resource? Master NCERT''s opening chapter — the three tests of a resource, the four ways to classify them, why sustainable development and planning matter, and how India''s land and soils are used, degraded, and conserved."}}'::jsonb
 )

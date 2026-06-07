@@ -78,6 +78,13 @@ turns:
 
       They signed declarations on climate change and biodiversity, and adopted a global action plan called **Agenda 21** — a blueprint to fight environmental damage, poverty, and disease through cooperation. Its sharpest idea: *every local government should draw up its own local Agenda 21.* Think globally, act locally.
 
+  - type: media
+    kind: image
+    url: "https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch01-resources-and-development/c1l3-think-global-act-local.png"
+    caption: "Agenda 21: think globally, act locally."
+    aspect_ratio: 1.7778
+    xp: 0
+
   - type: tutor_message
     persona: nova
     text: |
@@ -141,6 +148,13 @@ turns:
       *"There is enough for everybody's need, but not for anybody's greed."*
 
       He pointed at two culprits for resource depletion: *greedy, selfish individuals*, and an *exploitative model of mass production*. His alternative wasn't mass production — it was **production by the masses**. Small, local, enough.
+
+  - type: media
+    kind: image
+    url: "https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch01-resources-and-development/c1l3-need-not-greed.png"
+    caption: "Enough for everybody's *need*, not for anybody's *greed*."
+    aspect_ratio: 1.7778
+    xp: 0
 
   - type: mcq
     xp: 10
