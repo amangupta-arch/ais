@@ -32,6 +32,13 @@ turns:
 
       And the reservoir floods the floodplain, **submerging** vegetation and soil that then slowly rot underwater.
 
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch03-water-resources/c2l2-displaced-village.png
+    caption: "When the reservoir rises, whole villages go under — rooftops above the water, families moving to higher ground. The human cost of a big dam."
+    aspect_ratio: 1.7778
+
   - type: svg_graphic
     xp: 0
     title: "FREE RIVER vs DAMMED RIVER"

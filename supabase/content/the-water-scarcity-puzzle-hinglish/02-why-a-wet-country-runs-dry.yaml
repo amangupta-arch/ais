@@ -31,6 +31,13 @@ turns:
 
       Aur **irrigated agriculture India mein paani ka sabse bada akela consumer hai**. Kuein pe bheed badhti hi jaati hai.
 
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch03-water-resources/c1l2-thirsty-city.png
+    caption: "Nadi ke bilkul paas basa sheher, phir bhi saamne ki zameen sookhi aur chatki hui — ek bheegi jagah jo phir bhi paani ki kami mein hai."
+    aspect_ratio: 1.7778
+
   - type: svg_graphic
     xp: 0
     title: "PAANI KAUN USE KARTA HAI"

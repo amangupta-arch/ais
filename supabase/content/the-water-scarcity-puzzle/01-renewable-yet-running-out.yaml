@@ -27,6 +27,13 @@ turns:
 
       Water evaporates, forms clouds, falls as rain, flows across the land and soaks into the ground, then evaporates again. The machine never stops turning.
 
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch03-water-resources/c1l1-water-cycle.png
+    caption: "The water cycle: the same water evaporates and rains down, used again and again — which is exactly why it *feels* endless."
+    aspect_ratio: 1.7778
+
   - type: svg_graphic
     xp: 0
     title: "THE HYDROLOGICAL CYCLE"

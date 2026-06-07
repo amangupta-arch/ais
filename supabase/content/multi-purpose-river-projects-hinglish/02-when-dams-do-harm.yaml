@@ -32,6 +32,13 @@ turns:
 
       Aur reservoir floodplain ko doobota hai, **submerging** vegetation aur soil jo phir dheere-dheere paani ke neeche sad jaate hain.
 
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch03-water-resources/c2l2-displaced-village.png
+    caption: "Jab reservoir bharta hai, poore gaon doob jaate hain — chhaton ke upar paani, parivaar oonchi zameen pe jaate hue. Ek bade dam ki insaani keemat."
+    aspect_ratio: 1.7778
+
   - type: svg_graphic
     xp: 0
     title: "FREE NADI vs DAMMED NADI"

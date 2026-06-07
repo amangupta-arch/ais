@@ -25,6 +25,13 @@ turns:
 
       A **barrier across flowing water** that obstructs, directs, or slows the flow — usually creating a **reservoir**, a lake of stored water behind it. Most dams have a **spillway** that lets excess water flow over safely, so the dam doesn't burst.
 
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch03-water-resources/c2l1-dam.png
+    caption: "A multi-purpose dam: one concrete wall holding back a vast reservoir, water thundering through the spillway."
+    aspect_ratio: 1.7778
+
   - type: svg_graphic
     xp: 0
     title: "ANATOMY OF A DAM"

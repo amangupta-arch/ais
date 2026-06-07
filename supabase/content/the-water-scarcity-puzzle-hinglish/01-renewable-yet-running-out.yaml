@@ -27,6 +27,13 @@ turns:
 
       Paani vaashpit hota hai, badal banta hai, baarish ban ke girta hai, zameen pe behta aur soakta hai, phir vaashpit hota hai. Machine kabhi rukti nahi.
 
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch03-water-resources/c1l1-water-cycle.png
+    caption: "Water cycle: wahi paani baar-baar bhaap banta aur barasta hai, phir se istemaal hota — isiliye yeh *endless* lagta hai."
+    aspect_ratio: 1.7778
+
   - type: svg_graphic
     xp: 0
     title: "HYDROLOGICAL CYCLE"

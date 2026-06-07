@@ -31,6 +31,13 @@ turns:
 
       And **irrigated agriculture is the single largest consumer of water** in India. The crowd at the well keeps getting bigger.
 
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch03-water-resources/c1l2-thirsty-city.png
+    caption: "A city right beside a river, yet the ground in front of it runs cracked and dry — the paradox of a wet place still short of water."
+    aspect_ratio: 1.7778
+
   - type: svg_graphic
     xp: 0
     title: "WHO USES THE WATER"

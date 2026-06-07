@@ -27,6 +27,13 @@ turns:
 
       Lots of water. None you'd want to drink.
 
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch03-water-resources/c1l3-polluted-water.png
+    caption: "Plenty of water — but cloudy, polluted, unsafe. Scarcity is about *quality*, not just quantity."
+    aspect_ratio: 1.7778
+
   - type: svg_graphic
     xp: 0
     title: "TWO KINDS OF SCARCITY"
