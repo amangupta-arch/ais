@@ -1,0 +1,214 @@
+title: "Resource ko classify karne ke chaar tareeke"
+subtitle: "Ek hi forest ek saath chaar tarah ka resource kaise ho sakta hai"
+estimated_minutes: 12
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ek sawaal jo simple lagta hai par hai nahi.
+
+      Ek forest lo. Woh kis *kism* ka resource hai?
+
+      Jab tum jawaab dene ki koshish karoge, dekhoge ki woh ek kism ka nahi hai. Woh ek saath *chaar* kism ka hai — aur yeh koi trick nahi. Geographers exactly aise hi sochte hain.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Geographers ke paas "resources" naam ka ek bada dabba nahi hota. Unke paas **chaar sorting sawaal** hote hain — chaar lenses — aur woh *har* resource ko chaaron se guzaarte hain.
+
+      Ise aise socho jaise ek suitcase pe **chaar luggage tags**. Wahi suitcase ko ek tag milta hai *kahan se aaya* ke liye, ek *kaise own hota hai* ke liye, waghairah. Ek cheez, chaar tags.
+
+  - type: svg_graphic
+    xp: 0
+    title: "CHAAR LENSES"
+    caption: "Har resource ek saath chaar tareeke se sort hota hai: origin, exhaustibility, ownership, aur development ka stage."
+    svg: |
+      <svg viewBox="0 0 360 132" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="142" y="6" width="76" height="24" rx="6" fill="#fef3c7" stroke="#0f172a" stroke-width="2"/>
+        <text x="180" y="22" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a">RESOURCES</text>
+        <line x1="180" y1="30" x2="48" y2="60" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="180" y1="30" x2="138" y2="60" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="180" y1="30" x2="230" y2="60" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="180" y1="30" x2="317" y2="60" stroke="#94a3b8" stroke-width="1.5"/>
+        <rect x="12" y="60" width="72" height="22" rx="5" fill="#dbeafe" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="48" y="75" text-anchor="middle" font-size="9" font-weight="bold" fill="#1e3a8a">Origin</text>
+        <text x="48" y="100" text-anchor="middle" font-size="8" fill="#334155">biotic</text>
+        <text x="48" y="113" text-anchor="middle" font-size="8" fill="#334155">abiotic</text>
+        <rect x="96" y="60" width="84" height="22" rx="5" fill="#dcfce7" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="138" y="75" text-anchor="middle" font-size="8" font-weight="bold" fill="#166534">Exhaustibility</text>
+        <text x="138" y="100" text-anchor="middle" font-size="8" fill="#334155">renewable</text>
+        <text x="138" y="113" text-anchor="middle" font-size="8" fill="#334155">non-renewable</text>
+        <rect x="192" y="60" width="76" height="22" rx="5" fill="#fae8ff" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="230" y="75" text-anchor="middle" font-size="9" font-weight="bold" fill="#86198f">Ownership</text>
+        <text x="230" y="100" text-anchor="middle" font-size="7.5" fill="#334155">individual · community</text>
+        <text x="230" y="113" text-anchor="middle" font-size="7.5" fill="#334155">national · international</text>
+        <rect x="280" y="60" width="74" height="22" rx="5" fill="#ffe4e6" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="317" y="75" text-anchor="middle" font-size="8" font-weight="bold" fill="#9f1239">Development</text>
+        <text x="317" y="100" text-anchor="middle" font-size="7.5" fill="#334155">potential · stock</text>
+        <text x="317" y="113" text-anchor="middle" font-size="7.5" fill="#334155">reserve · developed</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Lens 1 — Origin.** Yeh kahan se aaya — living world se ya non-living world se?
+
+      - **Biotic** resources *biosphere* se aate hain aur unme life hoti hai: forests, fish, livestock, khud insaan.
+      - **Abiotic** resources non-living cheezon se bante hain: rocks, minerals, metals.
+
+      Ek forest? *Biotic.* Suitcase pe pehla tag.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Lens 2 — Exhaustibility.** Kya yeh khatam ho jaayega?
+
+      - **Renewable** resources khud ko renew karte hain — solar, wind, water, forests, wildlife. Kuch *continuous* hote hain (sooraj ko humse fark nahi padta); kuch ko wapas aane mein *time* lagta hai (kata hua forest, sookha aquifer).
+      - **Non-renewable** resources banne mein *millions* of years lagte hain — minerals, fossil fuels. Ek baar khatam, toh kisi bhi human timescale pe gaye.
+
+      Forest khud ko renew kar leta hai agar hum mauka dein. *Renewable.* Doosra tag.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Lens 3 — Ownership.** Yeh kiska hai?
+
+      - **Individual** — ek private well, ek family ki farmland.
+      - **Community** — gaon ki grazing common, public talaab.
+      - **National** — desh ki seemaon ke andar sab kuch: uske minerals, forests, rivers, aur kinaare se 12 nautical miles tak ka samundar.
+      - **International** — kisi bhi coast se 200 km ke aage ka khula samundar. Use koi ek desh own nahi karta; global institutions use govern karti hain.
+
+      India ke zyaadatar forests nation manage karti hai. *National.* Teesra tag.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Lens 4 — Status of development.** Yahi woh hai jise students gadbada dete hain, toh thoda dheere chalo.
+
+      - **Potential** — kisi region mein maujood hai par humne abhi use nahi kiya (Rajasthan ki solar aur wind).
+      - **Developed** — survey ho chuka, maapa ja chuka, aur active use mein hai.
+      - **Stock** — material bilkul wahin hai, par *hamare paas use use karne ki technology hi nahi.* Water hydrogen aur oxygen hai — ek bahut bada fuel — par hum use bade scale pe unlock nahi kar sakte. Toh woh *stock* hai.
+      - **Reserve** — stock ka woh hissa jise hum aaj ki technology se use *kar sakte* hain par *abhi shuru nahi kiya* — jaise future ke liye bachaaya gaya khada forest.
+
+      Jo forest hum baad ke liye bacha rahe hain? *Reserve.* Chautha tag.
+
+  - type: html_animation
+    xp: 0
+    title: "EK FOREST, CHAAR TAGS"
+    caption: "Wahi forest biotic, renewable, national, AUR ek reserve hai — chaar lenses, ek resource."
+    html: |
+      <div style="background:#f8fafc;padding:18px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoTag1 { 0%,5%{opacity:.12;transform:translateY(6px)} 18%,100%{opacity:1;transform:none} }
+          @keyframes geoTag2 { 0%,23%{opacity:.12;transform:translateY(6px)} 36%,100%{opacity:1;transform:none} }
+          @keyframes geoTag3 { 0%,43%{opacity:.12;transform:translateY(6px)} 56%,100%{opacity:1;transform:none} }
+          @keyframes geoTag4 { 0%,63%{opacity:.12;transform:translateY(6px)} 76%,100%{opacity:1;transform:none} }
+          .geo-pill { display:inline-block; margin:4px; padding:6px 13px; border-radius:999px; font:bold 12px sans-serif; color:#fff; }
+          .geo-p1 { background:#16a34a; animation:geoTag1 5s infinite; }
+          .geo-p2 { background:#0891b2; animation:geoTag2 5s infinite; }
+          .geo-p3 { background:#7c3aed; animation:geoTag3 5s infinite; }
+          .geo-p4 { background:#db2777; animation:geoTag4 5s infinite; }
+        </style>
+        <svg width="52" height="52" viewBox="0 0 52 52" style="display:block;margin:0 auto 6px">
+          <circle cx="26" cy="19" r="16" fill="#16a34a"/>
+          <rect x="22" y="33" width="8" height="14" rx="1" fill="#92400e"/>
+        </svg>
+        <div style="font:bold 15px sans-serif;color:#0f172a;margin-bottom:8px">one forest</div>
+        <div>
+          <span class="geo-pill geo-p1">biotic</span>
+          <span class="geo-pill geo-p2">renewable</span>
+          <span class="geo-pill geo-p3">national</span>
+          <span class="geo-pill geo-p4">reserve</span>
+        </div>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Dekha kya hua? Humein kabhi ek box *chunna* hi nahi pada. Forest biotic **aur** renewable **aur** national **aur** ek reserve hai — sab ek saath sach.
+
+      Yahi poora skill hai: yeh mat poocho *"yeh kaunsi kism hai?"* Poocho *"chaaron lenses kya kehti hain?"*
+
+  - type: mcq
+    xp: 10
+    question: "Water ko hydrogen aur oxygen mein toda ja sakta hai — ek bahut bada energy source — par hamare paas use bade scale pe karne ki technology abhi nahi hai. Development ke terms mein woh energy kya hai?"
+    options:
+      - id: a
+        text: "Reserve — hum use aaj ki technology se kar sakte the, bas kiya nahi."
+        is_correct: false
+        rationale: "*Reserve* stock ka woh hissa hai jo current technology se usable hai par abhi tapped nahi. Yahan rukaawat yeh hai ki technology bade scale pe hai hi nahi — toh yeh abhi reserve nahi."
+      - id: b
+        text: "Stock — material wahin hai, par use use karne ki technology hamare paas nahi hai."
+        is_correct: true
+        rationale: "Bilkul. *Stock* = environment mein maujood, real potential, par aaj ki technology ke bahar. Jis din tech aayegi, uska kuch hissa reserve ban jaayega."
+      - id: c
+        text: "Developed — yeh survey ho chuka aur use mein hai."
+        is_correct: false
+        rationale: "Developed resources survey ho chuke aur actively use hote hain. Yeh energy toh abhi bilkul use hi nahi ho rahi."
+      - id: d
+        text: "Potential — yeh kisi region mein hai par poori tarah use nahi hota."
+        is_correct: false
+        rationale: "Potential ek broad idea hai ('hai par kam use hota hai', jaise Rajasthan ki solar). *Stock* zyaada sharp hai — woh khaas *technology* ki rukaawat ko naam deta hai, jo yahan asli baat hai."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Har resource ko uski ownership category se match karo."
+    left:
+      - { id: l1, label: "Ek kisaan ka private well" }
+      - { id: l2, label: "Gaon ki grazing common" }
+      - { id: l3, label: "India ki seemaon ke andar coal deposits" }
+      - { id: l4, label: "Kinaare se 200 km aage ka khula samundar" }
+    right:
+      - { id: r1, label: "Individual" }
+      - { id: r2, label: "Community" }
+      - { id: r3, label: "National" }
+      - { id: r4, label: "International" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Apni rozmarra ki zindagi se koi ek resource lo — ghar ki cooking gas, jo paani tum peete ho, ya notebook ka paper.
+
+      Paper pe use chaaron lenses se guzaaro:
+      1. Origin — biotic ya abiotic?
+      2. Exhaustibility — renewable ya non-renewable?
+      3. Ownership — individual, community, national, ya international?
+      4. Development — potential, developed, stock, ya reserve?
+
+      Neeche apna resource aur uske chaar tags type karo.
+    placeholder: "Cooking gas (LPG): abiotic, ..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Origin ke terms yaad kar lo."
+    template: |
+      Biosphere se aane waale, life waale resources — jaise forests aur fisheries — ___ kehlaate hain. Rocks aur metals jaise non-living resources ___ kehlaate hain.
+    answers:
+      - id: blank-1
+        accepted: ["biotic", "Biotic"]
+      - id: blank-2
+        accepted: ["abiotic", "Abiotic"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Chaaron lenses mein se kaunsi sabse mushkil lagi samajhne mein — aur aakhir mein kis cheez se woh click hui?
+
+      Koi sahi jawaab nahi. Bas woh ek batao jisne tumhe sabse zyaada uljhaaya.
+    placeholder: "Mere liye tricky thi..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Ab tum *kisi bhi* resource ko ek saath chaar tareeke se sort kar sakte ho."
+    summary: |
+      Origin, exhaustibility, ownership, development — chaar lenses, har resource pe ek saath. Ab "kaunsa box?" nahi; bas "har lens kya kehti hai?"
+
+      Par lens do mein ek chupi hui warning hai. Kuch resources wapas *nahi* aate — aur renewable waale bhi barbaad ho sakte hain agar hum laaparwah hon. Toh kya hota hai jab insaan resources ko endless samajh ke use karte hain? Aur *sustainably* develop karne ka asli matlab kya hai? Yahi agli lesson hai.

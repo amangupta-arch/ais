@@ -1,0 +1,207 @@
+title: "India mein Resource Planning"
+subtitle: "Resources mein ameer hona ek region ko ameer kyun nahi banaata"
+estimated_minutes: 12
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ek paheli jo tumhe pareshaan karni chahiye.
+
+      Jharkhand India ke kuch sabse rich coal aur mineral deposits pe baitha hai — aur woh desh ke *gareeb* rajyon mein se ek hai. Wahin, kuch jagahein jinke paas mushkil se koi resource hai, ameer hain.
+
+      Agar resources tumhe ameer banaate, toh yeh impossible hota. Toh asal mein ho kya raha hai?
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Shuru karo isse ki India kitna *uneven* hai. Desh resources ka ek barabar phaila hua chaddar nahi — yeh ek patchwork hai:
+
+      - **Jharkhand, Chhattisgarh, Madhya Pradesh** — minerals aur coal mein rich.
+      - **Arunachal Pradesh** — paani se bhara, par infrastructure ki kami.
+      - **Rajasthan** — solar aur wind energy mein doobaa, par paani ko taras raha.
+      - **Ladakh** — ek cold desert, culture mein rich, par paani, infrastructure, aur kayi minerals ki kami.
+
+      Yahan rich, wahan poor — yahi rule hai, exception nahi.
+
+  - type: svg_graphic
+    xp: 0
+    title: "YAHAN RICH, WAHAN POOR"
+    caption: "India ke resources bahut uneven hain — har region kuch mein strong, kuch mein khaali."
+    svg: |
+      <svg viewBox="0 0 360 196" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="10" y="8" width="166" height="86" rx="6" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="20" y="28" font-size="10" font-weight="bold" fill="#0f172a">Jharkhand · Chhattisgarh</text>
+        <text x="20" y="50" font-size="9" fill="#166534">✓ rich in coal and minerals</text>
+        <text x="20" y="70" font-size="8.5" fill="#475569">but needs technology and</text>
+        <text x="20" y="82" font-size="8.5" fill="#475569">institutions to turn it to wealth</text>
+        <rect x="184" y="8" width="166" height="86" rx="6" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="194" y="28" font-size="10" font-weight="bold" fill="#0f172a">Rajasthan</text>
+        <text x="194" y="50" font-size="9" fill="#166534">✓ solar and wind energy</text>
+        <text x="194" y="72" font-size="9" fill="#991b1b">✗ short of water</text>
+        <rect x="10" y="102" width="166" height="86" rx="6" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="20" y="122" font-size="10" font-weight="bold" fill="#0f172a">Arunachal Pradesh</text>
+        <text x="20" y="144" font-size="9" fill="#166534">✓ abundant water</text>
+        <text x="20" y="166" font-size="9" fill="#991b1b">✗ lacks infrastructure</text>
+        <rect x="184" y="102" width="166" height="86" rx="6" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="194" y="122" font-size="10" font-weight="bold" fill="#0f172a">Ladakh</text>
+        <text x="194" y="144" font-size="9" fill="#166534">✓ rich cultural heritage</text>
+        <text x="194" y="166" font-size="9" fill="#991b1b">✗ short of water and infra</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Jab koi desh itna uneven ho, toh tum sirf *umeed* nahi kar sakte ki resources wahan pahunch jaayenge jahan zaroorat hai. Tum **plan** karte ho.
+
+      **Resource planning** resources ko *samajhdaari* se use karne ki widely accepted strategy hai — na barbaad, na aankh band karke. India ise Independence ke baad ke pehle hi Five Year Plan se seriously le raha hai, aur yeh har level pe hoti hai: national, state, regional, aur local.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      India mein resource planning **teen steps** mein chalti hai:
+
+      1. **Identify aur inventory** — survey, map, aur maapo ki kaunse resources kahan hain, aur kitni quantity aur quality mein.
+      2. **Planning structure banao** — woh *technology*, *skills*, aur *institutions* jamao jo development ko actually anjaam dein.
+      3. **National plans se match karo** — har resource plan ko desh ke overall development goals se line up karo.
+
+      Koi bhi step chhoot gaya — plan ruk jaata hai.
+
+  - type: html_animation
+    xp: 0
+    title: "RESOURCE PLANNING KE 3 STEPS"
+    caption: "Jo hai use identify karo, use develop karne ka structure banao, national goals se align karo."
+    html: |
+      <div style="background:#f8fafc;padding:18px 8px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoPlan1 { 0%,5%{opacity:.2} 18%,100%{opacity:1} }
+          @keyframes geoPlan2 { 0%,33%{opacity:.2} 46%,100%{opacity:1} }
+          @keyframes geoPlan3 { 0%,61%{opacity:.2} 74%,100%{opacity:1} }
+          .geo-plan { animation-duration:5s; animation-iteration-count:infinite; }
+          .gp1 { animation-name:geoPlan1; } .gp2 { animation-name:geoPlan2; } .gp3 { animation-name:geoPlan3; }
+        </style>
+        <svg viewBox="0 0 340 116" style="width:100%" font-family="sans-serif">
+          <g class="geo-plan gp1">
+            <rect x="8" y="34" width="92" height="54" rx="6" fill="#dbeafe" stroke="#0f172a" stroke-width="1.5"/>
+            <text x="54" y="52" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e3a8a">1</text>
+            <text x="54" y="68" text-anchor="middle" font-size="7.5" fill="#334155">identify and</text>
+            <text x="54" y="78" text-anchor="middle" font-size="7.5" fill="#334155">inventory</text>
+          </g>
+          <text x="112" y="66" font-size="16" fill="#94a3b8" class="geo-plan gp2">&#8594;</text>
+          <g class="geo-plan gp2">
+            <rect x="124" y="34" width="92" height="54" rx="6" fill="#dcfce7" stroke="#0f172a" stroke-width="1.5"/>
+            <text x="170" y="52" text-anchor="middle" font-size="13" font-weight="bold" fill="#166534">2</text>
+            <text x="170" y="66" text-anchor="middle" font-size="7.5" fill="#334155">build the planning</text>
+            <text x="170" y="76" text-anchor="middle" font-size="7.5" fill="#334155">structure</text>
+          </g>
+          <text x="228" y="66" font-size="16" fill="#94a3b8" class="geo-plan gp3">&#8594;</text>
+          <g class="geo-plan gp3">
+            <rect x="240" y="34" width="92" height="54" rx="6" fill="#fae8ff" stroke="#0f172a" stroke-width="1.5"/>
+            <text x="286" y="52" text-anchor="middle" font-size="13" font-weight="bold" fill="#86198f">3</text>
+            <text x="286" y="66" text-anchor="middle" font-size="7.5" fill="#334155">match national</text>
+            <text x="286" y="76" text-anchor="middle" font-size="7.5" fill="#334155">development plans</text>
+          </g>
+        </svg>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ab woh idea jo is poore course ko bandh deta hai.
+
+      Resource hona aise hai jaise kitchen mein **ingredients** hona. Sirf ingredients koi meal nahi hote. Tumhe abhi bhi *recipe* chahiye — woh hai **technology** — aur ek chalti hui *kitchen* — woh hain **institutions** (laws, markets, skilled log, government).
+
+      Resources ka hona :hl[zaroori hai, par kaafi kabhi nahi.]
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Agar sirf resources hi tumhe ameer banaate toh kya tootta?* Toh Jharkhand, us saare coal pe baitha, India ke sabse ameer rajyon mein hota. Hai nahi.
+
+      Ingredients toh wahan hain. Jo aksar nahi hota woh hai recipe aur kitchen — woh technology aur institutions jo dabe hue coal ko roads, schools, jobs, aur power mein badal dein.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      History is baat ko bedardi se saabit karti hai. Jab colonisers aaye, woh un zameenon ke *rich resources* se aakarshit the jinhe unhone invade kiya. Par yeh unki behtar **technology** aur **institutions** thi jisne unhe woh resources nikaalne — aur raj karne — diya.
+
+      India ne yeh colonisation ke lambe phases mein jhela. Jo sabak mila: resources ek desh ko tabhi banaate hain jab unke saath technological development *aur* institutional change ho.
+
+  - type: mcq
+    xp: 10
+    question: "Jharkhand coal aur minerals mein rich hai, phir bhi India ke gareeb rajyon mein se ek hai. Iski sabse achhi vyaakhya kya hai?"
+    options:
+      - id: a
+        text: "Resource-rich regions hamesha ameer hote hain, toh yeh koi measurement error hoga."
+        is_correct: false
+        rationale: "Reality iske ulta kehti hai. Resource ki daulat apne aap economic daulat nahi banti — yahi is lesson ki asli paheli hai."
+      - id: b
+        text: "Sirf resources kaafi nahi — unhe develop karne ki technology aur institutions ke bina, ek region apni richness ke bawajood gareeb reh sakta hai."
+        is_correct: true
+        rationale: "Bilkul. Availability *zaroori hai par kaafi nahi*. Ingredients khud nahi pakte; tumhe recipe (technology) aur kitchen (institutions) chahiye."
+      - id: c
+        text: "Uske coal aur minerals stock hain, reserves nahi, isliye use nahi ho sakte."
+        is_correct: false
+        rationale: "Wahan ka coal aur minerals bilkul usable, developed resources hain. Gap broad development ke liye technology aur institutions ka hai — resource category ka nahi."
+      - id: d
+        text: "Woh sab kuch export kar deta hai, toh kuch bachta hi nahi."
+        is_correct: false
+        rationale: "Tempting, par chapter ka point nahi. Asli idea yeh hai ki resources ko development banane ke liye technology plus institutions chahiye."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Har region ko usse match karo jiske liye woh jaana jaata hai."
+    left:
+      - { id: l1, label: "Rajasthan" }
+      - { id: l2, label: "Arunachal Pradesh" }
+      - { id: l3, label: "Jharkhand" }
+      - { id: l4, label: "Ladakh" }
+    right:
+      - { id: r1, label: "Solar aur wind energy" }
+      - { id: r2, label: "Bharpoor paani, kam infrastructure" }
+      - { id: r3, label: "Coal aur minerals" }
+      - { id: r4, label: "Rich cultural heritage, kam paani" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Ise apne rajya (ya district) tak le aao.
+
+      Paper pe **do** resources likho jinme woh sach mein rich hai, aur **ek** zaroori resource jiski usme kami hai. Phir ek line likho: kaunsi *technology* ya *institution* use apni strengths behtar use karne mein madad karegi?
+
+      Neeche apna rajya aur uski do strengths type karo.
+    placeholder: "Mera rajya ___ hai. Yeh ___ aur ___ mein rich hai..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Poore course ka core idea yaad kar lo."
+    template: |
+      Resources ka hona ek region ki development ke liye ___ hai — par yeh ___ nahi. Technology aur institutions bhi aane chahiye.
+    answers:
+      - id: blank-1
+        accepted: ["necessary", "Necessary", "zaroori"]
+      - id: blank-2
+        accepted: ["sufficient", "Sufficient", "kaafi"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Resources mein rich par gareeb; resources mein poor par ameer. *Kisi bhi* cheez ke baare mein socho — koi insaan, team, company, ya desh — jahan sirf bahut kuch *hona* kaafi nahi tha, jab tak uske aas-paas sahi system na ho.
+
+      Kya kami thi? Koi sahi jawaab nahi.
+    placeholder: "Mujhe yaad aata hai..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Ab tum samjha sakte ho ki daulat development ke barabar kyun nahi hoti."
+    summary: |
+      India bahut uneven hai — yahan coal, wahan paani, registan jo solar energy mein jhulaste hain par baarish ko taraste. Resource planning woh tareeka hai jisse ek desh apne paas jo hai use *samajhdaari* se use karta hai: identify aur inventory, use develop karne ka structure banao, aur use national goals se match karo. Aur gehra sabak — resources sirf *zaroori* hain, kabhi *kaafi* nahi. Technology aur institutions hi ingredients ko meal mein badalte hain.
+
+      Yeh resources ke abstract tour ko poora karta hai. Par sabse zaroori resource woh hai jo literally tumhare pairon ke neeche hai: **land**. 1.4 billion logon ka desh apni land kaise use karta hai — aur woh khatam kyun ho rahi hai? Yahi se agla course shuru hota hai.

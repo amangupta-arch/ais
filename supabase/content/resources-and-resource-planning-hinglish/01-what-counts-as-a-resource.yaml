@@ -1,0 +1,203 @@
+title: "Resource kise kehte hain"
+subtitle: "Sunlight hamesha resource kyun nahi hoti — aur ek banjar chattan kabhi-kabhi hoti hai"
+estimated_minutes: 11
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ek sawaal jo geography class mein koi nahi poochta.
+
+      Kya *sunlight* ek resource hai? Kya *wind* (hawa)? Aur woh coal jo abhi bhi zameen ke ek kilometre neeche dabi hai, jahan aaj tak kisi ne khudai nahi ki?
+
+      Tumhara gut kehta hai *haan, obviously*. Is feeling ko pakad ke rakho. Hum ise jaan-boojh kar thoda complicate karne waale hain.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      History mein zyaadatar logon ne maana ki resources **nature ke free gifts** hote hain — bas idhar-udhar pade hue, use hone ka wait karte hue. Ped, nadiyaan, minerals — sab le lo jitna chahiye.
+
+      Comfortable idea hai. Par *galat* bhi hai — aur exactly kyun galat hai, yahi aaj ki lesson ka asli point hai.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Toh actually resource kya hota hai? Yeh raha careful version:
+
+      Hamare environment ki koi bhi cheez jo hamari needs poori kar sakti hai — **provided** woh *technologically accessible*, *economically feasible*, aur *culturally acceptable* ho — usse **resource** kehte hain.
+
+      Us chhote se word *provided* pe dhyaan do. Woh sabse zyaada kaam kar raha hai. Kisi cheez ko 'resource' ka naam milne se pehle use **teen gates** paar karne padte hain.
+
+  - type: svg_graphic
+    xp: 0
+    title: "TEEN GATES"
+    caption: "Kaccha maal tabhi resource banta hai jab woh teeno gates paar kar leta hai."
+    svg: |
+      <svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <circle cx="32" cy="84" r="24" fill="#e7e5e4" stroke="#0f172a" stroke-width="2"/>
+        <text x="32" y="80" text-anchor="middle" font-size="10" fill="#44403c">raw</text>
+        <text x="32" y="92" text-anchor="middle" font-size="10" fill="#44403c">matter</text>
+        <line x1="58" y1="84" x2="300" y2="84" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4 4"/>
+        <rect x="92" y="48" width="44" height="72" rx="22" fill="#dbeafe" stroke="#0f172a" stroke-width="2"/>
+        <text x="114" y="89" text-anchor="middle" font-size="15" font-weight="bold" fill="#1e3a8a">1</text>
+        <text x="114" y="136" text-anchor="middle" font-size="9" fill="#334155">technically</text>
+        <text x="114" y="147" text-anchor="middle" font-size="9" fill="#334155">accessible</text>
+        <rect x="158" y="48" width="44" height="72" rx="22" fill="#dcfce7" stroke="#0f172a" stroke-width="2"/>
+        <text x="180" y="89" text-anchor="middle" font-size="15" font-weight="bold" fill="#166534">2</text>
+        <text x="180" y="136" text-anchor="middle" font-size="9" fill="#334155">economically</text>
+        <text x="180" y="147" text-anchor="middle" font-size="9" fill="#334155">feasible</text>
+        <rect x="224" y="48" width="44" height="72" rx="22" fill="#fae8ff" stroke="#0f172a" stroke-width="2"/>
+        <text x="246" y="89" text-anchor="middle" font-size="15" font-weight="bold" fill="#86198f">3</text>
+        <text x="246" y="136" text-anchor="middle" font-size="9" fill="#334155">culturally</text>
+        <text x="246" y="147" text-anchor="middle" font-size="9" fill="#334155">acceptable</text>
+        <polygon points="298,78 312,84 298,90" fill="#64748b"/>
+        <circle cx="334" cy="84" r="22" fill="#fef3c7" stroke="#0f172a" stroke-width="2"/>
+        <text x="334" y="82" text-anchor="middle" font-size="13">★</text>
+        <text x="334" y="97" text-anchor="middle" font-size="7" fill="#92400e">RESOURCE</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Gate 1 — technically accessible.** Kya hum use apne current tools se actually reach aur use kar sakte hain?
+
+      Uranium poori history mein ek plain, bhaari rock ki tarah zameen mein pada raha. Woh Earth ka sabse valuable resource tab bana *jab* humne nuclear reactors banana seekha. Wahi rock. Nayi technology. *Ab* woh resource hai.
+
+      Deep-sea oil ki bhi yahi kahani — jab tak rigs nahi bana sakte the, tab tak useless.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Gate 2 — economically feasible.** Maan lo reach kar bhi sakte hain — par kya woh cost ke laayak hai?
+
+      Abhi is waqt samundar ke paani mein gold ghula hua hai. Par ₹1 ka gold nikaalne mein ₹1 se kahin zyaada kharch ho jaayega. Toh woh ek curiosity hai, resource *nahi* — jab tak economics nahi badalti.
+
+      **Gate 3 — culturally acceptable.** Koi community ek pahaadi ko mine karne se mana kar sakti hai jise woh pavitra maanti hai, ya kuch land ya jaanwaron ko not-for-use maan sakti hai. Culture decide karta hai ki hum kya use karne ki *ijaazat* dete hain.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Sab jod ke dekho toh comfortable idea toot jaata hai. Resources nature ke :red[free gifts nahi] hain. Woh *human activity ka function* hain — hum apne environment ke material ko resource mein **transform** karte hain.
+
+      *Agar yeh sach na hota toh kya tootta?* Agar resources bas pade-pade mil jaate, toh har woh zameen jiske neeche oil hai ameer hoti, aur har banjar registan bekaar. Par duniya aisi nahi hai — aur yahi gap geography ko padhne laayak banata hai. (Ispe kuch lessons baad aur baat karenge.)
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ek aur piece hai. Insaan nature ko akele transform nahi karte. Hum yeh kaam *technology* ke through karte hain, aur **institutions** banate hain — governments, laws, markets, schools — taaki sab organise ho aur tezi se ho.
+
+      Toh teen cheezein ek loop mein bandh jaati hain: **nature** kaccha maal deti hai, **technology** use karne deti hai, **institutions** poore process ko direction aur speed deti hain. Inme se ek bhi nikaal do — development ruk jaati hai.
+
+  - type: html_animation
+    xp: 0
+    title: "RESOURCE KA LOOP"
+    caption: "Nature technology ko feed karti hai, technology institutions ko, institutions decide karti hain hum nature ko kaise use karein. Loop chalte dekho."
+    html: |
+      <div style="background:#f8fafc;padding:16px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoGlow1 { 0%,100%{opacity:.3} 12%,28%{opacity:1} }
+          @keyframes geoGlow2 { 0%,100%{opacity:.3} 40%,56%{opacity:1} }
+          @keyframes geoGlow3 { 0%,100%{opacity:.3} 68%,84%{opacity:1} }
+          .geo-a1 { animation: geoGlow1 4.5s infinite; }
+          .geo-a2 { animation: geoGlow2 4.5s infinite; }
+          .geo-a3 { animation: geoGlow3 4.5s infinite; }
+        </style>
+        <svg viewBox="0 0 320 230" style="max-width:330px;width:100%" font-family="sans-serif">
+          <circle cx="160" cy="38" r="33" fill="#dcfce7" stroke="#0f172a" stroke-width="2"/>
+          <text x="160" y="36" text-anchor="middle" font-size="12" font-weight="bold" fill="#166534">NATURE</text>
+          <text x="160" y="50" text-anchor="middle" font-size="8" fill="#3f6212">raw material</text>
+          <circle cx="54" cy="188" r="33" fill="#dbeafe" stroke="#0f172a" stroke-width="2"/>
+          <text x="54" y="186" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3a8a">TECH-</text>
+          <text x="54" y="198" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3a8a">NOLOGY</text>
+          <circle cx="266" cy="188" r="33" fill="#fae8ff" stroke="#0f172a" stroke-width="2"/>
+          <text x="266" y="186" text-anchor="middle" font-size="9" font-weight="bold" fill="#86198f">INSTITU-</text>
+          <text x="266" y="198" text-anchor="middle" font-size="9" font-weight="bold" fill="#86198f">TIONS</text>
+          <line class="geo-a1" x1="138" y1="62" x2="78" y2="162" stroke="#0f172a" stroke-width="3"/>
+          <polygon class="geo-a1" points="78,162 88,156 90,170" fill="#0f172a"/>
+          <line class="geo-a2" x1="90" y1="192" x2="228" y2="192" stroke="#0f172a" stroke-width="3"/>
+          <polygon class="geo-a2" points="228,192 216,186 216,198" fill="#0f172a"/>
+          <line class="geo-a3" x1="242" y1="162" x2="182" y2="62" stroke="#0f172a" stroke-width="3"/>
+          <polygon class="geo-a3" points="182,62 180,76 192,70" fill="#0f172a"/>
+        </svg>
+      </div>
+
+  - type: mcq
+    xp: 10
+    question: "Ek dost kehta hai: 'Resources toh bas nature ke free gifts hain — pade rehte hain, use hone ka wait karte hue.' Sabse sahi correction kya hai?"
+    options:
+      - id: a
+        text: "Woh sahi hai — nature mein jo bhi milta hai woh automatically resource hai."
+        is_correct: false
+        rationale: "Yahi comfortable myth hai jise yeh lesson tod rahi hai. Nature ki cheez tab tak kaccha maal hi rehti hai jab tak human ability use resource na bana de."
+      - id: b
+        text: "Koi cheez resource tabhi banti hai jab woh technologically accessible, economically feasible, aur culturally acceptable ho — toh resources human activity ka function hain, free gifts nahi."
+        is_correct: true
+        rationale: "Bilkul sahi. Teen gates plus human effort hi matter ko resource banate hain. Nature kaccha maal deti hai; baaki sab log dete hain."
+      - id: c
+        text: "Woh galat hai kyunki nature ki koi cheez kabhi resource ban hi nahi sakti."
+        is_correct: false
+        rationale: "Yeh doosri taraf zyaada chala gaya. Nature bilkul kaccha maal deti hai — bas woh *automatically* resource nahi hota jab tak hum use reach, afford, aur accept na kar sakein."
+      - id: d
+        text: "Woh sahi hai, par sirf renewable cheezein hi resource count hoti hain."
+        is_correct: false
+        rationale: "Renewable vs non-renewable ek alag sawaal hai (woh agli lesson hai). Usse 'free gift' waali galti theek nahi hoti."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Har item kisi alag gate pe atka hai — ya teeno paar kar gaya. Match karo."
+    left:
+      - { id: l1, label: "Tidal energy, jab tak kisi ne tidal turbines nahi banaye the" }
+      - { id: l2, label: "Samundar ke paani mein ghula gold, nikaalna bahut mehnga" }
+      - { id: l3, label: "Ek pahaadi jise community pavitra maanti hai aur mine nahi karti" }
+      - { id: l4, label: "Ek reachable, affordable, accepted mine ka coal" }
+    right:
+      - { id: r1, label: "Technology gate pe atka" }
+      - { id: r2, label: "Economic gate pe atka" }
+      - { id: r3, label: "Cultural gate pe atka" }
+      - { id: r4, label: "Teeno paar — yeh resource hai" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Apne kamre mein dekho aur koi ek aam cheez uthao — pencil, phone, ya steel ka tumbler.
+
+      Paper pe use *ulta* trace karo: nature mein woh kis **kacche maal** se shuru hui thi? Phir use teeno gates se guzaaro — kis **technology** ne us material ko usable banaya, lagbhag kis cheez ne use **affordable** banaya, aur use use karna **culturally** theek kyun hai?
+
+      2–3 lines likho. Phir neeche apni cheez aur uska shuruaati kaccha maal type karo.
+    placeholder: "Meri cheez ek ___ hai. Yeh nature mein ___ se shuru hui ..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Har resource ko paar karne padne waale teen tests yaad kar lo."
+    template: |
+      Ek resource ko technologically ___, economically ___, aur culturally ___ hona chahiye.
+    answers:
+      - id: blank-1
+        accepted: ["accessible", "Accessible"]
+      - id: blank-2
+        accepted: ["feasible", "Feasible"]
+      - id: blank-3
+        accepted: ["acceptable", "Acceptable"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Aaj se pehle, kya tum resources ko 'nature ke free gifts' samajhte the? Koi ek cheez batao — koi material, jagah, ya rozmarra ki cheez — jise ab tum thoda alag tarah se dekhte ho.
+
+      Koi sahi jawaab nahi hai. Bas woh cheez note karo jisne tumhe rukne pe majboor kiya.
+    placeholder: "Main pehle sochta tha..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Ab tum kacche maal aur ek *resource* mein fark kar sakte ho."
+    summary: |
+      Resource bas *bahar pada* hua nahi hota. Yeh woh matter hai jo teen gates paar karta hai — technologically accessible, economically feasible, culturally acceptable — aur phir human kaam se transform hota hai, nature, technology, aur institutions ke ek loop ke andar.
+
+      Par resources mein gajab ki variety hoti hai: sunlight aur coal, ek private khet aur khula samundar, aaj nikaalne waala oil aur woh oil jise hum abhi reach nahi kar sakte. Kya yeh sab ek hi *kism* ki cheez hain? Agli lesson: woh four lenses jinse geographers *kisi bhi* resource ko sort karte hain.

@@ -1,0 +1,212 @@
+title: "Sustainable Development aur Conservation"
+subtitle: "'Zaroorat ke liye kaafi, laalach ke liye nahi' is chapter ka sabse practical idea kyun hai"
+estimated_minutes: 12
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ek sawaal jis pe thoda sochna banta hai.
+
+      Agar Earth pe har insaan sirf utna le jitni use *zaroorat* hai — ek raddi bhi zyaada nahi — toh kya hum kabhi sach mein resources khatam kar sakte hain?
+
+      Gandhi ne is sawaal ka ek line mein jawaab diya tha. Wahan pahunchenge. Pehle dekho humne uski jagah *kya* kiya.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Kaafi samay tak humne resources ko aise use kiya jaise woh endless hon. Iska nateeja — teen cheezein toot gayin:
+
+      - **Depletion** — resources khatam, *kuch logon ki greed* ke liye.
+      - **Inequality** — daulat kuch haathon mein jama ho gayi, samaaj *haves aur have-nots* mein bat gaya.
+      - **Ecological crisis** — global warming, ozone layer ka nuksaan, pollution, land degradation.
+
+      Inme se koi accident nahi hai. Yeh "jitna le sako le lo" ka *nateeja* hai.
+
+  - type: svg_graphic
+    xp: 0
+    title: "GREED KI KEEMAT"
+    caption: "Resources ko endless samjho, toh teen problems aati hain — har baar."
+    svg: |
+      <svg viewBox="0 0 360 168" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="108" y="6" width="144" height="32" rx="6" fill="#fee2e2" stroke="#0f172a" stroke-width="2"/>
+        <text x="180" y="21" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#991b1b">using resources</text>
+        <text x="180" y="33" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#991b1b">as if endless</text>
+        <line x1="150" y1="38" x2="62" y2="74" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="180" y1="38" x2="180" y2="74" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="210" y1="38" x2="298" y2="74" stroke="#94a3b8" stroke-width="1.5"/>
+        <rect x="10" y="76" width="104" height="84" rx="6" fill="#fff7ed" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="62" y="96" text-anchor="middle" font-size="10" font-weight="bold" fill="#9a3412">Depletion</text>
+        <text x="62" y="118" text-anchor="middle" font-size="8" fill="#475569">resources run</text>
+        <text x="62" y="130" text-anchor="middle" font-size="8" fill="#475569">out for the</text>
+        <text x="62" y="142" text-anchor="middle" font-size="8" fill="#475569">greed of a few</text>
+        <rect x="128" y="76" width="104" height="84" rx="6" fill="#fefce8" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="180" y="96" text-anchor="middle" font-size="10" font-weight="bold" fill="#854d0e">Inequality</text>
+        <text x="180" y="118" text-anchor="middle" font-size="8" fill="#475569">wealth piles in</text>
+        <text x="180" y="130" text-anchor="middle" font-size="8" fill="#475569">few hands:</text>
+        <text x="180" y="142" text-anchor="middle" font-size="8" fill="#475569">haves vs have-nots</text>
+        <rect x="246" y="76" width="104" height="84" rx="6" fill="#ecfccb" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="298" y="94" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#3f6212">Ecological</text>
+        <text x="298" y="106" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#3f6212">crisis</text>
+        <text x="298" y="124" text-anchor="middle" font-size="8" fill="#475569">warming, ozone,</text>
+        <text x="298" y="136" text-anchor="middle" font-size="8" fill="#475569">pollution</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Toh humein "progress" ka ek alag idea chahiye. Uska naam hai: **sustainable development**.
+
+      Definition lagbhag word-by-word yaad karne laayak hai: *aisi development jo environment ko nuksaan pahunchaaye bina ho, aur jo future generations ki needs se samjhauta na kare.*
+
+      Mental image yeh hai. Tum planet apne purvajon (ancestors) se *virasat mein* nahi paate — tum use apne *bachchon se udhaar* lete ho. Sustainable development bas us udhaar ko imaandaari se chukana hai.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ek warning, kyunki yahan lagbhag sab galti karte hain.
+
+      Sustainable development ka matlab *~~development band karo~~* ya *~~resources use karna band karo~~* **nahi** hai. Hum building, growth, minerals aur fuels — sab jaari rakhte hain.
+
+      Matlab sirf itna: *aaj ke liye kal ko loot kar mat karo.* :hl[Grow karo — bas future ke against udhaar mat lo.]
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Duniya ne is pe saath milke kaam karne ki koshish ki. Sabse bada moment tha **Rio de Janeiro Earth Summit, 1992** — pehla International Earth Summit, jahan 100 se zyaada heads of state mile, environment ki suraksha *aur* development dono ko ek saath sambhaalne.
+
+      Unhone climate change aur biodiversity pe declarations sign kiye, aur ek global action plan apnaaya jise **Agenda 21** kehte hain — environmental damage, gareebi, aur bimaari se ladne ka blueprint, cooperation ke through. Iska sabse sharp idea: *har local government apna khud ka local Agenda 21 banaaye.* Think globally, act locally.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Rio kahin se achaanak nahi aaya. Kuch thinkers ise dashakon pehle aata dekh rahe the:
+
+      - **1968** — *Club of Rome* ne resources bachaane ki pehli systematic awaaz uthaayi.
+      - **1974** — Schumacher ki kitaab *Small is Beautiful* ne Gandhi ki soch ko duniya tak pahunchaaya.
+      - **1987** — *Brundtland Report* (*Our Common Future*) ne asal mein **sustainable development** term gadha.
+
+      Phir, **1992** mein, Rio ne is idea ko ek global agenda bana diya.
+
+  - type: html_animation
+    xp: 0
+    title: "CONSERVATION KI TIMELINE"
+    caption: "Chaar milestones, sustainable development ke idea ki taraf badhte hue."
+    html: |
+      <div style="background:#f8fafc;padding:18px 10px;border-radius:12px;">
+        <style>
+          @keyframes geoMile1 { 0%,2%{opacity:.15} 12%,100%{opacity:1} }
+          @keyframes geoMile2 { 0%,25%{opacity:.15} 35%,100%{opacity:1} }
+          @keyframes geoMile3 { 0%,50%{opacity:.15} 60%,100%{opacity:1} }
+          @keyframes geoMile4 { 0%,75%{opacity:.15} 85%,100%{opacity:1} }
+          .geo-mile { animation-duration:5s; animation-iteration-count:infinite; }
+          .gmile1 { animation-name:geoMile1; } .gmile2 { animation-name:geoMile2; }
+          .gmile3 { animation-name:geoMile3; } .gmile4 { animation-name:geoMile4; }
+        </style>
+        <svg viewBox="0 0 340 116" style="width:100%" font-family="sans-serif">
+          <line x1="30" y1="46" x2="312" y2="46" stroke="#cbd5e1" stroke-width="2"/>
+          <g class="geo-mile gmile1">
+            <circle cx="45" cy="46" r="7" fill="#0891b2" stroke="#fff" stroke-width="1.5"/>
+            <text x="45" y="28" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a">1968</text>
+            <text x="45" y="66" text-anchor="middle" font-size="7" fill="#475569">Club of</text>
+            <text x="45" y="75" text-anchor="middle" font-size="7" fill="#475569">Rome</text>
+          </g>
+          <g class="geo-mile gmile2">
+            <circle cx="132" cy="46" r="7" fill="#16a34a" stroke="#fff" stroke-width="1.5"/>
+            <text x="132" y="28" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a">1974</text>
+            <text x="132" y="66" text-anchor="middle" font-size="7" fill="#475569">Small is</text>
+            <text x="132" y="75" text-anchor="middle" font-size="7" fill="#475569">Beautiful</text>
+          </g>
+          <g class="geo-mile gmile3">
+            <circle cx="219" cy="46" r="7" fill="#7c3aed" stroke="#fff" stroke-width="1.5"/>
+            <text x="219" y="28" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a">1987</text>
+            <text x="219" y="66" text-anchor="middle" font-size="7" fill="#475569">Our Common</text>
+            <text x="219" y="75" text-anchor="middle" font-size="7" fill="#475569">Future</text>
+          </g>
+          <g class="geo-mile gmile4">
+            <circle cx="300" cy="46" r="7" fill="#db2777" stroke="#fff" stroke-width="1.5"/>
+            <text x="300" y="28" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a">1992</text>
+            <text x="300" y="66" text-anchor="middle" font-size="7" fill="#475569">Rio Earth</text>
+            <text x="300" y="75" text-anchor="middle" font-size="7" fill="#475569">Summit</text>
+          </g>
+        </svg>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ab woh line jiska maine shuru mein wada kiya tha. Gandhi ne kaha:
+
+      *"Yahan har kisi ki zaroorat ke liye kaafi hai, par kisi ek ke laalach ke liye nahi."*
+
+      Unhone resource depletion ke do mujrim bataye: *laalchi, swaarthi log*, aur *mass production ka exploitative model*. Unka alternative mass production nahi tha — woh tha **production by the masses**. Chhota, local, kaafi.
+
+  - type: mcq
+    xp: 10
+    question: "Ek classmate kehta hai: 'Sustainable development ka matlab bas resources use karna band karo aur saari growth rok do.' Correction kya hai?"
+    options:
+      - id: a
+        text: "Woh sahi hai — resources bachaane ka ekmatra tareeka development rokna hai."
+        is_correct: false
+        rationale: "Yahi aam galat samajh hai. Sustainable development ka matlab *koi* development nahi — yeh aisi development hai jo environment ko barbaad na kare aur future generations ko na loote."
+      - id: b
+        text: "Iska matlab aaj ki needs poori karna environment ko nuksaan pahunchaaye bina aur future generations ki needs se samjhauta kiye bina — hum develop karte rehte hain, bas samajhdaari se."
+        is_correct: true
+        rationale: "Bilkul Brundtland ki definition. Grow karte raho — bas uske liye kal ke against udhaar mat lo."
+      - id: c
+        text: "Iska matlab sirf renewable resources use karo aur minerals ya fuels kabhi haath mat lagao."
+        is_correct: false
+        rationale: "Bahut narrow. Hum non-renewables ab bhi use karte hain — *sustainably* ka matlab samajhdaari aur barabari se, na ki kabhi nahi."
+      - id: d
+        text: "Iska matlab present generation pehle; future apna dekh legi."
+        is_correct: false
+        rationale: "Yeh sustainable ka ulta hai. Poora point hi yeh hai ki future generations ki needs se samjhauta *na* ho."
+
+  - type: drag_to_reorder
+    xp: 10
+    prompt: "Conservation ke milestones ko unke hone ke order mein lagao."
+    items:
+      - { id: i1, label: "Club of Rome ki resources bachaane ki systematic awaaz" }
+      - { id: i2, label: "Schumacher ki *Small is Beautiful*" }
+      - { id: i3, label: "Brundtland Report — *Our Common Future*" }
+      - { id: i4, label: "Rio de Janeiro Earth Summit + Agenda 21" }
+    correct_order: [i1, i2, i3, i4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Aaj tumne jo teen resources use kiye — water, electricity, paper, fuel, food, kuch bhi — un teeno ko chuno.
+
+      Har ek ke liye ek **specific** tareeka likho jisse tum kam use kar sako *bina* us cheez ko khoye jiski tumhe sach mein zaroorat hai. Gandhi ka test use karo: *zaroorat* ko *laalach* se alag karo.
+
+      Neeche apne teen resources aur har ek pe ek action type karo.
+    placeholder: "1. Water — brush karte waqt tap band rakhna..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Woh definition poori karo jo Brundtland ne duniya ko di."
+    template: |
+      Sustainable development ___ ki needs poori karta hai bina ___ generations ki needs se samjhauta kiye.
+    answers:
+      - id: blank-1
+        accepted: ["present", "Present"]
+      - id: blank-2
+        accepted: ["future", "Future"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      *"Har kisi ki zaroorat ke liye kaafi, kisi ke laalach ke liye nahi."*
+
+      Tumhari apni zindagi mein woh jagah kahan hai jahan *zaroorat* aur *laalach* ke beech line kheenchna sach mein mushkil hai? Koi sahi jawaab nahi — bas imaandaar raho.
+    placeholder: "Mere liye woh dhundhli line hai..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Ab tum jaante ho ki *sustainable* development hum se asal mein kya maangti hai."
+    summary: |
+      Resources ko endless samajh ke use karo toh milti hai depletion, inequality, aur ecological crisis. Sustainable development uska alternative hai — aaj ki needs poori karo bina kal ko loote — aur duniya ne iske liye ek dhaancha banaya, Gandhi ki warning se lekar Club of Rome, Brundtland, aur Rio ke Agenda 21 tak.
+
+      Par "resources samajhdaari se use karo" tab tak ek slogan hai jab tak koi map na banaaye: *kaunse* resources, *kahan*, aur *kaun* plan banaaye? India bahut bada aur bahut uneven hai — yahan coal se bhara, wahan paani ko taraste. Toh ek poora desh apne resources kaise plan karta hai? Yahi is course ki aakhri lesson hai.

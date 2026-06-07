@@ -145,12 +145,28 @@ narration for these lessons is a post-load step owned outside this bundle.
   Supabase/GitHub. Canonical deploy path remains the in-app
   `runAudioPipeline` (ElevenLabs + manifest writes); the MCP, once added,
   is for voice/line preview. Authoring is unaffected — no audio authored.
-- *(append after each lesson as authored)*
+- **Translation: SVG/HTML markup kept verbatim** in Hinglish files; only
+  `title`/`caption` and all prose translated. Rationale: the bundle-
+  authoring brief says don't translate SVG content, and the inner labels
+  are technical terms (biotic, renewable, national, solar…) that Hinglish
+  keeps in English anyway. Captions + all tutor text carry the meaning.
+- **C1 authored (pilot):** 4 EN + 4 Hinglish lessons, 15 turns each,
+  all pass `scripts/validate-lesson.ts`; EN↔HI structural parity verified
+  (same turn types + IDs). Register: warm second-person "tum", matching
+  the existing `*-hinglish` precedent. Persona `nova` kept on both.
+- **Content lives on branch `content/class10-geo-ch01`** (operator chose a
+  dedicated content-only branch). This session pushes files there only —
+  no deploy. See `*-HANDOFF.md` for the deploy sequence.
 
 ## Build status / how to apply
 
-- **Authored so far:** scaffolding (this brief, bundle YAML, migration).
-  Course 1 lessons: pending in this session.
+- **Authored (pilot complete):** scaffolding + Course 1 fully authored —
+  4 EN lessons (`resources-and-resource-planning/01–04`) + 4 Hinglish
+  (`resources-and-resource-planning-hinglish/01–04`). 8 lessons × 15 turns
+  = **120 turns**, all schema-valid. **7 image prompts** queued in the
+  image-prompt manifest (4 core, 3 optional) — pending generation.
+- **Not yet authored:** Course 2 (Land, 3 lessons) and Course 3 (Soil, 3
+  lessons) — declared in the bundle YAML, load as empty stubs until written.
 - To apply once lessons land:
   1. `psql < supabase/migrations/0020_student_plan_class10_geography.sql`
      (or apply via Supabase migration tooling).
