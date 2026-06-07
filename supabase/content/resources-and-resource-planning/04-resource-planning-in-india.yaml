@@ -1,0 +1,207 @@
+title: "Resource Planning in India"
+subtitle: "Why being rich in resources doesn't make a region rich"
+estimated_minutes: 12
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here's a puzzle that should bother you.
+
+      Jharkhand sits on some of the richest coal and mineral deposits in India — and it's one of the country's *poorer* states. Meanwhile, some places with barely any resources are wealthy.
+
+      If resources made you rich, this would be impossible. So what's actually going on?
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Start with how *uneven* India is. The country isn't one even spread of resources — it's a patchwork:
+
+      - **Jharkhand, Chhattisgarh, Madhya Pradesh** — rich in minerals and coal.
+      - **Arunachal Pradesh** — overflowing with water, but short on infrastructure.
+      - **Rajasthan** — soaked in solar and wind energy, but desperate for water.
+      - **Ladakh** — a cold desert, rich in culture, but lacking water, infrastructure, and many minerals.
+
+      Rich here, poor there — that's the rule, not the exception.
+
+  - type: svg_graphic
+    xp: 0
+    title: "RICH HERE, POOR THERE"
+    caption: "India's resources are wildly uneven — every region is strong in some, starved of others."
+    svg: |
+      <svg viewBox="0 0 360 196" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="10" y="8" width="166" height="86" rx="6" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="20" y="28" font-size="10" font-weight="bold" fill="#0f172a">Jharkhand · Chhattisgarh</text>
+        <text x="20" y="50" font-size="9" fill="#166534">✓ rich in coal and minerals</text>
+        <text x="20" y="70" font-size="8.5" fill="#475569">but needs technology and</text>
+        <text x="20" y="82" font-size="8.5" fill="#475569">institutions to turn it to wealth</text>
+        <rect x="184" y="8" width="166" height="86" rx="6" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="194" y="28" font-size="10" font-weight="bold" fill="#0f172a">Rajasthan</text>
+        <text x="194" y="50" font-size="9" fill="#166534">✓ solar and wind energy</text>
+        <text x="194" y="72" font-size="9" fill="#991b1b">✗ short of water</text>
+        <rect x="10" y="102" width="166" height="86" rx="6" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="20" y="122" font-size="10" font-weight="bold" fill="#0f172a">Arunachal Pradesh</text>
+        <text x="20" y="144" font-size="9" fill="#166534">✓ abundant water</text>
+        <text x="20" y="166" font-size="9" fill="#991b1b">✗ lacks infrastructure</text>
+        <rect x="184" y="102" width="166" height="86" rx="6" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="194" y="122" font-size="10" font-weight="bold" fill="#0f172a">Ladakh</text>
+        <text x="194" y="144" font-size="9" fill="#166534">✓ rich cultural heritage</text>
+        <text x="194" y="166" font-size="9" fill="#991b1b">✗ short of water and infra</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      When a country is this uneven, you can't just *hope* resources end up where they're needed. You **plan**.
+
+      **Resource planning** is the widely accepted strategy for using resources *judiciously* — not wastefully, not blindly. India has taken it seriously since the very first Five Year Plan after Independence, and it happens at every level: national, state, regional, and local.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Resource planning in India works in **three steps**:
+
+      1. **Identify and inventory** — survey, map, and measure what resources exist, where, and in what quantity and quality.
+      2. **Build the planning structure** — assemble the *technology*, *skills*, and *institutions* needed to actually carry out development.
+      3. **Match to national plans** — line up each resource plan with the country's overall development goals.
+
+      Skip any step and the plan stalls.
+
+  - type: html_animation
+    xp: 0
+    title: "THE 3 STEPS OF RESOURCE PLANNING"
+    caption: "Identify what you have, build the structure to develop it, align it with national goals."
+    html: |
+      <div style="background:#f8fafc;padding:18px 8px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoPlan1 { 0%,5%{opacity:.2} 18%,100%{opacity:1} }
+          @keyframes geoPlan2 { 0%,33%{opacity:.2} 46%,100%{opacity:1} }
+          @keyframes geoPlan3 { 0%,61%{opacity:.2} 74%,100%{opacity:1} }
+          .geo-plan { animation-duration:5s; animation-iteration-count:infinite; }
+          .gp1 { animation-name:geoPlan1; } .gp2 { animation-name:geoPlan2; } .gp3 { animation-name:geoPlan3; }
+        </style>
+        <svg viewBox="0 0 340 116" style="width:100%" font-family="sans-serif">
+          <g class="geo-plan gp1">
+            <rect x="8" y="34" width="92" height="54" rx="6" fill="#dbeafe" stroke="#0f172a" stroke-width="1.5"/>
+            <text x="54" y="52" text-anchor="middle" font-size="13" font-weight="bold" fill="#1e3a8a">1</text>
+            <text x="54" y="68" text-anchor="middle" font-size="7.5" fill="#334155">identify and</text>
+            <text x="54" y="78" text-anchor="middle" font-size="7.5" fill="#334155">inventory</text>
+          </g>
+          <text x="112" y="66" font-size="16" fill="#94a3b8" class="geo-plan gp2">&#8594;</text>
+          <g class="geo-plan gp2">
+            <rect x="124" y="34" width="92" height="54" rx="6" fill="#dcfce7" stroke="#0f172a" stroke-width="1.5"/>
+            <text x="170" y="52" text-anchor="middle" font-size="13" font-weight="bold" fill="#166534">2</text>
+            <text x="170" y="66" text-anchor="middle" font-size="7.5" fill="#334155">build the planning</text>
+            <text x="170" y="76" text-anchor="middle" font-size="7.5" fill="#334155">structure</text>
+          </g>
+          <text x="228" y="66" font-size="16" fill="#94a3b8" class="geo-plan gp3">&#8594;</text>
+          <g class="geo-plan gp3">
+            <rect x="240" y="34" width="92" height="54" rx="6" fill="#fae8ff" stroke="#0f172a" stroke-width="1.5"/>
+            <text x="286" y="52" text-anchor="middle" font-size="13" font-weight="bold" fill="#86198f">3</text>
+            <text x="286" y="66" text-anchor="middle" font-size="7.5" fill="#334155">match national</text>
+            <text x="286" y="76" text-anchor="middle" font-size="7.5" fill="#334155">development plans</text>
+          </g>
+        </svg>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Now the idea that ties this whole course together.
+
+      Having a resource is like having **ingredients** in your kitchen. Ingredients alone are not a meal. You still need the *recipe* — that's **technology** — and a working *kitchen* — that's **institutions** (laws, markets, skilled people, government).
+
+      The availability of resources is :hl[necessary, but never sufficient.]
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      *What would break if resources alone made you rich?* Then Jharkhand, sitting on all that coal, would be among India's wealthiest states. It isn't.
+
+      The ingredients are there. What's often missing is the recipe and the kitchen — the technology and institutions to turn buried coal into roads, schools, jobs, and power.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      History makes the point brutally. When colonisers came, they were drawn by the *rich resources* of the lands they invaded. But it was their superior **technology** and **institutions** that let them actually extract those resources — and dominate.
+
+      India lived through this across long phases of colonisation. The lesson it left: resources build a nation only when matched with technological development *and* institutional change.
+
+  - type: mcq
+    xp: 10
+    question: "Jharkhand is rich in coal and minerals yet remains one of India's poorer states. What best explains this?"
+    options:
+      - id: a
+        text: "Resource-rich regions are always wealthy, so this must be a measurement error."
+        is_correct: false
+        rationale: "Reality says otherwise. Resource wealth does not automatically become economic wealth — that's the whole puzzle of this lesson."
+      - id: b
+        text: "Resources alone aren't enough — without the technology and institutions to develop them, a region can stay poor despite its riches."
+        is_correct: true
+        rationale: "Exactly. Availability is *necessary but not sufficient*. Ingredients don't cook themselves; you need the recipe (technology) and the kitchen (institutions)."
+      - id: c
+        text: "Its coal and minerals are stock, not reserves, so they can't be used."
+        is_correct: false
+        rationale: "That coal and those minerals are very much usable, developed resources. The gap is technology and institutions for broad development — not the resource category."
+      - id: d
+        text: "It exports everything, so nothing is left behind."
+        is_correct: false
+        rationale: "Tempting, but not the chapter's point. The core idea is that resources need technology plus institutions to translate into development."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Match each region to what it's known for."
+    left:
+      - { id: l1, label: "Rajasthan" }
+      - { id: l2, label: "Arunachal Pradesh" }
+      - { id: l3, label: "Jharkhand" }
+      - { id: l4, label: "Ladakh" }
+    right:
+      - { id: r1, label: "Solar and wind energy" }
+      - { id: r2, label: "Abundant water, little infrastructure" }
+      - { id: r3, label: "Coal and minerals" }
+      - { id: r4, label: "Rich cultural heritage, scarce water" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Bring it home to your own state (or district).
+
+      On paper, list **two** resources it's genuinely rich in, and **one** important resource it lacks. Then write a single sentence: what *technology* or *institution* would help it use its strengths better?
+
+      Type your state and its two strengths below.
+    placeholder: "My state is ___ . It's rich in ___ and ___ ..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the core idea of the whole course."
+    template: |
+      The availability of resources is ___ for a region's development — but it is not ___. Technology and institutions must come too.
+    answers:
+      - id: blank-1
+        accepted: ["necessary", "Necessary"]
+      - id: blank-2
+        accepted: ["sufficient", "Sufficient"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Resource-rich but poor; resource-poor but rich. Think of *anything* — a person, a team, a company, a country — where simply *having* a lot wasn't enough without the right system around it.
+
+      What was missing? No right answer.
+    placeholder: "I think of..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can explain why riches don't equal development."
+    summary: |
+      India is wildly uneven — coal here, water there, deserts baking under solar energy yet thirsting for rain. Resource planning is how a country uses what it has *judiciously*: identify and inventory, build the structure to develop it, and match it to national goals. And the deep lesson — resources are only *necessary*, never *sufficient*. Technology and institutions are what turn ingredients into a meal.
+
+      That completes our tour of resources in the abstract. But the single most important resource is the one quite literally under your feet: **land**. How does a country of 1.4 billion people use its land — and why is it running out? That's where the next course begins.

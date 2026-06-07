@@ -63,4 +63,18 @@ to Course 1, Lesson 1. `placement:` says which turn it becomes.
 - prompt:
   > Editorial illustration: a circle of diverse human hands of many skin tones reaching in to gently cradle a small green-and-blue planet Earth together, symbolising global cooperation for the environment. Clean flat editorial vector illustration, muted earthy palette (ochre, moss green, slate blue, warm off-white background), soft shadows, simple shapes. NO text, NO words. 16:9 aspect ratio.
 
+### C1 L4 — Resource Planning in India
+
+**`c1l4-ingredients-to-meal.png`** · 16:9 · *core* · url: _(pending)_
+- placement: `media` image, insert after **turn 7** (the "ingredients vs the meal" beat).
+- caption: "Resources are the ingredients. Technology and institutions are the recipe and the kitchen."
+- prompt:
+  > Editorial illustration showing a transformation left to right: on the left, a pile of raw ingredients (vegetables, grain, spices); in the middle, simple kitchen tools and a cooking pot; on the right, a finished, appetising cooked meal on a plate. Symbolising raw resources becoming development through technology and effort. Clean flat editorial vector illustration, muted earthy palette (ochre, moss green, slate blue, warm off-white background), soft shadows, simple shapes. NO text, NO words. 16:9 aspect ratio.
+
+**`c1l4-uneven-india.png`** · 4:3 · *optional* · url: _(pending)_
+- placement: `media` image, insert after **turn 2** (India's uneven endowment). ⚠ *DALL·E maps are often geographically inaccurate and add garbled text — review the India silhouette before using, or skip in favour of the inline SVG grid.*
+- caption: "One country, wildly uneven — strong in some resources, starved of others."
+- prompt:
+  > Stylised editorial illustration of the Indian subcontinent as a single simple silhouette, divided into a few soft regions, each region carrying ONE simple icon — a sun, a water drop, a lump of coal, a mountain — to suggest different regional resources. Clean flat editorial vector illustration, muted earthy palette (ochre, moss green, slate blue, warm off-white background), soft shadows. NO text, NO words, NO labels, NO place names. 4:3 aspect ratio.
+
 <!-- Per-lesson prompts are appended below as each lesson is authored. -->
