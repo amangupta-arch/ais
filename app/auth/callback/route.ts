@@ -1,10 +1,15 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 
+import { safeNext } from "@/lib/safe-redirect";
+
 export async function GET(request: NextRequest) {
   const url = new URL(request.url);
   const code = url.searchParams.get("code");
-  const next = url.searchParams.get("next") ?? "/student";
+  // Sanitize: a raw `?next=https://evil.com` here would have
+  // resolved to evil.com because `new URL(absolute, base)` ignores
+  // the base. safeNext() reduces it to /student.
+  const next = safeNext(url.searchParams.get("next"));
 
   const response = NextResponse.redirect(new URL(next, url.origin));
 

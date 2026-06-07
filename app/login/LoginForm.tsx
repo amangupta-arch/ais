@@ -13,13 +13,19 @@ import { useMemo, useState, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
+import { safeNext } from "@/lib/safe-redirect";
 import { createClient } from "@/lib/supabase/browser";
 
 type Mode = "choose" | "email" | "phone" | "otp";
 
 function LoginInner() {
   const params = useSearchParams();
-  const next = params.get("next") ?? "/student";
+  // Sanitize: window.location.href = next would happily navigate
+  // off-site for `?next=https://evil.com`, and the value is also
+  // forwarded through the OAuth round-trip into the Supabase
+  // redirectTo, so an unsafe value would propagate past Google
+  // and back into /auth/callback. Lock to local paths only.
+  const next = safeNext(params.get("next"));
 
   const supabase = useMemo(() => createClient(), []);
   const [mode, setMode] = useState<Mode>("choose");
