@@ -85,7 +85,11 @@ export async function GET(req: NextRequest) {
 
   try {
     if (action === "seed-images") {
-      return NextResponse.json(await seedImages());
+      // Optional per-file mode keeps each request well under the
+      // MCP gateway's ~15s timeout. Without ?image=, falls back
+      // to parallelised all-7 mode (~5s).
+      const singleImage = url.searchParams.get("image");
+      return NextResponse.json(await seedImages(singleImage));
     }
     if (action === "load-content") {
       return NextResponse.json(await loadContent());
@@ -104,44 +108,61 @@ export async function GET(req: NextRequest) {
 
 // ───────────────────── action=seed-images ────────────────────────
 
-async function seedImages() {
+async function seedImages(singleImage: string | null) {
   const sb = admin();
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY!;
-  const results: Array<{ name: string; ok: boolean; bytes?: number; error?: string }> = [];
 
-  for (const { id, name } of DRIVE_FILES) {
-    try {
-      // Public Drive download. `confirm=t` skips the virus-scan
-      // interstitial that Drive sometimes injects.
-      const driveUrl = `https://drive.google.com/uc?export=download&id=${id}&confirm=t`;
-      const res = await fetch(driveUrl, { redirect: "follow" });
-      if (!res.ok) throw new Error(`drive fetch ${res.status}`);
-      const contentType = res.headers.get("content-type") ?? "";
-      if (contentType.includes("text/html")) {
-        // Drive interstitial leaked through — fall back to the
-        // usercontent endpoint which is more direct.
-        const fallback = `https://drive.usercontent.google.com/download?id=${id}&export=download&authuser=0&confirm=t`;
-        const res2 = await fetch(fallback, { redirect: "follow" });
-        if (!res2.ok) throw new Error(`drive fallback ${res2.status}`);
-        const ct2 = res2.headers.get("content-type") ?? "";
-        if (ct2.includes("text/html")) {
-          throw new Error("drive returned HTML on both endpoints — file may not be public");
-        }
-        await uploadPng(sb, url, key, name, res2);
-        results.push({ name, ok: true, bytes: Number(res2.headers.get("content-length")) || 0 });
-        continue;
-      }
-      const bytes = await uploadPng(sb, url, key, name, res);
-      results.push({ name, ok: true, bytes });
-    } catch (err) {
-      results.push({
-        name,
-        ok: false,
-        error: err instanceof Error ? err.message : String(err),
-      });
-    }
+  const work = singleImage
+    ? DRIVE_FILES.filter((f) => f.name === singleImage)
+    : DRIVE_FILES;
+  if (singleImage && work.length === 0) {
+    return {
+      ok: false,
+      bucket: STORAGE_BUCKET,
+      folder: BUNDLE_SLUG,
+      error: `unknown image: ${singleImage}`,
+      allowed: DRIVE_FILES.map((f) => f.name),
+    };
   }
+
+  // Parallelise — the original sequential loop exceeded the MCP
+  // gateway's ~15s read timeout when called over Vercel SSO. With
+  // Promise.all the 7 small PNGs land in roughly the time of the
+  // slowest single fetch.
+  const results = await Promise.all(
+    work.map(async ({ id, name }) => {
+      try {
+        // Public Drive download. `confirm=t` skips the virus-scan
+        // interstitial that Drive sometimes injects.
+        const driveUrl = `https://drive.google.com/uc?export=download&id=${id}&confirm=t`;
+        const res = await fetch(driveUrl, { redirect: "follow" });
+        if (!res.ok) throw new Error(`drive fetch ${res.status}`);
+        const contentType = res.headers.get("content-type") ?? "";
+        if (contentType.includes("text/html")) {
+          // Drive interstitial leaked through — fall back to the
+          // usercontent endpoint which is more direct.
+          const fallback = `https://drive.usercontent.google.com/download?id=${id}&export=download&authuser=0&confirm=t`;
+          const res2 = await fetch(fallback, { redirect: "follow" });
+          if (!res2.ok) throw new Error(`drive fallback ${res2.status}`);
+          const ct2 = res2.headers.get("content-type") ?? "";
+          if (ct2.includes("text/html")) {
+            throw new Error("drive returned HTML on both endpoints — file may not be public");
+          }
+          const bytes = await uploadPng(sb, url, key, name, res2);
+          return { name, ok: true, bytes };
+        }
+        const bytes = await uploadPng(sb, url, key, name, res);
+        return { name, ok: true, bytes };
+      } catch (err) {
+        return {
+          name,
+          ok: false,
+          error: err instanceof Error ? err.message : String(err),
+        };
+      }
+    }),
+  );
 
   return {
     ok: results.every((r) => r.ok),
