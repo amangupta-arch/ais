@@ -1,5 +1,6 @@
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
+import { isAdminEmail } from "@/lib/admin";
 import { createClient } from "@/lib/supabase/server";
 import { UpdateYamlForm } from "./UpdateYamlForm";
 import { listBundles, listCourses } from "./actions";
@@ -12,6 +13,7 @@ export default async function UpdateYamlPage() {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) redirect("/login?next=/update-yaml");
+  if (!isAdminEmail(user.email)) notFound();
 
   const [bundles, courses] = await Promise.all([listBundles(), listCourses()]);
 
