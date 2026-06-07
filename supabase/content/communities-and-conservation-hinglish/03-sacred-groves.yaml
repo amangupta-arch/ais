@@ -1,0 +1,172 @@
+title: "Sacred Groves"
+subtitle: "Woh forests jinhe India ne kisi kaanoon se pehle aastha se bachaya"
+estimated_minutes: 12
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Kisi bhi Wildlife Act se bahut pehle, India ke kuch forests pehle se hi achhoot the.
+
+      Kisi kaanoon ki wajah se nahi. *Aastha* ki wajah se. Wahan ek ped kaato aur tum niyam nahi tod rahe the — tum paap kar rahe the.
+
+      Miliye **sacred groves** se.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      India bhar mein, **nature worship** — ek puraani tribal aastha ki *nature ki har rachna ko bachana chahiye* — ne poore forests ko unke **virgin, pristine roop** mein bachaya.
+
+      Yeh hain **Sacred Groves**: devi-devtaon ke forests.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Niyam saral aur sampoorn hai: ye tukde **achhoot** chhode jaate hain, aur *koi bhi* interference *banned* hai.
+
+      Aastha ne woh kiya jo fences aur rangers aksar nahi kar paaye — usne poore forests ko sadiyon tak saabut rakha.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Yeh ek-ek ped tak jaata hai. Communities ne anaadi kaal se khaas species ko poojaa hai:
+
+      - Chota Nagpur ke **Mundas aur Santhal** **mahua** aur **kadamba** ke pedon ko poojte hain.
+      - **Odisha aur Bihar** ke tribals shaadiyon mein **imli (tamarind)** aur **aam (mango)** ko poojte hain.
+      - **peepal** aur **bargad (banyan)** India bhar mein kai logon ke liye pavitra hain.
+
+  - type: svg_graphic
+    xp: 0
+    title: "EK SACRED GROVE"
+    caption: "Shraddha se surakshit, fences se nahi — peepal, banyan, mahua, kadamba, tamarind, mango."
+    svg: |
+      <svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <ellipse cx="180" cy="84" rx="130" ry="66" fill="#fffbeb" stroke="#ca8a04" stroke-width="2.5" stroke-dasharray="6 4"/>
+        <circle cx="148" cy="82" r="20" fill="#15803d"/><rect x="145" y="92" width="6" height="16" fill="#92400e"/>
+        <circle cx="186" cy="72" r="25" fill="#16a34a"/><rect x="182" y="85" width="7" height="18" fill="#92400e"/>
+        <circle cx="220" cy="86" r="18" fill="#15803d"/><rect x="217" y="95" width="6" height="14" fill="#92400e"/>
+        <text x="180" y="138" text-anchor="middle" font-size="11" font-weight="bold" fill="#854d0e">SACRED GROVE</text>
+        <text x="180" y="154" text-anchor="middle" font-size="8" fill="#475569">untouched · interference banned</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Jaanwar bhi aise hi bachaaye jaate hain.
+
+      **Macaques aur langurs** ki troops kai mandiron ke aas-paas rehti hain — rozana khilaaye jaate, mandir ke devotees ka hissa maane jaate. Aur Rajasthan ke **Bishnoi villages** mein aur aas-paas, **blackbuck (chinkara), nilgai, aur mor** bas community ka hissa hain — aur *koi unhe nuksaan nahi pahunchaata*.
+
+  - type: html_animation
+    xp: 0
+    title: "SHRADDHA SE SURAKSHIT"
+    caption: "Sacred grove ke andar, ped aur jaanwar surakshit aaram karte hain — aastha se guarded."
+    html: |
+      <div style="background:#f8fafc;padding:18px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoHalo { 0%,100%{opacity:.25;r:64} 50%{opacity:.7;r:70} }
+          .geo-halo{animation:geoHalo 4s ease-in-out infinite}
+        </style>
+        <svg viewBox="0 0 240 140" style="max-width:260px;width:100%" font-family="sans-serif">
+          <circle class="geo-halo" cx="120" cy="70" r="64" fill="none" stroke="#f59e0b" stroke-width="3"/>
+          <circle cx="100" cy="64" r="18" fill="#16a34a"/><rect x="97" y="74" width="6" height="14" fill="#92400e"/>
+          <circle cx="140" cy="60" r="20" fill="#15803d"/><rect x="137" y="72" width="6" height="14" fill="#92400e"/>
+          <circle cx="110" cy="100" r="7" fill="#a16207"/>
+          <circle cx="135" cy="102" r="7" fill="#a16207"/>
+          <text x="120" y="132" text-anchor="middle" font-size="8" fill="#854d0e">trees and animals, safe inside</text>
+        </svg>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Buddha ne, 487 B.C. mein, is poore bhaav ko pakda:
+
+      *"Ped ek anokha jeev hai — aseem dayaa aur udaarta ka... yeh sabhi praaniyon ko sanrakshan deta hai, un kulhaadi-waalon ko bhi chhaaya deta hua jo use kaat rahe hain."*
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Aur yahi dhaaga poore chapter mein chalta hai.
+
+      Wildlife Act se, Project Tiger tak, joint forest management tak, sacred groves tak — *forests aur wildlife tab sabse achhe bachte hain jab unke saath rehne waale log unhe bachane ke centre mein hote hain.*
+
+      Kaanoon madad karta hai. Aastha madad karti hai. Par **community** iska dil hai.
+
+  - type: mcq
+    xp: 10
+    question: "Ek sacred grove ko kya surakshit rakhta hai?"
+    options:
+      - id: a
+        text: "Uske kinaaron pe khade paid forest guards."
+        is_correct: false
+        rationale: "Sacred groves paid guards se nahi bachte — woh aastha se bachte hain."
+      - id: b
+        text: "Ek community ki dharmik aastha ki forest pavitra hai aur use chhua nahi jaana chahiye."
+        is_correct: true
+        rationale: "Bilkul. Nature worship in forests ko devtaon ka ghar maanti hai — interference fences se nahi, aastha se banned hai."
+      - id: c
+        text: "1972 mein paas hua ek central government kaanoon."
+        is_correct: false
+        rationale: "Sacred groves kisi modern kaanoon se bahut puraane hain — woh parampara se bachte hain, kaanoon se nahi."
+      - id: d
+        text: "Ek fence aur ek ticket gate."
+        is_correct: false
+        rationale: "Koi fence nahi chahiye. Seema shraddha ki hai, poori community dwara maani gayi."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Har parampara ko us se match karo jo woh bachati hai."
+    left:
+      - { id: l1, label: "Mundas aur Santhal" }
+      - { id: l2, label: "Bishnoi villages, Rajasthan" }
+      - { id: l3, label: "Sacred groves" }
+      - { id: l4, label: "Kai mandiron ke aas-paas" }
+    right:
+      - { id: r1, label: "Mahua aur kadamba ke ped" }
+      - { id: r2, label: "Blackbuck, nilgai, aur mor" }
+      - { id: r3, label: "Devi-devtaon ke virgin forests" }
+      - { id: r4, label: "Macaques aur langurs" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Koi ek practice par ek chhota note (4–5 line) likho — ghar pe, apni community mein, ya jise tum shuru karna chahoge — jo tumhare aas-paas ke environment ko bachati aur protect karti hai.
+
+      Phir neeche ek practice type karo jiske baare mein tumne likha.
+    placeholder: "Mere aas-paas nature ko bachane waali ek practice hai..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Closing terms yaad kar lo."
+    template: |
+      Nature worship se bachaaye gaye virgin forests ___ groves kehlaate hain, aur Rajasthan ke ___ blackbuck ko apni community ke hisse ke roop mein bachaate hain.
+    answers:
+      - id: blank-1
+        accepted: ["sacred", "Sacred"]
+      - id: blank-2
+        accepted: ["Bishnoi", "bishnoi", "Bishnois"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Poore chapter mein — web of life, kaanoon, Project Tiger, communities, sacred groves — nature bachane ke baare mein woh ek idea kaunsa hai jo tum apne saath le jaaoge? Use naam do, aur batao kyun woh atak gaya.
+
+      Koi sahi jawaab nahi. Yeh tumhara takeaway hai.
+    placeholder: "Jo idea main rakh raha hoon woh hai..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Poora chapter ab tumhara hai: biodiversity, protection, aur community."
+    summary: |
+      Sacred groves aur Bishnoi sabse puraani conservation dikhaate hain — shraddha se protection, jise kisi kaanoon ki zaroorat nahi. Aur yahi chapter ko poora karta hai.
+
+      Tumne seekha ki hum ek web of life ke ek dhaage hain jis pe hum hawa, paani, aur mitti ke liye depend karte hain; tum keh sakte ho ki conservation self-preservation hai, daan nahi; tum jaante ho India apni wildlife ko 1972 Act, Project Tiger, aur forest ke teen tiers se kaise bachata hai; aur tumne dekha ki sabse gehri protection communities se aati hai — Chipko aur joint forest management se lekar sacred groves tak.
+
+      Saaf sabak, jaisa Buddha jaante the: ped ki dekhbhaal karo, aur woh sabko chhaaya deta hai — samay aane pe, humein bhi.

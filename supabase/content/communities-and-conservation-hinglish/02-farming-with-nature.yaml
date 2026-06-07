@@ -1,0 +1,172 @@
+title: "Nature ke Saath Kheti"
+subtitle: "Kaise ek gaon aur ek forest dono fayde mein reh sakte hain"
+estimated_minutes: 11
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Yeh ek ajeeb-sa lagne waala idea hai: ek forest ko *bachane* ka tareeka shayad yeh ho ki paas ke logon ko usse rozi-roti kamaane di jaaye — bina use barbaad kiye.
+
+      Do Indian movements ne saabit kiya ki yeh sach mein kaam karta hai.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Beej Bachao Andolan** (Tehri mein) aur **Navdanya** kisaanon aur naagrikon ke groups hain. Unhone kuch taaqatwar saabit kiya:
+
+      tum *diverse* crops uga sakte ho, *bina* synthetic chemicals ke, aur phir bhi use **economically viable** bana sakte ho.
+
+      (*Beej Bachao* matlab "seeds bachao" — traditional seed diversity ko bachana.) Nature ke *saath* kheti, uske khilaaf nahi.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Phir hai **Joint Forest Management (JFM)** — Forest Department aur local gaon ke beech ek formal partnership.
+
+      Yeh **1988** se formally maujood hai, jab **Odisha** ne iske liye sabse pehla resolution paas kiya.
+
+  - type: svg_graphic
+    xp: 0
+    title: "JFM KA SAUDA"
+    caption: "Gaon degraded forest bachaate aur restore karte hain; badle mein, forest unke liye deta hai."
+    svg: |
+      <svg viewBox="0 0 360 156" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="20" y="48" width="110" height="60" rx="6" fill="#dbeafe" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="75" y="74" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3a8a">VILLAGE</text>
+        <text x="75" y="90" text-anchor="middle" font-size="8" fill="#475569">local institution</text>
+        <rect x="230" y="48" width="110" height="60" rx="6" fill="#dcfce7" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="285" y="72" text-anchor="middle" font-size="11" font-weight="bold" fill="#166534">DEGRADED</text>
+        <text x="285" y="86" text-anchor="middle" font-size="11" font-weight="bold" fill="#166534">FOREST</text>
+        <line x1="130" y1="64" x2="226" y2="64" stroke="#16a34a" stroke-width="2.5"/>
+        <polygon points="226,64 214,59 214,69" fill="#16a34a"/>
+        <text x="178" y="56" text-anchor="middle" font-size="8" fill="#166534">protect + restore</text>
+        <line x1="230" y1="94" x2="134" y2="94" stroke="#ca8a04" stroke-width="2.5"/>
+        <polygon points="134,94 146,89 146,99" fill="#ca8a04"/>
+        <text x="182" y="112" text-anchor="middle" font-size="8" fill="#854d0e">produce + timber share</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Yeh raha sauda, theek-theek.
+
+      Local **village institutions** **degraded forest land** (jo abhi bhi forest department manage karta hai) bachane ka zimma lete hain. Badle mein, woh asli **benefits** kamaate hain: *non-timber forest produce*, aur apni "successful protection" se harvest hue *timber ka share*.
+
+      Forest bachao, aur forest tumhe wapas deta hai. Dono taraf jeet.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      India ki poori kahani se — *barbaadi* aur *marammat* dono se — saaf sabak yeh hai:
+
+      local communities ko **har jagah** natural resources manage karne mein shaamil hona padega. Aisi koi tikaau conservation nahi jo forest ke saath rehne waale logon ko chhod de.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Par iske saath ek chetaavni aati hai. Hum abhi bhi communities ke decisions ke *centre* mein hone se bahut door hain.
+
+      Toh *kisi bhi* development ya economic activity ke liye yeh test hai — use ek saath teeno hona chahiye:
+
+      - **people-centric**
+      - **environment-friendly**
+      - **economically rewarding**
+
+  - type: html_animation
+    xp: 0
+    title: "EK DO-TARFA PARTNERSHIP"
+    caption: "Protection ek taraf behti hai, benefits wapas — yahi JFM ko tikaau banata hai."
+    html: |
+      <div style="background:#f8fafc;padding:18px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoGive { 0%,100%{opacity:.25} 30%,45%{opacity:1} }
+          @keyframes geoGet { 0%,100%{opacity:.25} 65%,80%{opacity:1} }
+          .geo-give{animation:geoGive 4s infinite} .geo-get{animation:geoGet 4s infinite}
+        </style>
+        <svg viewBox="0 0 300 110" style="max-width:320px;width:100%" font-family="sans-serif">
+          <circle cx="50" cy="55" r="26" fill="#bfdbfe" stroke="#0f172a" stroke-width="1.5"/>
+          <text x="50" y="59" text-anchor="middle" font-size="9" font-weight="bold" fill="#1e3a8a">village</text>
+          <circle cx="250" cy="55" r="26" fill="#bbf7d0" stroke="#0f172a" stroke-width="1.5"/>
+          <text x="250" y="59" text-anchor="middle" font-size="9" font-weight="bold" fill="#166534">forest</text>
+          <g class="geo-give"><line x1="80" y1="42" x2="218" y2="42" stroke="#16a34a" stroke-width="3"/><polygon points="218,42 206,37 206,47" fill="#16a34a"/></g>
+          <g class="geo-get"><line x1="220" y1="70" x2="82" y2="70" stroke="#ca8a04" stroke-width="3"/><polygon points="82,70 94,65 94,75" fill="#ca8a04"/></g>
+        </svg>
+      </div>
+
+  - type: mcq
+    xp: 10
+    question: "In conservation strategies mein se kaunsi seedhe community participation ko shaamil NAHI karti?"
+    options:
+      - id: a
+        text: "Joint Forest Management"
+        is_correct: false
+        rationale: "JFM poori tarah village institutions ke forest bachane aur restore karne pe bana hai — community participation iska core hai."
+      - id: b
+        text: "Beej Bachao Andolan"
+        is_correct: false
+        rationale: "Beej Bachao Andolan ek kisaanon ka movement hai — poori tarah community participation."
+      - id: c
+        text: "Chipko Movement"
+        is_correct: false
+        rationale: "Chipko gaon waalon ka khud pedon ko bachana tha — community-driven ki misaal."
+      - id: d
+        text: "Wildlife sanctuaries ka demarcation"
+        is_correct: true
+        rationale: "Sahi. Sanctuaries demarcate karna ek government/administrative kaam hai — yeh baaki ki tarah seedhe community participation pe depend nahi karta."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Har effort ko us se match karo jo woh hai."
+    left:
+      - { id: l1, label: "Beej Bachao Andolan" }
+      - { id: l2, label: "Navdanya" }
+      - { id: l3, label: "Joint Forest Management" }
+      - { id: l4, label: "1988, Odisha" }
+    right:
+      - { id: r1, label: "Tehri mein traditional seeds bachana" }
+      - { id: r2, label: "Synthetic chemicals ke bina diverse crops" }
+      - { id: r3, label: "Gaon degraded forest restore karte produce ke share ke liye" }
+      - { id: r4, label: "JFM formally kab aur kahan shuru hua" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Socho ek chhota "nature ke saath kheti" kadam jo tum (ya tumhara parivaar) sach mein utha sakte ho — kitchen waste se compost banana, ek chemical-free herbs ka gamla ugana, seeds bachana, ek native ped lagana.
+
+      Paper pe apna idea aur ek fayda likho jo woh laata hai. Neeche type karo.
+    placeholder: "Main ___ kar sakta hoon, jo..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "JFM kahan shuru hua, yaad kar lo."
+    template: |
+      Joint Forest Management formally ___ mein shuru hua, jab ___ ne sabse pehla resolution paas kiya.
+    answers:
+      - id: blank-1
+        accepted: ["1988"]
+      - id: blank-2
+        accepted: ["Odisha", "odisha"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Teen-hisson ka test tha: people-centric, environment-friendly, *aur* economically rewarding. Tumhe kya lagta hai ek project aksar fail kyun ho jaata hai agar in teeno mein se sirf ek bhi missing ho?
+
+      Koi sahi jawaab nahi.
+    placeholder: "Agar koi project ___ chhod de, toh..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Tum samjha sakte ho ki communities nature ke saath partnership mein kaise kheti aur restore karti hain."
+    summary: |
+      Beej Bachao Andolan aur Navdanya ne dikhaya chemical-free, diverse kheti viable hai; Joint Forest Management (1988 se, Odisha) ne gaon ko forest restorers banaya jo inaam mein hissa paate hain. Jo niyam ise jode rakhta hai: development people-centric, environment-friendly, aur economically rewarding hona chahiye — teeno.
+
+      Par India mein community conservation ka sabse puraana roop kisi kaanoon ya contract ka mohtaaj nahi tha. Woh kisi gehri cheez pe chalta hai: shraddha. Miliye sacred groves se — aur is chapter ke ant se.
