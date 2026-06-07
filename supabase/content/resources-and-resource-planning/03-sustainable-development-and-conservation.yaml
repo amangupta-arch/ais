@@ -1,0 +1,212 @@
+title: "Sustainable Development and Conservation"
+subtitle: "Why 'enough for need, not for greed' is the most practical idea in this chapter"
+estimated_minutes: 12
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here's a question worth sitting with.
+
+      If every person on Earth took only what they *needed* — not a scrap more — could we ever actually run out of resources?
+
+      Gandhi gave a one-line answer to exactly this. We'll get to it. First, look at what we did *instead*.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      For a long time we used resources as if they were endless. Three things broke as a result:
+
+      - **Depletion** — resources drained to feed the *greed of a few*.
+      - **Inequality** — wealth piled up in a few hands, splitting society into *haves and have-nots*.
+      - **Ecological crisis** — global warming, ozone-layer damage, pollution, land degradation.
+
+      None of these is an accident. They're what "take all you can" *produces*.
+
+  - type: svg_graphic
+    xp: 0
+    title: "THE COST OF GREED"
+    caption: "Treat resources as endless, and three problems follow — every time."
+    svg: |
+      <svg viewBox="0 0 360 168" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="108" y="6" width="144" height="32" rx="6" fill="#fee2e2" stroke="#0f172a" stroke-width="2"/>
+        <text x="180" y="21" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#991b1b">using resources</text>
+        <text x="180" y="33" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#991b1b">as if endless</text>
+        <line x1="150" y1="38" x2="62" y2="74" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="180" y1="38" x2="180" y2="74" stroke="#94a3b8" stroke-width="1.5"/>
+        <line x1="210" y1="38" x2="298" y2="74" stroke="#94a3b8" stroke-width="1.5"/>
+        <rect x="10" y="76" width="104" height="84" rx="6" fill="#fff7ed" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="62" y="96" text-anchor="middle" font-size="10" font-weight="bold" fill="#9a3412">Depletion</text>
+        <text x="62" y="118" text-anchor="middle" font-size="8" fill="#475569">resources run</text>
+        <text x="62" y="130" text-anchor="middle" font-size="8" fill="#475569">out for the</text>
+        <text x="62" y="142" text-anchor="middle" font-size="8" fill="#475569">greed of a few</text>
+        <rect x="128" y="76" width="104" height="84" rx="6" fill="#fefce8" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="180" y="96" text-anchor="middle" font-size="10" font-weight="bold" fill="#854d0e">Inequality</text>
+        <text x="180" y="118" text-anchor="middle" font-size="8" fill="#475569">wealth piles in</text>
+        <text x="180" y="130" text-anchor="middle" font-size="8" fill="#475569">few hands:</text>
+        <text x="180" y="142" text-anchor="middle" font-size="8" fill="#475569">haves vs have-nots</text>
+        <rect x="246" y="76" width="104" height="84" rx="6" fill="#ecfccb" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="298" y="94" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#3f6212">Ecological</text>
+        <text x="298" y="106" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#3f6212">crisis</text>
+        <text x="298" y="124" text-anchor="middle" font-size="8" fill="#475569">warming, ozone,</text>
+        <text x="298" y="136" text-anchor="middle" font-size="8" fill="#475569">pollution</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      So we need a different idea of "progress". It has a name: **sustainable development**.
+
+      The definition is worth memorising, almost word for word: *development that takes place without damaging the environment, and that does not compromise the needs of future generations.*
+
+      Here's the mental image. You don't *inherit* the planet from your ancestors — you **borrow** it from your children. Sustainable development is just paying that loan back honestly.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      One warning, because almost everyone gets this wrong.
+
+      Sustainable development does **not** mean *~~stop developing~~* or *~~stop using resources~~*. We keep building, keep growing, keep using minerals and fuels.
+
+      It means we do it *without robbing tomorrow to pay for today*. :hl[Grow — just don't borrow against the future to do it.]
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The world tried to act on this together. The landmark was the **Rio de Janeiro Earth Summit, 1992** — the first International Earth Summit, where more than 100 heads of state met to tackle environmental protection *and* development at the same time.
+
+      They signed declarations on climate change and biodiversity, and adopted a global action plan called **Agenda 21** — a blueprint to fight environmental damage, poverty, and disease through cooperation. Its sharpest idea: *every local government should draw up its own local Agenda 21.* Think globally, act locally.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Rio didn't come from nowhere. A handful of thinkers saw it coming for decades:
+
+      - **1968** — the *Club of Rome* made the first systematic call to conserve resources.
+      - **1974** — Schumacher's book *Small is Beautiful* carried Gandhi's thinking to the world.
+      - **1987** — the *Brundtland Report* (*Our Common Future*) actually coined the term **sustainable development**.
+
+      Then, in **1992**, Rio turned the idea into a global agenda.
+
+  - type: html_animation
+    xp: 0
+    title: "THE CONSERVATION TIMELINE"
+    caption: "Four milestones, building toward the idea of sustainable development."
+    html: |
+      <div style="background:#f8fafc;padding:18px 10px;border-radius:12px;">
+        <style>
+          @keyframes geoMile1 { 0%,2%{opacity:.15} 12%,100%{opacity:1} }
+          @keyframes geoMile2 { 0%,25%{opacity:.15} 35%,100%{opacity:1} }
+          @keyframes geoMile3 { 0%,50%{opacity:.15} 60%,100%{opacity:1} }
+          @keyframes geoMile4 { 0%,75%{opacity:.15} 85%,100%{opacity:1} }
+          .geo-mile { animation-duration:5s; animation-iteration-count:infinite; }
+          .gmile1 { animation-name:geoMile1; } .gmile2 { animation-name:geoMile2; }
+          .gmile3 { animation-name:geoMile3; } .gmile4 { animation-name:geoMile4; }
+        </style>
+        <svg viewBox="0 0 340 116" style="width:100%" font-family="sans-serif">
+          <line x1="30" y1="46" x2="312" y2="46" stroke="#cbd5e1" stroke-width="2"/>
+          <g class="geo-mile gmile1">
+            <circle cx="45" cy="46" r="7" fill="#0891b2" stroke="#fff" stroke-width="1.5"/>
+            <text x="45" y="28" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a">1968</text>
+            <text x="45" y="66" text-anchor="middle" font-size="7" fill="#475569">Club of</text>
+            <text x="45" y="75" text-anchor="middle" font-size="7" fill="#475569">Rome</text>
+          </g>
+          <g class="geo-mile gmile2">
+            <circle cx="132" cy="46" r="7" fill="#16a34a" stroke="#fff" stroke-width="1.5"/>
+            <text x="132" y="28" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a">1974</text>
+            <text x="132" y="66" text-anchor="middle" font-size="7" fill="#475569">Small is</text>
+            <text x="132" y="75" text-anchor="middle" font-size="7" fill="#475569">Beautiful</text>
+          </g>
+          <g class="geo-mile gmile3">
+            <circle cx="219" cy="46" r="7" fill="#7c3aed" stroke="#fff" stroke-width="1.5"/>
+            <text x="219" y="28" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a">1987</text>
+            <text x="219" y="66" text-anchor="middle" font-size="7" fill="#475569">Our Common</text>
+            <text x="219" y="75" text-anchor="middle" font-size="7" fill="#475569">Future</text>
+          </g>
+          <g class="geo-mile gmile4">
+            <circle cx="300" cy="46" r="7" fill="#db2777" stroke="#fff" stroke-width="1.5"/>
+            <text x="300" y="28" text-anchor="middle" font-size="11" font-weight="bold" fill="#0f172a">1992</text>
+            <text x="300" y="66" text-anchor="middle" font-size="7" fill="#475569">Rio Earth</text>
+            <text x="300" y="75" text-anchor="middle" font-size="7" fill="#475569">Summit</text>
+          </g>
+        </svg>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Now the line I promised you at the start. Gandhi said:
+
+      *"There is enough for everybody's need, but not for anybody's greed."*
+
+      He pointed at two culprits for resource depletion: *greedy, selfish individuals*, and an *exploitative model of mass production*. His alternative wasn't mass production — it was **production by the masses**. Small, local, enough.
+
+  - type: mcq
+    xp: 10
+    question: "A classmate says: 'Sustainable development just means stop using resources and stop all growth.' What's the correction?"
+    options:
+      - id: a
+        text: "He's right — the only way to save resources is to stop development."
+        is_correct: false
+        rationale: "That's the common misread. Sustainable development isn't *no* development — it's development that doesn't wreck the environment or rob future generations."
+      - id: b
+        text: "It means meeting today's needs without damaging the environment or compromising the needs of future generations — we keep developing, just wisely."
+        is_correct: true
+        rationale: "Exactly the Brundtland definition. Keep growing — just don't borrow against tomorrow to do it."
+      - id: c
+        text: "It means using only renewable resources and never touching minerals or fuels again."
+        is_correct: false
+        rationale: "Too narrow. We still use non-renewables — *sustainably* means using them wisely and equitably, not never."
+      - id: d
+        text: "It means the present generation comes first; the future can sort itself out."
+        is_correct: false
+        rationale: "That's the opposite of sustainable. The whole point is *not* compromising the needs of future generations."
+
+  - type: drag_to_reorder
+    xp: 10
+    prompt: "Put the conservation milestones in the order they happened."
+    items:
+      - { id: i1, label: "Club of Rome's systematic call to conserve" }
+      - { id: i2, label: "Schumacher's *Small is Beautiful*" }
+      - { id: i3, label: "Brundtland Report — *Our Common Future*" }
+      - { id: i4, label: "Rio de Janeiro Earth Summit + Agenda 21" }
+    correct_order: [i1, i2, i3, i4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Pick three resources you used *today* — water, electricity, paper, fuel, food, anything.
+
+      For each, write one **specific** way you could use less *without* losing what you actually need. Use Gandhi's test: separate the *need* from the *greed*.
+
+      Type your three resources and one action each below.
+    placeholder: "1. Water — turn off the tap while brushing..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Complete the definition that Brundtland gave the world."
+    template: |
+      Sustainable development meets the needs of the ___ without compromising the needs of ___ generations.
+    answers:
+      - id: blank-1
+        accepted: ["present", "Present"]
+      - id: blank-2
+        accepted: ["future", "Future"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      *"Enough for everybody's need, not for anybody's greed."*
+
+      Where in your own life is the line between *need* and *greed* genuinely hard to draw? There's no right answer — just be honest.
+    placeholder: "For me, the blurry line is..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You know what *sustainable* development actually asks of us."
+    summary: |
+      Use resources as if they're endless and you get depletion, inequality, and ecological crisis. Sustainable development is the alternative — meet today's needs without robbing tomorrow's — and the world built a scaffolding for it, from Gandhi's warning through the Club of Rome, Brundtland, and Rio's Agenda 21.
+
+      But "use resources wisely" stays a slogan until someone draws the map: *which* resources, *where*, and *who* makes the plan? India is enormous and wildly uneven — coal-rich here, parched there. So how does a whole country plan its resources? That's the final lesson of this course.

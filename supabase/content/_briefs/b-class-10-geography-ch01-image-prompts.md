@@ -49,4 +49,18 @@ to Course 1, Lesson 1. `placement:` says which turn it becomes.
 - prompt:
   > Editorial illustration split into two halves by a clean vertical line. Left half (renewable): a bright sun, a wind turbine, a flowing river, and a leafy green forest. Right half (non-renewable): a black lump of coal, an oil barrel, and a chunk of mineral ore. Clean flat editorial vector illustration, muted earthy palette (ochre, moss green, slate blue, warm off-white background), soft shadows, simple shapes. NO text, NO words, NO labels. 16:9 aspect ratio.
 
+### C1 L3 — Sustainable Development and Conservation
+
+**`c1l3-need-not-greed.png`** · 16:9 · *core* · url: _(pending)_
+- placement: `media` image, insert after **turn 9** (the Gandhi "need vs greed" beat).
+- caption: "Enough for everybody's *need*, not for anybody's *greed*."
+- prompt:
+  > Editorial illustration, two cupped hands side by side. The left pair of hands gently holds a small neat pile of golden wheat grain (just enough). The right pair grabs a huge overflowing heap that spills and wastes onto the ground. A quiet visual contrast between need and greed. Clean flat editorial vector illustration, muted earthy palette (ochre, moss green, slate blue, warm off-white background), soft shadows, simple shapes. NO text, NO words. 16:9 aspect ratio.
+
+**`c1l3-think-global-act-local.png`** · 16:9 · *optional* · url: _(pending)_
+- placement: `media` image, insert after **turn 6** (the Rio 1992 / Agenda 21 beat). *(Symbolic — do NOT generate a fake documentary photo of the real 1992 summit.)*
+- caption: "Agenda 21: think globally, act locally."
+- prompt:
+  > Editorial illustration: a circle of diverse human hands of many skin tones reaching in to gently cradle a small green-and-blue planet Earth together, symbolising global cooperation for the environment. Clean flat editorial vector illustration, muted earthy palette (ochre, moss green, slate blue, warm off-white background), soft shadows, simple shapes. NO text, NO words. 16:9 aspect ratio.
+
 <!-- Per-lesson prompts are appended below as each lesson is authored. -->
