@@ -161,7 +161,7 @@ turns:
     xp: 10
     prompt: "Trace karo ki bahut zyaada irrigation kya karti hai."
     template: |
-      Over-irrigation pehle ___ paida karti hai, jo phir soil ki ___ aur alkalinity badha deti hai.
+      Over-irrigation pehle {{blank-1}} paida karti hai, jo phir soil ki {{blank-2}} aur alkalinity badha deti hai.
     answers:
       - id: blank-1
         accepted: ["waterlogging", "water logging", "Waterlogging"]

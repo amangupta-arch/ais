@@ -161,7 +161,7 @@ turns:
     xp: 10
     prompt: "Lock in the famous one."
     template: |
-      Black soil is also called ___ soil, and it is ideal for growing ___.
+      Black soil is also called {{blank-1}} soil, and it is ideal for growing {{blank-2}}.
     answers:
       - id: blank-1
         accepted: ["regur", "Regur"]

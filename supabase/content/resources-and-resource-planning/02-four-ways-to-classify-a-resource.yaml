@@ -197,7 +197,7 @@ turns:
     xp: 10
     prompt: "Lock in the origin terms."
     template: |
-      Resources from the biosphere that have life — like forests and fisheries — are ___. Non-living resources like rocks and metals are ___.
+      Resources from the biosphere that have life — like forests and fisheries — are {{blank-1}}. Non-living resources like rocks and metals are {{blank-2}}.
     answers:
       - id: blank-1
         accepted: ["biotic", "Biotic"]

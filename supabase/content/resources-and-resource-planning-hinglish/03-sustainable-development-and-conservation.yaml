@@ -202,7 +202,7 @@ turns:
     xp: 10
     prompt: "Woh definition poori karo jo Brundtland ne duniya ko di."
     template: |
-      Sustainable development ___ ki needs poori karta hai bina ___ generations ki needs se samjhauta kiye.
+      Sustainable development {{blank-1}} ki needs poori karta hai bina {{blank-2}} generations ki needs se samjhauta kiye.
     answers:
       - id: blank-1
         accepted: ["present", "Present"]

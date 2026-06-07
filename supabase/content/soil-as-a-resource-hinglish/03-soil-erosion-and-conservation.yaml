@@ -152,7 +152,7 @@ turns:
     xp: 10
     prompt: "Gullies ki bhaasha yaad kar lo."
     template: |
-      Clayey soil mein gehri gullies ___ land bana deti hain; Chambal basin mein in channels ko ___ kehte hain.
+      Clayey soil mein gehri gullies {{blank-1}} land bana deti hain; Chambal basin mein in channels ko {{blank-2}} kehte hain.
     answers:
       - id: blank-1
         accepted: ["bad", "Bad"]

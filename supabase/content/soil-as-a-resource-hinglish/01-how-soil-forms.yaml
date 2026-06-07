@@ -146,7 +146,7 @@ turns:
     xp: 10
     prompt: "Soil kaise janmti hai, yaad kar lo."
     template: |
-      Soil ___ rock ke dheere-dheere tootne se banti hai, ___ saalon mein.
+      Soil {{blank-1}} rock ke dheere-dheere tootne se banti hai, {{blank-2}} saalon mein.
     answers:
       - id: blank-1
         accepted: ["parent", "Parent", "bedrock", "bed rock"]

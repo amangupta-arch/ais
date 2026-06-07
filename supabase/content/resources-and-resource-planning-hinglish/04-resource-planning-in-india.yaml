@@ -197,7 +197,7 @@ turns:
     xp: 10
     prompt: "Poore course ka core idea yaad kar lo."
     template: |
-      Resources ka hona ek region ki development ke liye ___ hai — par yeh ___ nahi. Technology aur institutions bhi aane chahiye.
+      Resources ka hona ek region ki development ke liye {{blank-1}} hai — par yeh {{blank-2}} nahi. Technology aur institutions bhi aane chahiye.
     answers:
       - id: blank-1
         accepted: ["necessary", "Necessary", "zaroori"]

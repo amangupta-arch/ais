@@ -144,7 +144,7 @@ turns:
     xp: 10
     prompt: "Lock in two key numbers and terms."
     template: |
-      The land on which crops are sown and harvested is the ___ sown area. India's forest cover (~23%) is still below the desired ___ per cent.
+      The land on which crops are sown and harvested is the {{blank-1}} sown area. India's forest cover (~23%) is still below the desired {{blank-2}} per cent.
     answers:
       - id: blank-1
         accepted: ["net", "Net"]

@@ -197,7 +197,7 @@ turns:
     xp: 10
     prompt: "Lock in the core idea of the whole course."
     template: |
-      The availability of resources is ___ for a region's development — but it is not ___. Technology and institutions must come too.
+      The availability of resources is {{blank-1}} for a region's development — but it is not {{blank-2}}. Technology and institutions must come too.
     answers:
       - id: blank-1
         accepted: ["necessary", "Necessary"]

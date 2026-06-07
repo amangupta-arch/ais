@@ -146,7 +146,7 @@ turns:
     xp: 10
     prompt: "Lock in how soil is born."
     template: |
-      Soil forms from the slow breakdown of ___ rock, over ___ of years.
+      Soil forms from the slow breakdown of {{blank-1}} rock, over {{blank-2}} of years.
     answers:
       - id: blank-1
         accepted: ["parent", "Parent", "bedrock", "bed rock"]

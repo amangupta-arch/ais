@@ -152,7 +152,7 @@ turns:
     xp: 10
     prompt: "Lock in the language of gullies."
     template: |
-      Deep gullies cutting through clayey soil create ___ land; in the Chambal basin these channels are called ___.
+      Deep gullies cutting through clayey soil create {{blank-1}} land; in the Chambal basin these channels are called {{blank-2}}.
     answers:
       - id: blank-1
         accepted: ["bad", "Bad"]

@@ -202,7 +202,7 @@ turns:
     xp: 10
     prompt: "Complete the definition that Brundtland gave the world."
     template: |
-      Sustainable development meets the needs of the ___ without compromising the needs of ___ generations.
+      Sustainable development meets the needs of the {{blank-1}} without compromising the needs of {{blank-2}} generations.
     answers:
       - id: blank-1
         accepted: ["present", "Present"]

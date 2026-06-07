@@ -161,7 +161,7 @@ turns:
     xp: 10
     prompt: "Trace what too much irrigation does."
     template: |
-      Over-irrigation first causes ___ , which then raises the soil's ___ and alkalinity.
+      Over-irrigation first causes {{blank-1}} , which then raises the soil's {{blank-2}} and alkalinity.
     answers:
       - id: blank-1
         accepted: ["waterlogging", "water logging", "Waterlogging"]

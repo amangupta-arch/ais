@@ -142,7 +142,7 @@ turns:
     xp: 10
     prompt: "Lock in what each landform gives."
     template: |
-      Mountains ensure the ___ flow of many rivers, while plateaus hold India's reserves of ___.
+      Mountains ensure the {{blank-1}} flow of many rivers, while plateaus hold India's reserves of {{blank-2}}.
     answers:
       - id: blank-1
         accepted: ["perennial", "Perennial"]

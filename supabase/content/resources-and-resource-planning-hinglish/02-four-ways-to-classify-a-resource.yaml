@@ -197,7 +197,7 @@ turns:
     xp: 10
     prompt: "Origin ke terms yaad kar lo."
     template: |
-      Biosphere se aane waale, life waale resources — jaise forests aur fisheries — ___ kehlaate hain. Rocks aur metals jaise non-living resources ___ kehlaate hain.
+      Biosphere se aane waale, life waale resources — jaise forests aur fisheries — {{blank-1}} kehlaate hain. Rocks aur metals jaise non-living resources {{blank-2}} kehlaate hain.
     answers:
       - id: blank-1
         accepted: ["biotic", "Biotic"]

@@ -191,7 +191,7 @@ turns:
     xp: 10
     prompt: "Lock in the three tests every resource must pass."
     template: |
-      A resource must be technologically ___, economically ___, and culturally ___.
+      A resource must be technologically {{blank-1}}, economically {{blank-2}}, and culturally {{blank-3}}.
     answers:
       - id: blank-1
         accepted: ["accessible", "Accessible"]

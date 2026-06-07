@@ -41,6 +41,27 @@ function lessonFiles(p: string): string[] {
   return [p];
 }
 
+const TOKEN_RE = /\{\{([a-zA-Z0-9_-]+)\}\}/g;
+
+/** The lesson player (InteractiveBlocks.tsx) only renders blanks written
+ *  as `{{id}}` tokens — `___` produces no inputs. Verify every fill
+ *  template uses {{id}} tokens, one per answer id, no leftover `___`. */
+function fillProblems(turns: { type?: string; template?: string; answers?: { id: string }[] }[]): string[] {
+  const out: string[] = [];
+  turns.forEach((t, i) => {
+    if (t?.type !== "fill_in_the_blank") return;
+    const tpl = t.template ?? "";
+    const tokens = [...tpl.matchAll(TOKEN_RE)].map((m) => m[1]);
+    const ids = (t.answers ?? []).map((a) => a.id);
+    if (tpl.includes("___")) out.push(`turn ${i + 1}: template still uses '___' (need {{id}} tokens)`);
+    if (tokens.length === 0) out.push(`turn ${i + 1}: template has no {{id}} blank tokens`);
+    const ts = new Set(tokens), is = new Set(ids);
+    for (const id of ids) if (!ts.has(id)) out.push(`turn ${i + 1}: answer '${id}' missing {{${id}}} in template`);
+    for (const tk of tokens) if (!is.has(tk)) out.push(`turn ${i + 1}: token {{${tk}}} has no matching answer id`);
+  });
+  return out;
+}
+
 let failed = 0;
 let checked = 0;
 
@@ -50,7 +71,8 @@ for (const target of targets) {
     try {
       const doc = yaml.load(readFileSync(file, "utf8"));
       const res = lessonSchema.safeParse(doc);
-      if (res.success) {
+      const fillProbs = res.success ? fillProblems((doc as { turns?: [] }).turns ?? []) : [];
+      if (res.success && fillProbs.length === 0) {
         const turns = res.data.turns;
         const last = turns.at(-1)?.type;
         const turnXp = turns.reduce(
@@ -69,9 +91,12 @@ for (const target of targets) {
       } else {
         failed++;
         console.log(`FAIL  ${file}`);
-        for (const issue of res.error.issues) {
-          console.log(`   • ${issue.path.join(".") || "(root)"}: ${issue.message}`);
+        if (!res.success) {
+          for (const issue of res.error.issues) {
+            console.log(`   • ${issue.path.join(".") || "(root)"}: ${issue.message}`);
+          }
         }
+        for (const p of fillProbs) console.log(`   • ${p}`);
       }
     } catch (e) {
       failed++;

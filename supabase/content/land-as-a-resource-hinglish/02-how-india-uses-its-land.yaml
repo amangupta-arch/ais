@@ -144,7 +144,7 @@ turns:
     xp: 10
     prompt: "Do key numbers aur terms yaad kar lo."
     template: |
-      Jis land pe crops sown aur harvest hote hain woh ___ sown area hai. India ka forest cover (~23%) abhi bhi chahe gaye ___ per cent se kam hai.
+      Jis land pe crops sown aur harvest hote hain woh {{blank-1}} sown area hai. India ka forest cover (~23%) abhi bhi chahe gaye {{blank-2}} per cent se kam hai.
     answers:
       - id: blank-1
         accepted: ["net", "Net"]

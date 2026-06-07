@@ -161,7 +161,7 @@ turns:
     xp: 10
     prompt: "Mashhoor waali yaad kar lo."
     template: |
-      Black soil ko ___ soil bhi kehte hain, aur yeh ___ ugaane ke liye ideal hai.
+      Black soil ko {{blank-1}} soil bhi kehte hain, aur yeh {{blank-2}} ugaane ke liye ideal hai.
     answers:
       - id: blank-1
         accepted: ["regur", "Regur"]

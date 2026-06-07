@@ -142,7 +142,7 @@ turns:
     xp: 10
     prompt: "Har landform kya deta hai, yaad kar lo."
     template: |
-      Mountains kai rivers ke ___ behaav ko ensure karte hain, jabki plateaus India ke ___ ke reserves rakhte hain.
+      Mountains kai rivers ke {{blank-1}} behaav ko ensure karte hain, jabki plateaus India ke {{blank-2}} ke reserves rakhte hain.
     answers:
       - id: blank-1
         accepted: ["perennial", "Perennial"]

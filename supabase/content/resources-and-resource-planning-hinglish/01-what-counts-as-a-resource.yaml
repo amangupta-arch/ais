@@ -191,7 +191,7 @@ turns:
     xp: 10
     prompt: "Har resource ko paar karne padne waale teen tests yaad kar lo."
     template: |
-      Ek resource ko technologically ___, economically ___, aur culturally ___ hona chahiye.
+      Ek resource ko technologically {{blank-1}}, economically {{blank-2}}, aur culturally {{blank-3}} hona chahiye.
     answers:
       - id: blank-1
         accepted: ["accessible", "Accessible"]
