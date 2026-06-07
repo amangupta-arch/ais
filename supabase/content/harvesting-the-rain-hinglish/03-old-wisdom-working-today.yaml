@@ -1,0 +1,169 @@
+title: "Purani Wisdom, Aaj Kaam Karti Hui"
+subtitle: "Ek gaon 'rainwater mein rich', ek rajya jisne harvesting ko kaanoon bana diya"
+estimated_minutes: 12
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ek gaon baarish pakadne mein itna achha ki use officially *"rich in rainwater"* kaha jaata hai. Ek rajya jisne baarish harvest karna **kaanoon** bana diya. Bamboo pipes 200 saal baad bhi fasal seench rahe.
+
+      Purani wisdom koi museum ki cheez nahi. Yeh wapas hai — aur kaam kar rahi hai.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Aaj India bhar mein, traditional rainwater harvesting gharon, gaon, aur poore rajyon mein phir se zinda ho rahi hai — saabit karte hue ki yeh abhi bhi asli zaroortein poori kar sakti hai.
+
+      Chaar jagahein milte hain jahan yeh phal-phool rahi hai.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Pehle, **Gendathur**, Mysuru, Karnataka ka ek door-daraaz gaon.
+
+      Lagbhag **200 households** ne rooftop rainwater harvesting lagaayi. Itna achha chala ki gaon ne ek durlabh khitaab kamaaya: woh *rainwater mein rich* ke roop mein jaana gaya.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Numbers yeh samjhaate hain.
+
+      Gendathur ko saal mein lagbhag **1,000 mm** baarish milti hai. Achhi rooftops aur saal mein lagbhag das fillings ke saath, har ghar lagbhag **50,000 litre** ikattha kar sakta hai — sirf apni chhat pe girne waali baarish se.
+
+  - type: svg_graphic
+    xp: 0
+    title: "GENDATHUR KA RAINWATER GANIT"
+    caption: "Saal mein 1,000 mm baarish, ek rooftop se pakdi, lagbhag 50,000 litre per house ban jaati hai."
+    svg: |
+      <svg viewBox="0 0 360 160" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <line x1="40" y1="16" x2="56" y2="16" stroke="#2563eb" stroke-width="3"/>
+        <line x1="80" y1="12" x2="96" y2="12" stroke="#2563eb" stroke-width="3"/>
+        <line x1="120" y1="16" x2="136" y2="16" stroke="#2563eb" stroke-width="3"/>
+        <text x="88" y="40" text-anchor="middle" font-size="11" font-weight="bold" fill="#0369a1">1,000 mm rain / year</text>
+        <polygon points="40,76 150,52 150,76" fill="#fca5a5" stroke="#0f172a" stroke-width="1.5"/>
+        <rect x="40" y="76" width="110" height="36" fill="#fef3c7" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="95" y="98" text-anchor="middle" font-size="8" fill="#92400e">one rooftop</text>
+        <text x="200" y="90" font-size="18" fill="#475569">→</text>
+        <rect x="230" y="58" width="110" height="70" rx="6" fill="#7dd3fc" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="285" y="92" text-anchor="middle" font-size="13" font-weight="bold" fill="#075985">~50,000 L</text>
+        <text x="285" y="108" text-anchor="middle" font-size="8" fill="#0c4a6e">per house, per year</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ab ek aisa vyang jo tum nahi bhuloge. **Shillong, Meghalaya** mein, rooftop harvesting sabse aam practice hai — *halaanki* paas ke **Cherrapunji** aur **Mawsynram** ko duniya ki **sabse zyaada baarish** milti hai.
+
+      Phir bhi Shillong khud paani ki tez kami jhelta hai. Toh lagbhag har ghar baarish harvest karta hai, apne paani ka **15–25%** rooftop se leta hua. Earth ka sabse geela kona, phir bhi har boond pakadta hua.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Kuch jagahon ne ise official bana diya. **Tamil Nadu** **rooftop rainwater harvesting ko har ghar ke liye compulsory banane waala pehla Indian rajya** ban gaya — jo na maane unke liye legal punishment ke saath.
+
+      Baarish harvest karna, kaanoon mein likh diya gaya.
+
+  - type: html_animation
+    xp: 0
+    title: "PUNARJEEVAN"
+    caption: "Ek Karnataka gaon se ek Meghalaya capital tak ek rajya ke kaanoon tak — purani wisdom, phir se failti hui."
+    html: |
+      <div style="background:#f0f9ff;padding:18px 14px;border-radius:12px;">
+        <style>
+          @keyframes geoRev1 { 0%,5%{opacity:0;transform:translateY(8px)} 24%,100%{opacity:1;transform:none} }
+          @keyframes geoRev2 { 0%,30%{opacity:0;transform:translateY(8px)} 49%,100%{opacity:1;transform:none} }
+          @keyframes geoRev3 { 0%,55%{opacity:0;transform:translateY(8px)} 74%,100%{opacity:1;transform:none} }
+          .geo-rv{display:block;margin:5px 0;font:bold 11px sans-serif;color:#075985;background:#bae6fd;border-radius:6px;padding:6px 10px}
+          .grv1{animation:geoRev1 5s infinite} .grv2{animation:geoRev2 5s infinite} .grv3{animation:geoRev3 5s infinite}
+        </style>
+        <div class="geo-rv grv1">Gendathur, Karnataka — "rich in rainwater"</div>
+        <div class="geo-rv grv2">Shillong, Meghalaya — harvest despite the rain</div>
+        <div class="geo-rv grv3">Tamil Nadu — harvesting made compulsory</div>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Aur ek khoobsurat puraani technique abhi bhi **Meghalaya** mein chalti hai: **bamboo drip irrigation**, ek **200 saal puraana** system.
+
+      Bamboo pipes stream aur spring water tap karte hain. Lagbhag **18–20 litre** system mein ghusta hai, *sau metre* tak chalta hai, aur sirf **20–80 boondein per minute** ban ke pahunchta hai — har paudhe ki jadon tak seedhe. Ancient engineering, modern drip irrigation ki efficiency ke saath.
+
+  - type: mcq
+    xp: 10
+    question: "Kaunsa pehla Indian rajya tha jisne rooftop rainwater harvesting ko sab gharon ke liye compulsory banaya?"
+    options:
+      - id: a
+        text: "Rajasthan"
+        is_correct: false
+        rationale: "Rajasthan mein tankas ki sabse gehri parampara hai, par harvesting ko kaanoon se compulsory banane waala pehla woh nahi tha."
+      - id: b
+        text: "Tamil Nadu"
+        is_correct: true
+        rationale: "Sahi — Tamil Nadu rooftop rainwater harvesting ko compulsory banane waala pehla rajya tha, defaulters ke liye penalties ke saath."
+      - id: c
+        text: "Meghalaya"
+        is_correct: false
+        rationale: "Meghalaya mein Shillong ki rooftop harvesting aur bamboo drip irrigation hai, par statewide compulsory pehle nahi banaya."
+      - id: d
+        text: "Karnataka"
+        is_correct: false
+        rationale: "Karnataka mein Gendathur hai, 'rainwater mein rich' gaon — par Tamil Nadu pehle kaanoon laaya."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Har jagah ya system ko uski pehchaan se match karo."
+    left:
+      - { id: l1, label: "Gendathur (Karnataka)" }
+      - { id: l2, label: "Shillong (Meghalaya)" }
+      - { id: l3, label: "Tamil Nadu" }
+      - { id: l4, label: "Bamboo drip irrigation" }
+    right:
+      - { id: r1, label: "Gaon jo 'rich in rainwater' kehlaata hai" }
+      - { id: r2, label: "Paas sabse zyaada baarish ke bawajood harvest karta hai" }
+      - { id: r3, label: "Harvesting ko compulsory banane waala pehla rajya" }
+      - { id: r4, label: "Meghalaya mein 200 saal puraana bamboo-pipe system" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Apni locality mein ya aas-paas ek aur rainwater-harvesting system dhundo — ya apne school ya ghar ke liye ek saral banaao.
+
+      Paper pe batao paani kaise pakda, store, aur use hota hai. Neeche apna ek-line idea type karo.
+    placeholder: "Mere school/ghar ke liye ek harvesting system..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Modern revival ko lock karo."
+    template: |
+      {{blank-1}} rooftop rainwater harvesting ko compulsory banane waala pehla Indian rajya tha; Meghalaya mein, {{blank-2}} pipes ek 200 saal puraane drip system mein spring water le jaate hain.
+    answers:
+      - id: blank-1
+        accepted: ["Tamil Nadu", "tamil nadu", "TamilNadu"]
+      - id: blank-2
+        accepted: ["bamboo", "Bamboo", "baans"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Is poore chapter mein — scarcity, dams, aur harvesting — paani ke baare mein woh ek idea kaunsa hai jo tum sach mein apne saath le jaaoge? Use naam do, aur batao kyun woh atak gaya.
+
+      Koi sahi jawaab nahi. Yeh tumhara takeaway hai.
+    placeholder: "Jo idea main rakh raha hoon woh hai..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Poora chapter ab tumhara hai: scarcity, dams, aur baarish ka harvesting."
+    summary: |
+      Gendathur ki rainwater-rich rooftops se Shillong ki zaroorat tak, Tamil Nadu ke kaanoon se Meghalaya ke 200 saal puraane bamboo pipes tak — India saabit kar raha hai ki purani paani wisdom abhi bhi kaam karti hai. Aur yahi chapter ko poora karta hai.
+
+      Tumne seekha ki paani renewable hai phir bhi scarce — demand se khaali hota, sirf sookhe se nahi, aur kabhi pollution se barbaad; tum multi-purpose dams (temples of modern India) ke vaade ko unki bhaari costs aur woh disputes jo woh chhedte hain ke saamne tol sakte ho; aur tumne sabse puraana, sabse chhota, sabse samajhdaar jawaab dekha — baarish ko wahin pakadna jahan woh girti hai.
+
+      Agli baar jab baarish hogi, tum use alag dekhoge: mausam ki tarah nahi, balki ek resource ki tarah jo bhaag raha hai, pakde jaane ki guzaarish karta hua.

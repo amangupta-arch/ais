@@ -1,0 +1,169 @@
+title: "Paani ko Khone se Pehle Pakadna"
+subtitle: "India ka hazaar-saal puraana jawaab scarcity ko: baarish ko wahin pakdo jahan woh girti hai"
+estimated_minutes: 11
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Kya ho agar, ek poore rajya mein paani ghaseetne ke liye ek vishaal dam banane ke bajaaye, tum bas *baarish ko wahin pakad lo jahan woh girti hai*?
+
+      India yahi kar raha hai — shaandaar tarike se — hazaaron saalon se.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ancient India mein **water harvesting** ki ek *anokhi* parampara thi.
+
+      Log apne local **rainfall patterns** aur **soil types** ko gehrai se jaante the, aur rainwater, groundwater, river water — flood water tak — pakadne ke clever techniques bante, har ek local ecology ke hisaab se.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Pahaadon aur parvaton** mein, log diversion channels khodte the — Western Himalayas ke **guls** aur **kuls** — stream water ko apne kheton tak laane ke liye, farming ke liye.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Bengal ke flood plains** mein, unhone **inundation channels** banaye taaki baadh khud unke kheton ko seenche.
+
+      Aur kai regions mein, **rooftop rainwater harvesting** peene ka paani pakadta aur store karta tha — khaaskar Rajasthan mein.
+
+  - type: svg_graphic
+    xp: 0
+    title: "ALAG ZAMEEN, ALAG TAREEKE"
+    caption: "Har region ne apni baarish aur soil ke hisaab se ek water-harvesting method banaya."
+    svg: |
+      <svg viewBox="0 0 360 176" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="10" y="8" width="166" height="76" rx="6" fill="#eff6ff" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="93" y="28" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3a8a">Western Himalayas</text>
+        <text x="93" y="50" text-anchor="middle" font-size="9" fill="#475569">guls and kuls —</text>
+        <text x="93" y="64" text-anchor="middle" font-size="9" fill="#475569">diversion channels</text>
+        <rect x="184" y="8" width="166" height="76" rx="6" fill="#ecfeff" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="267" y="28" text-anchor="middle" font-size="10" font-weight="bold" fill="#0e7490">Bengal flood plains</text>
+        <text x="267" y="50" text-anchor="middle" font-size="9" fill="#475569">inundation channels —</text>
+        <text x="267" y="64" text-anchor="middle" font-size="9" fill="#475569">floods irrigate fields</text>
+        <rect x="10" y="92" width="166" height="76" rx="6" fill="#fffbeb" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="93" y="112" text-anchor="middle" font-size="10" font-weight="bold" fill="#92400e">Jaisalmer (arid)</text>
+        <text x="93" y="134" text-anchor="middle" font-size="9" fill="#475569">khadins — fields turned</text>
+        <text x="93" y="148" text-anchor="middle" font-size="9" fill="#475569">into rain-fed stores</text>
+        <rect x="184" y="92" width="166" height="76" rx="6" fill="#fff7ed" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="267" y="112" text-anchor="middle" font-size="10" font-weight="bold" fill="#9a3412">Rajasthan</text>
+        <text x="267" y="134" text-anchor="middle" font-size="9" fill="#475569">johads + rooftop</text>
+        <text x="267" y="148" text-anchor="middle" font-size="9" fill="#475569">harvesting</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Arid aur semi-arid** regions mein, poore khet rain-fed storage mein badle gaye — paani ko *khada* rehne aur soil mein soakne dete hue use moist karne ko.
+
+      Jaisalmer ke **khadins** aur Rajasthan ke baaki hisson ke **johads** theek yahi karte hain: durlabh baarish ko pakdo, aur zameen se use rok do.
+
+  - type: html_animation
+    xp: 0
+    title: "JAHAN GIRE WAHIN PAKDO"
+    caption: "Baarish ko bah jaane dene ke bajaaye, ek chhota local structure use pakadta aur rakhta hai."
+    html: |
+      <div style="background:#f0f9ff;padding:18px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoRain { 0%{transform:translateY(-30px);opacity:0} 20%{opacity:1} 70%{transform:translateY(40px);opacity:1} 75%,100%{opacity:0} }
+          @keyframes geoStore { 0%,40%{height:2px} 75%,100%{height:26px} }
+          .geo-rd { animation: geoRain 3s linear infinite; }
+          .geo-rd2 { animation: geoRain 3s linear infinite; animation-delay:1s; }
+          .geo-store { animation: geoStore 3s ease-in infinite; }
+        </style>
+        <svg viewBox="0 0 240 120" style="max-width:240px;width:100%" font-family="sans-serif">
+          <line class="geo-rd" x1="100" y1="20" x2="100" y2="34" stroke="#2563eb" stroke-width="3"/>
+          <line class="geo-rd2" x1="140" y1="20" x2="140" y2="34" stroke="#2563eb" stroke-width="3"/>
+          <path d="M70,92 Q120,70 170,92 L170,100 L70,100 Z" fill="none" stroke="#92400e" stroke-width="2"/>
+          <rect class="geo-store" x="72" y="72" width="96" height="26" fill="#38bdf8"/>
+          <text x="120" y="114" text-anchor="middle" font-size="8" fill="#0369a1">the rain is caught and held</text>
+        </svg>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Yahan poora philosophy gaur karo.
+
+      Koi vishaal dam nahi. Kisi padosi rajya se koi jhagda nahi. Bas *local* knowledge, *local* baarish pakadna, *local* needs ke liye.
+
+      Chhota, samajhdaar, aur bahut-bahut puraana.
+
+  - type: mcq
+    xp: 10
+    question: "Western Himalayas ke 'guls' aur 'kuls' kya hain?"
+    options:
+      - id: a
+        text: "Bijli ke liye bade multi-purpose dams."
+        is_correct: false
+        rationale: "Yeh chhote traditional channels hain, bade dams nahi — ulta scale."
+      - id: b
+        text: "Diversion channels jo stream water ko kheton tak farming ke liye laate hain."
+        is_correct: true
+        rationale: "Sahi — guls aur kuls pahaadi diversion channels hain, ek local water-harvesting method."
+      - id: c
+        text: "Peene ka paani store karne ke underground tanks."
+        is_correct: false
+        rationale: "Yeh Rajasthan ke tankas hain, Himalayan guls aur kuls nahi."
+      - id: d
+        text: "Baarish pakadne ke rooftop pipes."
+        is_correct: false
+        rationale: "Woh rooftop harvesting hai. Guls aur kuls stream water ke diversion channels hain."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Har harvesting method ko uske region se match karo."
+    left:
+      - { id: l1, label: "Guls aur kuls" }
+      - { id: l2, label: "Inundation channels" }
+      - { id: l3, label: "Khadins" }
+      - { id: l4, label: "Johads" }
+    right:
+      - { id: r1, label: "Western Himalayas" }
+      - { id: r2, label: "Bengal ke flood plains" }
+      - { id: r3, label: "Jaisalmer" }
+      - { id: r4, label: "Rajasthan ke baaki hisse" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Apni locality ke aas-paas dekho. Kya kisi tareeke se rainwater pakda aur store hota hai — ek tank, talaab, rooftop collection pipe, check dam, ya baoli (stepwell)?
+
+      Paper pe jo mile woh likho (ya jo banaaya ja *sake*). Neeche apne paas ek rainwater-harvesting structure type karo.
+    placeholder: "Mere paas, rainwater (ya pakda ja sakta) ___ se..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Do traditional methods ko lock karo."
+    template: |
+      Western Himalayas mein, diversion channels jinhe {{blank-1}} ya kuls kehte hain paani ko kheton tak laate hain; Jaisalmer mein, khet rain-fed stores mein badle jaate hain jinhe {{blank-2}} kehte hain.
+    answers:
+      - id: blank-1
+        accepted: ["guls", "gul", "Guls"]
+      - id: blank-2
+        accepted: ["khadins", "khadin", "Khadins"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Sadiyon tak, communities ne apni paani ki problems local knowledge se solve ki — koi engineers nahi, koi bade budgets nahi. Tumhe kya lagta hai itni wisdom kyun bhula di gayi? Kya humein use wapas laana chahiye?
+
+      Koi sahi jawaab nahi.
+    placeholder: "Woh local wisdom isliye fika padi kyunki..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Tum India ke traditional baarish-pakadne ke tareekon ko region se naam de sakte ho."
+    summary: |
+      Bade dams se bahut pehle, India apni baarish locally pakadta tha: Himalayas mein guls aur kuls, Bengal mein inundation channels, Jaisalmer mein khadins, Rajasthan mein johads — har ek apni zameen aur baarish ke hisaab se.
+
+      Inme se ek method itna refined ho gaya ki ek hi underground room mein ek saal ka peene ka paani rakh sakta tha. Thar ke registan mein, rooftop aur *tanka* ne durlabh baarish ko ek lifeline mein badal diya. Yahi agli lesson hai.

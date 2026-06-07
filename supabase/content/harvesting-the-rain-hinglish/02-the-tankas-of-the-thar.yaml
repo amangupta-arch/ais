@@ -1,0 +1,174 @@
+title: "Thar ke Tankas"
+subtitle: "Zameen mein ek kamre jitna gaddha, baarish se bhara — ek registani parivaar ki sabse keemti cheez"
+estimated_minutes: 12
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Thar registan mein, ghar ki sabse keemti cheez aksar sona ya zameen nahi hoti thi.
+
+      Woh zameen mein ek kamre jitna gaddha hoti thi — baarish se bhara rakha. Use **tanka** kehte the.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Rajasthan bhar mein — Bikaner, Phalodi, Barmer mein — lagbhag *har* ghar mein parmpara se ek underground tank, ek **tanka**, peene ka paani store karne ko hota tha.
+
+      Kuch toh vishaal the. Phalodi mein ek **6.1 metre gehra, 4.27 metre lamba, aur 2.44 metre chauda** tha — ek chhota kamra, paani se bhara.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Tanka ek clever **rooftop rainwater harvesting** system ka hissa tha.
+
+      Main ghar ya aangan ke andar bana, woh **sloping roof** se ek pipe se juda hota tha. Baarish chhat pe girti hai, pipe se neeche behti hai, aur tanka ko underground bharti hai. Saral, aur shaandaar.
+
+  - type: svg_graphic
+    xp: 0
+    title: "ROOFTOP SE TANKA"
+    caption: "Sloping roof pe baarish ek pipe se neeche ek kamre jitne underground tank mein behti hai."
+    svg: |
+      <svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <line x1="40" y1="20" x2="60" y2="20" stroke="#2563eb" stroke-width="3"/>
+        <line x1="90" y1="16" x2="110" y2="16" stroke="#2563eb" stroke-width="3"/>
+        <polygon points="40,60 180,30 180,60" fill="#fca5a5" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="110" y="52" text-anchor="middle" font-size="8" fill="#7f1d1d">sloping roof</text>
+        <rect x="40" y="60" width="140" height="48" fill="#fef3c7" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="110" y="88" text-anchor="middle" font-size="8" fill="#92400e">house</text>
+        <line x1="178" y1="34" x2="178" y2="120" stroke="#475569" stroke-width="4"/>
+        <text x="196" y="80" font-size="8" fill="#475569">pipe</text>
+        <rect x="150" y="120" width="120" height="48" rx="4" fill="#7dd3fc" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="210" y="142" text-anchor="middle" font-size="10" font-weight="bold" fill="#075985">TANKA</text>
+        <text x="210" y="156" text-anchor="middle" font-size="8" fill="#0c4a6e">underground store</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ek detail dikhaata hai woh kitne careful the.
+
+      Baarish ka **pehla daur** *nahi* collect hota tha. Use chhaton aur pipes ki saari dhool dho dene diya jaata tha pehle. Sirf *baad* ke showers — ab saaf — tanka mein store hote.
+
+      Sabr se bana ek built-in filter.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Itni mehnat kyun? Kyunki tanka us paani ko **agli baarish** tak rakhta tha — peene ke paani ka ek bharosemand source un bedardi garmiyon mein, jab har doosra source sookh jaata.
+
+      Is rainwater ka unke paas ek naam tha: **palar pani** — *natural paani ka sabse shudh roop*.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ek bonus bhi tha.
+
+      Kai gharon ne tanka ke *bilkul paas* ek underground room banaya. Thanda jama paani us room ko thanda rakhta — registan ki garmi ke khilaaf ek natural air-conditioner. Ek dhaancha, do tohfe.
+
+  - type: html_animation
+    xp: 0
+    title: "TANKA BHARTA HAI"
+    caption: "Chhat pe baarish, pipe se neeche, tanka mein — ek saal ka peene ka paani, store."
+    html: |
+      <div style="background:#f0f9ff;padding:18px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoTankaRain { 0%{transform:translateY(-20px);opacity:0} 25%{opacity:1} 70%{transform:translateY(70px);opacity:1} 80%,100%{opacity:0} }
+          @keyframes geoTankaFill { 0%,30%{height:3px} 80%,100%{height:34px} }
+          .geo-tr{animation:geoTankaRain 3s linear infinite} .geo-tr2{animation:geoTankaRain 3s linear infinite;animation-delay:1.2s}
+          .geo-tf{animation:geoTankaFill 3s ease-in infinite}
+        </style>
+        <svg viewBox="0 0 240 130" style="max-width:240px;width:100%" font-family="sans-serif">
+          <polygon points="30,40 130,20 130,40" fill="#fca5a5" stroke="#0f172a" stroke-width="1.5"/>
+          <line class="geo-tr" x1="70" y1="6" x2="70" y2="18" stroke="#2563eb" stroke-width="3"/>
+          <line class="geo-tr2" x1="100" y1="6" x2="100" y2="18" stroke="#2563eb" stroke-width="3"/>
+          <line x1="128" y1="24" x2="128" y2="80" stroke="#475569" stroke-width="4"/>
+          <rect x="100" y="80" width="90" height="40" rx="4" fill="none" stroke="#0f172a" stroke-width="1.5"/>
+          <rect class="geo-tf" x="103" y="86" width="84" height="34" fill="#38bdf8"/>
+          <text x="145" y="128" text-anchor="middle" font-size="8" fill="#0369a1">tanka filling underground</text>
+        </svg>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Afsos, western Rajasthan mein yeh parampara fika pad rahi hai.
+
+      Perennial **Indira Gandhi Canal** ab bharpoor paani laati hai, toh kam log apne tankas sambhaalte hain. Halaanki kuch abhi bhi karte hain — kyunki unhe nal ke paani ke swaad se *palar pani* ka swaad zyaada pasand hai.
+
+  - type: mcq
+    xp: 10
+    question: "Baarish ka pehla daur jaan-boojh kar tanka mein collect kyun NAHI kiya jaata tha?"
+    options:
+      - id: a
+        text: "Kyunki pehli baarish zehreeli hoti hai."
+        is_correct: false
+        rationale: "Yeh zehreeli nahi hoti — bas gandi hoti hai. Use dhone ke liye mod-aa jaata tha, isliye nahi ki woh toxic hai."
+      - id: b
+        text: "Taaki woh pehle chhaton aur pipes ki dhool dho de, taaki sirf saaf paani store ho."
+        is_correct: true
+        rationale: "Bilkul — pehli baarish chhat aur pipe saaf karti hai; baad ke, saaf showers phir store hote hain."
+      - id: c
+        text: "Kyunki tanka hamesha pehle se bhara hota hai."
+        is_correct: false
+        rationale: "Tanka sookhe mahinon mein khaali hota hai — harvesting ka poora point use dobaara bharna hai."
+      - id: d
+        text: "Kyunki pehli baarish turant vaashpit ho jaati hai."
+        is_correct: false
+        rationale: "Woh turant vaashpit nahi hoti — use jaan-boojh kar system saaf karne ko mod-aa jaata hai."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Har term ko uske matlab se match karo."
+    left:
+      - { id: l1, label: "Tanka" }
+      - { id: l2, label: "Palar pani" }
+      - { id: l3, label: "Baarish ka pehla daur" }
+      - { id: l4, label: "Indira Gandhi Canal" }
+    right:
+      - { id: r1, label: "Peene ka paani store karne ka underground tank" }
+      - { id: r2, label: "Rainwater — sabse shudh natural paani" }
+      - { id: r3, label: "Chhat dhota hai; store nahi hota" }
+      - { id: r4, label: "Rooftop harvesting kyun ghat raha hai" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      *Apne* ghar ke liye ek saral rooftop-to-tank system sketch karo: baarish kahan girti hai, pipe kahan jaata hai, tank kahan baithta hai.
+
+      Paper pe ek problem note karo jise tumhe solve karna padega (dhool? overflow? jagah?). Neeche apna sabse bada design challenge type karo.
+    placeholder: "Apne ghar pe baarish harvest karne ko, sabse mushkil hissa hoga..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Registan ke system ko lock karo."
+    template: |
+      Rooftop ki baarish ek pipe se ek underground tank mein behti hai jise {{blank-1}} kehte hain; yeh rainwater, sabse shudh natural paani, {{blank-2}} pani kehlaata hai.
+    answers:
+      - id: blank-1
+        accepted: ["tanka", "Tanka", "tank"]
+      - id: blank-2
+        accepted: ["palar", "Palar"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Jab canal aayi, logon ne ek aisa system sambhaalna chhod diya jo sadiyon se unki seva kar raha tha. Kya hamesha purane, self-reliant tareeke ko door se aane waale piped supply se badalna progress hai? Kya milta hai — aur kya khota hai?
+
+      Koi sahi jawaab nahi.
+    placeholder: "Tanka ko canal se badalte hue, humne ___ paaya par khoya..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Tum samjha sakte ho ki Thar ka rooftop-aur-tanka system kaise kaam karta tha."
+    summary: |
+      Rajasthan bhar mein, sloping roofs baarish ko pipes se kamre jitne underground tankas mein bhejte the — palar pani, sabse shudh paani, ko sookhi garmiyon bhar store karte hue, ek lagey room ko thanda tak rakhte hue. Pehli baarish system saaf karne ko qurbaan hoti thi. Sirf canal ne logon ko ise bhulaaya hai.
+
+      Par yeh puraana idea mara nahi hai. Aaj India bhar mein, gaon aur poore rajya rainwater harvesting ko phir se zinda kar rahe hain — aur saabit kar rahe hain ki yeh abhi bhi shaandaar kaam karta hai. Yahi aakhri lesson hai, aur is chapter ka ant.
