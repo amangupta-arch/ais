@@ -22,29 +22,45 @@ skipping topics it does cover.
 
 ## What you produce
 
-A single output folder, ready to drop into the AIS repo at its final paths:
+Files written **directly at their final repo paths**, committed to a
+dedicated branch (`bundle/<bundle-slug>`), one commit per lesson, a PR
+opened against `main` when the bundle is complete.
 
 ```
-out/
-├── supabase/
-│   ├── content/
-│   │   ├── _briefs/
-│   │   │   └── <bundle-slug>.md           # the design doc you maintain (see below)
-│   │   ├── bundle-courses/
-│   │   │   └── <NN>-<bundle-shortname>.yaml   # bundle + course/lesson structure
-│   │   ├── <course-slug>/
-│   │   │   ├── 01-<lesson-slug>.yaml      # English lessons
-│   │   │   └── 02-<lesson-slug>.yaml
-│   │   └── <course-slug>-hinglish/
-│   │       ├── 01-<lesson-slug>.yaml      # Hinglish translations
-│   │       └── 02-<lesson-slug>.yaml
-│   └── migrations/
-│       └── <NNNN>_<bundle-slug>.sql       # bundle-insert migration
-└── README.md                              # what's in here, in 10 lines
+supabase/
+├── content/
+│   ├── _briefs/
+│   │   └── <bundle-slug>.md                # design doc you maintain (see below)
+│   ├── bundle-courses/
+│   │   └── <NN>-<bundle-shortname>.yaml    # bundle + course/lesson structure
+│   ├── <course-slug>/
+│   │   ├── 01-<lesson-slug>.yaml           # English lessons
+│   │   └── 02-<lesson-slug>.yaml
+│   └── <course-slug>-hinglish/
+│       ├── 01-<lesson-slug>.yaml           # Hinglish translations
+│       └── 02-<lesson-slug>.yaml
+└── migrations/
+    └── <NNNN>_<bundle-slug>.sql            # bundle-insert migration
 ```
 
-The operator runs `cp -r out/* <ais-repo>/` and applies the migration +
-loader script. No further authoring touches are needed.
+The branch + PR are the deliverable. Once merged, the operator applies
+the migration + runs the loader script. No copying, no `out/` staging
+folder, no manual file moves.
+
+### Commit + branch discipline
+
+- One commit per lesson. Commit message: `content(<bundle-slug>): lesson <NN> · <lesson title>`.
+- Update `_briefs/<bundle-slug>.md` in the **same commit** as each lesson.
+  The brief evolves with the work; keep them in lockstep.
+- Push the branch after each commit so progress is visible even if the
+  session dies mid-bundle.
+- The migration SQL + bundle-courses YAML go in the **first** commit on
+  the branch (commit message: `content(<bundle-slug>): scaffold bundle + courses`),
+  before any lesson commits.
+- Open the PR only when every lesson (English + Hinglish) has passed the
+  quality checklist. PR title is the bundle title. PR body opens with the
+  brief's "Arc" section, then lists lesson count + total estimated minutes
+  + any decisions worth flagging for the reviewer.
 
 ---
 
@@ -133,7 +149,7 @@ every lesson.
 
 ### Step 2. Author the bundle/course shape
 
-Write `out/supabase/content/bundle-courses/<NN>-<short>.yaml`. Mirror
+Write `supabase/content/bundle-courses/<NN>-<short>.yaml`. Mirror
 the format of `10-class10-math.yaml`. One entry per bundle:
 
 ```yaml
@@ -154,7 +170,7 @@ slugs (avoid colons, parens, special punctuation in titles).
 
 ### Step 3. Author the bundle migration
 
-Write `out/supabase/migrations/<NNNN>_<bundle-slug>.sql`. Mirror
+Write `supabase/migrations/<NNNN>_<bundle-slug>.sql`. Mirror
 `0014_student_plan_class10_math.sql` but only the **bundle insert**
 section — the `plans` row already exists, the `bundles.plan_tier`
 constraint already admits `student`. Your migration is just:
@@ -178,7 +194,7 @@ Description is one short paragraph. Lift from your bundle brief's "arc".
 ### Step 4. Author the English lessons, one at a time
 
 For each lesson, the file path is:
-`out/supabase/content/<course-slug>/<NN>-<lesson-slug>.yaml`
+`supabase/content/<course-slug>/<NN>-<lesson-slug>.yaml`
 
 `<NN>` is the two-digit lesson order (`01`, `02`, …).
 `<lesson-slug>` is the title slugified.
@@ -289,15 +305,44 @@ none are available, stop and ask before fabricating image URLs.
 
 #### Audio
 
-Don't author audio. The AIS platform runs an ElevenLabs pipeline against
-the lesson's text after the YAML is loaded. Your job ends at the YAML.
+You do not generate audio yourself. The AIS platform runs an ElevenLabs
+pipeline against the lesson's text after the YAML lands in the DB. Your
+job ends at YAML + PR.
+
+That said, you author **text that's about to be spoken**, so write
+audio-friendly prose:
+
+- **Punctuation is pacing**. Commas → short breath. Full stops, exclamation
+  marks, question marks → longer breath. Em-dashes → mid-sentence pause.
+  ElevenLabs respects this; the more punctuation you use deliberately, the
+  better the narration sounds.
+- **Avoid unspeakable characters** in `tutor_message.text` — no `→`, `⇒`,
+  `≈`, `∴`, `≠`. Use words instead ("therefore", "approximately equal to",
+  "is not equal to"). Math symbols (`+`, `−`, `×`, `÷`, `=`, `<`, `>`, `²`,
+  `³`, `²ⁿ`) are fine; ElevenLabs verbalises them.
+- **Write `4ⁿ`, not `4^n`**. ElevenLabs reads superscripts cleanly.
+- **Numbers >12 should be digits**, not words. ElevenLabs reads "23456"
+  correctly. Spelling it out ("twenty-three thousand…") creates clunky audio.
+- **Acronyms get clarification on first use**. "HCF (the Highest Common
+  Factor)" the first time, then "HCF" alone after.
+- **One thought per `tutor_message`** is the cleanest audio unit. Long
+  rambling messages with multiple paragraphs produce monotone narration.
+  Break them into 2–3 separate `tutor_message` turns instead.
+- **Code blocks, SVG, and MCQ option text are NOT narrated** by the
+  pipeline — only the prose inside `tutor_message.text`, `checkpoint.summary`,
+  and a few other speakable fields. See `lib/audio/extract.ts` for the
+  exact list. You don't need to write code or SVG in a speakable way.
+
+For the storage shape, the manifest, and how to trigger generation,
+see `docs/audio-pipeline.md` (or the inline summary at the bottom of
+this brief).
 
 ### Step 5. Translate each lesson to Hinglish
 
 After you finish all English lessons, walk back through and produce
 Hinglish translations. One file per English source:
 
-`out/supabase/content/<course-slug>-hinglish/<NN>-<lesson-slug>.yaml`
+`supabase/content/<course-slug>-hinglish/<NN>-<lesson-slug>.yaml`
 
 Rules:
 
@@ -321,29 +366,38 @@ Append to `_briefs/<bundle-slug>.md` as you go. After every lesson,
 note: anchors you reused, decisions about voice, places where the
 source was thin or contradictory.
 
-### Step 7. Write the README
+### Step 7. Open the PR
 
-`out/README.md`, ten lines:
+Push the final commit, then open a pull request against `main`.
+
+- **Title**: the bundle's display title (same as the `translations.en.title`
+  field on the bundle row).
+- **Body**: a verbatim copy of the brief's "Arc" section, then a stats
+  block, then a short "How to apply" block for the reviewer:
 
 ```markdown
-# <Bundle title>
+## Arc
 
-Generated by Claude Code on <date>.
+<paste the brief's "Arc" paragraph here>
 
-## To apply:
+## Stats
 
-1. cp -r out/supabase/ <ais-repo>/supabase/
-2. Apply migration: supabase/migrations/<NNNN>_<slug>.sql
-3. Run: npx tsx scripts/load-bundle-courses.ts
-4. Apply: /tmp/bundles/<bundle-slug>.sql
-5. Audio pipeline runs separately against the loaded lessons.
-
-## Stats:
 - Courses: N
 - Lessons (EN): N
 - Lessons (Hinglish): N
 - Total turns: N
+- Estimated total minutes: N
+
+## To apply after merge
+
+1. Apply migration: `supabase/migrations/<NNNN>_<slug>.sql`
+2. Run: `npx tsx scripts/load-bundle-courses.ts`
+3. Apply: `/tmp/bundles/<bundle-slug>.sql`
+4. The audio pipeline runs separately against the loaded lessons.
 ```
+
+The PR does not auto-merge. The reviewer reads the brief, scans a few
+lessons, decides.
 
 ---
 
@@ -375,16 +429,114 @@ Hinglish-specific:
 
 ## What you should NOT do
 
+- Don't push directly to `main`. Always work on `bundle/<bundle-slug>`.
+- Don't auto-merge the PR. The reviewer decides.
+- Don't write to an `out/` staging folder. Files land at their real
+  repo paths from the first commit. The branch + PR provide the
+  isolation a staging folder was meant to provide.
 - Don't invent topics the source doesn't cover. Stay strictly within
   the source.
 - Don't skip the brief. The brief is what makes the bundle survive
   session compaction.
 - Don't author all lessons in parallel. Sequential authoring lets the
   brief evolve with the work.
-- Don't insert anything into the DB. The YAMLs + the migration are the
-  deliverable.
+- Don't bundle multiple lessons into one commit. One commit per lesson,
+  brief updated in the same commit.
+- Don't insert anything into the DB. The migration + YAMLs in the
+  PR are the deliverable.
 - Don't author audio.
 - Don't generate images without confirming a connector is wired up.
 - Don't use Devanagari for Hinglish.
 - Don't use any persona name in lesson text. Second person only.
-- Don't ship a bundle that hasn't passed the quality checklist.
+- Don't open the PR before every lesson has passed the quality checklist.
+
+---
+
+## Reference: audio storage shape
+
+You don't generate audio, but you should understand where it lands so
+you can write text that fits the pipeline cleanly.
+
+### Storage bucket
+
+Bucket name: **`lesson-audio`** (Supabase Storage, public read).
+
+File layout inside the bucket — flat, content-addressable:
+
+```
+lesson-audio/<voice_id>/<sha256-hash>.mp3
+```
+
+Identical text spoken by the same voice produces the same hash → exactly
+one mp3 lives in the bucket, no matter how many lessons reference it. A
+common opening like "Let's break this down." is generated once and reused
+across every lesson that says it.
+
+### Hash formula
+
+```
+sha256(`${voiceId}|${model}|${text}`).hex
+```
+
+`voiceId` and `model` come from `lib/audio/voices.ts` per language; `text`
+is the sanitised speakable extract from the YAML turn (see
+`lib/audio/sanitize.ts`).
+
+### Tables
+
+- **`lesson_audio_assets`** — one row per unique audio file. Columns:
+  `id`, `hash` (unique), `voice_id`, `model`, `text` (sanitised), `bytes`,
+  `storage_path`.
+- **`lesson_audio_manifest`** — one row per (lesson, language, turn,
+  chunk). Columns: `lesson_id`, `language`, `turn_index`, `chunk_index`,
+  `asset_id` (FK → `lesson_audio_assets.id`), `text`. This is the table
+  the player reads to know which mp3 to fetch for which turn.
+
+A single `tutor_message` can produce multiple chunks when ElevenLabs
+splits long text mid-sentence — that's why `chunk_index` exists.
+
+### Per-language voice + model
+
+Set in `lib/audio/voices.ts`:
+
+```
+VOICE_IDS = {
+  en: gHu9GtaHOXcSqFTK06ux,           // same voice handles en/hi/hinglish
+  hi: gHu9GtaHOXcSqFTK06ux,
+  hinglish: gHu9GtaHOXcSqFTK06ux,
+  mr / pa / te / ta / bn / fr / es: configured per-language
+}
+
+Models:
+  en / fr / es      → eleven_flash_v2_5    (cheaper, Latin script)
+  hi / hinglish     → eleven_multilingual_v2 (better Indic pronunciation)
+  other Indic langs → eleven_multilingual_v2
+```
+
+ElevenLabs has no Hinglish voice — the same Hindi voice handles
+code-switched text on `multilingual_v2`.
+
+### Pipeline entry point
+
+`runAudioPipeline({ lessonId, language, yamlText })` in
+`lib/audio/pipeline.ts` is the single entry. It:
+
+1. Extracts speakable text from each turn (`lib/audio/extract.ts`)
+2. Sanitises it (`lib/audio/sanitize.ts`)
+3. Hashes
+4. Cache hit → reuse asset; cache miss → call ElevenLabs, upload mp3 to
+   the bucket, insert `lesson_audio_assets` row
+5. Inserts `lesson_audio_manifest` rows mapping turn → asset
+
+Today this is called only from `/api/yaml-jobs/generate` — meaning
+audio generation only runs as part of the `/yaml-generate` page flow.
+**There is no standalone CLI for audio yet.** Adding one is a half-day
+job and worth doing once you're shipping bundles regularly.
+
+### Public URL the player fetches
+
+```
+${NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/lesson-audio/<voice_id>/<hash>.mp3
+```
+
+Resolved server-side in `getLessonAudioManifest()` (`lib/supabase/queries.ts`).
