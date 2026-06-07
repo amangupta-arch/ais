@@ -146,7 +146,7 @@ turns:
     xp: 10
     prompt: "Closing terms yaad kar lo."
     template: |
-      Nature worship se bachaaye gaye virgin forests ___ groves kehlaate hain, aur Rajasthan ke ___ blackbuck ko apni community ke hisse ke roop mein bachaate hain.
+      Nature worship se bachaaye gaye virgin forests {{blank-1}} groves kehlaate hain, aur Rajasthan ke {{blank-2}} blackbuck ko apni community ke hisse ke roop mein bachaate hain.
     answers:
       - id: blank-1
         accepted: ["sacred", "Sacred"]

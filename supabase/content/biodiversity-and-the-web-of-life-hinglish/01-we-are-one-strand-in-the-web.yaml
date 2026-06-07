@@ -177,7 +177,7 @@ turns:
     xp: 10
     prompt: "Do key ideas yaad kar lo."
     template: |
-      Forests ecological system ke ___ producers hain, aur biodiversity ___ ke ek network se judi rehti hai.
+      Forests ecological system ke {{blank-1}} producers hain, aur biodiversity {{blank-2}} ke ek network se judi rehti hai.
     answers:
       - id: blank-1
         accepted: ["primary", "Primary"]

@@ -133,7 +133,7 @@ turns:
     xp: 10
     prompt: "Lock in the three thrusts of the 1972 Act."
     template: |
-      The 1972 Act protected wildlife by banning ___, giving legal protection to their ___, and restricting ___ in wildlife.
+      The 1972 Act protected wildlife by banning {{blank-1}}, giving legal protection to their {{blank-2}}, and restricting {{blank-3}} in wildlife.
     answers:
       - id: blank-1
         accepted: ["hunting", "Hunting"]

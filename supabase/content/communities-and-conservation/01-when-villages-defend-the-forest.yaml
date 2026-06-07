@@ -141,7 +141,7 @@ turns:
     xp: 10
     prompt: "Lock in two community actions."
     template: |
-      At Sariska, villagers stopped mining by citing the ___ Act; in the Chipko movement, people ___ the trees to save them.
+      At Sariska, villagers stopped mining by citing the {{blank-1}} Act; in the Chipko movement, people {{blank-2}} the trees to save them.
     answers:
       - id: blank-1
         accepted: ["Wildlife Protection", "wildlife protection", "Wildlife (Protection)"]

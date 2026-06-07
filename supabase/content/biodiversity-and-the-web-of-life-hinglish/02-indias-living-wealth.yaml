@@ -153,7 +153,7 @@ turns:
     xp: 10
     prompt: "Terms yaad kar lo."
     template: |
-      India duniya mein ___ (paudhon ka jeevan) aur ___ (jaanwaron ka jeevan) mein sabse rich mein se hai.
+      India duniya mein {{blank-1}} (paudhon ka jeevan) aur {{blank-2}} (jaanwaron ka jeevan) mein sabse rich mein se hai.
     answers:
       - id: blank-1
         accepted: ["flora", "Flora"]

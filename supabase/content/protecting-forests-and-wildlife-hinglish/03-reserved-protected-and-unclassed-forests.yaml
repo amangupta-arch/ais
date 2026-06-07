@@ -143,7 +143,7 @@ turns:
     xp: 10
     prompt: "Structure yaad kar lo."
     template: |
-      Reserved forests forest land ka ___ se zyaada banate hain, aur reserved plus protected forests milke ___ forest estates kehlaate hain.
+      Reserved forests forest land ka {{blank-1}} se zyaada banate hain, aur reserved plus protected forests milke {{blank-2}} forest estates kehlaate hain.
     answers:
       - id: blank-1
         accepted: ["half", "Half", "50%", "aadhe", "aadha"]

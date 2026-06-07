@@ -177,7 +177,7 @@ turns:
     xp: 10
     prompt: "Lock in the two key ideas."
     template: |
-      Forests are the ___ producers of the ecological system, and biodiversity is held together by a network of ___.
+      Forests are the {{blank-1}} producers of the ecological system, and biodiversity is held together by a network of {{blank-2}}.
     answers:
       - id: blank-1
         accepted: ["primary", "Primary"]

@@ -133,7 +133,7 @@ turns:
     xp: 10
     prompt: "1972 Act ke teen thrust yaad kar lo."
     template: |
-      1972 Act ne ___ ko ban kiya, jaanwaron ke ___ ko legal protection di, aur wildlife ke ___ ko restrict kiya.
+      1972 Act ne {{blank-1}} ko ban kiya, jaanwaron ke {{blank-2}} ko legal protection di, aur wildlife ke {{blank-3}} ko restrict kiya.
     answers:
       - id: blank-1
         accepted: ["hunting", "Hunting", "shikaar"]

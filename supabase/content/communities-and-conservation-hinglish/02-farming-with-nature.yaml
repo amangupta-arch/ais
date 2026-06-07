@@ -148,7 +148,7 @@ turns:
     xp: 10
     prompt: "JFM kahan shuru hua, yaad kar lo."
     template: |
-      Joint Forest Management formally ___ mein shuru hua, jab ___ ne sabse pehla resolution paas kiya.
+      Joint Forest Management formally {{blank-1}} mein shuru hua, jab {{blank-2}} ne sabse pehla resolution paas kiya.
     answers:
       - id: blank-1
         accepted: ["1988"]

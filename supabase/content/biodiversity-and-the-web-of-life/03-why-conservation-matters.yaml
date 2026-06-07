@@ -141,7 +141,7 @@ turns:
     xp: 10
     prompt: "Lock in the two reasons."
     template: |
-      Conservation protects our life-support systems (air, water, soil) and the ___ diversity we need to breed better crops; our ___ depend on aquatic biodiversity.
+      Conservation protects our life-support systems (air, water, soil) and the {{blank-1}} diversity we need to breed better crops; our {{blank-2}} depend on aquatic biodiversity.
     answers:
       - id: blank-1
         accepted: ["genetic", "Genetic"]

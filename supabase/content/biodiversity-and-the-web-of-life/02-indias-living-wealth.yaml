@@ -153,7 +153,7 @@ turns:
     xp: 10
     prompt: "Lock in the terms."
     template: |
-      India is among the world's richest in ___ (plant life) and ___ (animal life).
+      India is among the world's richest in {{blank-1}} (plant life) and {{blank-2}} (animal life).
     answers:
       - id: blank-1
         accepted: ["flora", "Flora"]

@@ -141,7 +141,7 @@ turns:
     xp: 10
     prompt: "Do community actions yaad kar lo."
     template: |
-      Sariska mein, gaon waalon ne ___ Act ka hawaala dekar mining roki; Chipko movement mein, log pedon se ___ taaki unhe bacha sakein.
+      Sariska mein, gaon waalon ne {{blank-1}} Act ka hawaala dekar mining roki; Chipko movement mein, log pedon se {{blank-2}} taaki unhe bacha sakein.
     answers:
       - id: blank-1
         accepted: ["Wildlife Protection", "wildlife protection", "Wildlife (Protection)"]

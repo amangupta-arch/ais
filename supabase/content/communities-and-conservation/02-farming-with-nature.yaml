@@ -148,7 +148,7 @@ turns:
     xp: 10
     prompt: "Lock in where JFM began."
     template: |
-      Joint Forest Management formally began in ___, when ___ passed the first resolution.
+      Joint Forest Management formally began in {{blank-1}}, when {{blank-2}} passed the first resolution.
     answers:
       - id: blank-1
         accepted: ["1988"]

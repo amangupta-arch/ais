@@ -151,7 +151,7 @@ turns:
     xp: 10
     prompt: "Lock in the key facts."
     template: |
-      Project Tiger was launched in ___, and India and Nepal together shelter about ___ of the world's surviving tigers.
+      Project Tiger was launched in {{blank-1}}, and India and Nepal together shelter about {{blank-2}} of the world's surviving tigers.
     answers:
       - id: blank-1
         accepted: ["1973"]

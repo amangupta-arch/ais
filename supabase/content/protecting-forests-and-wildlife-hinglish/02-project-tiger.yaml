@@ -151,7 +151,7 @@ turns:
     xp: 10
     prompt: "Key facts yaad kar lo."
     template: |
-      Project Tiger ___ mein launch hua, aur India aur Nepal milke duniya ke bache tigers ka lagbhag ___ rakhte hain.
+      Project Tiger {{blank-1}} mein launch hua, aur India aur Nepal milke duniya ke bache tigers ka lagbhag {{blank-2}} rakhte hain.
     answers:
       - id: blank-1
         accepted: ["1973"]

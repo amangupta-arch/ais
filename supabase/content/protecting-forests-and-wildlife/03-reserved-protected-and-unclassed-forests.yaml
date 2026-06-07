@@ -143,7 +143,7 @@ turns:
     xp: 10
     prompt: "Lock in the structure."
     template: |
-      Reserved forests make up over ___ of forest land, and reserved plus protected forests together form ___ forest estates.
+      Reserved forests make up over {{blank-1}} of forest land, and reserved plus protected forests together form {{blank-2}} forest estates.
     answers:
       - id: blank-1
         accepted: ["half", "Half", "50%"]

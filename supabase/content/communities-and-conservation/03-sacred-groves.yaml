@@ -146,7 +146,7 @@ turns:
     xp: 10
     prompt: "Lock in the closing terms."
     template: |
-      Virgin forests preserved through nature worship are called ___ groves, and the ___ of Rajasthan protect the blackbuck as part of their community.
+      Virgin forests preserved through nature worship are called {{blank-1}} groves, and the {{blank-2}} of Rajasthan protect the blackbuck as part of their community.
     answers:
       - id: blank-1
         accepted: ["sacred", "Sacred"]

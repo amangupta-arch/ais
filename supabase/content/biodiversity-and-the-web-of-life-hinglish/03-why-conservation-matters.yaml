@@ -141,7 +141,7 @@ turns:
     xp: 10
     prompt: "Do wajahein yaad kar lo."
     template: |
-      Conservation hamare life-support systems (hawa, paani, mitti) aur woh ___ diversity bachata hai jo behtar crops breed karne ke liye chahiye; hamari ___ aquatic biodiversity pe depend karti hain.
+      Conservation hamare life-support systems (hawa, paani, mitti) aur woh {{blank-1}} diversity bachata hai jo behtar crops breed karne ke liye chahiye; hamari {{blank-2}} aquatic biodiversity pe depend karti hain.
     answers:
       - id: blank-1
         accepted: ["genetic", "Genetic"]
