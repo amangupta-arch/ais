@@ -1,0 +1,165 @@
+title: "Conservation Kyun Zaroori Hai"
+subtitle: "Ek aisi species ko bachane ki imaandaar, swaarthi wajahein jise tum kabhi miloge nahi"
+estimated_minutes: 11
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Khulke poochne laayak ek sawaal: ek aise mendhak ko bachane pe paisa kyun kharch karein jise tum kabhi dekhoge bhi nahi?
+
+      Imaandaar jawaab *tumhare* baare mein nikalta hai, mendhak ke nahi. Conservation jaanwaron ke liye daan nahi hai. Dikhaata hoon kyun.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Pehle, urgency. Wildlife populations aur forests **tezi se ghat** rahe hain — isiliye conservation *zaroori* ho gaya hai.
+
+      Par "nature bachao" tab tak ek slogan hai jab tak tum *kyun* concrete terms mein na keh sako. Teen thos wajahein hain. Koi bhi cuteness ke baare mein nahi.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Wajah 1 — hamare life-support systems.**
+
+      Conservation us ecological diversity ko bachata hai jo hamari **hawa**, **paani**, aur **mitti** ko chalti rakhti hai. Web woh machinery hai jo planet ko rehne laayak banati hai. Use todo, aur jo machine tumhari hawa aur paani saaf karti hai woh bhi toot jaati hai.
+
+  - type: svg_graphic
+    xp: 0
+    title: "BIODIVERSITY KYA SAMBHAALTI HAI"
+    caption: "Saaf hawa, paani, mitti, aur jo khaana hum ugate hain — sab biodiversity pe, uski neenv pe tike hain."
+    svg: |
+      <svg viewBox="0 0 360 170" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="20" y="44" width="60" height="78" rx="4" fill="#dbeafe" stroke="#0f172a" stroke-width="1.2"/>
+        <text x="50" y="88" text-anchor="middle" font-size="10" font-weight="bold" fill="#1e3a8a">AIR</text>
+        <rect x="106" y="44" width="60" height="78" rx="4" fill="#cffafe" stroke="#0f172a" stroke-width="1.2"/>
+        <text x="136" y="88" text-anchor="middle" font-size="10" font-weight="bold" fill="#0e7490">WATER</text>
+        <rect x="192" y="44" width="60" height="78" rx="4" fill="#fde68a" stroke="#0f172a" stroke-width="1.2"/>
+        <text x="222" y="88" text-anchor="middle" font-size="10" font-weight="bold" fill="#92400e">SOIL</text>
+        <rect x="278" y="44" width="62" height="78" rx="4" fill="#dcfce7" stroke="#0f172a" stroke-width="1.2"/>
+        <text x="309" y="84" text-anchor="middle" font-size="10" font-weight="bold" fill="#166534">FOOD</text>
+        <text x="309" y="98" text-anchor="middle" font-size="7" fill="#166534">+ crops</text>
+        <rect x="20" y="130" width="320" height="28" rx="4" fill="#16a34a" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="180" y="148" text-anchor="middle" font-size="12" font-weight="bold" fill="#ffffff">BIODIVERSITY</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Wajah 2 — genetic diversity: future ka seed bank.**
+
+      Conservation paudhon aur jaanwaron ki genetic variety bachata hai — *behtar growth aur breeding* ka kaccha maal. Kisi crop ka har wild rishtedaar ek spare gene hai jiski humein shayad bahut zaroorat pade jab koi nayi bimaari ya sookha aaye.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Concrete banaate hain.
+
+      **Agriculture** mein, hum *abhi bhi* **traditional crop varieties** pe depend karte hain — unke genes mein woh resilience hota hai jo modern hybrids mein aksar nahi. Aur **fisheries** poori tarah **aquatic biodiversity** ko zinda rakhne pe depend karti hain.
+
+      Variety kho do, aur fasal kho do — zameen pe aur samundar mein.
+
+  - type: html_animation
+    xp: 0
+    title: "VARIETY KYUN INSURANCE HAI"
+    caption: "Jab ek crop variety fail hoti hai, doosri bach jaati hai — yahi genetic diversity humein khareed ke deti hai."
+    html: |
+      <div style="background:#f8fafc;padding:18px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoFailSeed { 0%,30%{fill:#16a34a} 60%,100%{fill:#9ca3af} }
+          .geo-fail { animation: geoFailSeed 4s ease-in-out infinite alternate; }
+        </style>
+        <svg viewBox="0 0 300 96" style="max-width:320px;width:100%" font-family="sans-serif">
+          <circle cx="50" cy="38" r="16" class="geo-fail" stroke="#0f172a" stroke-width="1"/>
+          <circle cx="110" cy="38" r="16" fill="#16a34a" stroke="#0f172a" stroke-width="1"/>
+          <circle cx="170" cy="38" r="16" fill="#16a34a" stroke="#0f172a" stroke-width="1"/>
+          <circle cx="230" cy="38" r="16" fill="#16a34a" stroke="#0f172a" stroke-width="1"/>
+          <text x="150" y="80" text-anchor="middle" font-size="8" fill="#475569">one variety fails — the others still feed us</text>
+        </svg>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Sab jod ke. *Agar biodiversity chali jaaye toh kya tootega?*
+
+      Teen cheezein ek saath fail hoti hain: hamari hawa, paani, aur mitti ke cleaners; woh gene bank jis pe hamare khet chupchaap depend karte hain; aur samundar ki machhliyan.
+
+      Toh conservation sentimental nahi hai. Yeh **self-preservation** hai — humare liye.
+
+  - type: mcq
+    xp: 10
+    question: "Insaano ke liye biodiversity bachana kyun maayne rakhta hai — sabse achha kya pakadta hai?"
+    options:
+      - id: a
+        text: "Mukhya roop se taaki humare paas dekhne aur ghoomne ke liye khoobsurat jaanwar hon."
+        is_correct: false
+        rationale: "Khoobsurati aur tourism achhe hain, par chapter ki wajahein kahin zyaada basic hain — survival, scenery nahi."
+      - id: b
+        text: "Yeh hamare life-support systems (hawa, paani, mitti) aur woh genetic diversity bachata hai jis pe hamari kheti aur fisheries depend karti hain."
+        is_correct: true
+        rationale: "Bilkul. Conservation ecological *aur* genetic diversity dono bachata hai — woh systems aur gene banks jin pe hum jeete hain."
+      - id: c
+        text: "Kyunki kaanoon kehta hai, aur koi gehri wajah nahi."
+        is_correct: false
+        rationale: "Kaanoon in *gehri wajahon* ki wajah se hi maujood hai — life-support systems aur genetic diversity."
+      - id: d
+        text: "Sirf kuch mashhoor jaanwaron jaise tiger ko bachane ke liye."
+        is_correct: false
+        rationale: "Aaj ki conservation poori biodiversity pe focus karti hai, sirf kuch species pe nahi — aur wajahein kisi ek jaanwar se kahin aage jaati hain."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Conservation kya bachata hai, use uss se match karo jo humare liye maayne rakhti hai."
+    left:
+      - { id: l1, label: "Ecological diversity" }
+      - { id: l2, label: "Genetic diversity" }
+      - { id: l3, label: "Traditional crop varieties" }
+      - { id: l4, label: "Aquatic biodiversity" }
+    right:
+      - { id: r1, label: "Hamari hawa, paani, aur mitti ko chalti rakhti hai" }
+      - { id: r2, label: "Behtar species breed karne ke liye backup genes" }
+      - { id: r3, label: "Jis pe hamari agriculture abhi bhi tiki hai" }
+      - { id: r4, label: "Jis pe hamari fisheries depend karti hain" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Aaj khaaya koi ek khaana chuno — chawal, machhli, ek phal, dal.
+
+      Paper pe use trace karo: kaunse jeev aur kaunsi *variety* ya *species* ne use mumkin banaya? Agar uski biodiversity gayab ho jaaye toh us khaane ka kya hoga? Neeche khaana aur apna ek-line jawaab type karo.
+    placeholder: "Mera ___ ___ pe depend karta hai; uske bina..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Do wajahein yaad kar lo."
+    template: |
+      Conservation hamare life-support systems (hawa, paani, mitti) aur woh ___ diversity bachata hai jo behtar crops breed karne ke liye chahiye; hamari ___ aquatic biodiversity pe depend karti hain.
+    answers:
+      - id: blank-1
+        accepted: ["genetic", "Genetic"]
+      - id: blank-2
+        accepted: ["fisheries", "Fisheries", "fishery"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Conservation "self-preservation hai, daan nahi." Kya ise is tarah dekhna tumhe ise zyaada seriously lene pe majboor karta hai — ya kuch kho jaata hai jab hum nature ko sirf uske liye value karte hain jo woh *humare liye* karta hai?
+
+      Koi sahi jawaab nahi.
+    placeholder: "Self-preservation ki tarah dekhne se, main..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Tum thos wajahein de sakte ho ki biodiversity kyun bachane laayak hai."
+    summary: |
+      Conservation hamare life-support systems — hawa, paani, mitti — aur woh genetic diversity bachata hai jis pe hamare khet aur fisheries chupchaap depend karte hain. Yeh jaanwaron ke liye daan nahi; yeh humare liye suraksha hai.
+
+      Toh hum jaante hain *kyun*. Ab mushkil sawaal: ek poora desh apne forests aur wildlife ko *kaise* bachata hai? Yeh shuru hua, 1972 mein, ek hi taaqatwar kaanoon se. Yahin se agla course shuru hota hai.

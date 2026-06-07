@@ -1,0 +1,177 @@
+title: "India ki Living Wealth"
+subtitle: "Jeevan ki ek library jahan zyaadatar kitaabein abhi padhi hi nahi gayin"
+estimated_minutes: 11
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      India ki wildlife ko ek vishaal **library** ki tarah socho.
+
+      Ab socho ki humne usme se sirf *ek tihaai* kitaabein padhi hain. Baaki abhi bhi shelves pe hain — bina catalogue, kuch kabhi kholi hi nahi gayi.
+
+      Yeh metaphor ka khinchaav nahi. Yeh lagbhag sach hai.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      India biological diversity ke maamle mein duniya ke **sabse rich deshon** mein se ek hai — **flora** (paudhon ka jeevan) aur **fauna** (jaanwaron ka jeevan) ka ek vishaal khazaana.
+
+      Himalaya se lekar coasts tak aur registan tak, planet pe kam jagahein itni variety samete hain.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ab sabse hairaan karne waali baat.
+
+      Jo species humne sach mein *naam diye aur padhe* hain, woh shayad jo asal mein yahan hai uska ek chhota hissa hai. Scientists ka maanna hai ki asli number **do ya teen guna** zyaada ho sakta hai — abhi bhi discover hone ka wait karta hua.
+
+      India ki living library ka zyaadatar hissa, literally, *unread* hai.
+
+  - type: svg_graphic
+    xp: 0
+    title: "INDIA KI LIBRARY OF LIFE"
+    caption: "Jo species hum jaante hain (baayein) woh shayad sirf ek tihaai — baaki abhi bhi undiscovered."
+    svg: |
+      <svg viewBox="0 0 360 160" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="14" y="20" width="332" height="104" rx="4" fill="#f8fafc" stroke="#0f172a" stroke-width="1.5"/>
+        <rect x="26" y="32" width="14" height="80" fill="#16a34a"/>
+        <rect x="44" y="32" width="14" height="80" fill="#0891b2"/>
+        <rect x="62" y="32" width="14" height="80" fill="#ca8a04"/>
+        <rect x="80" y="32" width="14" height="80" fill="#9333ea"/>
+        <rect x="98" y="32" width="14" height="80" fill="#dc2626"/>
+        <line x1="120" y1="24" x2="120" y2="120" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <rect x="132" y="40" width="12" height="72" fill="#e2e8f0" stroke="#cbd5e1"/>
+        <rect x="150" y="40" width="12" height="72" fill="#e2e8f0" stroke="#cbd5e1"/>
+        <rect x="168" y="40" width="12" height="72" fill="#e2e8f0" stroke="#cbd5e1"/>
+        <rect x="186" y="40" width="12" height="72" fill="#e2e8f0" stroke="#cbd5e1"/>
+        <rect x="204" y="40" width="12" height="72" fill="#e2e8f0" stroke="#cbd5e1"/>
+        <rect x="222" y="40" width="12" height="72" fill="#e2e8f0" stroke="#cbd5e1"/>
+        <rect x="240" y="40" width="12" height="72" fill="#e2e8f0" stroke="#cbd5e1"/>
+        <rect x="258" y="40" width="12" height="72" fill="#e2e8f0" stroke="#cbd5e1"/>
+        <rect x="276" y="40" width="12" height="72" fill="#e2e8f0" stroke="#cbd5e1"/>
+        <rect x="294" y="40" width="12" height="72" fill="#e2e8f0" stroke="#cbd5e1"/>
+        <text x="300" y="80" text-anchor="middle" font-size="22" fill="#94a3b8">?</text>
+        <text x="68" y="140" text-anchor="middle" font-size="8" fill="#166534">known species (~1/3)</text>
+        <text x="225" y="140" text-anchor="middle" font-size="8" fill="#64748b">still to be discovered (~2/3)</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Aur yeh wealth kisi door ke jungle mein nahi hai. Yeh tumhare *charon taraf rozmarra zindagi* mein buni hui hai — plate ka khaana, jo dawaiyan tum lete ho, ghar ki lakdi, tyohaar, geet.
+
+      Hum isse itne ghire hue hain ki use *granted maan lete hain* — hawa ki tarah.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      India bhar mein, folk songs aur kahaniyan logon aur nature ke beech ek *harmonious* rishte ka jashn manaati hain.
+
+      Ek Lepcha folk song apni dhun *"jharno, nadiyon, pahaadon, jungalon, keedon aur jaanwaron se"* ikattha karti hai. In paramparaon mein nature scenery nahi hai — woh parivaar hai.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Par haal hi mein, yeh living wealth **bade stress** mein hai.
+
+      Mukhya wajah sunne mein bhaari hai: hamari apni environment ke prati *insensitivity* (besamajhi). Hum jo chaahein lete hain aur us web ko bhool jaate hain jo keemat chukata hai.
+
+      *Agar hum ise ignore karte rahe toh kya tootega?* Wahi library jise hum mushkil se padhna shuru kar paaye.
+
+  - type: html_animation
+    xp: 0
+    title: "GRANTED MAANA, STRESS MEIN"
+    caption: "Jis variety ko hum ignore karte hain woh chupchaap kho rahi hai — patte murjhaate hain, rang udte hain."
+    html: |
+      <div style="background:#f8fafc;padding:20px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoWilt { 0%,20%{fill:#16a34a;opacity:1} 80%,100%{fill:#a1887f;opacity:0.5} }
+          .geo-leaf { animation: geoWilt 4s ease-in-out infinite alternate; }
+        </style>
+        <svg viewBox="0 0 300 90" style="max-width:320px;width:100%" font-family="sans-serif">
+          <g class="geo-leaf">
+            <ellipse cx="50" cy="45" rx="13" ry="22"/>
+            <ellipse cx="110" cy="45" rx="13" ry="22"/>
+            <ellipse cx="170" cy="45" rx="13" ry="22"/>
+            <ellipse cx="230" cy="45" rx="13" ry="22"/>
+          </g>
+        </svg>
+      </div>
+
+  - type: mcq
+    xp: 10
+    question: "Jab scientists kehte hain ki India ki biodiversity jo hum jaante hain uski 'do ya teen guna' ho sakti hai, unka kya matlab hai?"
+    options:
+      - id: a
+        text: "India ki wildlife har saal do-teen guna badi ho rahi hai."
+        is_correct: false
+        rationale: "Yeh populations ke *badhne* ke baare mein nahi. Yeh us baare mein hai ki kitni species hain jinhe humne abhi pehchaana nahi."
+      - id: b
+        text: "Yahan shayad usse kahin zyaada species maujood hain jitni ab tak discover aur naam di gayi hain."
+        is_correct: true
+        rationale: "Sahi — jo species hum jaante hain woh shayad ek chhota hissa hai; asli number do ya teen guna ho sakta hai, abhi bhi undiscovered."
+      - id: c
+        text: "Indian species kahin aur ki species se do-teen guna badi hoti hain."
+        is_correct: false
+        rationale: "Size se koi lena-dena nahi. Yeh undiscovered species ki *sankhya* ke baare mein hai."
+      - id: d
+        text: "Har saal do-teen species extinct ho jaati hain."
+        is_correct: false
+        rationale: "Woh ek alag (dukhad) baat hai. 'Do ya teen guna' figure undiscovered diversity ke baare mein hai."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Har term ko uske matlab se match karo."
+    left:
+      - { id: l1, label: "Flora" }
+      - { id: l2, label: "Fauna" }
+      - { id: l3, label: "'Do ya teen guna'" }
+      - { id: l4, label: "Environment ke prati insensitivity" }
+    right:
+      - { id: r1, label: "Paudhon ka jeevan" }
+      - { id: r2, label: "Jaanwaron ka jeevan" }
+      - { id: r3, label: "Species jo abhi discover honi hain" }
+      - { id: r4, label: "Biodiversity ke stress mein hone ki mukhya wajah" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Apne region se koi ek **kahani, geet, tyohaar, ya rivaaj** dhundo jo logon aur nature ke beech aadar bhara ya harmonious rishta dikhata ho (ek pavitra ped, ek surakshit jaanwar, ek fasal ka tyohaar, ek lok-katha).
+
+      Paper pe use likho. Phir neeche uska naam aur woh paudha ya jaanwar type karo jise woh maan deta hai.
+    placeholder: "Mere region mein, ___ ___ ko maan deta hai."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Terms yaad kar lo."
+    template: |
+      India duniya mein ___ (paudhon ka jeevan) aur ___ (jaanwaron ka jeevan) mein sabse rich mein se hai.
+    answers:
+      - id: blank-1
+        accepted: ["flora", "Flora"]
+      - id: blank-2
+        accepted: ["fauna", "Fauna"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      India ki zyaadatar species abhi bhi undiscovered hain — phir bhi kayi shayad humare unhe jaanne se pehle hi khatre mein hon. Yeh sochna kaisa lagta hai ki koi species kisi ke use naam dene se pehle hi gayab ho sakti hai?
+
+      Koi sahi jawaab nahi.
+    placeholder: "Yeh khayal ki..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Tum samajhte ho India kitni living wealth rakhta hai — aur woh khatre mein hai."
+    summary: |
+      India planet ki ek sabse rich library of life rakhta hai — flora aur fauna jo hamare khaane, aastha, aur geeton mein buni hai, jaani hui se kahin zyaada species abhi bhi undiscovered. Aur woh hamari apni laaparwaahi se asli stress mein hai.
+
+      Jo seedha sawaal yeh course laata hai: *kyun* exactly humein effort aur paisa kharch karke ise bachana chahiye? Agar biodiversity chali jaaye toh hum asal mein kya khote hain? Yahi agli lesson hai.

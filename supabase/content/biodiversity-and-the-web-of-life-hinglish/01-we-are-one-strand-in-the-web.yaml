@@ -1,0 +1,201 @@
+title: "Hum Web ka Ek Dhaaga Hain"
+subtitle: "Tumhari har saans doosre jeevon ka ehsaan kyun hai"
+estimated_minutes: 11
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Yeh try karo: aaj tumne koi ek aisa kaam batao jo kisi doosre jeev pe depend nahi karta.
+
+      Jo hawa tumne li? Paudhon ne banayi. Jo paani piya? Jeevon ke ek poore web ne saaf kiya. Tumhara breakfast? Mitti, microbes, aur dhoop ne saath milke banaya.
+
+      Hum kabhi gaur nahi karte. Aaj, gaur karte hain.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Hum is planet ko *millions* doosre jeevon ke saath share karte hain — **micro-organisms** aur **bacteria** se lekar, **lichens**, **banyan** ke ped, **haathi**, aur **blue whales** tak.
+
+      Yeh sab milke banate hain planet ki immense **biodiversity** — jeevan ki sheer variety.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ab sabse vinamr karne waali baat.
+
+      Hum insaan, *har* doosre jeev ke saath, ek hi **web** banate hain — ek complex *ecological system*. Hum uske upar baith ke neeche nahi dekh rahe.
+
+      Hum uska **ek dhaaga** hain. Aur kisi bhi dhaage ki tarah, hum jeene ke liye poore web pe depend karte hain.
+
+  - type: svg_graphic
+    xp: 0
+    title: "JEEVAN KA WEB"
+    caption: "Sun, forests, microbes, animals, humans — sab ek doosre se gunde. Tum ek node ho, top nahi."
+    svg: |
+      <svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <line x1="180" y1="30" x2="70" y2="92" stroke="#cbd5e1" stroke-width="1.5"/>
+        <line x1="180" y1="30" x2="290" y2="92" stroke="#cbd5e1" stroke-width="1.5"/>
+        <line x1="70" y1="96" x2="290" y2="96" stroke="#cbd5e1" stroke-width="1.5"/>
+        <line x1="70" y1="96" x2="120" y2="166" stroke="#cbd5e1" stroke-width="1.5"/>
+        <line x1="70" y1="96" x2="250" y2="166" stroke="#cbd5e1" stroke-width="1.5"/>
+        <line x1="290" y1="96" x2="120" y2="166" stroke="#cbd5e1" stroke-width="1.5"/>
+        <line x1="290" y1="96" x2="250" y2="166" stroke="#cbd5e1" stroke-width="1.5"/>
+        <line x1="120" y1="166" x2="250" y2="166" stroke="#cbd5e1" stroke-width="1.5"/>
+        <circle cx="180" cy="28" r="17" fill="#fde68a" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="180" y="32" text-anchor="middle" font-size="8" fill="#92400e">sun</text>
+        <circle cx="70" cy="96" r="24" fill="#bbf7d0" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="70" y="93" text-anchor="middle" font-size="8" fill="#166534">forests,</text>
+        <text x="70" y="103" text-anchor="middle" font-size="8" fill="#166534">plants</text>
+        <circle cx="290" cy="96" r="24" fill="#99f6e4" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="290" y="93" text-anchor="middle" font-size="8" fill="#115e59">microbes,</text>
+        <text x="290" y="103" text-anchor="middle" font-size="8" fill="#115e59">bacteria</text>
+        <circle cx="120" cy="168" r="22" fill="#fed7aa" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="120" y="171" text-anchor="middle" font-size="8" fill="#9a3412">animals</text>
+        <circle cx="250" cy="168" r="22" fill="#bfdbfe" stroke="#0f172a" stroke-width="2.5"/>
+        <text x="250" y="165" text-anchor="middle" font-size="8" font-weight="bold" fill="#1e3a8a">humans</text>
+        <text x="250" y="176" text-anchor="middle" font-size="7" fill="#1e3a8a">(you)</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Hum web pe kitna *literally* depend karte hain? Poori tarah.
+
+      Paudhe, jaanwar, aur micro-organisms un cheezon ko **dobaara banate** hain jinke bina hum nahi jee sakte:
+
+      - jo **hawa** hum saans mein lete hain
+      - jo **paani** hum peete hain
+      - jo **mitti** hamara khaana ugaati hai
+
+      Inhe hata do, aur hum zyaada der nahi tikte.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Aur poore web ke *base* pe baithte hain **forests**.
+
+      Yeh **primary producers** hain — woh jeev jo dhoop ko khaane mein badalte hain. Baaki sab woh khaana khaate hain, seedhe ya ghuma ke. Forest chupchaap poore web ko khilaata hai.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Toh **biodiversity** hai kya, theek-theek?
+
+      Yeh wildlife aur cultivated species ki immense richness hai — *form aur function mein diverse, par interdependencies ke ek network se aapas mein kasi hui.*
+
+      Us aakhri shabd ko pakdo: **interdependencies**. Web mein, koi cheez akeli nahi khadi.
+
+  - type: html_animation
+    xp: 0
+    title: "EK DHAAGA KHEENCHO"
+    caption: "Web ka ek dhaaga kheencho aur poora web kaanp uthta hai — humare tak."
+    html: |
+      <div style="background:#f8fafc;padding:18px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoShake { 0%,100%{transform:translate(0,0)} 25%{transform:translate(-3px,2px)} 50%{transform:translate(3px,-2px)} 75%{transform:translate(-2px,-2px)} }
+          @keyframes geoPulse { 0%,100%{fill:#fca5a5} 50%{fill:#dc2626} }
+          .geo-web { animation: geoShake 1.6s ease-in-out infinite; transform-origin:center; }
+          .geo-pulled { animation: geoPulse 1.6s ease-in-out infinite; }
+        </style>
+        <svg viewBox="0 0 300 150" style="max-width:320px;width:100%" font-family="sans-serif">
+          <g class="geo-web">
+            <line x1="150" y1="30" x2="60" y2="90" stroke="#94a3b8" stroke-width="1.5"/>
+            <line x1="150" y1="30" x2="240" y2="90" stroke="#94a3b8" stroke-width="1.5"/>
+            <line x1="60" y1="90" x2="240" y2="90" stroke="#94a3b8" stroke-width="1.5"/>
+            <line x1="60" y1="90" x2="150" y2="125" stroke="#94a3b8" stroke-width="1.5"/>
+            <line x1="240" y1="90" x2="150" y2="125" stroke="#94a3b8" stroke-width="1.5"/>
+            <circle cx="150" cy="30" r="10" fill="#86efac" stroke="#0f172a" stroke-width="1"/>
+            <circle cx="60" cy="90" r="10" fill="#93c5fd" stroke="#0f172a" stroke-width="1"/>
+            <circle cx="240" cy="90" r="10" fill="#fdba74" stroke="#0f172a" stroke-width="1"/>
+            <circle cx="150" cy="125" r="11" class="geo-pulled" stroke="#0f172a" stroke-width="1.5"/>
+          </g>
+          <text x="150" y="147" text-anchor="middle" font-size="8" fill="#991b1b">one strand pulled — the whole web shakes</text>
+        </svg>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      *Agar ek dhaaga toot jaaye toh kya tootega?*
+
+      Bees nikaal do, ya mitti ke bacteria, ya ek poora forest — aur jhatka web ke *aar-paar* daudta hai — dhaagon ke upar, humare tak.
+
+      Isiliye koi extinction kabhi sach mein "chhoti" nahi hoti. Web har nuksaan mehsoos karta hai.
+
+  - type: mcq
+    xp: 10
+    question: "Chapter forests ko ecological system ka 'primary producers' kyun kehta hai?"
+    options:
+      - id: a
+        text: "Kyunki woh insaani use ke liye sabse zyaada timber paida karte hain."
+        is_correct: false
+        rationale: "Timber forests ka ek human *use* hai, ecology mein 'primary producer' kehlaane ki wajah nahi."
+      - id: b
+        text: "Kyunki woh dhoop ko khaane mein badalte hain jis pe baaki har jeev depend karta hai, seedhe ya ghuma ke."
+        is_correct: true
+        rationale: "Bilkul. Primary producers web ke base pe khaana banate hain — baaki sab aage chal ke usi pe palte hain."
+      - id: c
+        text: "Kyunki insaano ne unme se zyaadatar pehle lagaye."
+        is_correct: false
+        rationale: "Forests zyaadatar insaan-made nahi hote, aur yeh 'primary producer' ke matlab se alag baat hai."
+      - id: d
+        text: "Kyunki woh Earth ke sabse puraane jeev hain."
+        is_correct: false
+        rationale: "Umar point nahi hai. 'Primary producer' ka matlab hai food web ke base pe dhoop se khaana banana."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Web ke har hisse ko uske role se match karo."
+    left:
+      - { id: l1, label: "Forests aur plants" }
+      - { id: l2, label: "Micro-organisms aur bacteria" }
+      - { id: l3, label: "Poora web milke" }
+      - { id: l4, label: "Insaan" }
+    right:
+      - { id: r1, label: "Primary producers — dhoop ko khaane mein badalte hain" }
+      - { id: r2, label: "Saaf mitti, hawa, aur paani dobaara banane mein madad" }
+      - { id: r3, label: "Biodiversity — interdependencies se judi variety" }
+      - { id: r4, label: "Ek depend karne waala dhaaga, top nahi" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Pichhle ek ghante mein tumne jo teen cheezein use kii — khaana, paani, paper, koi lakdi ki cheez, ya kamre ki hawa.
+
+      Paper pe har ek ko web ke us *jeev* tak trace karo jisne use mumkin banaya. Phir neeche unme se ek aur uska living source type karo.
+    placeholder: "Jo ___ maine use kiya woh web ke ___ se aaya."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Do key ideas yaad kar lo."
+    template: |
+      Forests ecological system ke ___ producers hain, aur biodiversity ___ ke ek network se judi rehti hai.
+    answers:
+      - id: blank-1
+        accepted: ["primary", "Primary"]
+      - id: blank-2
+        accepted: ["interdependencies", "interdependence", "Interdependencies"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      "Hum web ke ek dhaage hain, top nahi." Kya yeh tumhari nazar mein nature mein apni jagah badalta hai — ya thoda uncomfortable lagta hai? Imaandaar raho.
+
+      Koi sahi jawaab nahi.
+    placeholder: "Khud ko ek dhaaga samajh kar..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Ab tum khud ko web of life ke andar dekhte ho, uske upar nahi."
+    summary: |
+      Planet biodiversity pe chalta hai — millions species ka ek web, interdependencies se bandha, jisme forests primary producers ban ke sabko khilaate hain. Hum ek dhaaga hain, baaki sab pe poori tarah depend.
+
+      Aur baat yeh hai: India us web ka ek sabse *rich* hissa rakhta hai. Yeh ek desh kitni living wealth uthaaye hue hai — aur woh khatre mein kyun hai? Yahi agli lesson hai.
