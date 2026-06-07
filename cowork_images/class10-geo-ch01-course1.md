@@ -63,6 +63,8 @@ There are **7 images** (4 core, 3 optional). Core first if generating a subset.
 ---
 
 ### When done
-Put the generated PNGs back so I can wire them in. Either:
-- push them to branch `content/class10-geo-ch01` (e.g. into `cowork_images/class10-geo-ch01-course1/`), **or**
-- just tell me which filenames were generated — I can add the `media` turns from the filenames alone (the bucket URL is deterministic), and only need the actual files for a visual QA pass.
+Save the generated PNGs into the Drive **subfolder**
+`cowork_images/class10-geo-ch01-course1/`, using the exact `Output file:`
+names above. I fetch them from that subfolder via the Drive connector, QA
+them, and wire the `media` turns (the in-app URL is derived from the
+filename, so names must match exactly).

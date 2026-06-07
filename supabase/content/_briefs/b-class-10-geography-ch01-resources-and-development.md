@@ -157,6 +157,14 @@ narration for these lessons is a post-load step owned outside this bundle.
 - **Content lives on branch `content/class10-geo-ch01`** (operator chose a
   dedicated content-only branch). This session pushes files there only —
   no deploy. See `*-HANDOFF.md` for the deploy sequence.
+- **Image generation runs via cowork over Google Drive** (the Drive MCP is
+  connected to the authoring session). Convention: I write one prompt file
+  per course to Drive `cowork_images/<short>-course<N>.md`; cowork
+  generates and saves PNGs into a **subfolder** `cowork_images/<short>-courseN/`
+  using the exact `Output file:` names; I fetch them from that subfolder,
+  QA, and wire `media` turns. Course 1 prompt file is live in Drive folder
+  id `1ZhuPDELnbQLjPTvbu9aCobmm8UdCEt4w`. media-turn URLs are deterministic:
+  `…/storage/v1/object/public/lesson-images/<bundle-slug>/<file>`.
 
 ## Build status / how to apply
 
