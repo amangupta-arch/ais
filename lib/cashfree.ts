@@ -227,12 +227,17 @@ export function verifyWebhookSignature(
   if (!signatureHeader || !timestampHeader) return false;
 
   // Reject replays of an old signed body before doing crypto.
-  // Cashfree sends timestamp as an epoch-seconds string. NaN /
-  // negative / non-finite values fall through to the rejection.
-  const ts = Number(timestampHeader);
-  if (!Number.isFinite(ts)) return false;
-  const skewSec = Math.abs(Date.now() / 1000 - ts);
-  if (skewSec > WEBHOOK_FRESHNESS_WINDOW_SEC) return false;
+  // Cashfree's docs show x-webhook-timestamp as a 13-digit epoch
+  // in MILLISECONDS (e.g. 1617695238078). We normalize: anything
+  // below 1e12 we treat as epoch seconds (a defensive fallback in
+  // case an older integration path is used), anything ≥ 1e12 is
+  // ms. NaN / non-positive / non-finite values fall through to
+  // rejection.
+  const tsRaw = Number(timestampHeader);
+  if (!Number.isFinite(tsRaw) || tsRaw <= 0) return false;
+  const tsMs = tsRaw < 1e12 ? tsRaw * 1000 : tsRaw;
+  const skewMs = Math.abs(Date.now() - tsMs);
+  if (skewMs > WEBHOOK_FRESHNESS_WINDOW_SEC * 1000) return false;
 
   for (const secret of candidates) {
     const expected = createHmac("sha256", secret)
