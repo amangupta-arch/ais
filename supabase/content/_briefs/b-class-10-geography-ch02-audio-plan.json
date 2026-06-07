@@ -1,0 +1,2580 @@
+{
+  "bundle": "b-class-10-geography-ch02-forest-and-wildlife-resources",
+  "generated": "2026-06-07",
+  "note": "Deterministic narration build plan (18 lessons). Per chunk: sanitised text, voice, model, sha256(voice|model|text) hash + storage_path. No audio synthesised here.",
+  "totals": {
+    "lessons": 18,
+    "chunks": 296,
+    "chars": 56530,
+    "en_chars": 27285,
+    "hinglish_chars": 29245
+  },
+  "lessons": [
+    {
+      "file": "supabase/content/biodiversity-and-the-web-of-life/01-we-are-one-strand-in-the-web.yaml",
+      "language": "en",
+      "lesson_slug": "we-are-one-strand-in-the-web",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_flash_v2_5",
+      "chunk_count": 17,
+      "total_chars": 3065,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 279,
+          "hash": "df5b3920caf9ffaa3cbab93348db5578e7cb5db473141f8f30a09dd571cdd189",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/df5b3920caf9ffaa3cbab93348db5578e7cb5db473141f8f30a09dd571cdd189.mp3",
+          "text": "Try this: name one thing you did today that didn't depend on another living thing.\n\nThe air you breathed? Plants made it. The water you drank? A whole web of organisms cleaned it. Your breakfast? Soil, microbes, and sunlight, working together.\n\nWe never notice. Today, we notice."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 245,
+          "hash": "5e792263ac702979c524eeaa431f4bfdf83bed7a317f06bdeb7ba4c1866f38fd",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/5e792263ac702979c524eeaa431f4bfdf83bed7a317f06bdeb7ba4c1866f38fd.mp3",
+          "text": "We share this planet with millions of other living beings ,  from micro-organisms and bacteria, to lichens, to banyan trees, elephants, and blue whales.\n\nAll of it together makes up the planet's immense biodiversity ,  its sheer variety of life."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 250,
+          "hash": "6da1364da42bdd6d5e9951aae482e0b8982d9b811b72c60a22b47e8f1c33a892",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6da1364da42bdd6d5e9951aae482e0b8982d9b811b72c60a22b47e8f1c33a892.mp3",
+          "text": "Now the humbling part.\n\nWe humans, along with every other living thing, form a single web ,  a complex ecological system. We are not perched above it, looking down.\n\nWe are one strand in it. And like any strand, we depend on the whole web to survive."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 95,
+          "hash": "58f6bbac6661c38f7b8c64ebf3214ccd8fa9d4b7b1fd343d6d0e6e1dcef27543",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/58f6bbac6661c38f7b8c64ebf3214ccd8fa9d4b7b1fd343d6d0e6e1dcef27543.mp3",
+          "text": "Sun, forests, microbes, animals, humans ,  all knotted together. You are one node, not the top."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 249,
+          "hash": "6161282771957f9fd51a10490d0500cb849fbfac54a5248bc59b26b6a386cb6b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6161282771957f9fd51a10490d0500cb849fbfac54a5248bc59b26b6a386cb6b.mp3",
+          "text": "How literally do we depend on the web? Completely.\n\nPlants, animals, and micro-organisms re-create the very things we can't live without:\n\n- the air we breathe\n- the water we drink\n- the soil that grows our food\n\nRemove them, and we don't last long."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 229,
+          "hash": "6602c0818d58da7d51ecdf47dffc638377492bd33084a7b5165496b79506f5e4",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6602c0818d58da7d51ecdf47dffc638377492bd33084a7b5165496b79506f5e4.mp3",
+          "text": "And at the base of the whole web sit the forests.\n\nThey are the primary producers ,  the living things that turn sunlight into food. Everything else eats that food, directly or indirectly. The forest quietly feeds the entire web."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 269,
+          "hash": "fdab96a16065423e246af7c954c8e3d57162fb9daf690765d119e1ca991bb808",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/fdab96a16065423e246af7c954c8e3d57162fb9daf690765d119e1ca991bb808.mp3",
+          "text": "So what is biodiversity, exactly?\n\nIt's the immense richness of wildlife and cultivated species ,  diverse in form and function, but closely integrated through a network of interdependencies.\n\nHold onto that last word: interdependencies. In a web, nothing stands alone."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 84,
+          "hash": "73a5d1ba953be9934bd89668117179906401833277a4115b2b84a247d6111b4d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/73a5d1ba953be9934bd89668117179906401833277a4115b2b84a247d6111b4d.mp3",
+          "text": "Tug a single strand of the web and the whole thing trembles ,  all the way up to us."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 251,
+          "hash": "eaf4edbc5f43ee29309f67300868aa61cf0c86495e2849fb9dcc148e43f95094",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/eaf4edbc5f43ee29309f67300868aa61cf0c86495e2849fb9dcc148e43f95094.mp3",
+          "text": "What would break if one strand snapped?\n\nPull out the bees, or the soil bacteria, or a single forest, and the tremor runs through the web ,  up the strands, all the way to us.\n\nThat's why no extinction is ever really \"small\". The web feels every loss."
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 83,
+          "hash": "c129f41b1ee2d66ca337e425b9db88cd4561b8248900147a5df297cbbff6e0a1",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c129f41b1ee2d66ca337e425b9db88cd4561b8248900147a5df297cbbff6e0a1.mp3",
+          "text": "Why does the chapter call forests the 'primary producers' of the ecological system?"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 39,
+          "hash": "46af75240a7a10bc63991a481ba7cbebe7d0b7c7ab09216c772ac91e88086ead",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/46af75240a7a10bc63991a481ba7cbebe7d0b7c7ab09216c772ac91e88086ead.mp3",
+          "text": "Match each part of the web to its role."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 238,
+          "hash": "3cac3a87ba1fb855f722998f68959a6a0fe2ee442481321d9668e6ef33bf8963",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/3cac3a87ba1fb855f722998f68959a6a0fe2ee442481321d9668e6ef33bf8963.mp3",
+          "text": "Pick three things you used in the last hour ,  food, water, paper, a wooden object, the air in your room.\n\nOn paper, trace each one back to a living part of the web that made it possible. Then type one of them and its living source below."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 26,
+          "hash": "35e4d6aa966679d78af0f03e5b27457de6ab1a38ab7bf77e304f2c351c4e91f1",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/35e4d6aa966679d78af0f03e5b27457de6ab1a38ab7bf77e304f2c351c4e91f1.mp3",
+          "text": "Lock in the two key ideas."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 1,
+          "chars": 114,
+          "hash": "4f6a1e3307c31dc2dd80a05f282a1925a5a6a9578db237a966678a885666ba89",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/4f6a1e3307c31dc2dd80a05f282a1925a5a6a9578db237a966678a885666ba89.mp3",
+          "text": "Forests are the blank producers of the ecological system, and biodiversity is held together by a network of blank."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 161,
+          "hash": "e6a3d1dceae45663cd325e5630533865a3bca42a4f519990a235397a554f5e12",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e6a3d1dceae45663cd325e5630533865a3bca42a4f519990a235397a554f5e12.mp3",
+          "text": "\"We are one strand in the web, not the top.\" Does that change how you picture your place in nature ,  or does it feel uncomfortable? Be honest.\n\nNo right answer."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 0,
+          "chars": 54,
+          "hash": "bb809355fda12298840920019a791d0a460863af1858a0f9438c2c85f330d52d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/bb809355fda12298840920019a791d0a460863af1858a0f9438c2c85f330d52d.mp3",
+          "text": "You see yourself inside the web of life, not above it."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 1,
+          "chars": 399,
+          "hash": "c52c234427a0791769fc0f3dbfb8fcf1b6627a19efdd532d45dcf310feb15c7e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c52c234427a0791769fc0f3dbfb8fcf1b6627a19efdd532d45dcf310feb15c7e.mp3",
+          "text": "The planet runs on biodiversity ,  a web of millions of species, tied together by interdependencies, with forests as the primary producers feeding it all. We're one strand, utterly dependent on the rest.\n\nAnd here's the thing: India holds one of the richest sections of that web on Earth. Just how much living wealth does this one country carry ,  and why is it under threat? That's the next lesson."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/biodiversity-and-the-web-of-life/02-indias-living-wealth.yaml",
+      "language": "en",
+      "lesson_slug": "indias-living-wealth",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_flash_v2_5",
+      "chunk_count": 16,
+      "total_chars": 2949,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 231,
+          "hash": "2e3c9d73f96b1671ec39a1efc19c1b90c8cbea13fefd0704baf3ccc3662d2da8",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/2e3c9d73f96b1671ec39a1efc19c1b90c8cbea13fefd0704baf3ccc3662d2da8.mp3",
+          "text": "Imagine India's wildlife as a vast library.\n\nNow imagine we've only read about a third of the books. The rest are still on the shelves ,  uncatalogued, some never even opened.\n\nThat's not a metaphor stretch. It's roughly the truth."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 244,
+          "hash": "dcf7af5a4ae241e1046a15f34380f1198853903a6ba5f3cc9edd5a019db3c1e6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/dcf7af5a4ae241e1046a15f34380f1198853903a6ba5f3cc9edd5a019db3c1e6.mp3",
+          "text": "India is one of the richest countries on Earth for biological diversity ,  a vast array of flora (plant life) and fauna (animal life).\n\nFrom the Himalayas to the coasts to the deserts, few places on the planet pack in this much variety of life."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 284,
+          "hash": "6978d117d34014322b4e402c611a596c5ad1fd19da42519550ec7380128ab9bf",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6978d117d34014322b4e402c611a596c5ad1fd19da42519550ec7380128ab9bf.mp3",
+          "text": "Here's the astonishing part.\n\nThe species we've actually named and studied may be only a fraction of what's really here. Scientists think the true number could be two or three times higher ,  still waiting to be discovered.\n\nMost of India's living library, quite literally, is unread."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 82,
+          "hash": "672e8fd4d281250535e1c2a9c292e030cecfe886695c0c7620973dff086d5483",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/672e8fd4d281250535e1c2a9c292e030cecfe886695c0c7620973dff086d5483.mp3",
+          "text": "The species we know (left) may be just a third ,  the rest are still undiscovered."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 259,
+          "hash": "30ae8b9b06bddd6c0a66b92ca4f85a4611f570c00339eb0942ccd376ebc09578",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/30ae8b9b06bddd6c0a66b92ca4f85a4611f570c00339eb0942ccd376ebc09578.mp3",
+          "text": "And this wealth isn't off in some distant jungle. It's woven into daily life all around you ,  the food on your plate, the medicines you take, the wood in your home, the festivals, the songs.\n\nWe're so surrounded by it that we take it for granted ,  like air."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 275,
+          "hash": "798e6400a4ca5411f0c6994e274985477fb24c77cf50c26d8001f0011bc5ebb3",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/798e6400a4ca5411f0c6994e274985477fb24c77cf50c26d8001f0011bc5ebb3.mp3",
+          "text": "Across India, folk songs and stories celebrate a harmonious bond between people and nature.\n\nA Lepcha folk song gathers its music \"from the springs, the rivers, the mountains, the forests, the insects and the animals.\" Nature isn't scenery in these traditions ,  it's family."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 285,
+          "hash": "08119c2b91f38d3a1d1369e061f9c0e01bac85b98965df355ea614c3aa019dd9",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/08119c2b91f38d3a1d1369e061f9c0e01bac85b98965df355ea614c3aa019dd9.mp3",
+          "text": "But lately, this living wealth is under great stress.\n\nThe main cause is uncomfortable to hear: our own insensitivity to the environment. We take what we want and forget the web that pays the price.\n\nWhat would break if we kept ignoring it? The very library we've barely begun to read."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 78,
+          "hash": "2f36328d9af76475d55c656dbaad94df3ef25429a0e47fc83edabdd145885188",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/2f36328d9af76475d55c656dbaad94df3ef25429a0e47fc83edabdd145885188.mp3",
+          "text": "The variety we ignore is quietly fading ,  the leaves wilt, the colours drain."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 98,
+          "hash": "17eb288aa973f9ba0ed2a4202cf92808bd9709917f186010b12a81dbe4592584",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/17eb288aa973f9ba0ed2a4202cf92808bd9709917f186010b12a81dbe4592584.mp3",
+          "text": "When scientists say India's biodiversity may be 'twice or thrice' what we know, what do they mean?"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 33,
+          "hash": "a67e20d98231913ebc2978a9f1955c101a4d9196b482d98d4641d2318128946d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a67e20d98231913ebc2978a9f1955c101a4d9196b482d98d4641d2318128946d.mp3",
+          "text": "Match each term to what it means."
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 297,
+          "hash": "0a97e0a1d1ee6b34164deae228852cce002d920fffb36bca76b5dded07e686e6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/0a97e0a1d1ee6b34164deae228852cce002d920fffb36bca76b5dded07e686e6.mp3",
+          "text": "Find one story, song, festival, or custom from your region that shows a respectful or harmonious relationship between people and nature (a sacred tree, a protected animal, a harvest festival, a folk tale).\n\nOn paper, note it down. Then type the name of it and the plant or animal it honours below."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 18,
+          "hash": "612521d084049eff898593278263e6b9032315249aaf3dab58e7df3a82261504",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/612521d084049eff898593278263e6b9032315249aaf3dab58e7df3a82261504.mp3",
+          "text": "Lock in the terms."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "chars": 81,
+          "hash": "2982142d43c3276dd86d103edc4433087065f44f40701a6f18b02604f5760126",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/2982142d43c3276dd86d103edc4433087065f44f40701a6f18b02604f5760126.mp3",
+          "text": "India is among the world's richest in blank (plant life) and blank (animal life)."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 195,
+          "hash": "e140b9ebc2227d7a6eb65437eafd29504ac4d8f296c660e3e5e051d782f1074a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e140b9ebc2227d7a6eb65437eafd29504ac4d8f296c660e3e5e051d782f1074a.mp3",
+          "text": "Most of India's species are still undiscovered ,  yet many may be under threat before we ever know them. How does it feel to think a species could vanish before anyone names it?\n\nNo right answer."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 70,
+          "hash": "601ae2eb7d422b9e0b89d8c7496de5d7614bec1e5d371eaf61c7c5bd16fb78f9",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/601ae2eb7d422b9e0b89d8c7496de5d7614bec1e5d371eaf61c7c5bd16fb78f9.mp3",
+          "text": "You grasp how much living wealth India holds ,  and that it's at risk."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "chars": 419,
+          "hash": "7e9997d9ae61ff1fa660c59994fa462fd846ede743d16c1c5ceef594e8ff0160",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7e9997d9ae61ff1fa660c59994fa462fd846ede743d16c1c5ceef594e8ff0160.mp3",
+          "text": "India carries one of the planet's richest libraries of life ,  flora and fauna woven into our food, faith, and songs, with far more species still undiscovered than known. And it's under real stress from our own carelessness.\n\nWhich raises the blunt question this course has been building to: why exactly should we spend effort and money to save it? What do we actually lose if biodiversity goes? That's the next lesson."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/biodiversity-and-the-web-of-life/03-why-conservation-matters.yaml",
+      "language": "en",
+      "lesson_slug": "why-conservation-matters",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_flash_v2_5",
+      "chunk_count": 16,
+      "total_chars": 2973,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 213,
+          "hash": "d207c71dade386ffc30e62d06954c66ed5d2e68efdad4b31d54ca38430f0b0b0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d207c71dade386ffc30e62d06954c66ed5d2e68efdad4b31d54ca38430f0b0b0.mp3",
+          "text": "Here's a fair question to ask out loud: why spend money saving a frog you'll never even see?\n\nThe honest answer turns out to be about you, not the frog. Conservation isn't charity for animals. Let me show you why."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 270,
+          "hash": "dfe51a8fad728ccefe0c2346ffe68f110fcc9bbef3772944f465cebf7f33d493",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/dfe51a8fad728ccefe0c2346ffe68f110fcc9bbef3772944f465cebf7f33d493.mp3",
+          "text": "First, the urgency. Wildlife populations and forests are in rapid decline ,  which is exactly why conservation has become essential.\n\nBut \"save nature\" stays a slogan until you can say why in concrete terms. There are three solid reasons. None of them is about cuteness."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 256,
+          "hash": "31c1b85bf87acf3aadb459c89281f83528f1c141cac9bde6e088f913d52e9f86",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/31c1b85bf87acf3aadb459c89281f83528f1c141cac9bde6e088f913d52e9f86.mp3",
+          "text": "Reason 1 ,  our life-support systems.\n\nConservation preserves the ecological diversity that keeps our air, water, and soil working. The web is the machinery that makes the planet livable. Break it, and the machine that cleans your air and water breaks too."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 93,
+          "hash": "bfb8d5b237b63746e9696e1a43efb264f331a1d5b4ca973d0548cc242a99a7ba",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/bfb8d5b237b63746e9696e1a43efb264f331a1d5b4ca973d0548cc242a99a7ba.mp3",
+          "text": "Clean air, water, soil, and the food we grow ,  all rest on biodiversity as their foundation."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 288,
+          "hash": "fe6d9b3c2b9b58f65a969bfea4e91c6567b210a28bf2e3ade6c5018ad4d507de",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/fe6d9b3c2b9b58f65a969bfea4e91c6567b210a28bf2e3ade6c5018ad4d507de.mp3",
+          "text": "Reason 2 ,  genetic diversity: the seed bank of the future.\n\nConservation preserves the genetic variety of plants and animals ,  the raw material for better growth and breeding. Every wild relative of a crop is a spare gene we may desperately need when a new disease or a drought arrives."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 280,
+          "hash": "9684104a5b7580bd666b285b5b25cf2141c297e8fc94763cc15411cb1a7dde32",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9684104a5b7580bd666b285b5b25cf2141c297e8fc94763cc15411cb1a7dde32.mp3",
+          "text": "Make it concrete.\n\nIn agriculture, we still depend on traditional crop varieties ,  their genes carry resilience that modern hybrids often lack. And fisheries depend entirely on keeping aquatic biodiversity alive.\n\nLose the variety, and you lose the harvest ,  on land and at sea."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 95,
+          "hash": "e93a5e87822d4949902b9eb9f1de97c72d1042de67a3becba78fc60625980c6e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e93a5e87822d4949902b9eb9f1de97c72d1042de67a3becba78fc60625980c6e.mp3",
+          "text": "When one crop variety fails, a different one survives ,  that's what genetic diversity buys us."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 261,
+          "hash": "0dd34c722d8a6461caa5a8336befd2c68c8ea54f02a7cd990d1206f4c80fa7e0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/0dd34c722d8a6461caa5a8336befd2c68c8ea54f02a7cd990d1206f4c80fa7e0.mp3",
+          "text": "Put it together. What would break if biodiversity went?\n\nThree things fail at once: the cleaners of our air, water, and soil; the gene bank our farms quietly draw on; and the fish in the sea.\n\nSo conservation isn't sentimental. It's self-preservation ,  for us."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 66,
+          "hash": "d2f4d4c6908fe400fd28257829f4a7177245950f8a443d9a01f93b14a5ed10a8",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d2f4d4c6908fe400fd28257829f4a7177245950f8a443d9a01f93b14a5ed10a8.mp3",
+          "text": "Which best captures why conserving biodiversity matters to humans?"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 58,
+          "hash": "fd179ba1235cd60bd7c8df48fd940a96bef2662ebbdb1aaade68c1a551adf82a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/fd179ba1235cd60bd7c8df48fd940a96bef2662ebbdb1aaade68c1a551adf82a.mp3",
+          "text": "Match what conservation preserves to why it matters to us."
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 256,
+          "hash": "42b31492f004d968ddd942114832f04304fb63de357fe1bdd4f8443fc1d73b9f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/42b31492f004d968ddd942114832f04304fb63de357fe1bdd4f8443fc1d73b9f.mp3",
+          "text": "Pick one food you ate today ,  rice, fish, a fruit, dal.\n\nOn paper, trace it back: which living things and which variety or species made it possible? What would happen to that food if its biodiversity vanished? Type the food and your one-line answer below."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 24,
+          "hash": "821cafe4606451b05be7f34433e03b77dd62aafbaf6c85b950aed9008005daf5",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/821cafe4606451b05be7f34433e03b77dd62aafbaf6c85b950aed9008005daf5.mp3",
+          "text": "Lock in the two reasons."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "chars": 162,
+          "hash": "59adfd5e902dfe55d43fb35b48a83062b3761acb04a8c5a8d98aa937b4d94b41",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/59adfd5e902dfe55d43fb35b48a83062b3761acb04a8c5a8d98aa937b4d94b41.mp3",
+          "text": "Conservation protects our life-support systems (air, water, soil) and the blank diversity we need to breed better crops; our blank depend on aquatic biodiversity."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 206,
+          "hash": "8aba97b720d6e6b92d9ac0fb5295dbb4074dcb40711b01ea97b046739f89727a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/8aba97b720d6e6b92d9ac0fb5295dbb4074dcb40711b01ea97b046739f89727a.mp3",
+          "text": "Conservation is \"self-preservation, not charity.\" Does framing it that way make you take it more seriously ,  or does something feel lost when we only value nature for what it does for us?\n\nNo right answer."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 59,
+          "hash": "7e6b2a365c5831e91f937e57d1168b0e7b64b6fcf8b74f142bd240913b931a15",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7e6b2a365c5831e91f937e57d1168b0e7b64b6fcf8b74f142bd240913b931a15.mp3",
+          "text": "You can give concrete reasons biodiversity is worth saving."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "chars": 386,
+          "hash": "e082fb5ad982b2059a8c89ccfc739b84e9e21b8e676bde8f75eebd602c06b0a9",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e082fb5ad982b2059a8c89ccfc739b84e9e21b8e676bde8f75eebd602c06b0a9.mp3",
+          "text": "Conservation guards our life-support systems ,  air, water, soil ,  and the genetic diversity our farms and fisheries quietly depend on. It's not charity for animals; it's protection for us.\n\nSo we know why. Now the harder question: how does an entire country actually protect its forests and wildlife? It began, in 1972, with a single powerful law. That's where the next course starts."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/biodiversity-and-the-web-of-life-hinglish/01-we-are-one-strand-in-the-web.yaml",
+      "language": "hinglish",
+      "lesson_slug": "we-are-one-strand-in-the-web",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_multilingual_v2",
+      "chunk_count": 17,
+      "total_chars": 3169,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 297,
+          "hash": "6a9068da2b14670e41e5d4c3e71e874facf8b9bf3aa22c361ca557f790a25735",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6a9068da2b14670e41e5d4c3e71e874facf8b9bf3aa22c361ca557f790a25735.mp3",
+          "text": "Yeh try karo: aaj tumne koi ek aisa kaam batao jo kisi doosre jeev pe depend nahi karta.\n\nJo hawa tumne li? Paudhon ne banayi. Jo paani piya? Jeevon ke ek poore web ne saaf kiya. Tumhara breakfast? Mitti, microbes, aur dhoop ne saath milke banaya.\n\nHum kabhi gaur nahi karte. Aaj, gaur karte hain."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 246,
+          "hash": "e415a39c9f7d430bbf2a0298f05c8d2913e6432d76eef78e3321d4af554d214a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e415a39c9f7d430bbf2a0298f05c8d2913e6432d76eef78e3321d4af554d214a.mp3",
+          "text": "Hum is planet ko millions doosre jeevon ke saath share karte hain ,  micro-organisms aur bacteria se lekar, lichens, banyan ke ped, haathi, aur blue whales tak.\n\nYeh sab milke banate hain planet ki immense biodiversity ,  jeevan ki sheer variety."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 279,
+          "hash": "7640583831bb13bef28bc8c1ab4304e8b14e60c17004ae9178654a519fcaf8d5",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7640583831bb13bef28bc8c1ab4304e8b14e60c17004ae9178654a519fcaf8d5.mp3",
+          "text": "Ab sabse vinamr karne waali baat.\n\nHum insaan, har doosre jeev ke saath, ek hi web banate hain ,  ek complex ecological system. Hum uske upar baith ke neeche nahi dekh rahe.\n\nHum uska ek dhaaga hain. Aur kisi bhi dhaage ki tarah, hum jeene ke liye poore web pe depend karte hain."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 92,
+          "hash": "a7496d7c87091a38b2da68be871c6a8be9209f1ec5c5304d95e3928c48bd3450",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a7496d7c87091a38b2da68be871c6a8be9209f1ec5c5304d95e3928c48bd3450.mp3",
+          "text": "Sun, forests, microbes, animals, humans ,  sab ek doosre se gunde. Tum ek node ho, top nahi."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 305,
+          "hash": "96dd6754c20af2cfdfee7af7bd4d677ba7f36663f0026b07a5540e5567754793",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/96dd6754c20af2cfdfee7af7bd4d677ba7f36663f0026b07a5540e5567754793.mp3",
+          "text": "Hum web pe kitna literally depend karte hain? Poori tarah.\n\nPaudhe, jaanwar, aur micro-organisms un cheezon ko dobaara banate hain jinke bina hum nahi jee sakte:\n\n- jo hawa hum saans mein lete hain\n- jo paani hum peete hain\n- jo mitti hamara khaana ugaati hai\n\nInhe hata do, aur hum zyaada der nahi tikte."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 222,
+          "hash": "dc5760bba60f385ad7ff4eb8867a14072f042e5975903af7ab781b8e53792e16",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/dc5760bba60f385ad7ff4eb8867a14072f042e5975903af7ab781b8e53792e16.mp3",
+          "text": "Aur poore web ke base pe baithte hain forests.\n\nYeh primary producers hain ,  woh jeev jo dhoop ko khaane mein badalte hain. Baaki sab woh khaana khaate hain, seedhe ya ghuma ke. Forest chupchaap poore web ko khilaata hai."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 278,
+          "hash": "b2edb1832ea2c0e3de0dde177d0f27d4083e2a05f8526399d365fb7d84de3365",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b2edb1832ea2c0e3de0dde177d0f27d4083e2a05f8526399d365fb7d84de3365.mp3",
+          "text": "Toh biodiversity hai kya, theek-theek?\n\nYeh wildlife aur cultivated species ki immense richness hai ,  form aur function mein diverse, par interdependencies ke ek network se aapas mein kasi hui.\n\nUs aakhri shabd ko pakdo: interdependencies. Web mein, koi cheez akeli nahi khadi."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 70,
+          "hash": "80d4ece4390fbe81b05a287d3bc5c2815f83ec1b0b029cab9733f54baa26121b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/80d4ece4390fbe81b05a287d3bc5c2815f83ec1b0b029cab9733f54baa26121b.mp3",
+          "text": "Web ka ek dhaaga kheencho aur poora web kaanp uthta hai ,  humare tak."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 268,
+          "hash": "6f4d90f6b6442ab9a6304bd7d57c72b8bb24610da2321ca160f62e8ba2b7400e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6f4d90f6b6442ab9a6304bd7d57c72b8bb24610da2321ca160f62e8ba2b7400e.mp3",
+          "text": "Agar ek dhaaga toot jaaye toh kya tootega?\n\nBees nikaal do, ya mitti ke bacteria, ya ek poora forest ,  aur jhatka web ke aar-paar daudta hai ,  dhaagon ke upar, humare tak.\n\nIsiliye koi extinction kabhi sach mein \"chhoti\" nahi hoti. Web har nuksaan mehsoos karta hai."
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 75,
+          "hash": "15d2712be859991f3312f2759f3e17df49ac5ef98caa0e8b71b6a10c4d195f2e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/15d2712be859991f3312f2759f3e17df49ac5ef98caa0e8b71b6a10c4d195f2e.mp3",
+          "text": "Chapter forests ko ecological system ka 'primary producers' kyun kehta hai?"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 44,
+          "hash": "ae53ead0012a8ddd45780529ecb13b907605454b9ebc7cb06d8178ea0cf54eb4",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ae53ead0012a8ddd45780529ecb13b907605454b9ebc7cb06d8178ea0cf54eb4.mp3",
+          "text": "Web ke har hisse ko uske role se match karo."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 248,
+          "hash": "4691d9a36eef2da9074fc3d465d056d5f19608b7668f0131c5fd5905e8c90536",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/4691d9a36eef2da9074fc3d465d056d5f19608b7668f0131c5fd5905e8c90536.mp3",
+          "text": "Pichhle ek ghante mein tumne jo teen cheezein use kii ,  khaana, paani, paper, koi lakdi ki cheez, ya kamre ki hawa.\n\nPaper pe har ek ko web ke us jeev tak trace karo jisne use mumkin banaya. Phir neeche unme se ek aur uska living source type karo."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 25,
+          "hash": "7d45a320acc430925557024bc540228fa7a2f72a38f91ccddae1ff78db628a7e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7d45a320acc430925557024bc540228fa7a2f72a38f91ccddae1ff78db628a7e.mp3",
+          "text": "Do key ideas yaad kar lo."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 1,
+          "chars": 106,
+          "hash": "781ea9fca67e23817094a33f28e2d6d8d2ec780303f79fc9f672b57c2dc6e0d8",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/781ea9fca67e23817094a33f28e2d6d8d2ec780303f79fc9f672b57c2dc6e0d8.mp3",
+          "text": "Forests ecological system ke blank producers hain, aur biodiversity blank ke ek network se judi rehti hai."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 176,
+          "hash": "f7ab7d064b12ed2220f8601248a3f63a54170b00a1046bc5e04d9bb8f0764af5",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f7ab7d064b12ed2220f8601248a3f63a54170b00a1046bc5e04d9bb8f0764af5.mp3",
+          "text": "\"Hum web ke ek dhaage hain, top nahi.\" Kya yeh tumhari nazar mein nature mein apni jagah badalta hai ,  ya thoda uncomfortable lagta hai? Imaandaar raho.\n\nKoi sahi jawaab nahi."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 0,
+          "chars": 62,
+          "hash": "7167f3919d19185b01a3f50b6ae1050d827e7431be0858ac168f83ed09457e44",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7167f3919d19185b01a3f50b6ae1050d827e7431be0858ac168f83ed09457e44.mp3",
+          "text": "Ab tum khud ko web of life ke andar dekhte ho, uske upar nahi."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 1,
+          "chars": 376,
+          "hash": "06c7177c1049e8660c1df093d61a41bc9ff05ea7040693e70d9f7cf0b0aff833",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/06c7177c1049e8660c1df093d61a41bc9ff05ea7040693e70d9f7cf0b0aff833.mp3",
+          "text": "Planet biodiversity pe chalta hai ,  millions species ka ek web, interdependencies se bandha, jisme forests primary producers ban ke sabko khilaate hain. Hum ek dhaaga hain, baaki sab pe poori tarah depend.\n\nAur baat yeh hai: India us web ka ek sabse rich hissa rakhta hai. Yeh ek desh kitni living wealth uthaaye hue hai ,  aur woh khatre mein kyun hai? Yahi agli lesson hai."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/biodiversity-and-the-web-of-life-hinglish/02-indias-living-wealth.yaml",
+      "language": "hinglish",
+      "lesson_slug": "indias-living-wealth",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_multilingual_v2",
+      "chunk_count": 16,
+      "total_chars": 3308,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 255,
+          "hash": "e5315ad75251c22291f04f0f58871d312ceb3f7f1f73b104339a46a4006676ce",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e5315ad75251c22291f04f0f58871d312ceb3f7f1f73b104339a46a4006676ce.mp3",
+          "text": "India ki wildlife ko ek vishaal library ki tarah socho.\n\nAb socho ki humne usme se sirf ek tihaai kitaabein padhi hain. Baaki abhi bhi shelves pe hain ,  bina catalogue, kuch kabhi kholi hi nahi gayi.\n\nYeh metaphor ka khinchaav nahi. Yeh lagbhag sach hai."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 266,
+          "hash": "e05ad5f3f411d7a7c3d78f7175368df709b51f807ef756167919e118b125350c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e05ad5f3f411d7a7c3d78f7175368df709b51f807ef756167919e118b125350c.mp3",
+          "text": "India biological diversity ke maamle mein duniya ke sabse rich deshon mein se ek hai ,  flora (paudhon ka jeevan) aur fauna (jaanwaron ka jeevan) ka ek vishaal khazaana.\n\nHimalaya se lekar coasts tak aur registan tak, planet pe kam jagahein itni variety samete hain."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 337,
+          "hash": "8dcd8814c9af093a3bba7a4d67e97167404ba486d6b1bb3797b64e5146cd82bf",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/8dcd8814c9af093a3bba7a4d67e97167404ba486d6b1bb3797b64e5146cd82bf.mp3",
+          "text": "Ab sabse hairaan karne waali baat.\n\nJo species humne sach mein naam diye aur padhe hain, woh shayad jo asal mein yahan hai uska ek chhota hissa hai. Scientists ka maanna hai ki asli number do ya teen guna zyaada ho sakta hai ,  abhi bhi discover hone ka wait karta hua.\n\nIndia ki living library ka zyaadatar hissa, literally, unread hai."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 94,
+          "hash": "8bc50a9d5c03dab358528c5e4270092378a3386888dad2e8e1abdee76c9be800",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/8bc50a9d5c03dab358528c5e4270092378a3386888dad2e8e1abdee76c9be800.mp3",
+          "text": "Jo species hum jaante hain (baayein) woh shayad sirf ek tihaai ,  baaki abhi bhi undiscovered."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 262,
+          "hash": "3f135a3ba59554b5042af9a648c80dff1f36046177e0268b140e971adba58d5e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/3f135a3ba59554b5042af9a648c80dff1f36046177e0268b140e971adba58d5e.mp3",
+          "text": "Aur yeh wealth kisi door ke jungle mein nahi hai. Yeh tumhare charon taraf rozmarra zindagi mein buni hui hai ,  plate ka khaana, jo dawaiyan tum lete ho, ghar ki lakdi, tyohaar, geet.\n\nHum isse itne ghire hue hain ki use granted maan lete hain ,  hawa ki tarah."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 289,
+          "hash": "140c992c0c6ce15724df40c6f3ba1fb5259b96fffca8f78a7495583c5ee2e147",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/140c992c0c6ce15724df40c6f3ba1fb5259b96fffca8f78a7495583c5ee2e147.mp3",
+          "text": "India bhar mein, folk songs aur kahaniyan logon aur nature ke beech ek harmonious rishte ka jashn manaati hain.\n\nEk Lepcha folk song apni dhun \"jharno, nadiyon, pahaadon, jungalon, keedon aur jaanwaron se\" ikattha karti hai. In paramparaon mein nature scenery nahi hai ,  woh parivaar hai."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 340,
+          "hash": "c5d7f78d6d325635a96660804dc5b6cfd017430f731c9790a4447db42cbf47ff",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c5d7f78d6d325635a96660804dc5b6cfd017430f731c9790a4447db42cbf47ff.mp3",
+          "text": "Par haal hi mein, yeh living wealth bade stress mein hai.\n\nMukhya wajah sunne mein bhaari hai: hamari apni environment ke prati insensitivity (besamajhi). Hum jo chaahein lete hain aur us web ko bhool jaate hain jo keemat chukata hai.\n\nAgar hum ise ignore karte rahe toh kya tootega? Wahi library jise hum mushkil se padhna shuru kar paaye."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 104,
+          "hash": "b5631353df8457050ddd5f170dd40bd52da959e27b28948ceab033d547fecb2f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b5631353df8457050ddd5f170dd40bd52da959e27b28948ceab033d547fecb2f.mp3",
+          "text": "Jis variety ko hum ignore karte hain woh chupchaap kho rahi hai ,  patte murjhaate hain, rang udte hain."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 127,
+          "hash": "5e0aac3dd0b92f1e0b5dfd992bee88ad28cb1ea4cd5d3a43c4b725e8a11deed5",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/5e0aac3dd0b92f1e0b5dfd992bee88ad28cb1ea4cd5d3a43c4b725e8a11deed5.mp3",
+          "text": "Jab scientists kehte hain ki India ki biodiversity jo hum jaante hain uski 'do ya teen guna' ho sakti hai, unka kya matlab hai?"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 38,
+          "hash": "f2a5c9a79e474c0b88f2f20c8b1a700f502dc6a83df5110a9c4b858619a2261c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f2a5c9a79e474c0b88f2f20c8b1a700f502dc6a83df5110a9c4b858619a2261c.mp3",
+          "text": "Har term ko uske matlab se match karo."
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 312,
+          "hash": "41328c5162db8099981e354660ef05b9cc7fb9c8a2d9d29082e364d2415637d0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/41328c5162db8099981e354660ef05b9cc7fb9c8a2d9d29082e364d2415637d0.mp3",
+          "text": "Apne region se koi ek kahani, geet, tyohaar, ya rivaaj dhundo jo logon aur nature ke beech aadar bhara ya harmonious rishta dikhata ho (ek pavitra ped, ek surakshit jaanwar, ek fasal ka tyohaar, ek lok-katha).\n\nPaper pe use likho. Phir neeche uska naam aur woh paudha ya jaanwar type karo jise woh maan deta hai."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 18,
+          "hash": "65908f7dd9a1cf6e3c2c7c98b6988cb82c95394947c2a7a045b226a396adaec7",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/65908f7dd9a1cf6e3c2c7c98b6988cb82c95394947c2a7a045b226a396adaec7.mp3",
+          "text": "Terms yaad kar lo."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "chars": 104,
+          "hash": "b9bf4afd6e29aaa4f0f3ca30f6bd6ad693b7b08a127e18f8c96e2e69d3fad41a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b9bf4afd6e29aaa4f0f3ca30f6bd6ad693b7b08a127e18f8c96e2e69d3fad41a.mp3",
+          "text": "India duniya mein blank (paudhon ka jeevan) aur blank (jaanwaron ka jeevan) mein sabse rich mein se hai."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 244,
+          "hash": "3666061256a506e402afd5d6679de51b2e20da9bbdc4c79c2a5f8c39e2b94f72",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/3666061256a506e402afd5d6679de51b2e20da9bbdc4c79c2a5f8c39e2b94f72.mp3",
+          "text": "India ki zyaadatar species abhi bhi undiscovered hain ,  phir bhi kayi shayad humare unhe jaanne se pehle hi khatre mein hon. Yeh sochna kaisa lagta hai ki koi species kisi ke use naam dene se pehle hi gayab ho sakti hai?\n\nKoi sahi jawaab nahi."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 80,
+          "hash": "250c774ab22eb04fee2d026d67ff85523fe2bedf8863a11bcdf6aa5403410f84",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/250c774ab22eb04fee2d026d67ff85523fe2bedf8863a11bcdf6aa5403410f84.mp3",
+          "text": "Tum samajhte ho India kitni living wealth rakhta hai ,  aur woh khatre mein hai."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "chars": 438,
+          "hash": "6b5322fa05c62c61d93a48d6eaad270037475e5b5625249ff0b11b718917815e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6b5322fa05c62c61d93a48d6eaad270037475e5b5625249ff0b11b718917815e.mp3",
+          "text": "India planet ki ek sabse rich library of life rakhta hai ,  flora aur fauna jo hamare khaane, aastha, aur geeton mein buni hai, jaani hui se kahin zyaada species abhi bhi undiscovered. Aur woh hamari apni laaparwaahi se asli stress mein hai.\n\nJo seedha sawaal yeh course laata hai: kyun exactly humein effort aur paisa kharch karke ise bachana chahiye? Agar biodiversity chali jaaye toh hum asal mein kya khote hain? Yahi agli lesson hai."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/biodiversity-and-the-web-of-life-hinglish/03-why-conservation-matters.yaml",
+      "language": "hinglish",
+      "lesson_slug": "why-conservation-matters",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_multilingual_v2",
+      "chunk_count": 16,
+      "total_chars": 3381,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 253,
+          "hash": "5243cf12d2665bb5645ef07ca95699b8ef069f0d9432ce96e25e1d3968e9c09c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/5243cf12d2665bb5645ef07ca95699b8ef069f0d9432ce96e25e1d3968e9c09c.mp3",
+          "text": "Khulke poochne laayak ek sawaal: ek aise mendhak ko bachane pe paisa kyun kharch karein jise tum kabhi dekhoge bhi nahi?\n\nImaandaar jawaab tumhare baare mein nikalta hai, mendhak ke nahi. Conservation jaanwaron ke liye daan nahi hai. Dikhaata hoon kyun."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 271,
+          "hash": "575713644aba489278f8ead989a451b92f0125e327e3c5112d6cc006184141c2",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/575713644aba489278f8ead989a451b92f0125e327e3c5112d6cc006184141c2.mp3",
+          "text": "Pehle, urgency. Wildlife populations aur forests tezi se ghat rahe hain ,  isiliye conservation zaroori ho gaya hai.\n\nPar \"nature bachao\" tab tak ek slogan hai jab tak tum kyun concrete terms mein na keh sako. Teen thos wajahein hain. Koi bhi cuteness ke baare mein nahi."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 294,
+          "hash": "a56d36849a7980872df4d5160c6cf3acce121a374b1fd06f18e57bb0ac60e831",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a56d36849a7980872df4d5160c6cf3acce121a374b1fd06f18e57bb0ac60e831.mp3",
+          "text": "Wajah 1 ,  hamare life-support systems.\n\nConservation us ecological diversity ko bachata hai jo hamari hawa, paani, aur mitti ko chalti rakhti hai. Web woh machinery hai jo planet ko rehne laayak banati hai. Use todo, aur jo machine tumhari hawa aur paani saaf karti hai woh bhi toot jaati hai."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 102,
+          "hash": "edc5fd1f5e3106c883327dda8b71f3e4ab1a4f7185dc573859a6a2d1212ea84b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/edc5fd1f5e3106c883327dda8b71f3e4ab1a4f7185dc573859a6a2d1212ea84b.mp3",
+          "text": "Saaf hawa, paani, mitti, aur jo khaana hum ugate hain ,  sab biodiversity pe, uski neenv pe tike hain."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 291,
+          "hash": "b3b62aaa7efc94f7cf684a823ecabbbc59f5355add177af36e0f5fe993c983da",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b3b62aaa7efc94f7cf684a823ecabbbc59f5355add177af36e0f5fe993c983da.mp3",
+          "text": "Wajah 2 ,  genetic diversity: future ka seed bank.\n\nConservation paudhon aur jaanwaron ki genetic variety bachata hai ,  behtar growth aur breeding ka kaccha maal. Kisi crop ka har wild rishtedaar ek spare gene hai jiski humein shayad bahut zaroorat pade jab koi nayi bimaari ya sookha aaye."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 331,
+          "hash": "f427b0e59b569bcffd2dd4723eee8abb9458ae7aed8cdf2e8260738a4c87ca29",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f427b0e59b569bcffd2dd4723eee8abb9458ae7aed8cdf2e8260738a4c87ca29.mp3",
+          "text": "Concrete banaate hain.\n\nAgriculture mein, hum abhi bhi traditional crop varieties pe depend karte hain ,  unke genes mein woh resilience hota hai jo modern hybrids mein aksar nahi. Aur fisheries poori tarah aquatic biodiversity ko zinda rakhne pe depend karti hain.\n\nVariety kho do, aur fasal kho do ,  zameen pe aur samundar mein."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 110,
+          "hash": "22eaed868fbd375b6a33dd8e0dc01e60629a75359f3156ef745c543025d0554e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/22eaed868fbd375b6a33dd8e0dc01e60629a75359f3156ef745c543025d0554e.mp3",
+          "text": "Jab ek crop variety fail hoti hai, doosri bach jaati hai ,  yahi genetic diversity humein khareed ke deti hai."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 313,
+          "hash": "22f35a0b240cf5ca098ec628aef3b2104a19545c01a862949ff8c131368d041b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/22f35a0b240cf5ca098ec628aef3b2104a19545c01a862949ff8c131368d041b.mp3",
+          "text": "Sab jod ke. Agar biodiversity chali jaaye toh kya tootega?\n\nTeen cheezein ek saath fail hoti hain: hamari hawa, paani, aur mitti ke cleaners; woh gene bank jis pe hamare khet chupchaap depend karte hain; aur samundar ki machhliyan.\n\nToh conservation sentimental nahi hai. Yeh self-preservation hai ,  humare liye."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 91,
+          "hash": "ee611639ec88a83e070c3c29c366c24ff1ab79191793f985384ce7cb2096874d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ee611639ec88a83e070c3c29c366c24ff1ab79191793f985384ce7cb2096874d.mp3",
+          "text": "Insaano ke liye biodiversity bachana kyun maayne rakhta hai ,  sabse achha kya pakadta hai?"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 85,
+          "hash": "0bdced815f87cd5125b96329fd9442fa6f3b62ecbda9797307c5a132ff27a615",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/0bdced815f87cd5125b96329fd9442fa6f3b62ecbda9797307c5a132ff27a615.mp3",
+          "text": "Conservation kya bachata hai, use uss se match karo jo humare liye maayne rakhti hai."
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 268,
+          "hash": "4f258ca5d1f24768177e75ba74b342734510b81738ad1863d715470c3b3eff57",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/4f258ca5d1f24768177e75ba74b342734510b81738ad1863d715470c3b3eff57.mp3",
+          "text": "Aaj khaaya koi ek khaana chuno ,  chawal, machhli, ek phal, dal.\n\nPaper pe use trace karo: kaunse jeev aur kaunsi variety ya species ne use mumkin banaya? Agar uski biodiversity gayab ho jaaye toh us khaane ka kya hoga? Neeche khaana aur apna ek-line jawaab type karo."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 24,
+          "hash": "4d53e1bcd952d85639210471fa7e11b9ccf235a45cd7be34baac2a2aa0242769",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/4d53e1bcd952d85639210471fa7e11b9ccf235a45cd7be34baac2a2aa0242769.mp3",
+          "text": "Do wajahein yaad kar lo."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "chars": 198,
+          "hash": "d33d7bf7f021a80eb760cb7e626271bf14c6594921ec912849d12f528916fb71",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d33d7bf7f021a80eb760cb7e626271bf14c6594921ec912849d12f528916fb71.mp3",
+          "text": "Conservation hamare life-support systems (hawa, paani, mitti) aur woh blank diversity bachata hai jo behtar crops breed karne ke liye chahiye; hamari blank aquatic biodiversity pe depend karti hain."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 253,
+          "hash": "9d6b0a70af0ae06fba5c8d27f9a9a77027f6652da0ffdca4797e57bed0396c10",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9d6b0a70af0ae06fba5c8d27f9a9a77027f6652da0ffdca4797e57bed0396c10.mp3",
+          "text": "Conservation \"self-preservation hai, daan nahi.\" Kya ise is tarah dekhna tumhe ise zyaada seriously lene pe majboor karta hai ,  ya kuch kho jaata hai jab hum nature ko sirf uske liye value karte hain jo woh humare liye karta hai?\n\nKoi sahi jawaab nahi."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 70,
+          "hash": "c93c8622a3ee64a1026b7363893ebe22ebc2563002d91814d0ba55b92d0f7d21",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c93c8622a3ee64a1026b7363893ebe22ebc2563002d91814d0ba55b92d0f7d21.mp3",
+          "text": "Tum thos wajahein de sakte ho ki biodiversity kyun bachane laayak hai."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "chars": 427,
+          "hash": "b7598710cec71faeda3ce9f0f8e3473af28868468b2d665a943f576916306ec2",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b7598710cec71faeda3ce9f0f8e3473af28868468b2d665a943f576916306ec2.mp3",
+          "text": "Conservation hamare life-support systems ,  hawa, paani, mitti ,  aur woh genetic diversity bachata hai jis pe hamare khet aur fisheries chupchaap depend karte hain. Yeh jaanwaron ke liye daan nahi; yeh humare liye suraksha hai.\n\nToh hum jaante hain kyun. Ab mushkil sawaal: ek poora desh apne forests aur wildlife ko kaise bachata hai? Yeh shuru hua, 1972 mein, ek hi taaqatwar kaanoon se. Yahin se agla course shuru hota hai."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/protecting-forests-and-wildlife/01-the-wildlife-protection-act.yaml",
+      "language": "en",
+      "lesson_slug": "the-wildlife-protection-act",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_flash_v2_5",
+      "chunk_count": 16,
+      "total_chars": 2601,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 181,
+          "hash": "a8ff1df786e6acd817fd9116b1978601e7ce18f8f58015c9d022776933080415",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a8ff1df786e6acd817fd9116b1978601e7ce18f8f58015c9d022776933080415.mp3",
+          "text": "For most of history, killing a tiger was a trophy. Something to be photographed with, not punished for.\n\nOne year changed that across India. The year was 1972. Here's what happened."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 273,
+          "hash": "c6979462c7a20153d03e98f63d6598ef31765dd61012509eeafea6bb3dd5e8d9",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c6979462c7a20153d03e98f63d6598ef31765dd61012509eeafea6bb3dd5e8d9.mp3",
+          "text": "By the 1960s and 70s, wildlife was vanishing fast. Conservationists pushed hard for a national wildlife protection programme.\n\nThe result was the Indian Wildlife (Protection) Act, 1972 ,  and it gave India, for the first time, real legal teeth to defend its wild creatures."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 251,
+          "hash": "a1c9f0a7c343f71dcdb9ac6ad3d9c67c445720b41706fa5fb526c84ea8ebc4f6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a1c9f0a7c343f71dcdb9ac6ad3d9c67c445720b41706fa5fb526c84ea8ebc4f6.mp3",
+          "text": "Think of the Act as a shield with three edges:\n\n- Ban hunting of endangered species.\n- Protect their habitats in law.\n- Restrict the trade in wildlife.\n\nIt also published an all-India list of protected species ,  naming exactly who the shield covered."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 74,
+          "hash": "eeba90cf50cedc419e97c9588e9c3d5a82f677ac7c96ae4b925d142dbe750298",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/eeba90cf50cedc419e97c9588e9c3d5a82f677ac7c96ae4b925d142dbe750298.mp3",
+          "text": "One law, three protections: ban hunting, protect habitats, restrict trade."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 191,
+          "hash": "f5462f50a861483c2a7a1e3e24ba1898d6ac54ef624018243c88e6b6511d168f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f5462f50a861483c2a7a1e3e24ba1898d6ac54ef624018243c88e6b6511d168f.mp3",
+          "text": "With the Act in place, central and state governments set up national parks and wildlife sanctuaries ,  protected zones where the shield is strongest, and where wild populations could recover."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 227,
+          "hash": "378568c98e7a05ec58a6716eeb868fe8acaf9dac77c5c13d2372980dc6131961",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/378568c98e7a05ec58a6716eeb868fe8acaf9dac77c5c13d2372980dc6131961.mp3",
+          "text": "The government also launched projects for specific animals on the very brink:\n\nthe tiger, the one-horned rhinoceros, the Kashmir stag (hangul), three crocodiles ,  freshwater, saltwater, and the gharial ,  and the Asiatic lion."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 229,
+          "hash": "60709c654a6499ac19946deee707b3475222b3a8aaa155cb3ae26d0de5644ef1",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/60709c654a6499ac19946deee707b3475222b3a8aaa155cb3ae26d0de5644ef1.mp3",
+          "text": "More recently, the shield widened to cover the Indian elephant, the black buck (chinkara), the great Indian bustard (godawan), and the snow leopard ,  full or partial legal protection against hunting and trade right across India."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 80,
+          "hash": "a67c4a8e7abd243777c8cc1d6665386ed5397c55b083b24ad17596de1176775a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a67c4a8e7abd243777c8cc1d6665386ed5397c55b083b24ad17596de1176775a.mp3",
+          "text": "One by one, India's most threatened animals were brought under legal protection."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 72,
+          "hash": "6674ab9c36f7446e94b42f84885384feef6ff4cd0ff17e4165acb3dcba134295",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6674ab9c36f7446e94b42f84885384feef6ff4cd0ff17e4165acb3dcba134295.mp3",
+          "text": "What were the three main thrusts of the Wildlife (Protection) Act, 1972?"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 46,
+          "hash": "12cc6a075b3d119ec77aacca36cc650c6a3c22eafc37c7f0806182e180894bb0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/12cc6a075b3d119ec77aacca36cc650c6a3c22eafc37c7f0806182e180894bb0.mp3",
+          "text": "Match each protected animal to its other name."
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 180,
+          "hash": "28bc3dc19d42c920d69e401a9556559b15dd374a7a818f3fe0af1e7607490337",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/28bc3dc19d42c920d69e401a9556559b15dd374a7a818f3fe0af1e7607490337.mp3",
+          "text": "Find one national park or wildlife sanctuary in your state (or the nearest one).\n\nOn paper, note its name and one animal it protects. Then type the park's name and its state below."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 42,
+          "hash": "ade0f497bbbeed4b0ea25e7076a2dd23950d48fc015cebe82bec45fe1c6fd49e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ade0f497bbbeed4b0ea25e7076a2dd23950d48fc015cebe82bec45fe1c6fd49e.mp3",
+          "text": "Lock in the three thrusts of the 1972 Act."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "chars": 124,
+          "hash": "5006ce379b1735b58497d5ea753f874e6056ae2693e505907a6168459b0eddbc",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/5006ce379b1735b58497d5ea753f874e6056ae2693e505907a6168459b0eddbc.mp3",
+          "text": "The 1972 Act protected wildlife by banning blank, giving legal protection to their blank, and restricting blank in wildlife."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 172,
+          "hash": "95c1934bdd879cccd7f0c89c41fe4005ea0b4f087945f7acd10e4ad7bb1c3579",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/95c1934bdd879cccd7f0c89c41fe4005ea0b4f087945f7acd10e4ad7bb1c3579.mp3",
+          "text": "A law can ban hunting on paper ,  but a tiger lives far from any courtroom. What do you think it actually takes to make a wildlife law work on the ground?\n\nNo right answer."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 64,
+          "hash": "241aaeb7cd19c3a89155b68796579e631410148ba26cab9fa1c26faee1104ba6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/241aaeb7cd19c3a89155b68796579e631410148ba26cab9fa1c26faee1104ba6.mp3",
+          "text": "You know how India first put a legal shield around its wildlife."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "chars": 395,
+          "hash": "e285f59f340f236b555cd62b9de7dfcc2a04efa55ebe21600f471b5a16d4b9e5",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e285f59f340f236b555cd62b9de7dfcc2a04efa55ebe21600f471b5a16d4b9e5.mp3",
+          "text": "The 1972 Wildlife (Protection) Act banned hunting, protected habitats, restricted trade, and named the species to be saved ,  backed by national parks, sanctuaries, and projects for animals like the rhino and the lion.\n\nBut one of those projects became the most famous wildlife campaign in the world ,  because one animal had crashed from 55,000 to under 2,000. Next: the story of Project Tiger."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/protecting-forests-and-wildlife/02-project-tiger.yaml",
+      "language": "en",
+      "lesson_slug": "project-tiger",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_flash_v2_5",
+      "chunk_count": 17,
+      "total_chars": 3321,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 236,
+          "hash": "970d601909dd4fc1a39eb8cfc49e0c32a5eabcc5697336cc80b6b576c793c768",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/970d601909dd4fc1a39eb8cfc49e0c32a5eabcc5697336cc80b6b576c793c768.mp3",
+          "text": "Around the year 1900, India had roughly 55,000 tigers.\n\nBy 1973, when someone finally counted, just 1,827 were left.\n\nThat's not a decline. That's a collapse. What happened ,  and why did saving the tiger end up saving the whole forest?"
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 216,
+          "hash": "8c7edb3cafb268fcff0c3591d01084a44a9ede2cd7c97d24e97a0e29f14cc99e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/8c7edb3cafb268fcff0c3591d01084a44a9ede2cd7c97d24e97a0e29f14cc99e.mp3",
+          "text": "The tiger is a key species in the faunal web ,  a predator at the very top.\n\nWhen the authorities took stock in 1973, the scale of the crash was undeniable: from about 55,000 at the turn of the century down to 1,827."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 55,
+          "hash": "096072d6464fdac8617bc6a7a56db0d5905f453c630f1123f4d9b5180b70c426",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/096072d6464fdac8617bc6a7a56db0d5905f453c630f1123f4d9b5180b70c426.mp3",
+          "text": "From about 55,000 tigers in 1900 to just 1,827 by 1973."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 221,
+          "hash": "684decfba2bed88c2258cbdab8b5d038d186932551e2dc42d9ad0c7cd3e7cc85",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/684decfba2bed88c2258cbdab8b5d038d186932551e2dc42d9ad0c7cd3e7cc85.mp3",
+          "text": "What drove the crash? Four forces, all at once:\n\n- Poaching for trade\n- Shrinking habitat as forests were cleared\n- Depletion of prey ,  fewer deer and boar to hunt\n- a growing human population pressing into tiger country"
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 319,
+          "hash": "eadfc29d15e55ec5e76a5d918a6b3a40d68aed6524539bcd1d9a3100bf91c54f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/eadfc29d15e55ec5e76a5d918a6b3a40d68aed6524539bcd1d9a3100bf91c54f.mp3",
+          "text": "The deadliest pull was trade.\n\nTiger skins, and bones used in traditional medicines ,  especially across many Asian countries ,  made a tiger worth more dead than alive. And because India and Nepal shelter about two-thirds of the world's surviving tigers, they became the prime targets for poachers and illegal traders."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 151,
+          "hash": "3e8f94132a4012d19eb0a39ce20f641017abd9ddbc2257785e2ffd7ba3c8e635",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/3e8f94132a4012d19eb0a39ce20f641017abd9ddbc2257785e2ffd7ba3c8e635.mp3",
+          "text": "So in 1973, India launched Project Tiger ,  one of the most publicised wildlife campaigns the world has seen.\n\nBut here's the clever idea at its heart."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 304,
+          "hash": "4aa7d9e4d04bdd06fc1800f4a7b876869d71be21ead265fc0f102aaacdacc2f3",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/4aa7d9e4d04bdd06fc1800f4a7b876869d71be21ead265fc0f102aaacdacc2f3.mp3",
+          "text": "A tiger needs an enormous, healthy forest ,  full of prey, water, and cover. Protect that, and you automatically protect everything living in it.\n\nThe tiger is an umbrella: spread protection over the big cat, and its shade shelters the deer, the birds, the insects, the trees ,  the whole web beneath it."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 72,
+          "hash": "7de4c66297b2f5b04cf6342de581ef451459d4a2d33f8e7f5feceb9a4cd508f4",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7de4c66297b2f5b04cf6342de581ef451459d4a2d33f8e7f5feceb9a4cd508f4.mp3",
+          "text": "Protect the tiger's forest, and every species under it is sheltered too."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 461,
+          "hash": "a2fd42583176d51b8e7fe98b00c997775ac8dc77e16d262ca9d30b8eb1cda4dc",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a2fd42583176d51b8e7fe98b00c997775ac8dc77e16d262ca9d30b8eb1cda4dc.mp3",
+          "text": "Project Tiger spread across India in famous reserves: Corbett in Uttarakhand, Sunderbans in West Bengal, Bandhavgarh in Madhya Pradesh, Sariska in Rajasthan, Manas in Assam, and Periyar in Kerala.\n\nAnd conservation kept growing up. It now guards whole biodiversity, not a few stars ,  even insects. Notifications under the Wildlife Act (1980, 1986) added butterflies, moths, beetles, even a dragonfly; in 1991, plants made the protected list for the first time."
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 69,
+          "hash": "9b4df251410ae236b186e03ef5b6cad1311b7b9676191da9708b5cfcd5fe004a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9b4df251410ae236b186e03ef5b6cad1311b7b9676191da9708b5cfcd5fe004a.mp3",
+          "text": "Why is protecting the tiger described as protecting the whole forest?"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 38,
+          "hash": "eaaae1177d6711fc9b895c883c66a4c6130a7cb173b660dd2c3104f2b0795df3",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/eaaae1177d6711fc9b895c883c66a4c6130a7cb173b660dd2c3104f2b0795df3.mp3",
+          "text": "Match each tiger reserve to its state."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 239,
+          "hash": "e5e667fc1c54ecdb732df9ac01c306e8a87e9254a40467b0b2c7176977ba5cb9",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e5e667fc1c54ecdb732df9ac01c306e8a87e9254a40467b0b2c7176977ba5cb9.mp3",
+          "text": "Pick one tiger reserve or national park from this lesson (or one you know).\n\nOn a map or on paper, locate it and note its state. Then write one threat from this lesson that Project Tiger had to fight. Type the reserve and the threat below."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 22,
+          "hash": "a300bd8c3110fc8569b226e50c72ef6773af24234714396e458e204ba959c5ed",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a300bd8c3110fc8569b226e50c72ef6773af24234714396e458e204ba959c5ed.mp3",
+          "text": "Lock in the key facts."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 1,
+          "chars": 118,
+          "hash": "ac317b42bf4c543173060aa27d0cd6d1ece20ba617a3faae2e7d986bbbff6000",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ac317b42bf4c543173060aa27d0cd6d1ece20ba617a3faae2e7d986bbbff6000.mp3",
+          "text": "Project Tiger was launched in blank, and India and Nepal together shelter about blank of the world's surviving tigers."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 253,
+          "hash": "ab8bbc267e5dd3107410fa5400c6452e58415fd7a21be12569733936f4ebaeaa",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ab8bbc267e5dd3107410fa5400c6452e58415fd7a21be12569733936f4ebaeaa.mp3",
+          "text": "A single famous animal pulled an entire forest's worth of life under protection. Is it fair that the unglamorous species got saved only because they happened to live near a tiger? What does that say about how we choose what to protect?\n\nNo right answer."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 0,
+          "chars": 75,
+          "hash": "dddb33563f17539fb56722da77258f2cebda8d660ac535743a068dd3177270e0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/dddb33563f17539fb56722da77258f2cebda8d660ac535743a068dd3177270e0.mp3",
+          "text": "You can tell the story of Project Tiger ,  and the umbrella idea behind it."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 1,
+          "chars": 472,
+          "hash": "3ecf5d66fc3921f5d92cb780c338ca0e7dd9a6fb7e767d54a575ea055548fb40",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/3ecf5d66fc3921f5d92cb780c338ca0e7dd9a6fb7e767d54a575ea055548fb40.mp3",
+          "text": "From 55,000 to 1,827, the tiger nearly vanished to poaching, lost habitat, lost prey, and human pressure. Project Tiger (1973) fought back ,  and by protecting the tiger's forest, it sheltered the whole web, widening over time to cover even insects and plants.\n\nBut forests themselves are sorted and guarded in different ways. Some are India's most strictly protected; some are left to local communities. How exactly are India's forests classified? That's the next lesson."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/protecting-forests-and-wildlife/03-reserved-protected-and-unclassed-forests.yaml",
+      "language": "en",
+      "lesson_slug": "reserved-protected-and-unclassed-forests",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_flash_v2_5",
+      "chunk_count": 17,
+      "total_chars": 3174,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 272,
+          "hash": "35bc50e35730fa5913c84ec5adb7ac8cf8ffc39e0a7482b48f6ed669713ac64d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/35bc50e35730fa5913c84ec5adb7ac8cf8ffc39e0a7482b48f6ed669713ac64d.mp3",
+          "text": "Not every forest in India is guarded the same way.\n\nSome are the country's crown jewels, strictly protected. Some are watched but a step looser. And some are left largely to the villages that live in them.\n\nThree tiers ,  and the difference is how tightly each is guarded."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 229,
+          "hash": "84224f8a6a49006ba070f72cb23ec224872a1bd5c55edae8db2527ff82802279",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/84224f8a6a49006ba070f72cb23ec224872a1bd5c55edae8db2527ff82802279.mp3",
+          "text": "India's forests are vast, and hard to manage, control, and regulate. Much of the forest and wildlife is owned or managed by the government, through the Forest Department.\n\nTo handle it, the forest is sorted into three categories."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 182,
+          "hash": "eec2109d987b2182426daeacdb7462a6487913c441d5c1d27a2a42a988a93ec6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/eec2109d987b2182426daeacdb7462a6487913c441d5c1d27a2a42a988a93ec6.mp3",
+          "text": "1. Reserved Forests. More than half of all forest land. These are the most strictly guarded ,  and regarded as the most valuable for conserving forest and wildlife. The crown jewels."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 170,
+          "hash": "c70f0cc0386fa01884c0cd94fcaf494ab2c248543f09bd3c9f0a4fe64f208b7c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c70f0cc0386fa01884c0cd94fcaf494ab2c248543f09bd3c9f0a4fe64f208b7c.mp3",
+          "text": "2. Protected Forests. About one-third of forest area, declared by the Forest Department, and protected from any further depletion.\n\nGuarded ,  but a notch below reserved."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 243,
+          "hash": "4204fe0b5ade74d119b53bc6996016e39bcd997769596220a28376a0b4637b1d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/4204fe0b5ade74d119b53bc6996016e39bcd997769596220a28376a0b4637b1d.mp3",
+          "text": "3. Unclassed Forests. Everything else: other forests and wastelands belonging to both government and private individuals and communities.\n\nThe loosest tier on paper ,  and, as we'll see, often cared for by the local communities who live there."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 83,
+          "hash": "7d881a4e5fe09375d2de639042de194089146cc5b85ab1511b1de228261f67f0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7d881a4e5fe09375d2de639042de194089146cc5b85ab1511b1de228261f67f0.mp3",
+          "text": "Reserved (over half, strictest) · Protected (about a third) · Unclassed (the rest)."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 236,
+          "hash": "a48d3c70243b7628d65e46db07e728a7a583d6462e67caed92f21e2a97dc5d32",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a48d3c70243b7628d65e46db07e728a7a583d6462e67caed92f21e2a97dc5d32.mp3",
+          "text": "Reserved and protected forests together are called permanent forest estates ,  kept permanently for producing timber and for protection.\n\nMadhya Pradesh has the largest area under permanent forests: a remarkable 75% of its total forest."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 337,
+          "hash": "8287b39e3ecd3911c56e1340ed42bb0e768e1b00231d04068031a01afed994ff",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/8287b39e3ecd3911c56e1340ed42bb0e768e1b00231d04068031a01afed994ff.mp3",
+          "text": "The pattern shifts across India:\n\n- Large reserved forests: Jammu & Kashmir, Andhra Pradesh, Uttarakhand, Kerala, Tamil Nadu, West Bengal, Maharashtra.\n- Mostly protected: Bihar, Haryana, Punjab, Himachal Pradesh, Odisha, Rajasthan.\n- Very high unclassed (managed by local communities): all the North-eastern states and parts of Gujarat."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 72,
+          "hash": "68fa5e688d7017a76b934f91a2366be31bfc8e33c80c8933c0e05a50a13e7e3d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/68fa5e688d7017a76b934f91a2366be31bfc8e33c80c8933c0e05a50a13e7e3d.mp3",
+          "text": "From the strictly reserved down to the community-held unclassed forests."
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 111,
+          "hash": "373cee7f104fde15271df646799c819100e0d08c9230873804368bac51225f4d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/373cee7f104fde15271df646799c819100e0d08c9230873804368bac51225f4d.mp3",
+          "text": "Which forest category makes up over half the forest land and is regarded as the most valuable for conservation?"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 46,
+          "hash": "610b5b49e0e3676b8140771908b1dd881c45aee8d784dcc3dbf51e159ad3d595",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/610b5b49e0e3676b8140771908b1dd881c45aee8d784dcc3dbf51e159ad3d595.mp3",
+          "text": "Match each forest category to its description."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 260,
+          "hash": "9b4c214a0a60e010151a46764fb81c0bc312657d39009a7b57c3a992c066d481",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9b4c214a0a60e010151a46764fb81c0bc312657d39009a7b57c3a992c066d481.mp3",
+          "text": "Think about your own state. Based on this lesson, which category do you think most of its forest falls under ,  reserved, protected, or largely unclassed (community-managed)?\n\nOn paper, make your guess and give one reason. Type your state and your guess below."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 22,
+          "hash": "1b3f0aebe31f77fe309ca93e0d0708de15ea66be0388915af2a27fbe4c78f1ac",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/1b3f0aebe31f77fe309ca93e0d0708de15ea66be0388915af2a27fbe4c78f1ac.mp3",
+          "text": "Lock in the structure."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 1,
+          "chars": 123,
+          "hash": "7cd5c7bc961690c134de67fea184348f0b7c69198fcd03462841b41bc9f29426",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7cd5c7bc961690c134de67fea184348f0b7c69198fcd03462841b41bc9f29426.mp3",
+          "text": "Reserved forests make up over blank of forest land, and reserved plus protected forests together form blank forest estates."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 225,
+          "hash": "d8e1812e81cc252e64fa873b057c26fdd3d7100ac7bf1e348a72e12a32ce71d2",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d8e1812e81cc252e64fa873b057c26fdd3d7100ac7bf1e348a72e12a32ce71d2.mp3",
+          "text": "The \"loosest\" tier ,  unclassed forest ,  is often the one local communities care for directly. Do you think a forest is safer guarded by a distant government rule, or by the people who live right beside it?\n\nNo right answer."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 0,
+          "chars": 64,
+          "hash": "7cd534dcc8506a5d8d8a3dd9d7377d3539e696c0b84604a82c6febe7c3d3aa53",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7cd534dcc8506a5d8d8a3dd9d7377d3539e696c0b84604a82c6febe7c3d3aa53.mp3",
+          "text": "You can classify India's forests into three tiers of protection."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 1,
+          "chars": 499,
+          "hash": "db98069daa08390107b282cee28a7aa84ac25c15879a68d5c780ccf45242cf42",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/db98069daa08390107b282cee28a7aa84ac25c15879a68d5c780ccf45242cf42.mp3",
+          "text": "Reserved (over half, strictest, most valuable), protected (about a third, no further depletion), and unclassed (the rest, held by government, private owners, and communities) ,  with reserved and protected together forming the permanent forest estates.\n\nNotice that last tier kept pointing at communities. And that's the quiet truth this whole chapter has been building toward: some of India's best conservation never came from a government at all ,  it came from villagers. That's the final course."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/protecting-forests-and-wildlife-hinglish/01-the-wildlife-protection-act.yaml",
+      "language": "hinglish",
+      "lesson_slug": "the-wildlife-protection-act",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_multilingual_v2",
+      "chunk_count": 16,
+      "total_chars": 2714,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 190,
+          "hash": "ccf4779bac409e80dd0b49a9aad806c03a3c8a8985d6601aea8e0ba531528085",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ccf4779bac409e80dd0b49a9aad806c03a3c8a8985d6601aea8e0ba531528085.mp3",
+          "text": "Zyaadatar history mein, tiger maarna ek trophy tha. Jiske saath photo khinchwaate the, jiske liye saza nahi milti thi.\n\nEk saal ne India bhar mein yeh badal diya. Saal tha 1972. Yeh hua kya."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 278,
+          "hash": "e4af3214dfa33c5994ce6d8989696a3bae600bddfd674315f43e59c8019706af",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e4af3214dfa33c5994ce6d8989696a3bae600bddfd674315f43e59c8019706af.mp3",
+          "text": "1960s aur 70s tak, wildlife tezi se gayab ho rahi thi. Conservationists ne ek national wildlife protection programme ke liye zor lagaya.\n\nNateeja tha Indian Wildlife (Protection) Act, 1972 ,  aur isne India ko, pehli baar, apne jangli jeevon ko bachane ke asli legal daant diye."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 306,
+          "hash": "bc44a18fcfc82991aa18f8666226ad5b03d459017feb232662c366e2437e67cb",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/bc44a18fcfc82991aa18f8666226ad5b03d459017feb232662c366e2437e67cb.mp3",
+          "text": "Act ko ek shield (dhaal) ki tarah socho jiske teen kinaare hain:\n\n- endangered species ka shikaar band karo.\n- unke habitats ko kaanoon se bachao.\n- wildlife ke vyaapaar (trade) pe rok lagao.\n\nIsne ek all-India protected species ki list bhi nikaali ,  theek-theek batate hue ki dhaal kis-kis ko dhakti hai."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 79,
+          "hash": "895ba54711f651a6526fc92e021352b00eb28ade2a43e59ed829ec8d744a04d1",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/895ba54711f651a6526fc92e021352b00eb28ade2a43e59ed829ec8d744a04d1.mp3",
+          "text": "Ek kaanoon, teen protections: shikaar band, habitats ki suraksha, trade pe rok."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 198,
+          "hash": "2bde8d14ac19d784ddd43c61664ebef1b92ad392c6dfda3079534dd417da438d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/2bde8d14ac19d784ddd43c61664ebef1b92ad392c6dfda3079534dd417da438d.mp3",
+          "text": "Act ke aane ke baad, central aur state governments ne national parks aur wildlife sanctuaries banaye ,  surakshit zones jahan dhaal sabse mazboot hai, aur jahan jangli populations sambhal sakti thi."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 208,
+          "hash": "c915a5923d70d6f1e6bcd4e36da8d2ea10ea62f0d9d7009871f9389f44c28765",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c915a5923d70d6f1e6bcd4e36da8d2ea10ea62f0d9d7009871f9389f44c28765.mp3",
+          "text": "Government ne kagaar pe khade khaas jaanwaron ke liye projects bhi launch kiye:\n\ntiger, one-horned rhinoceros, Kashmir stag (hangul), teen crocodiles ,  freshwater, saltwater, aur gharial ,  aur Asiatic lion."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 203,
+          "hash": "37b68e83bae7456578dfe7ed02cd0eb81ed0917d8a843b4f64ca57162605e21d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/37b68e83bae7456578dfe7ed02cd0eb81ed0917d8a843b4f64ca57162605e21d.mp3",
+          "text": "Haal hi mein, dhaal Indian elephant, black buck (chinkara), great Indian bustard (godawan), aur snow leopard tak failii ,  poore India mein shikaar aur trade ke khilaaf poori ya aanshik legal protection."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 85,
+          "hash": "0ae40a4a82c4835c4722a3ccbe1de776d5cbe480bfabd036597a445b42294f18",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/0ae40a4a82c4835c4722a3ccbe1de776d5cbe480bfabd036597a445b42294f18.mp3",
+          "text": "Ek-ek karke, India ke sabse khatre mein pade jaanwar legal protection ke neeche aaye."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 62,
+          "hash": "526060d83c122dfd085ba418a812976dc6129b548b231c574e1030a408c68c18",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/526060d83c122dfd085ba418a812976dc6129b548b231c574e1030a408c68c18.mp3",
+          "text": "Wildlife (Protection) Act, 1972 ke teen mukhya thrust kya the?"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 56,
+          "hash": "51ae74b91cfeafb9e549a14aaab3161742e54416eea17176dea0985e5e4ba655",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/51ae74b91cfeafb9e549a14aaab3161742e54416eea17176dea0985e5e4ba655.mp3",
+          "text": "Har protected jaanwar ko uske doosre naam se match karo."
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 192,
+          "hash": "d52b13c2b6050f7d414e8fe1cc6a50dd1a4de077c19902ddfd92b91d30fb8e0f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d52b13c2b6050f7d414e8fe1cc6a50dd1a4de077c19902ddfd92b91d30fb8e0f.mp3",
+          "text": "Apne rajya mein (ya sabse paas) ek national park ya wildlife sanctuary dhundo.\n\nPaper pe uska naam aur ek jaanwar likho jise woh bachata hai. Phir neeche park ka naam aur uska rajya type karo."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 36,
+          "hash": "f741461c91a6cd1763b24abc766c87e245cd96847d115f4c8e9502c1c819ec9b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f741461c91a6cd1763b24abc766c87e245cd96847d115f4c8e9502c1c819ec9b.mp3",
+          "text": "1972 Act ke teen thrust yaad kar lo."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "chars": 113,
+          "hash": "60cc971c2b40cb050b95d1ebb362efdf852ca0446a9f337f540ea9d9096c6ff8",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/60cc971c2b40cb050b95d1ebb362efdf852ca0446a9f337f540ea9d9096c6ff8.mp3",
+          "text": "1972 Act ne blank ko ban kiya, jaanwaron ke blank ko legal protection di, aur wildlife ke blank ko restrict kiya."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 217,
+          "hash": "b7eff1ebac35d8f8439e0edef572cdf6cec1fbd2fe5a3e4cfa6f92ee73719ea1",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b7eff1ebac35d8f8439e0edef572cdf6cec1fbd2fe5a3e4cfa6f92ee73719ea1.mp3",
+          "text": "Ek kaanoon kaagaz pe shikaar band kar sakta hai ,  par ek tiger kisi courtroom se bahut door rehta hai. Tumhe kya lagta hai ek wildlife law ko zameen pe kaam karne ke liye asal mein kya chahiye?\n\nKoi sahi jawaab nahi."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 89,
+          "hash": "84a1c31b49a8fe9743ea7bcf90572239b16e177bd6287ca2c964d9ee5dd419f9",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/84a1c31b49a8fe9743ea7bcf90572239b16e177bd6287ca2c964d9ee5dd419f9.mp3",
+          "text": "Tum jaante ho India ne pehli baar apni wildlife ke charon taraf legal dhaal kaise lagayi."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "chars": 402,
+          "hash": "04f1ea7b42ec388100733df11f9c4ba42387893e19cf19e395213a9e658e9e93",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/04f1ea7b42ec388100733df11f9c4ba42387893e19cf19e395213a9e658e9e93.mp3",
+          "text": "1972 Wildlife (Protection) Act ne shikaar band kiya, habitats bachaye, trade restrict ki, aur bachayi jaane waali species ko naam diya ,  national parks, sanctuaries, aur rhino aur lion jaise jaanwaron ke projects ke saath.\n\nPar in projects mein se ek duniya ka sabse mashhoor wildlife campaign ban gaya ,  kyunki ek jaanwar 55,000 se ghat ke 2,000 se neeche aa gaya tha. Aage: Project Tiger ki kahani."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/protecting-forests-and-wildlife-hinglish/02-project-tiger.yaml",
+      "language": "hinglish",
+      "lesson_slug": "project-tiger",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_multilingual_v2",
+      "chunk_count": 17,
+      "total_chars": 3416,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 232,
+          "hash": "130bc3270954a6e5c502c28f75657d63725a3edc24d5baaac2bfcd0d56fa44e2",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/130bc3270954a6e5c502c28f75657d63725a3edc24d5baaac2bfcd0d56fa44e2.mp3",
+          "text": "Lagbhag 1900 ke aas-paas, India mein lagbhag 55,000 tigers the.\n\n1973 tak, jab kisi ne aakhir ginti ki, sirf 1,827 bache the.\n\nYeh giraavat nahi. Yeh collapse hai. Hua kya ,  aur tiger bachana poore forest ko bachana kaise ban gaya?"
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 172,
+          "hash": "138305da9c65234dcb4bfc7bf4791b62c8eab4f45ac6063cd878719cdfecfada",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/138305da9c65234dcb4bfc7bf4791b62c8eab4f45ac6063cd878719cdfecfada.mp3",
+          "text": "Tiger faunal web ki ek key species hai ,  bilkul top pe ek shikaari.\n\nJab authorities ne 1973 mein jaayza liya, crash ka paimaana saaf tha: lagbhag 55,000 se ghat ke 1,827."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 63,
+          "hash": "4a6a8e608ff57d0de75a666943f9befdc11f324e4fb2f1b857cbd5f2104efb35",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/4a6a8e608ff57d0de75a666943f9befdc11f324e4fb2f1b857cbd5f2104efb35.mp3",
+          "text": "1900 mein lagbhag 55,000 tigers se ghat ke 1973 tak sirf 1,827."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 232,
+          "hash": "0e92d6fd9650fec7511e503f172a17147f265f893000ed530cdcb03b1cfa3f0a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/0e92d6fd9650fec7511e503f172a17147f265f893000ed530cdcb03b1cfa3f0a.mp3",
+          "text": "Crash kisne laaya? Chaar forces, ek saath:\n\n- vyaapaar ke liye poaching (avaidh shikaar)\n- forests katne se shrinking habitat\n- prey ki kami ,  kam hiran aur suar shikaar ke liye\n- tiger ke ilaaqe mein ghuste badhti human population"
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 347,
+          "hash": "d325cc5b9ac1441429d74f7b81b31d0fff429dae43e435764dc23bff5d7c4cb6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d325cc5b9ac1441429d74f7b81b31d0fff429dae43e435764dc23bff5d7c4cb6.mp3",
+          "text": "Sabse khatarnaak khinchaav tha trade.\n\nTiger ki khaal, aur haddiyaan jo traditional medicines mein use hoti thi ,  khaaskar kai Asian deshon mein ,  tiger ko zinda se zyaada mara hua keemti bana deti thi. Aur kyunki India aur Nepal duniya ke bache tigers ka lagbhag do-tihaai rakhte hain, woh poachers aur avaidh traders ke prime targets ban gaye."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 157,
+          "hash": "51b8c04bc96ede5e11304b824916abe857375f06cebfeec8dd5f143162b81cb3",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/51b8c04bc96ede5e11304b824916abe857375f06cebfeec8dd5f143162b81cb3.mp3",
+          "text": "Toh 1973 mein, India ne Project Tiger launch kiya ,  duniya ke sabse zyaada publicised wildlife campaigns mein se ek.\n\nPar iske dil mein ek chalaak idea hai."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 288,
+          "hash": "860f634194e5cb80dd2cc362181c2fad0568f3dbf96824595d1807dd6771c49e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/860f634194e5cb80dd2cc362181c2fad0568f3dbf96824595d1807dd6771c49e.mp3",
+          "text": "Ek tiger ko ek vishaal, swasth forest chahiye ,  prey, paani, aur cover se bhara. Use bachao, aur tum apne aap usme rehne waali har cheez ko bacha lete ho.\n\nTiger ek umbrella hai: badi billi pe protection failao, aur uski chhaaya hiran, parindon, keedon, pedon ,  poore web ko dhakti hai."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 85,
+          "hash": "12eb53c71cf7934f52dbbb53f2b95183659112d00f5f64cd9f0e5a08ee31711a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/12eb53c71cf7934f52dbbb53f2b95183659112d00f5f64cd9f0e5a08ee31711a.mp3",
+          "text": "Tiger ke forest ko bachao, aur uske neeche ki har species bhi surakshit ho jaati hai."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 503,
+          "hash": "f81048d9ad052775dc9683fde126377f6dbe0cb5eb27f04049aa5f6417bd004a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f81048d9ad052775dc9683fde126377f6dbe0cb5eb27f04049aa5f6417bd004a.mp3",
+          "text": "Project Tiger India bhar mein mashhoor reserves mein faila: Corbett Uttarakhand mein, Sunderbans West Bengal mein, Bandhavgarh Madhya Pradesh mein, Sariska Rajasthan mein, Manas Assam mein, aur Periyar Kerala mein.\n\nAur conservation badi hoti gayi. Ab yeh poori biodiversity ki rakhwaali karti hai, sirf kuch stars ki nahi ,  yahan tak ki insects ki. Wildlife Act ke notifications (1980, 1986) ne butterflies, moths, beetles, ek dragonfly tak jode; 1991 mein, pehli baar plants protected list mein aaye."
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 64,
+          "hash": "13f9f1fd62decfa6cb118b1fb685802d1136c4edc530fd45dd2e3497c2bd1006",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/13f9f1fd62decfa6cb118b1fb685802d1136c4edc530fd45dd2e3497c2bd1006.mp3",
+          "text": "Tiger ko bachane ko poore forest ko bachana kyun kaha jaata hai?"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 46,
+          "hash": "0f6ac7c7c24700bf1c8ffc6ca91860e9741be956ea3757a89abc79da7221412e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/0f6ac7c7c24700bf1c8ffc6ca91860e9741be956ea3757a89abc79da7221412e.mp3",
+          "text": "Har tiger reserve ko uske rajya se match karo."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 249,
+          "hash": "4dd561850fb3a28e3da6fd21ef9507bdf4b13fb9fca117b7ad3bfcd2c0044d58",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/4dd561850fb3a28e3da6fd21ef9507bdf4b13fb9fca117b7ad3bfcd2c0044d58.mp3",
+          "text": "Is lesson se koi ek tiger reserve ya national park chuno (ya koi jise tum jaante ho).\n\nMap pe ya paper pe use locate karo aur uska rajya likho. Phir is lesson se ek threat likho jisse Project Tiger ko ladna pada. Neeche reserve aur threat type karo."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 22,
+          "hash": "f8206bb70b5fdf2ef8aea5e00822408ece5772d3fa11d94432d9643a43180ab2",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f8206bb70b5fdf2ef8aea5e00822408ece5772d3fa11d94432d9643a43180ab2.mp3",
+          "text": "Key facts yaad kar lo."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 1,
+          "chars": 115,
+          "hash": "ebf56ee54a4b005b43773129932d5372a7b0533b57f0217e2bbcaa451d4dae45",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ebf56ee54a4b005b43773129932d5372a7b0533b57f0217e2bbcaa451d4dae45.mp3",
+          "text": "Project Tiger blank mein launch hua, aur India aur Nepal milke duniya ke bache tigers ka lagbhag blank rakhte hain."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 283,
+          "hash": "d1fe1585105a6d1c9965c9bd00c3ca80dc9797f862d245db6fef4733fbb8e885",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d1fe1585105a6d1c9965c9bd00c3ca80dc9797f862d245db6fef4733fbb8e885.mp3",
+          "text": "Ek hi mashhoor jaanwar ne ek poore forest bhar ke jeevan ko protection ke neeche kheench liya. Kya yeh sahi hai ki unglamorous species sirf isliye bach gayi kyunki woh ek tiger ke paas rehti thi? Yeh humare protect karne ke chunaav ke baare mein kya kehta hai?\n\nKoi sahi jawaab nahi."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 0,
+          "chars": 78,
+          "hash": "8ced3a995a6ccd6467924aecdfa549af5df1659f3968c3bf34f4f087e7a9c3a1",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/8ced3a995a6ccd6467924aecdfa549af5df1659f3968c3bf34f4f087e7a9c3a1.mp3",
+          "text": "Tum Project Tiger ki kahani ,  aur uske peeche umbrella idea ,  bata sakte ho."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 1,
+          "chars": 480,
+          "hash": "f36128f9e9d88e3a656813cb0886e3da3ada398461bc9336b82bb51d8e4e24a2",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f36128f9e9d88e3a656813cb0886e3da3ada398461bc9336b82bb51d8e4e24a2.mp3",
+          "text": "55,000 se 1,827, tiger lagbhag gayab ho gaya ,  poaching, khoye habitat, khoye prey, aur human pressure se. Project Tiger (1973) ne palatwaar kiya ,  aur tiger ke forest ko bachakar, usne poore web ko dhaka, samay ke saath insects aur plants tak failta gaya.\n\nPar forests khud alag-alag tareekon se sorted aur guarded hote hain. Kuch India ke sabse strictly protected hain; kuch local communities ke bharose chhode. India ke forests classify kaise hote hain? Yahi agli lesson hai."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/protecting-forests-and-wildlife-hinglish/03-reserved-protected-and-unclassed-forests.yaml",
+      "language": "hinglish",
+      "lesson_slug": "reserved-protected-and-unclassed-forests",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_multilingual_v2",
+      "chunk_count": 17,
+      "total_chars": 3366,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 289,
+          "hash": "c3a68dc01cffb0967ad676b9d63af68c8b4ae21b4568832e6c2fd90c9c2b0639",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c3a68dc01cffb0967ad676b9d63af68c8b4ae21b4568832e6c2fd90c9c2b0639.mp3",
+          "text": "India ka har forest ek jaisi rakhwaali mein nahi hai.\n\nKuch desh ke crown jewels hain, strictly protected. Kuch dekhe jaate hain par ek step dheele. Aur kuch zyaadatar un gaon ke bharose chhode jaate hain jo unme rehte hain.\n\nTeen tier ,  aur fark hai ki har ek kitni saxti se guarded hai."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 246,
+          "hash": "f8e28e04f2c5ba685f6c19f54fc236856c852c5705f399045d79ffd5067126fa",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f8e28e04f2c5ba685f6c19f54fc236856c852c5705f399045d79ffd5067126fa.mp3",
+          "text": "India ke forests vishaal hain, aur manage, control, aur regulate karna mushkil. Forest aur wildlife ka zyaadatar hissa government ke paas hai, Forest Department ke through.\n\nUse sambhaalne ke liye, forest teen categories mein sort kiya jaata hai."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 180,
+          "hash": "0f427ba9dcd71451b6f7ef87ce9a6d9147a5ce325ea9a6e0a45121cca0451810",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/0f427ba9dcd71451b6f7ef87ce9a6d9147a5ce325ea9a6e0a45121cca0451810.mp3",
+          "text": "1. Reserved Forests. Saare forest land ka aadhe se zyaada. Yeh sabse saxti se guarded hain ,  aur forest aur wildlife bachane ke liye sabse valuable maane jaate hain. Crown jewels."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 179,
+          "hash": "8b1457bbdb5adb477315116c3433ca9c619eea904986fa13bd8c0045b09ee30a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/8b1457bbdb5adb477315116c3433ca9c619eea904986fa13bd8c0045b09ee30a.mp3",
+          "text": "2. Protected Forests. Forest area ka lagbhag ek-tihaai, Forest Department dwara declared, aur kisi bhi aur depletion se surakshit.\n\nGuarded ,  par reserved se ek paayedaan neeche."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 256,
+          "hash": "05d70f24841238ed2048c73fdf5fc9d10ffb632e376ab48d47035d36224986ce",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/05d70f24841238ed2048c73fdf5fc9d10ffb632e376ab48d47035d36224986ce.mp3",
+          "text": "3. Unclassed Forests. Baaki sab: doosre forests aur wastelands jo government aur private individuals aur communities dono ke hain.\n\nKaagaz pe sabse dheela tier ,  aur, jaisa hum dekhenge, aksar wahan rehne waali local communities dwara sambhaala jaata hai."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 92,
+          "hash": "24b2e5389677550cc37245914a07e47d0d7548f38033382f1e62b4d307ce5369",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/24b2e5389677550cc37245914a07e47d0d7548f38033382f1e62b4d307ce5369.mp3",
+          "text": "Reserved (aadhe se zyaada, sabse sakht) · Protected (lagbhag ek-tihaai) · Unclassed (baaki)."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 230,
+          "hash": "55c868c881214248bb019c16ee1ab7b1a92857dd73264abd168f05387d68a107",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/55c868c881214248bb019c16ee1ab7b1a92857dd73264abd168f05387d68a107.mp3",
+          "text": "Reserved aur protected forests milke permanent forest estates kehlaate hain ,  timber aur protection ke liye permanently rakhe gaye.\n\nMadhya Pradesh ke paas sabse zyaada permanent forests hain: uske kul forest ka ek shaandaar 75%."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 352,
+          "hash": "6d89fbbc642ab7ef6bee4c7c9474e04ffbe7eaad0f24de9cb2ab6263bbe103a4",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6d89fbbc642ab7ef6bee4c7c9474e04ffbe7eaad0f24de9cb2ab6263bbe103a4.mp3",
+          "text": "Pattern rajya-dar-rajya badalta hai:\n\n- Bade reserved forests: Jammu & Kashmir, Andhra Pradesh, Uttarakhand, Kerala, Tamil Nadu, West Bengal, Maharashtra.\n- Zyaadatar protected: Bihar, Haryana, Punjab, Himachal Pradesh, Odisha, Rajasthan.\n- Bahut zyaada unclassed (local communities dwara managed): saare North-eastern states aur Gujarat ke kuch hisse."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 64,
+          "hash": "de27c4f473106951a83cca1d88d6cefefc58b796aee76a9f5d38f0efa093057d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/de27c4f473106951a83cca1d88d6cefefc58b796aee76a9f5d38f0efa093057d.mp3",
+          "text": "Strictly reserved se lekar community-held unclassed forests tak."
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 118,
+          "hash": "fdde85884ee6bb05b11bc02eb3ef1c38cb92bf7397c760be6b291f3577cfa125",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/fdde85884ee6bb05b11bc02eb3ef1c38cb92bf7397c760be6b291f3577cfa125.mp3",
+          "text": "Kaunsi forest category aadhe se zyaada forest land banati hai aur conservation ke liye sabse valuable maani jaati hai?"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 54,
+          "hash": "6b69d03ad7b18c650bc241cd1965a4437b14d12562f581da795b5bc618145e8e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6b69d03ad7b18c650bc241cd1965a4437b14d12562f581da795b5bc618145e8e.mp3",
+          "text": "Har forest category ko uske description se match karo."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 280,
+          "hash": "b104e99cef17cbb1553a8ab00463ee7ccda64d39930759308973c7a3d118fa01",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b104e99cef17cbb1553a8ab00463ee7ccda64d39930759308973c7a3d118fa01.mp3",
+          "text": "Apne rajya ke baare mein socho. Is lesson ke aadhaar pe, tumhe lagta hai uska zyaadatar forest kaunsi category mein aata hai ,  reserved, protected, ya zyaadatar unclassed (community-managed)?\n\nPaper pe apna guess lagao aur ek wajah do. Neeche apna rajya aur apna guess type karo."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 22,
+          "hash": "701e5404c60757e01c500825699060701ac6d9002a484c21ce366e1098e66336",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/701e5404c60757e01c500825699060701ac6d9002a484c21ce366e1098e66336.mp3",
+          "text": "Structure yaad kar lo."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 1,
+          "chars": 138,
+          "hash": "864d7a812c8d69ca58733f827ae7224283c7e25e1b34ab877995887db1f6bfa9",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/864d7a812c8d69ca58733f827ae7224283c7e25e1b34ab877995887db1f6bfa9.mp3",
+          "text": "Reserved forests forest land ka blank se zyaada banate hain, aur reserved plus protected forests milke blank forest estates kehlaate hain."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 258,
+          "hash": "3d77d506e714326f8c25a13a3782ad0b776c163f6b573b4da1ce375c908c7202",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/3d77d506e714326f8c25a13a3782ad0b776c163f6b573b4da1ce375c908c7202.mp3",
+          "text": "\"Sabse dheela\" tier ,  unclassed forest ,  aksar wahi hai jise local communities seedhe sambhaalti hain. Tumhe lagta hai ek forest ek door ki government rule dwara zyaada surakshit hai, ya un logon dwara jo uske bilkul paas rehte hain?\n\nKoi sahi jawaab nahi."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 0,
+          "chars": 76,
+          "hash": "eb4b5180348ca48bd3a992094cfe7a351a3ae6b372bf3ccfe11b7a07cd3660dd",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/eb4b5180348ca48bd3a992094cfe7a351a3ae6b372bf3ccfe11b7a07cd3660dd.mp3",
+          "text": "Tum India ke forests ko protection ke teen tiers mein classify kar sakte ho."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 1,
+          "chars": 532,
+          "hash": "31bb6a8305f07f9f5352b62af748c1555c8292cac9bccc9887ba87a9bb03512e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/31bb6a8305f07f9f5352b62af748c1555c8292cac9bccc9887ba87a9bb03512e.mp3",
+          "text": "Reserved (aadhe se zyaada, sabse sakht, sabse valuable), protected (lagbhag ek-tihaai, koi aur depletion nahi), aur unclassed (baaki, government, private owners, aur communities ke) ,  reserved aur protected milke permanent forest estates banate hain.\n\nGaur karo ki woh aakhri tier baar-baar communities ki taraf ishaara karta raha. Aur yahi woh khaamosh sach hai jiski taraf yeh poora chapter badh raha tha: India ki kuch sabse achhi conservation kabhi government se aayi hi nahi ,  woh gaon waalon se aayi. Yahi aakhri course hai."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/communities-and-conservation/01-when-villages-defend-the-forest.yaml",
+      "language": "en",
+      "lesson_slug": "when-villages-defend-the-forest",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_flash_v2_5",
+      "chunk_count": 16,
+      "total_chars": 2771,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 197,
+          "hash": "0f39746db808971c74825f3fccaf982948d45312f80b8f60e1096a9c717ebb2f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/0f39746db808971c74825f3fccaf982948d45312f80b8f60e1096a9c717ebb2f.mp3",
+          "text": "When a mining company came for the Sariska forest in Rajasthan, it wasn't the police who turned them back.\n\nIt was the villagers ,  armed with nothing but a law and their own resolve. And they won."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 267,
+          "hash": "67fecf8f51b68b087094d524ce9d719da39675f5fb34212744ae9571891f26eb",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/67fecf8f51b68b087094d524ce9d719da39675f5fb34212744ae9571891f26eb.mp3",
+          "text": "Conservation isn't a new government idea in India. Forests have always been home to traditional communities.\n\nAnd across the country, those communities are fighting to protect their forests ,  because they understand that their own long-term livelihood depends on it."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 283,
+          "hash": "7d64da69aca998c809755ef5db676b593a034c132b31e7d28b34d37d1c396c66",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7d64da69aca998c809755ef5db676b593a034c132b31e7d28b34d37d1c396c66.mp3",
+          "text": "Take Sariska Tiger Reserve, Rajasthan. Villagers fought off mining by citing the Wildlife Protection Act ,  turning the law from the last course into their own weapon.\n\nIn many places, villagers protect habitats themselves ,  sometimes even rejecting government involvement entirely."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 278,
+          "hash": "cbd9ed5ebef27078ed9c7853f8bfd7fd60e0fb97a025e969c2fff80d7eaf1f0f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/cbd9ed5ebef27078ed9c7853f8bfd7fd60e0fb97a025e969c2fff80d7eaf1f0f.mp3",
+          "text": "Then there's the Bhairodev Dakav 'Sonchuri'.\n\nIn Alwar district, Rajasthan, the people of five villages declared 1,200 hectares of forest their own sanctuary ,  with their own rules: no hunting, and no outside encroachment. A people's protected area, run entirely by the people."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 74,
+          "hash": "7d11eb039380953bc9f745571b02c030b9dd533408474eac210914a41a61f83a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7d11eb039380953bc9f745571b02c030b9dd533408474eac210914a41a61f83a.mp3",
+          "text": "Across India, the communities living beside a forest became its guardians."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 312,
+          "hash": "1f1fc23e139690298483722e0cf7d6833804ea1ddf17b7ec43d9751e3a135d1b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/1f1fc23e139690298483722e0cf7d6833804ea1ddf17b7ec43d9751e3a135d1b.mp3",
+          "text": "And the most famous of all ,  the Chipko movement in the Himalayas.\n\nVillagers literally clung to the trees to stop them being cut (chipko means \"to hug\" or \"to cling\"). It didn't just halt deforestation in many areas ,  it proved that community afforestation with indigenous species can succeed on a huge scale."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 72,
+          "hash": "45d888f7c8b9ed3852cc5664748b20d7c7860e856ec969224c81f354dd48c42d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/45d888f7c8b9ed3852cc5664748b20d7c7860e856ec969224c81f354dd48c42d.mp3",
+          "text": "When villagers wrapped their arms around the trees, the axe had to stop."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 178,
+          "hash": "13d01cb89cc74cd812f280415de92f3bc8705ee248f1fcddc8cf9d47add7d5fb",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/13d01cb89cc74cd812f280415de92f3bc8705ee248f1fcddc8cf9d47add7d5fb.mp3",
+          "text": "Notice the pattern in every story.\n\nIt was the people who live beside the forest ,  not a distant rule ,  who saved it. The forest's best guardians turn out to be its neighbours."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 70,
+          "hash": "10425e9871c0f1fee58d014f9d1e442b41b3e282316fb50ba1a5a8ca34eb5ba6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/10425e9871c0f1fee58d014f9d1e442b41b3e282316fb50ba1a5a8ca34eb5ba6.mp3",
+          "text": "How did the villagers at Sariska stop mining inside the tiger reserve?"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 43,
+          "hash": "9da49c7469a3f43484199c407055bf335a7459cadcc3897a75486eeca4462810",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9da49c7469a3f43484199c407055bf335a7459cadcc3897a75486eeca4462810.mp3",
+          "text": "Match each community action to what it was."
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 236,
+          "hash": "60a38eff6857ec7ddf4ef04fee039602de4c9538623c57a82f55ddeba918c4fd",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/60a38eff6857ec7ddf4ef04fee039602de4c9538623c57a82f55ddeba918c4fd.mp3",
+          "text": "Think of one way people you know ,  a village, a family, a temple, a school ,  protect a tree, an animal, a pond, or a patch of green near them.\n\nOn paper, describe it in two lines. Then type what is protected and who protects it below."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 30,
+          "hash": "f19ade1ae4719ca1da6daa0515e02f7b9170ec769a8a5635276949f6dee5584d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f19ade1ae4719ca1da6daa0515e02f7b9170ec769a8a5635276949f6dee5584d.mp3",
+          "text": "Lock in two community actions."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "chars": 122,
+          "hash": "e354afe9983252412b585b8cf3ba351232a09fbf5db9b4c113b5ccc95dbd28bd",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e354afe9983252412b585b8cf3ba351232a09fbf5db9b4c113b5ccc95dbd28bd.mp3",
+          "text": "At Sariska, villagers stopped mining by citing the blank Act; in the Chipko movement, people blank the trees to save them."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 183,
+          "hash": "0db5983a8399631a0c2b57ec162df316be7fce0c1ecbf7f6226b5d5608c7a361",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/0db5983a8399631a0c2b57ec162df316be7fce0c1ecbf7f6226b5d5608c7a361.mp3",
+          "text": "The villagers at Sariska and Chipko protected forests they didn't legally \"own\". What do you think made them fight so hard for something that wasn't theirs on paper?\n\nNo right answer."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 63,
+          "hash": "f4bbf084ae8313d76e06456f1646bd53913b84c01578123a03a7e6893a431ab8",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f4bbf084ae8313d76e06456f1646bd53913b84c01578123a03a7e6893a431ab8.mp3",
+          "text": "You can show how communities themselves defend India's forests."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "chars": 363,
+          "hash": "2a7cb7b23a45225af1098a8506da5bb84d9fdd09a72351164d3b5651b621c8e0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/2a7cb7b23a45225af1098a8506da5bb84d9fdd09a72351164d3b5651b621c8e0.mp3",
+          "text": "From Sariska's fight against mining, to a people's sanctuary at Bhairodev, to the tree-hugging Chipko movement ,  again and again, the forest's neighbours became its guardians.\n\nBut defending a forest is only half of it. The other half is living off it without destroying it. How do communities farm and harvest in partnership with nature? That's the next lesson."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/communities-and-conservation/02-farming-with-nature.yaml",
+      "language": "en",
+      "lesson_slug": "farming-with-nature",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_flash_v2_5",
+      "chunk_count": 16,
+      "total_chars": 3011,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 186,
+          "hash": "15c7df6fcb4f88883d4a8a45970ad1217f7bc2f72bba474e8e85df80a2205e13",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/15c7df6fcb4f88883d4a8a45970ad1217f7bc2f72bba474e8e85df80a2205e13.mp3",
+          "text": "Here's a strange-sounding idea: the way to save a forest might be to let the people nearby make a living from it ,  without destroying it.\n\nTwo Indian movements proved it actually works."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 324,
+          "hash": "36ba6bd0c41f76acad74573301872e586ca36e3015f14b1b4a17bc63a718f855",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/36ba6bd0c41f76acad74573301872e586ca36e3015f14b1b4a17bc63a718f855.mp3",
+          "text": "Beej Bachao Andolan (in Tehri) and Navdanya are farmers' and citizens' groups. They proved something powerful:\n\nyou can grow diverse crops, without synthetic chemicals, and still make it economically viable.\n\n(Beej Bachao means \"save the seeds\" ,  protecting traditional seed diversity.) Farming with nature, not against it."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 212,
+          "hash": "8475441176814ccb4517695956e41300ae05d6178614ab9c0d5d9fc4de6b0779",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/8475441176814ccb4517695956e41300ae05d6178614ab9c0d5d9fc4de6b0779.mp3",
+          "text": "Then there's Joint Forest Management (JFM) ,  a formal partnership between the Forest Department and local villages.\n\nIt's been in formal existence since 1988, when Odisha passed the very first resolution for it."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 86,
+          "hash": "4c475b946d62f624cf8a823d51eb1d283e417d10d19b3485e2b9216e7b320f91",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/4c475b946d62f624cf8a823d51eb1d283e417d10d19b3485e2b9216e7b320f91.mp3",
+          "text": "Villages protect and restore degraded forest; in return, the forest provides for them."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 345,
+          "hash": "0d29e295cc010e573d300791bc927bf1666b2a88c569598916f7913fe0564959",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/0d29e295cc010e573d300791bc927bf1666b2a88c569598916f7913fe0564959.mp3",
+          "text": "Here's the deal, exactly.\n\nLocal village institutions take on protecting degraded forest land (still managed by the forest department). In return, they earn real benefits: non-timber forest produce, plus a share of the timber harvested through their own \"successful protection.\"\n\nProtect the forest, and the forest pays you back. Both sides win."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 251,
+          "hash": "f4cb144a39ad6d60256313bfb2fac0296338a1540b00665a2b43ce1a12e003cd",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f4cb144a39ad6d60256313bfb2fac0296338a1540b00665a2b43ce1a12e003cd.mp3",
+          "text": "The clear lesson from India's whole story ,  of destruction and of repair ,  is this:\n\nlocal communities everywhere have to be involved in managing natural resources. There's no lasting conservation that leaves out the people who live with the forest."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 262,
+          "hash": "6799d107d2bac660940af8caf9355710658a7f5093e0b24a3da0602c1249f693",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6799d107d2bac660940af8caf9355710658a7f5093e0b24a3da0602c1249f693.mp3",
+          "text": "But a caution comes with it. We're still a long way from communities being at the centre of decisions.\n\nSo here's the test for any development or economic activity ,  it must be all three at once:\n\n- people-centric\n- environment-friendly\n- economically rewarding"
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 75,
+          "hash": "6bc1822212e82148fd727d98d8e89d1e9b33df60dce59fc966fe09606909aeef",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6bc1822212e82148fd727d98d8e89d1e9b33df60dce59fc966fe09606909aeef.mp3",
+          "text": "Protection flows one way, benefits flow back ,  that's what makes JFM last."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 89,
+          "hash": "b006cd162f49d4d3174017078b08c2b32aa9461e2d939e62349596b458a2c562",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b006cd162f49d4d3174017078b08c2b32aa9461e2d939e62349596b458a2c562.mp3",
+          "text": "Which of these conservation strategies does NOT directly involve community participation?"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 32,
+          "hash": "71d1e8f7d36da6cf0e8a6d4c39c8dbc2305254b623c30cbb942ee338b338fc1f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/71d1e8f7d36da6cf0e8a6d4c39c8dbc2305254b623c30cbb942ee338b338fc1f.mp3",
+          "text": "Match each effort to what it is."
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 260,
+          "hash": "261cd321d1302308d877d0ddfb423ea04f909660c7533fb7051073d4a9a41316",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/261cd321d1302308d877d0ddfb423ea04f909660c7533fb7051073d4a9a41316.mp3",
+          "text": "Think of one small \"farming with nature\" step you (or your family) could actually take ,  composting kitchen waste, growing a chemical-free pot of herbs, saving seeds, planting a native tree.\n\nOn paper, write your idea and one benefit it brings. Type it below."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 24,
+          "hash": "9ac17b8b604d3893382ebb5004f7fed049df012a679ecea449c06525048a2e9a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9ac17b8b604d3893382ebb5004f7fed049df012a679ecea449c06525048a2e9a.mp3",
+          "text": "Lock in where JFM began."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "chars": 88,
+          "hash": "aac987a2dfb7c9411e7b279c2f299af5791acc0a99464eacad290b25b771b9e9",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/aac987a2dfb7c9411e7b279c2f299af5791acc0a99464eacad290b25b771b9e9.mp3",
+          "text": "Joint Forest Management formally began in blank, when blank passed the first resolution."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 188,
+          "hash": "101cd7529a91b364f0a0192186df72514d4ff1f6c2f6a5cd391a859f9bc9df1d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/101cd7529a91b364f0a0192186df72514d4ff1f6c2f6a5cd391a859f9bc9df1d.mp3",
+          "text": "The three-part test was: people-centric, environment-friendly, and economically rewarding. Why do you think a project usually fails if it's missing just one of the three?\n\nNo right answer."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 76,
+          "hash": "01666d5224f41ecdb4f6da2ac4eb2a4bc8c5a929c232c7ea371bd51447aa5292",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/01666d5224f41ecdb4f6da2ac4eb2a4bc8c5a929c232c7ea371bd51447aa5292.mp3",
+          "text": "You can explain how communities farm and restore in partnership with nature."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "chars": 513,
+          "hash": "104776e883acbc397cc42b92d28250865d770cccd49fabc766498f3ae062ac4b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/104776e883acbc397cc42b92d28250865d770cccd49fabc766498f3ae062ac4b.mp3",
+          "text": "Beej Bachao Andolan and Navdanya showed chemical-free, diverse farming is viable; Joint Forest Management (since 1988, Odisha) turned villages into forest restorers who share in the rewards. The rule that holds it together: development must be people-centric, environment-friendly, and economically rewarding ,  all three.\n\nBut the oldest form of community conservation in India needed no law and no contract at all. It runs on something deeper: reverence. Meet the sacred groves ,  and the close of this chapter."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/communities-and-conservation/03-sacred-groves.yaml",
+      "language": "en",
+      "lesson_slug": "sacred-groves",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_flash_v2_5",
+      "chunk_count": 17,
+      "total_chars": 3420,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 228,
+          "hash": "0d4c5dd8606220637a9021304601d43c20cf346623e47af55b764a4c2bf19797",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/0d4c5dd8606220637a9021304601d43c20cf346623e47af55b764a4c2bf19797.mp3",
+          "text": "Long before any Wildlife Act, some forests in India were already untouchable.\n\nNot because of a law. Because of faith. Cut a tree there and you weren't breaking a rule ,  you were committing a sin.\n\nWelcome to the sacred groves."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 228,
+          "hash": "9009891b4bf248607c85a776eac62a3f2d1cfc3bee16af7f11c62de228c08181",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9009891b4bf248607c85a776eac62a3f2d1cfc3bee16af7f11c62de228c08181.mp3",
+          "text": "Across India, nature worship ,  an age-old tribal belief that all creations of nature must be protected ,  preserved entire forests in their virgin, pristine form.\n\nThese are the Sacred Groves: the forests of gods and goddesses."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 195,
+          "hash": "b2b7e43cbc6b571fd8ffff17e2e1cfa6dc95405da66f2fc0d303fcd2324ab68d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b2b7e43cbc6b571fd8ffff17e2e1cfa6dc95405da66f2fc0d303fcd2324ab68d.mp3",
+          "text": "The rule is simple and absolute: these patches are left untouched, and any interference is banned.\n\nFaith did what fences and rangers often couldn't ,  it kept whole forests intact for centuries."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 313,
+          "hash": "76ce10de3ebedd2f24c9df2a45c887641a5f2b3241da0241db54389b0529c852",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/76ce10de3ebedd2f24c9df2a45c887641a5f2b3241da0241db54389b0529c852.mp3",
+          "text": "It reaches down to single trees, too. Communities have revered particular species from time immemorial:\n\n- the Mundas and Santhal of Chota Nagpur worship the mahua and kadamba trees.\n- tribals of Odisha and Bihar worship the tamarind and mango at weddings.\n- the peepal and banyan are sacred to many across India."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 86,
+          "hash": "09005bbebf8943ada0be731348fb752849b7bb5ef564aa5ada221e9ea9ae8810",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/09005bbebf8943ada0be731348fb752849b7bb5ef564aa5ada221e9ea9ae8810.mp3",
+          "text": "Protected by reverence, not fences ,  peepal, banyan, mahua, kadamba, tamarind, mango."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 312,
+          "hash": "28665963f87ee98db2f9a4854bd0f34b8b0694535669598b18dff1b8c89ccb67",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/28665963f87ee98db2f9a4854bd0f34b8b0694535669598b18dff1b8c89ccb67.mp3",
+          "text": "Animals are protected this way too.\n\nTroops of macaques and langurs live around many temples ,  fed daily, treated as part of the temple's devotees. And in and around the Bishnoi villages of Rajasthan, herds of blackbuck (chinkara), nilgai, and peacocks are simply part of the community ,  and nobody harms them."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 78,
+          "hash": "ff7a79276e135708c69829eb94c270dd9c9b51de9fcd557798857608750730fc",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ff7a79276e135708c69829eb94c270dd9c9b51de9fcd557798857608750730fc.mp3",
+          "text": "Within the sacred grove, the trees and animals rest safe ,  guarded by belief."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 218,
+          "hash": "a1ff020acd63beccc62142b63c90f1cf7d13d88a2fe7af3341457519f97a43ee",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a1ff020acd63beccc62142b63c90f1cf7d13d88a2fe7af3341457519f97a43ee.mp3",
+          "text": "The Buddha, in 487 B.C., caught the whole spirit of it:\n\n\"The tree is a peculiar organism of unlimited kindness and benevolence... It affords protection to all beings, offering shade even to the axemen who destroy it.\""
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 318,
+          "hash": "22f5da5426f0e59bc67df134f1b0f3b2a64fc3332f397b1749e8a20dda81c81b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/22f5da5426f0e59bc67df134f1b0f3b2a64fc3332f397b1749e8a20dda81c81b.mp3",
+          "text": "And that's the thread running through this entire chapter.\n\nFrom the Wildlife Act, to Project Tiger, to joint forest management, to the sacred groves ,  forests and wildlife survive best when the people who live with them are at the centre of protecting them.\n\nLaw helps. Faith helps. But community is the heart of it."
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 36,
+          "hash": "53adf01c2356673ee466eb492fb3a55607878d193915a8d0a97ec91dba42c029",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/53adf01c2356673ee466eb492fb3a55607878d193915a8d0a97ec91dba42c029.mp3",
+          "text": "What keeps a sacred grove protected?"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 41,
+          "hash": "86e15dadfe4f7cbacdc1145d926202d0b7f7bc1c098b17e247b03d9879d3df2f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/86e15dadfe4f7cbacdc1145d926202d0b7f7bc1c098b17e247b03d9879d3df2f.mp3",
+          "text": "Match each tradition to what it protects."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 211,
+          "hash": "2adc87b3b1ffec4b5483797d7bbd66a5c13334191e253402cd4d595e74f01788",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/2adc87b3b1ffec4b5483797d7bbd66a5c13334191e253402cd4d595e74f01788.mp3",
+          "text": "Write a short note (4, 5 lines) on any practice ,  at home, in your community, or one you'd like to start ,  that conserves and protects the environment around you.\n\nThen type one practice you wrote about below."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 26,
+          "hash": "6d35abbb42a6fcb54d0045665ba6fd547562db4abeddcc68f033ff1e28629fcc",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6d35abbb42a6fcb54d0045665ba6fd547562db4abeddcc68f033ff1e28629fcc.mp3",
+          "text": "Lock in the closing terms."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 1,
+          "chars": 149,
+          "hash": "b3b619202aec14a9a75197db2df24755d74bcbac8c3b3656c27a8d570ebf63b3",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b3b619202aec14a9a75197db2df24755d74bcbac8c3b3656c27a8d570ebf63b3.mp3",
+          "text": "Virgin forests preserved through nature worship are called blank groves, and the blank of Rajasthan protect the blackbuck as part of their community."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 243,
+          "hash": "d9de83ef53c56627b9879508749acd3d1e60a89d0d4347afc3418dabc414aece",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d9de83ef53c56627b9879508749acd3d1e60a89d0d4347afc3418dabc414aece.mp3",
+          "text": "Across this whole chapter ,  the web of life, the laws, Project Tiger, the communities, the sacred groves ,  what's the one idea you'll carry with you about protecting nature? Name it, and why it stuck.\n\nNo right answer. This is your takeaway."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 0,
+          "chars": 68,
+          "hash": "1e73ff0abf3396015e6cffab23579ec25b06a76a3428a457087940fdf4157e1d",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/1e73ff0abf3396015e6cffab23579ec25b06a76a3428a457087940fdf4157e1d.mp3",
+          "text": "The whole chapter is yours: biodiversity, protection, and community."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 1,
+          "chars": 670,
+          "hash": "502110ccd403e1ae7e9586a0c4f63d5b6450624c86ee63910ccaad9ab576af8e",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/502110ccd403e1ae7e9586a0c4f63d5b6450624c86ee63910ccaad9ab576af8e.mp3",
+          "text": "Sacred groves and the Bishnoi show the oldest conservation of all ,  protection by reverence, needing no law at all. And that completes the chapter.\n\nYou learned that we are one strand in a web of life we depend on for air, water, and soil; you can say why conservation is self-preservation, not charity; you know how India defends its wildlife through the 1972 Act, Project Tiger, and the three classes of forest; and you've seen that the deepest protection of all comes from communities ,  from Chipko and joint forest management to the sacred groves.\n\nThe clear lesson, as the Buddha knew: care for the tree, and it shelters everyone ,  even, in time, the rest of us."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/communities-and-conservation-hinglish/01-when-villages-defend-the-forest.yaml",
+      "language": "hinglish",
+      "lesson_slug": "when-villages-defend-the-forest",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_multilingual_v2",
+      "chunk_count": 16,
+      "total_chars": 2985,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 195,
+          "hash": "e5b8a621e3b9efdb7239aa9b83348bd967cb78ebc9862dfe04a7e03b789cbcac",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/e5b8a621e3b9efdb7239aa9b83348bd967cb78ebc9862dfe04a7e03b789cbcac.mp3",
+          "text": "Jab ek mining company Rajasthan ke Sariska forest ke liye aayi, toh use police ne wapas nahi bheja.\n\nUse gaon waalon ne wapas bheja ,  sirf ek kaanoon aur apni himmat ke saath. Aur woh jeet gaye."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 289,
+          "hash": "3314366b70a3ed727cc947ccdb3533b68b88e505cab156bdc2c5bfbd92029f66",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/3314366b70a3ed727cc947ccdb3533b68b88e505cab156bdc2c5bfbd92029f66.mp3",
+          "text": "Conservation India mein koi nayi government idea nahi hai. Forests hamesha se traditional communities ka ghar rahe hain.\n\nAur poore desh mein, woh communities apne forests ko bachane ke liye lad rahi hain ,  kyunki woh samajhti hain ki unki apni long-term livelihood ispe depend karti hai."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 297,
+          "hash": "1f9e5b9db8d5c1ad65aaf0a68a113094737e51d5ff589e54f13d8a27eb8c0a3a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/1f9e5b9db8d5c1ad65aaf0a68a113094737e51d5ff589e54f13d8a27eb8c0a3a.mp3",
+          "text": "Sariska Tiger Reserve, Rajasthan ko lo. Gaon waalon ne Wildlife Protection Act ka hawaala dekar mining ko bhagaaya ,  pichhle course ke kaanoon ko apna hathiyaar bana ke.\n\nKai jagahon pe, gaon waale habitats khud bachaate hain ,  kabhi-kabhi government ke involvement ko poori tarah thukraate hue."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 297,
+          "hash": "4e215ca47a7ec17a1bacc9d08ab8fbf37cb2fa51f9364cce7bc9498a60ba0ba3",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/4e215ca47a7ec17a1bacc9d08ab8fbf37cb2fa51f9364cce7bc9498a60ba0ba3.mp3",
+          "text": "Phir hai Bhairodev Dakav 'Sonchuri'.\n\nAlwar district, Rajasthan mein, paanch gaon ke logon ne 1,200 hectares forest ko apna khud ka sanctuary ghoshit kiya ,  apne khud ke niyamon ke saath: koi shikaar nahi, koi bahari encroachment nahi. Ek janta ka protected area, poori tarah janta dwara chalaya."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 80,
+          "hash": "f44ab3f0898b968fb258abab1901bfa224fb01e1276d08e4bd39a7c3232a0483",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f44ab3f0898b968fb258abab1901bfa224fb01e1276d08e4bd39a7c3232a0483.mp3",
+          "text": "India bhar mein, forest ke paas rehne waali communities uski rakhwaale ban gayi."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 321,
+          "hash": "95b728433600961671e1d5429aaa34a22e1a296efe8bcea69503ab9a627c9cdc",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/95b728433600961671e1d5429aaa34a22e1a296efe8bcea69503ab9a627c9cdc.mp3",
+          "text": "Aur sabse mashhoor ,  Himalaya mein Chipko movement.\n\nGaon waale literally pedon se chipak gaye taaki woh kate na (chipko matlab \"gale lagana\" ya \"chipakna\"). Isne sirf kai ilaaqon mein deforestation nahi roki ,  isne saabit kiya ki indigenous species ke saath community afforestation bade paimaane pe safal ho sakti hai."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 84,
+          "hash": "23e541e10b95cbc488782cf2cec67a143cd45755166e427963d0eb6c309b13a1",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/23e541e10b95cbc488782cf2cec67a143cd45755166e427963d0eb6c309b13a1.mp3",
+          "text": "Jab gaon waalon ne pedon ke charon taraf baahein lapeti, toh kulhaadi ko rukna pada."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 176,
+          "hash": "b26e262aa454a526c84111f74715bd214d979a1b14d35c02c1c71a899b18f9b3",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/b26e262aa454a526c84111f74715bd214d979a1b14d35c02c1c71a899b18f9b3.mp3",
+          "text": "Har kahani mein pattern gaur karo.\n\nWoh log jo forest ke paas rehte the ,  koi door ka niyam nahi ,  usne use bachaya. Forest ke sabse achhe rakhwaale uske padosi nikalte hain."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 67,
+          "hash": "45c83628494974d27e0dd7ec8dab4d2befb799e9ccd990d6af8a8cfe69ee92f5",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/45c83628494974d27e0dd7ec8dab4d2befb799e9ccd990d6af8a8cfe69ee92f5.mp3",
+          "text": "Sariska ke gaon waalon ne tiger reserve ke andar mining kaise roki?"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 52,
+          "hash": "7a7c7655bd6720ff2945bd5969f0bb082553f779b8aae10a62475910d7966d71",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7a7c7655bd6720ff2945bd5969f0bb082553f779b8aae10a62475910d7966d71.mp3",
+          "text": "Har community action ko us se match karo jo woh tha."
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 269,
+          "hash": "c0e0b41fe6f831c54576c6d9ba67941eb90f45e6bdea04dfc5a4522c57f5a98b",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c0e0b41fe6f831c54576c6d9ba67941eb90f45e6bdea04dfc5a4522c57f5a98b.mp3",
+          "text": "Socho ek tareeka jisse tumhare jaane-pehchaane log ,  ek gaon, parivaar, mandir, ya school ,  apne paas ek ped, jaanwar, talaab, ya hariyaali ke tukde ko bachaate hain.\n\nPaper pe do line mein likho. Phir neeche type karo ki kya bachaaya jaata hai aur kaun bachaata hai."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 33,
+          "hash": "f4874a2df5604a66372f6eb5943909af220c4c100b02d1b570122cc67156e7f1",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f4874a2df5604a66372f6eb5943909af220c4c100b02d1b570122cc67156e7f1.mp3",
+          "text": "Do community actions yaad kar lo."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "chars": 134,
+          "hash": "ef38e2f677be3a8180583fddc7af8ed8cda7c4298e5255f149fbbc0321ee4deb",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ef38e2f677be3a8180583fddc7af8ed8cda7c4298e5255f149fbbc0321ee4deb.mp3",
+          "text": "Sariska mein, gaon waalon ne blank Act ka hawaala dekar mining roki; Chipko movement mein, log pedon se blank taaki unhe bacha sakein."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 251,
+          "hash": "7cb89d7578a76030a72424f958263e2b74be4d26c01bcc30d2df0d220e70ce62",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7cb89d7578a76030a72424f958263e2b74be4d26c01bcc30d2df0d220e70ce62.mp3",
+          "text": "Sariska aur Chipko ke gaon waalon ne aise forests bachaye jo kaanoon ke hisaab se unke \"apne\" nahi the. Tumhe kya lagta hai unhe kis cheez ne itni saxti se ladne pe majboor kiya, ek aisi cheez ke liye jo kaagaz pe unki nahi thi?\n\nKoi sahi jawaab nahi."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 76,
+          "hash": "39fad756c520e49450f1c927fcb15683083f20f0226e0980131d985ad933a787",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/39fad756c520e49450f1c927fcb15683083f20f0226e0980131d985ad933a787.mp3",
+          "text": "Tum dikha sakte ho ki communities khud India ke forests kaise bachaati hain."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "chars": 364,
+          "hash": "616d62d9493df3d5cc92a3bd98ece2c25c3ba4caa85d21e0c4252219d49663f5",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/616d62d9493df3d5cc92a3bd98ece2c25c3ba4caa85d21e0c4252219d49663f5.mp3",
+          "text": "Sariska ki mining ke khilaaf ladai se, Bhairodev mein ek janta ke sanctuary tak, ped-galagad Chipko movement tak ,  baar-baar, forest ke padosi uske rakhwaale ban gaye.\n\nPar forest bachana sirf aadha hissa hai. Doosra aadha hai usse jeena bina use barbaad kiye. Communities nature ke saath partnership mein kheti aur harvest kaise karti hain? Yahi agli lesson hai."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/communities-and-conservation-hinglish/02-farming-with-nature.yaml",
+      "language": "hinglish",
+      "lesson_slug": "farming-with-nature",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_multilingual_v2",
+      "chunk_count": 16,
+      "total_chars": 3255,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 230,
+          "hash": "d4021ed4e33d5a24ada5a4250f430e708e9e53f16bf5a7728a30bb185d8d5f9f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/d4021ed4e33d5a24ada5a4250f430e708e9e53f16bf5a7728a30bb185d8d5f9f.mp3",
+          "text": "Yeh ek ajeeb-sa lagne waala idea hai: ek forest ko bachane ka tareeka shayad yeh ho ki paas ke logon ko usse rozi-roti kamaane di jaaye ,  bina use barbaad kiye.\n\nDo Indian movements ne saabit kiya ki yeh sach mein kaam karta hai."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 354,
+          "hash": "c24a333cdf6ea6b8ed52ce25c88b3c77222c05983aa73b319efa7afaf2825e3c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c24a333cdf6ea6b8ed52ce25c88b3c77222c05983aa73b319efa7afaf2825e3c.mp3",
+          "text": "Beej Bachao Andolan (Tehri mein) aur Navdanya kisaanon aur naagrikon ke groups hain. Unhone kuch taaqatwar saabit kiya:\n\ntum diverse crops uga sakte ho, bina synthetic chemicals ke, aur phir bhi use economically viable bana sakte ho.\n\n(Beej Bachao matlab \"seeds bachao\" ,  traditional seed diversity ko bachana.) Nature ke saath kheti, uske khilaaf nahi."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 199,
+          "hash": "65e7264868f62e4a5cbd52ad5ff4599422ce6181353ef7fbbd3628a50d0563b2",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/65e7264868f62e4a5cbd52ad5ff4599422ce6181353ef7fbbd3628a50d0563b2.mp3",
+          "text": "Phir hai Joint Forest Management (JFM) ,  Forest Department aur local gaon ke beech ek formal partnership.\n\nYeh 1988 se formally maujood hai, jab Odisha ne iske liye sabse pehla resolution paas kiya."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 92,
+          "hash": "2bd7f0ec93a40303919957f2cd05dc2f3801c6d16cf9d2561b2545224dfcd6f6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/2bd7f0ec93a40303919957f2cd05dc2f3801c6d16cf9d2561b2545224dfcd6f6.mp3",
+          "text": "Gaon degraded forest bachaate aur restore karte hain; badle mein, forest unke liye deta hai."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 356,
+          "hash": "64b9e8b527a5ffd01c81bd47931bb6722ee516bafc177637c83fa8a9b95273bd",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/64b9e8b527a5ffd01c81bd47931bb6722ee516bafc177637c83fa8a9b95273bd.mp3",
+          "text": "Yeh raha sauda, theek-theek.\n\nLocal village institutions degraded forest land (jo abhi bhi forest department manage karta hai) bachane ka zimma lete hain. Badle mein, woh asli benefits kamaate hain: non-timber forest produce, aur apni \"successful protection\" se harvest hue timber ka share.\n\nForest bachao, aur forest tumhe wapas deta hai. Dono taraf jeet."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 253,
+          "hash": "aa4512cc1f7bd7f12540aa265e31e2a31d38ea903c2e6daad253ee9a58c0bc02",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/aa4512cc1f7bd7f12540aa265e31e2a31d38ea903c2e6daad253ee9a58c0bc02.mp3",
+          "text": "India ki poori kahani se ,  barbaadi aur marammat dono se ,  saaf sabak yeh hai:\n\nlocal communities ko har jagah natural resources manage karne mein shaamil hona padega. Aisi koi tikaau conservation nahi jo forest ke saath rehne waale logon ko chhod de."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 285,
+          "hash": "03d9100f0c9bc26b495b97f18b2e5f14b4a9a93c094412b719e83ec69b818065",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/03d9100f0c9bc26b495b97f18b2e5f14b4a9a93c094412b719e83ec69b818065.mp3",
+          "text": "Par iske saath ek chetaavni aati hai. Hum abhi bhi communities ke decisions ke centre mein hone se bahut door hain.\n\nToh kisi bhi development ya economic activity ke liye yeh test hai ,  use ek saath teeno hona chahiye:\n\n- people-centric\n- environment-friendly\n- economically rewarding"
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 79,
+          "hash": "fc54a64795c5ff196215eb561141222e5ccdd4e7e3fef931bbf0e917548fe505",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/fc54a64795c5ff196215eb561141222e5ccdd4e7e3fef931bbf0e917548fe505.mp3",
+          "text": "Protection ek taraf behti hai, benefits wapas ,  yahi JFM ko tikaau banata hai."
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 95,
+          "hash": "7103bbac35bfe00bcb831a894249d83ac83f157589a3d86b213138ec8868a003",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/7103bbac35bfe00bcb831a894249d83ac83f157589a3d86b213138ec8868a003.mp3",
+          "text": "In conservation strategies mein se kaunsi seedhe community participation ko shaamil NAHI karti?"
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 42,
+          "hash": "9202558e43e5e430781fc68ee5a843229ea8b80f1b250bdc214151d1a7ad1cf7",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9202558e43e5e430781fc68ee5a843229ea8b80f1b250bdc214151d1a7ad1cf7.mp3",
+          "text": "Har effort ko us se match karo jo woh hai."
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 285,
+          "hash": "0b22e5c7a9e4b03e70ad3167e7c1d793f9c7e369bd8f3575c585e18dd467f7c4",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/0b22e5c7a9e4b03e70ad3167e7c1d793f9c7e369bd8f3575c585e18dd467f7c4.mp3",
+          "text": "Socho ek chhota \"nature ke saath kheti\" kadam jo tum (ya tumhara parivaar) sach mein utha sakte ho ,  kitchen waste se compost banana, ek chemical-free herbs ka gamla ugana, seeds bachana, ek native ped lagana.\n\nPaper pe apna idea aur ek fayda likho jo woh laata hai. Neeche type karo."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 33,
+          "hash": "ecdec094c1a5219946a6ce1f2de0f59b44c71b875c8cd0f78a0ffaa8a5aa1c44",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ecdec094c1a5219946a6ce1f2de0f59b44c71b875c8cd0f78a0ffaa8a5aa1c44.mp3",
+          "text": "JFM kahan shuru hua, yaad kar lo."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 1,
+          "chars": 101,
+          "hash": "fa7da8c93fce9efe9038072cf2c6fd381ad34a14d6730065eaf1c9407bbce6f9",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/fa7da8c93fce9efe9038072cf2c6fd381ad34a14d6730065eaf1c9407bbce6f9.mp3",
+          "text": "Joint Forest Management formally blank mein shuru hua, jab blank ne sabse pehla resolution paas kiya."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 219,
+          "hash": "f265dd00c2d2e5ac2109ea7c778b105625e0e71e7dbc0edb064ca235196cd9c8",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f265dd00c2d2e5ac2109ea7c778b105625e0e71e7dbc0edb064ca235196cd9c8.mp3",
+          "text": "Teen-hisson ka test tha: people-centric, environment-friendly, aur economically rewarding. Tumhe kya lagta hai ek project aksar fail kyun ho jaata hai agar in teeno mein se sirf ek bhi missing ho?\n\nKoi sahi jawaab nahi."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 103,
+          "hash": "9cadb884c53d9aa88029cb0580bf4b9a9c6c877946262c41c0295640006a8f51",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/9cadb884c53d9aa88029cb0580bf4b9a9c6c877946262c41c0295640006a8f51.mp3",
+          "text": "Tum samjha sakte ho ki communities nature ke saath partnership mein kaise kheti aur restore karti hain."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 1,
+          "chars": 529,
+          "hash": "894b442853f2091a79f75bd1a11bcec53c03cac7d16d3cba94c3d25dadf2e600",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/894b442853f2091a79f75bd1a11bcec53c03cac7d16d3cba94c3d25dadf2e600.mp3",
+          "text": "Beej Bachao Andolan aur Navdanya ne dikhaya chemical-free, diverse kheti viable hai; Joint Forest Management (1988 se, Odisha) ne gaon ko forest restorers banaya jo inaam mein hissa paate hain. Jo niyam ise jode rakhta hai: development people-centric, environment-friendly, aur economically rewarding hona chahiye ,  teeno.\n\nPar India mein community conservation ka sabse puraana roop kisi kaanoon ya contract ka mohtaaj nahi tha. Woh kisi gehri cheez pe chalta hai: shraddha. Miliye sacred groves se ,  aur is chapter ke ant se."
+        }
+      ]
+    },
+    {
+      "file": "supabase/content/communities-and-conservation-hinglish/03-sacred-groves.yaml",
+      "language": "hinglish",
+      "lesson_slug": "sacred-groves",
+      "voiceId": "gHu9GtaHOXcSqFTK06ux",
+      "model": "eleven_multilingual_v2",
+      "chunk_count": 17,
+      "total_chars": 3651,
+      "chunks": [
+        {
+          "turn_index": 1,
+          "chunk_index": 0,
+          "chars": 239,
+          "hash": "5365b30e343f41f12ba7229a7b10da5321cdd1a0afe1710f19b7d2a0f4c797f5",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/5365b30e343f41f12ba7229a7b10da5321cdd1a0afe1710f19b7d2a0f4c797f5.mp3",
+          "text": "Kisi bhi Wildlife Act se bahut pehle, India ke kuch forests pehle se hi achhoot the.\n\nKisi kaanoon ki wajah se nahi. Aastha ki wajah se. Wahan ek ped kaato aur tum niyam nahi tod rahe the ,  tum paap kar rahe the.\n\nMiliye sacred groves se."
+        },
+        {
+          "turn_index": 2,
+          "chunk_index": 0,
+          "chars": 216,
+          "hash": "5f0686d00becfd6469c27240ec7dfb85fe2b0c4988be242b9eac26d0ba5317b0",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/5f0686d00becfd6469c27240ec7dfb85fe2b0c4988be242b9eac26d0ba5317b0.mp3",
+          "text": "India bhar mein, nature worship ,  ek puraani tribal aastha ki nature ki har rachna ko bachana chahiye ,  ne poore forests ko unke virgin, pristine roop mein bachaya.\n\nYeh hain Sacred Groves: devi-devtaon ke forests."
+        },
+        {
+          "turn_index": 3,
+          "chunk_index": 0,
+          "chars": 216,
+          "hash": "0b77298d7dd31417d7b6499f2c69a9e31a5246fb59bd6b71c36a6b6f52295f2f",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/0b77298d7dd31417d7b6499f2c69a9e31a5246fb59bd6b71c36a6b6f52295f2f.mp3",
+          "text": "Niyam saral aur sampoorn hai: ye tukde achhoot chhode jaate hain, aur koi bhi interference banned hai.\n\nAastha ne woh kiya jo fences aur rangers aksar nahi kar paaye ,  usne poore forests ko sadiyon tak saabut rakha."
+        },
+        {
+          "turn_index": 4,
+          "chunk_index": 0,
+          "chars": 338,
+          "hash": "a5b42e1615852d60f4b989dfcf114894934ff7f6ae18cbdb94b7ceb868a403c4",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/a5b42e1615852d60f4b989dfcf114894934ff7f6ae18cbdb94b7ceb868a403c4.mp3",
+          "text": "Yeh ek-ek ped tak jaata hai. Communities ne anaadi kaal se khaas species ko poojaa hai:\n\n- Chota Nagpur ke Mundas aur Santhal mahua aur kadamba ke pedon ko poojte hain.\n- Odisha aur Bihar ke tribals shaadiyon mein imli (tamarind) aur aam (mango) ko poojte hain.\n- peepal aur bargad (banyan) India bhar mein kai logon ke liye pavitra hain."
+        },
+        {
+          "turn_index": 5,
+          "chunk_index": 0,
+          "chars": 89,
+          "hash": "ceee71fd21ff5060b531805b8a5b4814d58c0dbf571c41d5c1a8e7b2d079fa32",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/ceee71fd21ff5060b531805b8a5b4814d58c0dbf571c41d5c1a8e7b2d079fa32.mp3",
+          "text": "Shraddha se surakshit, fences se nahi ,  peepal, banyan, mahua, kadamba, tamarind, mango."
+        },
+        {
+          "turn_index": 6,
+          "chunk_index": 0,
+          "chars": 336,
+          "hash": "c2514420158f5e9e93af6cb034130ef7753d660d71cd1d6c92ce5373a313244c",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c2514420158f5e9e93af6cb034130ef7753d660d71cd1d6c92ce5373a313244c.mp3",
+          "text": "Jaanwar bhi aise hi bachaaye jaate hain.\n\nMacaques aur langurs ki troops kai mandiron ke aas-paas rehti hain ,  rozana khilaaye jaate, mandir ke devotees ka hissa maane jaate. Aur Rajasthan ke Bishnoi villages mein aur aas-paas, blackbuck (chinkara), nilgai, aur mor bas community ka hissa hain ,  aur koi unhe nuksaan nahi pahunchaata."
+        },
+        {
+          "turn_index": 7,
+          "chunk_index": 0,
+          "chars": 87,
+          "hash": "4add72ccd8362ccb78140b7186fdbf1b94414a6af08e9d47cca0fbe5bc4b6278",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/4add72ccd8362ccb78140b7186fdbf1b94414a6af08e9d47cca0fbe5bc4b6278.mp3",
+          "text": "Sacred grove ke andar, ped aur jaanwar surakshit aaram karte hain ,  aastha se guarded."
+        },
+        {
+          "turn_index": 8,
+          "chunk_index": 0,
+          "chars": 219,
+          "hash": "6efdc2ea53efa2dfe64e78824225862a212d3a447d29a410ed651edd422c4e74",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/6efdc2ea53efa2dfe64e78824225862a212d3a447d29a410ed651edd422c4e74.mp3",
+          "text": "Buddha ne, 487 B.C. mein, is poore bhaav ko pakda:\n\n\"Ped ek anokha jeev hai ,  aseem dayaa aur udaarta ka... yeh sabhi praaniyon ko sanrakshan deta hai, un kulhaadi-waalon ko bhi chhaaya deta hua jo use kaat rahe hain.\""
+        },
+        {
+          "turn_index": 9,
+          "chunk_index": 0,
+          "chars": 330,
+          "hash": "2c2a0d887114a869800b3b4a20a7499c89eefd56a9c93eb3aa54c1808ebdc407",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/2c2a0d887114a869800b3b4a20a7499c89eefd56a9c93eb3aa54c1808ebdc407.mp3",
+          "text": "Aur yahi dhaaga poore chapter mein chalta hai.\n\nWildlife Act se, Project Tiger tak, joint forest management tak, sacred groves tak ,  forests aur wildlife tab sabse achhe bachte hain jab unke saath rehne waale log unhe bachane ke centre mein hote hain.\n\nKaanoon madad karta hai. Aastha madad karti hai. Par community iska dil hai."
+        },
+        {
+          "turn_index": 10,
+          "chunk_index": 0,
+          "chars": 44,
+          "hash": "c9fd1ff5747978e4721eca51610fdaa2db8d41f16055d6d4c748ad803d9716cd",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c9fd1ff5747978e4721eca51610fdaa2db8d41f16055d6d4c748ad803d9716cd.mp3",
+          "text": "Ek sacred grove ko kya surakshit rakhta hai?"
+        },
+        {
+          "turn_index": 11,
+          "chunk_index": 0,
+          "chars": 53,
+          "hash": "c3ace047b4e414d27618e5ec4c21cc97dbcf8da77f00fefba7652416b81869a6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/c3ace047b4e414d27618e5ec4c21cc97dbcf8da77f00fefba7652416b81869a6.mp3",
+          "text": "Har parampara ko us se match karo jo woh bachati hai."
+        },
+        {
+          "turn_index": 12,
+          "chunk_index": 0,
+          "chars": 254,
+          "hash": "35f4b25c0fd64ff6c9275bb5ae4ec3adfb829b79db6c9fba7b76b854a46c3481",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/35f4b25c0fd64ff6c9275bb5ae4ec3adfb829b79db6c9fba7b76b854a46c3481.mp3",
+          "text": "Koi ek practice par ek chhota note (4, 5 line) likho ,  ghar pe, apni community mein, ya jise tum shuru karna chahoge ,  jo tumhare aas-paas ke environment ko bachati aur protect karti hai.\n\nPhir neeche ek practice type karo jiske baare mein tumne likha."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 0,
+          "chars": 26,
+          "hash": "33fdb2068f0eadd5d88923f6a3ba12105dfac2590e38f0681da60f019bf317f6",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/33fdb2068f0eadd5d88923f6a3ba12105dfac2590e38f0681da60f019bf317f6.mp3",
+          "text": "Closing terms yaad kar lo."
+        },
+        {
+          "turn_index": 13,
+          "chunk_index": 1,
+          "chars": 162,
+          "hash": "be587759d72cf553b52557c14d4fff47c638c1d3717f4b272acb00307088e7e4",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/be587759d72cf553b52557c14d4fff47c638c1d3717f4b272acb00307088e7e4.mp3",
+          "text": "Nature worship se bachaaye gaye virgin forests blank groves kehlaate hain, aur Rajasthan ke blank blackbuck ko apni community ke hisse ke roop mein bachaate hain."
+        },
+        {
+          "turn_index": 14,
+          "chunk_index": 0,
+          "chars": 261,
+          "hash": "f5f8638ef4a4e14dec6530e54fd87341b89308749bfd7ea5b52ce470b349b02a",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/f5f8638ef4a4e14dec6530e54fd87341b89308749bfd7ea5b52ce470b349b02a.mp3",
+          "text": "Poore chapter mein ,  web of life, kaanoon, Project Tiger, communities, sacred groves ,  nature bachane ke baare mein woh ek idea kaunsa hai jo tum apne saath le jaaoge? Use naam do, aur batao kyun woh atak gaya.\n\nKoi sahi jawaab nahi. Yeh tumhara takeaway hai."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 0,
+          "chars": 70,
+          "hash": "bb08d94ef3e23b6143ff5cae8371343c46b72335dba4b097e1838685c3a04251",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/bb08d94ef3e23b6143ff5cae8371343c46b72335dba4b097e1838685c3a04251.mp3",
+          "text": "Poora chapter ab tumhara hai: biodiversity, protection, aur community."
+        },
+        {
+          "turn_index": 15,
+          "chunk_index": 1,
+          "chars": 711,
+          "hash": "615da519f68fcaddc7c22dde126c966a486808fcd04227bfaa45a65a21b337dc",
+          "storage_path": "gHu9GtaHOXcSqFTK06ux/615da519f68fcaddc7c22dde126c966a486808fcd04227bfaa45a65a21b337dc.mp3",
+          "text": "Sacred groves aur Bishnoi sabse puraani conservation dikhaate hain ,  shraddha se protection, jise kisi kaanoon ki zaroorat nahi. Aur yahi chapter ko poora karta hai.\n\nTumne seekha ki hum ek web of life ke ek dhaage hain jis pe hum hawa, paani, aur mitti ke liye depend karte hain; tum keh sakte ho ki conservation self-preservation hai, daan nahi; tum jaante ho India apni wildlife ko 1972 Act, Project Tiger, aur forest ke teen tiers se kaise bachata hai; aur tumne dekha ki sabse gehri protection communities se aati hai ,  Chipko aur joint forest management se lekar sacred groves tak.\n\nSaaf sabak, jaisa Buddha jaante the: ped ki dekhbhaal karo, aur woh sabko chhaaya deta hai ,  samay aane pe, humein bhi."
+        }
+      ]
+    }
+  ]
+}
