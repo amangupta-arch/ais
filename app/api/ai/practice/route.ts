@@ -1,10 +1,16 @@
 import { NextResponse, type NextRequest } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
 
+import { checkRateLimit } from "@/lib/rate-limit";
 import { createClient } from "@/lib/supabase/server";
 import { PERSONAS, type Persona } from "@/lib/types";
 
 export const runtime = "nodejs";
+
+// 60 calls/hour ≈ 1 reply/minute sustained — far above any real
+// practice session and tight enough to bound abuse on our key.
+const RATE_LIMIT_WINDOW_SEC = 60 * 60;
+const RATE_LIMIT_MAX_PER_WINDOW = 60;
 
 type Body = {
   /** The lesson's exercise instruction — given to Claude as context so it can be helpful. */
@@ -32,6 +38,21 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       { message: "Sign in to use the practice chat.", shouldEnd: true },
       { status: 401 },
+    );
+  }
+
+  // Per-user rate limit — bound a single account's ability to loop
+  // POST against this route and burn unbounded Anthropic spend.
+  const rl = await checkRateLimit({
+    scope: "ai-practice",
+    key: user.id,
+    windowSec: RATE_LIMIT_WINDOW_SEC,
+    max: RATE_LIMIT_MAX_PER_WINDOW,
+  });
+  if (!rl.ok) {
+    return NextResponse.json(
+      { message: "You're going fast — give it a minute and try again.", shouldEnd: true },
+      { status: 429, headers: { "Retry-After": String(rl.retryAfter) } },
     );
   }
 

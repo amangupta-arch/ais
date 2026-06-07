@@ -185,6 +185,16 @@ export async function fetchOrder(orderId: string): Promise<OrderStatus> {
   };
 }
 
+/** Reject webhooks whose timestamp is more than this many seconds
+ *  away from "now". HMAC verification alone doesn't bound replay:
+ *  a captured signed body (e.g. from a leaked log) stays valid
+ *  forever otherwise. 5 minutes is the industry-standard window
+ *  (Stripe / Slack / Cashfree's own integration guides), wide
+ *  enough to absorb clock skew + a slow retry, tight enough that
+ *  an attacker can't replay an old PAID body to resurrect a
+ *  cancelled subscription. */
+const WEBHOOK_FRESHNESS_WINDOW_SEC = 5 * 60;
+
 /** Verify a Cashfree webhook. Per their docs the signature is
  *  HMAC-SHA256(secret, timestamp + body). We get the raw body
  *  (Buffer-style string) and the two header values.
@@ -195,7 +205,8 @@ export async function fetchOrder(orderId: string): Promise<OrderStatus> {
  *  secret instead — accepting either means we don't have to know
  *  which mode the account is in.
  *
- *  Returns true if either candidate matches. Throws if neither
+ *  Returns true if either candidate matches AND the timestamp is
+ *  within WEBHOOK_FRESHNESS_WINDOW_SEC of now. Throws if neither
  *  secret env var is set — that means we forgot to wire prod
  *  correctly and we'd rather fail loudly than silently accept
  *  unverified webhooks. */
@@ -214,6 +225,19 @@ export function verifyWebhookSignature(
     );
   }
   if (!signatureHeader || !timestampHeader) return false;
+
+  // Reject replays of an old signed body before doing crypto.
+  // Cashfree's docs show x-webhook-timestamp as a 13-digit epoch
+  // in MILLISECONDS (e.g. 1617695238078). We normalize: anything
+  // below 1e12 we treat as epoch seconds (a defensive fallback in
+  // case an older integration path is used), anything ≥ 1e12 is
+  // ms. NaN / non-positive / non-finite values fall through to
+  // rejection.
+  const tsRaw = Number(timestampHeader);
+  if (!Number.isFinite(tsRaw) || tsRaw <= 0) return false;
+  const tsMs = tsRaw < 1e12 ? tsRaw * 1000 : tsRaw;
+  const skewMs = Math.abs(Date.now() - tsMs);
+  if (skewMs > WEBHOOK_FRESHNESS_WINDOW_SEC * 1000) return false;
 
   for (const secret of candidates) {
     const expected = createHmac("sha256", secret)
