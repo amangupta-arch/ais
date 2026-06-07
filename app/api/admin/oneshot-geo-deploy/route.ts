@@ -44,14 +44,15 @@ const ONESHOT_TOKEN =
   "32649ac3bf52ef8535a939bb21abb4958bfbf0eadaaa7aadfc4ac6f7a9652557";
 
 const BUNDLE_SLUG = "b-class-10-geography-ch01-resources-and-development";
-/** All three courses in the bundle. Each one's lesson YAMLs live at
- *  `supabase/content/<course>/NN-*.yaml` plus the Hinglish overlay at
- *  `supabase/content/<course>-hinglish/`. */
-const COURSE_SLUGS = [
-  "resources-and-resource-planning",
-  "land-as-a-resource",
-  "soil-as-a-resource",
-] as const;
+/** Pilot scope: only Course 1's lesson YAMLs are loaded.
+ *  Courses 2 (land-as-a-resource) and 3 (soil-as-a-resource) are
+ *  authored on this branch but DELIBERATELY excluded until the
+ *  operator says "take course 2 live" / "take course 3 live".
+ *  The bundle row already declares all three courses with empty
+ *  lesson stubs — the dashboard surfaces a "coming soon" feel
+ *  for the unloaded ones, which is the desired UX for a phased
+ *  rollout. */
+const COURSE_SLUGS = ["resources-and-resource-planning"] as const;
 const STORAGE_BUCKET = "lesson-images";
 
 /** Drive file id → target filename. Seven PNGs from
