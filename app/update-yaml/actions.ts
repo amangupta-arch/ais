@@ -4,6 +4,7 @@ import yaml from "js-yaml";
 import { createClient as createServerClient } from "@supabase/supabase-js";
 import { revalidatePath } from "next/cache";
 
+import { isAdminEmail } from "@/lib/admin";
 import { lessonSchema, turnContent, turnXpReward } from "@/lib/content/schema";
 import { createClient } from "@/lib/supabase/server";
 
@@ -26,12 +27,19 @@ function adminClient() {
   return createServerClient(url, key, { auth: { persistSession: false } });
 }
 
-async function requireAuthed() {
+// Gate every server action behind the admin allowlist. The actions below
+// use the service-role client (bypasses RLS) to upsert lessons + turns,
+// which are then rendered with `dangerouslySetInnerHTML` for svg_graphic
+// and html_animation blocks (LessonPlayer.tsx). If any signed-in user
+// could call these, they could overwrite any lesson with arbitrary JS
+// and ship stored XSS to every learner. Admin-only.
+async function requireAdmin() {
   const supabase = await createClient();
   const {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) throw new Error("Not signed in.");
+  if (!isAdminEmail(user.email)) throw new Error("Forbidden.");
   return user.id;
 }
 
@@ -66,7 +74,7 @@ export type CourseStats = {
 };
 
 export async function listBundles(): Promise<BundleOption[]> {
-  await requireAuthed();
+  await requireAdmin();
   const admin = adminClient();
   // Pull bundles + a course count per bundle. PostgREST can't aggregate
   // cleanly with select(), so we do two queries and join in memory.
@@ -96,7 +104,7 @@ export async function listBundles(): Promise<BundleOption[]> {
 export async function listCourses(args?: {
   bundleId?: string | typeof ORPHAN_BUNDLE | typeof ALL_BUNDLES;
 }): Promise<CourseOption[]> {
-  await requireAuthed();
+  await requireAdmin();
   const admin = adminClient();
   let query = admin
     .from("courses")
@@ -122,7 +130,7 @@ export async function listCourses(args?: {
 }
 
 export async function getCourseStats(courseId: string): Promise<CourseStats> {
-  await requireAuthed();
+  await requireAdmin();
   const admin = adminClient();
   const { data, error } = await admin
     .from("lessons")
@@ -187,7 +195,7 @@ export type SubmitResult = {
 };
 
 export async function submitLessonYaml(args: SubmitArgs): Promise<SubmitResult> {
-  await requireAuthed();
+  await requireAdmin();
 
   // 1. Parse YAML.
   let raw: unknown;

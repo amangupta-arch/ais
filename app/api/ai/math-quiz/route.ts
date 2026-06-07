@@ -8,12 +8,23 @@
 // Returns a strict JSON shape that the client renders verbatim.
 // The route is intentionally PUBLIC (matches the rest of
 // /math-quiz-test) — image is forwarded to Anthropic in-memory and
-// never persisted.
+// never persisted. To bound Anthropic spend against a bot that
+// just hammers POST in a loop, every request is rate-limited per
+// client IP via checkRateLimit() before the LLM call.
 
 import Anthropic from "@anthropic-ai/sdk";
 import { NextResponse, type NextRequest } from "next/server";
 
+import { checkRateLimit, clientIp } from "@/lib/rate-limit";
 import { LANGUAGES, type PreferredLanguage } from "@/lib/types";
+
+// Generous for a real student photographing 5–10 questions, tight
+// enough to bound a single-IP botnet to a handful of dollars/hr.
+const RATE_LIMIT_WINDOW_SEC = 60 * 60;
+const RATE_LIMIT_MAX_PER_WINDOW = 30;
+// Reject base64 images larger than ~8 MB before forwarding to Anthropic.
+// (8 MB base64 ≈ 6 MB binary; iPhone HEIC re-encoded to JPEG is well under.)
+const MAX_IMAGE_BASE64_BYTES = 8 * 1024 * 1024;
 
 export const runtime = "nodejs";
 export const maxDuration = 30;
@@ -154,6 +165,24 @@ function extractToolResult(response: Anthropic.Message): GraderResult | null {
 }
 
 export async function POST(request: NextRequest) {
+  // Rate-limit before we even parse the body — a bot doesn't deserve
+  // CPU on `request.json()` of a 5 MB payload. Per-IP only because
+  // the route is public; signed-in users on the funnel share the cap
+  // with their network. Helper fails open on its own errors.
+  const ip = clientIp(request);
+  const rl = await checkRateLimit({
+    scope: "math-quiz",
+    key: ip,
+    windowSec: RATE_LIMIT_WINDOW_SEC,
+    max: RATE_LIMIT_MAX_PER_WINDOW,
+  });
+  if (!rl.ok) {
+    return NextResponse.json(
+      { error: "Too many requests. Please wait before trying again." },
+      { status: 429, headers: { "Retry-After": String(rl.retryAfter) } },
+    );
+  }
+
   let body: Body;
   try {
     body = (await request.json()) as Body;
@@ -170,6 +199,13 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       { error: "Missing equation, expectedAnswer, or image." },
       { status: 400 },
+    );
+  }
+
+  if (imageInput.length > MAX_IMAGE_BASE64_BYTES) {
+    return NextResponse.json(
+      { error: "Image too large. Please use a smaller photo." },
+      { status: 413 },
     );
   }
 
