@@ -1,0 +1,166 @@
+title: "Land and Relief Features"
+subtitle: "The one resource you've stood on your whole life and never thought about"
+estimated_minutes: 11
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      A question you've never been asked.
+
+      Right now, you are standing — or sitting — on a resource. You've *never* not been on it. So when did you last actually *think* about land?
+
+      That ordinariness is exactly why we take it for granted.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Look at what land quietly carries. It holds up our **natural vegetation** and **wildlife**, our **homes** and **farms**, our **factories**, **roads**, and **railways**. Nearly every human activity happens *on* it.
+
+      And here's the catch that makes it precious: land is an asset of *finite magnitude*. We can't make more of it. Every patch we use up is a patch gone.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Think of land as the **stage** every activity has to perform on.
+
+      But India's stage isn't flat and uniform. It comes in three great forms — **mountains**, **plateaus**, and **plains** (plus its islands) — and each one is suited to a different kind of act.
+
+  - type: svg_graphic
+    xp: 0
+    title: "INDIA'S STAGE, IN THREE PARTS"
+    caption: "About 43% plains, 30% mountains, 27% plateau — each offers something different."
+    svg: |
+      <svg viewBox="0 0 360 150" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="20" y="40" width="138" height="40" fill="#dcfce7" stroke="#0f172a" stroke-width="1.5"/>
+        <rect x="158" y="40" width="96" height="40" fill="#dbeafe" stroke="#0f172a" stroke-width="1.5"/>
+        <rect x="254" y="40" width="86" height="40" fill="#fef3c7" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="89" y="34" text-anchor="middle" font-size="11" font-weight="bold" fill="#166534">Plains 43%</text>
+        <text x="206" y="34" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3a8a">Mountains 30%</text>
+        <text x="297" y="34" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400e">Plateau 27%</text>
+        <text x="89" y="64" text-anchor="middle" font-size="9" fill="#14532d">farms and</text>
+        <text x="89" y="75" text-anchor="middle" font-size="9" fill="#14532d">industry</text>
+        <text x="206" y="64" text-anchor="middle" font-size="9" fill="#1e3a8a">rivers and</text>
+        <text x="206" y="75" text-anchor="middle" font-size="9" fill="#1e3a8a">tourism</text>
+        <text x="297" y="64" text-anchor="middle" font-size="9" fill="#92400e">minerals and</text>
+        <text x="297" y="75" text-anchor="middle" font-size="9" fill="#92400e">forests</text>
+        <text x="180" y="110" text-anchor="middle" font-size="9" fill="#475569">One country, three very different kinds of ground.</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Plains — about 43%.** Flat, fertile, easy to build and farm on. This is where most of our *agriculture* and *industry* sits. The plains are India's workbench.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Mountains — about 30%.** They look like they just sit there. They don't. Their snow feeds the *perennial* rivers — the ones that flow all year. They draw *tourism*, and they hold up fragile *ecosystems*.
+
+      Think of the mountains as India's **water towers**.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Plateaus — about 27%.** Old, hard, rocky ground — and exactly where India keeps its *minerals*, *fossil fuels*, and large stretches of *forest*.
+
+      The plateaus are the **treasure chests**. (Remember Jharkhand's coal from the last course? That's plateau country.)
+
+  - type: html_animation
+    xp: 0
+    title: "WHAT EACH LANDFORM GIVES"
+    caption: "Plains, mountains, plateau — watch each light up with what it offers."
+    html: |
+      <div style="background:#f8fafc;padding:18px 10px;border-radius:12px;">
+        <style>
+          @keyframes geoLf1 { 0%,3%{opacity:.2} 14%,33%{opacity:1} 44%,100%{opacity:.2} }
+          @keyframes geoLf2 { 0%,36%{opacity:.2} 47%,66%{opacity:1} 77%,100%{opacity:.2} }
+          @keyframes geoLf3 { 0%,69%{opacity:.2} 80%,97%{opacity:1} 100%{opacity:.2} }
+          .geo-lf1 { animation: geoLf1 6s infinite; } .geo-lf2 { animation: geoLf2 6s infinite; } .geo-lf3 { animation: geoLf3 6s infinite; }
+        </style>
+        <svg viewBox="0 0 340 150" style="width:100%" font-family="sans-serif">
+          <polygon points="20,120 120,120 70,60" fill="#bfdbfe" stroke="#0f172a" stroke-width="1.5" class="geo-lf2"/>
+          <rect x="130" y="92" width="90" height="28" fill="#fde68a" stroke="#0f172a" stroke-width="1.5" class="geo-lf3"/>
+          <rect x="232" y="108" width="100" height="12" fill="#bbf7d0" stroke="#0f172a" stroke-width="1.5" class="geo-lf1"/>
+          <text x="70" y="138" text-anchor="middle" font-size="9" font-weight="bold" fill="#1e3a8a" class="geo-lf2">mountains</text>
+          <text x="70" y="50" text-anchor="middle" font-size="8" fill="#1e3a8a" class="geo-lf2">rivers + tourism</text>
+          <text x="175" y="138" text-anchor="middle" font-size="9" font-weight="bold" fill="#92400e" class="geo-lf3">plateau</text>
+          <text x="175" y="86" text-anchor="middle" font-size="8" fill="#92400e" class="geo-lf3">minerals + forests</text>
+          <text x="282" y="138" text-anchor="middle" font-size="9" font-weight="bold" fill="#166534" class="geo-lf1">plains</text>
+          <text x="282" y="100" text-anchor="middle" font-size="8" fill="#166534" class="geo-lf1">farms + industry</text>
+        </svg>
+      </div>
+
+  - type: mcq
+    xp: 10
+    question: "India keeps most of its minerals, fossil fuels, and forest reserves in one type of relief. Which?"
+    options:
+      - id: a
+        text: "The plains — because that's where most people live."
+        is_correct: false
+        rationale: "Plains are for farming and industry. Population is high there, but the mineral and fuel reserves sit elsewhere."
+      - id: b
+        text: "The plateaus — old, hard rock that holds minerals, fossil fuels, and forests."
+        is_correct: true
+        rationale: "Right. Plateaus (about 27% of India) are the country's treasure chests of minerals, fuels, and forest."
+      - id: c
+        text: "The mountains — because they're the tallest."
+        is_correct: false
+        rationale: "Mountains give us perennial rivers, tourism, and ecology — not the bulk of mineral and fuel reserves."
+      - id: d
+        text: "The islands — surrounded by resource-rich seas."
+        is_correct: false
+        rationale: "India's islands matter, but the chapter ties mineral, fuel, and forest reserves to the *plateau* region."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Match each landform to what it mainly offers India."
+    left:
+      - { id: l1, label: "Plains (≈43%)" }
+      - { id: l2, label: "Mountains (≈30%)" }
+      - { id: l3, label: "Plateaus (≈27%)" }
+    right:
+      - { id: r1, label: "Agriculture and industry" }
+      - { id: r2, label: "Perennial rivers, tourism, ecology" }
+      - { id: r3, label: "Minerals, fossil fuels, forests" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Locate yourself. Which relief feature do you live on or nearest to — plain, plateau, or mountain?
+
+      On paper, write one way that landform shapes daily life around you (the crops grown, the industries, the rivers, the tourism). Then type your landform and one effect below.
+    placeholder: "I live on the ___ . One effect is..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in what each landform gives."
+    template: |
+      Mountains ensure the ___ flow of many rivers, while plateaus hold India's reserves of ___.
+    answers:
+      - id: blank-1
+        accepted: ["perennial", "Perennial"]
+      - id: blank-2
+        accepted: ["minerals", "Minerals", "mineral"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Land is finite — we can't make more. Knowing that, is there a piece of land near you that you think is being *used well*, or *wasted*? Why?
+
+      No right answer.
+    placeholder: "Near me, there's a piece of land that..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You see land as a finite, varied resource — not just 'the ground'."
+    summary: |
+      Land carries almost everything we do, and there's only so much of it. India's comes in three great forms — plains for farming and industry, mountains for rivers and tourism, plateaus for minerals and forests.
+
+      But knowing *what* land we have is only half the story. The harder question is how a country of 1.4 billion people actually *divides up* a fixed amount of land — for farms, forests, cities, and everything else. That's the next lesson.

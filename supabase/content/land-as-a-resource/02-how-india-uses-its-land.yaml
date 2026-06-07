@@ -1,0 +1,168 @@
+title: "How India Uses Its Land"
+subtitle: "Splitting a pie that never grows bigger"
+estimated_minutes: 12
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      India's land is **3.28 million square kilometres** — and not one inch more. Ever.
+
+      So here's the real problem of land use: how do you divide a pie that *never grows*, among farms, forests, cities, roads, and everything else 1.4 billion people need?
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      To manage it, every patch of land gets *filed* into a category by how it's used. The main ones:
+
+      - **Forests**
+      - **Not available for cultivation** — barren/waste land, and land built over (buildings, roads, factories)
+      - **Other uncultivated land** — permanent pastures, tree-crop groves, and *culturable waste* (left idle over 5 years)
+      - **Fallow land** — rested for a season (*current*) or for 1–5 years
+      - **Net sown area** — the land actually cropped
+
+  - type: svg_graphic
+    xp: 0
+    title: "INDIA'S LAND BUDGET (≈2019–20)"
+    caption: "Net sown area and forest take the biggest slices; the rest is split many ways."
+    svg: |
+      <svg viewBox="0 0 360 168" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="20" y="20" width="146" height="34" fill="#86efac" stroke="#0f172a" stroke-width="1.2"/>
+        <rect x="166" y="20" width="75" height="34" fill="#16a34a" stroke="#0f172a" stroke-width="1.2"/>
+        <rect x="241" y="20" width="46" height="34" fill="#cbd5e1" stroke="#0f172a" stroke-width="1.2"/>
+        <rect x="287" y="20" width="29" height="34" fill="#fde68a" stroke="#0f172a" stroke-width="1.2"/>
+        <rect x="316" y="20" width="24" height="34" fill="#e7d4b5" stroke="#0f172a" stroke-width="1.2"/>
+        <text x="93" y="42" text-anchor="middle" font-size="11" font-weight="bold" fill="#14532d">NSA 46%</text>
+        <circle cx="28" cy="78" r="6" fill="#86efac" stroke="#0f172a" stroke-width="1"/>
+        <text x="40" y="82" font-size="9" fill="#334155">Net sown area — 46%</text>
+        <circle cx="28" cy="98" r="6" fill="#16a34a" stroke="#0f172a" stroke-width="1"/>
+        <text x="40" y="102" font-size="9" fill="#334155">Forest — 23%</text>
+        <circle cx="28" cy="118" r="6" fill="#cbd5e1" stroke="#0f172a" stroke-width="1"/>
+        <text x="40" y="122" font-size="9" fill="#334155">Not available for cultivation — 15%</text>
+        <circle cx="28" cy="138" r="6" fill="#fde68a" stroke="#0f172a" stroke-width="1"/>
+        <text x="40" y="142" font-size="9" fill="#334155">Other uncultivated (pasture, groves, waste) — 9%</text>
+        <circle cx="28" cy="158" r="6" fill="#e7d4b5" stroke="#0f172a" stroke-width="1"/>
+        <text x="40" y="162" font-size="9" fill="#334155">Fallow — 8%</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The slice everyone watches is the **net sown area (NSA)** — the actual land on which crops are sown and harvested.
+
+      One twist: a single field can be cropped *more than once* a year. Add that double-cropping back in and you get the **gross cropped area**. So:
+
+      *gross cropped area = net sown area + area sown more than once.*
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      And the budget is *wildly* uneven across India.
+
+      Net sown area is over **80%** in Punjab and Haryana — almost the whole state is farmed. But it's under **10%** in Arunachal Pradesh, Mizoram, Manipur, and the Andaman & Nicobar Islands, where steep, forested terrain leaves little to plough.
+
+      Both *physical* factors (topography, climate, soil) and *human* ones (population, technology, culture) decide the split.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Two quiet alarms hide in this budget.
+
+      First: forest cover sits near **23%** — well below the **33%** the National Forest Policy (1952) said we need for ecological balance. It has barely moved in decades.
+
+      Second: *permanent pasture* is shrinking — even as we keep one of the world's largest cattle populations. Less grazing land, more mouths.
+
+  - type: html_animation
+    xp: 0
+    title: "THE FOREST GAP"
+    caption: "India's forest cover (~23%) still falls short of the 33% target set back in 1952."
+    html: |
+      <div style="background:#f8fafc;padding:20px 14px;border-radius:12px;">
+        <style>
+          @keyframes geoFill { 0%{width:0} 60%,100%{width:70%} }
+          .geo-bar-actual { height:26px; background:#16a34a; border-radius:5px; animation:geoFill 3s ease-out infinite alternate; }
+        </style>
+        <div style="font:9px sans-serif;color:#475569;margin-bottom:4px">Actual forest cover ≈ 23%</div>
+        <div style="position:relative;background:#e2e8f0;border-radius:5px;height:26px;">
+          <div class="geo-bar-actual"></div>
+          <div style="position:absolute;top:-4px;bottom:-4px;left:100%;width:2px;background:#dc2626;transform:translateX(-46px)"></div>
+        </div>
+        <div style="font:bold 9px sans-serif;color:#dc2626;margin-top:6px;text-align:right;padding-right:30px">↑ the 33% target line (National Forest Policy, 1952)</div>
+      </div>
+
+  - type: mcq
+    xp: 10
+    question: "A farmer crops the same field twice in one year. How does that field count?"
+    options:
+      - id: a
+        text: "It's counted twice in the net sown area — once per crop."
+        is_correct: false
+        rationale: "Net sown area counts the *physical land* once, no matter how many times it's cropped. The second cropping shows up elsewhere."
+      - id: b
+        text: "Once in net sown area; the second cropping adds to gross cropped area."
+        is_correct: true
+        rationale: "Exactly. NSA = the land itself (counted once). Gross cropped area = NSA + the area sown more than once."
+      - id: c
+        text: "It moves from net sown area into fallow land."
+        is_correct: false
+        rationale: "Fallow is *rested* land. A field cropped twice is the opposite of fallow."
+      - id: d
+        text: "It's removed from the land-use budget entirely."
+        is_correct: false
+        rationale: "Nothing leaves the budget — the total is fixed. Double-cropping is captured by gross cropped area."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Match each land-use category to an example."
+    left:
+      - { id: l1, label: "Land not available for cultivation" }
+      - { id: l2, label: "Culturable waste land" }
+      - { id: l3, label: "Net sown area" }
+      - { id: l4, label: "Current fallow" }
+    right:
+      - { id: r1, label: "A new factory and the road to it" }
+      - { id: r2, label: "A field left idle for over 5 years" }
+      - { id: r3, label: "A paddy field harvested this season" }
+      - { id: r4, label: "A field rested for one season" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Look at the land within a kilometre of where you are. On paper, sort what you can see into the categories from this lesson: forest, built-over (not available for cultivation), cropped (net sown area), pasture, or fallow.
+
+      Which category takes up the most? Type it below with one example.
+    placeholder: "The biggest near me is ___ — for example..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in two key numbers and terms."
+    template: |
+      The land on which crops are sown and harvested is the ___ sown area. India's forest cover (~23%) is still below the desired ___ per cent.
+    answers:
+      - id: blank-1
+        accepted: ["net", "Net"]
+      - id: blank-2
+        accepted: ["33", "thirty-three"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      If you could shift *one* per cent of India's land from one use to another — say, more forest, or more farmland, or more housing — what would you choose, and what would it cost?
+
+      No right answer. Just weigh the trade-off.
+    placeholder: "I'd shift one per cent towards..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can read India's land-use budget — and spot what's shrinking."
+    summary: |
+      A fixed 3.28 million sq km, filed into forests, built-over land, pasture, fallow, and net sown area — split unevenly by both nature and people, with forest stuck below its 33% target.
+
+      But here's the danger we've been circling: when we push land too hard — over-farm it, over-graze it, mine it — it doesn't just stay the same. It *degrades*. What exactly goes wrong, and can we heal it? That's the next lesson.

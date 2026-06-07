@@ -1,0 +1,166 @@
+title: "Land aur Relief Features"
+subtitle: "Woh ek resource jis pe tum poori zindagi khade rahe aur kabhi socha nahi"
+estimated_minutes: 11
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ek sawaal jo tumse kabhi nahi poocha gaya.
+
+      Abhi is waqt tum ek resource pe khade — ya baithe — ho. Tum kabhi ispe *nahi* the, aisa hua hi nahi. Toh tumne aakhri baar *land* ke baare mein kab socha tha?
+
+      Yahi aam hona uski sabse badi wajah hai ki hum use granted maan lete hain.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Dekho land chupchaap kya-kya uthaaye rakhti hai. Yeh hamari **natural vegetation** aur **wildlife**, hamare **ghar** aur **khet**, hamari **factories**, **roads**, aur **railways** — sabko sambhaalti hai. Lagbhag har human activity isi *pe* hoti hai.
+
+      Aur yahi cheez ise keemti banati hai: land *finite* hai. Hum aur nahi bana sakte. Jo patch use ho gaya, woh gaya.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Land ko ek **stage** ki tarah socho jis pe har activity ko perform karna hota hai.
+
+      Par India ka stage flat aur ek jaisa nahi hai. Yeh teen badi forms mein aata hai — **mountains**, **plateaus**, aur **plains** (plus uske islands) — aur har ek alag tarah ke act ke liye bana hai.
+
+  - type: svg_graphic
+    xp: 0
+    title: "INDIA KA STAGE, TEEN HISSON MEIN"
+    caption: "Lagbhag 43% plains, 30% mountains, 27% plateau — har ek kuch alag deta hai."
+    svg: |
+      <svg viewBox="0 0 360 150" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="20" y="40" width="138" height="40" fill="#dcfce7" stroke="#0f172a" stroke-width="1.5"/>
+        <rect x="158" y="40" width="96" height="40" fill="#dbeafe" stroke="#0f172a" stroke-width="1.5"/>
+        <rect x="254" y="40" width="86" height="40" fill="#fef3c7" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="89" y="34" text-anchor="middle" font-size="11" font-weight="bold" fill="#166534">Plains 43%</text>
+        <text x="206" y="34" text-anchor="middle" font-size="11" font-weight="bold" fill="#1e3a8a">Mountains 30%</text>
+        <text x="297" y="34" text-anchor="middle" font-size="11" font-weight="bold" fill="#92400e">Plateau 27%</text>
+        <text x="89" y="64" text-anchor="middle" font-size="9" fill="#14532d">farms and</text>
+        <text x="89" y="75" text-anchor="middle" font-size="9" fill="#14532d">industry</text>
+        <text x="206" y="64" text-anchor="middle" font-size="9" fill="#1e3a8a">rivers and</text>
+        <text x="206" y="75" text-anchor="middle" font-size="9" fill="#1e3a8a">tourism</text>
+        <text x="297" y="64" text-anchor="middle" font-size="9" fill="#92400e">minerals and</text>
+        <text x="297" y="75" text-anchor="middle" font-size="9" fill="#92400e">forests</text>
+        <text x="180" y="110" text-anchor="middle" font-size="9" fill="#475569">One country, three very different kinds of ground.</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Plains — lagbhag 43%.** Flat, fertile, build aur farm karna aasaan. Yahin hamari zyaadatar *agriculture* aur *industry* baithti hai. Plains India ka workbench hain.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Mountains — lagbhag 30%.** Lagta hai bas pade rehte hain. Aisa nahi. Inki barf *perennial* rivers ko feed karti hai — woh jo saal bhar behti hain. Yeh *tourism* kheenchte hain, aur naazuk *ecosystems* ko sambhaalte hain.
+
+      Mountains ko India ke **water towers** samjho.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Plateaus — lagbhag 27%.** Puraani, sakht, chattaani zameen — aur theek wahin India apne *minerals*, *fossil fuels*, aur bade *forests* rakhta hai.
+
+      Plateaus **treasure chests** hain. (Pichhle course ka Jharkhand ka coal yaad hai? Woh plateau country hai.)
+
+  - type: html_animation
+    xp: 0
+    title: "HAR LANDFORM KYA DETA HAI"
+    caption: "Plains, mountains, plateau — har ek ko jalte dekho ki woh kya deta hai."
+    html: |
+      <div style="background:#f8fafc;padding:18px 10px;border-radius:12px;">
+        <style>
+          @keyframes geoLf1 { 0%,3%{opacity:.2} 14%,33%{opacity:1} 44%,100%{opacity:.2} }
+          @keyframes geoLf2 { 0%,36%{opacity:.2} 47%,66%{opacity:1} 77%,100%{opacity:.2} }
+          @keyframes geoLf3 { 0%,69%{opacity:.2} 80%,97%{opacity:1} 100%{opacity:.2} }
+          .geo-lf1 { animation: geoLf1 6s infinite; } .geo-lf2 { animation: geoLf2 6s infinite; } .geo-lf3 { animation: geoLf3 6s infinite; }
+        </style>
+        <svg viewBox="0 0 340 150" style="width:100%" font-family="sans-serif">
+          <polygon points="20,120 120,120 70,60" fill="#bfdbfe" stroke="#0f172a" stroke-width="1.5" class="geo-lf2"/>
+          <rect x="130" y="92" width="90" height="28" fill="#fde68a" stroke="#0f172a" stroke-width="1.5" class="geo-lf3"/>
+          <rect x="232" y="108" width="100" height="12" fill="#bbf7d0" stroke="#0f172a" stroke-width="1.5" class="geo-lf1"/>
+          <text x="70" y="138" text-anchor="middle" font-size="9" font-weight="bold" fill="#1e3a8a" class="geo-lf2">mountains</text>
+          <text x="70" y="50" text-anchor="middle" font-size="8" fill="#1e3a8a" class="geo-lf2">rivers + tourism</text>
+          <text x="175" y="138" text-anchor="middle" font-size="9" font-weight="bold" fill="#92400e" class="geo-lf3">plateau</text>
+          <text x="175" y="86" text-anchor="middle" font-size="8" fill="#92400e" class="geo-lf3">minerals + forests</text>
+          <text x="282" y="138" text-anchor="middle" font-size="9" font-weight="bold" fill="#166534" class="geo-lf1">plains</text>
+          <text x="282" y="100" text-anchor="middle" font-size="8" fill="#166534" class="geo-lf1">farms + industry</text>
+        </svg>
+      </div>
+
+  - type: mcq
+    xp: 10
+    question: "India apne zyaadatar minerals, fossil fuels, aur forest reserves ek hi tarah ki relief mein rakhta hai. Kaunsi?"
+    options:
+      - id: a
+        text: "Plains — kyunki wahin zyaadatar log rehte hain."
+        is_correct: false
+        rationale: "Plains farming aur industry ke liye hain. Wahan population zyaada hai, par mineral aur fuel reserves kahin aur baithe hain."
+      - id: b
+        text: "Plateaus — puraani, sakht chattan jo minerals, fossil fuels, aur forests rakhti hai."
+        is_correct: true
+        rationale: "Sahi. Plateaus (lagbhag 27%) desh ke treasure chests hain — minerals, fuels, aur forest ke."
+      - id: c
+        text: "Mountains — kyunki woh sabse oonche hain."
+        is_correct: false
+        rationale: "Mountains humein perennial rivers, tourism, aur ecology dete hain — mineral/fuel reserves ka bada hissa nahi."
+      - id: d
+        text: "Islands — resource-rich samundar se ghire."
+        is_correct: false
+        rationale: "India ke islands maayne rakhte hain, par chapter mineral, fuel, aur forest reserves ko *plateau* region se jodta hai."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Har landform ko usse match karo jo woh mukhya roop se India ko deta hai."
+    left:
+      - { id: l1, label: "Plains (≈43%)" }
+      - { id: l2, label: "Mountains (≈30%)" }
+      - { id: l3, label: "Plateaus (≈27%)" }
+    right:
+      - { id: r1, label: "Agriculture aur industry" }
+      - { id: r2, label: "Perennial rivers, tourism, ecology" }
+      - { id: r3, label: "Minerals, fossil fuels, forests" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Apne aap ko locate karo. Tum kaunsi relief feature pe ya uske paas rehte ho — plain, plateau, ya mountain?
+
+      Paper pe likho ki woh landform aas-paas ki rozmarra zindagi ko kaise shape karta hai (jo crops ugte hain, industries, rivers, tourism). Phir neeche apna landform aur ek effect type karo.
+    placeholder: "Main ___ pe rehta hoon. Ek effect hai..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Har landform kya deta hai, yaad kar lo."
+    template: |
+      Mountains kai rivers ke ___ behaav ko ensure karte hain, jabki plateaus India ke ___ ke reserves rakhte hain.
+    answers:
+      - id: blank-1
+        accepted: ["perennial", "Perennial"]
+      - id: blank-2
+        accepted: ["minerals", "Minerals", "mineral"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Land finite hai — hum aur nahi bana sakte. Yeh jaante hue, kya tumhare aas-paas koi zameen hai jo tumhe lagti hai *achhe se use ho rahi hai*, ya *barbaad ho rahi hai*? Kyun?
+
+      Koi sahi jawaab nahi.
+    placeholder: "Mere paas ek zameen hai jo..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Ab tum land ko ek finite, varied resource ki tarah dekhte ho — sirf 'zameen' nahi."
+    summary: |
+      Land hamare lagbhag har kaam ko uthaaye rakhti hai, aur uski ek hadd hai. India ki land teen badi forms mein aati hai — plains farming aur industry ke liye, mountains rivers aur tourism ke liye, plateaus minerals aur forests ke liye.
+
+      Par hamare paas *kaunsi* land hai, yeh aadhi kahani hai. Mushkil sawaal yeh hai ki 1.4 billion logon ka desh ek fixed amount of land ko *baant* kaise hai — khet, forest, sheher, aur baaki sab ke liye. Yahi agli lesson hai.

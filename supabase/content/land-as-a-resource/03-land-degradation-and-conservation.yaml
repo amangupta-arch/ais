@@ -1,0 +1,185 @@
+title: "Land Degradation and Conservation"
+subtitle: "Land doesn't bleed — but it scars, and scars can be healed"
+estimated_minutes: 12
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Land doesn't bleed. But it *scars*. And scarred badly enough, it stops feeding us.
+
+      That's not a metaphor you can shrug off: about **95%** of our basic needs — food, shelter, clothing — come from land. Wreck the land and you wreck the source of almost everything.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      We don't only *use* land. We **degrade** it — and we speed up nature's own forces of damage while we're at it.
+
+      Three culprits do most of the harm. Let's name them.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Culprit 1 — mining.** When a mine is abandoned, it's left behind as deep scars and heaps of over-burden. In **Jharkhand, Chhattisgarh, Madhya Pradesh, and Odisha**, mining — and the deforestation around it — has chewed through the land.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Culprit 2 — overgrazing.** Too many animals on too little grass strips the land bare, especially in **Gujarat, Rajasthan, Madhya Pradesh, and Maharashtra**.
+
+      **Culprit 3 — over-irrigation.** In **Punjab, Haryana, and western Uttar Pradesh**, *too much* water waterlogs the soil, pulling up salts until the land turns **saline and alkaline**. Strange but true: too much water can ruin land as surely as too little.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Two quieter culprits finish the job.
+
+      **Dust** from mineral processing — grinding limestone for cement, calcite and soapstone for ceramics — settles on the land and *blocks water from soaking in*.
+
+      And **industrial effluents** — untreated waste — poison both land and water across the country.
+
+  - type: svg_graphic
+    xp: 0
+    title: "FOUR WAYS WE SCAR THE LAND"
+    caption: "Mining, overgrazing, over-irrigation, and dust/effluents — each leaves its mark."
+    svg: |
+      <svg viewBox="0 0 360 176" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="10" y="8" width="166" height="76" rx="6" fill="#fff7ed" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="20" y="28" font-size="10" font-weight="bold" fill="#9a3412">Mining and deforestation</text>
+        <text x="20" y="48" font-size="8.5" fill="#475569">deep scars, over-burden</text>
+        <text x="20" y="62" font-size="8.5" fill="#475569">Jharkhand · Chhattisgarh</text>
+        <text x="20" y="75" font-size="8.5" fill="#475569">Madhya Pradesh · Odisha</text>
+        <rect x="184" y="8" width="166" height="76" rx="6" fill="#fefce8" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="194" y="28" font-size="10" font-weight="bold" fill="#854d0e">Overgrazing</text>
+        <text x="194" y="48" font-size="8.5" fill="#475569">land stripped bare</text>
+        <text x="194" y="62" font-size="8.5" fill="#475569">Gujarat · Rajasthan</text>
+        <text x="194" y="75" font-size="8.5" fill="#475569">Madhya Pradesh · Maharashtra</text>
+        <rect x="10" y="92" width="166" height="76" rx="6" fill="#eff6ff" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="20" y="112" font-size="10" font-weight="bold" fill="#1e3a8a">Over-irrigation</text>
+        <text x="20" y="132" font-size="8.5" fill="#475569">waterlogging then salinity</text>
+        <text x="20" y="146" font-size="8.5" fill="#475569">Punjab · Haryana</text>
+        <text x="20" y="159" font-size="8.5" fill="#475569">western Uttar Pradesh</text>
+        <rect x="184" y="92" width="166" height="76" rx="6" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="194" y="112" font-size="10" font-weight="bold" fill="#334155">Dust and effluents</text>
+        <text x="194" y="132" font-size="8.5" fill="#475569">dust blocks water soaking in</text>
+        <text x="194" y="146" font-size="8.5" fill="#475569">effluents poison land</text>
+        <text x="194" y="159" font-size="8.5" fill="#475569">and water</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Now the hopeful half. Scars *can* heal — if we act.
+
+      - **Afforestation** — plant trees back.
+      - **Manage grazing** — limit how many animals, and where.
+      - **Shelter belts** — rows of trees that break the wind and hold the soil.
+      - **Stabilise sand dunes** with thorny bushes.
+      - **Manage waste land**, **control mining**, and **treat industrial effluents** before they're released.
+
+  - type: html_animation
+    xp: 0
+    title: "FROM SCARRED TO HEALED"
+    caption: "Bare, degraded land can be brought back — trees and shelter belts hold it together again."
+    html: |
+      <div style="background:#f8fafc;padding:18px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoGreen { 0%,10%{fill:#d6c3a5} 60%,100%{fill:#86efac} }
+          @keyframes geoGrow { 0%,15%{opacity:0;transform:scaleY(0.1)} 55%,100%{opacity:1;transform:scaleY(1)} }
+          .geo-ground { animation: geoGreen 5s infinite alternate; }
+          .geo-tree { transform-origin:bottom; animation: geoGrow 5s infinite alternate; }
+        </style>
+        <svg viewBox="0 0 320 130" style="max-width:330px;width:100%" font-family="sans-serif">
+          <rect class="geo-ground" x="10" y="96" width="300" height="22" rx="3" stroke="#0f172a" stroke-width="1"/>
+          <g class="geo-tree">
+            <rect x="62" y="70" width="6" height="28" fill="#92400e"/>
+            <circle cx="65" cy="64" r="14" fill="#16a34a"/>
+          </g>
+          <g class="geo-tree">
+            <rect x="157" y="66" width="7" height="32" fill="#92400e"/>
+            <circle cx="160" cy="58" r="17" fill="#16a34a"/>
+          </g>
+          <g class="geo-tree">
+            <rect x="252" y="70" width="6" height="28" fill="#92400e"/>
+            <circle cx="255" cy="64" r="14" fill="#16a34a"/>
+          </g>
+          <text x="160" y="114" text-anchor="middle" font-size="9" fill="#475569">shelter belts grip the soil and break the wind</text>
+        </svg>
+      </div>
+
+  - type: mcq
+    xp: 10
+    question: "Which is the main cause of land degradation in Punjab?"
+    options:
+      - id: a
+        text: "Intensive cultivation alone."
+        is_correct: false
+        rationale: "Intensive farming is part of the picture, but Punjab's specific problem is what the irrigation does to the soil."
+      - id: b
+        text: "Deforestation from mining."
+        is_correct: false
+        rationale: "That's the story in Jharkhand, Chhattisgarh, MP, and Odisha — not Punjab."
+      - id: c
+        text: "Over-irrigation — waterlogging that raises salinity and alkalinity."
+        is_correct: true
+        rationale: "Correct. In Punjab, Haryana, and western UP, too much irrigation waterlogs the soil and makes it saline and alkaline."
+      - id: d
+        text: "Overgrazing by cattle."
+        is_correct: false
+        rationale: "Overgrazing degrades Gujarat, Rajasthan, MP, and Maharashtra — but Punjab's culprit is over-irrigation."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Match each region to the form of land degradation it's known for."
+    left:
+      - { id: l1, label: "Punjab and Haryana" }
+      - { id: l2, label: "Jharkhand and Odisha" }
+      - { id: l3, label: "Gujarat and Rajasthan" }
+      - { id: l4, label: "Cement and ceramic belts" }
+    right:
+      - { id: r1, label: "Over-irrigation → waterlogging and salinity" }
+      - { id: r2, label: "Mining scars and deforestation" }
+      - { id: r3, label: "Overgrazing strips the land" }
+      - { id: r4, label: "Dust that blocks water from soaking in" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Find one piece of degraded or neglected land you've actually seen — an eroded slope, a dusty quarry, a salt-crusted field, a barren patch.
+
+      On paper, name the likely cause from this lesson, then pick one conservation method that would help heal it. Type the place and your method below.
+    placeholder: "I've seen ___ . The cause is likely ___ , and ___ would help."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Trace what too much irrigation does."
+    template: |
+      Over-irrigation first causes ___ , which then raises the soil's ___ and alkalinity.
+    answers:
+      - id: blank-1
+        accepted: ["waterlogging", "water logging", "Waterlogging"]
+      - id: blank-2
+        accepted: ["salinity", "Salinity", "salt"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Healing land — planting shelter belts, treating effluents — costs money and patience now, for a benefit years away. Where in life do you find it hardest to pay now for a payoff much later?
+
+      No right answer.
+    placeholder: "I find it hardest to..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can name how land degrades — and how we heal it."
+    summary: |
+      Mining scars, overgrazing, over-irrigation's salt, and the dust and effluents of industry all wound the land that meets 95% of our needs. But afforestation, shelter belts, managed grazing, and treated waste can bring it back.
+
+      We've talked about land as a whole. But its single most precious layer is the thin skin on top — *soil* — and it takes thousands of years to make. How does soil even form, and what's inside it? That's where the final course begins.

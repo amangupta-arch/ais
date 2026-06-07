@@ -1,0 +1,185 @@
+title: "Land Degradation aur Conservation"
+subtitle: "Land bleed nahi karti — par scar hoti hai, aur scars theek ho sakte hain"
+estimated_minutes: 12
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Land bleed nahi karti. Par woh *scar* hoti hai. Aur agar bahut buri tarah scar ho jaaye, toh woh humein khilana band kar deti hai.
+
+      Yeh aisa metaphor nahi jise tum jhatak do: hamari lagbhag **95%** basic needs — khaana, ghar, kapda — land se aati hain. Land barbaad karo toh tum lagbhag har cheez ka source barbaad kar dete ho.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Hum land ko sirf *use* nahi karte. Hum use **degrade** karte hain — aur is dauraan nature ki apni damage karne waali forces ko bhi tez kar dete hain.
+
+      Teen culprits zyaadatar nuksaan karte hain. Chalo unhe naam dete hain.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Culprit 1 — mining.** Jab koi mine chhod di jaati hai, toh peeche reh jaate hain deep scars aur over-burden ke dher. **Jharkhand, Chhattisgarh, Madhya Pradesh, aur Odisha** mein mining — aur uske aas-paas ki deforestation — ne land ko kha liya hai.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Culprit 2 — overgrazing.** Bahut zyaada jaanwar bahut kam ghaas pe land ko nanga kar dete hain, khaaskar **Gujarat, Rajasthan, Madhya Pradesh, aur Maharashtra** mein.
+
+      **Culprit 3 — over-irrigation.** **Punjab, Haryana, aur western Uttar Pradesh** mein *bahut zyaada* paani soil ko waterlog kar deta hai, aur salts ko upar kheench leta hai jab tak land **saline aur alkaline** na ho jaaye. Ajeeb par sach: bahut zyaada paani land ko utna hi barbaad kar sakta hai jitna bahut kam.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Do khaamosh culprits kaam poora kar dete hain.
+
+      Mineral processing se **dust** — cement ke liye limestone, ceramics ke liye calcite aur soapstone peesna — land pe baith jaati hai aur *paani ko soakne se rok deti hai*.
+
+      Aur **industrial effluents** — bina treat kiya waste — poore desh mein land aur water dono ko zehreela karte hain.
+
+  - type: svg_graphic
+    xp: 0
+    title: "CHAAR TAREEKE JINSE HUM LAND KO SCAR KARTE HAIN"
+    caption: "Mining, overgrazing, over-irrigation, aur dust/effluents — har ek apna nishaan chhodta hai."
+    svg: |
+      <svg viewBox="0 0 360 176" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="10" y="8" width="166" height="76" rx="6" fill="#fff7ed" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="20" y="28" font-size="10" font-weight="bold" fill="#9a3412">Mining and deforestation</text>
+        <text x="20" y="48" font-size="8.5" fill="#475569">deep scars, over-burden</text>
+        <text x="20" y="62" font-size="8.5" fill="#475569">Jharkhand · Chhattisgarh</text>
+        <text x="20" y="75" font-size="8.5" fill="#475569">Madhya Pradesh · Odisha</text>
+        <rect x="184" y="8" width="166" height="76" rx="6" fill="#fefce8" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="194" y="28" font-size="10" font-weight="bold" fill="#854d0e">Overgrazing</text>
+        <text x="194" y="48" font-size="8.5" fill="#475569">land stripped bare</text>
+        <text x="194" y="62" font-size="8.5" fill="#475569">Gujarat · Rajasthan</text>
+        <text x="194" y="75" font-size="8.5" fill="#475569">Madhya Pradesh · Maharashtra</text>
+        <rect x="10" y="92" width="166" height="76" rx="6" fill="#eff6ff" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="20" y="112" font-size="10" font-weight="bold" fill="#1e3a8a">Over-irrigation</text>
+        <text x="20" y="132" font-size="8.5" fill="#475569">waterlogging then salinity</text>
+        <text x="20" y="146" font-size="8.5" fill="#475569">Punjab · Haryana</text>
+        <text x="20" y="159" font-size="8.5" fill="#475569">western Uttar Pradesh</text>
+        <rect x="184" y="92" width="166" height="76" rx="6" fill="#f1f5f9" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="194" y="112" font-size="10" font-weight="bold" fill="#334155">Dust and effluents</text>
+        <text x="194" y="132" font-size="8.5" fill="#475569">dust blocks water soaking in</text>
+        <text x="194" y="146" font-size="8.5" fill="#475569">effluents poison land</text>
+        <text x="194" y="159" font-size="8.5" fill="#475569">and water</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ab umeed waala aadha hissa. Scars *theek ho sakte hain* — agar hum action lein.
+
+      - **Afforestation** — wapas ped lagao.
+      - **Grazing manage karo** — kitne jaanwar, aur kahan, limit karo.
+      - **Shelter belts** — pedon ki rows jo hawa todti hain aur soil pakadti hain.
+      - **Sand dunes ko stabilise karo** thorny bushes se.
+      - **Waste land manage karo**, **mining control karo**, aur **industrial effluents ko treat karo** chhodne se pehle.
+
+  - type: html_animation
+    xp: 0
+    title: "SCARRED SE HEALED TAK"
+    caption: "Bare, degraded land wapas laayi ja sakti hai — ped aur shelter belts use phir se ek saath pakad lete hain."
+    html: |
+      <div style="background:#f8fafc;padding:18px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoGreen { 0%,10%{fill:#d6c3a5} 60%,100%{fill:#86efac} }
+          @keyframes geoGrow { 0%,15%{opacity:0;transform:scaleY(0.1)} 55%,100%{opacity:1;transform:scaleY(1)} }
+          .geo-ground { animation: geoGreen 5s infinite alternate; }
+          .geo-tree { transform-origin:bottom; animation: geoGrow 5s infinite alternate; }
+        </style>
+        <svg viewBox="0 0 320 130" style="max-width:330px;width:100%" font-family="sans-serif">
+          <rect class="geo-ground" x="10" y="96" width="300" height="22" rx="3" stroke="#0f172a" stroke-width="1"/>
+          <g class="geo-tree">
+            <rect x="62" y="70" width="6" height="28" fill="#92400e"/>
+            <circle cx="65" cy="64" r="14" fill="#16a34a"/>
+          </g>
+          <g class="geo-tree">
+            <rect x="157" y="66" width="7" height="32" fill="#92400e"/>
+            <circle cx="160" cy="58" r="17" fill="#16a34a"/>
+          </g>
+          <g class="geo-tree">
+            <rect x="252" y="70" width="6" height="28" fill="#92400e"/>
+            <circle cx="255" cy="64" r="14" fill="#16a34a"/>
+          </g>
+          <text x="160" y="114" text-anchor="middle" font-size="9" fill="#475569">shelter belts grip the soil and break the wind</text>
+        </svg>
+      </div>
+
+  - type: mcq
+    xp: 10
+    question: "Punjab mein land degradation ki mukhya wajah kya hai?"
+    options:
+      - id: a
+        text: "Sirf intensive cultivation."
+        is_correct: false
+        rationale: "Intensive farming picture ka hissa hai, par Punjab ki khaas problem yeh hai ki irrigation soil ke saath kya karti hai."
+      - id: b
+        text: "Mining se deforestation."
+        is_correct: false
+        rationale: "Yeh Jharkhand, Chhattisgarh, MP, aur Odisha ki kahani hai — Punjab ki nahi."
+      - id: c
+        text: "Over-irrigation — waterlogging jo salinity aur alkalinity badhati hai."
+        is_correct: true
+        rationale: "Sahi. Punjab, Haryana, aur western UP mein bahut zyaada irrigation soil ko waterlog karke saline aur alkaline bana deti hai."
+      - id: d
+        text: "Cattle dwara overgrazing."
+        is_correct: false
+        rationale: "Overgrazing Gujarat, Rajasthan, MP, aur Maharashtra ko degrade karti hai — par Punjab ka culprit over-irrigation hai."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Har region ko us land degradation se match karo jiske liye woh jaana jaata hai."
+    left:
+      - { id: l1, label: "Punjab aur Haryana" }
+      - { id: l2, label: "Jharkhand aur Odisha" }
+      - { id: l3, label: "Gujarat aur Rajasthan" }
+      - { id: l4, label: "Cement aur ceramic belts" }
+    right:
+      - { id: r1, label: "Over-irrigation → waterlogging aur salinity" }
+      - { id: r2, label: "Mining scars aur deforestation" }
+      - { id: r3, label: "Overgrazing land ko nanga kar deti hai" }
+      - { id: r4, label: "Dust jo paani ko soakne se rokti hai" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Koi ek degraded ya neglected land dhundo jo tumne sach mein dekhi ho — ek eroded slope, ek dhool bhari quarry, ek namak-jami field, ek banjar patch.
+
+      Paper pe is lesson se uski sambhavit wajah likho, phir ek conservation method chuno jo use theek karne mein madad kare. Neeche jagah aur apna method type karo.
+    placeholder: "Maine ___ dekhi hai. Wajah shayad ___ hai, aur ___ madad karega."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Trace karo ki bahut zyaada irrigation kya karti hai."
+    template: |
+      Over-irrigation pehle ___ paida karti hai, jo phir soil ki ___ aur alkalinity badha deti hai.
+    answers:
+      - id: blank-1
+        accepted: ["waterlogging", "water logging", "Waterlogging"]
+      - id: blank-2
+        accepted: ["salinity", "Salinity", "salt"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Land theek karna — shelter belts lagana, effluents treat karna — abhi paisa aur sabr maangta hai, ek fayde ke liye jo saalon door hai. Zindagi mein kahan tumhe abhi kharch karke baad mein milne waale fayde ke liye sabse mushkil lagta hai?
+
+      Koi sahi jawaab nahi.
+    placeholder: "Mujhe sabse mushkil lagta hai..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Ab tum bata sakte ho ki land kaise degrade hoti hai — aur hum use kaise theek karte hain."
+    summary: |
+      Mining scars, overgrazing, over-irrigation ka namak, aur industry ki dust aur effluents — sab us land ko ghaayal karte hain jo hamari 95% needs poori karti hai. Par afforestation, shelter belts, managed grazing, aur treated waste use wapas la sakte hain.
+
+      Humne land ko ek poore roop mein dekha. Par uski sabse keemti parat hai sabse upar ki patli khaal — *soil* — aur use banne mein hazaaron saal lagte hain. Soil banti kaise hai, aur uske andar kya hota hai? Yahi se aakhri course shuru hota hai.
