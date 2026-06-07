@@ -1,0 +1,35 @@
+# Class 10 Geography — Chapter 2: Forest and Wildlife Resources (NCERT,
+# Contemporary India II, rationalised edition). Third school-curriculum
+# bundle on AIS. 'student' plan tier; bundle row seeded in migration 0021.
+#
+# Loader: scripts/load-bundle-courses.ts — course/lesson slugs derived from
+# titles via slugify(). board + medium sync into bundles.tags so /student
+# filters by them. medium [en, hinglish] — ships Hinglish from day one.
+#
+# All 3 courses (9 lessons) authored in full, EN + Hinglish.
+
+bundles:
+  - bundle_slug: b-class-10-geography-ch02-forest-and-wildlife-resources
+    board: cbse
+    medium: [en, hinglish]
+    courses:
+      - title: "Biodiversity and the Web of Life"
+        outcome: "Student can define biodiversity, explain why humans depend on it, and give concrete reasons conservation matters"
+        lessons:
+          - "We Are One Strand in the Web"
+          - "India's Living Wealth"
+          - "Why Conservation Matters"
+
+      - title: "Protecting Forests and Wildlife"
+        outcome: "Student can explain how India protects wildlife in law, the story of Project Tiger, and the three classes of forest"
+        lessons:
+          - "The Wildlife Protection Act"
+          - "Project Tiger"
+          - "Reserved, Protected, and Unclassed Forests"
+
+      - title: "Communities and Conservation"
+        outcome: "Student can describe how Indian communities conserve forests and wildlife, and why community involvement is essential"
+        lessons:
+          - "When Villages Defend the Forest"
+          - "Farming with Nature"
+          - "Sacred Groves"
