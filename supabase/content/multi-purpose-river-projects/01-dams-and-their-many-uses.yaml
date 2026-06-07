@@ -1,0 +1,170 @@
+title: "Dams and Their Many Uses"
+subtitle: "One wall across a river that lights cities, waters deserts, and stops floods"
+estimated_minutes: 12
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Build one wall across a river, and you can light a city, water a desert, hold back a flood, and breed fish — all at the same time.
+
+      It sounds like magic. It's a **dam**. Let's see how it pulls off so many jobs at once.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      India has been doing this for *millennia*.
+
+      Sringaverapura had a flood-water harvesting system in the **1st century BC**. Chandragupta Maurya's era built dams and lakes. The 11th-century **Bhopal Lake** and Delhi's **Hauz Khas** tank followed. Modern India just kept an ancient tradition going — with concrete.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      So what *is* a dam, exactly?
+
+      A **barrier across flowing water** that obstructs, directs, or slows the flow — usually creating a **reservoir**, a lake of stored water behind it. Most dams have a **spillway** that lets excess water flow over safely, so the dam doesn't burst.
+
+  - type: svg_graphic
+    xp: 0
+    title: "ANATOMY OF A DAM"
+    caption: "A barrier holds back a reservoir; a spillway releases the excess; the river continues below."
+    svg: |
+      <svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="0" y="60" width="180" height="100" fill="#7dd3fc"/>
+        <text x="80" y="100" text-anchor="middle" font-size="10" font-weight="bold" fill="#075985">RESERVOIR</text>
+        <text x="80" y="114" text-anchor="middle" font-size="8" fill="#0c4a6e">stored water</text>
+        <polygon points="180,60 220,60 210,160 180,160" fill="#94a3b8" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="200" y="120" text-anchor="middle" font-size="9" font-weight="bold" fill="#1e293b" transform="rotate(90 200 120)">DAM</text>
+        <path d="M180,62 Q200,58 220,68 L222,82 Q200,72 184,80 Z" fill="#38bdf8"/>
+        <text x="240" y="58" font-size="8" fill="#0369a1">spillway</text>
+        <line x1="225" y1="70" x2="232" y2="58" stroke="#0369a1" stroke-width="1"/>
+        <rect x="210" y="140" width="150" height="20" fill="#7dd3fc"/>
+        <text x="290" y="154" text-anchor="middle" font-size="8" fill="#075985">river continues</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Dams used to be built for just *one* job: irrigation — storing rainwater to water fields later.
+
+      Today they're **multi-purpose** — one dam, many jobs at once:
+
+      - irrigation
+      - electricity (**hydel power**)
+      - water supply for homes and industry
+      - flood control
+      - recreation, inland navigation, and fish breeding
+
+      The Swiss Army knife of rivers.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Two famous examples show the idea.
+
+      **Bhakra-Nangal**, on the Sutlej-Beas, is used for *both* hydel power *and* irrigation. **Hirakud**, on the Mahanadi, integrates water *conservation* with *flood control*.
+
+      In each, the many uses of the stored water are woven together — that's what "integrated" means.
+
+  - type: html_animation
+    xp: 0
+    title: "ONE DAM, MANY JOBS"
+    caption: "Power, crops, drinking water, fish, flood control — all from a single project."
+    html: |
+      <div style="background:#f0f9ff;padding:18px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoJob1 { 0%,5%{opacity:.15} 20%,100%{opacity:1} }
+          @keyframes geoJob2 { 0%,25%{opacity:.15} 40%,100%{opacity:1} }
+          @keyframes geoJob3 { 0%,45%{opacity:.15} 60%,100%{opacity:1} }
+          @keyframes geoJob4 { 0%,65%{opacity:.15} 80%,100%{opacity:1} }
+          .geo-j { display:inline-block; margin:4px; padding:6px 12px; border-radius:999px; font:bold 11px sans-serif; color:#fff; }
+          .gj1{background:#ca8a04;animation:geoJob1 5s infinite} .gj2{background:#16a34a;animation:geoJob2 5s infinite}
+          .gj3{background:#0891b2;animation:geoJob3 5s infinite} .gj4{background:#7c3aed;animation:geoJob4 5s infinite}
+        </style>
+        <div style="font:bold 20px sans-serif;color:#075985;margin-bottom:8px">one dam</div>
+        <span class="geo-j gj1">electricity</span><span class="geo-j gj2">irrigation</span><span class="geo-j gj3">water supply</span><span class="geo-j gj4">flood control</span>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Jawaharlal Nehru proudly called dams the **"temples of modern India."**
+
+      Why *temples*? Because he saw them weaving together farming and the village economy with rapid industrialisation and urban growth — the engine to lift a newly independent nation out of its colonial past.
+
+  - type: mcq
+    xp: 10
+    question: "What makes a dam a 'multi-purpose' project?"
+    options:
+      - id: a
+        text: "It is taller than an ordinary dam."
+        is_correct: false
+        rationale: "Height classifies dams, but 'multi-purpose' is about *uses*, not size."
+      - id: b
+        text: "Its stored water serves many integrated uses at once — irrigation, power, supply, flood control, and more."
+        is_correct: true
+        rationale: "Exactly. A multi-purpose dam weaves together many uses of the same impounded water."
+      - id: c
+        text: "It is built by many different states together."
+        is_correct: false
+        rationale: "Who builds it isn't the point — 'multi-purpose' refers to the many things the dam *does*."
+      - id: d
+        text: "It is used only for generating electricity."
+        is_correct: false
+        rationale: "That would be single-purpose. Multi-purpose means several uses combined."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Match each term to what it is."
+    left:
+      - { id: l1, label: "Bhakra-Nangal" }
+      - { id: l2, label: "Hirakud" }
+      - { id: l3, label: "Spillway" }
+      - { id: l4, label: "Reservoir" }
+    right:
+      - { id: r1, label: "Hydel power plus irrigation (Sutlej-Beas)" }
+      - { id: r2, label: "Water conservation plus flood control (Mahanadi)" }
+      - { id: r3, label: "Lets excess water flow over safely" }
+      - { id: r4, label: "The lake of stored water behind the dam" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Think about your own region. If a multi-purpose dam served it, which of its uses would matter most — electricity, irrigation, drinking water, or flood control?
+
+      On paper, rank your top two and say why. Type your number-one use below.
+    placeholder: "For my region, the most important use would be..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the basics."
+    template: |
+      A dam holds back a lake of stored water called a {{blank-1}}, and Nehru called dams the temples of modern {{blank-2}}.
+    answers:
+      - id: blank-1
+        accepted: ["reservoir", "Reservoir"]
+      - id: blank-2
+        accepted: ["India", "india"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Nehru called dams *temples* — almost sacred symbols of progress. Why do you think a new nation needed symbols like that, not just useful structures?
+
+      No right answer.
+    placeholder: "A young nation needed symbols because..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can explain what a multi-purpose dam is and why it was celebrated."
+    summary: |
+      A dam is a barrier that stores water in a reservoir; a multi-purpose project weaves together irrigation, power, water supply, flood control, and more — like Bhakra-Nangal and Hirakud. Nehru hailed them as the temples of modern India.
+
+      But every temple has a price. Over time, these giant projects came under fierce criticism — for what they do to rivers, land, and people. What's the hidden cost of a big dam? That's the next lesson.

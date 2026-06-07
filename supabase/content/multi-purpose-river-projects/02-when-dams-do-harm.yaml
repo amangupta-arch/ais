@@ -1,0 +1,171 @@
+title: "When Dams Do Harm"
+subtitle: "The structures built to stop floods sometimes cause them"
+estimated_minutes: 12
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here's the cruel irony at the heart of this lesson: dams built to *stop* floods have sometimes *triggered* them.
+
+      The temple turned on its worshippers. Let's see how a structure so useful can do so much harm.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      It starts with one fact: by damming a river, you change its **natural flow**. And that one change sets off a whole chain of damage.
+
+      Begin with what the river carries — sediment.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      A free-flowing river carries **sediment** (silt) downstream. Dam it, and that silt settles at the bottom of the reservoir — **excessive sedimentation** — while the river *below* the dam runs sediment-starved.
+
+      The result downstream: **rockier streambeds** and poorer habitats for the river's aquatic life.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Dams also **fragment** rivers — they're walls. Fish and other aquatic fauna can no longer migrate past them, which is deadly when they need to travel upstream to **spawn**.
+
+      And the reservoir floods the floodplain, **submerging** vegetation and soil that then slowly rot underwater.
+
+  - type: svg_graphic
+    xp: 0
+    title: "FREE RIVER vs DAMMED RIVER"
+    caption: "A free river spreads silt and lets fish migrate; a dam traps the silt and blocks the fish."
+    svg: |
+      <svg viewBox="0 0 360 180" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <text x="10" y="22" font-size="9" font-weight="bold" fill="#166534">Free river</text>
+        <rect x="10" y="28" width="340" height="22" fill="#7dd3fc"/>
+        <circle cx="60" cy="39" r="3" fill="#a16207"/><circle cx="120" cy="39" r="3" fill="#a16207"/><circle cx="200" cy="39" r="3" fill="#a16207"/><circle cx="290" cy="39" r="3" fill="#a16207"/>
+        <text x="300" y="64" text-anchor="middle" font-size="7" fill="#166534">silt + fish move freely →</text>
+        <text x="10" y="100" font-size="9" font-weight="bold" fill="#991b1b">Dammed river</text>
+        <rect x="10" y="106" width="150" height="22" fill="#38bdf8"/>
+        <circle cx="40" cy="117" r="3" fill="#a16207"/><circle cx="80" cy="117" r="3" fill="#a16207"/><circle cx="130" cy="117" r="3" fill="#a16207"/>
+        <polygon points="160,98 178,98 172,150 160,150" fill="#94a3b8" stroke="#0f172a" stroke-width="1.5"/>
+        <rect x="178" y="116" width="172" height="12" fill="#7dd3fc"/>
+        <text x="85" y="144" text-anchor="middle" font-size="7" fill="#991b1b">silt trapped, fish blocked</text>
+        <text x="264" y="144" text-anchor="middle" font-size="7" fill="#991b1b">rocky, starved streambed</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      It gets worse.
+
+      Reservoirs can **induce earthquakes**, breed **water-borne diseases** and pests, and cause pollution from over-use. And cruelly, dams built to *control* floods have sometimes *caused* them — sedimentation fills the reservoir, and in heavy rain the big dams often fail to hold a flood back at all.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      There's a farming sting too.
+
+      The floodplains below lose their yearly coat of **silt** — a free natural fertiliser — which adds to land degradation. And irrigation pushes farmers toward **water-intensive, commercial crops**, which over time **salinise** the soil (salt builds up and poisons it).
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      And the heaviest cost is human.
+
+      Big dams submerge whole villages and fields, causing **large-scale displacement and loss of livelihood**. The **Sardar Sarovar** dam on the Narmada became the symbol of this struggle.
+
+      (The flood-prone **Damodar** was long called the *"river of sorrow."*)
+
+  - type: html_animation
+    xp: 0
+    title: "THE HIDDEN COSTS"
+    caption: "Trapped silt, blocked fish, salted soil, displaced homes — the bill a big dam runs up."
+    html: |
+      <div style="background:#fff7ed;padding:18px 14px;border-radius:12px;">
+        <style>
+          @keyframes geoCost1 { 0%,5%{opacity:0;transform:translateX(-10px)} 24%,100%{opacity:1;transform:none} }
+          @keyframes geoCost2 { 0%,28%{opacity:0;transform:translateX(-10px)} 47%,100%{opacity:1;transform:none} }
+          @keyframes geoCost3 { 0%,51%{opacity:0;transform:translateX(-10px)} 70%,100%{opacity:1;transform:none} }
+          @keyframes geoCost4 { 0%,74%{opacity:0;transform:translateX(-10px)} 92%,100%{opacity:1;transform:none} }
+          .geo-c{display:block;margin:5px 0;font:bold 11px sans-serif;color:#7c2d12;background:#fed7aa;border-radius:6px;padding:6px 10px}
+          .gc1{animation:geoCost1 5s infinite} .gc2{animation:geoCost2 5s infinite} .gc3{animation:geoCost3 5s infinite} .gc4{animation:geoCost4 5s infinite}
+        </style>
+        <div class="geo-c gc1">Silt trapped → poorer soil & aquatic life</div>
+        <div class="geo-c gc2">Rivers fragmented → fish can't migrate</div>
+        <div class="geo-c gc3">Soil salinised by water-intensive crops</div>
+        <div class="geo-c gc4">Villages submerged → people displaced</div>
+      </div>
+
+  - type: mcq
+    xp: 10
+    question: "Which of these is NOT an argument *in favour* of multi-purpose river projects?"
+    options:
+      - id: a
+        text: "They bring water to areas that suffer from water scarcity."
+        is_correct: false
+        rationale: "That IS a point in their favour — supplying scarce regions is a key benefit."
+      - id: b
+        text: "By regulating water flow, they help control floods."
+        is_correct: false
+        rationale: "That's a benefit (in theory) — flood control is one of their stated purposes."
+      - id: c
+        text: "They lead to large-scale displacement and loss of livelihood."
+        is_correct: true
+        rationale: "Correct — this is a *cost*, an argument *against* big dams, not in favour of them."
+      - id: d
+        text: "They generate electricity for our industries and homes."
+        is_correct: false
+        rationale: "That's a benefit — hydel power is one of the main reasons dams are built."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Match each harm to what causes it."
+    left:
+      - { id: l1, label: "Excessive sedimentation" }
+      - { id: l2, label: "Fish can't migrate to spawn" }
+      - { id: l3, label: "Soil salinisation" }
+      - { id: l4, label: "Displacement of people" }
+    right:
+      - { id: r1, label: "Silt settles in the reservoir instead of flowing on" }
+      - { id: r2, label: "The dam fragments the river with a wall" }
+      - { id: r3, label: "A shift to water-intensive commercial crops" }
+      - { id: r4, label: "The reservoir submerges villages and fields" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Think of a dam or reservoir you've heard of (Sardar Sarovar, Bhakra-Nangal, or a local one).
+
+      On paper, list one clear *benefit* and one clear *cost* it brings. Type the dam's name and its biggest cost below.
+    placeholder: "The ___ dam — its biggest cost is..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in two big costs."
+    template: |
+      Damming a river traps {{blank-1}} in the reservoir instead of letting it flow on, and submerging villages forces people into {{blank-2}}.
+    answers:
+      - id: blank-1
+        accepted: ["silt", "sediment", "Silt"]
+      - id: blank-2
+        accepted: ["displacement", "Displacement"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      A dam can power a million homes — and drown the homes of a few thousand villagers. How should a country weigh a benefit for many against a heavy cost for a few? Be honest about how hard this is.
+
+      No right answer.
+    placeholder: "Weighing the many against the few, I think..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can weigh the real costs of big dams against their benefits."
+    summary: |
+      Damming a river traps silt, starves and fragments habitats, salinises soil, can induce quakes and even worsen floods — and, hardest of all, displaces whole communities, as the Narmada struggle showed.
+
+      And there's one more conflict big projects create: when a single river runs through several states, *who gets the water?* How do we share a river fairly? That's the next lesson.
