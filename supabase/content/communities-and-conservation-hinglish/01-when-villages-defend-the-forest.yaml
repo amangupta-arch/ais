@@ -32,6 +32,13 @@ turns:
 
       Alwar district, Rajasthan mein, **paanch gaon** ke logon ne **1,200 hectares** forest ko apna *khud ka* sanctuary ghoshit kiya — apne *khud ke* niyamon ke saath: koi shikaar nahi, koi bahari encroachment nahi. Ek janta ka protected area, poori tarah janta dwara chalaya.
 
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch02-forest-and-wildlife-resources/c3l1-chipko.png
+    caption: "Chipko andolan: gaonwaale pedon ko gale lagaakar unhe katne se rokte hue."
+    aspect_ratio: 1.7778
+
   - type: svg_graphic
     xp: 0
     title: "FOREST KE PADOSI"

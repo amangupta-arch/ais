@@ -29,6 +29,13 @@ turns:
 
       It also published an all-India **list of protected species** — naming exactly who the shield covered.
 
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch02-forest-and-wildlife-resources/c2l1-protected-wildlife.png
+    caption: "Species the law steps in to protect: tiger, one-horned rhino, Asiatic lion, snow leopard."
+    aspect_ratio: 1.7778
+
   - type: svg_graphic
     xp: 0
     title: "WILDLIFE PROTECTION ACT, 1972"

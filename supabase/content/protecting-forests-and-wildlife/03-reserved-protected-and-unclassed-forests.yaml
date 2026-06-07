@@ -39,6 +39,13 @@ turns:
 
       The loosest tier on paper — and, as we'll see, often cared for by the local communities who live there.
 
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch02-forest-and-wildlife-resources/c2l3-dense-forest.png
+    caption: "A dense, healthy reserved forest stretching to the horizon — the most protected category."
+    aspect_ratio: 1.7778
+
   - type: svg_graphic
     xp: 0
     title: "THREE TIERS OF FOREST"

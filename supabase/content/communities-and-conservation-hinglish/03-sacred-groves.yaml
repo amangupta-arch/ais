@@ -36,6 +36,13 @@ turns:
       - **Odisha aur Bihar** ke tribals shaadiyon mein **imli (tamarind)** aur **aam (mango)** ko poojte hain.
       - **peepal** aur **bargad (banyan)** India bhar mein kai logon ke liye pavitra hain.
 
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch02-forest-and-wildlife-resources/c3l3-sacred-grove.png
+    caption: "Ek sacred grove — peedhiyon se devta ke naam pe achhoota chhoda gaya jungle ka tukda."
+    aspect_ratio: 1.7778
+
   - type: svg_graphic
     xp: 0
     title: "EK SACRED GROVE"
@@ -56,6 +63,13 @@ turns:
       Jaanwar bhi aise hi bachaaye jaate hain.
 
       **Macaques aur langurs** ki troops kai mandiron ke aas-paas rehti hain — rozana khilaaye jaate, mandir ke devotees ka hissa maane jaate. Aur Rajasthan ke **Bishnoi villages** mein aur aas-paas, **blackbuck (chinkara), nilgai, aur mor** bas community ka hissa hain — aur *koi unhe nuksaan nahi pahunchaata*.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch02-forest-and-wildlife-resources/c3l3-blackbuck-bishnoi.png
+    caption: "Blackbuck aur mor ek Bishnoi gaon ke paas bina dare charte hue — aastha se surakshit wildlife."
+    aspect_ratio: 1.7778
 
   - type: html_animation
     xp: 0
