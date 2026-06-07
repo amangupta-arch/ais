@@ -1,0 +1,170 @@
+title: "How Soil Forms"
+subtitle: "The thin skin of the Earth that took millions of years to bake"
+estimated_minutes: 11
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Start with something that should stop you.
+
+      The soil in your backyard is older than every civilisation that has ever existed. A single *centimetre* of it took **thousands of years** to form.
+
+      We walk on it without a thought. Today, we look down.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Soil is the **most important natural resource** there is. It's the medium every plant grows in, and it quietly supports countless living organisms.
+
+      That's the part people miss: soil is *not* dead dirt. It is a **living system** — full of life, and itself slowly alive.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      How does it form? Painfully slowly. *Millions* of years for just a few centimetres.
+
+      Nature grinds solid rock down into soil using **temperature changes**, **running water**, **wind**, **glaciers**, and **decomposers** — living things breaking down other living things.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Five things decide what *kind* of soil you get:
+
+      - the **relief** (the lay of the land)
+      - the **parent rock** beneath it
+      - the **climate**
+      - the **vegetation** and other life
+      - and **time**
+
+      Same five ingredients, different proportions — and you get wildly different soils. (That's the whole next lesson.)
+
+  - type: svg_graphic
+    xp: 0
+    title: "THE SOIL PROFILE"
+    caption: "Soil sits in layers (horizons) — richest on top, solid rock at the bottom."
+    svg: |
+      <svg viewBox="0 0 360 196" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="60" y="16" width="240" height="36" fill="#5b3a1a" stroke="#0f172a" stroke-width="1.2"/>
+        <rect x="60" y="52" width="240" height="42" fill="#8a5a2b" stroke="#0f172a" stroke-width="1.2"/>
+        <rect x="60" y="94" width="240" height="42" fill="#a98c6b" stroke="#0f172a" stroke-width="1.2"/>
+        <rect x="60" y="136" width="240" height="44" fill="#6b7280" stroke="#0f172a" stroke-width="1.2"/>
+        <text x="180" y="33" text-anchor="middle" font-size="10" font-weight="bold" fill="#ffffff">TOP SOIL</text>
+        <text x="180" y="46" text-anchor="middle" font-size="8" fill="#f1e9dd">humus-rich, where roots live</text>
+        <text x="180" y="71" text-anchor="middle" font-size="10" font-weight="bold" fill="#ffffff">SUBSOIL</text>
+        <text x="180" y="84" text-anchor="middle" font-size="8" fill="#f1e9dd">weathered rock, sand, silt, clay</text>
+        <text x="180" y="113" text-anchor="middle" font-size="10" font-weight="bold" fill="#2b2b2b">SUBSTRATUM</text>
+        <text x="180" y="126" text-anchor="middle" font-size="8" fill="#2b2b2b">weathered parent rock</text>
+        <text x="180" y="160" text-anchor="middle" font-size="10" font-weight="bold" fill="#ffffff">BEDROCK</text>
+        <text x="180" y="173" text-anchor="middle" font-size="8" fill="#e5e7eb">unweathered parent rock</text>
+        <line x1="44" y1="16" x2="44" y2="180" stroke="#0f172a" stroke-width="1"/>
+        <text x="20" y="100" text-anchor="middle" font-size="8" fill="#475569" transform="rotate(-90 20 100)">deeper · older</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Read the profile top to bottom:
+
+      - **Top soil** — dark, *humus-rich*, where roots feed. The living layer.
+      - **Subsoil** — weathered rock mixed with sand, silt, and clay.
+      - **Substratum** — chunks of weathered parent rock.
+      - **Bedrock** — the solid, unweathered parent rock it all came from.
+
+      Throughout, **organic** matter (humus) and **inorganic** matter (minerals) are blended together.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here's the picture to keep: soil is a **cake baked over millions of years**, in layers.
+
+      And like a cake, the *top* layer is the richest — the humus-filled top soil that actually grows our food. It's also, as you'll see next, the easiest to lose.
+
+  - type: html_animation
+    xp: 0
+    title: "SOIL, BUILT OVER AGES"
+    caption: "Bedrock weathers, and the living top soil slowly builds up on top — over millennia."
+    html: |
+      <div style="background:#f8fafc;padding:18px 12px;border-radius:12px;">
+        <style>
+          @keyframes geoTop { 0%,10%{height:0} 70%,100%{height:22px} }
+          @keyframes geoSub { 0%,5%{height:0} 60%,100%{height:20px} }
+          .geo-soil-sub { animation: geoSub 5s infinite alternate; }
+          .geo-soil-top { animation: geoTop 5s infinite alternate; }
+        </style>
+        <svg viewBox="0 0 320 130" style="max-width:330px;width:100%" font-family="sans-serif">
+          <rect x="40" y="96" width="240" height="22" fill="#6b7280" stroke="#0f172a" stroke-width="1"/>
+          <text x="160" y="111" text-anchor="middle" font-size="8" fill="#ffffff">bedrock weathers...</text>
+          <rect class="geo-soil-sub" x="40" y="76" width="240" height="20" fill="#a98c6b" stroke="#0f172a" stroke-width="1"/>
+          <rect class="geo-soil-top" x="40" y="54" width="240" height="22" fill="#5b3a1a" stroke="#0f172a" stroke-width="1"/>
+          <text x="160" y="40" text-anchor="middle" font-size="9" fill="#475569">...and rich top soil slowly grows</text>
+        </svg>
+      </div>
+
+  - type: mcq
+    xp: 10
+    question: "Why do geographers call soil a 'living system' rather than just crushed rock?"
+    options:
+      - id: a
+        text: "Because it moves slowly downhill over time."
+        is_correct: false
+        rationale: "Soil can creep downhill, but that's not why it's called *living*. The reason is what's inside it."
+      - id: b
+        text: "Because it holds living organisms and organic humus, not just mineral particles."
+        is_correct: true
+        rationale: "Right. Soil blends inorganic minerals with organic humus and teems with living organisms — a system that is itself alive."
+      - id: c
+        text: "Because it is made entirely of decomposed plants."
+        is_correct: false
+        rationale: "Soil is *part* organic (humus) but also heavily inorganic — weathered rock, sand, silt, and clay."
+      - id: d
+        text: "Because new soil appears quickly after rain."
+        is_correct: false
+        rationale: "The opposite — soil forms over *millions* of years. Rain doesn't make fresh soil overnight."
+
+  - type: drag_to_reorder
+    xp: 10
+    prompt: "Put the soil layers in order, from the surface downward."
+    items:
+      - { id: s1, label: "Top soil (humus-rich)" }
+      - { id: s2, label: "Subsoil (weathered rock, sand, silt, clay)" }
+      - { id: s3, label: "Substratum (weathered parent rock)" }
+      - { id: s4, label: "Bedrock (unweathered parent rock)" }
+    correct_order: [s1, s2, s3, s4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Find some real soil — a garden, a field, a plant pot, a roadside cutting. Look closely (and gently dig a little if you can).
+
+      On paper, describe the **top layer**: its colour, whether it's loose or packed, any roots, worms, or bits of leaf. Then type one thing you noticed below.
+    placeholder: "The top soil near me was..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in how soil is born."
+    template: |
+      Soil forms from the slow breakdown of ___ rock, over ___ of years.
+    answers:
+      - id: blank-1
+        accepted: ["parent", "Parent", "bedrock", "bed rock"]
+      - id: blank-2
+        accepted: ["millions", "Millions"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      A centimetre of soil takes thousands of years; a bad storm can strip it in a day. Does knowing how *slow* and *irreplaceable* soil is change how you feel about it? Be honest.
+
+      No right answer.
+    placeholder: "Knowing that, I now..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You see soil as a slow-built, living resource — in layers."
+    summary: |
+      Soil is the living skin of the Earth: humus-rich top soil over subsoil, substratum, and bedrock, built over millions of years from weathered rock and life — shaped by relief, parent rock, climate, vegetation, and time.
+
+      But those five ingredients mix differently across a country as varied as India — and the result is a whole palette of soils, each a different colour, each suited to different crops. Which soils, and where? That's the next lesson.

@@ -1,0 +1,185 @@
+title: "The Soils of India"
+subtitle: "How a soil's colour tells you what will grow in it"
+estimated_minutes: 13
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Pick up a handful of soil anywhere in India, and its **colour** alone hints at what will grow there.
+
+      How can a *colour* possibly know that? Because colour, texture, and age are clues — to the rock the soil came from and the climate that made it.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      India's huge variety of rock, climate, and landform has produced a whole *palette* of soils.
+
+      There are **six** main types. We'll meet each one — and the crops it was born to grow.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **1. Alluvial soil** — the most widespread and important of all. The *entire* northern plains are made of it, laid down by three great rivers: the **Indus**, the **Ganga**, and the **Brahmaputra**.
+
+      Rich in potash, phosphoric acid, and lime, it grows *sugarcane, paddy, and wheat* — which is why it's also India's most densely populated soil.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Alluvial soil even has an *age* story:
+
+      - **Bangar** — old alluvial, with more kanker (lime nodules).
+      - **Khadar** — new alluvial, finer and *more fertile*.
+
+      Every flood lays down fresh Khadar — so the rivers keep re-fertilising the land for free.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **2. Black soil**, also called **regur**. It was born from the **lava** of the Deccan trap (basalt rock) — that's why it's dark.
+
+      It's clayey, holds moisture brilliantly, and is rich in lime, magnesium, and potash (though poor in phosphorus). Its claim to fame: it is *ideal for cotton*, which is why it's known as **black cotton soil**. Found across Maharashtra, Madhya Pradesh, Gujarat, and the Deccan.
+
+  - type: svg_graphic
+    xp: 0
+    title: "INDIA'S SOIL PALETTE"
+    caption: "Six main soils — colour is the first clue to each one's story and crops."
+    svg: |
+      <svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="14" y="14" width="100" height="40" rx="4" fill="#d2b48c" stroke="#0f172a" stroke-width="1"/>
+        <text x="64" y="70" text-anchor="middle" font-size="9" font-weight="bold" fill="#0f172a">Alluvial</text>
+        <text x="64" y="82" text-anchor="middle" font-size="7.5" fill="#475569">wheat · paddy · cane</text>
+        <rect x="130" y="14" width="100" height="40" rx="4" fill="#1f2937" stroke="#0f172a" stroke-width="1"/>
+        <text x="180" y="70" text-anchor="middle" font-size="9" font-weight="bold" fill="#0f172a">Black (regur)</text>
+        <text x="180" y="82" text-anchor="middle" font-size="7.5" fill="#475569">cotton</text>
+        <rect x="246" y="14" width="100" height="40" rx="4" fill="#b45f3f" stroke="#0f172a" stroke-width="1"/>
+        <text x="296" y="70" text-anchor="middle" font-size="9" font-weight="bold" fill="#0f172a">Red and Yellow</text>
+        <text x="296" y="82" text-anchor="middle" font-size="7.5" fill="#475569">iron-rich, Deccan</text>
+        <rect x="14" y="108" width="100" height="40" rx="4" fill="#9a3b1f" stroke="#0f172a" stroke-width="1"/>
+        <text x="64" y="164" text-anchor="middle" font-size="9" font-weight="bold" fill="#0f172a">Laterite</text>
+        <text x="64" y="176" text-anchor="middle" font-size="7.5" fill="#475569">tea · coffee · cashew</text>
+        <rect x="130" y="108" width="100" height="40" rx="4" fill="#c98a5a" stroke="#0f172a" stroke-width="1"/>
+        <text x="180" y="164" text-anchor="middle" font-size="9" font-weight="bold" fill="#0f172a">Arid</text>
+        <text x="180" y="176" text-anchor="middle" font-size="7.5" fill="#475569">sandy · needs water</text>
+        <rect x="246" y="108" width="100" height="40" rx="4" fill="#5c4326" stroke="#0f172a" stroke-width="1"/>
+        <text x="296" y="164" text-anchor="middle" font-size="9" font-weight="bold" fill="#0f172a">Forest</text>
+        <text x="296" y="176" text-anchor="middle" font-size="7.5" fill="#475569">hills · valleys fertile</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **3. Red and Yellow soil** — forms on old crystalline igneous rock in the lower-rainfall parts of the eastern and southern Deccan.
+
+      It's *red* because of iron diffusing through the rock — and turns *yellow* when it takes on water (hydrated). The colour is literally rusting rock.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **4. Laterite soil** — from the Latin *later*, meaning *brick*. It forms in tropical climates with sharp **wet and dry seasons**, where heavy rain **leaches** the nutrients out.
+
+      The result is acidic and nutrient-poor. But treat it well and it's superb for **tea and coffee** (Karnataka, Kerala, Tamil Nadu) and **cashew**.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **5. Arid soil** — red to brown, sandy, and salty. The dry climate and fierce evaporation leave it short on humus and moisture, with a hard **kankar** layer below that blocks water. After irrigation, though, it becomes cultivable — as in western Rajasthan.
+
+      **6. Forest soil** — found in the hills. It's fertile and loamy in the valleys, but thin, coarse, and acidic on the cold, snowy upper slopes.
+
+  - type: html_animation
+    xp: 0
+    title: "WHY BLACK SOIL CRACKS"
+    caption: "In dry heat, black soil splits into deep cracks — nature ploughing and aerating itself."
+    html: |
+      <div style="background:#f8fafc;padding:18px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoCrack { 0%,15%{opacity:0} 60%,100%{opacity:0.85} }
+          .geo-crack { stroke:#9ca3af; stroke-width:2; fill:none; animation: geoCrack 4s infinite alternate; }
+        </style>
+        <svg viewBox="0 0 220 130" style="max-width:240px;width:100%" font-family="sans-serif">
+          <rect x="34" y="14" width="152" height="96" rx="4" fill="#1f2937" stroke="#0f172a" stroke-width="1.5"/>
+          <path class="geo-crack" d="M 110,14 L 104,52 L 120,78 L 112,110"/>
+          <path class="geo-crack" d="M 34,60 L 80,54 L 110,62 L 150,52 L 186,58"/>
+          <path class="geo-crack" d="M 70,14 L 76,40 L 60,70 L 70,110"/>
+          <path class="geo-crack" d="M 150,14 L 144,44 L 160,80 L 150,110"/>
+        </svg>
+      </div>
+
+  - type: mcq
+    xp: 10
+    question: "In which of these states is black soil predominantly found?"
+    options:
+      - id: a
+        text: "Uttar Pradesh"
+        is_correct: false
+        rationale: "Uttar Pradesh's northern plains are alluvial soil, laid by the rivers — not black soil."
+      - id: b
+        text: "Maharashtra"
+        is_correct: true
+        rationale: "Correct. Black (regur) soil covers the Deccan lava region — Maharashtra is a classic example, along with MP and Gujarat."
+      - id: c
+        text: "Rajasthan"
+        is_correct: false
+        rationale: "Rajasthan is dominated by arid, sandy soil — not the moisture-holding black soil."
+      - id: d
+        text: "Jharkhand"
+        is_correct: false
+        rationale: "Jharkhand leans to red and yellow / lateritic soils on its old crystalline rock, not black soil."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Match each soil to what it's known for."
+    left:
+      - { id: l1, label: "Alluvial" }
+      - { id: l2, label: "Black (regur)" }
+      - { id: l3, label: "Laterite" }
+      - { id: l4, label: "Arid" }
+    right:
+      - { id: r1, label: "Sugarcane, paddy, wheat in the northern plains" }
+      - { id: r2, label: "Cotton — the Deccan lava soil" }
+      - { id: r3, label: "Tea and coffee after conservation" }
+      - { id: r4, label: "Cultivable only after irrigation" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Look at the soil where you live — a field, a garden, a construction pit. Note its **colour** (reddish, black, pale-brown, sandy?).
+
+      Using this lesson, make your best guess at which of the six types it is, and one crop that suits it. Type your soil's colour and your guess below.
+    placeholder: "My local soil looks ___ , so I think it's ___ soil."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the famous one."
+    template: |
+      Black soil is also called ___ soil, and it is ideal for growing ___.
+    answers:
+      - id: blank-1
+        accepted: ["regur", "Regur"]
+      - id: blank-2
+        accepted: ["cotton", "Cotton"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      A soil decides what a whole region can grow, eat, and trade. Looking at the soil near you, how do you think it has shaped the food and farming around you?
+
+      No right answer.
+    placeholder: "The soil here probably explains why..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can read India's soils by colour, origin, and crop."
+    summary: |
+      Six soils, one palette: alluvial (the rivers' gift), black regur (lava's cotton soil), red and yellow (rusting rock), laterite (leached but good for tea), arid (sandy, irrigable), and forest (hill soil). Colour is the first clue to each.
+
+      But every one of these took thousands of years to build — and can be stripped away in a single season. How does soil erode, and how do we hold it down? That's the final lesson — and the close of the whole chapter.

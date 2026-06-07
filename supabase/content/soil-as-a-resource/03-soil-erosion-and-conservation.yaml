@@ -1,0 +1,178 @@
+title: "Soil Erosion and Conservation"
+subtitle: "Millennia to build, one monsoon to lose — and how we hold it down"
+estimated_minutes: 12
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Remember: a single centimetre of soil takes thousands of years to make.
+
+      One bad monsoon can wash it off a hillside and into the sea in an afternoon. That stripping-away has a name: **soil erosion**.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Normally, soil *forms* and *erodes* at the same gentle pace — perfectly balanced. Nature keeps the books even.
+
+      We break the balance. **Deforestation, overgrazing, construction, and mining** loosen the soil, and then nature's **wind, water, and glaciers** carry it off faster than it can rebuild.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Erosion comes in a few forms.
+
+      **Gully erosion** — running water cuts deep channels (*gullies*) into clayey soil. The land becomes unfit to farm — *bad land*. In the Chambal basin, these channels are the famous **ravines**.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Sheet erosion** — water spreads as a thin sheet across a field and peels the top soil off evenly. It's so gradual you barely notice — until the fertile layer is simply *gone*.
+
+      **Wind erosion** — on flat, dry land, wind lifts loose soil and carries it away.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      And sometimes *we* cause it, by farming wrong.
+
+      Plough a slope **up and down** and you carve neat channels for water to race down — speeding erosion. The plough itself becomes the enemy.
+
+  - type: svg_graphic
+    xp: 0
+    title: "ONE HILLSIDE, FOUR DEFENCES"
+    caption: "Contour ploughing, terracing, strip cropping, and shelter belts each hold the soil in place."
+    svg: |
+      <svg viewBox="0 0 360 176" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="10" y="8" width="166" height="76" rx="6" fill="#eff6ff" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="93" y="24" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#1e3a8a">Contour ploughing</text>
+        <path d="M 24,44 Q 93,36 162,44" stroke="#2563eb" stroke-width="2" fill="none"/>
+        <path d="M 24,56 Q 93,48 162,56" stroke="#2563eb" stroke-width="2" fill="none"/>
+        <path d="M 24,68 Q 93,60 162,68" stroke="#2563eb" stroke-width="2" fill="none"/>
+        <text x="93" y="80" text-anchor="middle" font-size="7.5" fill="#475569">plough along the slope, not down it</text>
+        <rect x="184" y="8" width="166" height="76" rx="6" fill="#ecfccb" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="267" y="24" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#3f6212">Terrace farming</text>
+        <polyline points="200,72 224,72 224,60 252,60 252,48 280,48 280,38 320,38" stroke="#65a30d" stroke-width="2.5" fill="none"/>
+        <text x="267" y="80" text-anchor="middle" font-size="7.5" fill="#475569">steps cut into the slope catch soil</text>
+        <rect x="10" y="92" width="166" height="76" rx="6" fill="#fefce8" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="93" y="108" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#854d0e">Strip cropping</text>
+        <rect x="28" y="118" width="130" height="8" fill="#84cc16"/>
+        <rect x="28" y="130" width="130" height="8" fill="#fde68a"/>
+        <rect x="28" y="142" width="130" height="8" fill="#84cc16"/>
+        <text x="93" y="162" text-anchor="middle" font-size="7.5" fill="#475569">grass strips between crops break the wind</text>
+        <rect x="184" y="92" width="166" height="76" rx="6" fill="#dcfce7" stroke="#0f172a" stroke-width="1.5"/>
+        <text x="267" y="108" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#166534">Shelter belts</text>
+        <g fill="#16a34a"><circle cx="214" cy="138" r="9"/><circle cx="240" cy="134" r="11"/><circle cx="268" cy="138" r="9"/><circle cx="294" cy="135" r="10"/><circle cx="320" cy="138" r="9"/></g>
+        <text x="267" y="162" text-anchor="middle" font-size="7.5" fill="#475569">rows of trees block wind, hold dunes</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Now the defences. We actually know how to hold soil down:
+
+      - **Contour ploughing** — plough *along* the slope's contour lines, not up and down. It slows the water.
+      - **Terrace farming** — cut the slope into steps, each one catching soil. (The western and central Himalayas are terraced beautifully.)
+      - **Strip cropping** — leave strips of grass between crops to break the wind's force.
+      - **Shelter belts** — rows of trees that block wind and have even stabilised sand dunes in western India.
+
+  - type: html_animation
+    xp: 0
+    title: "BARE SLOPE vs TERRACED SLOPE"
+    caption: "On a bare slope, water races down and strips soil. Terraces slow it to a crawl."
+    html: |
+      <div style="background:#f8fafc;padding:18px 12px;border-radius:12px;text-align:center;">
+        <style>
+          @keyframes geoFast { 0%{offset-distance:0%} 100%{offset-distance:100%} }
+          @keyframes geoSlow { 0%{offset-distance:0%} 100%{offset-distance:100%} }
+          .geo-drop-fast { offset-path: path('M 20,20 L 130,96'); animation: geoFast 1.1s linear infinite; }
+          .geo-drop-slow { offset-path: path('M 190,20 L 210,40 L 240,40 L 260,60 L 290,60 L 300,80 L 320,96'); animation: geoSlow 4.5s linear infinite; }
+        </style>
+        <svg viewBox="0 0 340 120" style="width:100%" font-family="sans-serif">
+          <line x1="20" y1="20" x2="130" y2="96" stroke="#d6c3a5" stroke-width="6"/>
+          <circle r="5" fill="#2563eb" class="geo-drop-fast"/>
+          <text x="75" y="114" text-anchor="middle" font-size="8" fill="#991b1b">bare slope — water races</text>
+          <polyline points="190,20 210,40 240,40 260,60 290,60 300,80 320,96" stroke="#65a30d" stroke-width="6" fill="none"/>
+          <circle r="5" fill="#2563eb" class="geo-drop-slow"/>
+          <text x="255" y="114" text-anchor="middle" font-size="8" fill="#166534">terraced — water crawls</text>
+        </svg>
+      </div>
+
+  - type: mcq
+    xp: 10
+    question: "In which state is terrace cultivation widely practised?"
+    options:
+      - id: a
+        text: "Punjab"
+        is_correct: false
+        rationale: "Punjab is flat plains — there are no slopes to terrace. It farms its level alluvial land directly."
+      - id: b
+        text: "The plains of Uttar Pradesh"
+        is_correct: false
+        rationale: "The UP plains are flat. Terracing is a technique for *slopes*, not level ground."
+      - id: c
+        text: "Haryana"
+        is_correct: false
+        rationale: "Haryana is largely flat plain — again, no slopes that need terracing."
+      - id: d
+        text: "Uttarakhand"
+        is_correct: true
+        rationale: "Correct. Uttarakhand's Himalayan slopes are terraced — steps cut into hillsides to farm them without losing soil."
+
+  - type: tap_to_match
+    xp: 10
+    prompt: "Match each conservation method to what it does."
+    left:
+      - { id: l1, label: "Contour ploughing" }
+      - { id: l2, label: "Terrace farming" }
+      - { id: l3, label: "Strip cropping" }
+      - { id: l4, label: "Shelter belts" }
+    right:
+      - { id: r1, label: "Ploughing along the slope to slow the water" }
+      - { id: r2, label: "Steps cut into a slope to catch soil" }
+      - { id: r3, label: "Grass strips between crops to break the wind" }
+      - { id: r4, label: "Rows of trees that block wind and hold dunes" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Look for soil erosion *or* a conservation method near you — a washed-out slope or gully, a terraced hillside, a row of trees along a field, grass strips between crops.
+
+      On paper, note what you found and whether it's *causing* erosion or *fighting* it. Type what you saw below.
+    placeholder: "Near me I saw ___ , which is ___ erosion."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the language of gullies."
+    template: |
+      Deep gullies cutting through clayey soil create ___ land; in the Chambal basin these channels are called ___.
+    answers:
+      - id: blank-1
+        accepted: ["bad", "Bad"]
+      - id: blank-2
+        accepted: ["ravines", "Ravines", "ravine"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Across this whole chapter — resources, land, soil — what's the one idea you'll actually carry with you? Name it, and why it stuck.
+
+      No right answer. This is your takeaway.
+    placeholder: "The idea I'm keeping is..."
+
+  - type: checkpoint
+    xp: 0
+    title: "The whole chapter is yours now: resources, land, and soil."
+    summary: |
+      Soil erosion can undo in one season what took millennia — gullies and ravines, sheet-stripping, wind. But contour ploughing, terracing, strip cropping, and shelter belts hold the ground down.
+
+      And that closes the chapter. You learned that a *resource* is something we make, not just find; you can classify any resource four ways and explain why planning and sustainability matter; you saw how India uses, degrades, and heals its land; and you followed soil from the bedrock it's born from to the six soils that feed the country — and how to keep them.
+
+      You'll never quite look at the ground beneath your feet the same way again.

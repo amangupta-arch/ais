@@ -1,0 +1,170 @@
+title: "Soil kaise banti hai"
+subtitle: "Earth ki woh patli khaal jo banne mein millions of years legi"
+estimated_minutes: 11
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ek aisi cheez se shuru karo jise tumhe rok dena chahiye.
+
+      Tumhare aangan ki soil duniya ki har sabhyata se puraani hai. Uska ek *centimetre* banne mein **hazaaron saal** lage.
+
+      Hum bina soche uspe chalte hain. Aaj, neeche dekhte hain.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Soil sabse zaroori **natural resource** hai. Yeh woh medium hai jisme har paudha ugta hai, aur chupchaap anginat living organisms ko sambhaalti hai.
+
+      Yahi log miss karte hain: soil *bekaar mitti* nahi hai. Yeh ek **living system** hai — jeev-jantu se bhari, aur khud dheere-dheere zinda.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Yeh banti kaise hai? Dukh dene waali dheemi gati se. Sirf kuch centimetres ke liye *millions* of years.
+
+      Nature thos chattan ko soil mein peesti hai — **temperature ke badlaav**, **behte paani**, **hawa**, **glaciers**, aur **decomposers** se — jeev doosre jeevon ko todte hue.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Paanch cheezein decide karti hain ki tumhe *kis kism* ki soil milegi:
+
+      - **relief** (zameen ka dhaal)
+      - neeche ki **parent rock**
+      - **climate**
+      - **vegetation** aur baaki jeevan
+      - aur **time**
+
+      Wahi paanch ingredients, alag proportions — aur tumhe bilkul alag soils milti hain. (Yahi poori agli lesson hai.)
+
+  - type: svg_graphic
+    xp: 0
+    title: "SOIL PROFILE"
+    caption: "Soil parton (horizons) mein hoti hai — sabse upar sabse rich, sabse neeche thos chattan."
+    svg: |
+      <svg viewBox="0 0 360 196" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <rect x="60" y="16" width="240" height="36" fill="#5b3a1a" stroke="#0f172a" stroke-width="1.2"/>
+        <rect x="60" y="52" width="240" height="42" fill="#8a5a2b" stroke="#0f172a" stroke-width="1.2"/>
+        <rect x="60" y="94" width="240" height="42" fill="#a98c6b" stroke="#0f172a" stroke-width="1.2"/>
+        <rect x="60" y="136" width="240" height="44" fill="#6b7280" stroke="#0f172a" stroke-width="1.2"/>
+        <text x="180" y="33" text-anchor="middle" font-size="10" font-weight="bold" fill="#ffffff">TOP SOIL</text>
+        <text x="180" y="46" text-anchor="middle" font-size="8" fill="#f1e9dd">humus-rich, where roots live</text>
+        <text x="180" y="71" text-anchor="middle" font-size="10" font-weight="bold" fill="#ffffff">SUBSOIL</text>
+        <text x="180" y="84" text-anchor="middle" font-size="8" fill="#f1e9dd">weathered rock, sand, silt, clay</text>
+        <text x="180" y="113" text-anchor="middle" font-size="10" font-weight="bold" fill="#2b2b2b">SUBSTRATUM</text>
+        <text x="180" y="126" text-anchor="middle" font-size="8" fill="#2b2b2b">weathered parent rock</text>
+        <text x="180" y="160" text-anchor="middle" font-size="10" font-weight="bold" fill="#ffffff">BEDROCK</text>
+        <text x="180" y="173" text-anchor="middle" font-size="8" fill="#e5e7eb">unweathered parent rock</text>
+        <line x1="44" y1="16" x2="44" y2="180" stroke="#0f172a" stroke-width="1"/>
+        <text x="20" y="100" text-anchor="middle" font-size="8" fill="#475569" transform="rotate(-90 20 100)">deeper · older</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Profile ko upar se neeche padho:
+
+      - **Top soil** — gehri, *humus-rich*, jahan roots feed karti hain. Zinda parat.
+      - **Subsoil** — weathered rock, sand, silt, aur clay ke saath mili.
+      - **Substratum** — weathered parent rock ke tukde.
+      - **Bedrock** — thos, unweathered parent rock jisse yeh sab bani.
+
+      Har jagah, **organic** matter (humus) aur **inorganic** matter (minerals) saath mili hoti hain.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Yaad rakhne waali tasveer: soil ek **cake hai jo millions of years mein paki**, parton mein.
+
+      Aur cake ki tarah, *sabse upar* ki parat sabse rich hoti hai — humus-bhari top soil jo asal mein hamara khaana ugaati hai. Aur jaisa tum aage dekhoge, yahi sabse aasaani se kho bhi jaati hai.
+
+  - type: html_animation
+    xp: 0
+    title: "SOIL, YUGON MEIN BANI"
+    caption: "Bedrock weather hoti hai, aur zinda top soil dheere-dheere upar banti hai — hazaaron saalon mein."
+    html: |
+      <div style="background:#f8fafc;padding:18px 12px;border-radius:12px;">
+        <style>
+          @keyframes geoTop { 0%,10%{height:0} 70%,100%{height:22px} }
+          @keyframes geoSub { 0%,5%{height:0} 60%,100%{height:20px} }
+          .geo-soil-sub { animation: geoSub 5s infinite alternate; }
+          .geo-soil-top { animation: geoTop 5s infinite alternate; }
+        </style>
+        <svg viewBox="0 0 320 130" style="max-width:330px;width:100%" font-family="sans-serif">
+          <rect x="40" y="96" width="240" height="22" fill="#6b7280" stroke="#0f172a" stroke-width="1"/>
+          <text x="160" y="111" text-anchor="middle" font-size="8" fill="#ffffff">bedrock weathers...</text>
+          <rect class="geo-soil-sub" x="40" y="76" width="240" height="20" fill="#a98c6b" stroke="#0f172a" stroke-width="1"/>
+          <rect class="geo-soil-top" x="40" y="54" width="240" height="22" fill="#5b3a1a" stroke="#0f172a" stroke-width="1"/>
+          <text x="160" y="40" text-anchor="middle" font-size="9" fill="#475569">...and rich top soil slowly grows</text>
+        </svg>
+      </div>
+
+  - type: mcq
+    xp: 10
+    question: "Geographers soil ko 'living system' kyun kehte hain, na ki sirf kuchli hui chattan?"
+    options:
+      - id: a
+        text: "Kyunki yeh samay ke saath dheere-dheere dhaal se neeche khiskti hai."
+        is_correct: false
+        rationale: "Soil dhaal se khisk sakti hai, par usse *living* isliye nahi kehte. Wajah hai uske andar kya hai."
+      - id: b
+        text: "Kyunki ismein living organisms aur organic humus hote hain, sirf mineral particles nahi."
+        is_correct: true
+        rationale: "Sahi. Soil inorganic minerals ko organic humus ke saath milati hai aur living organisms se bhari hoti hai — ek system jo khud zinda hai."
+      - id: c
+        text: "Kyunki yeh poori tarah decomposed paudhon se bani hoti hai."
+        is_correct: false
+        rationale: "Soil *kuch* organic (humus) hai par bhaari maatra mein inorganic bhi — weathered rock, sand, silt, aur clay."
+      - id: d
+        text: "Kyunki baarish ke baad nayi soil jaldi aa jaati hai."
+        is_correct: false
+        rationale: "Iska ulta — soil *millions* of years mein banti hai. Baarish raat-o-raat nayi soil nahi banati."
+
+  - type: drag_to_reorder
+    xp: 10
+    prompt: "Soil ki parton ko upar se neeche ke order mein lagao."
+    items:
+      - { id: s1, label: "Top soil (humus-rich)" }
+      - { id: s2, label: "Subsoil (weathered rock, sand, silt, clay)" }
+      - { id: s3, label: "Substratum (weathered parent rock)" }
+      - { id: s4, label: "Bedrock (unweathered parent rock)" }
+    correct_order: [s1, s2, s3, s4]
+
+  - type: exercise
+    xp: 15
+    tool: pencil
+    instruction: |
+      Koi asli soil dhundo — ek garden, khet, gamla, ya sadak ke kinaare ki cutting. Gaur se dekho (aur thoda khod sako toh halke se khodo).
+
+      Paper pe **upri parat** describe karo: uska rang, dhili hai ya jami hui, koi roots, kenche (worms), ya patton ke tukde. Phir neeche ek cheez likho jo tumne notice ki.
+    placeholder: "Mere paas top soil aisi thi..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Soil kaise janmti hai, yaad kar lo."
+    template: |
+      Soil ___ rock ke dheere-dheere tootne se banti hai, ___ saalon mein.
+    answers:
+      - id: blank-1
+        accepted: ["parent", "Parent", "bedrock", "bed rock"]
+      - id: blank-2
+        accepted: ["millions", "Millions"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Ek centimetre soil hazaaron saal leti hai; ek buri storm use ek din mein chheen sakti hai. Yeh jaan kar ki soil kitni *dheemi* aur *na-badli ja sakne waali* hai — kya tumhare ehsaas mein kuch badalta hai? Imaandaar raho.
+
+      Koi sahi jawaab nahi.
+    placeholder: "Yeh jaan kar, ab main..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Ab tum soil ko ek dheere-bani, zinda resource ki tarah dekhte ho — parton mein."
+    summary: |
+      Soil Earth ki zinda khaal hai: humus-rich top soil, uske neeche subsoil, substratum, aur bedrock, millions of years mein weathered rock aur jeevan se bani — relief, parent rock, climate, vegetation, aur time se shaped.
+
+      Par yeh paanch ingredients India jaise vividh desh mein alag-alag milte hain — aur nateeja hai soils ki ek poori palette, har ek alag rang, har ek alag crops ke liye. Kaunsi soils, aur kahan? Yahi agli lesson hai.
