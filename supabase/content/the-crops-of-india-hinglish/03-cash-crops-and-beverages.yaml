@@ -1,0 +1,137 @@
+title: "Cash Crops and Beverages"
+subtitle: "Woh crops jo India bechne aur sip karne ke liye ugaata hai — sugarcane, oilseeds, tea, coffee, fruit"
+estimated_minutes: 12
+xp_reward: 95
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Har crop dinner nahi banta. Kuch mainly **kamaane** ke liye ugaaye jaate hain — aur kuch **peene** ke liye.
+
+      Yeh hain cash crops aur beverages: sugarcane, oilseeds, tea, coffee, aur fruits-vegetables ki ek poori basket. Yeh pet bharne se zyaada *market* bharne ke baare mein hain. Chalo inse guzarte hain.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Shuru karo **sugarcane** se. Yeh ek **tropical aur sub-tropical** crop hai jise **hot, humid climate** pasand hai — temperature **21°C se 27°C** aur **75–100 cm** rainfall (kam baarish wali jagah irrigation ke saath).
+
+      Yeh *kayi tarah ki soils* pe ugta hai, par ek catch hai: ise **sowing se le kar harvesting tak manual labour** chahiye. India duniya mein sugarcane ka **second largest producer** hai, Brazil ke baad.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ek cane, kayi products: sugarcane **sugar, gur (jaggary), khandsari aur molasses** ka main source hai.
+
+      Iske major producing states poore desh mein faile hain — **Uttar Pradesh, Maharashtra, Karnataka, Tamil Nadu, Andhra Pradesh, Telangana, Bihar, Punjab aur Haryana**.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c2l3-sugarcane.png
+    caption: "Ek farmer ke upar tak khadi, ghani sugarcane — ek hot-climate cash crop jo lagbhag ek saal aur kaafi haath ki mehnat leti hai."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Aage, **oil seeds** — India ke **total cropped area ka lagbhag 12%**. 2020 mein, India duniya mein **groundnut ka second largest producer** tha, China ke baad.
+
+      Family badi hai: **groundnut, mustard, coconut, sesamum (til), soyabean, castor seeds, cotton seeds, linseed aur sunflower**. Zyaadatar **cooking oils** bante hain; kuch **soap, cosmetics aur ointments** mein jaate hain.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Har oilseed apna calendar rakhta hai. **Groundnut** ek *kharif* crop hai aur India ke major oilseeds ka lagbhag *aadha* hissa hai — **Gujarat** sabse bada producer tha (2019–20), uske baad Rajasthan aur Tamil Nadu. **Linseed aur mustard** *rabi* crops hain. **Sesamum** north mein *kharif* par south mein *rabi* hai. **Castor** *dono* seasons mein ugta hai.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c2l3-mustard.png
+    caption: "Phoolon se bhari peeli mustard — ek rabi oilseed, jo anginat Indian choolhon ke cooking oil mein dabti hai."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ab **beverages**. **Tea** ek plantation crop bhi hai aur beverage bhi, jise **British ne introduce kiya** — halaanki aaj zyaadatar tea plantations **Indians ke paas hain**. Tea plant ko chahiye **deep, fertile, well-drained soil jo humus se rich** ho, ek **warm, moist, frost-free** climate, aur **frequent, evenly faili showers**. Yeh *labour-intensive* hai, aur patte seedha **tea garden** ke andar process hote hain. Major states: **Assam, West Bengal ki Darjeeling aur Jalpaiguri hills, Tamil Nadu, Kerala, Himachal Pradesh, Uttarakhand, Meghalaya, Andhra Pradesh aur Tripura**. 2020 mein India tea ka second largest producer tha, China ke baad.
+
+      **Coffee** doosra beverage hai — Indian coffee apni quality ke liye duniya bhar mein famous hai. **Arabica** variety pehle **Yemen** se laayi gayi aur **Baba Budan Hills** pe ugaayi gayi; aaj iski cultivation **Karnataka, Kerala aur Tamil Nadu** ki **Nilgiri** hills tak simti hai.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Aakhir mein, **horticulture** — fruits aur vegetables. 2020 mein India duniya mein **fruits aur vegetables ka second largest producer** tha, China ke baad.
+
+      Basket ka ek tour: **mangoes** (Maharashtra, Andhra Pradesh, Telangana, UP, West Bengal), **oranges** (Nagpur, Cherrapunjee), **bananas** (Kerala, Maharashtra, Tamil Nadu), **grapes** (Andhra Pradesh, Telangana, Maharashtra), **apples, apricots aur walnuts** (Jammu & Kashmir, Himachal Pradesh) — aur saath mein rozmarra vegetables jaise **pea, cauliflower, onion, tomato, brinjal aur potato**.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c2l3-fruit-market.png
+    caption: "Ek Indian market jo mangoes, bananas, grapes aur apples se bhara hai — ek aise desh ka output jo fruits aur vegetables mein sirf China se peeche hai."
+
+  - type: mcq
+    xp: 15
+    question: "Tea ek beverage crop ka example hai. Ise kaunse conditions chahiye?"
+    options:
+      - id: a
+        text: "Deep, fertile, humus-rich, well-drained soil with warm, moist, frost-free climate aur frequent showers."
+        is_correct: true
+        rationale: "Bilkul — tea ko rich drained soil, warmth, no frost, aur steady showers chahiye, isiliye yeh Assam, Darjeeling aur south ki hill slopes pe ugti hai."
+      - id: b
+        text: "Dry, sandy soil with bahut kam rainfall aur frequent frost."
+        is_correct: false
+        rationale: "Frost aur drought tea ko barbaad kar denge. Ise warm, moist, frost-free climate chahiye."
+      - id: c
+        text: "Mahinon tak paani-bhara delta, jaise paddy field."
+        is_correct: false
+        rationale: "Tea ko *well-drained* soil chahiye — waterlogging roots ko sada degi. Woh rice country hai, tea nahi."
+      - id: d
+        text: "Wheat jaisa cool, dry winter season."
+        is_correct: false
+        rationale: "Yeh wheat ke conditions hain. Tea ko saal bhar warmth, humidity aur frequent showers chahiye."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Har cash crop ko chapter ke ek fact se match karo."
+    left:
+      - { id: l1, label: "Sugarcane" }
+      - { id: l2, label: "Groundnut" }
+      - { id: l3, label: "Coffee" }
+    right:
+      - { id: r1, label: "Brazil ke baad 2nd largest producer; gur & molasses deta hai" }
+      - { id: r2, label: "Kharif oilseed; Gujarat top producer" }
+      - { id: r3, label: "Arabica variety, pehle Baba Budan Hills pe ugaayi gayi" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      Apni kitchen mein dekho. Ek cheez chuno jo ek cash crop se shuru hui — sugar, cooking oil, tea, coffee, ya koi fruit.
+
+      Paper pe use peeche tak trace karo: woh kis crop se aayi, aur farm ko kaccha crop us shelf-waali cheez mein badalne ke liye kya karna pada (pressing, processing, refining)? Neeche cheez aur uska source crop type karo.
+    placeholder: "Cheez hai ... yeh ... crop se aayi jise ..."
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Tea aur coffee India mein bahar walon ne laaye, phir bhi yeh hamare sabse famous exports aur millions of homes ki daily ritual ban gaye.
+
+      Kya yeh maayne rakhta hai ki inn "Indian" crops ki jadein foreign hain? Koi sahi jawaab nahi — bas ek soch.
+    placeholder: "Mujhe lagta hai..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Ab tum India ke cash crops aur woh kya bante hain, naam le sakte ho."
+    summary: |
+      Cash crops bechne ke liye ugaaye jaate hain, sirf khaane ke liye nahi: sugarcane (sugar,
+      gur, molasses — India Brazil ke baad 2nd), oilseeds (groundnut, mustard aur zyaada —
+      cooking oils), beverages tea (British ne introduce kiya, ab Indian-owned) aur coffee
+      (Baba Budan Hills ka Arabica), aur fruits-vegetables ki ek badi horticulture basket.
+
+      Par India woh crops bhi ugaata hai jo tum kabhi khaate hi nahi — woh jo tum *pehente* aur
+      *bounce* karte ho: cotton, jute aur rubber. Non-food crops hamare crop tour ko close karte
+      hain, agli baar.

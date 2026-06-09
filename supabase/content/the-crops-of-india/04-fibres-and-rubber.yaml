@@ -1,0 +1,140 @@
+title: "Fibres and Rubber"
+subtitle: "The crops you never eat — the ones you wear, carry and bounce"
+estimated_minutes: 10
+xp_reward: 90
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Every crop so far has ended up as food or drink. Now meet the ones that *never* touch your plate.
+
+      You **wear** them (your cotton shirt), you **carry** groceries in them (a jute sack), you **bounce and drive** on them (a rubber ball, a tyre). These are the **non-food crops** — grown to feed *industry*, not people.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Start with **rubber**. It's really an **equatorial** crop, but under special conditions it also grows in tropical and sub-tropical areas. It demands a **moist, humid climate**, **rainfall above 200 cm**, and **temperature above 25°C** — seriously wet and warm.
+
+      Rubber is an important **industrial raw material**. It's mainly grown in **Kerala, Tamil Nadu, Karnataka, the Andaman & Nicobar islands, and the Garo hills of Meghalaya**.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c2l4-rubber-tapping.png
+    caption: "Latex dripping from a diagonal cut into a rubber tree in Kerala — collected as the raw material for tyres, soles and a thousand other things."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Now the **fibre crops**. There are four major ones: **cotton, jute, hemp and natural silk**.
+
+      Three of them — cotton, jute, hemp — are grown *in the soil*. **Silk** is the odd one out: it comes from the **cocoons of silkworms** fed on **mulberry leaves**. Rearing those silkworms to produce silk fibre has its own name — **sericulture**.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The biggest fibre is **cotton**. India is believed to be the **original home of the cotton plant**, and cotton is a main raw material for our huge **cotton textile industry**. India is the **second largest producer of cotton** in the world, after China.
+
+      It grows in the **drier parts of the black cotton soil** of the Deccan plateau — that dark, moisture-holding *regur* soil you may remember from the soil chapter.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Cotton is fussy about weather: it needs **high temperature**, **light rainfall or irrigation**, **210 frost-free days**, and **bright sunshine**. It's a **kharif** crop that takes a long **6 to 8 months** to mature.
+
+      Major producing states: **Maharashtra, Gujarat, Madhya Pradesh, Karnataka, Andhra Pradesh, Telangana, Tamil Nadu, Punjab, Haryana and Uttar Pradesh**.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c2l4-cotton-bolls.png
+    caption: "Fluffy white cotton bolls bursting open on the plant in the black soil of the Deccan — the raw thread of India's textile industry."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Last comes **jute** — the **'golden fibre'**. It grows on **well-drained fertile soils in the flood plains**, where the soil is *renewed every year* by the floods (the same fresh Khadar idea from the soil chapter). It needs **high temperature** while growing.
+
+      Major states: **West Bengal, Bihar, Assam, Odisha and Meghalaya**. Jute is turned into **gunny bags, mats, ropes, yarn, carpets** and other artefacts.
+
+  - type: mcq
+    xp: 15
+    question: "Cotton grows best in which kind of soil?"
+    options:
+      - id: a
+        text: "The black cotton soil (regur) of the drier Deccan plateau."
+        is_correct: true
+        rationale: "Right — cotton thrives in the moisture-retaining black soil of the Deccan's drier parts, with high temperature and bright sunshine."
+      - id: b
+        text: "The waterlogged, flood-renewed soil of river deltas."
+        is_correct: false
+        rationale: "That's jute country — the 'golden fibre' of the flood plains. Cotton wants drier black soil."
+      - id: c
+        text: "Cold, snowy mountain soil."
+        is_correct: false
+        rationale: "Cotton needs heat, sunshine and 210 frost-free days — the opposite of a snowy mountain."
+      - id: d
+        text: "Pure sandy desert with no rainfall at all."
+        is_correct: false
+        rationale: "Cotton needs at least light rainfall or irrigation. Bare desert won't do it."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Match each non-food crop to a fact from the chapter."
+    left:
+      - { id: l1, label: "Cotton" }
+      - { id: l2, label: "Jute" }
+      - { id: l3, label: "Rubber" }
+      - { id: l4, label: "Silk" }
+    right:
+      - { id: r1, label: "Black soil of the Deccan; 2nd after China" }
+      - { id: r2, label: "The 'golden fibre' of the flood plains" }
+      - { id: r3, label: "Needs rainfall above 200 cm; Kerala" }
+      - { id: r4, label: "From silkworm cocoons; called sericulture" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      Look around the room and list **items made of rubber** that you use — then add one made of **cotton** and one of **jute**.
+
+      On paper, write at least three rubber items, then your cotton and jute item. Type your favourite find below.
+    placeholder: "Rubber: ... ; cotton: ... ; jute: ..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the fibres."
+    template: |
+      Jute is known as the {{blank-1}} fibre and grows on flood-plain soils renewed every year. Rearing silkworms on mulberry leaves to produce silk fibre is called {{blank-2}}.
+    answers:
+      - id: blank-1
+        accepted: ["golden", "Golden"]
+      - id: blank-2
+        accepted: ["sericulture", "Sericulture"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Cotton, jute and rubber connect a farmer's field directly to a factory and then to things in your hands right now.
+
+      Pick one object near you and trace it back to a field. Did you ever think of it as "agriculture"? No right answer — just notice the link.
+    placeholder: "The object is ... and it began as ..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You've completed the tour of India's crops."
+    summary: |
+      The non-food crops feed industry, not people: rubber (an equatorial, very wet crop
+      for tyres and more), cotton (India's original crop, on the Deccan's black soil),
+      jute (the 'golden fibre' of the flood plains), and silk (from silkworms — sericulture).
+
+      You now know *how* India farms, *when* it farms, and *what* it grows. But growing all
+      this on shrinking, tired land is hard — and for decades the whole system needed
+      fixing. The technological and institutional reforms that reshaped Indian farming are
+      the final course.

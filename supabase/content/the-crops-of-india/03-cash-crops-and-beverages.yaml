@@ -1,0 +1,136 @@
+title: "Cash Crops and Beverages"
+subtitle: "The crops India grows to sell and to sip — sugarcane, oilseeds, tea, coffee, fruit"
+estimated_minutes: 12
+xp_reward: 95
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Not every crop ends up as dinner. Some are grown mainly to **earn** — and some to **drink**.
+
+      These are the cash crops and beverages: sugarcane, oilseeds, tea, coffee, and a whole basket of fruit and vegetables. They're less about filling a stomach and more about filling a *market*. Let's walk through them.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Start with **sugarcane**. It's a **tropical and sub-tropical** crop that loves a **hot, humid climate** — temperature **21°C to 27°C** and **75–100 cm** of rainfall (with irrigation where rain is short).
+
+      It grows on a *variety of soils*, but there's a catch: it needs **manual labour from sowing all the way to harvesting**. India is the **second largest producer of sugarcane in the world**, after Brazil.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      One cane, many products: sugarcane is the main source of **sugar, gur (jaggary), khandsari and molasses**.
+
+      Its major producing states stretch across the country — **Uttar Pradesh, Maharashtra, Karnataka, Tamil Nadu, Andhra Pradesh, Telangana, Bihar, Punjab and Haryana**.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c2l3-sugarcane.png
+    caption: "Tall, dense sugarcane towering over a farmer — a hot-climate cash crop that takes almost a year and a lot of hand labour."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Next, **oil seeds** — about **12% of India's total cropped area**. In 2020, India was the **second largest producer of groundnut** in the world, after China.
+
+      The family is big: **groundnut, mustard, coconut, sesamum (til), soyabean, castor seeds, cotton seeds, linseed and sunflower**. Most become **cooking oils**; some go into **soap, cosmetics and ointments**.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Each oilseed keeps its own calendar. **Groundnut** is a *kharif* crop and makes up about *half* of India's major oilseeds — **Gujarat** was the largest producer (2019–20), followed by Rajasthan and Tamil Nadu. **Linseed and mustard** are *rabi* crops. **Sesamum** is *kharif* in the north but *rabi* in the south. **Castor** is grown in *both* seasons.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c2l3-mustard.png
+    caption: "A blaze of yellow mustard in flower — a rabi oilseed, pressed into the cooking oil on countless Indian stoves."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Now the **beverages**. **Tea** is both a plantation crop and a beverage, **introduced by the British** — though today most tea plantations are **owned by Indians**. The tea plant wants **deep, fertile, well-drained soil rich in humus**, a **warm, moist, frost-free** climate, and **frequent, evenly spread showers**. It's *labour-intensive*, and the leaves are processed right inside the **tea garden**. Major states: **Assam, the Darjeeling and Jalpaiguri hills of West Bengal, Tamil Nadu, Kerala, Himachal Pradesh, Uttarakhand, Meghalaya, Andhra Pradesh and Tripura**. In 2020, India was the second largest tea producer after China.
+
+      **Coffee** is the other beverage — Indian coffee is prized worldwide for its quality. The **Arabica** variety was first brought from **Yemen** and grown on the **Baba Budan Hills**; today its cultivation is confined to the **Nilgiri** hills of **Karnataka, Kerala and Tamil Nadu**.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Finally, **horticulture** — fruits and vegetables. In 2020, India was the **second largest producer of fruits and vegetables** in the world, after China.
+
+      A tour of the basket: **mangoes** (Maharashtra, Andhra Pradesh, Telangana, UP, West Bengal), **oranges** (Nagpur, Cherrapunjee), **bananas** (Kerala, Maharashtra, Tamil Nadu), **grapes** (Andhra Pradesh, Telangana, Maharashtra), **apples, apricots and walnuts** (Jammu & Kashmir, Himachal Pradesh) — plus everyday vegetables like **pea, cauliflower, onion, tomato, brinjal and potato**.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c2l3-fruit-market.png
+    caption: "An Indian market piled with mangoes, bananas, grapes and apples — the output of a country that's second only to China in fruits and vegetables."
+
+  - type: mcq
+    xp: 15
+    question: "Tea is an example of a beverage crop. Which conditions does it need?"
+    options:
+      - id: a
+        text: "Deep, fertile, humus-rich, well-drained soil with a warm, moist, frost-free climate and frequent showers."
+        is_correct: true
+        rationale: "Exactly — tea needs rich drained soil, warmth, no frost, and steady showers, which is why it grows on hill slopes in Assam, Darjeeling and the south."
+      - id: b
+        text: "Dry, sandy soil with very little rainfall and frequent frost."
+        is_correct: false
+        rationale: "Frost and drought would ruin tea. It needs a warm, moist, frost-free climate."
+      - id: c
+        text: "Waterlogged delta flooded for months like a paddy field."
+        is_correct: false
+        rationale: "Tea needs *well-drained* soil — waterlogging would rot the roots. That's rice country, not tea."
+      - id: d
+        text: "A cool, dry winter season like wheat."
+        is_correct: false
+        rationale: "Those are wheat's conditions. Tea wants warmth, humidity and frequent showers all year."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Match each cash crop to a fact from the chapter."
+    left:
+      - { id: l1, label: "Sugarcane" }
+      - { id: l2, label: "Groundnut" }
+      - { id: l3, label: "Coffee" }
+    right:
+      - { id: r1, label: "2nd largest producer after Brazil; gives gur & molasses" }
+      - { id: r2, label: "Kharif oilseed; Gujarat the top producer" }
+      - { id: r3, label: "Arabica variety, first grown on the Baba Budan Hills" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      Look around your kitchen. Pick one item that started as a cash crop — sugar, cooking oil, tea, coffee, or a fruit.
+
+      On paper, trace it back: which crop did it come from, and what did the farm have to do to turn the raw crop into the thing on your shelf (pressing, processing, refining)? Type the item and its source crop below.
+    placeholder: "The item is ... it came from the crop ... which was ..."
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Tea and coffee were brought to India by outsiders, yet they became some of our most famous exports and a daily ritual in millions of homes.
+
+      Does it matter that these "Indian" crops have foreign roots? No right answer — just a thought.
+    placeholder: "I think..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can name India's cash crops and what they become."
+    summary: |
+      Cash crops are grown to sell, not just to eat: sugarcane (sugar, gur, molasses —
+      India 2nd after Brazil), oilseeds (groundnut, mustard and more — cooking oils),
+      the beverages tea (British-introduced, now Indian-owned) and coffee (Arabica from
+      the Baba Budan Hills), and a huge horticulture basket of fruit and vegetables.
+
+      But India also grows crops you never eat at all — the ones you *wear* and *bounce*:
+      cotton, jute and rubber. The non-food crops close out our crop tour, next.

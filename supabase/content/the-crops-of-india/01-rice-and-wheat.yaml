@@ -1,0 +1,136 @@
+title: "Rice and Wheat"
+subtitle: "The two crops that feed India — and the climate line that divides them"
+estimated_minutes: 11
+xp_reward: 90
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Two crops feed India more than any other. On most Indian plates, lunch is basically one or the other: **rice** or **wheat** (a *roti* or a bowl of *chawal*).
+
+      But here's what's strange — they barely grow in the same places. These two staples almost *split the country in two*, along a line drawn by climate. Let's see where, and why.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Start with **rice** — the staple food of the *majority* of Indians. We grow so much of it that India is the **second largest producer of rice in the world**, after China.
+
+      Rice is a **kharif** crop, and it's thirsty and warm-blooded. It needs **high temperature (above 25°C)**, **high humidity**, and **annual rainfall above 100 cm**. Think hot, wet, sticky — that's rice weather.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c2l1-rice-delta.png
+    caption: "Lush, water-logged rice fields in a warm, humid coastal delta — exactly the hot-and-wet conditions rice demands."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      So where does it grow? In the **plains of north and north-eastern India**, the **coastal areas**, and the **deltaic regions** — all naturally warm and wet.
+
+      But here's the human twist. With a dense network of **canal irrigation and tubewells**, farmers now grow rice even where the rain *doesn't* deliver — in **Punjab, Haryana, western Uttar Pradesh and parts of Rajasthan**. Technology overrules the climate.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Now the other staple: **wheat** — the **second most important cereal crop**, and the *main* food crop of north and north-western India.
+
+      Wheat is the opposite of rice in temperament. It's a **rabi** crop that wants a **cool growing season** and then **bright sunshine when it ripens**. And it's not greedy for water — just **50 to 75 cm of rainfall, evenly spread** across the growing season.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c2l1-wheat-plains.png
+    caption: "Endless golden wheat across the flat Ganga–Satluj plains under bright sun — cool-season growth, sunny ripening."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Wheat has **two great growing zones**: the **Ganga–Satluj plains** in the north-west, and the **black soil region of the Deccan**.
+
+      Its major producing states are **Punjab, Haryana, Uttar Pradesh, Madhya Pradesh, Bihar and Rajasthan** — the country's bread basket.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Step back and you can almost *see* the dividing line. **Rice** rules where it's hot and wet — the east, the south, the coasts (plus the irrigated north-west). **Wheat** rules where it's cooler and drier — the north and north-west.
+
+      What would break if you swapped them? Plant thirsty rice on dry rain-fed land and it fails; plant wheat in a steamy delta and it struggles. *Climate writes the menu* — the farmer just reads it.
+
+  - type: mcq
+    xp: 15
+    question: "Which set of conditions does rice need to grow well?"
+    options:
+      - id: a
+        text: "A cool growing season, bright sunshine at ripening, and 50–75 cm of rainfall."
+        is_correct: false
+        rationale: "Those are *wheat's* conditions — a cool-season rabi crop. Rice wants the opposite."
+      - id: b
+        text: "High temperature (above 25°C), high humidity, and rainfall above 100 cm."
+        is_correct: true
+        rationale: "Exactly — rice is a hot, humid, high-rainfall kharif crop. Below 100 cm, it needs irrigation to survive."
+      - id: c
+        text: "Frost, dry air, and very little rainfall."
+        is_correct: false
+        rationale: "Frost and dryness would kill rice. It needs heat, humidity and plenty of water."
+      - id: d
+        text: "Cold winters and snow-fed soil."
+        is_correct: false
+        rationale: "That's nothing like rice country. Rice is a warm-and-wet crop of the plains, coasts and deltas."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Match each staple to its growing profile."
+    left:
+      - { id: l1, label: "Rice" }
+      - { id: l2, label: "Wheat" }
+    right:
+      - { id: r1, label: "Kharif · hot & humid · rainfall above 100 cm" }
+      - { id: r2, label: "Rabi · cool season · 50–75 cm rainfall" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      Think about where you live (or your family's home region).
+
+      On paper, decide which staple dominates there — **rice** or **wheat** — and connect it to the *climate*: is your region hot and wet, or cooler and drier? If it's a dry place that still grows rice, note that irrigation is probably doing the work.
+
+      Type your region, its staple, and the climate reason below.
+    placeholder: "My region grows mostly ... because the climate is ..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the two staples."
+    template: |
+      Rice is a kharif crop that needs high temperature and rainfall above {{blank-1}} cm. Wheat is a {{blank-2}} crop that needs a cool growing season and bright sunshine at ripening.
+    answers:
+      - id: blank-1
+        accepted: ["100", "100 cm"]
+      - id: blank-2
+        accepted: ["rabi", "Rabi"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Irrigation now lets Punjab grow thirsty rice in a land that doesn't get enough rain for it.
+
+      Clever — but is it wise, in a region already short of water? There's no right answer. Just weigh it.
+    placeholder: "I think..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can map India's two staples to their climates."
+    summary: |
+      Rice — India's main staple, second only to China in output — is a hot, humid,
+      high-rainfall *kharif* crop of the plains, coasts and deltas (and irrigated
+      north-west). Wheat is a cool-season, lower-rainfall *rabi* crop of the
+      Ganga–Satluj plains and the Deccan black soil. Climate draws the line between them.
+
+      But what grows in the hard places *between* — the dry, rocky, rain-starved lands
+      where neither rice nor wheat thrives? That's where the tough crops come in:
+      millets, maize and pulses. Next lesson.

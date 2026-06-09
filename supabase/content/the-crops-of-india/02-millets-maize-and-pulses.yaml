@@ -1,0 +1,146 @@
+title: "Millets, Maize and Pulses"
+subtitle: "The tough crops that grow where rice and wheat give up — and one that heals the soil"
+estimated_minutes: 11
+xp_reward: 90
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Rice and wheat get the good land — the wet plains, the fertile deltas. But India is full of land that's *dry, rocky, sandy and poor*.
+
+      So what feeds the people there? A set of **tough crops** that thrive exactly where the staples fail. And one of them, quietly, even *repairs* the soil it grows in. Let's meet them.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      First, the **millets** — **jowar, bajra and ragi**. They're labelled *"coarse grains"*, which sounds like an insult. It isn't.
+
+      These grains pack *very high nutritional value*. **Ragi** in particular is rich in **iron, calcium, other micronutrients and roughage** — a superfood with a humble name.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Jowar** is the heavyweight: the **third most important food crop** in India by area and production. It's a **rain-fed** crop grown in the moist areas — it *hardly needs irrigation*. Main states: **Maharashtra, Karnataka, Andhra Pradesh and Madhya Pradesh**.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Bajra** is the survivor: it grows well on **sandy soils and shallow black soil** — the kind of poor ground other crops refuse. Main states: **Rajasthan, Uttar Pradesh, Maharashtra, Gujarat and Haryana**.
+
+      **Ragi** is the toughest of all — a crop of **dry regions** that grows on **red, black, sandy, loamy and shallow black soils**. Main states: **Karnataka, Tamil Nadu, Himachal Pradesh, Uttarakhand, Sikkim, Jharkhand and Arunachal Pradesh**.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c2l2-bajra-dryland.png
+    caption: "Tall bajra (pearl millet) standing in dry, sandy Rajasthan soil — a crop that thrives where rice and wheat couldn't last a week."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Then there's **maize** — the all-rounder, used both as **food and fodder**. It's a **kharif** crop that likes a temperature of **21°C to 27°C** and grows well in **old alluvial soil**. (In some states like **Bihar**, it's grown in the *rabi* season too.)
+
+      Modern inputs — **HYV seeds, fertilisers and irrigation** — have pushed its production up. Main states: **Karnataka, Madhya Pradesh, Uttar Pradesh, Bihar, Andhra Pradesh and Telangana**.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Now the quiet hero: **pulses** — tur (arhar), urad, moong, masur, peas and gram. India is the **largest producer *and* consumer of pulses** in the world, and they're the **main source of protein in a vegetarian diet**. That *dal* on your plate is doing serious work.
+
+      Like the millets, pulses **need less moisture and survive in dry conditions**.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      But pulses have a secret power. They're **leguminous** crops — and all of them *except arhar* **restore the soil's fertility by fixing nitrogen from the air**.
+
+      Read that again: most crops *drain* the soil; pulses *feed* it. That's why they're grown **in rotation** with other crops — plant pulses, and the next crop inherits richer soil. Main states: **Madhya Pradesh, Rajasthan, Maharashtra, Uttar Pradesh and Karnataka**.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c2l2-pulses.png
+    caption: "A field of gram (chana) with its pods — a leguminous pulse that quietly returns nitrogen to the soil for the next crop."
+
+  - type: mcq
+    xp: 15
+    question: "Which one of the following is a leguminous crop that helps restore soil fertility?"
+    options:
+      - id: a
+        text: "Pulses"
+        is_correct: true
+        rationale: "Right. Pulses are leguminous — all except arhar fix nitrogen from the air, enriching the soil, which is why they're grown in rotation."
+      - id: b
+        text: "Jowar"
+        is_correct: false
+        rationale: "Jowar is a millet (a cereal), not a legume. It doesn't fix nitrogen."
+      - id: c
+        text: "Maize"
+        is_correct: false
+        rationale: "Maize is a cereal used for food and fodder — not a nitrogen-fixing legume."
+      - id: d
+        text: "Bajra"
+        is_correct: false
+        rationale: "Bajra is a millet. Tough and hardy, yes — but it doesn't restore soil fertility the way pulses do."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Match each crop to what makes it special."
+    left:
+      - { id: l1, label: "Jowar" }
+      - { id: l2, label: "Ragi" }
+      - { id: l3, label: "Maize" }
+      - { id: l4, label: "Pulses" }
+    right:
+      - { id: r1, label: "Rain-fed; 3rd most important food crop" }
+      - { id: r2, label: "Rich in iron and calcium" }
+      - { id: r3, label: "Used as food AND fodder" }
+      - { id: r4, label: "Fix nitrogen; grown in rotation" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      A farmer grows wheat in the same field year after year and notices the soil getting tired.
+
+      On paper, explain how planting **pulses** for one season could help — using the idea of nitrogen-fixing. Then name one millet that could grow on poor, dry soil if the farmer wanted a hardy crop instead.
+
+      Type your two-line answer below.
+    placeholder: "Pulses would help because ... A hardy millet is ..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the tough crops."
+    template: |
+      Jowar, bajra and ragi are millets, often called {{blank-1}} grains despite their high nutrition. Pulses are leguminous crops that restore soil fertility by fixing {{blank-2}} from the air.
+    answers:
+      - id: blank-1
+        accepted: ["coarse", "Coarse"]
+      - id: blank-2
+        accepted: ["nitrogen", "Nitrogen"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Millets need little water, grow on poor soil, and are packed with nutrition — yet we call them "coarse" and often look down on them.
+
+      Why do you think the "fine" grains (rice, wheat) won that status instead? No right answer — just a thought.
+    placeholder: "Maybe because..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You know the crops that feed India's hard lands."
+    summary: |
+      Millets — jowar (rain-fed, 3rd biggest food crop), bajra (sandy soils) and ragi
+      (dry regions, iron-rich) — thrive where staples fail. Maize doubles as food and
+      fodder. And pulses, India's protein source, do something unique: as legumes, they
+      fix nitrogen and *restore* the soil, so they're grown in rotation.
+
+      So far every crop has been something we *eat*. But India also grows crops to *sell*
+      and to *sip* — sugarcane, oilseeds, tea, coffee, fruit. The cash crops are next.

@@ -1,0 +1,148 @@
+title: "Millets, Maize and Pulses"
+subtitle: "Woh tough crops jo wahan ugte hain jahan rice aur wheat haar jaate hain — aur ek jo soil ko theek karta hai"
+estimated_minutes: 11
+xp_reward: 90
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Rice aur wheat ko achhi land milti hai — geele plains, fertile deltas. Par India aisi land se bhari hai jo *dry, rocky, sandy aur poor* hai.
+
+      Toh wahan logon ka pet kya bharta hai? Ek set of **tough crops** jo theek wahan pann-pte hain jahan staples fail ho jaate hain. Aur unme se ek, chupchaap, us soil ko *theek* bhi karta hai jisme woh ugta hai. Chalo inse milte hain.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Pehle **millets** — **jowar, bajra aur ragi**. Inhe *"coarse grains"* label kiya jaata hai, jo ek insult jaisa lagta hai. Hai nahi.
+
+      Inn grains mein *bahut high nutritional value* hoti hai. **Ragi** khaaskar **iron, calcium, doosre micronutrients aur roughage** se rich hai — ek superfood, simple naam ke saath.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Jowar** heavyweight hai: India ka **third most important food crop**, area aur production ke hisaab se. Yeh ek **rain-fed** crop hai jo moist areas mein ugta hai — ise *mushkil se irrigation chahiye*. Main states: **Maharashtra, Karnataka, Andhra Pradesh aur Madhya Pradesh**.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Bajra** survivor hai: yeh **sandy soils aur shallow black soil** pe achhe se ugta hai — woh poor zameen jise doosre crops mana kar dete hain. Main states: **Rajasthan, Uttar Pradesh, Maharashtra, Gujarat aur Haryana**.
+
+      **Ragi** sabse tough hai — **dry regions** ka crop jo **red, black, sandy, loamy aur shallow black soils** pe ugta hai. Main states: **Karnataka, Tamil Nadu, Himachal Pradesh, Uttarakhand, Sikkim, Jharkhand aur Arunachal Pradesh**.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c2l2-bajra-dryland.png
+    caption: "Rajasthan ki dry, sandy soil mein khadi lambi bajra — ek crop jo wahan pann-pta hai jahan rice aur wheat ek hafta bhi nahi tik paate."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Phir hai **maize** — all-rounder, jo **food aur fodder** dono ki tarah use hota hai. Yeh ek **kharif** crop hai jise **21°C se 27°C** temperature pasand hai aur jo **old alluvial soil** mein achhe se ugta hai. (Kuch states jaise **Bihar** mein, ise *rabi* season mein bhi ugaate hain.)
+
+      Modern inputs — **HYV seeds, fertilisers aur irrigation** — ne iski production badha di hai. Main states: **Karnataka, Madhya Pradesh, Uttar Pradesh, Bihar, Andhra Pradesh aur Telangana**.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ab quiet hero: **pulses** — tur (arhar), urad, moong, masur, peas aur gram. India duniya mein pulses ka **largest producer *aur* consumer** hai, aur yeh **vegetarian diet mein protein ka main source** hain. Tumhari thaali ka woh *dal* serious kaam kar raha hai.
+
+      Millets ki tarah, pulses ko bhi **kam moisture chahiye aur yeh dry conditions mein survive** kar lete hain.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Par pulses ki ek secret power hai. Yeh **leguminous** crops hain — aur *arhar ke alawa* sab **hawa se nitrogen fix kar ke soil ki fertility wapas restore** karte hain.
+
+      Ise dobaara padho: zyaadatar crops soil ko *kheech* lete hain; pulses use *feed* karte hain. Isiliye inhe doosre crops ke saath **rotation** mein ugaaya jaata hai — pulses lagao, aur agli crop ko richer soil milti hai. Main states: **Madhya Pradesh, Rajasthan, Maharashtra, Uttar Pradesh aur Karnataka**.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c2l2-pulses.png
+    caption: "Gram (chana) ka ek field apni phaliyon ke saath — ek leguminous pulse jo chupchaap agli crop ke liye soil mein nitrogen wapas daalta hai."
+
+  - type: mcq
+    xp: 15
+    question: "Inme se kaunsa ek leguminous crop hai jo soil ki fertility restore karne mein madad karta hai?"
+    options:
+      - id: a
+        text: "Pulses"
+        is_correct: true
+        rationale: "Sahi. Pulses leguminous hain — arhar ke alawa sab hawa se nitrogen fix karte hain, soil ko rich karte hain, isiliye inhe rotation mein ugaaya jaata hai."
+      - id: b
+        text: "Jowar"
+        is_correct: false
+        rationale: "Jowar ek millet (cereal) hai, legume nahi. Yeh nitrogen fix nahi karta."
+      - id: c
+        text: "Maize"
+        is_correct: false
+        rationale: "Maize ek cereal hai jo food aur fodder ke liye use hota hai — nitrogen-fixing legume nahi."
+      - id: d
+        text: "Bajra"
+        is_correct: false
+        rationale: "Bajra ek millet hai. Tough aur hardy, haan — par yeh soil ki fertility waise restore nahi karta jaise pulses karte hain."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Har crop ko us cheez se match karo jo use special banati hai."
+    left:
+      - { id: l1, label: "Jowar" }
+      - { id: l2, label: "Ragi" }
+      - { id: l3, label: "Maize" }
+      - { id: l4, label: "Pulses" }
+    right:
+      - { id: r1, label: "Rain-fed; 3rd most important food crop" }
+      - { id: r2, label: "Iron aur calcium se rich" }
+      - { id: r3, label: "Food AUR fodder ke liye use" }
+      - { id: r4, label: "Nitrogen fix karte hain; rotation mein ugte hain" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      Ek farmer saal dar saal usi field mein wheat ugaata hai aur notice karta hai ki soil thak rahi hai.
+
+      Paper pe samjhao ki ek season **pulses** lagaane se kaise madad ho sakti hai — nitrogen-fixing ke idea se. Phir ek millet batao jo poor, dry soil pe ug sake agar farmer ek hardy crop chahta ho.
+
+      Neeche apna do-line jawaab type karo.
+    placeholder: "Pulses madad karenge kyunki ... Ek hardy millet hai ..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Tough crops ko lock karo."
+    template: |
+      Jowar, bajra aur ragi millets hain, jinhe high nutrition ke baavajood aksar {{blank-1}} grains kaha jaata hai. Pulses leguminous crops hain jo hawa se {{blank-2}} fix kar ke soil ki fertility restore karte hain.
+    answers:
+      - id: blank-1
+        accepted: ["coarse", "Coarse"]
+      - id: blank-2
+        accepted: ["nitrogen", "Nitrogen"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Millets ko kam paani chahiye, poor soil pe ugte hain, aur nutrition se bhare hain — phir bhi hum inhe "coarse" kehte hain aur aksar inhe neeche samajhte hain.
+
+      Tumhe kya lagta hai "fine" grains (rice, wheat) ne yeh status kyun jeet liya? Koi sahi jawaab nahi — bas ek soch.
+    placeholder: "Shayad isliye kyunki..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Ab tum India ki hard lands ka pet bharne waale crops jaante ho."
+    summary: |
+      Millets — jowar (rain-fed, 3rd sabse bada food crop), bajra (sandy soils) aur ragi
+      (dry regions, iron-rich) — wahan pann-pte hain jahan staples fail ho jaate hain. Maize
+      food aur fodder dono ka kaam karta hai. Aur pulses, India ka protein source, ek unique
+      cheez karte hain: legumes hone ke naate woh nitrogen fix karte hain aur soil ko *restore*
+      karte hain, isiliye inhe rotation mein ugaaya jaata hai.
+
+      Ab tak har crop woh tha jo hum *khaate* hain. Par India woh crops bhi ugaata hai jo
+      *bechne* aur *sip karne* ke liye hain — sugarcane, oilseeds, tea, coffee, fruit. Cash
+      crops agli baar.

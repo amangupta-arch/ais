@@ -1,0 +1,136 @@
+title: "Rice and Wheat"
+subtitle: "Woh do crops jo India ka pet bharte hain — aur woh climate line jo unhe baant deti hai"
+estimated_minutes: 11
+xp_reward: 90
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Do crops India ka pet kisi bhi aur cheez se zyaada bharte hain. Zyaadatar Indian thaali pe lunch basically inme se ek hota hai: **rice** ya **wheat** (ek roti ya ek bowl chawal).
+
+      Par yeh ajeeb hai — yeh dono lagbhag ek hi jagah pe ugte hi nahi. Yeh do staples desh ko lagbhag *do hisson mein baant* dete hain, ek line ke saath jo climate kheenchti hai. Chalo dekhte hain kahan, aur kyun.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Shuru karo **rice** se — *zyaadatar* Indians ka staple food. Hum itna ugaate hain ki India duniya ka **second largest producer of rice** hai, China ke baad.
+
+      Rice ek **kharif** crop hai, aur yeh pyaasa aur garam-mizaaj hai. Ise chahiye **high temperature (25°C se upar)**, **high humidity**, aur **annual rainfall 100 cm se zyaada**. Matlab garam, geela, chipchipa — yahi rice ka weather hai.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c2l1-rice-delta.png
+    caption: "Ek garam, humid coastal delta mein paani-bhare, hare-bhare rice fields — bilkul woh garam-aur-geele conditions jo rice maangta hai."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Toh yeh ugta kahan hai? **North aur north-eastern India ke plains**, **coastal areas**, aur **deltaic regions** mein — sab naturally garam aur geele.
+
+      Par yeh raha human twist. Canal irrigation aur tubewells ke dense network se, farmers ab rice wahan bhi ugaate hain jahan baarish *nahi* hoti — **Punjab, Haryana, western Uttar Pradesh aur parts of Rajasthan** mein. Technology climate ko overrule kar deti hai.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ab doosra staple: **wheat** — **second most important cereal crop**, aur north aur north-western India ka *main* food crop.
+
+      Wheat mizaaj mein rice ka ulta hai. Yeh ek **rabi** crop hai jo **cool growing season** chahta hai aur phir **ripening ke waqt bright sunshine**. Aur yeh paani ka lalchi nahi — bas **50 se 75 cm rainfall, evenly faili hui** growing season mein.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c2l1-wheat-plains.png
+    caption: "Flat Ganga–Satluj plains pe bright sun ke neeche bechhor sunehra wheat — cool-season growth, dhoop mein ripening."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Wheat ke **do bade growing zones** hain: north-west mein **Ganga–Satluj plains**, aur **Deccan ka black soil region**.
+
+      Iske major producing states hain **Punjab, Haryana, Uttar Pradesh, Madhya Pradesh, Bihar aur Rajasthan** — desh ki bread basket.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Thoda peeche hato aur tum woh dividing line lagbhag *dekh* sakte ho. **Rice** wahan raaj karta hai jahan garam aur geela ho — east, south, coasts (plus irrigated north-west). **Wheat** wahan raaj karta hai jahan thanda aur drier ho — north aur north-west.
+
+      Inhe swap kar do toh kya tootega? Pyaase rice ko dry rain-fed land pe lagao aur woh fail; wheat ko ek steamy delta mein lagao aur woh struggle kare. *Climate menu likhta hai* — farmer bas use padhta hai.
+
+  - type: mcq
+    xp: 15
+    question: "Rice ko achhe se ugne ke liye kaunse conditions chahiye?"
+    options:
+      - id: a
+        text: "Cool growing season, ripening pe bright sunshine, aur 50–75 cm rainfall."
+        is_correct: false
+        rationale: "Yeh toh *wheat* ke conditions hain — ek cool-season rabi crop. Rice ko ulta chahiye."
+      - id: b
+        text: "High temperature (25°C se upar), high humidity, aur rainfall 100 cm se zyaada."
+        is_correct: true
+        rationale: "Bilkul — rice ek garam, humid, high-rainfall kharif crop hai. 100 cm se neeche, ise survive karne ke liye irrigation chahiye."
+      - id: c
+        text: "Frost, dry hawa, aur bahut kam rainfall."
+        is_correct: false
+        rationale: "Frost aur dryness rice ko maar dega. Ise heat, humidity aur kaafi paani chahiye."
+      - id: d
+        text: "Thande winters aur snow-fed soil."
+        is_correct: false
+        rationale: "Yeh rice country jaisa kuch nahi hai. Rice plains, coasts aur deltas ka ek garam-aur-geela crop hai."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Har staple ko uske growing profile se match karo."
+    left:
+      - { id: l1, label: "Rice" }
+      - { id: l2, label: "Wheat" }
+    right:
+      - { id: r1, label: "Kharif · garam & humid · rainfall 100 cm se zyaada" }
+      - { id: r2, label: "Rabi · cool season · 50–75 cm rainfall" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      Socho tum kahan rehte ho (ya tumhari family ka home region).
+
+      Paper pe decide karo wahan kaunsa staple dominate karta hai — **rice** ya **wheat** — aur use *climate* se jodo: tumhara region garam aur geela hai, ya thanda aur drier? Agar woh dry jagah hai jo phir bhi rice ugaati hai, toh note karo ki kaam shayad irrigation kar rahi hai.
+
+      Neeche apna region, uska staple, aur climate reason type karo.
+    placeholder: "Mera region mostly ... ugaata hai kyunki climate ... hai"
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Do staples ko lock karo."
+    template: |
+      Rice ek kharif crop hai jise high temperature aur {{blank-1}} cm se zyaada rainfall chahiye. Wheat ek {{blank-2}} crop hai jise cool growing season aur ripening pe bright sunshine chahiye.
+    answers:
+      - id: blank-1
+        accepted: ["100", "100 cm"]
+      - id: blank-2
+        accepted: ["rabi", "Rabi"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Irrigation ab Punjab ko pyaasa rice ugaane deti hai, ek aisi land mein jise uske liye kaafi baarish milti hi nahi.
+
+      Clever — par ek aise region mein jahan pehle se paani ki kami hai, kya yeh samajhdaari hai? Koi sahi jawaab nahi. Bas tol ke dekho.
+    placeholder: "Mujhe lagta hai..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Ab tum India ke do staples ko unke climate se map kar sakte ho."
+    summary: |
+      Rice — India ka main staple, output mein sirf China se peeche — ek garam, humid,
+      high-rainfall *kharif* crop hai jo plains, coasts aur deltas (aur irrigated
+      north-west) ka hai. Wheat ek cool-season, kam-rainfall waala *rabi* crop hai jo
+      Ganga–Satluj plains aur Deccan black soil ka hai. Climate inke beech line kheenchti hai.
+
+      Par un hard jagahon ke *beech* kya ugta hai — woh dry, rocky, baarish-ko-taraste lands
+      jahan na rice na wheat pann-pte? Wahin aate hain tough crops: millets, maize aur pulses.
+      Agli lesson.

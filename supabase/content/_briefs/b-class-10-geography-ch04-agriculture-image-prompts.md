@@ -23,6 +23,15 @@ natural light, 16:9, **no text / no captions / no watermarks** in the image.
 | `c1l2-tea-plantation.png` | 16:9 | core | C1L2 Commercial & Plantation, after turn 7 |
 | `c1l3-wheat-rabi.png` | 16:9 | core | C1L3 Cropping Calendar, after turn 3 |
 | `c1l3-paddy-kharif.png` | 16:9 | core | C1L3 Cropping Calendar, after turn 6 |
+| `c2l1-rice-delta.png` | 16:9 | core | C2L1 Rice and Wheat, after turn 2 |
+| `c2l1-wheat-plains.png` | 16:9 | core | C2L1 Rice and Wheat, after turn 5 |
+| `c2l2-bajra-dryland.png` | 16:9 | core | C2L2 Millets/Maize/Pulses, after turn 4 |
+| `c2l2-pulses.png` | 16:9 | core | C2L2 Millets/Maize/Pulses, after turn 8 |
+| `c2l3-sugarcane.png` | 16:9 | core | C2L3 Cash Crops, after turn 3 |
+| `c2l3-mustard.png` | 16:9 | core | C2L3 Cash Crops, after turn 6 |
+| `c2l3-fruit-market.png` | 16:9 | core | C2L3 Cash Crops, after turn 9 |
+| `c2l4-rubber-tapping.png` | 16:9 | core | C2L4 Fibres and Rubber, after turn 2 |
+| `c2l4-cotton-bolls.png` | 16:9 | core | C2L4 Fibres and Rubber, after turn 6 |
 
 ## Prompts
 
@@ -65,5 +74,32 @@ natural light, 16:9, **no text / no captions / no watermarks** in the image.
 > monsoon in India: level water-filled fields reflecting a grey rain-cloud sky,
 > young rice seedlings, a farmer transplanting by hand, lush and wet. Realistic,
 > photojournalistic, 16:9, no text.
+
+### `c2l1-rice-delta.png`
+> Documentary photograph of lush, water-logged rice fields in a warm humid coastal delta in eastern/southern India, vivid green paddy, palm trees and a hazy sky, water glinting between the rows. Hot, wet, fertile feel. Realistic, 16:9, no text.
+
+### `c2l1-wheat-plains.png`
+> Documentary photograph of vast flat golden wheat fields stretching to the horizon across the Ganga–Satluj plains of Punjab under bright clear sun, ripe ears swaying. Calm, abundant, sunny. Realistic, 16:9, no text.
+
+### `c2l2-bajra-dryland.png`
+> Documentary photograph of tall pearl-millet (bajra) plants with cylindrical seed heads standing in dry, sandy, pale soil in rural Rajasthan, sparse and hardy, harsh sunlight, dry hills behind. Realistic, 16:9, no text.
+
+### `c2l2-pulses.png`
+> Documentary photograph of a green gram (chana) field with visible pods on bushy plants, close natural view, a few pods cracked open showing seeds, soft daylight. Realistic, 16:9, no text.
+
+### `c2l3-sugarcane.png`
+> Documentary photograph of a dense field of tall sugarcane towering well above a farmer standing among the stalks, lush green, hot humid light. Realistic, 16:9, no text.
+
+### `c2l3-mustard.png`
+> Documentary photograph of a bright yellow mustard field in full bloom in north India, rows of flowering mustard under a clear sky, a farmer walking through. Vivid yellow, cheerful. Realistic, 16:9, no text.
+
+### `c2l3-fruit-market.png`
+> Documentary photograph of a colourful Indian fruit market stall piled high with mangoes, bananas, grapes and apples in baskets, abundant and vibrant. Realistic, 16:9, no text.
+
+### `c2l4-rubber-tapping.png`
+> Documentary close-up photograph of rubber tapping in Kerala: a diagonal cut in a rubber tree trunk with white latex dripping into a small collection cup, green plantation behind. Realistic, 16:9, no text.
+
+### `c2l4-cotton-bolls.png`
+> Documentary photograph of a cotton field in the black soil of the Deccan, fluffy white cotton bolls burst open on green plants in the foreground, bright sunshine. Realistic, 16:9, no text.
 
 <!-- Append new files here as each lesson is authored. -->

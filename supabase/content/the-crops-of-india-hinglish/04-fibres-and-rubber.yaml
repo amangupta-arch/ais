@@ -1,0 +1,140 @@
+title: "Fibres and Rubber"
+subtitle: "Woh crops jo tum kabhi khaate nahi — jo tum pehente, carry karte aur bounce karte ho"
+estimated_minutes: 10
+xp_reward: 90
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ab tak har crop khaane ya peene ka tha. Ab unse milo jo *kabhi* tumhari thaali ko chhute hi nahi.
+
+      Tum inhe **pehente** ho (tumhari cotton shirt), inme groceries **carry** karte ho (ek jute ka thaila), inpe **bounce aur drive** karte ho (ek rubber ball, ek tyre). Yeh hain **non-food crops** — *industry* ko feed karne ke liye ugaaye, logon ko nahi.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Shuru karo **rubber** se. Yeh asal mein ek **equatorial** crop hai, par special conditions mein yeh tropical aur sub-tropical areas mein bhi ugta hai. Ise chahiye **moist, humid climate**, **rainfall 200 cm se zyaada**, aur **temperature 25°C se upar** — seriously geela aur garam.
+
+      Rubber ek important **industrial raw material** hai. Yeh mainly **Kerala, Tamil Nadu, Karnataka, Andaman & Nicobar islands, aur Meghalaya ki Garo hills** mein ugaaya jaata hai.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c2l4-rubber-tapping.png
+    caption: "Kerala mein ek rubber tree ke tirchhe cut se tapakta latex — tyres, soles aur hazaar doosri cheezon ke raw material ke roop mein collect hota hai."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ab **fibre crops**. Chaar major hain: **cotton, jute, hemp aur natural silk**.
+
+      Inme se teen — cotton, jute, hemp — *soil mein* ugte hain. **Silk** alag hai: yeh **silkworms ke cocoons** se aata hai jinhe **mulberry leaves** khilaaye jaate hain. Silk fibre banane ke liye un silkworms ko paalne ka apna naam hai — **sericulture**.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Sabse bada fibre hai **cotton**. Maana jaata hai ki India **cotton plant ka original home** hai, aur cotton hamari badi **cotton textile industry** ka main raw material hai. India duniya mein cotton ka **second largest producer** hai, China ke baad.
+
+      Yeh Deccan plateau ki **black cotton soil ke drier parts** mein ugta hai — wahi dark, nami-rokne waali *regur* soil jo shayad tumhe soil chapter se yaad ho.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Cotton weather ke maamle mein nakhrewaala hai: ise chahiye **high temperature**, **light rainfall ya irrigation**, **210 frost-free days**, aur **bright sunshine**. Yeh ek **kharif** crop hai jise pakne mein lamba **6 se 8 mahine** lagte hain.
+
+      Major producing states: **Maharashtra, Gujarat, Madhya Pradesh, Karnataka, Andhra Pradesh, Telangana, Tamil Nadu, Punjab, Haryana aur Uttar Pradesh**.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c2l4-cotton-bolls.png
+    caption: "Deccan ki black soil mein plant pe khulte hue rui-jaise safed cotton bolls — India ki textile industry ka kaccha dhaaga."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Aakhir mein **jute** — **'golden fibre'**. Yeh **flood plains ki well-drained fertile soils** pe ugta hai, jahan soil har saal floods se *renew* hoti hai (wahi fresh Khadar waala idea soil chapter se). Ugte waqt ise **high temperature** chahiye.
+
+      Major states: **West Bengal, Bihar, Assam, Odisha aur Meghalaya**. Jute se **gunny bags, mats, ropes, yarn, carpets** aur doosre artefacts bante hain.
+
+  - type: mcq
+    xp: 15
+    question: "Cotton kis tarah ki soil mein sabse achha ugta hai?"
+    options:
+      - id: a
+        text: "Drier Deccan plateau ki black cotton soil (regur)."
+        is_correct: true
+        rationale: "Sahi — cotton Deccan ke drier parts ki nami-rokne waali black soil mein pann-pta hai, high temperature aur bright sunshine ke saath."
+      - id: b
+        text: "River deltas ki paani-bhari, flood-renewed soil."
+        is_correct: false
+        rationale: "Woh jute country hai — flood plains ka 'golden fibre'. Cotton ko drier black soil chahiye."
+      - id: c
+        text: "Thandi, barfeeli mountain soil."
+        is_correct: false
+        rationale: "Cotton ko heat, sunshine aur 210 frost-free days chahiye — ek barfeeli pahaadi ka ulta."
+      - id: d
+        text: "Bilkul sookha sandy desert jisme koi rainfall hi na ho."
+        is_correct: false
+        rationale: "Cotton ko kam se kam light rainfall ya irrigation chahiye. Sookha desert kaam nahi karega."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Har non-food crop ko chapter ke ek fact se match karo."
+    left:
+      - { id: l1, label: "Cotton" }
+      - { id: l2, label: "Jute" }
+      - { id: l3, label: "Rubber" }
+      - { id: l4, label: "Silk" }
+    right:
+      - { id: r1, label: "Deccan ki black soil; China ke baad 2nd" }
+      - { id: r2, label: "Flood plains ka 'golden fibre'" }
+      - { id: r3, label: "200 cm se zyaada rainfall chahiye; Kerala" }
+      - { id: r4, label: "Silkworm cocoons se; sericulture kehlaata hai" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      Apne kamre mein dekho aur **rubber ki bani cheezein** list karo jo tum use karte ho — phir ek **cotton** ki aur ek **jute** ki cheez add karo.
+
+      Paper pe kam se kam teen rubber cheezein likho, phir apni cotton aur jute cheez. Neeche apni favourite find type karo.
+    placeholder: "Rubber: ... ; cotton: ... ; jute: ..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Fibres ko lock karo."
+    template: |
+      Jute ko {{blank-1}} fibre kaha jaata hai aur yeh har saal renew hone wali flood-plain soils pe ugta hai. Silk fibre banane ke liye mulberry leaves pe silkworms paalne ko {{blank-2}} kehte hain.
+    answers:
+      - id: blank-1
+        accepted: ["golden", "Golden"]
+      - id: blank-2
+        accepted: ["sericulture", "Sericulture"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Cotton, jute aur rubber ek farmer ke khet ko seedha ek factory se, aur phir abhi tumhare haathon ki cheezon se jodte hain.
+
+      Apne paas ki ek cheez chuno aur use ek khet tak peeche trace karo. Kya tumne kabhi ise "agriculture" samjha tha? Koi sahi jawaab nahi — bas link notice karo.
+    placeholder: "Cheez hai ... aur yeh shuru hui ..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Tumne India ke crops ka tour poora kar liya."
+    summary: |
+      Non-food crops industry ko feed karte hain, logon ko nahi: rubber (ek equatorial, bahut
+      geela crop tyres waghairah ke liye), cotton (India ka original crop, Deccan ki black soil
+      pe), jute (flood plains ka 'golden fibre'), aur silk (silkworms se — sericulture).
+
+      Ab tum jaante ho India *kaise* farm karta hai, *kab* farm karta hai, aur *kya* ugaata hai.
+      Par yeh sab simat-ti, thaki hui land pe ugaana mushkil hai — aur dashakon tak poore system
+      ko fixing chahiye thi. Woh technological aur institutional reforms jinhone Indian farming
+      ko badla, woh hai aakhri course.
