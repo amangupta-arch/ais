@@ -1,7 +1,7 @@
 title: "Subsistence Farming"
 subtitle: "Woh do tareeke jinse ek family farming karti hai jab maqsad sirf khaana ho"
-estimated_minutes: 11
-xp_reward: 90
+estimated_minutes: 10
+xp_reward: 85
 
 turns:
   - type: tutor_message
@@ -31,44 +31,16 @@ turns:
 
       Isiliye yeh poori tarah **nature** pe depend karti hai: paani ke liye monsoon, soil ki apni natural fertility, aur jo bhi local climate suit kare. Productivity *low* hoti hai — par yeh farmer ki susti nahi hai. Yeh land ke saath ek deal hai.
 
-  - type: svg_graphic
+  - type: media
     xp: 0
-    title: "KAATO, JALAO, AAGE BADHO"
-    caption: "Ek patch clear karo, jalao taaki ash mile, kuch saal crop lo, phir move karo — aur purana patch dheere-dheere theek ho jaata hai."
-    svg: |
-      <svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
-        <rect x="20" y="20" width="140" height="46" rx="8" fill="#dcfce7" stroke="#0f172a" stroke-width="1.5"/>
-        <text x="90" y="40" text-anchor="middle" font-size="12" font-weight="bold" fill="#166534">1. CLEAR</text>
-        <text x="90" y="57" text-anchor="middle" font-size="10" fill="#374151">cut a fresh patch</text>
-
-        <rect x="200" y="20" width="140" height="46" rx="8" fill="#fee2e2" stroke="#0f172a" stroke-width="1.5"/>
-        <text x="270" y="40" text-anchor="middle" font-size="12" font-weight="bold" fill="#991b1b">2. BURN</text>
-        <text x="270" y="57" text-anchor="middle" font-size="10" fill="#374151">ash feeds the soil</text>
-
-        <rect x="200" y="150" width="140" height="46" rx="8" fill="#fef3c7" stroke="#0f172a" stroke-width="1.5"/>
-        <text x="270" y="170" text-anchor="middle" font-size="12" font-weight="bold" fill="#92400e">3. GROW</text>
-        <text x="270" y="187" text-anchor="middle" font-size="10" fill="#374151">crops for a few years</text>
-
-        <rect x="20" y="150" width="140" height="46" rx="8" fill="#e0e7ff" stroke="#0f172a" stroke-width="1.5"/>
-        <text x="90" y="170" text-anchor="middle" font-size="12" font-weight="bold" fill="#3730a3">4. MOVE ON</text>
-        <text x="90" y="187" text-anchor="middle" font-size="10" fill="#374151">soil tired, shift away</text>
-
-        <line x1="160" y1="43" x2="196" y2="43" stroke="#64748b" stroke-width="1.5" marker-end="url(#ar)"/>
-        <line x1="270" y1="66" x2="270" y2="146" stroke="#64748b" stroke-width="1.5" marker-end="url(#ar)"/>
-        <line x1="200" y1="173" x2="164" y2="173" stroke="#64748b" stroke-width="1.5" marker-end="url(#ar)"/>
-        <line x1="90" y1="150" x2="90" y2="70" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arg)"/>
-        <text x="104" y="112" font-size="9" fill="#166534">nature heals it</text>
-
-        <defs>
-          <marker id="ar" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#64748b"/></marker>
-          <marker id="arg" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#22c55e"/></marker>
-        </defs>
-      </svg>
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c1l1-slash-and-burn.png
+    caption: "Ek hillside patch clear kar ke jalaya gaya — ash kuch seasons tak soil ko feed karegi, phir family aage badh jaayegi."
 
   - type: tutor_message
     persona: nova
     text: |
-      Us loop ka ek famous naam hai: **'slash and burn' agriculture**. Farmers ek patch clear karte hain, family ke liye cereals aur food crops ugaate hain, aur jab soil ki fertility gir jaati hai, toh woh *shift* kar ke naya patch clear karte hain. Chhodi hui land ko **nature wapas zinda** kar deti hai — natural processes se, kuch saalon mein.
+      Us practice ka ek famous naam hai: **'slash and burn' agriculture**. Farmers ek patch clear karte hain, family ke liye cereals aur food crops ugaate hain, aur jab soil ki fertility gir jaati hai, toh woh *shift* kar ke naya patch clear karte hain. Chhodi hui land ko **nature wapas zinda** kar deti hai — natural processes se, kuch saalon mein.
 
       Toh yeh "chhod kar chale jaana" laparwahi nahi hai. Yeh *bahut bade scale pe crop rotation* hai — land ko chemicals dene ke bajaye use rest dena.
 
@@ -90,6 +62,12 @@ turns:
 
       Yeh *labour-intensive* hai: chhote plot pe bahut saare haath, high doses of biochemical inputs (fertilisers, better seeds) aur **irrigation**, taaki har square metre se zyaada output nikle. Goal wahi — family ka pet bharna — par method bilkul ulta.
 
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c1l1-intensive-fields.png
+    caption: "Chhote-chhote plots ek doosre se sate hue, haath se kaam — intensive farming har metre ko squeeze karti hai kyunki phailne ki jagah hi nahi bachi."
+
   - type: tutor_message
     persona: nova
     text: |
@@ -98,33 +76,6 @@ turns:
       Toh farmer unhe farm kyun karta rehta hai? Kyunki aksar *koi alternative livelihood hi nahi hota*. Farmer us simat-te patch se phir bhi maximum output squeeze karta hai — jo land pe **bahut zyaada pressure** daalta hai.
 
       Ek *subtle baat* pakdo: dono subsistence farming hain, dono khaane ke liye ugaate hain. Par primitive farming **move kar ke** survive karti hai; intensive farming **squeeze kar ke**.
-
-  - type: svg_graphic
-    xp: 0
-    title: "MOVE YA SQUEEZE"
-    caption: "Survive karne ke do tareeke — yeh decide hota hai ki kitni land hai, aur kitne pet."
-    svg: |
-      <svg viewBox="0 0 360 210" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
-        <rect x="14" y="14" width="160" height="182" rx="10" fill="#dcfce7" stroke="#0f172a" stroke-width="1.5"/>
-        <rect x="186" y="14" width="160" height="182" rx="10" fill="#e0e7ff" stroke="#0f172a" stroke-width="1.5"/>
-
-        <text x="94" y="40" text-anchor="middle" font-size="13" font-weight="bold" fill="#166534">PRIMITIVE</text>
-        <text x="94" y="56" text-anchor="middle" font-size="10" fill="#374151">survives by MOVING</text>
-        <text x="266" y="40" text-anchor="middle" font-size="13" font-weight="bold" fill="#3730a3">INTENSIVE</text>
-        <text x="266" y="56" text-anchor="middle" font-size="10" fill="#374151">survives by SQUEEZING</text>
-
-        <text x="30" y="86" font-size="11" fill="#0f172a">• small patch, hand tools</text>
-        <text x="30" y="108" font-size="11" fill="#0f172a">• monsoon + natural soil</text>
-        <text x="30" y="130" font-size="11" fill="#0f172a">• shifts when soil tires</text>
-        <text x="30" y="152" font-size="11" fill="#0f172a">• land plenty, people few</text>
-        <text x="30" y="174" font-size="11" fill="#166534">• low input, low output</text>
-
-        <text x="202" y="86" font-size="11" fill="#0f172a">• tiny plot, many hands</text>
-        <text x="202" y="108" font-size="11" fill="#0f172a">• irrigation + biochemicals</text>
-        <text x="202" y="130" font-size="11" fill="#0f172a">• stays, works it harder</text>
-        <text x="202" y="152" font-size="11" fill="#0f172a">• land scarce, people many</text>
-        <text x="202" y="174" font-size="11" fill="#3730a3">• high input, high pressure</text>
-      </svg>
 
   - type: mcq
     xp: 15

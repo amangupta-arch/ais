@@ -46,11 +46,20 @@ a system — shaped by nature and people, and reformable."*
   farming-systems spectrum (subsistence → commercial → plantation) is the
   spine; every crop and reform is read against *who the farm feeds and who
   it sells to.*
-- **Recurring visuals:** the **farming-systems spectrum** (subsistence ↔
-  commercial); the **cropping-calendar wheel** (Rabi / Kharif / Zaid); and
-  **India crop-distribution maps** (rice, wheat, etc., mirroring NCERT's
-  shaded "major / minor area" maps). Authored as inline `svg_graphic`;
-  motion via inline `html_animation` (CSS keyframes, no external assets).
+- **Visuals = cowork photos, NOT inline SVG.** Operator decision: this
+  bundle uses the working cowork → `lesson-images` image flow for every
+  visual. No `svg_graphic`, no `html_animation`. `media` turns point at
+  `…/lesson-images/b-class-10-geography-ch04-agriculture/<file>`; the
+  generation prompts live in
+  `_briefs/b-class-10-geography-ch04-agriculture-image-prompts.md` (→ Drive
+  `cowork_images/class10-geo-ch04-courseN.md`). Strong photo subjects: a jhum
+  hillside, a tea/banana plantation, a rice paddy vs a wheat field, a cotton
+  boll, Vinoba Bhave on padyatra.
+- **Structure is content-driven, not templated.** Turn count, number of
+  images, and interaction mix vary per lesson — author what the content needs
+  (a dense crop lesson may want more images + a tap-to-match; a story lesson
+  like Bhoodan-Gramdan may be mostly narration). No fixed "15 turns / 2 images
+  / 5 interactions" mould.
 - **Voice anchors (from the style anchor,
   `prime-factorization/01-...yaml`):** direct second person; concrete
   before abstract; ONE sustained metaphor per lesson; italics for *subtle
@@ -177,16 +186,16 @@ that reshaped Indian agriculture, and retell the Bhoodan–Gramdan movement.
    **Gramdan**; some land-owners give from fear of the land-ceiling act;
    the **Blood-less Revolution**. *Metaphor: land as a gift, not a seizure.*
 
-## Photo slots (pending operator image deploy)
+## Images (cowork flow — images-first, no SVG)
 
-Following Ch.1–3: inline SVG + html_animation carry every lesson; real
-photos ship later via the operator's cowork → Supabase `lesson-images`
-flow (I emit prompts; operator generates; `scripts/upload-lesson-images.ts`
-→ public URLs; I add `media` turns). NO `media` turns ship until a source
-URL exists (a dead URL fails Zod / 404s). High-value photo slots:
-jhumming hillside (C1L1); a tea/banana plantation (C1L2); rice paddy vs
-wheat field (C2L1); a cotton boll / jute retting (C2L4); Vinoba Bhave on
-padyatra (C3L2).
+Every visual is a cowork-generated photo. Lessons ship `media` turns with
+the **predicted** public URL
+(`…/lesson-images/b-class-10-geography-ch04-agriculture/c{C}l{L}-<slug>.png`);
+the URL is valid for Zod and resolves once the operator uploads the PNG, so
+**load lessons to prod only after the images are uploaded** (the same order
+Ch.3 used). All prompts + the file/placement manifest live in
+`_briefs/b-class-10-geography-ch04-agriculture-image-prompts.md`, appended
+per lesson as it's authored.
 
 ## Audio
 
@@ -212,6 +221,12 @@ the first time.
   because it's the chapter's bulk; Reforms gets 2 (reforms + the
   Bhoodan-Gramdan story, which the source gives a full box).
 - **`medium: [en, hinglish]`** from day one (mirrors Ch.1–3).
+- **Visuals = cowork photos only; no `svg_graphic` / `html_animation`**
+  (operator decision). Structure content-driven, not a fixed turn/image mould.
+- **C1L1 authored** (EN + behavioural Hinglish): 15 turns, 2 photos
+  (`c1l1-slash-and-burn`, `c1l1-intensive-fields`), mcq/tap/exercise/fill/
+  reflection. Serves as the behavioural-Hinglish + image-flow sample for
+  operator sign-off before the remaining 8 lessons.
 - *(append after each lesson as authored)*
 
 ## Build status / how to apply
