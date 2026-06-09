@@ -32,6 +32,8 @@ natural light, 16:9, **no text / no captions / no watermarks** in the image.
 | `c2l3-fruit-market.png` | 16:9 | core | C2L3 Cash Crops, after turn 9 |
 | `c2l4-rubber-tapping.png` | 16:9 | core | C2L4 Fibres and Rubber, after turn 2 |
 | `c2l4-cotton-bolls.png` | 16:9 | core | C2L4 Fibres and Rubber, after turn 6 |
+| `c3l1-farm-machinery.png` | 16:9 | core | C3L1 Technological & Institutional Reforms, after turn 5 |
+| `c3l2-vinoba-padyatra.png` | 16:9 | core | C3L2 Bhoodan-Gramdan, after turn 3 |
 
 ## Prompts
 
@@ -102,4 +104,10 @@ natural light, 16:9, **no text / no captions / no watermarks** in the image.
 ### `c2l4-cotton-bolls.png`
 > Documentary photograph of a cotton field in the black soil of the Deccan, fluffy white cotton bolls burst open on green plants in the foreground, bright sunshine. Realistic, 16:9, no text.
 
-<!-- Append new files here as each lesson is authored. -->
+### `c3l1-farm-machinery.png`
+> Documentary photograph of a tractor pulling a seed drill across a ploughed field in Punjab, dust rising, a farmer driving, modern mechanised agriculture of the Green Revolution era, clear day. Realistic, 16:9, no text.
+
+### `c3l2-vinoba-padyatra.png`
+> Documentary-style photograph (mid-20th-century rural India) of an elderly Gandhian leader in simple white khadi and round glasses, walking barefoot along a dusty village road with a wooden staff, a small group of followers behind, fields on either side, soft warm light. Dignified, humble. Generic likeness (not a specific identifiable person). Realistic, 16:9, no text.
+
+<!-- All 9 lessons authored. Append here if future edits add images. -->

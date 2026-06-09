@@ -231,8 +231,16 @@ the first time.
 
 ## Build status / how to apply
 
-- **Authored so far:** scaffolding (this brief, bundle YAML, migration).
-  Lessons: pending.
+- **Authored: ALL 9 lessons** (EN + behavioural Hinglish), schema-valid,
+  full EN/HI turn parity. Content-driven shape (turn counts 13–15, images
+  1–3 per lesson). 17 cowork photos total; prompts emitted to Drive
+  `cowork_images/class10-geo-ch04-course{1,2,3}.md`. No SVG anywhere.
+  - C1: Subsistence; Commercial & Plantation; Cropping Calendar.
+  - C2: Rice & Wheat; Millets/Maize/Pulses; Cash Crops & Beverages; Fibres & Rubber.
+  - C3: Technological & Institutional Reforms; Bhoodan–Gramdan.
+- **Still pending:** operator uploads the 17 PNGs to the `lesson-images`
+  bucket, then load (migration → bundle-courses → lessons). Audio worklist
+  not yet emitted.
 - To apply once lessons land (mirrors Ch.1–3):
   1. Apply migration `0023_student_plan_class10_geo_ch04.sql`.
   2. `npx tsx scripts/load-bundle-courses.ts` → applies the bundle/course

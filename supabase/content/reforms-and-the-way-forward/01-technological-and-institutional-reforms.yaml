@@ -1,0 +1,140 @@
+title: "Technological and Institutional Reforms"
+subtitle: "Why India had to fix farming with two tools at once — new machines and new rules"
+estimated_minutes: 11
+xp_reward: 90
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      India has farmed for *thousands of years*. So here's an uncomfortable question: after Independence, why was farming still leaving most farmers poor and entirely at the mercy of the monsoon?
+
+      Because growing food was never the only problem. The whole *system* around the farmer — the rules, the credit, the technology — needed fixing. This lesson is about that fix.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The diagnosis: using the land for centuries *without* matching **techno-institutional changes** had **held agriculture back**. Most farmers still depended on the monsoon and the soil's natural fertility — and a fast-growing population made that fragile.
+
+      Remember, agriculture provides a livelihood for **more than 60% of India's people**. Fixing it needed *two* kinds of reform at once: **technological** (new tools) and **institutional** (new rules).
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Start with the **institutional** reforms — the *rules*. Right after Independence, India tried **collectivisation, consolidation of holdings, cooperation, and the abolition of zamindari**. In fact, **'land reform' was the main focus of the First Five Year Plan**.
+
+      Why consolidate? Because the *right of inheritance* had chopped land into tiny scattered plots, generation after generation — so the scattered pieces had to be pulled back together.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      But here's the disappointment. The laws of land reform were **enacted** — written, passed, made official — yet their **implementation was lacking or lukewarm**.
+
+      It's a hard lesson: a good rule *on paper* doesn't fix a farm by itself. Someone has to actually carry it out.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      So in the **1960s and 70s** came the **technological** reforms — the *tools*. Two big strategies: the **Green Revolution**, based on *package technology* (HYV seeds, fertilisers, irrigation together), and the **White Revolution (Operation Flood)** for milk.
+
+      They lifted output dramatically. But there was a catch: this development got **concentrated in a few selected areas** — some regions raced ahead while others were left behind.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c3l1-farm-machinery.png
+    caption: "A tractor-drawn seed drill at work — the kind of 'package technology' the Green Revolution put into Indian fields in the 1960s and 70s."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      To fix that lopsidedness, the **1980s and 90s** brought a *comprehensive* land-development programme that combined **both** institutional and technical reforms.
+
+      It introduced **crop insurance** against drought, flood, cyclone, fire and disease, and set up **Grameen banks, cooperative societies and banks** to give farmers loans at **lower rates of interest** — so a bad season wouldn't wipe a family out.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Then came the farmer-support toolkit worth memorising. The **Kisan Credit Card (KCC)** and the **Personal Accident Insurance Scheme (PAIS)**. Special **weather bulletins** and farming programmes on **radio and TV**.
+
+      And crucially, the government announces a **minimum support price (MSP)** plus remunerative and procurement prices — a price floor that protects farmers from being cheated by **speculators and middlemen**.
+
+  - type: mcq
+    xp: 15
+    question: "Which one of these is an *institutional* reform (a change in rules/ownership), not a technological one?"
+    options:
+      - id: a
+        text: "Abolition of zamindari"
+        is_correct: true
+        rationale: "Right — abolishing the zamindari system changed who owns and controls land. That's an institutional reform, a focus of the First Five Year Plan."
+      - id: b
+        text: "Green Revolution / HYV seeds"
+        is_correct: false
+        rationale: "That's a *technological* reform — better seeds and package technology, not a change in rules or ownership."
+      - id: c
+        text: "Chemical fertilisers and irrigation"
+        is_correct: false
+        rationale: "These are technological inputs that raise yield, not institutional changes."
+      - id: d
+        text: "Tractors and seed drills"
+        is_correct: false
+        rationale: "Machinery is technology. Institutional reforms are about land rules — like consolidation of holdings or abolishing zamindari."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Match each government scheme to what it does for the farmer."
+    left:
+      - { id: l1, label: "Kisan Credit Card (KCC)" }
+      - { id: l2, label: "Crop insurance" }
+      - { id: l3, label: "Minimum Support Price (MSP)" }
+    right:
+      - { id: r1, label: "Access to credit / loans" }
+      - { id: r2, label: "Protection against drought, flood, disease" }
+      - { id: r3, label: "A price floor against speculators and middlemen" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+
+  - type: exercise
+    xp: 20
+    tool: keyboard
+    instruction: |
+      Imagine you advise the government and must **increase agricultural production** without hurting farmers.
+
+      In a few sentences, suggest two specific steps — and for each, say whether it's a **technological** reform (a new tool) or an **institutional** one (a new rule or support scheme). Use ideas from this lesson.
+
+      Type your suggestion below.
+    placeholder: "Step 1 (technological/institutional): ... Step 2: ..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the two kinds of reform."
+    template: |
+      The {{blank-1}} Revolution used package technology — HYV seeds, fertilisers and irrigation — to raise yields. To protect farmers from speculators, the government announces a minimum {{blank-2}} price for important crops.
+    answers:
+      - id: blank-1
+        accepted: ["Green", "green"]
+      - id: blank-2
+        accepted: ["support", "Support"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      The Green Revolution grew far more food — but mostly in a few lucky regions, widening the gap with the rest.
+
+      Is a reform a success if it helps a lot of people but leaves many others behind? There's no right answer. Just weigh it.
+    placeholder: "I think..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can explain how India tried to fix its farms."
+    summary: |
+      Indian farming needed two kinds of reform: *institutional* (abolition of zamindari,
+      consolidation of holdings — strong on paper, weak in practice) and *technological*
+      (the Green and White Revolutions, which boosted output but unevenly). Later schemes
+      — crop insurance, Grameen banks, KCC, PAIS and the MSP — aimed to protect farmers.
+
+      But all of that came from *governments*. There was also a very different kind of
+      reform — one where landlords were persuaded to simply *give their land away*, with
+      no law forcing them. That quiet, bloodless revolution is the final lesson.

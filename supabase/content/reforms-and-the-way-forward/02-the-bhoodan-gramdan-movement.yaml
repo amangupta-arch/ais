@@ -1,0 +1,126 @@
+title: "The Bhoodan Gramdan Movement"
+subtitle: "The revolution that handed out land instead of seizing it — and spilled no blood"
+estimated_minutes: 10
+xp_reward: 85
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Almost every revolution you've read about *took* land — by force, by law, by bloodshed.
+
+      Now here's one that did the opposite. It *gave* land away, one gift at a time, with nobody forced and nobody hurt. It even earned a name for it: the **Blood-less Revolution**. Here's how it happened.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      It centres on one man: **Vinoba Bhave**, whom **Mahatma Gandhi declared his spiritual heir**.
+
+      Bhave was one of the foremost *satyagrahis*, and a devoted believer in **gram swarajya** — the idea of the self-reliant, self-ruling village. He wanted change to rise *from* the village, not be forced *onto* it.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      After Gandhi's martyrdom, Bhave set out to carry his message forward — on foot. He undertook a **padyatra**, a walking march that eventually covered **almost the entire country**.
+
+      Picture an ageing man walking village to village, year after year, talking to ordinary people about land and dignity.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c3l2-vinoba-padyatra.png
+    caption: "An elderly Gandhian leader walking a dusty village road with a small group of followers — the padyatra that carried the Bhoodan idea across India."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The spark struck at **Pochampally**, in Telangana. As Bhave was giving a lecture, some **poor, landless villagers** stood up and asked him directly for land — they needed it just to survive.
+
+      Bhave couldn't promise anything on the spot. But he assured them he would talk to the **Government of India** about providing land, *if* they agreed to do **cooperative farming** on it.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Then came the moment nobody scripted. **Shri Ram Chandra Reddy** suddenly stood up and offered **80 acres** of his own land — to be distributed among **80 landless villagers**, right there.
+
+      That single act of voluntary giving got a name: **Bhoodan** — literally, *land-gift*.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      And it spread. Bhave travelled on, introducing the idea all across India — and it grew bigger. Some **zamindars**, who owned *many* villages, offered to give away **entire villages** to the landless.
+
+      That larger gift earned its own name: **Gramdan** — *village-gift*.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      One honest footnote, because history isn't all halos. Not every landlord gave out of pure idealism. Many handed over *part* of their land out of **fear of the land ceiling act** — the law limiting how much land a single person could legally hold. Give some up willingly, or risk losing more by law.
+
+      But whatever the motive, the result was the same: land moved from those who had too much to those who had none — and not a drop of blood was shed. That is why the **Bhoodan–Gramdan movement**, started by Vinoba Bhave, is remembered as the **Blood-less Revolution**.
+
+  - type: mcq
+    xp: 15
+    question: "What was 'Bhoodan'?"
+    options:
+      - id: a
+        text: "Land voluntarily gifted by its owner to landless villagers."
+        is_correct: true
+        rationale: "Right — Bhoodan means 'land-gift'. It began when Ram Chandra Reddy freely offered 80 acres to 80 landless villagers at Pochampally."
+      - id: b
+        text: "A government law that seized land from all big landlords by force."
+        is_correct: false
+        rationale: "That's the opposite. Bhoodan was *voluntary* giving, not a forced seizure — that's why it was 'bloodless'."
+      - id: c
+        text: "A new high-yielding variety of seed."
+        is_correct: false
+        rationale: "That's the Green Revolution. Bhoodan was about redistributing land, not new seeds."
+      - id: d
+        text: "A heavy tax charged on farmland."
+        is_correct: false
+        rationale: "Bhoodan wasn't a tax. It was land freely *gifted* to the landless."
+
+  - type: drag_to_reorder
+    xp: 15
+    prompt: "Put the story of the Bhoodan–Gramdan movement in the order it happened."
+    items:
+      - { id: s1, label: "Gandhi names Vinoba Bhave his spiritual heir" }
+      - { id: s2, label: "After Gandhi's death, Bhave sets out on a padyatra across India" }
+      - { id: s3, label: "At Pochampally, landless villagers ask Bhave for land" }
+      - { id: s4, label: "Ram Chandra Reddy gifts 80 acres — the first Bhoodan" }
+      - { id: s5, label: "Zamindars give away whole villages — Gramdan" }
+    correct_order: [s1, s2, s3, s4, s5]
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the movement."
+    template: |
+      The first Bhoodan happened when Shri Ram Chandra Reddy gifted {{blank-1}} acres at Pochampally. Because land was redistributed by gift rather than by force, the movement is also called the {{blank-2}} Revolution.
+    answers:
+      - id: blank-1
+        accepted: ["80", "eighty", "Eighty"]
+      - id: blank-2
+        accepted: ["Blood-less", "Bloodless", "blood-less", "bloodless"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Some gave their land out of pure generosity; others gave it only to dodge a law. The landless gained either way.
+
+      Does the *motive* behind a good outcome matter to you — or only the outcome? There's no right answer. This is your call.
+    placeholder: "I think the motive..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Chapter complete — you understand Indian agriculture, field to reform."
+    summary: |
+      The Bhoodan–Gramdan movement, led by Vinoba Bhave, redistributed land to the
+      landless through *gift* rather than force — a bloodless revolution alongside the
+      government's technological and institutional reforms.
+
+      And that closes the chapter. You learned how India farms — from slash-and-burn
+      subsistence to capital-heavy plantations; *when* it farms — the Rabi, Kharif and
+      Zaid seasons; *what* it grows — rice and wheat, the tough millets and pulses, cash
+      crops and beverages, and the non-food fibres; and *how it tried to fix farming* —
+      through new tools, new rules, and one quiet revolution of pure giving. You'll never
+      look at a plate of food, or a cotton shirt, quite the same way again.

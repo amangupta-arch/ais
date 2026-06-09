@@ -1,0 +1,140 @@
+title: "Technological and Institutional Reforms"
+subtitle: "India ko farming do tools se ek saath kyun fix karni padi — naye machines aur naye rules"
+estimated_minutes: 11
+xp_reward: 90
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      India ne *hazaaron saalon* se farming ki hai. Toh ek uncomfortable sawaal: Independence ke baad bhi farming zyaadatar farmers ko gareeb aur poori tarah monsoon ke rahem pe kyun chhod rahi thi?
+
+      Kyunki khaana ugaana kabhi eklauta problem tha hi nahi. Farmer ke aas-paas ka poora *system* — rules, credit, technology — ise fixing chahiye thi. Yeh lesson usi fix ke baare mein hai.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Diagnosis: sadiyon tak land ko *bina* matching **techno-institutional changes** ke use karna **agriculture ko peeche khींch** raha tha. Zyaadatar farmers abhi bhi monsoon aur soil ki natural fertility pe depend karte the — aur tezi se badhti population ne use aur naazuk bana diya.
+
+      Yaad rakho, agriculture **India ke 60% se zyaada logon** ko livelihood deti hai. Ise fix karne ke liye ek saath *do* tarah ke reforms chahiye the: **technological** (naye tools) aur **institutional** (naye rules).
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Shuru karo **institutional** reforms se — *rules*. Independence ke turant baad, India ne **collectivisation, consolidation of holdings, cooperation, aur abolition of zamindari** try kiye. Asal mein, **'land reform' First Five Year Plan ka main focus tha**.
+
+      Consolidate kyun? Kyunki *right of inheritance* ne land ko generation dar generation chhote-chhote bikhre plots mein kaat diya tha — toh un bikhre tukdon ko wapas jodna pada.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Par yeh raha disappointment. Land reform ke laws **enacted** ho gaye — likhe, paas hue, official ban gaye — phir bhi unka **implementation lacking ya lukewarm** raha.
+
+      Yeh ek hard lesson hai: ek achha rule *kaagaz pe* khud-ba-khud farm ko fix nahi karta. Kisi ko use actually carry out karna padta hai.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Toh **1960s aur 70s** mein aaye **technological** reforms — *tools*. Do badi strategies: **Green Revolution**, jo *package technology* (HYV seeds, fertilisers, irrigation saath mein) pe based thi, aur **White Revolution (Operation Flood)** doodh ke liye.
+
+      Inhone output dramatically badha diya. Par ek catch tha: yeh development **kuch selected areas mein concentrate** ho gaya — kuch regions aage nikal gaye jabki baaki peeche reh gaye.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c3l1-farm-machinery.png
+    caption: "Kaam karta hua tractor-driven seed drill — wahi 'package technology' jo Green Revolution ne 1960s-70s mein Indian kheton mein laayi."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Is unevenness ko fix karne ke liye, **1980s aur 90s** mein ek *comprehensive* land-development programme aaya jisne **dono** institutional aur technical reforms ko combine kiya.
+
+      Isne drought, flood, cyclone, fire aur disease ke against **crop insurance** introduce ki, aur **Grameen banks, cooperative societies aur banks** set up kiye taaki farmers ko **lower interest** pe loans milein — taaki ek bura season kisi family ko khatam na kar de.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Phir aayi farmer-support toolkit jo yaad rakhne laayak hai. **Kisan Credit Card (KCC)** aur **Personal Accident Insurance Scheme (PAIS)**. Special **weather bulletins** aur **radio aur TV** pe farming programmes.
+
+      Aur sabse important, government ek **minimum support price (MSP)** plus remunerative aur procurement prices announce karti hai — ek price floor jo farmers ko **speculators aur middlemen** se cheat hone se bachata hai.
+
+  - type: mcq
+    xp: 15
+    question: "Inme se kaunsa ek *institutional* reform hai (rules/ownership mein change), technological nahi?"
+    options:
+      - id: a
+        text: "Abolition of zamindari"
+        is_correct: true
+        rationale: "Sahi — zamindari system ko khatam karna badalta hai ki land kaun own aur control karta hai. Yeh ek institutional reform hai, First Five Year Plan ka focus."
+      - id: b
+        text: "Green Revolution / HYV seeds"
+        is_correct: false
+        rationale: "Yeh ek *technological* reform hai — better seeds aur package technology, rules ya ownership mein change nahi."
+      - id: c
+        text: "Chemical fertilisers aur irrigation"
+        is_correct: false
+        rationale: "Yeh technological inputs hain jo yield badhaate hain, institutional changes nahi."
+      - id: d
+        text: "Tractors aur seed drills"
+        is_correct: false
+        rationale: "Machinery technology hai. Institutional reforms land rules ke baare mein hain — jaise consolidation of holdings ya zamindari khatam karna."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Har government scheme ko us cheez se match karo jo woh farmer ke liye karti hai."
+    left:
+      - { id: l1, label: "Kisan Credit Card (KCC)" }
+      - { id: l2, label: "Crop insurance" }
+      - { id: l3, label: "Minimum Support Price (MSP)" }
+    right:
+      - { id: r1, label: "Credit / loans tak access" }
+      - { id: r2, label: "Drought, flood, disease ke against protection" }
+      - { id: r3, label: "Speculators aur middlemen ke against ek price floor" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+
+  - type: exercise
+    xp: 20
+    tool: keyboard
+    instruction: |
+      Socho tum government ko advise karte ho aur tumhe farmers ko nuksaan pahunchaaye bina **agricultural production badhaani** hai.
+
+      Kuch sentences mein, do specific steps suggest karo — aur har ek ke liye batao ki woh ek **technological** reform hai (naya tool) ya **institutional** (naya rule ya support scheme). Is lesson ke ideas use karo.
+
+      Neeche apni suggestion type karo.
+    placeholder: "Step 1 (technological/institutional): ... Step 2: ..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Do tarah ke reforms ko lock karo."
+    template: |
+      {{blank-1}} Revolution ne package technology — HYV seeds, fertilisers aur irrigation — se yields badhaayi. Farmers ko speculators se bachaane ke liye, government important crops ke liye ek minimum {{blank-2}} price announce karti hai.
+    answers:
+      - id: blank-1
+        accepted: ["Green", "green"]
+      - id: blank-2
+        accepted: ["support", "Support"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Green Revolution ne bahut zyaada khaana ugaya — par mostly kuch lucky regions mein, baaki se gap badha kar.
+
+      Kya ek reform success hai agar woh bahut logon ki madad karta hai par kayi auron ko peeche chhod deta hai? Koi sahi jawaab nahi. Bas tol ke dekho.
+    placeholder: "Mujhe lagta hai..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Ab tum samjha sakte ho ki India ne apne farms fix karne ki kaise koshish ki."
+    summary: |
+      Indian farming ko do tarah ke reforms chahiye the: *institutional* (abolition of zamindari,
+      consolidation of holdings — kaagaz pe strong, practice mein weak) aur *technological*
+      (Green aur White Revolutions, jinhone output badhaaya par unevenly). Baad ki schemes —
+      crop insurance, Grameen banks, KCC, PAIS aur MSP — farmers ko protect karne ke liye thi.
+
+      Par yeh sab *governments* se aaya. Ek bilkul alag tarah ka reform bhi tha — jahan landlords
+      ko apni land bas *de dene* ke liye manaaya gaya, bina kisi law ke force kiye. Woh khaamosh,
+      bloodless revolution hai aakhri lesson.
