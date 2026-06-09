@@ -1,0 +1,141 @@
+title: "The Cropping Calendar"
+subtitle: "Ek Indian farmer jab chahe tab kyun nahi bo sakta"
+estimated_minutes: 10
+xp_reward: 85
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ek cheez jiske baare mein city ka koi bachcha kabhi nahi sochta: ek farmer *jab chahe tab* crop nahi bo sakta.
+
+      Aasmaan decide karta hai. Temperature, rainfall, monsoon ka aana — yeh har crop ko saal ki ek window mein bandh deta hai. Window miss hui, crop gayi.
+
+      Toh India ki farming ek calendar pe chalti hai jisme **teen seasons** hain. Chalo ise padhna seekhte hain.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Teen cropping seasons hain **Rabi**, **Kharif** aur **Zaid**. Inn sabki rhythm ek hi conductor set karta hai: **monsoon**.
+
+      Isse ek clock ki tarah socho jisme teen slots hain — ek winter crop, ek monsoon crop, aur ek short summer crop. Har slot bilkul alag plants ugaata hai.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Rabi — winter crop.** **October aur December** ke beech boya jaata hai, **April aur June** ke beech kaata jaata hai.
+
+      Iske stars: **wheat, barley, peas, gram aur mustard**. Rabi north aur north-west ka hai — **Punjab, Haryana, Himachal Pradesh, Jammu & Kashmir, Uttarakhand aur Uttar Pradesh**.
+
+      Do cheezein iski madad karti hain: *western temperate cyclones* se halki winter rain, aur **Green Revolution**, jisne Punjab, Haryana aur western UP ko rabi powerhouses bana diya.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c1l3-wheat-rabi.png
+    caption: "Spring mein kaatne ke liye taiyaar ek sunehra wheat field — classic rabi crop, jo winter ki thandi mein boya gaya."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Kharif — monsoon crop.** Yeh *monsoon ke onset* ke saath boya jaata hai aur **September–October** mein kaata jaata hai. Yeh bada waala hai.
+
+      Iske crops: **paddy (rice), maize, jowar, bajra, tur (arhar), moong, urad, cotton, jute, groundnut aur soyabean**. Bade rice belts chalte hain **Assam, West Bengal, coastal Odisha, Andhra Pradesh, Telangana, Tamil Nadu, Kerala, Maharashtra ka Konkan coast, aur saath mein Uttar Pradesh aur Bihar** se.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ek dhyaan kheenchne waali detail: **Assam, West Bengal aur Odisha** mein climate itna paddy-friendly hai ki farmers ek hi saal mein *teen* rice crops ugaate hain. Inke naam bhi hain — **Aus, Aman aur Boro**.
+
+      Yeh monsoon ka overtime kaam hai.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c1l3-paddy-kharif.png
+    caption: "Baarish mein ek paani-bhara, chamakta-hara paddy field — kharif season ka dil, jo monsoon aane pe boya jaata hai."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Aur teesra, aasaani se bhool jaane waala season: **Zaid**. Yeh ek *chhota* season hai jo summer months mein, rabi aur kharif ke beech ghusa hua hai.
+
+      Iske crops pyaas bujhaane waale aur jaldi badhne waale hain: **watermelon, muskmelon, cucumber, vegetables aur fodder**. (Sugarcane alag hai — use ugne mein lagbhag *poora saal* lagta hai.)
+
+  - type: mcq
+    xp: 15
+    question: "Inme se kaunsa ek rabi crop hai?"
+    options:
+      - id: a
+        text: "Rice"
+        is_correct: false
+        rationale: "Rice (paddy) ek *kharif* crop hai — monsoon ke saath boya, September–October mein kaata."
+      - id: b
+        text: "Gram"
+        is_correct: true
+        rationale: "Gram winter (Oct–Dec) mein boya aur summer (Apr–Jun) mein kaata jaata hai — ek classic rabi crop, wheat, barley, peas aur mustard ke saath."
+      - id: c
+        text: "Cotton"
+        is_correct: false
+        rationale: "Cotton ek *kharif* crop hai, jo monsoon mein ugta hai."
+      - id: d
+        text: "Watermelon"
+        is_correct: false
+        rationale: "Watermelon ek *zaid* crop hai — chhote summer season mein ugaya jaata hai."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Har crop ko uske cropping season se match karo."
+    left:
+      - { id: l1, label: "Mustard" }
+      - { id: l2, label: "Paddy" }
+      - { id: l3, label: "Muskmelon" }
+    right:
+      - { id: r1, label: "Rabi (winter)" }
+      - { id: r2, label: "Kharif (monsoon)" }
+      - { id: r3, label: "Zaid (short summer)" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      Pata karo (ya yaad karo) ki *abhi* tumhare aas-paas ke kheton mein kya ug raha hai, ya jo aakhri harvest tumhe yaad hai.
+
+      Paper pe nikaalo ki woh kaunse season ka hai — **rabi** (Oct–Dec mein boya), **kharif** (monsoon ke saath boya), ya **zaid** (chhota summer) — aur woh clue do jisse tumhe pata chala. Phir neeche crop aur uska season type karo.
+    placeholder: "Mere aas-paas ... ugaate hain jo ek ... crop hai kyunki ..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Calendar ko lock karo."
+    template: |
+      Rabi crops October aur {{blank-1}} ke beech boye jaate hain aur April aur June ke beech kaate jaate hain. Kharif crops {{blank-2}} ke onset ke saath boye jaate hain.
+    answers:
+      - id: blank-1
+        accepted: ["December", "december", "Dec"]
+      - id: blank-2
+        accepted: ["monsoon", "Monsoon"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Ek farmer ka poora saal us baarish pe tika hota hai jise woh na control kar sakta hai na perfectly predict.
+
+      Apni family ka khaana monsoon ki timing pe daav pe lagana kaisa lagega? Koi sahi jawaab nahi — bas ek pal iske saath baith ke socho.
+    placeholder: "Aisa lagega..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Ab tum India ka teen-season farming clock padh sakte ho."
+    summary: |
+      India teen seasons mein farm karta hai jo monsoon set karta hai: *rabi* (winter — wheat,
+      gram, mustard, Oct–Dec mein boya), *kharif* (monsoon — rice, cotton, maize, Sep–Oct mein
+      kaata, east mein teen paddy crops ke saath), aur *zaid* (short summer — melons,
+      vegetables, fodder).
+
+      Yeh tha *kaise* aur *kab* India farm karta hai. Ab bada sawaal — woh actually ugaata *kya*
+      hai. Hum un do crops se shuru karenge jo desh ka pet sabse zyaada bharte hain: staples,
+      rice aur wheat. Yahi agla course hai.

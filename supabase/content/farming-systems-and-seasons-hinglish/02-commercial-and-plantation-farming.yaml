@@ -1,0 +1,140 @@
+title: "Commercial and Plantation Farming"
+subtitle: "Jaise hi farmer family ke bajaye market ke liye boyega, sab kuch badal jaata hai"
+estimated_minutes: 10
+xp_reward: 85
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Pichhli lesson mein farming ka poora point tha *khaana*. Ab goal bilkul ulta kar do.
+
+      Kya badalta hai jab farmer ek crop family ka pet bharne ke liye nahi — balki **bechne** ke liye lagaata hai?
+
+      Lagbhag sab kuch. Tools, paisa, scale, yahan tak ki *kaun* kaam karta hai. Welcome to gear two: farming as a business.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Yeh hai **commercial farming**, aur iski ek defining cheez simple hai: *higher doses of modern inputs*.
+
+      Matlab **HYV seeds** (high-yielding variety), chemical fertilisers, insecticides aur pesticides — sab **productivity** ko jitna ho sake utna high karne ke liye. Maqsad pet bharna nahi; ek bada, bikne waala surplus hai.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Ab woh part jo students miss karte hain. "Commercial" crop ki property nahi hai. Yeh *jagah* ki property hai.
+
+      Wahi crop ek region mein commercial ho sakta hai aur doosre mein subsistence. **Rice** **Punjab aur Haryana** mein commercial crop hai — modern inputs se ugaya, profit ke liye becha. Par **Odisha** mein wahi rice mostly *subsistence* crop hai — khaane ke liye ugaya.
+
+      Toh yeh mat poocho "kya yeh commercial crop hai?" Poocho "kya ise *yahan* commercially farm kiya ja raha hai?" Commercialisation ka degree region se region badalta hai.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c1l2-commercial-harvest.png
+    caption: "Punjab ke ek bade wheat field mein chalta hua combine harvester — modern inputs, bada surplus, aur sab market ke liye."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Commercial farming ko extreme tak le jaao aur milta hai **plantation** — yeh bhi commercial farming ka ek type hai, par ek special waala.
+
+      Ek plantation *single crop* ko *large area* pe ugaata hai. Isse aise socho jaise **agriculture aur industry ka interface**: yeh farming hai jo factory ki tarah behave karti hai. Crop kisi family ka khaana nahi — yeh ek industry ke liye *raw material* hai.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Plantations ke kuch signature features hain. Yeh **large tracts of land** cover karti hain, **capital-intensive inputs** pe chalti hain, aur kaafi **migrant labourers** pe depend karti hain. Saari produce seedha ek related industry mein jaati hai.
+
+      India mein bade plantation crops hain **tea, coffee, rubber, sugarcane aur banana**. Tea **Assam aur North Bengal** ki plantations pe ugti hai; coffee **Karnataka** mein.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Aur yeh raha woh chhupa hua condition jo plantation ko banata ya bigaadta hai. Kyunki produce *market ke liye* ugayi jaati hai, local thaali ke liye nahi, ek plantation use le jaane ke tareeke ke bina bekaar hai.
+
+      Toh ek **achha transport aur communication network** — jo plantation, processing industry aur market ko jodta hai — zaroori hai. Road kaat do, aur crop sad jaaye. *Yahi* network actually plantations ko develop hone deta hai.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c1l2-tea-plantation.png
+    caption: "Assam ka ek tea estate — ek hi crop poori pahaadiyon pe faila, workers patte tod rahe hain jo seedha factory jaayenge."
+
+  - type: mcq
+    xp: 15
+    question: "Rice Punjab mein commercial crop hai par Odisha mein subsistence crop. Yeh humein kya batata hai?"
+    options:
+      - id: a
+        text: "Rice jis state mein ugta hai uske hisaab se apni biology badal leta hai."
+        is_correct: false
+        rationale: "Plant wahi hai. Jo alag hai woh hai *kaise* aur *kyun* farm kiya jaata hai — market ke liye ya family ke liye."
+      - id: b
+        text: "Farming 'commercial' hai ya nahi, yeh region aur crop kaise ugaya/becha jaata hai uspe depend karta hai, crop pe nahi."
+        is_correct: true
+        rationale: "Bilkul sahi. Commercialisation ka degree region se region badalta hai — wahi crop ek jagah commercial, doosri jagah subsistence."
+      - id: c
+        text: "Odisha ko rice commercially bechne ki ijaazat nahi hai."
+        is_correct: false
+        rationale: "Yeh permission ki baat nahi. Odisha mein rice mostly khaane ke liye ugaya jaata hai; Punjab mein modern inputs se bechne ke liye."
+      - id: d
+        text: "Punjab ek special commercial variety ugaata hai jo Odisha nahi uga sakta."
+        is_correct: false
+        rationale: "Fark farming system aur market orientation ka hai, kisi secret variety ka nahi."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Har plantation crop ko us region se match karo jisse chapter ise jodta hai."
+    left:
+      - { id: l1, label: "Tea" }
+      - { id: l2, label: "Coffee" }
+    right:
+      - { id: r1, label: "Assam & North Bengal" }
+      - { id: r2, label: "Karnataka" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      Apne state mein ya aas-paas ugne waala koi ek crop chuno — rice, wheat, sugarcane, cotton, tea, kuch bhi.
+
+      Paper pe argue karo ki woh wahan **commercially** farm hota hai (modern inputs, mainly bechne ke liye) ya **subsistence** ke liye (mostly ugaane waala khud khaata hai). Ek reason do. Phir, agar woh plantation crop hai, toh note karo uski produce kis *industry* ko feed karti hai.
+
+      Neeche apna crop aur apna verdict type karo.
+    placeholder: "Crop hai ... aur yeh ... farm hota hai kyunki ..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Do ideas ko lock karo."
+    template: |
+      Ek {{blank-1}} single crop ko large area pe ugaata hai aur agriculture aur industry ke interface ki tarah behave karta hai. Kyunki plantation produce market ke liye ugayi jaati hai, use le jaane ke liye {{blank-2}} aur communication ka achha network zaroori hai.
+    answers:
+      - id: blank-1
+        accepted: ["plantation", "Plantation"]
+      - id: blank-2
+        accepted: ["transport", "Transport"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Ek plantation worker din bhar tea plucking karta hai, par woh tea door kahin ek branded product ban kar kai guna zyaada keemat pe bikti hai.
+
+      Tumhe lagta hai us value ka zyaadatar hissa kaun le jaata hai — grower, picker, ya industry? Koi fixed jawaab nahi. Bas soch ke dekho.
+    placeholder: "Mujhe lagta hai..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Ab tum kisi bhi farm ko subsistence-se-commercial spectrum pe rakh sakte ho."
+    summary: |
+      Commercial farming matlab *market* ke liye ugaana, heavy modern inputs ke saath — aur
+      koi crop commercial hai ya nahi, yeh *region* pe depend karta hai, plant pe nahi. Iska
+      sabse extreme form hai *plantation*: ek crop, bahut bada area, capital aur migrant
+      labour, produce jo industry ko feed karti hai, aur sab ek transport network pe chalta hai.
+
+      Toh ab hum jaante hain India *kaise* farm karta hai — khaane se bechne tak. Par har crop
+      ka ek *clock* bhi hota hai: use saal ke kuch khaas time pe hi boya aur kaata ja sakta hai.
+      Yeh timing kaun decide karta hai, aur India ke farming seasons kaunse hain? Yahi agli lesson hai.

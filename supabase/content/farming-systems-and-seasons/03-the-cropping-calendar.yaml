@@ -1,0 +1,141 @@
+title: "The Cropping Calendar"
+subtitle: "Why an Indian farmer can't just plant whenever they like"
+estimated_minutes: 10
+xp_reward: 85
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here's something a city kid never thinks about: a farmer can't just plant a crop *whenever* they feel like it.
+
+      The sky decides. Temperature, rainfall, the arrival of the monsoon — these lock each crop into a window of the year. Miss the window, lose the crop.
+
+      So India's farming runs on a calendar with **three seasons**. Let's learn to read it.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The three cropping seasons are **Rabi**, **Kharif** and **Zaid**. One conductor sets the rhythm for all of them: the **monsoon**.
+
+      Think of it as a clock with three slots — a winter crop, a monsoon crop, and a short summer crop. Each grows a completely different set of plants.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Rabi — the winter crop.** Sown between **October and December**, harvested between **April and June**.
+
+      Its stars: **wheat, barley, peas, gram and mustard**. Rabi belongs to the north and north-west — **Punjab, Haryana, Himachal Pradesh, Jammu & Kashmir, Uttarakhand and Uttar Pradesh**.
+
+      Two things help it along: gentle winter rain from the *western temperate cyclones*, and the **Green Revolution**, which made Punjab, Haryana and western UP rabi powerhouses.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c1l3-wheat-rabi.png
+    caption: "A golden wheat field ready to harvest in spring — the classic rabi crop, sown in the cool of winter."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Kharif — the monsoon crop.** It's sown with the *onset of the monsoon* and harvested in **September–October**. This is the big one.
+
+      Its crops: **paddy (rice), maize, jowar, bajra, tur (arhar), moong, urad, cotton, jute, groundnut and soyabean**. The great rice belts run through **Assam, West Bengal, coastal Odisha, Andhra Pradesh, Telangana, Tamil Nadu, Kerala, the Konkan coast of Maharashtra, plus Uttar Pradesh and Bihar**.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      One striking detail: in **Assam, West Bengal and Odisha**, the climate is so paddy-friendly that farmers grow *three* rice crops in a single year. They even have names — **Aus, Aman and Boro**.
+
+      That's the monsoon working overtime.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c1l3-paddy-kharif.png
+    caption: "A flooded, bright-green paddy field in the rains — the heart of the kharif season, sown as the monsoon arrives."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      And the third, easy-to-forget season: **Zaid**. It's a *short* season squeezed into the summer months, between rabi and kharif.
+
+      Its crops are the thirst-quenchers and quick growers: **watermelon, muskmelon, cucumber, vegetables and fodder**. (Sugarcane is the odd one out — it takes almost a *whole year* to grow.)
+
+  - type: mcq
+    xp: 15
+    question: "Which one of these is a rabi crop?"
+    options:
+      - id: a
+        text: "Rice"
+        is_correct: false
+        rationale: "Rice (paddy) is a *kharif* crop — sown with the monsoon, harvested in September–October."
+      - id: b
+        text: "Gram"
+        is_correct: true
+        rationale: "Gram is sown in winter (Oct–Dec) and harvested in summer (Apr–Jun) — a classic rabi crop, alongside wheat, barley, peas and mustard."
+      - id: c
+        text: "Cotton"
+        is_correct: false
+        rationale: "Cotton is a *kharif* crop, grown through the monsoon."
+      - id: d
+        text: "Watermelon"
+        is_correct: false
+        rationale: "Watermelon is a *zaid* crop — grown in the short summer season."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Match each crop to its cropping season."
+    left:
+      - { id: l1, label: "Mustard" }
+      - { id: l2, label: "Paddy" }
+      - { id: l3, label: "Muskmelon" }
+    right:
+      - { id: r1, label: "Rabi (winter)" }
+      - { id: r2, label: "Kharif (monsoon)" }
+      - { id: r3, label: "Zaid (short summer)" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      Look up (or recall) what's growing in the fields near you *right now*, or in the last harvest you remember.
+
+      On paper, work out which season it belongs to — **rabi** (sown Oct–Dec), **kharif** (sown with the monsoon), or **zaid** (short summer) — and give the clue that tells you. Then type the crop and its season below.
+    placeholder: "Near me they grow ... which is a ... crop because ..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the calendar."
+    template: |
+      Rabi crops are sown between October and {{blank-1}} and harvested between April and June. Kharif crops are sown with the onset of the {{blank-2}}.
+    answers:
+      - id: blank-1
+        accepted: ["December", "december", "Dec"]
+      - id: blank-2
+        accepted: ["monsoon", "Monsoon"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      A farmer's whole year is dictated by rain they can't control or predict perfectly.
+
+      How would it feel to bet your family's food on the timing of the monsoon? There's no right answer — just sit with it for a moment.
+    placeholder: "It would feel..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can read India's three-season farming clock."
+    summary: |
+      India farms in three seasons set by the monsoon: *rabi* (winter — wheat, gram,
+      mustard, sown Oct–Dec), *kharif* (monsoon — rice, cotton, maize, harvested
+      Sep–Oct, with three paddy crops in the east), and *zaid* (short summer — melons,
+      vegetables, fodder).
+
+      That's *how* and *when* India farms. Now for the big one — *what* it actually
+      grows. We start with the two crops that feed the country more than any other: the
+      staples, rice and wheat. That's the next course.

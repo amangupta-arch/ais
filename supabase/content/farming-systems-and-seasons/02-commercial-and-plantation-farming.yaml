@@ -1,0 +1,140 @@
+title: "Commercial and Plantation Farming"
+subtitle: "What changes the moment a farmer plants for the market instead of the family"
+estimated_minutes: 10
+xp_reward: 85
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Last lesson, the whole point of farming was to *eat*. Now flip the goal completely.
+
+      What changes the moment a farmer plants a crop not to feed the family — but to **sell**?
+
+      Almost everything. The tools, the money, the scale, even *who* does the work. Welcome to gear two: farming as a business.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      This is **commercial farming**, and its one defining feature is simple: *higher doses of modern inputs*.
+
+      We're talking **HYV seeds** (high-yielding variety), chemical fertilisers, insecticides and pesticides — all used to push **productivity** as high as possible. The aim isn't a full stomach; it's a big, sellable surplus.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Now here's the part students miss. "Commercial" is *not* a property of the crop. It's a property of the *place*.
+
+      The same crop can be commercial in one region and subsistence in another. **Rice** is a commercial crop in **Punjab and Haryana** — grown with modern inputs, sold for profit. But in **Odisha**, that same rice is mostly a *subsistence* crop — grown to eat.
+
+      So don't ask "is this a commercial crop?" Ask "is it being farmed commercially *here*?" The degree of commercialisation changes from region to region.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c1l2-commercial-harvest.png
+    caption: "A combine harvester rolling through a vast wheat field in Punjab — modern inputs, big surplus, all of it headed for the market."
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Push commercial farming to its extreme and you get the **plantation** — also a type of commercial farming, but a special one.
+
+      A plantation grows a *single crop* on a *large area*. Think of it as the **interface of agriculture and industry**: it's farming that behaves like a factory. The crop isn't food for a family — it's *raw material* for an industry.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Plantations have a signature set of features. They cover **large tracts of land**, run on **capital-intensive inputs**, and lean heavily on **migrant labourers**. All the produce feeds straight into a related industry.
+
+      In India the big plantation crops are **tea, coffee, rubber, sugarcane and banana**. Tea grows on the plantations of **Assam and North Bengal**; coffee in **Karnataka**.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      And here's the hidden condition that makes or breaks a plantation. Because the produce is grown *for the market*, not the local pot, a plantation is useless without a way to move it.
+
+      So a **well-developed network of transport and communication** — connecting the plantation, the processing industry, and the market — is essential. Cut the road, and the crop rots. *That* network is what actually lets plantations develop.
+
+  - type: media
+    xp: 0
+    kind: image
+    url: https://dfdocnhhxrnvblbwwium.supabase.co/storage/v1/object/public/lesson-images/b-class-10-geography-ch04-agriculture/c1l2-tea-plantation.png
+    caption: "A tea estate in Assam — a single crop blanketing the hills, with workers plucking leaves bound straight for the factory."
+
+  - type: mcq
+    xp: 15
+    question: "Rice is a commercial crop in Punjab but a subsistence crop in Odisha. What does that tell us?"
+    options:
+      - id: a
+        text: "Rice changes its biology depending on the state it grows in."
+        is_correct: false
+        rationale: "The plant is the same. What differs is *how* and *why* it's farmed — for the market or for the family."
+      - id: b
+        text: "Whether farming is 'commercial' depends on the region and how the crop is grown and sold, not on the crop itself."
+        is_correct: true
+        rationale: "Exactly. The degree of commercialisation varies from region to region — the same crop can be commercial in one place, subsistence in another."
+      - id: c
+        text: "Odisha is not allowed to sell rice commercially."
+        is_correct: false
+        rationale: "It's not about permission. In Odisha rice is mostly grown to eat; in Punjab it's grown with modern inputs to sell."
+      - id: d
+        text: "Punjab grows a special commercial variety that Odisha cannot grow."
+        is_correct: false
+        rationale: "The difference is the farming system and market orientation, not a secret variety."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Match each plantation crop to a region the chapter links it with."
+    left:
+      - { id: l1, label: "Tea" }
+      - { id: l2, label: "Coffee" }
+    right:
+      - { id: r1, label: "Assam & North Bengal" }
+      - { id: r2, label: "Karnataka" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      Pick one crop grown in or near your state — rice, wheat, sugarcane, cotton, tea, anything.
+
+      On paper, argue whether it's farmed **commercially** there (modern inputs, grown mainly to sell) or for **subsistence** (mostly eaten by the grower). Give one reason. Then, if it's a plantation crop, note the *industry* its produce feeds.
+
+      Type your crop and your verdict below.
+    placeholder: "The crop is ... and it's farmed ... because ..."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the two ideas."
+    template: |
+      A {{blank-1}} grows a single crop on a large area and behaves like the interface of agriculture and industry. Because plantation produce is grown for the market, a good network of {{blank-2}} and communication is essential to move it.
+    answers:
+      - id: blank-1
+        accepted: ["plantation", "Plantation"]
+      - id: blank-2
+        accepted: ["transport", "Transport"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      A plantation worker plucks tea all day, but the tea is sold far away as a branded product worth many times more.
+
+      Who do you think captures most of that value — the grower, the picker, or the industry? There's no fixed answer. Just think it through.
+    placeholder: "I think..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can place any farm on the subsistence-to-commercial spectrum."
+    summary: |
+      Commercial farming means growing for the *market* with heavy modern inputs — and
+      whether a crop counts as commercial depends on the *region*, not the plant. Its
+      most extreme form is the *plantation*: one crop, a huge area, capital and migrant
+      labour, produce feeding an industry, all riding on a transport network.
+
+      So now we know *how* India farms — from eating to selling. But every crop also has
+      a *clock*: it can only be planted and harvested at certain times of year. What
+      decides that timing, and what are India's farming seasons? That's the next lesson.

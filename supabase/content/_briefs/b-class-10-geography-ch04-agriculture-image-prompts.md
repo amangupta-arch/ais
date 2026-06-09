@@ -17,8 +17,12 @@ natural light, 16:9, **no text / no captions / no watermarks** in the image.
 
 | file | aspect | tier | placement |
 |---|---|---|---|
-| `c1l1-slash-and-burn.png` | 16:9 | core | C1L1 (Subsistence Farming), after turn 3 |
-| `c1l1-intensive-fields.png` | 16:9 | core | C1L1 (Subsistence Farming), after turn 7 |
+| `c1l1-slash-and-burn.png` | 16:9 | core | C1L1 Subsistence Farming, after turn 3 |
+| `c1l1-intensive-fields.png` | 16:9 | core | C1L1 Subsistence Farming, after turn 7 |
+| `c1l2-commercial-harvest.png` | 16:9 | core | C1L2 Commercial & Plantation, after turn 3 |
+| `c1l2-tea-plantation.png` | 16:9 | core | C1L2 Commercial & Plantation, after turn 7 |
+| `c1l3-wheat-rabi.png` | 16:9 | core | C1L3 Cropping Calendar, after turn 3 |
+| `c1l3-paddy-kharif.png` | 16:9 | core | C1L3 Cropping Calendar, after turn 6 |
 
 ## Prompts
 
@@ -36,5 +40,30 @@ natural light, 16:9, **no text / no captions / no watermarks** in the image.
 > together, separated by narrow raised mud bunds, a few farmers working by hand,
 > no tractors or machinery, a small village at the edge. Lush, crowded,
 > hand-tended feel. Realistic, photojournalistic, 16:9, no text.
+
+### `c1l2-commercial-harvest.png`
+> Documentary photograph of large-scale commercial wheat farming in Punjab,
+> India: a big red combine harvester moving through a vast golden ripe wheat
+> field, dust and chaff in the air, flat horizon, bright clear day. Modern,
+> mechanised, abundant. Realistic, photojournalistic, 16:9, no text.
+
+### `c1l2-tea-plantation.png`
+> Documentary photograph of a tea plantation in Assam, India: neat endless rows
+> of bright-green tea bushes carpeting gently rolling hills, a few women tea
+> pluckers in colourful saris with cane baskets on their backs, soft morning
+> mist behind. Lush, orderly, large-scale. Realistic, photojournalistic, 16:9,
+> no text.
+
+### `c1l3-wheat-rabi.png`
+> Documentary photograph of a ripe golden wheat field in north India in spring,
+> ready for harvest, heavy nodding ears of wheat in the foreground, warm clear
+> light, gentle breeze. Calm and abundant. Realistic, photojournalistic, 16:9,
+> no text.
+
+### `c1l3-paddy-kharif.png`
+> Documentary photograph of a flooded, vivid-green rice paddy field during the
+> monsoon in India: level water-filled fields reflecting a grey rain-cloud sky,
+> young rice seedlings, a farmer transplanting by hand, lush and wet. Realistic,
+> photojournalistic, 16:9, no text.
 
 <!-- Append new files here as each lesson is authored. -->
