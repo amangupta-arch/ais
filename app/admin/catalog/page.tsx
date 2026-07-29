@@ -77,6 +77,36 @@ function adminClient() {
   return createServiceClient(url, key, { auth: { persistSession: false } });
 }
 
+// Fetch every row of a table in 1000-row pages. Supabase Cloud
+// silently caps un-ranged SELECTs at max-rows server-side, so an
+// un-paginated .select() will truncate once the lessons table grows
+// past the cap. Same pattern as app/database-schema/page.tsx.
+type AdminClient = NonNullable<ReturnType<typeof adminClient>>;
+
+async function fetchAll<T>(
+  admin: AdminClient,
+  table: string,
+  select: string,
+  orderBy: { column: string; ascending: boolean; nullsFirst?: boolean },
+  pageSize = 1000,
+): Promise<T[]> {
+  const all: T[] = [];
+  for (let offset = 0; ; offset += pageSize) {
+    const { data, error } = await admin
+      .from(table)
+      .select(select)
+      .order(orderBy.column, {
+        ascending: orderBy.ascending,
+        nullsFirst: orderBy.nullsFirst ?? false,
+      })
+      .range(offset, offset + pageSize - 1);
+    if (error || !data || data.length === 0) break;
+    all.push(...(data as unknown as T[]));
+    if (data.length < pageSize) break;
+  }
+  return all;
+}
+
 async function loadCatalog(): Promise<{
   bundles: BundleRow[];
   coursesByBundle: Map<string | null, CourseRow[]>;
@@ -91,30 +121,26 @@ async function loadCatalog(): Promise<{
     };
   }
 
-  const [bundlesRes, coursesRes, lessonsRes] = await Promise.all([
-    admin
-      .from("bundles")
-      .select(
-        "id, slug, plan_tier, emoji, order_index, is_published, tags, translations",
-      )
-      .order("order_index", { ascending: true, nullsFirst: false }),
-    admin
-      .from("courses")
-      .select(
-        "id, bundle_id, slug, category, tags, plan_tier, emoji, order_index, is_published, lesson_count, translations",
-      )
-      .order("order_index", { ascending: true, nullsFirst: false }),
-    admin
-      .from("lessons")
-      .select(
-        "id, course_id, slug, order_index, is_published, estimated_minutes, xp_reward, translations",
-      )
-      .order("order_index", { ascending: true }),
+  const [bundles, courses, lessons] = await Promise.all([
+    fetchAll<BundleRow>(
+      admin,
+      "bundles",
+      "id, slug, plan_tier, emoji, order_index, is_published, tags, translations",
+      { column: "order_index", ascending: true },
+    ),
+    fetchAll<CourseRow>(
+      admin,
+      "courses",
+      "id, bundle_id, slug, category, tags, plan_tier, emoji, order_index, is_published, lesson_count, translations",
+      { column: "order_index", ascending: true },
+    ),
+    fetchAll<LessonRow>(
+      admin,
+      "lessons",
+      "id, course_id, slug, order_index, is_published, estimated_minutes, xp_reward, translations",
+      { column: "order_index", ascending: true },
+    ),
   ]);
-
-  const bundles = (bundlesRes.data ?? []) as BundleRow[];
-  const courses = (coursesRes.data ?? []) as CourseRow[];
-  const lessons = (lessonsRes.data ?? []) as LessonRow[];
 
   const coursesByBundle = new Map<string | null, CourseRow[]>();
   for (const c of courses) {
