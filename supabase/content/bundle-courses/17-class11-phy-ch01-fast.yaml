@@ -1,0 +1,38 @@
+# Class 11 Physics — Chapter 1: Units and Measurements (NCERT, rationalised).
+# FAST TRACK bundle — for learners who already know all prior-class concepts
+# (metric system, powers of ten, basic algebra/trig). Pairs with the Ground-Up
+# bundle (18-class11-phy-ch01-ground.yaml), which teaches the same chapter from
+# zero. Operator decision: two separate bundles, learner picks the door.
+#
+# Lives on the 'student' plan tier (from migration 0014); bundle row seeded in
+# migration 0024. board + medium sync into tags. medium [en] this pass.
+# track:fast-track tag distinguishes it from the Ground-Up bundle.
+#
+# Visuals are inline SVG / html_animation (physics needs precise labelled
+# diagrams); no cowork images.
+
+bundles:
+  - bundle_slug: b-class-11-physics-ch01-units-and-measurements-fast
+    board: cbse
+    medium: [en]
+    courses:
+      - title: "Measuring Reality"
+        outcome: "Student can define a physical quantity, tell fundamental from derived units, name the SI base units and their constant-based definitions, and reason fluently in orders of magnitude"
+        lessons:
+          - "What Is a Physical Quantity"
+          - "The SI System of Units"
+          - "Orders of Magnitude"
+
+      - title: "Honest Numbers"
+        outcome: "Student can count significant figures, apply them correctly through arithmetic and rounding, and quantify the accuracy and errors of a measurement"
+        lessons:
+          - "Significant Figures"
+          - "Arithmetic with Significant Figures"
+          - "Errors in Measurement"
+
+      - title: "The Dimensional Lie-Detector"
+        outcome: "Student can write the dimensional formula of any quantity, check an equation for dimensional consistency, and use dimensional analysis to derive relations and convert units"
+        lessons:
+          - "Dimensions and Dimensional Formulae"
+          - "Checking Equations with Dimensions"
+          - "Dimensional Analysis in Action"

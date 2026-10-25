@@ -1,0 +1,38 @@
+# Class 11 Physics — Chapter 1: Units and Measurements (NCERT, rationalised).
+# GROUND-UP bundle — for learners who do NOT already know prior-class concepts.
+# Teaches the same chapter as the Fast Track bundle (17-class11-phy-ch01-fast.yaml)
+# but builds every prerequisite as it is needed (what a unit is, powers of ten,
+# ratios, estimation) before layering on the physics. Gentler, more worked
+# examples, smaller steps. Operator decision: two separate bundles.
+#
+# Lives on the 'student' plan tier (from migration 0014); bundle row seeded in
+# migration 0025. board + medium sync into tags. medium [en] this pass.
+# track:ground-up tag distinguishes it from the Fast Track bundle.
+#
+# Visuals are inline SVG / html_animation; no cowork images.
+
+bundles:
+  - bundle_slug: b-class-11-physics-ch01-units-and-measurements-ground-up
+    board: cbse
+    medium: [en]
+    courses:
+      - title: "Why We Measure"
+        outcome: "Student can explain what a unit is and why standards matter, read and write very large and very small numbers in powers of ten, and tell fundamental from derived units"
+        lessons:
+          - "Measuring Without Rulers"
+          - "The Powers of Ten Superpower"
+          - "Fundamental and Derived Units"
+
+      - title: "Numbers You Can Trust"
+        outcome: "Student can judge how sure a measurement is, count and use significant figures simply, and describe accuracy, precision and error without fear"
+        lessons:
+          - "How Sure Are You"
+          - "Significant Figures Made Simple"
+          - "Errors Without Fear"
+
+      - title: "Units as a Secret Code"
+        outcome: "Student can see the dimensional shape of a quantity, catch a wrong formula using units, and use the units code to convert and build simple relations"
+        lessons:
+          - "Every Quantity Has a Shape"
+          - "Catching Wrong Formulas"
+          - "Using the Units Code"
