@@ -1,0 +1,163 @@
+title: "Checking Equations with Dimensions"
+subtitle: "Catch a wrong formula in five seconds, without touching a single number"
+estimated_minutes: 11
+xp_reward: 95
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      A classmate confidently writes: **distance = speed + time.**
+
+      You can prove it's wrong in five seconds — and you don't need to know *any* numbers. Adding a speed to a time is like adding 3 apples to 2 Tuesdays: the things don't match. That instinct, made rigorous, is the most powerful shortcut in the chapter.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      It's called the **principle of homogeneity of dimensions**:
+
+      > In any correct physical equation, *every term* has the **same dimensions**.
+
+      You can only add, subtract, or equate quantities that share a dimensional code. [L] + [L] is fine. [L] + [T] is meaningless — and instantly flags the equation as wrong.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Run the lie-detector on **v = u + at**:
+
+      - [v] = [L T⁻¹]
+      - [u] = [L T⁻¹]
+      - [a t] = [L T⁻²] × [T] = [L T⁻¹]
+
+      All three terms are [L T⁻¹]. They match → the equation is **dimensionally consistent**. The test passed.
+
+  - type: svg_graphic
+    xp: 0
+    title: "EVERY TERM, SAME CODE"
+    caption: "v = u + at — all three terms reduce to [L T⁻¹], so the equation is homogeneous."
+    svg: |
+      <svg viewBox="0 0 360 90" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="14">
+        <text x="20" y="38" font-family="monospace" fill="#0f172a">v   =   u   +   a t</text>
+        <g font-family="monospace" font-size="12" fill="#166534">
+          <text x="18" y="62">[LT⁻¹]</text>
+          <text x="92" y="62">[LT⁻¹]</text>
+          <text x="166" y="62">[LT⁻¹]</text>
+        </g>
+        <rect x="12" y="48" width="56" height="20" fill="none" stroke="#16a34a" stroke-width="1"/>
+        <rect x="86" y="48" width="56" height="20" fill="none" stroke="#16a34a" stroke-width="1"/>
+        <rect x="160" y="48" width="56" height="20" fill="none" stroke="#16a34a" stroke-width="1"/>
+        <text x="245" y="40" font-size="12" fill="#16a34a">✓ all match</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Try **s = ut + ½at²**:
+
+      - [s] = [L]
+      - [ut] = [L T⁻¹][T] = [L]
+      - [½at²] = [L T⁻²][T²] = [L]
+
+      All [L] → consistent. But notice: the **½ is dimensionless and completely invisible** to this test. Hold that thought — it's the tool's blind spot.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Now watch it **catch a lie**. Someone claims a pendulum's period is t = 2π√(L·g).
+
+      Check the root: √([L] × [L T⁻²]) = √[L² T⁻²] = **[L T⁻¹]** — that's a *speed*, not a time! Wrong.
+
+      The true formula is t = 2π√(L/g): √([L] ÷ [L T⁻²]) = √[T²] = **[T]** ✓. Dimensions caught a flipped g instantly.
+
+  - type: svg_graphic
+    xp: 0
+    title: "THE LIE-DETECTOR FIRES"
+    caption: "√(L·g) comes out as a speed; only √(L/g) comes out as a time."
+    svg: |
+      <svg viewBox="0 0 360 100" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="13">
+        <rect x="8" y="14" width="344" height="32" rx="6" fill="#fef2f2" stroke="#b91c1c"/>
+        <text x="18" y="34" font-family="monospace" fill="#0f172a">t = 2π√(L·g)</text><text x="170" y="34" font-family="monospace" fill="#b91c1c">→ [L T⁻¹]  ✗ a speed</text>
+        <rect x="8" y="54" width="344" height="32" rx="6" fill="#f0fdf4" stroke="#166534"/>
+        <text x="18" y="74" font-family="monospace" fill="#0f172a">t = 2π√(L/g)</text><text x="170" y="74" font-family="monospace" fill="#166534">→ [T]  ✓ a time</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      But respect the tool's limits — it's a **one-way test**:
+
+      - Dimensions **don't** match → the equation is *definitely* wrong.
+      - Dimensions **do** match → it *might* be right, but not guaranteed. The test is blind to dimensionless numbers (that ½, the 2π), so a formula with the right code but a wrong constant sails through.
+
+      **"Dimensionally correct" is not the same as "physically correct."**
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      One more place it bites: the argument of **sin, cos, log, or eˣ must be dimensionless.**
+
+      You can take sin(θ) only if θ is a pure number (an angle is arc/radius — dimensionless). In e^(−t/τ), the ratio t/τ must be dimensionless. Spot a time sitting inside a sine with nothing to cancel it, and you've found another lie.
+
+  - type: mcq
+    xp: 15
+    question: "Which of these equations is NOT dimensionally consistent?"
+    options:
+      - id: a
+        text: "v = u + at"
+        is_correct: false
+        rationale: "This one is consistent — every term is [L T⁻¹]."
+      - id: b
+        text: "s = ut + ½at²"
+        is_correct: false
+        rationale: "Consistent — every term is [L]."
+      - id: c
+        text: "v² = u² + 2a"
+        is_correct: true
+        rationale: "Caught it. [v²] = [L² T⁻²] but [2a] = [L T⁻²] — the term is missing a factor of length. It should be 2as."
+      - id: d
+        text: "v² = u² + 2as"
+        is_correct: false
+        rationale: "Consistent — [v²]=[u²]=[2as]=[L² T⁻²]. This is the correct form."
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the principle and its limit."
+    template: |
+      By the principle of {{blank-1}}, every term in a correct equation has the same {{blank-2}}. If the terms don't match, the equation is definitely {{blank-3}} — but matching does not guarantee it is right.
+    answers:
+      - id: blank-1
+        accepted: ["homogeneity", "Homogeneity"]
+      - id: blank-2
+        accepted: ["dimensions", "Dimensions", "dimension"]
+      - id: blank-3
+        accepted: ["wrong", "Wrong", "incorrect"]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      Dimensionally check the equation **v² = u² + 2as** (v, u = velocities, a = acceleration, s = distance).
+
+      On paper, work out the dimensional formula of each of the three terms and confirm they agree. Then type the shared dimensional formula below.
+    placeholder: "All three terms = [ ... ]"
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Dimensional checking can prove a formula *wrong* with certainty, but can never prove it *right*.
+
+      Where else in life is it far easier to disprove something than to prove it? No right answer — just notice the pattern.
+    placeholder: "It's easier to disprove than prove when..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can audit any formula for dimensional consistency."
+    summary: |
+      The principle of homogeneity says every term in a valid equation carries the same dimensional
+      code — so a mismatch proves a formula wrong on sight, and sin/log/eˣ arguments must be
+      dimensionless. But it's one-way: matching dimensions can still hide a wrong constant, because
+      the test is blind to pure numbers.
+
+      So far you've used dimensions to *check*. The real magic is using them to *create* — to
+      derive an unknown formula and to convert between unit systems, armed with nothing but the
+      codes. That's the final lesson.

@@ -1,0 +1,179 @@
+title: "Dimensions and Dimensional Formulae"
+subtitle: "The hidden genetic code every physical quantity carries"
+estimated_minutes: 12
+xp_reward: 95
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Newton, dyne, pound-force — three different units for the same thing: force. Change the unit system and the *number* changes completely.
+
+      But something underneath never changes. Force is *always* a mass, times a length, divided by a time squared — in every unit system, on every planet. That unchanging recipe is its **dimension**, and it's the most honest description of what a quantity really *is*.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The **dimensions** of a quantity are the powers to which the base quantities must be raised to build it. We use bracket shorthand:
+
+      mass → **[M]**, length → **[L]**, time → **[T]** (plus [A] for current, [K] for temperature).
+
+      The **dimensional formula** just lists those powers. Think of it as the quantity's genetic code — written in the alphabet M, L, T.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Watch one build up, step by step:
+
+      - **velocity** = length ÷ time → **[L T⁻¹]**
+      - **acceleration** = velocity ÷ time → **[L T⁻²]**
+      - **force** = mass × acceleration → **[M L T⁻²]**
+
+      Each new quantity inherits the dimensions of the pieces it's made from. No memorising needed if you know the definition.
+
+  - type: svg_graphic
+    xp: 0
+    title: "DIMENSIONS INHERIT"
+    caption: "Each quantity's code is built from the one before it."
+    svg: |
+      <svg viewBox="0 0 360 120" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12">
+        <g>
+          <rect x="6" y="46" width="70" height="30" rx="6" fill="#dbeafe" stroke="#1e3a8a"/><text x="41" y="60" text-anchor="middle">length</text><text x="41" y="72" text-anchor="middle" font-family="monospace" font-size="10" fill="#1e3a8a">[L]</text>
+          <text x="80" y="64" fill="#475569">→</text>
+          <rect x="94" y="46" width="76" height="30" rx="6" fill="#dbeafe" stroke="#1e3a8a"/><text x="132" y="60" text-anchor="middle">velocity</text><text x="132" y="72" text-anchor="middle" font-family="monospace" font-size="10" fill="#1e3a8a">[L T⁻¹]</text>
+          <text x="174" y="64" fill="#475569">→</text>
+          <rect x="188" y="46" width="82" height="30" rx="6" fill="#dbeafe" stroke="#1e3a8a"/><text x="229" y="60" text-anchor="middle">acceleration</text><text x="229" y="72" text-anchor="middle" font-family="monospace" font-size="10" fill="#1e3a8a">[L T⁻²]</text>
+          <text x="274" y="64" fill="#475569">→</text>
+          <rect x="288" y="46" width="66" height="30" rx="6" fill="#fef3c7" stroke="#92400e"/><text x="321" y="60" text-anchor="middle">force</text><text x="321" y="72" text-anchor="middle" font-family="monospace" font-size="10" fill="#92400e">[M L T⁻²]</text>
+        </g>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      A core set worth knowing cold — you'll meet these constantly:
+
+      - area **[L²]** · volume **[L³]** · density **[M L⁻³]**
+      - momentum **[M L T⁻¹]** · work/energy **[M L² T⁻²]**
+      - pressure **[M L⁻¹ T⁻²]** · power **[M L² T⁻³]**
+
+      Every one is just its definition rewritten in M, L, T.
+
+  - type: svg_graphic
+    xp: 0
+    title: "A DIMENSIONAL CHEAT-SHEET"
+    caption: "The quantities you'll test most often, with their codes."
+    svg: |
+      <svg viewBox="0 0 360 150" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+        <g fill="#0f172a">
+          <text x="14" y="20">area</text><text x="110" y="20" font-family="monospace" fill="#1e3a8a">[L²]</text>
+          <text x="200" y="20">energy</text><text x="290" y="20" font-family="monospace" fill="#1e3a8a">[M L² T⁻²]</text>
+          <text x="14" y="44">volume</text><text x="110" y="44" font-family="monospace" fill="#1e3a8a">[L³]</text>
+          <text x="200" y="44">pressure</text><text x="290" y="44" font-family="monospace" fill="#1e3a8a">[M L⁻¹ T⁻²]</text>
+          <text x="14" y="68">density</text><text x="110" y="68" font-family="monospace" fill="#1e3a8a">[M L⁻³]</text>
+          <text x="200" y="68">power</text><text x="290" y="68" font-family="monospace" fill="#1e3a8a">[M L² T⁻³]</text>
+          <text x="14" y="92">momentum</text><text x="110" y="92" font-family="monospace" fill="#1e3a8a">[M L T⁻¹]</text>
+          <text x="200" y="92">force</text><text x="290" y="92" font-family="monospace" fill="#1e3a8a">[M L T⁻²]</text>
+        </g>
+        <line x1="8" y1="104" x2="352" y2="104" stroke="#cbd5e1"/>
+        <text x="14" y="124" font-size="10.5" fill="#475569">Dimensionless: angle, strain, refractive index, π —</text>
+        <text x="14" y="140" font-family="monospace" font-size="11" fill="#166534">[M⁰ L⁰ T⁰]</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Some quantities have **no dimensions at all** — written **[M⁰ L⁰ T⁰]**.
+
+      Pure numbers (2, π), and any *ratio of two quantities with the same dimension*: **strain** = ΔL/L (length over length), **refractive index** = speed over speed, an **angle** = arc over radius. The dimensions cancel, leaving a bare number.
+
+      These are special: a dimensionless quantity reads the same in *every* unit system.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Write it as a **dimensional equation** and you've captured a quantity's whole identity:
+
+      > [Force] = [M L T⁻²]      [Energy] = [M L² T⁻²]      [Pressure] = [M L⁻¹ T⁻²]
+
+      That's it — the genetic code. Next lesson, this code becomes a weapon: it can catch a wrong formula on sight.
+
+  - type: mcq
+    xp: 15
+    question: "What is the dimensional formula of energy (or work)?"
+    options:
+      - id: a
+        text: "[M L T⁻²]"
+        is_correct: false
+        rationale: "That's force. Energy is force × distance, so it carries one more factor of length: [M L² T⁻²]."
+      - id: b
+        text: "[M L² T⁻²]"
+        is_correct: true
+        rationale: "Correct. Work = force × distance = [M L T⁻²] × [L] = [M L² T⁻²]. (Kinetic energy ½mv² gives the same.)"
+      - id: c
+        text: "[M L² T⁻³]"
+        is_correct: false
+        rationale: "That's power — energy per unit time. Energy itself has no extra factor of T in the denominator."
+      - id: d
+        text: "[M L⁻¹ T⁻²]"
+        is_correct: false
+        rationale: "That's pressure (force per area). Energy is force times distance, not force divided by area."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Match each quantity to its dimensional formula."
+    left:
+      - { id: l1, label: "Velocity" }
+      - { id: l2, label: "Force" }
+      - { id: l3, label: "Pressure" }
+      - { id: l4, label: "Density" }
+    right:
+      - { id: r1, label: "[L T⁻¹]" }
+      - { id: r2, label: "[M L T⁻²]" }
+      - { id: r3, label: "[M L⁻¹ T⁻²]" }
+      - { id: r4, label: "[M L⁻³]" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the code."
+    template: |
+      The dimensional formula of force is [M L T^{{blank-1}}]. A quantity like strain, being a ratio of two lengths, has no dimensions — it is {{blank-2}}.
+    answers:
+      - id: blank-1
+        accepted: ["-2", "−2", "minus 2"]
+      - id: blank-2
+        accepted: ["dimensionless", "Dimensionless"]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      Derive the dimensional formula of **momentum** (p = mass × velocity) and of **kinetic energy** (½ m v²) from their definitions.
+
+      Show the M, L, T powers at each step. Then type both dimensional formulae below.
+    placeholder: "momentum = [ ... ] ; kinetic energy = [ ... ]"
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Two quantities measured in totally different units can share the exact same dimensional formula (work and torque both come out [M L² T⁻²]).
+
+      Does it surprise you that dimensions don't uniquely identify a quantity — that the code can be shared? What might that mean for how far dimensions can take you? No right answer.
+    placeholder: "Sharing a dimensional code suggests..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can write the dimensional formula of any quantity."
+    summary: |
+      A quantity's dimensions are the powers of M, L, T (and A, K) that build it — its genetic code,
+      the same in every unit system. Velocity is [L T⁻¹], force [M L T⁻²], energy [M L² T⁻²]; ratios of
+      like quantities (strain, angle, refractive index) are dimensionless, [M⁰ L⁰ T⁰].
+
+      Now the tool turns sharp. Because both sides of any real equation must carry the *same* code,
+      you can check a formula's dimensions and catch a mistake before plugging in a single number.
+      The principle of homogeneity is the next lesson.

@@ -1,0 +1,179 @@
+title: "Arithmetic with Significant Figures"
+subtitle: "Your answer is only as honest as your sloppiest measurement"
+estimated_minutes: 11
+xp_reward: 90
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Punch **2.54 × 3.1** into a calculator and it beams back **7.874**.
+
+      Three of those four digits are *fiction*. You fed in a number good to two significant figures, so the calculator can't magically manufacture more. A calculator is a confident liar — and your job is to correct it.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The principle behind every rule here: **a chain is only as strong as its weakest link.** Your result can't be more precise than your *least* precise input.
+
+      There are two different rules, and mixing them up is the classic mistake — one for multiply/divide, a *different* one for add/subtract.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Multiplication & division → count significant figures.**
+
+      The answer keeps as many significant figures as the input with the **fewest**.
+
+      > 2.54 (3 s.f.) × 3.1 (2 s.f.) = 7.874 → keep **2 s.f.** → **7.9**
+
+      The 3.1 is the weak link, so the answer bows to it: two significant figures, no more.
+
+  - type: svg_graphic
+    xp: 0
+    title: "MULTIPLY: THE WEAK LINK WINS"
+    caption: "The input with the fewest significant figures caps the answer."
+    svg: |
+      <svg viewBox="0 0 360 110" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="13">
+        <text x="16" y="40" font-family="monospace" font-size="16" fill="#0f172a">2.54</text>
+        <text x="58" y="26" font-size="9" fill="#16a34a">3 s.f.</text>
+        <text x="86" y="40" font-size="16" fill="#475569">×</text>
+        <rect x="104" y="22" width="48" height="26" rx="5" fill="none" stroke="#b91c1c" stroke-width="1.5"/>
+        <text x="110" y="40" font-family="monospace" font-size="16" fill="#0f172a">3.1</text>
+        <text x="108" y="62" font-size="9" fill="#b91c1c">2 s.f. ← weak link</text>
+        <text x="160" y="40" font-size="16" fill="#475569">=</text>
+        <text x="180" y="40" font-family="monospace" font-size="16" fill="#94a3b8">7.874</text>
+        <text x="245" y="40" font-size="16" fill="#475569">→</text>
+        <rect x="268" y="22" width="78" height="30" rx="6" fill="#dcfce7" stroke="#166534" stroke-width="1.5"/>
+        <text x="307" y="42" text-anchor="middle" font-family="monospace" font-size="16" font-weight="bold" fill="#166534">7.9</text>
+        <text x="180" y="90" font-size="11" fill="#475569">Keep 2 significant figures — the answer can't beat its worst input.</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Addition & subtraction → count decimal places** (not significant figures!).
+
+      The answer keeps as many **decimal places** as the input with the **fewest**.
+
+      > 12.52 + 0.3 = 12.82 → 0.3 has only **1 decimal place** → **12.8**
+
+      Why the switch? When you add, the uncertainty lives in the decimal *columns* that line up — the roughest column drags the whole sum down to its level.
+
+  - type: svg_graphic
+    xp: 0
+    title: "ADD: LINE UP THE DECIMALS"
+    caption: "The input with the fewest decimal places caps the sum."
+    svg: |
+      <svg viewBox="0 0 360 120" xmlns="http://www.w3.org/2000/svg" font-family="monospace" font-size="16">
+        <text x="120" y="30" fill="#0f172a">12.52</text>
+        <text x="133" y="54" fill="#0f172a">0.3</text>
+        <rect x="128" y="40" width="22" height="20" fill="none" stroke="#b91c1c" stroke-width="1.3"/>
+        <text x="186" y="54" font-family="sans-serif" font-size="9" fill="#b91c1c">only 1 d.p.</text>
+        <line x1="110" y1="62" x2="175" y2="62" stroke="#475569"/>
+        <text x="120" y="82" fill="#94a3b8">12.82</text>
+        <text x="200" y="82" font-family="sans-serif" font-size="13" fill="#475569">→</text>
+        <rect x="222" y="66" width="70" height="26" rx="6" fill="#dcfce7" stroke="#166534" stroke-width="1.5"/>
+        <text x="257" y="85" text-anchor="middle" font-weight="bold" fill="#166534">12.8</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      When you chop digits, you **round**. The rules:
+
+      - Digit being dropped is **greater than 5** → round the last kept digit **up**.
+      - **Less than 5** → leave it.
+      - **Exactly 5** (and nothing after) → round so the kept digit becomes **even**. So 2.745 → 2.74, and 2.735 → 2.74.
+
+      That "round to even" trick stops a long column of 5s from biasing everything upward.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      One discipline that saves real marks: **round only at the very end.**
+
+      If you round at every intermediate step, the little errors stack up. Carry one or two extra "guard" digits through the whole calculation, and apply the significant-figure rule *once*, to the final answer.
+
+  - type: mcq
+    xp: 15
+    question: "A rectangle measures 4.237 m by 2.5 m. To the correct number of significant figures, its area is:"
+    options:
+      - id: a
+        text: "10.5925 m²"
+        is_correct: false
+        rationale: "That's the raw calculator output — it claims 6 significant figures when your worst input (2.5) only gave 2."
+      - id: b
+        text: "10.6 m²"
+        is_correct: false
+        rationale: "That's 3 significant figures. But 2.5 m has only 2 s.f., so the answer must drop to 2."
+      - id: c
+        text: "11 m²"
+        is_correct: true
+        rationale: "Correct. 4.237 × 2.5 = 10.5925; the weak link 2.5 has 2 s.f., so round to 2 → 11 m²."
+      - id: d
+        text: "10 m²"
+        is_correct: false
+        rationale: "You kept 2 s.f. but rounded the wrong way: 10.59… rounds up to 11, not down to 10."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Match each situation to the rule that governs it."
+    left:
+      - { id: l1, label: "Multiplying two measurements" }
+      - { id: l2, label: "Adding two measurements" }
+      - { id: l3, label: "Dropping a digit that is 7" }
+      - { id: l4, label: "Dropping a digit that is exactly 5" }
+    right:
+      - { id: r1, label: "Keep the fewest significant figures" }
+      - { id: r2, label: "Keep the fewest decimal places" }
+      - { id: r3, label: "Round the kept digit up" }
+      - { id: r4, label: "Round so the kept digit is even" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the two rules."
+    template: |
+      In multiplication and division, the answer keeps the fewest {{blank-1}}. In addition and subtraction, it keeps the fewest {{blank-2}} places.
+    answers:
+      - id: blank-1
+        accepted: ["significant figures", "significant figures (s.f.)", "sig figs", "significant figure"]
+      - id: blank-2
+        accepted: ["decimal", "Decimal"]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      Work these out and report each to the correct precision:
+
+      **(a)** 3.2 cm × 1.75 cm  (an area)
+      **(b)** 25.6 g + 0.47 g + 102.1 g  (a total mass)
+
+      For (a) use the significant-figure rule; for (b) use the decimal-place rule. Type both answers below.
+    placeholder: "a) ... cm²   b) ... g"
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      A calculator will always hand you more digits than you earned. The whole skill here is *throwing some away* on purpose.
+
+      Does it feel strange to make an answer "less exact" to make it more honest? Sit with that tension for a second.
+    placeholder: "Deliberately dropping digits feels..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can keep a calculation honest from start to finish."
+    summary: |
+      Multiply or divide → keep the fewest significant figures. Add or subtract → keep the fewest
+      decimal places. Round with the >5 / <5 / round-to-even rules, and only at the end. The
+      calculator's extra digits are fiction; you cut them to match your weakest input.
+
+      But significant figures are really a *symptom* of something deeper: every measurement carries
+      an uncertainty — an error. Where does that error come from, how big is it, and what happens
+      to it when you combine measurements? That's the final lesson of this course.

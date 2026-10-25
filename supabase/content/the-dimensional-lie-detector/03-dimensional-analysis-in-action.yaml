@@ -1,0 +1,170 @@
+title: "Dimensional Analysis in Action"
+subtitle: "Build a formula you've never seen, and translate a number between any two unit systems"
+estimated_minutes: 12
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Galileo timed swinging lamps for years to understand pendulums. You're about to derive the heart of his result in about a minute — with **no experiment, no calculus, no data**. Just dimensions.
+
+      The lie-detector you built last lesson has two more modes: it can **create** a formula from scratch, and **translate** any number between unit systems. Let's use both.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Mode one — deriving a relation.** The trick: guess that your unknown quantity is a *product of powers* of the things it could depend on, then force both sides to carry the same dimensions and solve for the powers.
+
+      What could a pendulum's period **T** depend on? Its mass *m*, its length *l*, and gravity *g*. So write:
+
+      > T = k · mᵃ lᵇ gᶜ
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Now put in the dimensional codes and match them, power by power:
+
+      [T] = [M]ᵃ [L]ᵇ [L T⁻²]ᶜ  =  [Mᵃ L^(b+c) T^(−2c)]
+
+      - **M:** a = 0
+      - **T:** −2c = 1 → c = −½
+      - **L:** b + c = 0 → b = ½
+
+  - type: svg_graphic
+    xp: 0
+    title: "SOLVING FOR THE POWERS"
+    caption: "Matching each base's exponent on both sides pins down a, b, c."
+    svg: |
+      <svg viewBox="0 0 360 110" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12">
+        <text x="12" y="22" font-family="monospace" fill="#0f172a">[M⁰ L⁰ T¹] = [Mᵃ L^(b+c) T^(−2c)]</text>
+        <g font-family="monospace" font-size="12">
+          <text x="30" y="50" fill="#1e3a8a">M:  a = 0</text><text x="200" y="50" fill="#166534">→ mass doesn't matter!</text>
+          <text x="30" y="72" fill="#1e3a8a">T:  −2c = 1  → c = −½</text>
+          <text x="30" y="94" fill="#1e3a8a">L:  b + c = 0 → b = +½</text>
+        </g>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Plug the powers back in:
+
+      > **T = k · l^½ g^−½ = k √(l/g)**
+
+      Two gifts and one limit. Dimensions *told* us the period is **independent of mass** (a = 0 — a genuinely surprising result) and that it goes as **√(l/g)**. What they **can't** give is the pure number out front: the real answer is T = 2π√(l/g), and dimensions are forever blind to that **2π**.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Mode two — converting units.** A number's value is inversely proportional to the size of its unit: a bigger unit means a smaller number (n₁u₁ = n₂u₂). Using the dimensional formula:
+
+      > n₂ = n₁ · [M₁/M₂]ᵃ [L₁/L₂]ᵇ [T₁/T₂]ᶜ
+
+      where a, b, c are the quantity's dimensions. Let's convert **1 joule (SI) into erg (CGS)**.
+
+  - type: svg_graphic
+    xp: 0
+    title: "1 JOULE → ERG"
+    caption: "Energy is [M L² T⁻²]; swap kg→g and m→cm and the factors pile up to 10⁷."
+    svg: |
+      <svg viewBox="0 0 360 100" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12">
+        <text x="10" y="24" font-family="monospace" fill="#0f172a">Energy = [M L² T⁻²]</text>
+        <text x="10" y="52" font-family="monospace" font-size="11" fill="#0f172a">n₂ = 1 · [kg/g]¹ · [m/cm]² · [s/s]⁻²</text>
+        <text x="10" y="74" font-family="monospace" font-size="11" fill="#1e3a8a">   = 1 · 10³ · (10²)² · 1  =  10³ · 10⁴</text>
+        <rect x="236" y="78" width="118" height="20" rx="5" fill="#dcfce7" stroke="#166534"/>
+        <text x="295" y="93" text-anchor="middle" font-family="monospace" font-weight="bold" fill="#166534">1 J = 10⁷ erg</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Powerful — but know exactly where dimensional analysis **stops**:
+
+      1. It can never find a **dimensionless constant** (the 2π, the ½, any k).
+      2. It fails if a quantity depends on **more than three** factors (more unknowns than the three equations M, L, T can give).
+      3. It can't handle relations that are **sums**, or that involve **trig, log or exponential** functions.
+
+      It only works for a single product of powers. Respect the fence.
+
+  - type: mcq
+    xp: 15
+    question: "Using only dimensions, you derive that a pendulum's period T ∝ √(l/g). What can dimensional analysis NOT give you?"
+    options:
+      - id: a
+        text: "That T is independent of the pendulum's mass."
+        is_correct: false
+        rationale: "It *can* — the power of mass came out as a = 0, which is exactly how we learn mass drops out."
+      - id: b
+        text: "The numerical factor 2π in the full formula T = 2π√(l/g)."
+        is_correct: true
+        rationale: "Correct. 2π is a dimensionless constant, and dimensional analysis is permanently blind to pure numbers."
+      - id: c
+        text: "That the period grows with the square root of length."
+        is_correct: false
+        rationale: "It *can* — the exponent of l came out as +½, i.e. the √l dependence."
+      - id: d
+        text: "That gravity appears with a power of −½."
+        is_correct: false
+        rationale: "It *can* — solving the exponents gives c = −½ for g, i.e. the 1/√g dependence."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Can dimensional analysis do it, or not?"
+    left:
+      - { id: l1, label: "Find the form T ∝ √(l/g)" }
+      - { id: l2, label: "Find the 2π in T = 2π√(l/g)" }
+      - { id: l3, label: "Convert 1 J into erg" }
+      - { id: l4, label: "Derive the ½ in ½mv²" }
+    right:
+      - { id: r1, label: "Yes — it finds powers" }
+      - { id: r2, label: "No — it's blind to pure numbers" }
+      - { id: r3, label: "Yes — using the dimensional formula" }
+      - { id: r4, label: "No — ½ is a dimensionless constant" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the two powers of the tool."
+    template: |
+      Converting units with the dimensional formula gives 1 joule = {{blank-1}} erg. But dimensional analysis can never determine a dimensionless {{blank-2}} such as 2π or ½.
+    answers:
+      - id: blank-1
+        accepted: ["10^7", "10⁷", "10000000", "1e7"]
+      - id: blank-2
+        accepted: ["constant", "Constant", "number"]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      Use the dimensional-formula method to convert **1 newton (SI) into dyne (CGS)**.
+
+      Force is [M L T⁻²]; SI uses kg, m, s and CGS uses g, cm, s. Set up n₂ = 1 · [kg/g]¹ [m/cm]¹ [s/s]⁻² and evaluate. Type your answer "1 N = ... dyne" below.
+    placeholder: "1 N = ... dyne"
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      With nothing but units, you reconstructed the shape of a law of nature and learned that a pendulum's swing ignores its mass.
+
+      Does it feel like cheating that so much physics is hiding inside the units alone? Or does it hint at something deep about how the universe is put together? No right answer.
+    placeholder: "That dimensions carry this much meaning makes me think..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Chapter complete — you've pinned down reality."
+    summary: |
+      Dimensional analysis doesn't just check formulas — it *derives* them (a pendulum's √(l/g),
+      mass and all) and *converts* any quantity between unit systems (1 J = 10⁷ erg), as long as
+      you respect its blindness to pure numbers and to sums.
+
+      And that closes Units and Measurements. You turned every number into a value-plus-unit;
+      adopted SI, humanity's shared language anchored to constants of nature; learned to be honest
+      with significant figures, orders of magnitude and errors; and wielded dimensions as a
+      lie-detector, a formula-builder and a translator. You'll never look at a bare number — or a
+      formula — the same way again.

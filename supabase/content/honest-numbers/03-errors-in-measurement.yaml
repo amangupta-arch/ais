@@ -1,0 +1,199 @@
+title: "Errors in Measurement"
+subtitle: "Every measurement is a confession — here's my best guess, and here's how wrong I might be"
+estimated_minutes: 13
+xp_reward: 100
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      A sniper whose shots all land in a tight cluster — but 5 cm left of the bullseye every time. A second shooter whose shots scatter widely, yet average out right on target.
+
+      Who's the better shot? The honest answer: *neither is good enough*, and they're failing in two completely different ways. Those two ways are **precision** and **accuracy**, and telling them apart is where measuring seriously begins.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      - **Accuracy** = how close your result is to the *true* value.
+      - **Precision** = how close your repeated readings are to *each other*.
+
+      They're independent. The first sniper is **precise but not accurate** (tight, but biased). The second is **accurate on average but not precise** (centred, but scattered). You want both.
+
+  - type: svg_graphic
+    xp: 0
+    title: "ACCURACY vs PRECISION"
+    caption: "Two separate things — a measurement can have either, both, or neither."
+    svg: |
+      <svg viewBox="0 0 360 120" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="9">
+        <g>
+          <circle cx="55" cy="55" r="30" fill="none" stroke="#cbd5e1"/><circle cx="55" cy="55" r="16" fill="none" stroke="#cbd5e1"/><circle cx="55" cy="55" r="3" fill="#b91c1c"/>
+          <circle cx="53" cy="53" r="2.5" fill="#1e3a8a"/><circle cx="57" cy="56" r="2.5" fill="#1e3a8a"/><circle cx="55" cy="58" r="2.5" fill="#1e3a8a"/><circle cx="56" cy="52" r="2.5" fill="#1e3a8a"/>
+          <text x="55" y="105" text-anchor="middle" font-weight="bold" fill="#166534">accurate + precise</text>
+        </g>
+        <g>
+          <circle cx="155" cy="55" r="30" fill="none" stroke="#cbd5e1"/><circle cx="155" cy="55" r="16" fill="none" stroke="#cbd5e1"/><circle cx="155" cy="55" r="3" fill="#b91c1c"/>
+          <circle cx="170" cy="42" r="2.5" fill="#1e3a8a"/><circle cx="173" cy="45" r="2.5" fill="#1e3a8a"/><circle cx="171" cy="47" r="2.5" fill="#1e3a8a"/><circle cx="174" cy="41" r="2.5" fill="#1e3a8a"/>
+          <text x="155" y="105" text-anchor="middle" font-weight="bold" fill="#92400e">precise, not accurate</text>
+        </g>
+        <g>
+          <circle cx="255" cy="55" r="30" fill="none" stroke="#cbd5e1"/><circle cx="255" cy="55" r="16" fill="none" stroke="#cbd5e1"/><circle cx="255" cy="55" r="3" fill="#b91c1c"/>
+          <circle cx="245" cy="48" r="2.5" fill="#1e3a8a"/><circle cx="266" cy="52" r="2.5" fill="#1e3a8a"/><circle cx="252" cy="66" r="2.5" fill="#1e3a8a"/><circle cx="262" cy="45" r="2.5" fill="#1e3a8a"/>
+          <text x="255" y="105" text-anchor="middle" font-weight="bold" fill="#7c3aed">accurate avg, not precise</text>
+        </g>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Those failures come from two kinds of **error**:
+
+      - **Systematic error** — a consistent bias, always in the *same direction*. A scale that reads 2 g heavy, a tape stretched by heat, a habit of reading from an angle. Averaging won't help — every reading is wrong the same way. You kill it by **calibrating**.
+      - **Random error** — unpredictable scatter, *both directions*. Reaction time, tiny draughts, eyeball jitter. Take many readings and **average**, and random error shrinks.
+
+      The precise-but-biased sniper has systematic error. The scattered sniper has random error.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Now put a number on it. Take several readings and average them — that **mean** is your best estimate of the true value.
+
+      For each reading, the **absolute error** is how far it sits from the mean: |reading − mean|. Average those gaps and you get the **mean absolute error, Δa**. You report the result as:
+
+      > a = a_mean ± Δa
+
+      The ± isn't hedging — it's the honest width of your knowledge.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      But an absolute error alone can mislead. An error of ±0.1 cm is *catastrophic* on a 2 cm object (5%) and *trivial* on a 200 cm one (0.05%). So we scale it:
+
+      - **Relative error** = Δa / a_mean
+      - **Percentage error** = (Δa / a_mean) × 100%
+
+      Relative error tells you how much the error actually *matters*.
+
+  - type: svg_graphic
+    xp: 0
+    title: "a_mean ± Δa"
+    caption: "The measurement is a band, not a point; relative error is that band's width as a fraction."
+    svg: |
+      <svg viewBox="0 0 360 90" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+        <line x1="30" y1="45" x2="330" y2="45" stroke="#94a3b8" stroke-width="1.5"/>
+        <rect x="150" y="33" width="60" height="24" fill="#dbeafe" stroke="#1e3a8a" stroke-width="1"/>
+        <line x1="180" y1="28" x2="180" y2="62" stroke="#1e3a8a" stroke-width="2"/>
+        <text x="180" y="24" text-anchor="middle" fill="#1e3a8a" font-weight="bold">a_mean</text>
+        <text x="150" y="76" text-anchor="middle" fill="#b91c1c">−Δa</text>
+        <text x="210" y="76" text-anchor="middle" fill="#b91c1c">+Δa</text>
+        <text x="300" y="38" fill="#475569" font-size="10">relative = Δa / a_mean</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The payoff — what happens when you **combine** measurements. Three rules cover almost everything:
+
+      - **Sum or difference** (Z = A ± B): the *absolute* errors add → **ΔZ = ΔA + ΔB**.
+      - **Product or quotient** (Z = A·B or A/B): the *relative* errors add → **ΔZ/Z = ΔA/A + ΔB/B**.
+      - **Power** (Z = Aⁿ): the relative error is multiplied by n → **ΔZ/Z = n · ΔA/A**.
+
+      Notice the trap: even for subtraction, errors *add* — they never cancel. Uncertainty only ever grows.
+
+  - type: svg_graphic
+    xp: 0
+    title: "HOW ERRORS PROPAGATE"
+    caption: "Add/subtract → absolute errors add. Multiply/divide → relative errors add. Power → times n."
+    svg: |
+      <svg viewBox="0 0 360 120" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12">
+        <rect x="8" y="12" width="344" height="30" rx="6" fill="#eff6ff" stroke="#1e3a8a" stroke-width="1"/>
+        <text x="18" y="31" fill="#0f172a">Z = A ± B</text><text x="150" y="31" fill="#1e3a8a" font-weight="bold">ΔZ = ΔA + ΔB</text>
+        <rect x="8" y="46" width="344" height="30" rx="6" fill="#fffbeb" stroke="#92400e" stroke-width="1"/>
+        <text x="18" y="65" fill="#0f172a">Z = A·B  or  A/B</text><text x="150" y="65" fill="#92400e" font-weight="bold">ΔZ/Z = ΔA/A + ΔB/B</text>
+        <rect x="8" y="80" width="344" height="30" rx="6" fill="#f0fdf4" stroke="#166534" stroke-width="1"/>
+        <text x="18" y="99" fill="#0f172a">Z = Aⁿ</text><text x="150" y="99" fill="#166534" font-weight="bold">ΔZ/Z = n · (ΔA/A)</text>
+      </svg>
+
+  - type: mcq
+    xp: 15
+    question: "Five readings of a length cluster tightly together, but all sit about 3 mm above the true value because the ruler's zero is worn. This measurement is:"
+    options:
+      - id: a
+        text: "Precise, with a systematic error."
+        is_correct: true
+        rationale: "Correct. Tight clustering = precise; a consistent 3 mm bias from the worn zero = a systematic error that averaging can't fix."
+      - id: b
+        text: "Accurate, with a random error."
+        is_correct: false
+        rationale: "It's not accurate — every reading is 3 mm too high. And the bias is consistent, so it's systematic, not random."
+      - id: c
+        text: "Both accurate and precise."
+        is_correct: false
+        rationale: "It's precise, but the consistent 3 mm offset means it is not accurate."
+      - id: d
+        text: "Imprecise, with a random error."
+        is_correct: false
+        rationale: "The readings cluster tightly, so it *is* precise. The problem is a fixed bias, which is systematic."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Match each term to what it is."
+    left:
+      - { id: l1, label: "Systematic error" }
+      - { id: l2, label: "Random error" }
+      - { id: l3, label: "Relative error" }
+      - { id: l4, label: "Errors in a product" }
+    right:
+      - { id: r1, label: "Consistent bias in one direction; fixed by calibrating" }
+      - { id: r2, label: "Unpredictable scatter; reduced by averaging" }
+      - { id: r3, label: "Δa ÷ a_mean" }
+      - { id: r4, label: "Relative errors add" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the error vocabulary."
+    template: |
+      A consistent bias in one direction is a {{blank-1}} error; unpredictable scatter in both directions is a {{blank-2}} error, which is reduced by {{blank-3}} many readings.
+    answers:
+      - id: blank-1
+        accepted: ["systematic", "Systematic"]
+      - id: blank-2
+        accepted: ["random", "Random"]
+      - id: blank-3
+        accepted: ["averaging", "averaging", "repeating"]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      A pendulum's time period is measured five times (in seconds): **2.63, 2.56, 2.42, 2.71, 2.80**.
+
+      On paper: (1) find the mean, (2) find each absolute error and then the mean absolute error Δa, (3) give the percentage error. Report the result as T = (mean ± Δa) s.
+
+      Type your final T = ... ± ... s and the percentage error below.
+    placeholder: "T = ... ± ... s ; percentage error ≈ ... %"
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Writing "2.62 ± 0.11 s" admits, out loud, that you don't know the exact value — and that's considered *good* science, not weakness.
+
+      Why do you think admitting uncertainty makes a result more trustworthy, not less? No right answer.
+    placeholder: "Stating the error makes it more trustworthy because..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can quantify a measurement's error and track how it spreads."
+    summary: |
+      Accuracy (close to true) and precision (readings agree) are separate. Systematic errors bias
+      one way and need calibrating; random errors scatter and shrink with averaging. Report
+      a_mean ± Δa, scale it to a relative or percentage error, and combine errors with three rules —
+      absolute errors add in sums, relative errors add in products, and powers multiply by n.
+
+      That completes the discipline of honest numbers. Now for the most elegant tool in the whole
+      chapter — one that can catch a wrong formula, derive a new one, and convert units, using
+      nothing but the *units themselves*. The dimensional lie-detector is the final course.

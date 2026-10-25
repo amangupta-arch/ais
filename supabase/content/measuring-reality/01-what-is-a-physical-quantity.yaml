@@ -1,0 +1,187 @@
+title: "What Is a Physical Quantity"
+subtitle: "Why the number 42, all by itself, is physically meaningless"
+estimated_minutes: 11
+xp_reward: 90
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Quick: **how fast is 90?**
+
+      You can't answer — and that's the point. 90 km/h is a car on a highway. 90 m/s is a bullet. 90 is just a number, and a number on its own tells you *nothing* about the physical world.
+
+      Every quantity in physics is secretly **two things at once**. Let's pull them apart.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      A **physical quantity** is anything you can *measure* — length, time, speed, temperature. And it's always written the same way:
+
+      > physical quantity = (**numerical value**) × (**unit**)
+
+      The unit is the agreed-upon chunk you're counting. "42 metres" means *42 of the thing we call a metre*. Strip the unit and the number is an orphan.
+
+  - type: svg_graphic
+    xp: 0
+    title: "A NUMBER WEARING A UNIT"
+    caption: "The same 42 becomes a length, a mass, or a time — the unit decides which reality you're in."
+    svg: |
+      <svg viewBox="0 0 360 150" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <text x="40" y="55" font-size="40" font-weight="bold" fill="#94a3b8">42</text>
+        <text x="40" y="78" font-size="11" fill="#ef4444">means nothing</text>
+        <text x="118" y="52" font-size="22" fill="#475569">→</text>
+        <rect x="150" y="18" width="92" height="30" rx="6" fill="#dbeafe" stroke="#0f172a" stroke-width="1.2"/>
+        <text x="196" y="38" text-anchor="middle" font-size="14" font-weight="bold" fill="#1e3a8a">42 m</text>
+        <text x="252" y="38" font-size="10" fill="#475569">a length</text>
+        <rect x="150" y="56" width="92" height="30" rx="6" fill="#fef3c7" stroke="#0f172a" stroke-width="1.2"/>
+        <text x="196" y="76" text-anchor="middle" font-size="14" font-weight="bold" fill="#92400e">42 kg</text>
+        <text x="252" y="76" font-size="10" fill="#475569">a mass</text>
+        <rect x="150" y="94" width="92" height="30" rx="6" fill="#dcfce7" stroke="#0f172a" stroke-width="1.2"/>
+        <text x="196" y="114" text-anchor="middle" font-size="14" font-weight="bold" fill="#166534">42 s</text>
+        <text x="252" y="114" font-size="10" fill="#475569">a time</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Now the deeper split. Not all quantities sit on the same level.
+
+      A handful are **fundamental** (or *base*) quantities — they stand on their own and aren't defined in terms of anything else. Everything else is a **derived** quantity, *built* by multiplying and dividing the base ones.
+
+      Speed isn't fundamental — it's length ÷ time. Area is length × length. Force is mass × length ÷ time². The base quantities are the alphabet; derived quantities are the words.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      There are exactly **seven** base quantities. Memorise this set — the whole of physics is assembled from it:
+
+      **length, mass, time, electric current, temperature, amount of substance, luminous intensity.**
+
+      Seven letters. From them you can spell speed, force, energy, pressure, charge — every quantity you'll ever meet.
+
+  - type: svg_graphic
+    xp: 0
+    title: "SEVEN BASE, EVERYTHING ELSE DERIVED"
+    caption: "A few base quantities combine to build every derived one."
+    svg: |
+      <svg viewBox="0 0 360 170" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+        <text x="12" y="16" font-size="10" font-weight="bold" fill="#1e3a8a">BASE</text>
+        <g font-size="10" fill="#0f172a">
+          <rect x="8" y="24" width="86" height="20" rx="4" fill="#dbeafe" stroke="#1e3a8a" stroke-width="1"/><text x="51" y="38" text-anchor="middle">length (m)</text>
+          <rect x="8" y="48" width="86" height="20" rx="4" fill="#dbeafe" stroke="#1e3a8a" stroke-width="1"/><text x="51" y="62" text-anchor="middle">mass (kg)</text>
+          <rect x="8" y="72" width="86" height="20" rx="4" fill="#dbeafe" stroke="#1e3a8a" stroke-width="1"/><text x="51" y="86" text-anchor="middle">time (s)</text>
+        </g>
+        <text x="120" y="70" font-size="20" fill="#475569">→</text>
+        <text x="250" y="16" font-size="10" font-weight="bold" fill="#92400e">DERIVED</text>
+        <g font-size="10" fill="#0f172a">
+          <rect x="150" y="24" width="200" height="20" rx="4" fill="#fef3c7" stroke="#92400e" stroke-width="1"/><text x="160" y="38">speed = length ÷ time</text>
+          <rect x="150" y="48" width="200" height="20" rx="4" fill="#fef3c7" stroke="#92400e" stroke-width="1"/><text x="160" y="62">area = length × length</text>
+          <rect x="150" y="72" width="200" height="20" rx="4" fill="#fef3c7" stroke="#92400e" stroke-width="1"/><text x="160" y="86">force = mass × length ÷ time²</text>
+          <rect x="150" y="96" width="200" height="20" rx="4" fill="#fef3c7" stroke="#92400e" stroke-width="1"/><text x="160" y="110">density = mass ÷ length³</text>
+        </g>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      One question students skip: why do we need a *standard* unit at all? Why not just use my foot?
+
+      Because a good unit has to be three things: **reproducible** (anyone can make a copy), **invariable** (it never changes — not with temperature, not over time), and **accessible** (people can actually get at it). Your foot fails all three: it's yours alone, it changes, and I can't borrow it.
+
+      *That single demand — a unit that never drifts — is what drives this entire chapter.*
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Over history, different groups picked different standards, giving whole **systems of units**:
+
+      - **CGS** — centimetre, gram, second
+      - **FPS** — foot, pound, second (the old British system)
+      - **MKS** — metre, kilogram, second
+
+      Each works internally, but they don't talk to each other — which is exactly the mess the modern **SI system** was built to end. That's the next lesson.
+
+  - type: mcq
+    xp: 15
+    question: "Which of these is a *base* (fundamental) quantity — not built from others?"
+    options:
+      - id: a
+        text: "Speed"
+        is_correct: false
+        rationale: "Speed is derived — it's length ÷ time. It's built from two base quantities."
+      - id: b
+        text: "Electric current"
+        is_correct: true
+        rationale: "Correct. Electric current is one of the seven base quantities; it isn't defined in terms of any others."
+      - id: c
+        text: "Force"
+        is_correct: false
+        rationale: "Force is derived — mass × length ÷ time². Built from three base quantities."
+      - id: d
+        text: "Area"
+        is_correct: false
+        rationale: "Area is derived — length × length. Built from one base quantity used twice."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Sort each quantity: is it base, or what is it derived from?"
+    left:
+      - { id: l1, label: "Mass" }
+      - { id: l2, label: "Speed" }
+      - { id: l3, label: "Area" }
+      - { id: l4, label: "Density" }
+    right:
+      - { id: r1, label: "Base quantity" }
+      - { id: r2, label: "Derived: length ÷ time" }
+      - { id: r3, label: "Derived: length × length" }
+      - { id: r4, label: "Derived: mass ÷ length³" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      Look around you and grab **three** measurable things — the width of your desk, how long a song is, your own mass, the temperature of the room.
+
+      On paper, write each one properly as *number × unit*, then label it **base** or **derived**. (Width → length → base. Speed of something → derived.)
+
+      Type one of your three below, in the form "value unit — base/derived".
+    placeholder: "e.g. 1.2 m — base (length)"
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the core idea."
+    template: |
+      Every measurement is a {{blank-1}} value multiplied by a {{blank-2}}. Quantities built from the base ones, like speed and force, are called {{blank-3}} quantities.
+    answers:
+      - id: blank-1
+        accepted: ["numerical", "number", "Numerical"]
+      - id: blank-2
+        accepted: ["unit", "Unit"]
+      - id: blank-3
+        accepted: ["derived", "Derived"]
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      "My foot" fails as a unit because it isn't reproducible, invariable, or accessible to others.
+
+      Can you think of a unit people still use casually that has exactly this problem — one that means something slightly different to everyone? There's no single right answer.
+    placeholder: "One sloppy everyday 'unit' is..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can split any measurement into number, unit, and base-vs-derived."
+    summary: |
+      A physical quantity is always a numerical value times a unit — the number alone is
+      meaningless. Seven *base* quantities (length, mass, time, current, temperature, amount
+      of substance, luminous intensity) build every *derived* one. And a usable unit must be
+      reproducible, invariable and accessible — which "my foot" never is.
+
+      So if no personal, drifting standard will do, what *does* the whole world agree to measure
+      against? Meet the system that ended the chaos: SI. That's the next lesson.

@@ -1,0 +1,158 @@
+title: "Orders of Magnitude"
+subtitle: "How physicists hold a quark and a galaxy in the same thought"
+estimated_minutes: 12
+xp_reward: 95
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      A hydrogen atom is about 0.0000000001 m across. The observable universe is about 100000000000000000000000000 m across.
+
+      Written out, that's a blizzard of zeros no human brain can hold. Physicists flat-out refuse to. Instead they use one lever that turns that blizzard into two small numbers — **powers of ten**.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      First, **scientific notation**: write any quantity as
+
+      > a × 10^b,  with 1 ≤ a < 10
+
+      The Moon is 384,400,000 m away → **3.844 × 10⁸ m**. The coefficient *a* carries the precision; the exponent *b* counts how many "shelves" of ten you've climbed.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Now the key idea of this lesson: the **order of magnitude** is just the power of ten *nearest* the quantity — its shelf. It answers "roughly how big?" in one number.
+
+      The rule: write it as a × 10^b. If *a* is less than √10 ≈ 3.2, the order is **b**; if *a* is more, round the power **up** to b+1.
+
+      - 1.28 × 10⁷ m (Earth's diameter) → order **10⁷**
+      - 9.1 × 10⁻³¹ kg (electron mass) → 9.1 rounds up → order **10⁻³⁰**
+
+  - type: svg_graphic
+    xp: 0
+    title: "THE POWERS-OF-TEN LADDER"
+    caption: "From a quark to the universe is about 44 rungs — each rung ten times the last."
+    svg: |
+      <svg viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+        <line x1="70" y1="10" x2="70" y2="210" stroke="#94a3b8" stroke-width="2"/>
+        <g fill="#0f172a">
+          <circle cx="70" cy="200" r="3" fill="#1e3a8a"/><text x="82" y="204">10⁻¹⁸ m · quark</text>
+          <circle cx="70" cy="172" r="3" fill="#1e3a8a"/><text x="82" y="176">10⁻¹⁰ m · atom</text>
+          <circle cx="70" cy="148" r="3" fill="#1e3a8a"/><text x="82" y="152">10⁻⁵ m · cell</text>
+          <circle cx="70" cy="124" r="3" fill="#16a34a"/><text x="82" y="128">10⁰ m · you</text>
+          <circle cx="70" cy="100" r="3" fill="#1e3a8a"/><text x="82" y="104">10⁷ m · Earth</text>
+          <circle cx="70" cy="74" r="3" fill="#1e3a8a"/><text x="82" y="78">10¹¹ m · Earth→Sun</text>
+          <circle cx="70" cy="46" r="3" fill="#1e3a8a"/><text x="82" y="50">10²¹ m · our galaxy</text>
+          <circle cx="70" cy="18" r="3" fill="#b91c1c"/><text x="82" y="22">10²⁶ m · the universe</text>
+        </g>
+        <text x="14" y="120" font-size="10" fill="#475569" transform="rotate(-90 14 120)">× 10 each rung</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here's why the ladder is a superpower: to compare two things, you just **subtract exponents**.
+
+      The universe (10²⁶ m) versus an atom (10⁻¹⁰ m): that's 26 − (−10) = **36 orders of magnitude** apart. The universe is 10³⁶ times bigger than an atom — a fact you'd never *feel* from the written-out zeros, but can read off instantly from the shelves.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The second superpower: you can **estimate almost anything** to the right order of magnitude by chaining rough guesses. This is *Fermi estimation*.
+
+      How many times will your heart beat in a lifetime?
+
+      ≈ 70 beats/min × 60 min × 24 hr × 365 days × 80 years ≈ **3 × 10⁹ beats**.
+
+      Not exact — but the *order of magnitude*, a few billion, is almost certainly right. Being right to the nearest power of ten is often all you need.
+
+  - type: svg_graphic
+    xp: 0
+    title: "A FERMI CHAIN"
+    caption: "Multiply a chain of rough guesses; the order of magnitude survives even if each guess is a bit off."
+    svg: |
+      <svg viewBox="0 0 360 90" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+        <g fill="#0f172a">
+          <rect x="6" y="30" width="52" height="28" rx="5" fill="#dbeafe" stroke="#1e3a8a"/><text x="32" y="44" text-anchor="middle">70</text><text x="32" y="54" text-anchor="middle" font-size="8">/min</text>
+          <text x="62" y="48">×</text>
+          <rect x="72" y="30" width="60" height="28" rx="5" fill="#dbeafe" stroke="#1e3a8a"/><text x="102" y="44" text-anchor="middle">525,600</text><text x="102" y="54" text-anchor="middle" font-size="8">min/yr</text>
+          <text x="136" y="48">×</text>
+          <rect x="146" y="30" width="46" height="28" rx="5" fill="#dbeafe" stroke="#1e3a8a"/><text x="169" y="48" text-anchor="middle">80 yr</text>
+          <text x="196" y="48" font-size="16" fill="#475569">=</text>
+          <rect x="214" y="26" width="138" height="36" rx="7" fill="#dcfce7" stroke="#166534" stroke-width="1.5"/><text x="283" y="44" text-anchor="middle" font-weight="bold" fill="#166534">≈ 3 × 10⁹</text><text x="283" y="56" text-anchor="middle" font-size="8">heartbeats</text>
+        </g>
+      </svg>
+
+  - type: mcq
+    xp: 15
+    question: "A hydrogen atom has a diameter of about 1.1 × 10⁻¹⁰ m. What is its order of magnitude?"
+    options:
+      - id: a
+        text: "10⁻¹⁰ m"
+        is_correct: true
+        rationale: "Right. The coefficient 1.1 is below √10 ≈ 3.2, so the power stays as it is: order 10⁻¹⁰."
+      - id: b
+        text: "10⁻⁹ m"
+        is_correct: false
+        rationale: "You'd round the power up only if the coefficient were above √10 ≈ 3.2. Here it's 1.1, so no bump."
+      - id: c
+        text: "10⁻¹¹ m"
+        is_correct: false
+        rationale: "The exponent is −10, not −11. Scientific notation already put it on the 10⁻¹⁰ shelf."
+      - id: d
+        text: "10⁻⁵ m"
+        is_correct: false
+        rationale: "That's the order of a human cell — five shelves bigger than an atom."
+
+  - type: drag_to_reorder
+    xp: 15
+    prompt: "Put these in order of size, smallest first."
+    items:
+      - { id: s1, label: "Electron (~10⁻¹⁵ m)" }
+      - { id: s2, label: "Virus (~10⁻⁷ m)" }
+      - { id: s3, label: "Ant (~10⁻³ m)" }
+      - { id: s4, label: "Human (~10⁰ m)" }
+      - { id: s5, label: "Earth (~10⁷ m)" }
+    correct_order: [s1, s2, s3, s4, s5]
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in notation and order."
+    template: |
+      The number 6,400,000 m in scientific notation is 6.4 × 10^{{blank-1}} m. Because the coefficient 6.4 is above √10, its order of magnitude rounds up to 10^{{blank-2}}.
+    answers:
+      - id: blank-1
+        accepted: ["6", "+6"]
+      - id: blank-2
+        accepted: ["7", "+7"]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      Pick something you can't count directly and Fermi-estimate it to an order of magnitude: how many litres of water you drink in a lifetime, how many words you've read this year, how many grains of rice fill a cup.
+
+      On paper, write your chain of rough guesses and multiply. Then type your final answer as a power of ten.
+    placeholder: "e.g. grains of rice in a cup ≈ 10⁴"
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Fermi estimation says you can get useful answers to impossible-sounding questions, as long as you only aim for the right power of ten.
+
+      Where in real life would knowing "roughly which shelf" be worth more than a precise number you can't actually get? No right answer.
+    placeholder: "Knowing just the order of magnitude would help when..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can think in powers of ten and estimate to an order of magnitude."
+    summary: |
+      Scientific notation (a × 10^b) tames any quantity; the order of magnitude — the nearest
+      power of ten — lets you compare a quark and a galaxy by subtracting exponents, and
+      Fermi chains let you estimate the uncountable to the right shelf.
+
+      But notice something sneaky: when you wrote 6.4 × 10⁶, you claimed to know *two* digits.
+      How many digits are you actually *allowed* to claim? Lie about that and your answer is
+      dishonest. The discipline of honest numbers — significant figures — is the next course.

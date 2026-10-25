@@ -1,0 +1,187 @@
+title: "The SI System of Units"
+subtitle: "The day the kilogram stopped being a lump of metal in a vault"
+estimated_minutes: 12
+xp_reward: 95
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      For 130 years, the kilogram was a *physical object* — a shiny platinum-iridium cylinder locked in a vault near Paris. Every mass on Earth was measured against that one lump.
+
+      There was a terrifying flaw: if a few atoms rubbed off it, the kilogram itself *changed*, and so did everyone else's. In 2019, physicists finally cut that cord. To see how, meet the system they fixed: **SI**.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **SI** — the *Système International d'Unités* — is the one system the whole world agreed on. One unit for each of the seven base quantities:
+
+      **metre** (m), **kilogram** (kg), **second** (s), **ampere** (A), **kelvin** (K), **mole** (mol), **candela** (cd).
+
+      Learn the pairs cold — every other unit in physics is assembled from these seven.
+
+  - type: svg_graphic
+    xp: 0
+    title: "THE SEVEN SI BASE UNITS"
+    caption: "One base quantity, one base unit, one symbol — the foundation of all of physics."
+    svg: |
+      <svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+        <g fill="#0f172a">
+          <rect x="8" y="8" width="344" height="24" fill="#e2e8f0"/>
+          <text x="16" y="24" font-weight="bold">quantity</text><text x="200" y="24" font-weight="bold">SI unit</text><text x="300" y="24" font-weight="bold">symbol</text>
+          <text x="16" y="48">length</text><text x="200" y="48">metre</text><text x="315" y="48" font-weight="bold" fill="#1e3a8a">m</text>
+          <text x="16" y="68">mass</text><text x="200" y="68">kilogram</text><text x="315" y="68" font-weight="bold" fill="#1e3a8a">kg</text>
+          <text x="16" y="88">time</text><text x="200" y="88">second</text><text x="315" y="88" font-weight="bold" fill="#1e3a8a">s</text>
+          <text x="16" y="108">electric current</text><text x="200" y="108">ampere</text><text x="315" y="108" font-weight="bold" fill="#1e3a8a">A</text>
+          <text x="16" y="128">temperature</text><text x="200" y="128">kelvin</text><text x="315" y="128" font-weight="bold" fill="#1e3a8a">K</text>
+          <text x="16" y="148">amount of substance</text><text x="200" y="148">mole</text><text x="315" y="148" font-weight="bold" fill="#1e3a8a">mol</text>
+          <text x="16" y="168">luminous intensity</text><text x="200" y="168">candela</text><text x="315" y="168" font-weight="bold" fill="#1e3a8a">cd</text>
+        </g>
+        <line x1="8" y1="34" x2="352" y2="34" stroke="#94a3b8" stroke-width="1"/>
+        <line x1="190" y1="8" x2="190" y2="178" stroke="#cbd5e1" stroke-width="1"/>
+        <line x1="298" y1="8" x2="298" y2="178" stroke="#cbd5e1" stroke-width="1"/>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here's the genius of the 2019 redefinition. Instead of defining a unit by some *object* that can drift, SI now defines each one by fixing a **constant of nature** — numbers the universe never changes.
+
+      - The **second** = the time for a **caesium-133** atom to vibrate exactly **9,192,631,770** times. A clock nobody can scratch.
+      - The **metre** = how far **light** travels in **1/299,792,458** of a second. (The speed of light is now fixed *by definition*.)
+      - The **kilogram** = fixed through the **Planck constant** *h*. No cylinder required.
+
+  - type: html_animation
+    xp: 0
+    title: "ANCHORED TO THE UNIVERSE"
+    caption: "Each base unit is now pinned to a constant of nature instead of a physical object."
+    html: |
+      <div style="background:#f0f9ff;padding:16px 14px;border-radius:12px;">
+        <style>
+          @keyframes phTick{0%,45%{opacity:.25}50%,100%{opacity:1}}
+          .ph-anchor{display:flex;align-items:center;gap:10px;margin:7px 0;font:12px sans-serif;color:#0f172a}
+          .ph-u{font-weight:bold;background:#dbeafe;border:1px solid #1e3a8a;border-radius:6px;padding:3px 9px;min-width:62px;text-align:center}
+          .ph-arrow{color:#475569}
+          .ph-c{color:#166534}
+          .ph-tick{animation:phTick 1.1s steps(1) infinite;font-weight:bold}
+        </style>
+        <div class="ph-anchor"><span class="ph-u">second</span><span class="ph-arrow">→</span><span class="ph-c"><span class="ph-tick">●</span> caesium-133 atom vibrates 9,192,631,770×</span></div>
+        <div class="ph-anchor"><span class="ph-u">metre</span><span class="ph-arrow">→</span><span class="ph-c">distance light travels in 1/299,792,458 s</span></div>
+        <div class="ph-anchor"><span class="ph-u">kilogram</span><span class="ph-arrow">→</span><span class="ph-c">fixed by the Planck constant h</span></div>
+      </div>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      From the seven base units you build every **derived** unit. Most are just combinations — speed is m/s, density is kg/m³. But the important combinations earn **special names**:
+
+      - force → **newton** (N) = kg·m/s²
+      - energy/work → **joule** (J) = N·m
+      - pressure → **pascal** (Pa) = N/m²
+      - power → **watt** (W) = J/s
+
+      A newton is not fundamental — it's shorthand for a specific pile of base units.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Three writing rules the exam actually checks — and most students lose marks on:
+
+      1. Symbols are **never pluralised**: 10 kg, not "10 kgs".
+      2. A unit named after a person is **lowercase as a word, capital as a symbol**: *newton* but **N**; *pascal* but **Pa**.
+      3. Leave a **space** between number and unit: 5 m, not "5m".
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      One more practical point. The metre is clumsy for an atom and absurd for a galaxy, so physics keeps **convenient units** for extreme scales:
+
+      - **ångström** (Å) = 10⁻¹⁰ m — for atoms
+      - **astronomical unit** (AU) — Earth-to-Sun distance
+      - **light year** (ly) — how far light travels in a year (a distance, *not* a time!)
+
+      Same SI underneath; just a friendlier size for the job.
+
+  - type: mcq
+    xp: 15
+    question: "Since 2019, how is the kilogram defined?"
+    options:
+      - id: a
+        text: "By a platinum-iridium cylinder stored near Paris."
+        is_correct: false
+        rationale: "That was the *old* definition — exactly the drifting object the 2019 change got rid of."
+      - id: b
+        text: "By fixing the value of the Planck constant, h."
+        is_correct: true
+        rationale: "Correct. The kilogram is now anchored to a constant of nature, so it can never scratch or drift."
+      - id: c
+        text: "By the mass of one litre of water."
+        is_correct: false
+        rationale: "A historical approximation, but never the precise SI definition — water's density depends on temperature and purity."
+      - id: d
+        text: "By the vibrations of a caesium atom."
+        is_correct: false
+        rationale: "That's the definition of the *second*, not the kilogram."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Match each base quantity to its SI unit and symbol."
+    left:
+      - { id: l1, label: "Electric current" }
+      - { id: l2, label: "Temperature" }
+      - { id: l3, label: "Amount of substance" }
+      - { id: l4, label: "Luminous intensity" }
+    right:
+      - { id: r1, label: "ampere (A)" }
+      - { id: r2, label: "kelvin (K)" }
+      - { id: r3, label: "mole (mol)" }
+      - { id: r4, label: "candela (cd)" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the anchors."
+    template: |
+      The SI unit of mass is the {{blank-1}}. The SI unit of time, the {{blank-2}}, is defined by the vibrations of a {{blank-3}} atom.
+    answers:
+      - id: blank-1
+        accepted: ["kilogram", "Kilogram", "kg"]
+      - id: blank-2
+        accepted: ["second", "Second"]
+      - id: blank-3
+        accepted: ["caesium", "cesium", "Caesium", "caesium-133"]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      Grab any three labels or specs near you — a food packet (grams), an appliance (watts), a bottle (litres or millilitres), your phone (GHz, mAh).
+
+      On paper, for each one write the SI base or derived unit it's using, and whether that unit is *base* or *derived*. Fix any that break the writing rules (e.g. "500gm" → "500 g").
+
+      Type one corrected example below.
+    placeholder: "e.g. 60 W — derived (power), written correctly"
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Humanity rebuilt its entire measurement system around constants of nature so that a unit would *never* depend on a single fragile object again.
+
+      Does it change how you see a number like "1 kg" to know it's now backed by the laws of physics rather than a cylinder in a safe? No right answer.
+    placeholder: "It makes me think..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You know the seven SI base units and what anchors them."
+    summary: |
+      SI gives one unit to each base quantity — metre, kilogram, second, ampere, kelvin, mole,
+      candela — and since 2019 defines each by a fixed constant of nature instead of a physical
+      object. Derived units (newton, joule, pascal, watt) are just named combinations of these.
+
+      You now have the language. But physics spans from a quark (10⁻¹⁸ m) to the observable
+      universe (10²⁶ m) — forty-four powers of ten. How do you even *think* across a range that
+      vast without drowning in zeros? That's the next lesson.

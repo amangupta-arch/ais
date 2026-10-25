@@ -1,0 +1,155 @@
+title: "Significant Figures"
+subtitle: "The rules for never claiming more precision than you actually have"
+estimated_minutes: 11
+xp_reward: 90
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      You measure a table with a ruler marked only in centimetres and write down **2.00 m**.
+
+      You just *lied*. Your ruler physically cannot see the second decimal place — those extra zeros claim a precision you never had. **Significant figures** are the rules for telling the truth about how much you actually know.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here's the definition: the **significant figures** of a measurement are all the digits you're *sure* of, **plus one** final digit you *estimated*.
+
+      If your ruler reads somewhere between 2.0 and 2.1 cm and you eyeball it at 2.04 cm, that's **3 significant figures** — the 2 and 0 are certain, the 4 is your one allowed guess. One estimated digit. Never two.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The counting rules, part one — the easy half:
+
+      1. **Every non-zero digit is significant.** 2345 → 4 sig figs.
+      2. **Zeros *between* non-zero digits are significant.** 1.008 → 4 sig figs; 2305 → 4.
+
+      Non-zeros always count. Trapped zeros always count. The only hard cases are zeros on the *edges*.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The edge zeros — this is where marks are won and lost:
+
+      - **Leading zeros** (before the first non-zero digit) are **never significant**. They're just placeholders telling you where the decimal sits. 0.00234 → **3** sig figs.
+      - **Trailing zeros *after* a decimal point** **are** significant — you had no reason to write them unless you measured them. 2.300 → **4** sig figs; 0.0200 → **3**.
+
+  - type: svg_graphic
+    xp: 0
+    title: "WHICH ZEROS COUNT"
+    caption: "Leading zeros are placeholders; trapped and trailing-after-decimal zeros are earned."
+    svg: |
+      <svg viewBox="0 0 360 150" xmlns="http://www.w3.org/2000/svg" font-family="monospace" font-size="20">
+        <text x="20" y="38" fill="#94a3b8">0.00</text><text x="68" y="38" fill="#1e3a8a" font-weight="bold">234</text>
+        <text x="150" y="38" font-family="sans-serif" font-size="12" fill="#475569">3 s.f. — leading zeros don't count</text>
+        <text x="20" y="80" fill="#1e3a8a" font-weight="bold">2</text><text x="34" y="80" fill="#16a34a" font-weight="bold">00</text><text x="62" y="80" fill="#1e3a8a" font-weight="bold">8</text>
+        <text x="150" y="80" font-family="sans-serif" font-size="12" fill="#475569">4 s.f. — trapped zeros count</text>
+        <text x="20" y="122" fill="#1e3a8a" font-weight="bold">2.3</text><text x="54" y="122" fill="#16a34a" font-weight="bold">00</text>
+        <text x="150" y="122" font-family="sans-serif" font-size="12" fill="#475569">4 s.f. — trailing-after-decimal count</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Now the genuinely ambiguous case: **4700**. Are those trailing zeros significant? Without a decimal point, *you cannot tell* — it could be 2, 3, or 4 significant figures depending on how it was measured.
+
+      The fix is **scientific notation**, which is never ambiguous:
+
+      - 4.7 × 10³ → 2 s.f.
+      - 4.70 × 10³ → 3 s.f.
+      - 4.700 × 10³ → 4 s.f.
+
+      When precision matters, write it as a × 10^b and the question disappears.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      One reassurance, because students panic here: **significant figures don't change when you change units.**
+
+      A length of 4.700 m stays 4 significant figures whether you write it as 4.700 m or 470.0 cm or 4.700 × 10³ mm. The sig-fig count is a fact about your *measurement* — how good your instrument was — not about which unit you happen to use.
+
+  - type: mcq
+    xp: 15
+    question: "How many significant figures are in 0.02030?"
+    options:
+      - id: a
+        text: "3"
+        is_correct: false
+        rationale: "You've dropped a real one. The zero *between* 2 and 3 counts, and so does the trailing zero after the decimal."
+      - id: b
+        text: "4"
+        is_correct: true
+        rationale: "Correct. Skip the two leading zeros; count 2, 0 (trapped), 3, and 0 (trailing after the decimal) = 4."
+      - id: c
+        text: "5"
+        is_correct: false
+        rationale: "You've counted a leading zero. The zeros before the 2 are placeholders and never significant."
+      - id: d
+        text: "6"
+        is_correct: false
+        rationale: "Both leading zeros have been counted by mistake — neither is significant."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Match each number to its number of significant figures."
+    left:
+      - { id: l1, label: "2345" }
+      - { id: l2, label: "0.00234" }
+      - { id: l3, label: "2.300" }
+      - { id: l4, label: "4.7 × 10³" }
+    right:
+      - { id: r1, label: "4 significant figures" }
+      - { id: r2, label: "3 significant figures" }
+      - { id: r3, label: "4 significant figures (trailing count)" }
+      - { id: r4, label: "2 significant figures" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the edge-zero rules."
+    template: |
+      Leading zeros are {{blank-1}} significant. Trailing zeros that come after a decimal point {{blank-2}} significant. To remove all ambiguity, write the number in {{blank-3}} notation.
+    answers:
+      - id: blank-1
+        accepted: ["not", "never", "Not"]
+      - id: blank-2
+        accepted: ["are", "Are"]
+      - id: blank-3
+        accepted: ["scientific", "Scientific"]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      Count the significant figures in each of these, then rewrite the ambiguous one in scientific notation to pin it down:
+
+      **(a) 100.0    (b) 0.0450    (c) 6000    (d) 3.14159**
+
+      Type your four counts below (and your scientific-notation form for the ambiguous one).
+    placeholder: "a) ... b) ... c) ... d) ..."
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Significant figures are really a form of scientific honesty: writing 2.00 when you only measured 2.0 overstates what you know.
+
+      Where else do people "add fake decimal places" — claim more certainty than they have — outside of physics? No right answer.
+    placeholder: "People overstate their precision when..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can count significant figures and spot a dishonest zero."
+    summary: |
+      Significant figures are the certain digits plus one estimated digit. Non-zeros and trapped
+      zeros always count; leading zeros never do; trailing zeros count only after a decimal point;
+      and scientific notation settles every ambiguous case. The count doesn't change with units.
+
+      But here's the catch: if you *multiply* a 3-sig-fig number by a 5-sig-fig number, how many
+      sig figs does the answer deserve? Get the arithmetic rules wrong and a calculator will happily
+      hand you ten fake digits. Keeping numbers honest through a calculation is the next lesson.
