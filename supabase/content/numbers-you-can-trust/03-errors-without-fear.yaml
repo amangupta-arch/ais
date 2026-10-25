@@ -1,0 +1,179 @@
+title: "Errors Without Fear"
+subtitle: "In physics, 'error' isn't a mistake to hide — it's honesty with a number attached"
+estimated_minutes: 12
+xp_reward: 90
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      The word **"error"** sounds like something you did wrong and should feel bad about. In physics it means something completely different and much friendlier: just **"how far off I might be."**
+
+      Good scientists *always* state their error. Far from being a confession of failure, it's a sign you know exactly how much to trust your own number. Let's make errors feel easy.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      First, two words people constantly mix up:
+
+      - **Accurate** = close to the *true* value.
+      - **Precise** = your repeated tries agree with *each other*.
+
+      A dartboard shows the difference better than any definition.
+
+  - type: svg_graphic
+    xp: 0
+    title: "ACCURATE vs PRECISE"
+    caption: "Close to the bullseye = accurate. Darts near each other = precise. You want both."
+    svg: |
+      <svg viewBox="0 0 360 120" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="9">
+        <g>
+          <circle cx="60" cy="50" r="32" fill="none" stroke="#cbd5e1"/><circle cx="60" cy="50" r="16" fill="none" stroke="#cbd5e1"/><circle cx="60" cy="50" r="3" fill="#b91c1c"/>
+          <circle cx="58" cy="48" r="2.5" fill="#1e3a8a"/><circle cx="62" cy="51" r="2.5" fill="#1e3a8a"/><circle cx="60" cy="53" r="2.5" fill="#1e3a8a"/>
+          <text x="60" y="100" text-anchor="middle" font-weight="bold" fill="#166534">accurate + precise</text>
+        </g>
+        <g>
+          <circle cx="175" cy="50" r="32" fill="none" stroke="#cbd5e1"/><circle cx="175" cy="50" r="16" fill="none" stroke="#cbd5e1"/><circle cx="175" cy="50" r="3" fill="#b91c1c"/>
+          <circle cx="192" cy="34" r="2.5" fill="#1e3a8a"/><circle cx="195" cy="38" r="2.5" fill="#1e3a8a"/><circle cx="193" cy="40" r="2.5" fill="#1e3a8a"/>
+          <text x="175" y="100" text-anchor="middle" font-weight="bold" fill="#92400e">precise, not accurate</text>
+        </g>
+        <g>
+          <circle cx="290" cy="50" r="32" fill="none" stroke="#cbd5e1"/><circle cx="290" cy="50" r="16" fill="none" stroke="#cbd5e1"/><circle cx="290" cy="50" r="3" fill="#b91c1c"/>
+          <circle cx="278" cy="43" r="2.5" fill="#1e3a8a"/><circle cx="301" cy="47" r="2.5" fill="#1e3a8a"/><circle cx="288" cy="62" r="2.5" fill="#1e3a8a"/>
+          <text x="290" y="100" text-anchor="middle" font-weight="bold" fill="#7c3aed">accurate avg, not precise</text>
+        </g>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      You can have one without the other. Darts in a tight clump but off to one side are **precise but not accurate**. Darts scattered all around the bullseye are **accurate on average but not precise**.
+
+      The dream is both — tight *and* centred. Knowing which one you're missing tells you what to fix.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Two reasons measurements go off:
+
+      - **Systematic error** — the *same* mistake every time, in one direction. A scale that always reads 2 g heavy; always reading a ruler slightly from the side. Repeating won't help — every reading is wrong the same way. You fix the *tool or method*.
+      - **Random error** — little wobbles that go *both* ways. Shaky hands, reaction time, a faint draught. These **average out** if you take lots of readings.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      So here's how to put an actual number on your uncertainty — three gentle steps:
+
+      1. Take **several** readings and find the **average**. That's your best guess at the true value.
+      2. See how far each reading sits from the average; the **typical gap** is your error.
+      3. Write the result as **best guess ± error**.
+
+      Example: readings average to 2.6 s, and they're usually about 0.1 s off → you report **2.6 ± 0.1 s**.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      One last touch — the **percentage error**, which (remember ratios!) tells you how *big* the error is compared to the thing itself:
+
+      > percentage error = (error ÷ average) × 100%
+
+      A ±0.1 s wobble on a 2.6 s measurement is 0.1 ÷ 2.6 ≈ **4%** — small and respectable. The same ±0.1 s on a 0.5 s measurement would be 20% — time to use a better timer.
+
+  - type: svg_graphic
+    xp: 0
+    title: "BEST GUESS ± ERROR"
+    caption: "A measurement is a little band, not a single perfect point."
+    svg: |
+      <svg viewBox="0 0 360 80" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+        <line x1="40" y1="40" x2="320" y2="40" stroke="#94a3b8" stroke-width="1.5"/>
+        <rect x="150" y="30" width="60" height="20" fill="#dbeafe" stroke="#1e3a8a"/>
+        <line x1="180" y1="24" x2="180" y2="56" stroke="#1e3a8a" stroke-width="2"/>
+        <text x="180" y="20" text-anchor="middle" fill="#1e3a8a" font-weight="bold">2.6 s</text>
+        <text x="150" y="70" text-anchor="middle" fill="#b91c1c">−0.1</text>
+        <text x="210" y="70" text-anchor="middle" fill="#b91c1c">+0.1</text>
+        <text x="300" y="36" fill="#166534" font-size="10">≈ 4% error</text>
+      </svg>
+
+  - type: mcq
+    xp: 15
+    question: "A kitchen scale always reads 2 grams heavier than the true weight, no matter what you put on it. This is:"
+    options:
+      - id: a
+        text: "A systematic error."
+        is_correct: true
+        rationale: "Correct. It's the same mistake, in the same direction, every time — a systematic error you'd fix by re-calibrating the scale."
+      - id: b
+        text: "A random error."
+        is_correct: false
+        rationale: "Random errors scatter both ways and differ each time. This bias is always +2 g, so it's systematic."
+      - id: c
+        text: "Not an error at all, since it's consistent."
+        is_correct: false
+        rationale: "Consistent doesn't mean correct — every reading is 2 g too high, which is exactly a systematic error."
+      - id: d
+        text: "Something averaging more readings would fix."
+        is_correct: false
+        rationale: "Averaging only beats *random* wobble. A constant +2 g bias survives any number of readings."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Match each situation to the kind of error it causes."
+    left:
+      - { id: l1, label: "A tape measure stretched by heat" }
+      - { id: l2, label: "Your thumb is late on the stopwatch" }
+      - { id: l3, label: "Always reading a scale from an angle" }
+      - { id: l4, label: "Tiny air currents nudging a balance" }
+    right:
+      - { id: r1, label: "Systematic (consistent bias)" }
+      - { id: r2, label: "Random (varies each time)" }
+      - { id: r3, label: "Systematic (consistent bias)" }
+      - { id: r4, label: "Random (varies each time)" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in errors without fear."
+    template: |
+      A mistake that happens the same way every time is a {{blank-1}} error. Random wobbles shrink when you take the {{blank-2}} of many readings. We report a result as best guess {{blank-3}} error.
+    answers:
+      - id: blank-1
+        accepted: ["systematic", "Systematic"]
+      - id: blank-2
+        accepted: ["average", "Average", "mean"]
+      - id: blank-3
+        accepted: ["±", "plus or minus", "plus-minus", "+/-"]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      You measure a small object four times (in cm): **4.1, 4.3, 4.2, 4.2**.
+
+      On paper: (1) find the average, (2) find the typical gap from the average (your error), (3) write it as "average ± error", (4) work out the percentage error.
+
+      Type your final "... ± ... cm" and the percentage below.
+    placeholder: "... ± ... cm ; percentage error ≈ ... %"
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Saying "4.2 ± 0.1 cm" openly admits you don't know the exact value — and scientists consider that *more* trustworthy, not less.
+
+      Why do you think a person who states their uncertainty often comes across as more reliable than one who sounds 100% certain? No right answer.
+    placeholder: "Stating uncertainty seems more reliable because..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Errors don't scare you anymore."
+    summary: |
+      Accuracy means close to true; precision means your readings agree. Systematic errors are a
+      consistent bias you fix by calibrating; random errors are wobbles you beat down by averaging.
+      Report best guess ± error, and use percentage error to see how much it matters.
+
+      You can now measure, write numbers honestly, and state your uncertainty. For the finale, a
+      genuinely beautiful trick: hidden inside every unit is a kind of secret code, and reading it
+      lets you catch wrong formulas and convert between units. That's the last course.

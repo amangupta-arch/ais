@@ -1,0 +1,161 @@
+title: "How Sure Are You"
+subtitle: "Every measurement is a little bit of a guess — the skill is knowing how much"
+estimated_minutes: 11
+xp_reward: 85
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Two friends measure the same pencil. One says **"15 cm."** The other says **"15.3 cm."**
+
+      Who's right? Here's the surprise: maybe *both* are. They just used different tools and read them differently. Before we can do careful science, we need to answer a quiet question hiding behind every number: **how sure are you?**
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Start with a truth nobody tells you early enough: **no measurement is ever perfectly exact.**
+
+      Every measuring tool has a *smallest marking* — its resolution. A ruler marked only in centimetres simply **cannot see** the millimetres, the same way a blurry camera can't show fine detail. The tool sets a limit on how sure you can be.
+
+  - type: svg_graphic
+    xp: 0
+    title: "WHAT YOUR TOOL CAN SEE"
+    caption: "A cm ruler leaves the last digit to your eye; a mm ruler lets you be sure of one more."
+    svg: |
+      <svg viewBox="0 0 360 120" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="10">
+        <text x="10" y="18" fill="#1e3a8a">ruler marked in cm:</text>
+        <line x1="20" y1="34" x2="300" y2="34" stroke="#0f172a"/>
+        <g stroke="#0f172a">
+          <line x1="20" y1="34" x2="20" y2="24"/><line x1="90" y1="34" x2="90" y2="24"/><line x1="160" y1="34" x2="160" y2="24"/><line x1="230" y1="34" x2="230" y2="24"/><line x1="300" y1="34" x2="300" y2="24"/>
+        </g>
+        <rect x="20" y="38" width="183" height="10" fill="#fde68a"/>
+        <text x="210" y="47" fill="#b91c1c">"about 15.3 — the .3 is a guess"</text>
+        <text x="10" y="78" fill="#16a34a">ruler marked in mm:</text>
+        <line x1="20" y1="94" x2="300" y2="94" stroke="#0f172a"/>
+        <g stroke="#0f172a">
+          <line x1="20" y1="94" x2="20" y2="86"/><line x1="48" y1="94" x2="48" y2="88"/><line x1="76" y1="94" x2="76" y2="88"/><line x1="104" y1="94" x2="104" y2="88"/><line x1="132" y1="94" x2="132" y2="88"/><line x1="160" y1="94" x2="160" y2="86"/><line x1="188" y1="94" x2="188" y2="88"/><line x1="216" y1="94" x2="216" y2="88"/>
+        </g>
+        <rect x="20" y="98" width="183" height="10" fill="#bbf7d0"/>
+        <text x="210" y="107" fill="#166534">"15.3 — now the .3 is sure"</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Notice what happened: **the last digit you write is always a guess.**
+
+      On a centimetre ruler, the pencil sits between 15 and 16, and you *estimate* 15.3 — that .3 is your eye filling in the gap. That one estimated digit is not cheating; it's expected and honest. A finer ruler just lets you be *sure* of more digits before you start guessing.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      So "how sure are you?" really means two things: **how fine was your tool, and how carefully did you read it?**
+
+      More markings → more digits you can trust. This simple idea is the seed of everything in this course — significant figures and errors both grow straight out of it.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      One more tool for your toolkit: **ratios** — they tell you how much a mistake actually matters.
+
+      Suppose you're off by 1 cm. If you were measuring a 100 cm table, that's 1 out of 100 = **1%** off — barely anything. But if you were measuring a 2 cm bolt, that's 1 out of 2 = **50%** off — a disaster.
+
+      *Same 1 cm mistake, wildly different importance.* Size is everything.
+
+  - type: svg_graphic
+    xp: 0
+    title: "THE SAME ERROR, DIFFERENT SIZE"
+    caption: "A 1 cm slip is nothing on a long thing and huge on a short thing — that's the ratio."
+    svg: |
+      <svg viewBox="0 0 360 110" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="10">
+        <text x="10" y="20" fill="#0f172a">100 cm table, off by 1 cm:</text>
+        <rect x="10" y="26" width="300" height="14" fill="#dbeafe" stroke="#1e3a8a"/>
+        <rect x="307" y="26" width="3" height="14" fill="#b91c1c"/>
+        <text x="320" y="37" fill="#166534">1%</text>
+        <text x="10" y="72" fill="#0f172a">2 cm bolt, off by 1 cm:</text>
+        <rect x="10" y="78" width="60" height="14" fill="#dbeafe" stroke="#1e3a8a"/>
+        <rect x="70" y="78" width="30" height="14" fill="#b91c1c"/>
+        <text x="110" y="89" fill="#b91c1c">50%!</text>
+      </svg>
+
+  - type: mcq
+    xp: 15
+    question: "You measure a pencil with a ruler marked only in centimetres. Which reading is the *honest* one?"
+    options:
+      - id: a
+        text: "15 cm — never guess beyond the markings."
+        is_correct: false
+        rationale: "Too cautious. You're allowed one estimated digit, so you can read the position between marks as 15.3."
+      - id: b
+        text: "15.3 cm — the 15 is sure, the .3 is a careful estimate."
+        is_correct: true
+        rationale: "Correct. One estimated digit beyond the smallest marking is exactly the honest thing to do."
+      - id: c
+        text: "15.34 cm — read it as finely as you can."
+        is_correct: false
+        rationale: "That's two guessed digits. A cm ruler can't support the second decimal — that's claiming more than you can see."
+      - id: d
+        text: "Any of these is fine."
+        is_correct: false
+        rationale: "No — 15 throws away a readable digit, and 15.34 invents one. 15.3 is the honest middle."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Match each error (as a fraction of the whole) to how big it is."
+    left:
+      - { id: l1, label: "1 out of 1000" }
+      - { id: l2, label: "1 out of 100" }
+      - { id: l3, label: "1 out of 4" }
+      - { id: l4, label: "1 out of 2" }
+    right:
+      - { id: r1, label: "0.1% — tiny" }
+      - { id: r2, label: "1% — small" }
+      - { id: r3, label: "25% — big" }
+      - { id: r4, label: "50% — huge" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the idea of being sure."
+    template: |
+      No measurement is perfectly {{blank-1}}. The last digit you write is always an {{blank-2}}. And the same size of mistake matters more on a {{blank-3}} measurement than on a big one.
+    answers:
+      - id: blank-1
+        accepted: ["exact", "Exact", "perfect"]
+      - id: blank-2
+        accepted: ["estimate", "Estimate", "guess"]
+      - id: blank-3
+        accepted: ["small", "Small", "smaller", "tiny"]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      With a centimetre ruler, measure a small object (a coin, a rubber, a key) and write your reading with **one estimated digit** (like 2.4 cm).
+
+      Then work out: if your estimate could be off by about 0.1 cm, what fraction (roughly, as a percentage) of the object's size is that? Type your reading and your rough percentage below.
+    placeholder: "Reading ≈ ... cm ; a 0.1 cm slip ≈ ... % of it"
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Admitting that the last digit is a guess might feel like weakness — but it's actually what makes a careful person trustworthy.
+
+      When has saying "I'm not 100% sure" made you trust someone *more*, not less? No right answer.
+    placeholder: "Admitting uncertainty built trust when..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can judge how much to trust a measurement."
+    summary: |
+      No measurement is exact: your tool's finest marking limits you, and the last digit you write is
+      always an estimate. The more markings, the more digits you can trust. And a ratio tells you how
+      much an error matters — 1 cm is nothing on a table but huge on a bolt.
+
+      Scientists have a neat, exact way to *write down* "how many digits I actually trust" so nobody is
+      fooled. It's called significant figures — and the next lesson makes it simple.

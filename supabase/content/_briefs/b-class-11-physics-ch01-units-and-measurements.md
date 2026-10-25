@@ -101,7 +101,12 @@ Bundle-courses `18`, migration `0025`, order 601, 🌱 / `moss`.
   (17/18 after 16).
 - **Inline SVG / html_animation** for all diagrams; no cowork images, no audio
   worklist this pass.
-- *(append after each lesson as authored)*
+- **BOTH bundles fully authored** (18 lessons, EN, schema-valid). 250 turns,
+  36 inline visuals, 13–15 turns/lesson. Fast Track and Ground-Up reach the
+  same chapter summit (significant figures, errors, dimensional analysis);
+  Ground-Up adds the prerequisite scaffolding (what a unit is, powers of ten,
+  ratios, estimation, the "recipe" framing of dimensions) and a gentler pace.
+  Pending: apply migrations 0024/0025 → load-bundle-courses → load lessons.
 
 ## How to apply
 1. Apply migrations `0024` + `0025`.

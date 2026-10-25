@@ -1,0 +1,176 @@
+title: "Fundamental and Derived Units"
+subtitle: "Seven building-block units that make every measurement there is"
+estimated_minutes: 11
+xp_reward: 85
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Look at everything we measure: length, speed, area, weight, temperature, pressure, energy, electricity… Surely that needs thousands of different units?
+
+      It doesn't. Almost every measurement in the universe is built from just **seven** basic ones — the way every LEGO creation, however fancy, comes from a few kinds of brick. Let's meet the bricks.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Two families of quantity:
+
+      - **Fundamental** (basic) quantities — the building blocks. They stand alone; you can't make them from anything simpler. The three you'll use constantly: **length, mass, time.**
+      - **Derived** quantities — *built* by combining the basics. **Speed** = length ÷ time. **Area** = length × length.
+
+      Fundamental = the bricks. Derived = what you build with them.
+
+  - type: svg_graphic
+    xp: 0
+    title: "BRICKS AND WHAT THEY BUILD"
+    caption: "A few fundamental quantities combine into every derived one."
+    svg: |
+      <svg viewBox="0 0 360 120" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+        <text x="14" y="16" font-weight="bold" fill="#1e3a8a">BRICKS</text>
+        <rect x="10" y="24" width="80" height="22" rx="4" fill="#dbeafe" stroke="#1e3a8a"/><text x="50" y="39" text-anchor="middle">length</text>
+        <rect x="10" y="50" width="80" height="22" rx="4" fill="#dbeafe" stroke="#1e3a8a"/><text x="50" y="65" text-anchor="middle">mass</text>
+        <rect x="10" y="76" width="80" height="22" rx="4" fill="#dbeafe" stroke="#1e3a8a"/><text x="50" y="91" text-anchor="middle">time</text>
+        <text x="110" y="62" font-size="18" fill="#475569">→</text>
+        <text x="250" y="16" font-weight="bold" fill="#92400e">BUILT</text>
+        <rect x="150" y="24" width="200" height="22" rx="4" fill="#fef3c7" stroke="#92400e"/><text x="160" y="39">speed = length ÷ time</text>
+        <rect x="150" y="50" width="200" height="22" rx="4" fill="#fef3c7" stroke="#92400e"/><text x="160" y="65">area = length × length</text>
+        <rect x="150" y="76" width="200" height="22" rx="4" fill="#fef3c7" stroke="#92400e"/><text x="160" y="91">density = mass ÷ volume</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Scientists agreed on exactly **seven** fundamental quantities to cover all of physics:
+
+      **length, mass, time, electric current, temperature, amount of substance, luminous intensity** (brightness).
+
+      Don't be intimidated by the last few — early on, you'll mostly live with the first three. The others join when you reach electricity, heat, and chemistry.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Each fundamental quantity gets **one** agreed unit — the **SI units**:
+
+      length → **metre (m)**, mass → **kilogram (kg)**, time → **second (s)**, current → **ampere (A)**, temperature → **kelvin (K)**, amount → **mole (mol)**, brightness → **candela (cd)**.
+
+      Learn the first three cold. They're the ones you'll reach for every single day.
+
+  - type: svg_graphic
+    xp: 0
+    title: "THE SEVEN SI BASE UNITS"
+    caption: "One fundamental quantity, one agreed unit."
+    svg: |
+      <svg viewBox="0 0 360 120" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="11">
+        <g fill="#0f172a">
+          <text x="14" y="20">length → </text><text x="90" y="20" font-weight="bold" fill="#1e3a8a">metre (m)</text>
+          <text x="200" y="20">temperature → </text><text x="300" y="20" font-weight="bold" fill="#1e3a8a">kelvin (K)</text>
+          <text x="14" y="44">mass → </text><text x="90" y="44" font-weight="bold" fill="#1e3a8a">kilogram (kg)</text>
+          <text x="200" y="44">amount → </text><text x="300" y="44" font-weight="bold" fill="#1e3a8a">mole (mol)</text>
+          <text x="14" y="68">time → </text><text x="90" y="68" font-weight="bold" fill="#1e3a8a">second (s)</text>
+          <text x="200" y="68">brightness → </text><text x="300" y="68" font-weight="bold" fill="#1e3a8a">candela (cd)</text>
+          <text x="14" y="92">current → </text><text x="90" y="92" font-weight="bold" fill="#1e3a8a">ampere (A)</text>
+        </g>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      **Derived units** are just those base units combined — nothing new to memorise:
+
+      - speed → metres per second, **m/s**
+      - area → square metres, **m²**
+      - volume → cubic metres, **m³**
+      - density → kilograms per cubic metre, **kg/m³**
+
+      Whenever you meet a new quantity, don't panic — just look at its *definition* and build its unit from the bricks.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      One reassuring note. These base units are no longer anyone's foot or a lump of metal. Each is now locked to something in **nature that never changes** — for example, the second is counted by the steady vibrations of a special atom.
+
+      You don't need the details yet. Just trust that a metre today is exactly a metre next century. That rock-solid foundation is what everything else stands on.
+
+  - type: mcq
+    xp: 15
+    question: "Which of these is a *derived* quantity — built from the basic ones?"
+    options:
+      - id: a
+        text: "Length"
+        is_correct: false
+        rationale: "Length is one of the fundamental building blocks — it isn't built from anything simpler."
+      - id: b
+        text: "Area"
+        is_correct: true
+        rationale: "Correct. Area is length × length — made by combining a fundamental quantity with itself, so it's derived."
+      - id: c
+        text: "Time"
+        is_correct: false
+        rationale: "Time is a fundamental quantity, one of the seven bricks."
+      - id: d
+        text: "Mass"
+        is_correct: false
+        rationale: "Mass is fundamental too — a basic building block, not built from others."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Match each fundamental quantity to its SI unit."
+    left:
+      - { id: l1, label: "Length" }
+      - { id: l2, label: "Mass" }
+      - { id: l3, label: "Time" }
+      - { id: l4, label: "Temperature" }
+    right:
+      - { id: r1, label: "metre (m)" }
+      - { id: r2, label: "kilogram (kg)" }
+      - { id: r3, label: "second (s)" }
+      - { id: r4, label: "kelvin (K)" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the building blocks."
+    template: |
+      There are {{blank-1}} fundamental quantities. Quantities built from them, like speed (m/s) and area (m²), use {{blank-2}} units.
+    answers:
+      - id: blank-1
+        accepted: ["seven", "7", "Seven"]
+      - id: blank-2
+        accepted: ["derived", "Derived"]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      Pick four things you could measure today — your height, how long you sleep, the floor area of your room, how fast you walk.
+
+      On paper, for each: write whether it's **fundamental** or **derived**, and name its **SI unit**. (Height → length → fundamental → metre. Walking speed → derived → m/s.)
+
+      Type one of your four below.
+    placeholder: "e.g. room area — derived — square metres (m²)"
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Seven simple bricks are enough to build every measurement humans have ever needed.
+
+      Does it surprise you that something as varied as "all of physics" rests on so few basic pieces? What else in the world is like that — endless variety from a few building blocks? No right answer.
+    placeholder: "A few building blocks making endless variety reminds me of..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can tell fundamental from derived and name the SI units."
+    summary: |
+      Seven fundamental quantities — led by length, mass and time — are the bricks; everything else is
+      *derived* by combining them. Each fundamental quantity has one SI unit (metre, kilogram, second,
+      ampere, kelvin, mole, candela), and derived units are just those bricks stuck together (m/s, m²,
+      kg/m³), all anchored to unchanging things in nature.
+
+      You can now measure and name units confidently. But a new question: when you *take* a measurement,
+      how *sure* can you really be of it? No measurement is perfect. Learning to judge how much to trust
+      a number is the next course.

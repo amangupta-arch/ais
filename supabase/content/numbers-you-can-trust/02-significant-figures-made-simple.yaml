@@ -1,0 +1,180 @@
+title: "Significant Figures Made Simple"
+subtitle: "A tidy way to write down exactly how many digits you trust"
+estimated_minutes: 11
+xp_reward: 85
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Last lesson you learned a big truth: the last digit of any measurement is a guess. **Significant figures** are simply a way to write down *how many digits you actually trust* — so no one is fooled.
+
+      "2.0 cm" and "2.00 cm" look almost identical, but they tell very different stories about how good your ruler was. Let's learn to read and write that story.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here's the whole definition, in one line:
+
+      > **Significant figures** = all the digits you're sure of, plus the one you estimated.
+
+      Measure a pencil as 15.3 cm: the 1 and 5 are sure, the 3 is your careful guess → **3 significant figures.** That's it. Now we just need rules for which digits count — and the only wrinkle is zeros.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The easy rules first:
+
+      1. **Every non-zero digit counts.** 2345 → 4 sig figs. 72 → 2.
+      2. **Zeros trapped between other digits count.** 205 → 3. 1.008 → 4.
+
+      So far, nothing surprising. Non-zeros always matter; trapped zeros always matter.
+
+  - type: svg_graphic
+    xp: 0
+    title: "NON-ZEROS AND TRAPPED ZEROS COUNT"
+    caption: "Blue digits all count — every non-zero, plus any zero caught between them."
+    svg: |
+      <svg viewBox="0 0 360 90" xmlns="http://www.w3.org/2000/svg" font-family="monospace" font-size="22">
+        <text x="20" y="40" fill="#1e3a8a" font-weight="bold">2345</text>
+        <text x="120" y="40" font-family="sans-serif" font-size="12" fill="#475569">→ 4 sig figs</text>
+        <text x="20" y="76" fill="#1e3a8a" font-weight="bold">2</text><text x="34" y="76" fill="#16a34a" font-weight="bold">0</text><text x="48" y="76" fill="#1e3a8a" font-weight="bold">5</text>
+        <text x="120" y="76" font-family="sans-serif" font-size="12" fill="#475569">→ 3 sig figs (trapped zero counts)</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Now the only tricky part — zeros on the **ends**.
+
+      **Leading zeros** (the ones in *front*) are just placeholders holding the decimal point's spot. They **don't count**.
+
+      > 0.0025 → just **2** significant figures (the 2 and the 5). Those front zeros are scaffolding, not real digits.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      But **trailing zeros after a decimal point** *do* count — you'd never write them unless you'd actually measured them:
+
+      > 2.50 → **3** sig figs.  0.200 → **3** sig figs.
+
+      The difference is the whole game: a front zero is a placeholder (ignore it), a back-after-the-decimal zero is a real measured digit (count it).
+
+  - type: svg_graphic
+    xp: 0
+    title: "FRONT ZEROS vs BACK ZEROS"
+    caption: "Grey = placeholder (ignore). Green = measured and real (count)."
+    svg: |
+      <svg viewBox="0 0 360 90" xmlns="http://www.w3.org/2000/svg" font-family="monospace" font-size="22">
+        <text x="20" y="40" fill="#94a3b8">0.00</text><text x="68" y="40" fill="#1e3a8a" font-weight="bold">25</text>
+        <text x="130" y="40" font-family="sans-serif" font-size="12" fill="#475569">→ 2 sig figs</text>
+        <text x="20" y="76" fill="#1e3a8a" font-weight="bold">2.5</text><text x="54" y="76" fill="#16a34a" font-weight="bold">0</text>
+        <text x="130" y="76" font-family="sans-serif" font-size="12" fill="#475569">→ 3 sig figs</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      One sneaky case: **1500**. Do those end zeros count? Honestly, *you can't tell* — maybe they were measured, maybe they're just placeholders.
+
+      The cure is **scientific notation**, which is never ambiguous:
+
+      - 1.5 × 10³ → 2 sig figs
+      - 1.50 × 10³ → 3 sig figs
+
+      When it matters, write it in powers of ten and the doubt vanishes.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Finally, a practical rule for when you *calculate*. Your answer can't be more trustworthy than your worst number — the weakest link.
+
+      - **Multiply or divide** → keep the **fewest significant figures.** (2.5 × 3.42 = 8.55 → round to 2 sig figs → 8.6)
+      - **Add or subtract** → keep the **fewest decimal places.** (12.5 + 1.23 = 13.73 → round to 1 decimal → 13.7)
+
+      Don't let a calculator's long tail of digits fool you into claiming precision you never had.
+
+  - type: mcq
+    xp: 15
+    question: "How many significant figures are in 0.0405?"
+    options:
+      - id: a
+        text: "2"
+        is_correct: false
+        rationale: "You've missed the trapped zero. The 0 between 4 and 5 is caught between digits, so it counts."
+      - id: b
+        text: "3"
+        is_correct: true
+        rationale: "Correct. Ignore the two leading zeros; count 4, 0 (trapped), and 5 → 3 significant figures."
+      - id: c
+        text: "4"
+        is_correct: false
+        rationale: "You've counted a leading zero. The zeros before the 4 are placeholders and don't count."
+      - id: d
+        text: "5"
+        is_correct: false
+        rationale: "Both leading zeros have been counted by mistake — neither is significant."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Match each number to how many significant figures it has."
+    left:
+      - { id: l1, label: "72" }
+      - { id: l2, label: "205" }
+      - { id: l3, label: "0.0025" }
+      - { id: l4, label: "2.50" }
+    right:
+      - { id: r1, label: "2 sig figs" }
+      - { id: r2, label: "3 sig figs (trapped zero)" }
+      - { id: r3, label: "2 sig figs (leading zeros ignored)" }
+      - { id: r4, label: "3 sig figs (trailing zero counts)" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the zero rules."
+    template: |
+      Zeros in {{blank-1}} of a number (like in 0.0025) are placeholders and do not count. Zeros after a decimal point (like in 2.50) {{blank-2}} count. To remove all doubt, use {{blank-3}} notation.
+    answers:
+      - id: blank-1
+        accepted: ["front", "the front", "front of", "leading"]
+      - id: blank-2
+        accepted: ["do", "Do"]
+      - id: blank-3
+        accepted: ["scientific", "Scientific"]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      Count the significant figures in each, saying *why* for the zeros:
+
+      **(a) 408    (b) 0.070    (c) 5.600    (d) 30.0**
+
+      Type your four counts below.
+    placeholder: "a) ... b) ... c) ... d) ..."
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Writing 2.50 instead of 2.5 is a quiet way of saying "I measured this carefully, down to the last zero."
+
+      It's strange that a single extra zero can carry a real message. Can you think of another tiny detail that silently signals how careful someone was? No right answer.
+    placeholder: "A small detail that signals care is..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can count significant figures without fear."
+    summary: |
+      Significant figures are the digits you trust: all non-zeros and trapped zeros count; leading
+      zeros are placeholders that don't; trailing zeros after a decimal point do; and scientific
+      notation settles the ambiguous ones. In a calculation, keep the fewest sig figs when
+      multiplying and the fewest decimals when adding.
+
+      Significant figures are really a *hint* about a measurement's uncertainty. Next, we face that
+      uncertainty head-on — what an "error" really is, and why admitting one is good science, not a
+      mistake. And it's far less scary than it sounds.

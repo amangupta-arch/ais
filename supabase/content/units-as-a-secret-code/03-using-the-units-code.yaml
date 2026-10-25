@@ -1,0 +1,173 @@
+title: "Using the Units Code"
+subtitle: "Turn the recipe into a translator and a formula-builder"
+estimated_minutes: 12
+xp_reward: 90
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      You've used the units recipe to *catch* wrong formulas. Now put it to work on two real jobs:
+
+      1. **translating** a measurement from one unit into another, and
+      2. **building** the shape of a formula you've never seen.
+
+      The code isn't just a detective — it's a translator and a builder. Let's use both, gently.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      First, converting units. The one idea you need:
+
+      > When the unit gets **smaller**, the number gets **bigger** (and vice versa).
+
+      1 metre = 100 centimetres. The centimetre is smaller, so it takes *more* of them to cover the same length. Same length — different number. That trade-off is the whole secret of conversion.
+
+  - type: svg_graphic
+    xp: 0
+    title: "SMALLER UNIT, BIGGER NUMBER"
+    caption: "The same length is 1 metre or 100 centimetres — the smaller the unit, the larger the count."
+    svg: |
+      <svg viewBox="0 0 360 80" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12">
+        <rect x="20" y="30" width="320" height="16" fill="#dbeafe" stroke="#1e3a8a"/>
+        <text x="180" y="24" text-anchor="middle" fill="#0f172a">the same length</text>
+        <text x="30" y="63" fill="#1e3a8a">= 1 metre</text>
+        <text x="200" y="63" fill="#b91c1c">= 100 centimetres</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      A worked example you'll use all the time — **5 km/h into m/s.**
+
+      Swap each unit for its equivalent: 1 km = 1000 m, and 1 hour = 3600 s.
+
+      > 5 km/h = (5 × 1000 m) ÷ (3600 s) = 5000 ÷ 3600 ≈ **1.4 m/s**
+
+      (Handy shortcut: to go from km/h to m/s, just divide by 3.6.)
+
+  - type: svg_graphic
+    xp: 0
+    title: "5 km/h → m/s"
+    caption: "Replace km with 1000 m and the hour with 3600 s, then simplify."
+    svg: |
+      <svg viewBox="0 0 360 70" xmlns="http://www.w3.org/2000/svg" font-family="monospace" font-size="13">
+        <text x="12" y="28" fill="#0f172a">5 km/h = 5 × 1000 ÷ 3600</text>
+        <text x="12" y="52" fill="#1e3a8a">        = 5000 ÷ 3600</text>
+        <rect x="222" y="36" width="120" height="22" rx="5" fill="#dcfce7" stroke="#166534"/>
+        <text x="282" y="52" text-anchor="middle" font-weight="bold" fill="#166534">≈ 1.4 m/s</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The recipe shines when you convert between whole *systems*. Take **1 newton** of force into the smaller CGS unit, the **dyne**.
+
+      Force's recipe is [M L T⁻²]. Going from kg to g multiplies by 1000; from m to cm multiplies by 100. So:
+
+      > 1 N = 1000 × 100 = 100,000 = **10⁵ dyne**
+
+      The recipe told you exactly how the factors pile up. No guesswork.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Now the **builder**. Suppose you think a pendulum's swing time depends on its length *l* and gravity *g*, but you've forgotten the formula.
+
+      The recipe forces your hand: the *only* way to combine length [L] and gravity [L T⁻²] to get a pure **time [T]** is **√(l ÷ g)**.
+
+      Check it: √([L] ÷ [L T⁻²]) = √[T²] = **[T]** ✓. Out of thin air, you've recovered the shape: **T ∝ √(l/g)**.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      And the same honest limit from last lesson returns: the code hands you the *shape* of the formula — √(l/g) — but never the plain **number** in front. The real pendulum formula is T = 2π√(l/g), and the code can't see that **2π**.
+
+      Still — getting the entire shape of a law of nature, for free, from units alone? That's one of the most elegant tricks in all of physics.
+
+  - type: mcq
+    xp: 15
+    question: "Convert 72 km/h into m/s."
+    options:
+      - id: a
+        text: "20 m/s"
+        is_correct: true
+        rationale: "Correct. 72 ÷ 3.6 = 20 m/s (or 72 × 1000 ÷ 3600 = 20)."
+      - id: b
+        text: "200 m/s"
+        is_correct: false
+        rationale: "Too big — that's faster than sound. You multiplied where you should have divided. 72 km/h ÷ 3.6 = 20 m/s."
+      - id: c
+        text: "2 m/s"
+        is_correct: false
+        rationale: "Too small — that's a slow walk. Dividing 72 by 3.6 gives 20, not 2."
+      - id: d
+        text: "259 m/s"
+        is_correct: false
+        rationale: "You went the wrong way (m/s → km/h). To go km/h → m/s, divide by 3.6: 72 ÷ 3.6 = 20."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Match each unit to its equal in smaller units."
+    left:
+      - { id: l1, label: "1 metre" }
+      - { id: l2, label: "1 kilometre" }
+      - { id: l3, label: "1 hour" }
+      - { id: l4, label: "1 kilogram" }
+    right:
+      - { id: r1, label: "100 centimetres" }
+      - { id: r2, label: "1000 metres" }
+      - { id: r3, label: "3600 seconds" }
+      - { id: r4, label: "1000 grams" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in both powers of the code."
+    template: |
+      When a unit gets smaller, its number gets {{blank-1}}. And the units code can give you the {{blank-2}} of a formula like √(l/g), but never the plain {{blank-3}} in front, such as 2π.
+    answers:
+      - id: blank-1
+        accepted: ["bigger", "Bigger", "larger", "greater"]
+      - id: blank-2
+        accepted: ["shape", "Shape", "form"]
+      - id: blank-3
+        accepted: ["number", "Number", "constant"]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      Two conversions, using the "smaller unit → bigger number" idea:
+
+      **(a)** Convert 90 km/h into m/s (divide by 3.6).
+      **(b)** How many square metres are in 1 square kilometre? (1 km = 1000 m, and it's *squared*.)
+
+      Type both answers below.
+    placeholder: "a) ... m/s   b) 1 km² = ... m²"
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Starting from "my foot is a bad ruler," you've arrived at pulling the shape of a real law of nature out of units alone.
+
+      Looking back over this whole chapter, which idea surprised you most — and which one do you think you'll actually remember a year from now? No right answer.
+    placeholder: "The idea that stuck with me is..."
+
+  - type: checkpoint
+    xp: 0
+    title: "Chapter complete — you built it from the ground up."
+    summary: |
+      The units code converts measurements (smaller unit → bigger number; 72 km/h = 20 m/s;
+      1 N = 10⁵ dyne) and even reveals the *shape* of an unknown formula, like a pendulum's √(l/g) —
+      though never the plain number out front.
+
+      And that's the whole chapter, built from zero. You started not knowing what a unit was; now you
+      can write any measurement as number + unit, handle huge and tiny numbers with powers of ten, be
+      honest with significant figures and errors, and read the hidden recipe in every quantity to catch
+      formulas, convert units, and even build new relations. You reached the same summit as anyone — you
+      just climbed every step of the path.

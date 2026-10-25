@@ -1,0 +1,163 @@
+title: "Catching Wrong Formulas"
+subtitle: "Be the detective who spots a broken equation without doing any maths"
+estimated_minutes: 11
+xp_reward: 85
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      A friend writes down: **distance = speed + time.**
+
+      You can catch that it's wrong in about three seconds — and you don't need a calculator or a single number. Why? Because you can't **add** a speed to a time, any more than you can add 3 apples to 2 hours. Their recipes don't match. Let's turn that gut feeling into a reliable detective skill.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here's the one rule, in plain words:
+
+      > In a correct formula, every piece that is **added together** or **set equal** must have the **same recipe** (the same dimensions).
+
+      You can add a length to a length. You can never add a length to a time. The moment two terms have different recipes, the formula is broken.
+
+  - type: svg_graphic
+    xp: 0
+    title: "SAME RECIPE, OR IT'S BROKEN"
+    caption: "Adding like to like is fine; adding a length to a time is nonsense."
+    svg: |
+      <svg viewBox="0 0 360 90" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="13">
+        <rect x="10" y="16" width="160" height="30" rx="6" fill="#f0fdf4" stroke="#166534"/>
+        <text x="22" y="36" font-family="monospace" fill="#0f172a">[L] + [L]</text><text x="120" y="36" fill="#166534">✓ ok</text>
+        <rect x="186" y="16" width="164" height="30" rx="6" fill="#fef2f2" stroke="#b91c1c"/>
+        <text x="198" y="36" font-family="monospace" fill="#0f172a">[L] + [T]</text><text x="296" y="36" fill="#b91c1c">✗ nonsense</text>
+        <text x="10" y="74" font-size="11" fill="#475569">"length plus length" makes sense; "length plus time" never does.</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Let's check a real one: **v = u + at** (final speed = starting speed + acceleration × time).
+
+      - **v** is a speed → [L T⁻¹]
+      - **u** is a speed → [L T⁻¹]
+      - **a t** = acceleration × time = [L T⁻²] × [T] → [L T⁻¹]
+
+      All three pieces have the *same* recipe, [L T⁻¹]. The recipes match, so the formula passes the test.
+
+  - type: svg_graphic
+    xp: 0
+    title: "v = u + at PASSES"
+    caption: "Every term works out to [L T⁻¹], so the equation is allowed."
+    svg: |
+      <svg viewBox="0 0 360 70" xmlns="http://www.w3.org/2000/svg" font-family="monospace" font-size="15">
+        <text x="30" y="30" fill="#0f172a">v   =   u   +   a·t</text>
+        <text x="24" y="54" font-size="11" fill="#166534">[LT⁻¹]</text>
+        <text x="98" y="54" font-size="11" fill="#166534">[LT⁻¹]</text>
+        <text x="168" y="54" font-size="11" fill="#166534">[LT⁻¹]</text>
+        <text x="245" y="30" font-family="sans-serif" font-size="12" fill="#166534">✓ all match</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Now catch a **wrong** one. Someone writes **area = length + length.**
+
+      - area has recipe **[L²]**
+      - length + length is just **[L]**
+
+      [L²] is not [L] — the recipes don't match, so it's wrong! (The real formula is length *times* length.) You just caught a mistake using nothing but the ingredients.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      One honest limit — and it matters. This detective can only ever prove a formula **wrong**.
+
+      If the recipes *don't* match → it's definitely broken. If they *do* match → it *might* be right, but you can't be sure, because the check is **blind to plain numbers** like ½ or 2π. A formula can have the right recipe and still have a wrong number in front.
+
+      So: recipes match = "not caught," not "proven correct." It's a brilliant lie-catcher, not a truth-stamp.
+
+  - type: mcq
+    xp: 15
+    question: "Which of these formulas can you catch as WRONG just from its recipe?"
+    options:
+      - id: a
+        text: "speed = distance ÷ time"
+        is_correct: false
+        rationale: "This one is fine: [L] ÷ [T] = [L T⁻¹], which is exactly the recipe for speed."
+      - id: b
+        text: "speed = distance × time"
+        is_correct: true
+        rationale: "Caught it. distance × time = [L] × [T] = [L T], but speed should be [L T⁻¹]. The time is on the wrong side — it should be divided, not multiplied."
+      - id: c
+        text: "area = length × length"
+        is_correct: false
+        rationale: "This is correct: [L] × [L] = [L²], the right recipe for area."
+      - id: d
+        text: "volume = length × length × length"
+        is_correct: false
+        rationale: "Also correct: [L] × [L] × [L] = [L³], exactly volume's recipe."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Match each quantity to its recipe, so you can check formulas fast."
+    left:
+      - { id: l1, label: "Speed" }
+      - { id: l2, label: "Area" }
+      - { id: l3, label: "Time" }
+      - { id: l4, label: "Force" }
+    right:
+      - { id: r1, label: "[L T⁻¹]" }
+      - { id: r2, label: "[L²]" }
+      - { id: r3, label: "[T]" }
+      - { id: r4, label: "[M L T⁻²]" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the detective rule."
+    template: |
+      In a correct formula, every added term has the same {{blank-1}}. If the recipes don't match, the formula is definitely {{blank-2}}. But matching recipes do {{blank-3}} guarantee it is correct — the check can't see plain numbers.
+    answers:
+      - id: blank-1
+        accepted: ["recipe", "Recipe", "dimensions", "dimension"]
+      - id: blank-2
+        accepted: ["wrong", "Wrong", "broken", "incorrect"]
+      - id: blank-3
+        accepted: ["not", "Not"]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      Be the detective. For each formula, write the recipe of each side and say whether it could be right or is definitely wrong:
+
+      **(a)** time = distance ÷ speed
+      **(b)** force = mass + acceleration
+
+      Type your verdict for each below (and the mismatch you found, if any).
+    placeholder: "a) ... b) ..."
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      This one trick — checking recipes — lets you catch a broken formula in an exam without remembering the right one.
+
+      Does it change how you feel about formulas to know there's a quick way to test them, instead of just trusting your memory? No right answer.
+    placeholder: "Having a way to test a formula makes me feel..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can catch a broken formula on sight."
+    summary: |
+      Every added or equated term in a valid formula must share the same recipe (dimensions), so a
+      mismatch — like area = length + length — proves it wrong instantly. But it's a one-way test:
+      mismatched recipes mean "wrong," while matching recipes only mean "not caught," because the
+      check can't see plain numbers.
+
+      You've used the recipe to *check*. In the final lesson, you'll use it to *do* things —
+      convert a measurement from one unit to another, and even build a simple formula you didn't
+      know. The units code, put to work.

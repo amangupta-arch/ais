@@ -1,0 +1,172 @@
+title: "Every Quantity Has a Shape"
+subtitle: "Speed, area, energy — all secretly built from just length, mass, and time"
+estimated_minutes: 11
+xp_reward: 85
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      Speed, area, pressure, energy — they *look* like completely different things. But here's a secret that ties them all together:
+
+      **Every one of them is secretly built from just three ingredients — length, mass, and time.**
+
+      Once you can read the "recipe" of a quantity, you unlock a genuine superpower (we'll use it in the next two lessons). Let's learn to read recipes.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Think of **length**, **mass**, and **time** as three cooking ingredients. Every quantity is a recipe — a particular mix of these three.
+
+      Take **speed**. By definition, speed = distance ÷ time = **length ÷ time**. So speed's recipe is "one scoop of length, divided by one scoop of time." That's all a "dimension" really is: the recipe.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      We write recipes in brackets to keep them short:
+
+      length → **[L]**, mass → **[M]**, time → **[T]**.
+
+      So **speed = [L] ÷ [T]**, which physicists squash into **[L T⁻¹]**. Don't let the little "⁻¹" scare you — it just means "divided by." [L T⁻¹] is simply "length over time" written compactly.
+
+  - type: svg_graphic
+    xp: 0
+    title: "A RECIPE, WRITTEN SHORT"
+    caption: "Speed is length over time; area is length times length."
+    svg: |
+      <svg viewBox="0 0 360 100" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12">
+        <text x="20" y="35" fill="#0f172a">speed =</text>
+        <text x="80" y="28" text-anchor="middle" fill="#1e3a8a">length</text>
+        <line x1="62" y1="33" x2="98" y2="33" stroke="#0f172a"/>
+        <text x="80" y="46" text-anchor="middle" fill="#1e3a8a">time</text>
+        <text x="120" y="35" fill="#475569">→</text>
+        <text x="140" y="35" font-family="monospace" fill="#16a34a" font-weight="bold">[L T⁻¹]</text>
+        <text x="20" y="80" fill="#0f172a">area = length × length</text>
+        <text x="170" y="80" fill="#475569">→</text>
+        <text x="190" y="80" font-family="monospace" fill="#16a34a" font-weight="bold">[L²]</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Now build a few more, straight from their definitions — no memorising needed:
+
+      - area = length × length → **[L²]**
+      - volume = length × length × length → **[L³]**
+      - acceleration = speed ÷ time → **[L T⁻²]**
+
+      These recipes are called the **dimensions** of a quantity. You *derive* them; you don't look them up.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      The bigger quantities bring in **mass** too. Build them one step at a time:
+
+      - force = mass × acceleration = [M] × [L T⁻²] → **[M L T⁻²]**
+      - energy = force × distance = [M L T⁻²] × [L] → **[M L² T⁻²]**
+
+      Each one just inherits the ingredients of the pieces it's made from. Follow the definition and the recipe writes itself.
+
+  - type: svg_graphic
+    xp: 0
+    title: "A FEW RECIPES TO KNOW"
+    caption: "Each is just its definition, rewritten in L, M, T."
+    svg: |
+      <svg viewBox="0 0 360 100" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12">
+        <g fill="#0f172a">
+          <text x="20" y="24">speed</text><text x="150" y="24" font-family="monospace" fill="#1e3a8a">[L T⁻¹]</text>
+          <text x="20" y="48">area</text><text x="150" y="48" font-family="monospace" fill="#1e3a8a">[L²]</text>
+          <text x="20" y="72">force</text><text x="150" y="72" font-family="monospace" fill="#1e3a8a">[M L T⁻²]</text>
+          <text x="20" y="96">energy</text><text x="150" y="96" font-family="monospace" fill="#1e3a8a">[M L² T⁻²]</text>
+        </g>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      One lovely special case: some quantities have **no ingredients at all** — they're just plain numbers.
+
+      If you divide a length by a length (say, comparing how many times longer one stick is than another), the **[L]**s cancel and you're left with a bare number. We call it **dimensionless**. An angle works this way, and so does "twice as long." No L, no M, no T — just a number.
+
+  - type: mcq
+    xp: 15
+    question: "What is the dimension (recipe) of area?"
+    options:
+      - id: a
+        text: "[L²] — length times length"
+        is_correct: true
+        rationale: "Correct. Area = length × length, so its recipe is two scoops of length: [L²]."
+      - id: b
+        text: "[L T⁻¹] — length over time"
+        is_correct: false
+        rationale: "That's speed. Area has nothing to do with time — it's length multiplied by length."
+      - id: c
+        text: "[L³] — length cubed"
+        is_correct: false
+        rationale: "That's volume (length × length × length). Area is only two lengths, so [L²]."
+      - id: d
+        text: "[M L T⁻²] — the force recipe"
+        is_correct: false
+        rationale: "That's force. Area needs no mass and no time — just [L²]."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Match each quantity to its recipe (its dimensions)."
+    left:
+      - { id: l1, label: "Speed" }
+      - { id: l2, label: "Area" }
+      - { id: l3, label: "Volume" }
+      - { id: l4, label: "Force" }
+    right:
+      - { id: r1, label: "[L T⁻¹]" }
+      - { id: r2, label: "[L²]" }
+      - { id: r3, label: "[L³]" }
+      - { id: r4, label: "[M L T⁻²]" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the three ingredients."
+    template: |
+      Every physical quantity is built from three basic ingredients: {{blank-1}}, {{blank-2}}, and time. The recipe for speed is length divided by {{blank-3}}.
+    answers:
+      - id: blank-1
+        accepted: ["length", "Length"]
+      - id: blank-2
+        accepted: ["mass", "Mass"]
+      - id: blank-3
+        accepted: ["time", "Time"]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      Work out the recipe (dimensions) of **density**, which is defined as **mass ÷ volume**.
+
+      On paper: write mass as [M], volume as [L³], and divide. Then do the same for **momentum** (mass × speed). Type both recipes below.
+    placeholder: "density = [ ... ] ; momentum = [ ... ]"
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      It's a little wild that something as rich as "energy" boils down to a recipe of just length, mass, and time.
+
+      Does knowing every quantity is made of so few ingredients make physics feel simpler, or stranger? No right answer.
+    placeholder: "Everything reducing to L, M, T feels..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can read the recipe of any quantity."
+    summary: |
+      Every quantity is built from three ingredients — length [L], mass [M], time [T] — and its
+      "recipe," written in brackets, is called its dimensions. Speed is [L T⁻¹], area [L²], force
+      [M L T⁻²], energy [M L² T⁻²]; a ratio of two like quantities cancels to a plain, dimensionless
+      number.
+
+      Here's where it gets powerful. Because both sides of any real formula must have the *same*
+      recipe, you can spot a wrong formula just by checking its ingredients — no numbers needed.
+      That detective trick is the next lesson.

@@ -1,0 +1,172 @@
+title: "The Powers of Ten Superpower"
+subtitle: "How to write a hundred billion using just two little numbers"
+estimated_minutes: 11
+xp_reward: 85
+
+turns:
+  - type: tutor_message
+    persona: nova
+    text: |
+      The distance from Earth to the Sun is about **150,000,000,000 metres**.
+
+      Quick — how many zeros is that? Most people miscount (it's 11). Numbers this big are painful to write, painful to read, and easy to get wrong. So physicists use a trick that turns all those zeros into something tiny and tidy: **powers of ten.** By the end of this lesson it'll feel easy.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Start with the friendliest numbers:
+
+      - 10 = **10¹**
+      - 100 = **10²**
+      - 1000 = **10³**
+
+      See the pattern? The small raised number — the **exponent** — just **counts the zeros**. It also tells you *how many times you multiplied by 10*. 10³ means 10 × 10 × 10 = three tens multiplied, three zeros.
+
+  - type: svg_graphic
+    xp: 0
+    title: "THE EXPONENT COUNTS THE ZEROS"
+    caption: "Each step right multiplies by 10 and adds a zero."
+    svg: |
+      <svg viewBox="0 0 360 80" xmlns="http://www.w3.org/2000/svg" font-family="monospace" font-size="14">
+        <g fill="#0f172a">
+          <text x="14" y="34">10¹ = 10</text>
+          <text x="120" y="34">10² = 100</text>
+          <text x="240" y="34">10³ = 1000</text>
+        </g>
+        <text x="14" y="60" font-family="sans-serif" font-size="10" fill="#1e3a8a">1 zero</text>
+        <text x="120" y="60" font-family="sans-serif" font-size="10" fill="#1e3a8a">2 zeros</text>
+        <text x="240" y="60" font-family="sans-serif" font-size="10" fill="#1e3a8a">3 zeros</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Now any big number, even a messy one. Take 150,000,000,000. Split it into a **tidy number between 1 and 10**, times a power of ten:
+
+      > 150,000,000,000 = 1.5 × 100,000,000,000 = **1.5 × 10¹¹**
+
+      That's **scientific notation**: every number written as **a × 10^b**, where *a* sits between 1 and 10. One small number, one exponent. Done.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      Here's the shortcut so you never have to count zeros by eye. Just slide the decimal point until there's **one digit in front of it**, and count how many places you moved:
+
+      > 1̲5̲0̲0̲0̲0̲0̲0̲0̲0̲0̲.  → slide the point 11 places left → 1.5 → **× 10¹¹**
+
+      Moved it 11 places? The exponent is 11.
+
+  - type: svg_graphic
+    xp: 0
+    title: "SLIDE THE DECIMAL POINT"
+    caption: "Hop the point left until one digit remains in front; the number of hops is the exponent."
+    svg: |
+      <svg viewBox="0 0 360 80" xmlns="http://www.w3.org/2000/svg" font-family="monospace" font-size="13">
+        <text x="12" y="34" fill="#0f172a">150000000000.</text>
+        <path d="M150 40 Q100 62 40 42" fill="none" stroke="#b91c1c" stroke-width="1.3" marker-end="url(#a1)"/>
+        <defs><marker id="a1" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L5,3 L0,6 Z" fill="#b91c1c"/></marker></defs>
+        <text x="60" y="74" font-family="sans-serif" font-size="10" fill="#b91c1c">move 11 places left</text>
+        <text x="235" y="34" fill="#16a34a" font-weight="bold">= 1.5 × 10¹¹</text>
+      </svg>
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      What about **tiny** numbers, smaller than 1? They use a **negative** exponent:
+
+      - 0.1 = **10⁻¹**
+      - 0.01 = **10⁻²**
+      - 0.001 = **10⁻³**
+
+      The negative sign just means "very small." A red blood cell is about 0.000008 m across — slide that point **6 places right** and it becomes **8 × 10⁻⁶ m**. Big numbers get positive exponents; small numbers get negative ones.
+
+  - type: tutor_message
+    persona: nova
+    text: |
+      And the real payoff: once numbers are powers of ten, **multiplying is just adding the exponents.**
+
+      > 10² × 10³ = 10⁵  (just add 2 + 3)
+
+      No long multiplication, no columns of zeros. This is why scientists write almost everything this way — it turns scary arithmetic into easy addition.
+
+  - type: mcq
+    xp: 15
+    question: "How do you write 6,400,000 in scientific notation?"
+    options:
+      - id: a
+        text: "6.4 × 10⁶"
+        is_correct: true
+        rationale: "Correct. Slide the decimal 6 places left to get 6.4, so the exponent is 6."
+      - id: b
+        text: "64 × 10⁵"
+        is_correct: false
+        rationale: "The maths is right, but scientific notation needs the first number between 1 and 10. 64 is too big — move one more place to get 6.4 × 10⁶."
+      - id: c
+        text: "6.4 × 10⁷"
+        is_correct: false
+        rationale: "Count the hops again: 6,400,000 → 6.4 is 6 places, not 7. The exponent should be 6."
+      - id: d
+        text: "6.4 × 10⁻⁶"
+        is_correct: false
+        rationale: "A negative exponent is for tiny numbers below 1. Six million is huge, so the exponent is positive."
+
+  - type: tap_to_match
+    xp: 15
+    prompt: "Match each number to its power of ten."
+    left:
+      - { id: l1, label: "1000" }
+      - { id: l2, label: "1,000,000" }
+      - { id: l3, label: "0.01" }
+      - { id: l4, label: "0.001" }
+    right:
+      - { id: r1, label: "10³" }
+      - { id: r2, label: "10⁶" }
+      - { id: r3, label: "10⁻²" }
+      - { id: r4, label: "10⁻³" }
+    pairs:
+      - [l1, r1]
+      - [l2, r2]
+      - [l3, r3]
+      - [l4, r4]
+
+  - type: fill_in_the_blank
+    xp: 10
+    prompt: "Lock in the rules."
+    template: |
+      In scientific notation a × 10^b, the number a is always between 1 and {{blank-1}}. A {{blank-2}} exponent (like 10⁻⁶) means the number is very small, less than 1.
+    answers:
+      - id: blank-1
+        accepted: ["10", "ten"]
+      - id: blank-2
+        accepted: ["negative", "Negative", "minus"]
+
+  - type: exercise
+    xp: 20
+    tool: pencil
+    instruction: |
+      Rewrite each of these in scientific notation (slide the decimal and count the hops):
+
+      **(a) 45,000    (b) 0.0007    (c) 2,500,000    (d) 0.052**
+
+      Type your four answers below, in the form a × 10^b.
+    placeholder: "a) ... b) ... c) ... d) ..."
+
+  - type: reflection
+    xp: 5
+    prompt: |
+      Powers of ten take a number you couldn't even read aloud and shrink it to something you can hold in your head.
+
+      Where else do people use a "shorthand" to tame something too big or messy to handle directly? No right answer.
+    placeholder: "A shorthand that tames something huge is..."
+
+  - type: checkpoint
+    xp: 0
+    title: "You can write any number, huge or tiny, in powers of ten."
+    summary: |
+      Scientific notation writes every number as a × 10^b: pull out a tidy number between 1 and 10,
+      then slide the decimal and count the hops for the exponent — positive for big numbers, negative
+      for small ones. Multiplying becomes adding exponents.
+
+      You can now handle the sizes of real things, from a cell to the Sun. Next, we go back to units
+      with fresh eyes: it turns out just a *handful* of basic units can build every measurement you'll
+      ever need — the fundamental and derived units.
